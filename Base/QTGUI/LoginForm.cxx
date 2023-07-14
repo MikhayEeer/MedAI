@@ -59,7 +59,7 @@ void LoginForm::finishedLogin(QJsonObject m_res){
         if( userInfoBalance <= 0 ){
             int flag = QMessageBox::information(this, 
                             tr("Hint"), 
-                            tr("Your account balance is zero \n 
+                            tr("Your account balance is zero \n \
                                 Do you want to top up?"), 
                             QMessageBox::Yes, QMessageBox::No);
             if( flag == QMessageBox::Yes ){

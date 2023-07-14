@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -1098,7 +1098,7 @@ void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
 void qSlicerMainWindow::on_actionLogOut_triggered() {
     QMessageBox* msgBox = new QMessageBox(QMessageBox::Question, 
                                           qSlicerMainWindow::tr("Hint"), 
-                                          qSlicerMainWindow::tr("Are you sure to quit? \n 
+                                          qSlicerMainWindow::tr("Are you sure to quit? \n \
                                                                 this would log out your account"), 
                                           QMessageBox::Yes | QMessageBox::No);
     msgBox->button(QMessageBox::Yes)->setText(qSlicerMainWindow::tr("Keep quit"));

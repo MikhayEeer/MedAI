@@ -67,7 +67,7 @@ void UserInfoForm::afterGetDetails(QJsonObject obj){
     }
     if( len >= 299 ){
         QMessageBox::information(this, tr("Hint"), 
-            tr("Users can query the most recent 300 records \n 
+            tr("Users can query the most recent 300 records \n \
                 if you need all the data. please contact the database administrator"), 
             QMessageBox::Yes);
     }
