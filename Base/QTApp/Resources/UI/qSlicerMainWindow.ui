@@ -315,9 +315,17 @@
      <string>&amp;Help</string>
     </property>
    </widget>
+   <widget class="QMenu" name="Usermenu">
+    <property name="title">
+     <string>user</string>
+    </property>
+    <addaction name="actionViewUserInfo"/>
+    <addaction name="actionLogOut"/>
+   </widget>
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
    <addaction name="ViewMenu"/>
+   <addaction name="Usermenu"/>
    <addaction name="HelpMenu"/>
   </widget>
   <action name="FileLoadSceneAction">

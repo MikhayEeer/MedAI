@@ -641,7 +641,17 @@ endif()
     list(APPEND Slicer_REQUIRED_QT_MODULES X11Extras)
   endif()
 
-  find_package(Qt5 COMPONENTS Core QUIET)
+  #find_package(Qt5 COMPONENTS Core QUIET)
+  find_package(Qt5 COMPONENTS Core LinguistTools QUIET)
+  #-----------------Translation zh--------------------------- 
+  set(TS_FILES 
+            ./Translations/medai_zh_Hans.ts) 
+
+  QT5_ADD_TRANSLATION(QM_FILES ${TS_FILES})
+  QT5_CREATE_TRANSLATION(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+  add_custom_target(translations ALL DEPENDS ${QM_FILES})
+
+  #----------Translation down--------
   if(Slicer_BUILD_WEBENGINE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES
       WebEngine

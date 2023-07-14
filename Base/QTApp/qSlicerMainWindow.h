@@ -91,6 +91,9 @@ public slots:
 
   virtual void on_ModuleHomeAction_triggered();
 
+  virtual void on_actionViewUserInfo_triggered();
+  virtual void on_actionLogOut_triggered();
+
   virtual void onLayoutActionTriggered(QAction* action);
   virtual void onLayoutCompareActionTriggered(QAction* action);
   virtual void onLayoutCompareWidescreenActionTriggered(QAction* action);

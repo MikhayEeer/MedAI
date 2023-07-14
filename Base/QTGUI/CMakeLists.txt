@@ -16,6 +16,22 @@ set(KIT_include_directories
 
 # Source files
 set(KIT_SRCS
+
+  UserInfo.h
+  UserInfo.cxx
+  LoginForm.h
+  LoginForm.cxx
+  RechargeForm.h
+  RechargeForm.cxx
+  signUpForm.h
+  signUpForm.cxx
+  UserInfoForm.h
+  UserInfoForm.cxx
+  post_manager.h
+  post_manager.cpp
+  deduction_dialog.h
+  deduction_dialog.cpp
+
   qSlicerAbstractModule.cxx
   qSlicerAbstractModule.h
   qSlicerAbstractModulePanel.cxx
@@ -228,6 +244,14 @@ set(KIT_MOC_SRCS
   qSlicerWidget.h
 
   qSlicerSingletonViewFactory.h
+
+  UserInfo.h
+  LoginForm.h
+  RechargeForm.h
+  signUpForm.h
+  UserInfoForm.h
+  post_manager.h
+  deduction_dialog.h
   )
 
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)

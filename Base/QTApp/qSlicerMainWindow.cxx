@@ -90,6 +90,11 @@
 // VTK includes
 #include <vtkCollection.h>
 
+// UserUI
+#include "UserInfo.h"
+#include "LoginForm.h"
+#include "UserInfoForm.h"
+
 namespace
 {
 
@@ -1082,6 +1087,28 @@ void qSlicerMainWindow::on_EditRedoAction_triggered()
 void qSlicerMainWindow::on_ModuleHomeAction_triggered()
 {
   this->setHomeModuleCurrent();
+}
+
+void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
+    UserInfoForm* _from = new UserInfoForm;
+    _from->setWindowModality(Qt::ApplicationModal);
+    _from->show();
+}
+
+void qSlicerMainWindow::on_actionLogOut_triggered() {
+    QMessageBox* msgBox = new QMessageBox(QMessageBox::Question, 
+                                          qSlicerMainWindow::tr("Hint"), 
+                                          qSlicerMainWindow::tr("Are you sure to quit? \n 
+                                                                this would log out your account"), 
+                                          QMessageBox::Yes | QMessageBox::No);
+    msgBox->button(QMessageBox::Yes)->setText(qSlicerMainWindow::tr("Keep quit"));
+    msgBox->button(QMessageBox::No)->setText(qSlicerMainWindow::tr("Cancel quit"));
+    int flag = msgBox->exec();
+    if (flag == QMessageBox::Yes) {
+        LoginForm* m_LoginForm = new LoginForm;
+        m_LoginForm->setWindowModality(Qt::ApplicationModal);
+        m_LoginForm->show();
+    }
 }
 
 //---------------------------------------------------------------------------
