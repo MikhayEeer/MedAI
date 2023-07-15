@@ -49,20 +49,20 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="qSlicerModulePanel" name="ModulePanel"/>
+      <widget class="qSlicerModulePanel" name="ModulePanel" native="true"/>
      </item>
      <item>
-      <widget class="ctkCollapsibleButton" name="DataProbeCollapsibleWidget">
+      <widget class="ctkCollapsibleButton" name="DataProbeCollapsibleWidget" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="text" stdset="0">
         <string>Data Probe</string>
        </property>
-       <property name="collapsedHeight">
+       <property name="collapsedHeight" stdset="0">
         <number>0</number>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout"/>
@@ -213,7 +213,7 @@
      <x>0</x>
      <y>0</y>
      <width>835</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="FileMenu">
@@ -315,17 +315,17 @@
      <string>&amp;Help</string>
     </property>
    </widget>
-   <widget class="QMenu" name="Usermenu">
+   <widget class="QMenu" name="UserMenu">
     <property name="title">
-     <string>user</string>
+     <string>User</string>
     </property>
-    <addaction name="actionViewUserInfo"/>
     <addaction name="actionLogOut"/>
+    <addaction name="actionViewUserInfo"/>
    </widget>
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
    <addaction name="ViewMenu"/>
-   <addaction name="Usermenu"/>
+   <addaction name="UserMenu"/>
    <addaction name="HelpMenu"/>
   </widget>
   <action name="FileLoadSceneAction">
@@ -1194,6 +1194,22 @@
    </property>
    <property name="text">
     <string>Show Status Bar</string>
+   </property>
+  </action>
+  <action name="actionLogOut">
+   <property name="text">
+    <string>Log Out</string>
+   </property>
+   <property name="toolTip">
+    <string>Log out of the current login account</string>
+   </property>
+  </action>
+  <action name="actionViewUserInfo">
+   <property name="text">
+    <string>User Info</string>
+   </property>
+   <property name="toolTip">
+    <string>View user's information</string>
    </property>
   </action>
  </widget>

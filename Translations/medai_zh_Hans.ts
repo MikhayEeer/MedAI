@@ -4407,342 +4407,392 @@ Do you wish to proceed with changing source representation?</source>
     </message>
     <message>
         <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="632"/>
+        <source>Show slab reconstruction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="649"/>
         <source>Advanced options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="695"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="712"/>
         <source>Hot linked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="698"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="715"/>
         <source>Set linking behavior to hot linked controls. When on, Slice interactions affect other slices immediately. When off, Slice interactions affect other slices after the interaction completes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="707"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="724"/>
         <source>Fit to window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="710"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="727"/>
         <source>Reset field of view. Adjusts the slice view&apos;s field of view to match the extent of lowest volume layer (background, then foreground, then label).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="719"/>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="722"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="736"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="739"/>
         <source>Rotate to volume plane</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="738"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="755"/>
         <source>Hide labelmap outlines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="741"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="758"/>
         <source>Toggle between showing label map volume with regions outlined or filled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="754"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="771"/>
         <source>Show reformat widget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="762"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="779"/>
+        <source>Show Slab Reconstruction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="787"/>
         <source>Cube</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="770"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="795"/>
         <source>Human</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="778"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="803"/>
         <source>Axes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="786"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="811"/>
         <source>Alpha blend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="794"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="819"/>
         <source>Reverse alpha blend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="802"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="827"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="810"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="835"/>
         <source>Subtract</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="823"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="848"/>
         <source>Automatic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="831"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="856"/>
         <source>FOV, Spacing match Volumes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="839"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="864"/>
         <source>FOV, Spacing match 2D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="847"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="872"/>
         <source>FOV matches 2D, Spacing matches Volumes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="855"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="880"/>
         <source>FOV matches Volumes, Spacing matches 2D View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="863"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="888"/>
         <source>1x1 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="871"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="896"/>
         <source>1x2 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="879"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="904"/>
         <source>1x3 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="887"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="912"/>
         <source>1x4 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="895"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="920"/>
         <source>1x6 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="903"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="928"/>
         <source>1x8 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="911"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="936"/>
         <source>2x2 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="919"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="944"/>
         <source>3x3 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="927"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="952"/>
         <source>6x6 view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="935"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="960"/>
         <source>Foreground volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="943"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="968"/>
         <source>Background volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="951"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="976"/>
         <source>Label map volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="967"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="992"/>
         <source>Interpolate foreground</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="983"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1008"/>
         <source>Interpolate background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="999"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1024"/>
         <source>Show LabelMap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1002"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1027"/>
         <source>Toggle labelmap visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1018"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1043"/>
         <source>Show Foreground</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1021"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1046"/>
         <source>Toggle foreground visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1037"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1062"/>
         <source>Show Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1040"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1065"/>
         <source>Toggle background visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1053"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1078"/>
         <source>Show in 3D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1056"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1081"/>
         <source>Toggle slice visibility in 3D view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1064"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1089"/>
         <source>Lock Normal To Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1067"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1092"/>
         <source>Lock reformat widget&apos;s normal to the camera one. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1075"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1100"/>
         <source>No orientation marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1078"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1103"/>
         <source>Hide orientation marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1086"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1111"/>
         <source>Small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1089"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1114"/>
         <source>Set orientation marker size to small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1097"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1122"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1100"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1125"/>
         <source>Set orientation marker size to small to medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1108"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1133"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1111"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1136"/>
         <source>Set orientation marker size to large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1119"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1144"/>
         <source>No ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1122"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1147"/>
         <source>Hide ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1130"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1155"/>
         <source>Thin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1133"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1158"/>
         <source>Show thin ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1141"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1166"/>
         <source>Thick</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1144"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1169"/>
         <source>Show thick ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1152"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1177"/>
         <source>White ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1160"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1185"/>
         <source>Black ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1168"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1193"/>
         <source>Yellow ruler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1177"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1201"/>
+        <source>Max</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1204"/>
+        <source>Set slab reconstruction type to Max</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1212"/>
+        <source>Min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1215"/>
+        <source>Set slab reconstruction type to Min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1223"/>
+        <source>Mean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1226"/>
+        <source>Set slab reconstruction type to Mean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1234"/>
+        <source>Sum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1237"/>
+        <source>Set slab reconstruction type to Sum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1246"/>
         <source>Toggle segmentation outline/fill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1180"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1249"/>
         <source>Toggle between segmentation outline only, outline and fill, and fill only states</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1196"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1265"/>
         <source>Show Segmentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1199"/>
+        <location filename="../Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1268"/>
         <source>Toggle segmentation visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="400"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="408"/>
         <source>Slice distance from RAS origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="2574"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="2664"/>
         <source>Continue</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4750,113 +4800,123 @@ Do you wish to proceed with changing source representation?</source>
 <context>
     <name>qMRMLSliceControllerWidgetPrivate</name>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="480"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="488"/>
         <source>Linked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="495"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="503"/>
         <source>Reformat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="510"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="518"/>
         <source>Lightbox view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="522"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="530"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="532"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="540"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="559"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="567"/>
         <source>Compositing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="580"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="588"/>
         <source>Slice spacing mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="584"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="592"/>
         <source>Manual spacing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="599"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="607"/>
         <source>Field of view</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="624"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="632"/>
         <source>Slice model mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="644"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="652"/>
         <source>Manual FOV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="669"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="677"/>
         <source>Manual Dimensions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="694"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="702"/>
         <source>Manual Origin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="723"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="731"/>
         <source>Segmentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="732"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="740"/>
         <source>LabelMap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="741"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="749"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="904"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="912"/>
         <source>Hide label volume outlines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="904"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="912"/>
         <source>Show label volume outlines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="909"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="917"/>
         <source>Hide reformat widget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="909"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="917"/>
         <source>Show reformat widget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1507"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1534"/>
         <source>Orientation marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1543"/>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1570"/>
         <source>Ruler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1582"/>
+        <source>Slab Reconstruction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1587"/>
+        <source>Slab Thickness</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
