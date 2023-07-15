@@ -9494,7 +9494,7 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
     </message>
     <message>
         <location filename="../Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="320"/>
-        <source>user</source>
+        <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10064,6 +10064,26 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
     <message>
         <location filename="../Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1196"/>
         <source>Show Status Bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1201"/>
+        <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1204"/>
+        <source>Log out of the current login account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1209"/>
+        <source>User Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1212"/>
+        <source>View user&apos;s information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
