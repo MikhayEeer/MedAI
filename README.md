@@ -22,6 +22,7 @@ See License.txt for information on using and contributing.
 ## update log
 
 2023/07/14
+
 1. first commit
 - 10:20:00 fork and pull Slicer.git
 - Replace the images with our own images.
@@ -34,3 +35,9 @@ See License.txt for information on using and contributing.
 - Modify`./Base/QTApp/qSlicerMainWindow.cxx` add `include user.h ...`,and define the two `triggered()`before,row 1092
 - Add `Userinfo`,`Rechargeform`,`signupform`,`userinfoform`,`deduction_dialog`,`loginform`,`post_manager`,14 files to path `base/QTGUI`
 - modify `./base/QTGUI/CMakeLists.txt`,add files before into cmakefiles
+
+
+
+2023/07/15
+
+version 31880，SPKC has no extensions.
