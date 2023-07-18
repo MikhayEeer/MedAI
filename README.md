@@ -41,3 +41,9 @@ See License.txt for information on using and contributing.
 2023/07/15
 
 version 31880，SPKC has no extensions.
+
+
+
+2023/07/16
+
+The Official extension is Language Tools,the qm files generated path is `build/slicer-build/bin/translations/*.qm`

@@ -8,6 +8,8 @@ import vtkITK
 import slicer
 
 from SegmentEditorEffects import *
+from slicer.i18n import tr as _
+from slicer.i18n import translate
 
 
 class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
@@ -15,7 +17,7 @@ class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Islands'
+        scriptedEffect.name = _("Islands")
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
         self.widgetToOperationNameMap = {}
 
@@ -38,13 +40,13 @@ about each operation, hover the mouse over the option and wait for the tooltip t
     def setupOptionsFrame(self):
         self.operationRadioButtons = []
 
-        self.keepLargestOptionRadioButton = qt.QRadioButton("Keep largest island")
+        self.keepLargestOptionRadioButton = qt.QRadioButton(_("Keep largest island"))
         self.keepLargestOptionRadioButton.setToolTip(
             "Keep only the largest island in selected segment, remove all other islands in the segment.")
         self.operationRadioButtons.append(self.keepLargestOptionRadioButton)
         self.widgetToOperationNameMap[self.keepLargestOptionRadioButton] = KEEP_LARGEST_ISLAND
 
-        self.keepSelectedOptionRadioButton = qt.QRadioButton("Keep selected island")
+        self.keepSelectedOptionRadioButton = qt.QRadioButton(_("Keep selected island"))
         self.keepSelectedOptionRadioButton.setToolTip(
             "Click on an island in a slice view to keep that island and remove all other islands in selected segment.")
         self.operationRadioButtons.append(self.keepSelectedOptionRadioButton)
