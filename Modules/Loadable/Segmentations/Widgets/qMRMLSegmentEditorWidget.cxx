@@ -333,7 +333,7 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // Local painting
     << /*no tr*/ "Paint" << "Draw" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
     // Global processing
-    << /*no tr*/ "Margin" << "Hollow" << "Smoothing"
+    << /*no tr*/ "Margin" << "Hollow" << "Draw tube" << "Smoothing"
     // Global splitting, merging
     << /*no tr*/ "Scissors" << "Islands" << "Logical operators"
     // Operating on volumes

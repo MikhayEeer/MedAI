@@ -16,6 +16,14 @@ from .SegmentEditorMaskVolumeEffect import *
 from .SegmentEditorSmoothingEffect import *
 from .SegmentEditorThresholdEffect import *
 
+from .SegmentEditorDrawTubeEffect import *
+from .SegmentEditorEngraveEffect import *
+from .SegmentEditorFloodFillingEffect import *
+from .SegmentEditorLocalThresholdEffect import *
+from .SegmentEditorWatershedEffect import *
+from .SegmentEditorSplitVolumeEffect import *
+from .SegmentEditorSurfaceCutEffect import *
+
 from SegmentEditorEffects import *
 
 import logging
@@ -32,7 +40,14 @@ editorEffectNames = [
   "SegmentEditorMarginEffect",
   "SegmentEditorMaskVolumeEffect",
   "SegmentEditorSmoothingEffect",
-  "SegmentEditorThresholdEffect"
+  "SegmentEditorThresholdEffect",
+  "SegmentEditorDrawTubeEffect",
+  "SegmentEditorEngraveEffect",
+  "SegmentEditorFloodFillingEffect",
+  "SegmentEditorLocalThresholdEffect",
+  "SegmentEditorWatershedEffect",
+  "SegmentEditorSplitVolumeEffect",
+  "SegmentEditorSurfaceCutEffect"
   ]
 
 def registerEffects():

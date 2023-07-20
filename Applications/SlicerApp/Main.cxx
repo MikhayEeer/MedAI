@@ -46,12 +46,12 @@ int SlicerAppMain(int argc, char* argv[])
     return app.returnCode();
     }
 
-  QTranslator* trans = new QTranslator;
+/*  QTranslator* trans = new QTranslator;
   /////////////////////////////////////modify to your own path////////////////////////////////////////////////////
   trans->load("F:\\Slicer\\SlicerR-build714\\Slicer-build\\medai_zh_Hans.qm");
   //trans->load   cmake binary dir
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  app.installTranslator(trans);
+  app.installTranslator(trans);*/
   
   LoginForm* _loginForm = new LoginForm;
   //QScopedPointer<LoginForm> _loginForm = new LoginForm();

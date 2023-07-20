@@ -15,6 +15,7 @@ set(qtmodules
   Annotations
   SceneViews
   Markups # Markups depends on SceneViews (for testing) and Annotations
+  MarkupsToModel
   Transforms
   Data
   Models

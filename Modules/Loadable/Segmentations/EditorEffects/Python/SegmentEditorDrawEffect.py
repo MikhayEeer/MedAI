@@ -7,7 +7,8 @@ import vtk
 import slicer
 
 from SegmentEditorEffects import *
-
+from slicer.i18n import tr as _
+from slicer.i18n import translate
 
 class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
     """ DrawEffect is a LabelEffect implementing the interactive draw
@@ -15,7 +16,7 @@ class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Draw'
+        scriptedEffect.name = _('Draw')
         self.drawPipelines = {}
         AbstractScriptedSegmentEditorLabelEffect.__init__(self, scriptedEffect)
 

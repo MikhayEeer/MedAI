@@ -257,7 +257,7 @@ endif()
 #-----------------------------------------------------------------------------
 include(CMakeDependentOption)
 
-option(BUILD_TESTING "Test the project" ON)
+option(BUILD_TESTING "Test the project" OFF)#option(BUILD_TESTING "Test the project" ON)
 mark_as_superbuild(BUILD_TESTING)
 
 #option(WITH_MEMCHECK "Run tests through valgrind." OFF)
@@ -642,17 +642,7 @@ endif()
     list(APPEND Slicer_REQUIRED_QT_MODULES X11Extras)
   endif()
 
-  #find_package(Qt5 COMPONENTS Core QUIET)
   find_package(Qt5 COMPONENTS Core LinguistTools QUIET)
-  #-----------------Translation zh--------------------------- 
-  set(TS_FILES 
-            ./Translations/medai_zh_Hans.ts) 
-
-  QT5_ADD_TRANSLATION(QM_FILES ${TS_FILES})
-  QT5_CREATE_TRANSLATION(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-  add_custom_target(translations ALL DEPENDS ${QM_FILES})
-
-  #----------Translation down--------
   if(Slicer_BUILD_WEBENGINE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES
       WebEngine
@@ -665,9 +655,9 @@ endif()
   if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT OR Slicer_BUILD_APPLICATIONUPDATE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES Qml)
   endif()
-  if(Slicer_BUILD_I18N_SUPPORT)
-    list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
-  endif()
+  #if(Slicer_BUILD_I18N_SUPPORT)
+  #  list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
+  #endif()
   if(BUILD_TESTING)
     list(APPEND Slicer_REQUIRED_QT_MODULES Test)
   endif()

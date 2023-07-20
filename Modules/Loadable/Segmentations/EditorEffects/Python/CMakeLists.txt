@@ -21,6 +21,13 @@ set(SegmentEditorEffects_PYTHON_SCRIPTS
   SegmentEditorMaskVolumeEffect
   SegmentEditorSmoothingEffect
   SegmentEditorThresholdEffect
+  SegmentEditorDrawTubeEffect
+  SegmentEditorEngraveEffect
+  SegmentEditorFloodFillingEffect
+  SegmentEditorLocalThresholdEffect
+  SegmentEditorWatershedEffect
+  SegmentEditorSplitVolumeEffect
+  SegmentEditorSurfaceCutEffect
   )
 
 set(SegmentEditorEffects_PYTHON_RESOURCES
@@ -35,6 +42,13 @@ set(SegmentEditorEffects_PYTHON_RESOURCES
   Resources/Icons/MaskVolume.png
   Resources/Icons/Smoothing.png
   Resources/Icons/Threshold.png
+  Resources/Icons/DrawTube.png
+  Resources/Icons/Engrave.png
+  Resources/Icons/FloodFilling.png
+  Resources/Icons/LocalThreshold.png
+  Resources/Icons/Watershed.png
+  Resources/Icons/SplitVolume.png
+  Resources/Icons/SurfaceCut.png
   )
 
 ctkMacroCompilePythonScript(

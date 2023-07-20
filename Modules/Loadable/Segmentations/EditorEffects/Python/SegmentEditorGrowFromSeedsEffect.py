@@ -8,7 +8,8 @@ import vtk
 import slicer
 
 from SegmentEditorEffects import *
-
+from slicer.i18n import tr as _
+from slicer.i18n import translate
 
 class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoCompleteEffect):
     """ AutoCompleteEffect is an effect that can create a full segmentation
@@ -18,7 +19,7 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
 
     def __init__(self, scriptedEffect):
         AbstractScriptedSegmentEditorAutoCompleteEffect.__init__(self, scriptedEffect)
-        scriptedEffect.name = 'Grow from seeds'
+        scriptedEffect.name = _("Grow from seeds")
         self.minimumNumberOfSegments = 2
         self.clippedMasterImageDataRequired = True  # source volume intensities are used by this effect
         self.clippedMaskImageDataRequired = True  # masking is used
@@ -37,7 +38,7 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Growing segments to create complete segmentation<br>.
+        return _("""<html>Growing segments to create complete segmentation<br>.
 Location, size, and shape of initial segments and content of source volume are taken into account.
 Final segment boundaries will be placed where source volume brightness changes abruptly. Instructions:<p>
 <ul style="margin: 0">
@@ -51,7 +52,7 @@ updated automatically within a few seconds</li>
 </ul><p>
 If segments overlap, segment higher in the segments table will have priority.
 The effect uses <a href="http://interactivemedical.org/imic2014/CameraReadyPapers/Paper%204/IMIC_ID4_FastGrowCut.pdf">fast grow-cut method</a>.
-<p></html>"""
+<p></html>""")
 
     def reset(self):
         self.growCutFilter = None
@@ -70,10 +71,10 @@ The effect uses <a href="http://interactivemedical.org/imic2014/CameraReadyPaper
         self.seedLocalityFactorSlider.decimals = 1
         self.seedLocalityFactorSlider.singleStep = 0.1
         self.seedLocalityFactorSlider.pageStep = 1.0
-        self.seedLocalityFactorSlider.setToolTip('Increasing this value makes the effect of seeds more localized,'
-                                                 ' thereby reducing leaks, but requires seed regions to be more evenly distributed in the image.'
-                                                 ' The value is specified as an additional "intensity level difference" per "unit distance."')
-        self.scriptedEffect.addLabeledOptionsWidget("Seed locality:", self.seedLocalityFactorSlider)
+        self.seedLocalityFactorSlider.setToolTip(_("""Increasing this value makes the effect of seeds more localized,
+                                                  thereby reducing leaks, but requires seed regions to be more evenly distributed in the image.
+                                                  The value is specified as an additional 'intensity level difference' per 'unit distance.'"""))
+        self.scriptedEffect.addLabeledOptionsWidget(_("Seed locality:"), self.seedLocalityFactorSlider)
         self.seedLocalityFactorSlider.connect('valueChanged(double)', self.updateAlgorithmParameterFromGUI)
 
     def setMRMLDefaults(self):
