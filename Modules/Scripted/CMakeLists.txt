@@ -2,6 +2,7 @@ set(modules
   CropVolumeSequence
   DataProbe
   ImportItkSnapLabel
+  LanguageTools
   PerformanceTests
   SampleData
   ScreenCapture
