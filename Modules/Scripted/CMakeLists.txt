@@ -1,4 +1,5 @@
 set(modules
+  Airwaysegmentation
   CropVolumeSequence
   DataProbe
   ImportItkSnapLabel
