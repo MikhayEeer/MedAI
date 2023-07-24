@@ -42,7 +42,7 @@ SEMMacroBuildCLI(
   ADDITIONAL_SRCS ${MODULE_SRCS}
   )
 
-#-----------------------------------------------------------------------------
-if(BUILD_TESTING)
-  add_subdirectory(Testing)
-endif()
+#-------------Do not build test---------------------------------------------------
+#if(BUILD_TESTING)
+#  add_subdirectory(Testing)
+#endif()

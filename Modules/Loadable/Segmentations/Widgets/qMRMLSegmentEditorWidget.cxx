@@ -329,15 +329,16 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // Thresholding is the the starting point for most segmentations
     // (it can often create usable segmentation by itself, or used to define intensity range for painting)
     // These strings are effect names that must not be translated.
-    << /*no tr*/ "Threshold"
+    << /*no tr*/ "Threshold" << "Local threshold"
     // Local painting
-    << /*no tr*/ "Paint" << "Draw" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
+    << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
     // Global processing
-    << /*no tr*/ "Margin" << "Hollow" << "Draw tube" << "Smoothing"
+    << /*no tr*/ "Margin" << "Hollow" << "Smoothing"
     // Global splitting, merging
     << /*no tr*/ "Scissors" << "Islands" << "Logical operators"
     // Operating on volumes
-    << /*no tr*/ "Mask volume";
+    << /*no tr*/ "Mask volume"
+    << "Engrave" << "Fast marching" << "Flood filling" << "Surface cut" << "Watershed";
   this->UnorderedEffectsVisible = true;
   this->DefaultTerminologyEntrySettingsKey = "Segmentations/DefaultTerminologyEntry";
   this->EffectColumnCount = 2;

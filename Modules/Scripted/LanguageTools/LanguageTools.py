@@ -19,16 +19,16 @@ class LanguageTools(ScriptedLoadableModule):
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
     self.parent.title = _("Language Tools")
-    self.parent.categories = ["Utilities"]
+    self.parent.categories = [_("Utilities")]
     self.parent.dependencies = []
     self.parent.contributors = ["Andras Lasso (PerkLab)"]
     self.parent.helpText = _("""
 This module can build translation files and install them locally. It is useful for creating and testing translations.
 See more information in the <a href="https://github.com/Slicer/SlicerLanguagePacks">extension's documentation</a>.
 """)
-    self.parent.acknowledgementText = """
+    self.parent.acknowledgementText = _("""
 Developed of this module was partially funded by CZI EOSS grant.
-"""
+""")
 
 #
 # LanguageToolsWidget
@@ -412,7 +412,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     """
     Run processing when user clicks "Apply" button.
     """
-    with slicer.util.tryWithErrorDisplay("Update failed.", waitCursor=True):
+    with slicer.util.tryWithErrorDisplay(_("Update failed."), waitCursor=True):
       self.ui.statusTextEdit.clear()
       self.updateSettingsFromGUI()
 
@@ -439,7 +439,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       # (if user uses this module then it means that internationalization is needed).
       self.logic.enableInternationalization()
 
-      self.log(f"Update completed! Select application language and restart the application to see the results.")
+      self.log(_("Update completed! Select application language and restart the application to see the results."))
 
     self.refreshLanguageList()
 
@@ -767,7 +767,6 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 #
 # LanguageToolsTest
 #
-
 class LanguageToolsTest(ScriptedLoadableModuleTest):
   """
   This is the test case for your scripted module.

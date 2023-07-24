@@ -19,39 +19,43 @@
 Segment airways on CT images from a single input point in the trachea.
 See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerAirwaySegmentation&quot;&gt;extension documentation&lt;/a&gt;.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+从气管中的单个输入点在CT图像上分割气道。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="38"/>
         <source>
 This file was originally developed by Pietro Nardelli, University College of Cork (UCC).
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+气道分割。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="198"/>
         <source>Compute airway segmentation</source>
-        <translation type="unfinished"></translation>
+        <translation>计算气道分割</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="201"/>
         <source>Select input CT volume and seed point</source>
-        <translation type="unfinished"></translation>
+        <translation>选择输入的CT数据并设置种子点</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="296"/>
         <source>Input volume or seed or output segmentation is invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>输入数据/种子点/输出分割无效</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="300"/>
         <source>Processing started</source>
-        <translation type="unfinished"></translation>
+        <translation>处理开始</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="306"/>
         <source>Convolution kernel is unknown, STANDARD will be used.</source>
-        <translation type="unfinished"></translation>
+        <translation>卷积核未知，将使用STANDARD。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="17"/>
@@ -66,32 +70,32 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="30"/>
         <source>Input chest CT image.</source>
-        <translation type="unfinished"></translation>
+        <translation>输入胸腔CT图像。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="33"/>
         <source>vtkMRMLScalarVolumeNode</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="51"/>
         <source>Seed point:</source>
-        <translation type="unfinished"></translation>
+        <translation>种子点：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="58"/>
         <source>Place a markup point within the trachea.</source>
-        <translation type="unfinished"></translation>
+        <translation>在气管内放置一个标记点。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="61"/>
         <source>vtkMRMLMarkupsFiducialNode</source>
-        <translation type="unfinished">vtkMRML 标记浮动节点</translation>
+        <translation>vtkMRML 标记浮动节点</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="82"/>
         <source>Outputs</source>
-        <translation type="unfinished"></translation>
+        <translation>输出</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="88"/>
@@ -106,12 +110,12 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="98"/>
         <source>vtkMRMLSegmentationNode</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="121"/>
         <source>Create new segmentation</source>
-        <translation type="unfinished"></translation>
+        <translation>创建新的分割</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="134"/>
@@ -224,12 +228,12 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="5"/>
         <source>To create a list of fiducials (Seeds) for this algorithm, click on the tool bar icon of an arrow pointing to a starburst fiducial to enter the &apos;place a new object mode&apos; and then use the fiducials module. This module uses the Slicer Command Line Interface (CLI) and a modified version of the ITK filter ThresholdConnectedImageFilter.</source>
-        <translation type="unfinished"></translation>
+        <translation>要为此算法创建基准点（种子）列表，请单击工具栏上指向星爆基准点的箭头图标，进入“放置新对象模式”，然后使用基准点模块。该模块使用切片器命令行界面 (CLI) 和 ITK 过滤器 ThresholdConnectedImageFilter 的修改版本。</translation>
     </message>
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="6"/>
         <source>This work is supported by NA-MIC, the Slicer Community and the University College Cork (UCC).&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>气道分割CLI。&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="7"/>
@@ -254,17 +258,17 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="11"/>
         <source>The integer value (0-255) to use for the segmentation results. This will determine the color of the segmentation that will be generated by the algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>用于分割结果的整数值（0-255），将确定算法生成分割的颜色</translation>
     </message>
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="12"/>
         <source>A single seed point in trachea has to be specified for the region growing algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>必须为区域生长算法指定气管中的单个种子点</translation>
     </message>
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="13"/>
         <source>IO</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="14"/>
@@ -294,12 +298,12 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="19"/>
         <source>Trachea Label</source>
-        <translation type="unfinished"></translation>
+        <translation>气管标签</translation>
     </message>
     <message>
         <location filename="Modules/CLI/AirwaySegmentationCLI/AirwaySegmentationCLI_tr.h" line="20"/>
         <source>Reconstruction kernel type used to reconstruct the input dataset</source>
-        <translation type="unfinished"></translation>
+        <translation>用于重建输入数据集的重建内核类型</translation>
     </message>
 </context>
 <context>
@@ -4365,7 +4369,12 @@ This filter is the dual to the GrayscaleFillholeImageFilter which implements the
 Geodesic morphology and the Fillhole algorithm is described in Chapter 6 of Pierre Soille&apos;s book &quot;Morphological Image Analysis: Principles and Applications&quot;, Second Edition, Springer, 2003.
 
 A companion filter, Grayscale Fill Hole, fills holes in grayscale images.</source>
-        <translation>根据分割数据创建 3D 曲面模型。&lt;p&gt;模型将导入到 MRML 场景中模型层次结构节点下的切片器中。模型颜色由与输入体积关联的颜色表设置（这些颜色仅在加载模型场景文件时可见）。&lt;/p&gt;&lt;p&gt;&lt;b&gt;IO：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;指定作为分段标签映射卷的&lt;i&gt;输入卷&lt;/i&gt;。创建新的模型层次结构以提供一个结构来包含从输入卷创建的返回&lt;i&gt;模型&lt;/i&gt;。&lt;/p&gt;&lt;p&gt;&lt;b&gt;创建多个：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;如果指定标签列表，它将覆盖任何开始/结束&lt;i&gt;标签&lt;/i&gt;设置。&lt;/p&gt;&lt;p&gt;如果单击&lt;i&gt;“全部生成”&lt;/i&gt;，它将覆盖标签列表和任何开始/结束标签设置。&lt;/p&gt;&lt;p&gt;&lt;b&gt;模型制作器参数：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;可以设置平滑迭代次数，目标减少多边形数量（十进制百分比）。如果不希望平滑或抽取，请使用 0 和 1。&lt;br&gt;您也可以在此窗格中将标志设置为分割法线或生成点法线。&lt;br&gt;您可以在中间步骤之后保存模型的副本（行进立方体、平滑和抽取，如果不是联合平滑，否则就在抽取之后）;这些模型不会保存在 mrml 文件中，请先在 python 窗口中关闭删除临时文件&lt;br&gt;&lt;i&gt;：slicer.modules.modelmaker.cliModuleLogic（）。DeleteTemporaryFilesOff（）&lt;/i&gt;&lt;/p&gt;</translation>
+        <translation>GrayscaleGrindPeakImageFilter 删除灰度图像中的峰值。峰值是灰度地形中的局部最大值，不连接到图像的边界。通过峰值推断与峰值相邻的灰度值。
+该滤波器用于平滑局部最大值而不影响局部最小值的值。如果您获取该滤波器的输出与原始图像之间的差异（并且可能将差异阈值设置为一个小值以上），您将获得局部最大值的图。
+该滤镜使用 GrayscaleGeodesicDilateImageFilter。它提供自己的输入作为测地线侵蚀的“掩模”输入。构造测地侵蚀的“标记”图像，使得边界像素与输入图像的边界像素匹配，并且内部像素设置为输入图像中的最小像素值。
+该滤镜是实现 Fillhole 算法的 GrayscaleFillholeImageFilter 的双重滤镜。由于它是双重的，所以有点多余，但提供它是为了方便。
+测地线形态学和 Fillhole 算法在 Pierre Soille 的书“形态学图像分析：原理与应用”（第二版，Springer，2003 年）的第 6 章中进行了描述。
+配套滤镜“灰度填充孔”可填充灰度图像中的孔。</translation>
     </message>
     <message>
         <location filename="Modules/CLI/GrayscaleGrindPeakImageFilter/GrayscaleGrindPeakImageFilter_tr.h" line="7"/>
@@ -8752,42 +8761,68 @@ Do you want to proceed ? Fees needed if you continue to operate.
         <translation>语言工具</translation>
     </message>
     <message>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="23"/>
+        <source>Utilities</source>
+        <translation>实用工具</translation>
+    </message>
+    <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="29"/>
         <source>
 This module can build translation files and install them locally. It is useful for creating and testing translations.
 See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLanguagePacks&quot;&gt;extension&apos;s documentation&lt;/a&gt;.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+该模块可以构建翻译文件并在本地安装他们。
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="39"/>
+        <source>
+Developed of this module was partially funded by CZI EOSS grant.
+</source>
+        <translation>
+语言翻译工具。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="141"/>
         <source>Failed to extract any text from widget</source>
-        <translation type="unfinished"></translation>
+        <translation>无法从小部件中提取任何文本</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="157"/>
         <source>Translation lookup</source>
-        <translation type="unfinished"></translation>
+        <translation>翻译查找</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="415"/>
+        <source>Update failed.</source>
+        <translation>更新失败。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="442"/>
+        <source>Update completed! Select application language and restart the application to see the results.</source>
+        <translation>更新成功！选择应用程序语言并重新启动应用程序以应用新语言。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="569"/>
         <source>No .ts files were found in the specified location.</source>
-        <translation type="unfinished"></translation>
+        <translation>在指定位置未找到.ts文件。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="674"/>
         <source>Translation files folder is not specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>未指定翻译文件目录。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="677"/>
         <source>lrelease tool path is not specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>未指定lrelease工具路径。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="30"/>
         <source>Download, compile, and install latest translations</source>
-        <translation type="unfinished"></translation>
+        <translation>下载、编译并安装最新翻译</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="33"/>
@@ -8813,7 +8848,7 @@ See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLan
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="73"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If this option is checked then only the latest .ts file in the folder will be used. Enable this option to ignore previously downloaded .ts files are saved in the same folder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果勾选，则仅使用目录中的最新ts文件，启用该选项可以忽略先前下载的保存在同一目录的ts文件。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="86"/>
@@ -8823,83 +8858,83 @@ See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLan
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="96"/>
         <source>Folder containing translation (.ts) files.</source>
-        <translation type="unfinished"></translation>
+        <translation>包含翻译文件（.ts）的目录。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="99"/>
         <source>Internationalization/LanguageTools/LocalTsFolderPathHistory</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="102"/>
         <source>*</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="116"/>
         <source>Application language:</source>
-        <translation type="unfinished"></translation>
+        <translation>应用语言：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="129"/>
         <source>Change only takes effect after restarting the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>更改仅在重新启动程序后生效。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="139"/>
         <source>Restart the application to see updated translations on the graphical user interface.</source>
-        <translation type="unfinished"></translation>
+        <translation>重新启动应用程序即可在图形用户界面上查看更新的翻译。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="142"/>
         <source>Restart the application</source>
-        <translation type="unfinished"></translation>
+        <translation>重启软件</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="151"/>
         <source>Advanced settings</source>
-        <translation type="unfinished"></translation>
+        <translation>高级设置</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="163"/>
         <source>Qt &apos;lrelease&apos; tool path:</source>
-        <translation type="unfinished"></translation>
+        <translation>QT ‘lrelease’工具路径：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="170"/>
         <source>Path to Qt lrelease executable. Leave empty to use default (the one bundled with the Slicer installer or available in system paths).</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt lrelease 可执行文件的路径。留空以使用默认值（与 Slicer 安装程序捆绑在一起或在系统路径中可用的默认值）。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="180"/>
         <source>Slicer version:</source>
-        <translation type="unfinished"></translation>
+        <translation>slicer版本：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="187"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;master, 4.13, 4.14, ...&lt;/p&gt;&lt;p&gt;Only used for GitHub.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;主分支, 4.13, 4.14, ...&lt;/p&gt;&lt;p&gt;仅用于github&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="190"/>
         <source>master</source>
-        <translation type="unfinished"></translation>
+        <translation>主分支</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="197"/>
         <source>GitHub repository URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>github仓库URL：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="204"/>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="221"/>
         <source>Github repository that stores the translated strings.</source>
-        <translation type="unfinished"></translation>
+        <translation>存储翻译后的字符串的 Github 存储库。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="214"/>
         <source>Weblate download URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>weblate下载URL：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="231"/>
@@ -8909,7 +8944,7 @@ See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLan
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="238"/>
         <source>List of folders where the application looks for translations. This is for information only, the paths cannot be changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>应用程序在其中查找翻译的文件夹列表。这仅供参考，路径无法更改。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="247"/>
@@ -8919,32 +8954,32 @@ See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLan
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="257"/>
         <source>Find text</source>
-        <translation type="unfinished"></translation>
+        <translation>查找文本</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="269"/>
         <source>Enable text finder:</source>
-        <translation type="unfinished"></translation>
+        <translation>启用文本查找器：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="276"/>
         <source>If enabled, then the shortcut opens the text finder, which can be used to extract text from the application user interface and open it in the translation website.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果启用，则快捷方式将打开文本查找器，该查找器可用于从应用程序用户界面中提取文本并在翻译网站中打开它。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="279"/>
         <source> (shortcut: Ctrl+6)</source>
-        <translation type="unfinished"></translation>
+        <translation> （快捷键： Ctrl+6）</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="286"/>
         <source>Edited language:</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑语言：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="293"/>
         <source>fr-FR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -9024,6 +9059,584 @@ See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLan
         <location filename="Base/QTGUI/LoginForm.cxx" line="155"/>
         <source>Exit</source>
         <translation>退出</translation>
+    </message>
+</context>
+<context>
+    <name>LungCTSegmenter</name>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="29"/>
+        <source>Lung CT Segmenter</source>
+        <translation>肺部CT分割器</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="30"/>
+        <source>Chest Imaging Platform</source>
+        <translation>胸部影像平台</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="32"/>
+        <source>Rudolf Bumm (KSGR), Andras Lasso (PERK)</source>
+        <translation>--Nobody--</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="37"/>
+        <source>
+This module segments lungs and airways from chest CT either with a few user-defined landmarks or by involving AI. 
+See more information in &lt;a href=&quot;https://github.com/rbumm/SlicerLungCTAnalyzer&quot;&gt;LungCTAnalyzer extension documentation&lt;/a&gt;.&lt;br&gt;
+
+</source>
+        <translation>
+该模块使用一些用户自定义的标志或者通过AI对胸部CT中的肺部和气道进行分割。&lt;br&gt;
+
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="59"/>
+        <source>
+This extension was originally developed by Rudolf Bumm (KSKR) and Andras Lasso (PERK). 
+&lt;br&gt;&lt;br&gt;
+AI segmentation involves
+&lt;br&gt;&lt;br&gt;
+&lt;a href=&quot;https://github.com/JoHof/lungmask&quot;&gt;Lungmask U-net&lt;/a&gt;&lt;br&gt;See Hofmanninger, J., Prayer, F., Pan, J. et al. Automatic lung segmentation in routine imaging is primarily a data diversity problem, not a methodology problem. Eur Radiol Exp 4, 50 (2020). 
+&lt;a href=&quot;https://doi.org/10.1186/s41747-020-00173-2&quot;&gt;https://doi.org/10.1186/s41747-020-00173-2&lt;/a&gt;
+&lt;br&gt;&lt;br&gt;
+and&lt;br&gt;
+&lt;br&gt;
+&lt;a href=&quot;https://github.com/wasserth/TotalSegmentator&quot;&gt;Totalsegmentator&lt;/a&gt;&lt;br&gt;See Wasserthal J., Meyer M., , Hanns-Christian Breit H.C., Cyriac J., Shan Y., Segeroth, M.: TotalSegmentator: robust segmentation of 104 anatomical structures in CT images. 
+&lt;a href=&quot;https://arxiv.org/abs/2208.05868&quot;&gt;https://arxiv.org/abs/2208.05868&lt;/a&gt;
+
+</source>
+        <translation>
+涉及AI分割
+
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="134"/>
+        <source>Lung CT Segmenter layout</source>
+        <translation>肺部CT分割器布局</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="17"/>
+        <source>This simple use counter evaluates the global uses of the extension, manual assisted (man), total AI (ai), lungmask (lm), TotalSegmentator (ts), MONAILabel (ml), airway (aw) and vessel (ve) segmentations. Apart from a usage ping no other information is transmitted. Incomplete AI runs are not counted (installations), so ai + man may not add up to total.  </source>
+        <translation>这个简单的使用计数器评估扩展、手动辅助 (man)、总 AI (ai)、肺面罩 (lm)、TotalSegmentator (ts)、MONAILabel (ml)、气道 (aw) 和血管 (ve) 分割的全局使用。除了使用情况 ping 之外，不会传输其他信息。不完整的 AI 运行不会被计算在内（安装），因此 ai + man 可能不会合计到总数。  </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="20"/>
+        <source>LungCTSegmenter (x uses since 6/23)</source>
+        <translation>LungCTSegmenter（x 自 6/23 起使用）</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="27"/>
+        <source>Inputs</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="33"/>
+        <source>Input volume:</source>
+        <translation>输入数据：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="40"/>
+        <source>Pick the input (CT Lung) to the algorithm.</source>
+        <translation>选择算法的输入（CT肺部）。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="43"/>
+        <source>vtkMRMLScalarVolumeNode</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="61"/>
+        <source>Output segmentation:</source>
+        <translation>输出分割：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="68"/>
+        <source>Pick the output segmentatioon or create a new one.</source>
+        <translation>选择输出分割或者创建一个新的分割。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="71"/>
+        <source>vtkMRMLSegmentationNode</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="79"/>
+        <source>Lung segmentation</source>
+        <translation>肺部分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="97"/>
+        <source>Create new segmentation</source>
+        <translation>创建新的分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="110"/>
+        <source>Segmentation</source>
+        <translation>分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="119"/>
+        <source>Select the  AI engine. &apos;lungmask&apos; (U-Net) will create lungs and lobes, &apos;MONAILabel&apos; (U-Net) lungs and airways, &apos;TotalSegmentator&apos; (nnU-Net) lung lobes, trachea, pulmonary artery and the left atrium of the heart.  All engines require CUDA, some minutes processing time and a medium to high-end Nvidia GPU (RTX 1060+).</source>
+        <translation>选择AI引擎。“lungmask”（U-Net）将创建肺和肺叶，“MONAILabel”（U-Net）将创建肺和气道，“TotalSegmentator”（nnU-Net）将创建肺叶、气管、肺动脉和心脏的左心房。所有引擎都需要 CUDA、几分钟的处理时间和中高端 Nvidia GPU (RTX 1060+)。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="132"/>
+        <source>Perform a &apos;Local Threshold&apos; airway segmentation. </source>
+        <translation>执行“局部阈值”气道分割。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="135"/>
+        <source>Airway segmentation</source>
+        <translation>气道分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="142"/>
+        <source>Toggle segments visibility</source>
+        <translation>切换分割可见性</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="149"/>
+        <source>This parameter corresponds to the MinimumDiameterMm of the airway&apos;s &apos;LocalThreshold-&gt;GrowCut&apos; segmentation algorithm. &apos;very low detail&apos;=5; &apos;high detail&apos;=1. The recommended initial setting is: &apos;low detail&apos;.  A good estimate for this parameter is the width of the trachea. If you get leaks: re-run the segmentation with lower details. </source>
+        <translation>该参数对应于气道“LocalThreshold-&gt;GrowCut”分割算法的MinimumDiameterMm。 &apos;非常低​​的细节&apos;=5； “高细节”=1。推荐的初始设置是：“低细节”。该参数的一个很好的估计是气管的宽度。如果发生泄漏：以较低的细节重新运行分段。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="156"/>
+        <source>If checked, lung and/or lobe segmentations will be generated  by either  &apos;lungmask U-Net&apos;, a running &apos;MONAILabel&apos; server or &apos;TotalSegmentator&apos;. </source>
+        <translation>如果选中，肺和/或肺叶分割将由“lungmask U-Net”、正在运行的“MONAILabel”服务器或“TotalSegmentator”生成。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="159"/>
+        <source>Use AI</source>
+        <translation>使用AI</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="166"/>
+        <source>Perform a vessel segmentation and create an additional cropped CT volume with lungs, heart and mediastinum. </source>
+        <translation>执行血管分割并创建包含肺、心脏和纵隔的额外裁剪 CT 体积。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="169"/>
+        <source>Vessel segmentation</source>
+        <translation>血管分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="176"/>
+        <source>If checked, previously saved markups are loaded from data or temp directory when &quot;Start&quot; button is pressed. Lung CT Segmenter tries to load from data directory first, if not found from Slicer temp directory. </source>
+        <translation>如果选中，则当按下“开始”按钮时，将从数据或临时目录加载以前保存的标记。如果未从切片器临时目录中找到，Lung CT Segmenter 会首先尝试从数据目录加载。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="179"/>
+        <source>Load last saved markups</source>
+        <translation>加载上次保存的标记</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="186"/>
+        <source>Find instructions here during the segmentation procedure.  </source>
+        <translation>在分割过程中请在此查找说明。  </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="193"/>
+        <source>Adjust points </source>
+        <translation>调整点 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="199"/>
+        <source>Place a marker somewhere on the right lung. </source>
+        <translation>在右肺放置标记。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="202"/>
+        <source>Right lung:</source>
+        <translation>右肺：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="212"/>
+        <source>Add additional or adjust existing right lung markers. </source>
+        <translation>添加额外的或调整现有的右肺标记。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="225"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="238"/>
+        <source>Place a marker somewhere on the left lung. </source>
+        <translation>在左肺某处放置一个标记。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="228"/>
+        <source>Left lung:</source>
+        <translation>左肺：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="235"/>
+        <source>Add additional or adjust existing left lung markers. </source>
+        <translation>添加额外的或调整现有的左肺标记。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="248"/>
+        <source>Place a marker on the upper trachea (above upper thoracic aperture) </source>
+        <translation>在上气管处做一个标记 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="251"/>
+        <source>Other:</source>
+        <translation>其他：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="258"/>
+        <source>Add additional or adjust existing trachea markers. </source>
+        <translation>添加额外的气管标记或调整现有的气管标记。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="271"/>
+        <source>Toggle volume rendering</source>
+        <translation>切换体积渲染</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="281"/>
+        <source>Run the algorithm.</source>
+        <translation>运行算法。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="284"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="294"/>
+        <source>Cancel the current segmentation process.</source>
+        <translation>取消当前分割进程。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="297"/>
+        <source>Cancel / Reset</source>
+        <translation>取消/重置</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="312"/>
+        <source>Press this button to start the segmentation process. </source>
+        <translation>点击此处开始分割。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="315"/>
+        <source>Start</source>
+        <translation>开始</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="328"/>
+        <source>Toggle lung segmentation outputs</source>
+        <translation>切换肺分割输出</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="354"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="414"/>
+        <source>Toggle rib visibility.</source>
+        <translation>切换肋骨可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="357"/>
+        <source>ribs right</source>
+        <translation>右肋骨</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="364"/>
+        <source>Toggle tumor visibility, if manually segmented. </source>
+        <translation>如果手动操作则切换肿瘤的可见性。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="367"/>
+        <source>tumor</source>
+        <translation>肿瘤</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="374"/>
+        <source>Toggle airways visibility. </source>
+        <translation>切换气道可见性。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="377"/>
+        <source>airways</source>
+        <translation>气道</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="384"/>
+        <source>Toggle right lung visibility.</source>
+        <translation>切换右肺可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="387"/>
+        <source>right</source>
+        <translation>右肺</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="394"/>
+        <source>Toggle pulmonary artery visibility.</source>
+        <translation>切换肺动脉可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="397"/>
+        <source>PA</source>
+        <translation>肺动脉</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="404"/>
+        <source>Toggle vesselmask visibility.</source>
+        <translation>切换血管可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="407"/>
+        <source>vesselmask</source>
+        <translation>血管</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="417"/>
+        <source>ribs left</source>
+        <translation>左肋骨</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="424"/>
+        <source>Toggle lower left lobe visibility.</source>
+        <translation>切换左下叶可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="427"/>
+        <source>lower left</source>
+        <translation>左下叶</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="434"/>
+        <source>Toggle left lung visibility.</source>
+        <translation>切换左肺可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="437"/>
+        <source>left</source>
+        <translation>左肺</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="444"/>
+        <source>Toggle middle lobe visibility.</source>
+        <translation>切换中叶可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="447"/>
+        <source>middle right</source>
+        <translation>中叶</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="454"/>
+        <source>Toggle pulmonary vein visibility.</source>
+        <translation>切换肺静脉可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="457"/>
+        <source>PV</source>
+        <translation>肺静脉</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="464"/>
+        <source>Toggle upper right lobe visibility.</source>
+        <translation>切换右上叶可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="467"/>
+        <source>upper right</source>
+        <translation>右上叶</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="474"/>
+        <source>Toggle upper left lobe visibility.</source>
+        <translation>切换左上叶可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="477"/>
+        <source>upper left</source>
+        <translation>左上叶</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="484"/>
+        <source>Toggle lower right lobe visibility.</source>
+        <translation>切换右下叶可见性。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="487"/>
+        <source>lower right</source>
+        <translation>右下叶</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="502"/>
+        <source>Batch processing</source>
+        <translation>批处理</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="528"/>
+        <source>Input folder:</source>
+        <translation>输入文件夹：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="535"/>
+        <source>Specify the input data directory for batch processing</source>
+        <translation>指定批处理的输入数据目录</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="548"/>
+        <source>Specify the output data directory for batch processing</source>
+        <translation>指定批处理的输出数据目录</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="561"/>
+        <source>If this is checked, batch processing will scan the complete input directory but do only the first three cases. </source>
+        <translation>如果选中此项，批处理将扫描完整的输入目录，但仅执行前三种情况。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="564"/>
+        <source>Test mode: segment three cases from input folder</source>
+        <translation>测试模式：从输入文件夹中分割三个案例</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="571"/>
+        <source>Output folder: </source>
+        <translation>输出文件夹： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="578"/>
+        <source>CT.nrdd, each in a seperate subfolder, is the normal input format expected by batch processing. In case this is checked, batch processing expects ct.nii.gz in seperate subfolders as input files. Output will be generated in NIFTI format. </source>
+        <translation>CT.nrdd，每个都位于单独的子文件夹中，是批处理所需的正常输入格式。如果选中此选项，则批处理需要单独子文件夹中的 ct.nii.gz 作为输入文件。输出将以 NIFTI 格式生成。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="581"/>
+        <source>Input is NIFTI format (*.nii.gz)</source>
+        <translation>输入是NIFTI格式 (*.nii.gz)</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="590"/>
+        <source>Cancel batch processing</source>
+        <translation>取消批处理</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="600"/>
+        <source>Run Lung CT Segmenter in batch processing mode. Each dataset must be present in a singular subfolder of the input folder. The input data directory will be recursively scanned for input files and segmented with options defined under &quot;Segmentation&quot;. &quot;*Use AI&quot; must be enabled and an appropriate AI engine must be selected in order to use batch processing.  Result files  will be written to the output directory in directories using the input subfolder names. Depending on your input data and hardware, the process may run for hours.  </source>
+        <translation>以批处理模式运行 Lung CT Segmenter。每个数据集必须存在于输入文件夹的单个子文件夹中。将递归扫描输入数据目录以查找输入文件，并使用“分割”下定义的选项进行分割。必须启用“*使用 AI”并选择适当的 AI 引擎才能使用批处理。结果文件将被写入使用输入子文件夹名称的目录中的输出目录。根据您的输入数据和硬件，该过程可能会运行几个小时。  </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="603"/>
+        <source>Batch process</source>
+        <translation>批处理</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="616"/>
+        <source>Advanced</source>
+        <translation>高级</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="625"/>
+        <source>Lung thresholds:</source>
+        <translation>肺阈值：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="632"/>
+        <source>Select the threshold range to identify lung parenchyma.  In doubt do not touch. </source>
+        <translation>选择阈值范围来识别肺实质。有疑问请勿触摸。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="657"/>
+        <source>Vessel thresholds:</source>
+        <translation>血管阈值：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="664"/>
+        <source>Set vessel thresholds depending on the vascular contrast medium used in your input volume. </source>
+        <translation>根据输入体积中使用的血管造影剂设置血管阈值。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="683"/>
+        <source>Volume rendering Shift</source>
+        <translation>体积渲染偏移</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="703"/>
+        <source>Reset lung range and airway range to default values.</source>
+        <translation>将肺范围和气道范围重置为默认值。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="706"/>
+        <source>Reset to default</source>
+        <translation>恢复为默认值</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="713"/>
+        <source>Update current segmentation preview after lung intensity range changes</source>
+        <translation>肺部强度范围变化后更新当前分割预览</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="716"/>
+        <source>Update </source>
+        <translation>更新 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="723"/>
+        <source>Save markups, created during mask segmentation, in current data directory. This happens when pressing &quot;Apply&quot;. Use &quot;Load last markups&quot; checkbox for loading the markups again after &quot;Cancel/Reset&quot; and &quot;Start&quot;. </source>
+        <translation>将掩模分割期间创建的标记保存在当前数据目录中。按“应用”时会发生这种情况。使用“加载最后的标记”复选框可在“取消/重置”和“开始”后再次加载标记。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="726"/>
+        <source>Save markups in data directory</source>
+        <translation>将标记保存在数据目录中</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="733"/>
+        <source>Choose this if you want to create  ventral, dorsal, upper, middle and lower lung masks. Slows down the procedure.  </source>
+        <translation>如果您想创建腹侧、背侧、上肺、中肺和下肺面罩，请选择此选项。减慢程序速度。  </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="736"/>
+        <source>Create regional lung masks </source>
+        <translation>创建区域性肺部遮罩 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="746"/>
+        <source>Check this to create a standardized copy of the input volume in the scene when using TotalSegmentator AI. The standardization function will use mean HU of &quot;trachea&quot; to define &quot;air&quot; (-1000 HU) and mean HU of &quot;left ileopsoas muscle&quot; to define &quot;muscle&quot; (30 HU) and  all voxels in the numpy array of the standardized  volume will be adapted. After this, the standardized volume will be normalized to air HU (-1000) and blood HU (30).  </source>
+        <translation>选中此选项可在使用 TotalSegmentator AI 时创建场景中输入体积的标准化副本。标准化函数将使用“气管”的平均 HU 来定义“空气”（-1000 HU），使用“左回肠肌”的平均 HU 来定义“肌肉”（30 HU），并且标准化体积的 numpy 数组中的所有体素都将进行调整。此后，标准化体积将标准化为空气 HU (-1000) 和血液 HU (30)。  </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="749"/>
+        <source>CT calibration</source>
+        <translation>CT校准</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="756"/>
+        <source>This option shrinks the lung masks to avoid artifacts from pleura and pericardium. </source>
+        <translation>此选项会缩小肺遮罩以避免胸膜和心包的伪影。 </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="759"/>
+        <source>Auto shrink masks (1 mm)</source>
+        <translation>自动收缩遮罩（1毫米）</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="766"/>
+        <source>Try this on systems with low GPU memory (&lt; 7GB)</source>
+        <translation>在 GPU 内存较低 (&lt; 7GB) 的系统上尝试此操作</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="769"/>
+        <source>Totalsegmentator: --fast option</source>
+        <translation>全体分割器： --fast 选项</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="776"/>
+        <source>Smooth AI generated lungs and lobes. Prolongs processing and is on by default.  </source>
+        <translation>平滑的 AI 生成肺和肺叶。延长处理时间并默认处于启用状态。  </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="779"/>
+        <source>Smooth lungs and lobes</source>
+        <translation>平滑化肺部和肺叶</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="786"/>
+        <source>Update Lungmask AI</source>
+        <translation>更新肺部遮罩AI</translation>
     </message>
 </context>
 <context>
@@ -9404,7 +10017,8 @@ Requires segment labelmap representation and selection of a scalar volume
 Closed surface statistics (CS): surface mm2, volume mm3, volume cm3 (computed from closed surface).
 Requires segment closed surface representation.
 </source>
-        <translation>使用此模块可计算分段的计数和体积，以及灰度背景体积的统计数据。
+        <translation>
+使用此模块可计算分段的计数和体积，以及灰度背景体积的统计数据。
 计算字段：
 片段标签图统计 (LM)：体素计数、体积 mm3、体积 cm3。
 需要分段标签图表示。
@@ -9412,7 +10026,8 @@ Requires segment closed surface representation.
 最小值、最大值、平均值、stdev（强度统计）。
 需要分段标签图表示和选择标量体积
 封闭表面统计（CS）：表面平方毫米、体积立方毫米、体积立方厘米（从封闭表面计算）。
-要求使用分段封闭表面表示法。</translation>
+要求使用分段封闭表面表示法。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="42"/>
@@ -9420,7 +10035,8 @@ Requires segment closed surface representation.
 Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www.slicer.org for details.
 </source>
         <translation>
-由 NA-MIC、NAC、BIRN、NCIGT 和 Slicer 社区支持。</translation>
+由 NA-MIC、NAC、BIRN、NCIGT 和 Slicer 社区支持。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="79"/>
@@ -9450,7 +10066,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="108"/>
         <source>Scalar volume:</source>
-        <translation>标量体数据</translation>
+        <translation>标量体数据：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="113"/>
@@ -9615,8 +10231,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="407"/>
         <source>Volume in mm3</source>
-        <translation>
-体积（mm3）</translation>
+        <translation>体积（mm3）</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="408"/>
@@ -9637,16 +10252,12 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="414"/>
         <source>cubic centimeter</source>
-        <translation>
-cubic centimeter
-立方厘米</translation>
+        <translation>立方厘米</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="416"/>
         <source>Sum of segmented voxel volumes</source>
-        <translation>
-Sum of segmented voxel volumes
-分割体素体积之和</translation>
+        <translation>分割体素体积之和</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="419"/>
@@ -9845,7 +10456,7 @@ Sum of segmented voxel volumes
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="132"/>
         <source>Select measurements: </source>
-        <translation>选择测量值：</translation>
+        <translation>选择测量值： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="133"/>
@@ -10430,7 +11041,7 @@ Sum of segmented voxel volumes
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/Resources/UI/VectorToScalarVolume.ui" line="23"/>
         <source>Input vector volume:</source>
-        <translation>输入数据</translation>
+        <translation>输入数据：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/Resources/UI/VectorToScalarVolume.ui" line="30"/>
@@ -10440,7 +11051,7 @@ Sum of segmented voxel volumes
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/Resources/UI/VectorToScalarVolume.ui" line="51"/>
         <source>Conversion Method: </source>
-        <translation>转化方法 </translation>
+        <translation>转化方法： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/Resources/UI/VectorToScalarVolume.ui" line="58"/>
@@ -12831,7 +13442,7 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/Resources/UI/qMRMLSegmentEditorWidget.ui" line="147"/>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="414"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="415"/>
         <source>Segmentations</source>
         <translation>分割</translation>
     </message>
@@ -12905,67 +13516,67 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
         <translation>控制当前分割将覆盖的分割。未被覆盖的分割可能与选定分割重叠。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="400"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="401"/>
         <source>Everywhere</source>
         <translation>全局</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="401"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="402"/>
         <source>Inside all segments</source>
         <translation>所有分割内</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="402"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="403"/>
         <source>Inside all visible segments</source>
         <translation>所有可见分割内</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="403"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="404"/>
         <source>Outside all segments</source>
         <translation>所有分割外</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="404"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="405"/>
         <source>Outside all visible segments</source>
         <translation>所有可见分割外</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="408"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="409"/>
         <source>Overwrite all</source>
         <translation>全部覆盖</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="409"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="410"/>
         <source>Overwrite visible</source>
         <translation>覆盖可见</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="410"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="411"/>
         <source>Allow overlap</source>
         <translation>允许重叠</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="416"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="417"/>
         <source>Import/export nodes...</source>
-        <translation>导入/导出节点..</translation>
+        <translation>导入/导出节点...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="419"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="420"/>
         <source>Export to files...</source>
         <translation>导出到文件...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1041"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1042"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1042"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1043"/>
         <source>No editing</source>
         <translation>无编辑</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1370"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1371"/>
         <source>Editing requires binary labelmap source representation, but currently the source representation is %1. Changing the source representation requires conversion. Some details may be lost during conversion process.
 
 Change source representation to binary labelmap?</source>
@@ -12974,30 +13585,30 @@ Change source representation to binary labelmap?</source>
 将源表示法更改为二进制标签图？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1375"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1376"/>
         <source>Change source representation to binary labelmap?</source>
         <oldsource>Change master representation to binary labelmap?</oldsource>
         <translation>将主表示更改为二进制标签映射？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1396"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1397"/>
         <source>Failed to create binary labelmap representation in segmentation %1 for editing!
 Please see Segmentations module for details.</source>
         <translation>在分段 %1 中创建二进制标签图表示以供编辑失败！
 请参阅分割模块了解详情。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1398"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1399"/>
         <source>Failed to create binary labelmap for editing</source>
         <translation>无法创建用于编辑的二进制标签映射</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="2400"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="2401"/>
         <source>Inside </source>
         <translation>内部 </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3488"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3489"/>
         <source>Export segments to files</source>
         <translation>将片段导出到文件</translation>
     </message>
@@ -13378,7 +13989,8 @@ Please see Segmentations module for details.</source>
 Do you want to crop the segmentation?
 </source>
         <translation>当前的分割并不完全适合新的几何图形。
-您想裁剪分割吗？</translation>
+您想裁剪分割吗？
+</translation>
     </message>
 </context>
 <context>
@@ -15552,7 +16164,7 @@ If you choose Yes to All, this question never appears again, and all subject hie
     <message>
         <location filename="Modules/Loadable/Transforms/Widgets/Resources/UI/qMRMLTransformDisplayNodeWidget.ui" line="26"/>
         <source>Whether the transform widget can be translated.</source>
-        <translation>是否可以平移变换小部件</translation>
+        <translation>是否可以平移变换小部件。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Transforms/Widgets/Resources/UI/qMRMLTransformDisplayNodeWidget.ui" line="57"/>
@@ -16466,7 +17078,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Docs/_extracli/BRAINSTransformConvert_tr.h" line="3"/>
         <location filename="Modules/CLI/ResampleDTIVolume/ResampleDTIVolume_tr.h" line="4"/>
         <source>Utilities</source>
-        <translation>公用事业</translation>
+        <translation>实用工具</translation>
     </message>
     <message>
         <location filename="Docs/_extracli/BRAINSDeface_tr.h" line="4"/>
@@ -19238,7 +19850,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <location filename="Base/QTGUI/qSlicerIOManager.cxx" line="321"/>
         <source>Select a reader to use for your data:</source>
         <oldsource>Select a reader to use for your data?</oldsource>
-        <translation>选择要用于数据的读取器？</translation>
+        <translation>选择要用于数据的读取器：</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/qSlicerIOManager.cxx" line="450"/>
@@ -21265,9 +21877,7 @@ Table column names : label, r, a, s, (or l, p, s), defined, selected, visible, l
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="357"/>
         <source>Cardinal Spline</source>
-        <translation>
-Cardinal Spline
-基数样条曲线</translation>
+        <translation>基数样条曲线</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="364"/>
@@ -21299,11 +21909,7 @@ Cardinal Spline
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="390"/>
         <source>Global Least Squares Polynomial</source>
-        <translation>
-31 / 5,000
-翻译结果
-翻译结果
-全局最小二乘多项式</translation>
+        <translation>全局最小二乘多项式</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="397"/>
@@ -21323,9 +21929,7 @@ Cardinal Spline
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="417"/>
         <source>Fitting</source>
-        <translation>
-Fitting
-适合的</translation>
+        <translation>适合的</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="448"/>
@@ -21515,7 +22119,7 @@ Fitting
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="844"/>
         <source>Model Color:</source>
-        <translation>模型颜色</translation>
+        <translation>模型颜色：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="851"/>
@@ -22267,7 +22871,7 @@ Fitting
     <message>
         <location filename="Modules/Loadable/Reformat/Resources/UI/qSlicerReformatModuleWidget.ui" line="421"/>
         <source>Reset to:</source>
-        <translation>重置为</translation>
+        <translation>重置为：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Reformat/Resources/UI/qSlicerReformatModuleWidget.ui" line="428"/>
@@ -22277,7 +22881,7 @@ Fitting
     <message>
         <location filename="Modules/Loadable/Reformat/Resources/UI/qSlicerReformatModuleWidget.ui" line="435"/>
         <source>Horizontal:</source>
-        <translation>横向</translation>
+        <translation>横向：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Reformat/Resources/UI/qSlicerReformatModuleWidget.ui" line="518"/>
@@ -22387,7 +22991,7 @@ Fitting
     <message>
         <location filename="Modules/Loadable/Reformat/Resources/UI/qSlicerReformatModuleWidget.ui" line="619"/>
         <source>Lock reformat widget&apos;s normal to the camera one. </source>
-        <translation>锁定重新格式化小部件的法线至相机 </translation>
+        <translation>锁定重新格式化小部件的法线至相机。 </translation>
     </message>
 </context>
 <context>
@@ -22907,7 +23511,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorScissorsEffect.cxx" line="1231"/>
         <source>Shape:</source>
-        <translation>形状</translation>
+        <translation>形状：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorScissorsEffect.cxx" line="1248"/>
@@ -23315,7 +23919,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="642"/>
         <source>Input type:</source>
-        <translation>输入类型</translation>
+        <translation>输入类型：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="643"/>
@@ -23381,7 +23985,8 @@ Note: This may result in unwanted data loss in %5.</source>
 Do you want to crop the segmentation?
 </source>
         <translation>当前的分割并不完全适合新的几何图形。
-您想裁剪分割吗？</translation>
+您想裁剪分割吗？
+</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="1001"/>
@@ -24576,7 +25181,7 @@ Default: {documentationbaseurl}/user_guide/modules/{lowercasemodulename}.html</s
     <message>
         <location filename="Base/QTGUI/Resources/UI/qSlicerSettingsPythonPanel.ui" line="32"/>
         <source>Editor for .py files:</source>
-        <translation>.py 文件编辑器</translation>
+        <translation>.py 文件编辑器：</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/Resources/UI/qSlicerSettingsPythonPanel.ui" line="39"/>
@@ -25257,7 +25862,7 @@ If you&apos;d like to create the hierarchy manually, please click Cancel, then c
     <message>
         <location filename="Modules/Loadable/Volumes/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDiffusionTensorVolumesPlugin.cxx" line="95"/>
         <source>Tractography interactive seeding...</source>
-        <translation>分层互动播种.</translation>
+        <translation>分层互动播种...</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Volumes/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDiffusionTensorVolumesPlugin.cxx" line="174"/>
@@ -25303,7 +25908,7 @@ If you&apos;d like to create the hierarchy manually, please click Cancel, then c
     <message>
         <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="106"/>
         <source>If on, then children items will inherit the display properties (e.g. color or opacity) set to the folder</source>
-        <translation>如果打开，则子项目将继承文件夹设置的显示属性（如颜色或不透明度）。</translation>
+        <translation>如果打开，则子项目将继承文件夹设置的显示属性（如颜色或不透明度）</translation>
     </message>
 </context>
 <context>
@@ -25645,7 +26250,7 @@ Note: This may result in unwanted data loss in %4.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="378"/>
         <source> (Representations: </source>
-        <translation>代表</translation>
+        <translation> （代表： </translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="382"/>
@@ -25655,13 +26260,13 @@ Note: This may result in unwanted data loss in %4.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="397"/>
         <source> (Source representation: %1)</source>
-        <translation>(来源表示：%1)</translation>
+        <translation> (来源表示：%1)</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="400"/>
         <source> (Number of segments: %1)</source>
         <extracomment>parameter is the representation name</extracomment>
-        <translation>(段数：%1）</translation>
+        <translation> (分割数：%1）</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="1002"/>
@@ -25731,7 +26336,7 @@ Most probably the segment cannot be converted into closed surface representation
         <source>Failed to create %1 representation for segmentation %2 using defaultconversion parameters!
 
 Please visit the Segmentation module and try the advanced create representation function.</source>
-        <translation>使用默认转换参数为分段 %2 创建 %1 表示失败！</translation>
+        <translation>使用默认转换参数为分段 %2 创建 %1 表示失败。</translation>
     </message>
 </context>
 <context>
@@ -26165,7 +26770,7 @@ Tags: %5</source>
     <message>
         <location filename="Modules/Loadable/Volumes/SubjectHierarchyPlugins/qSlicerSubjectHierarchyVolumesPlugin.cxx" line="493"/>
         <source> Empty volume</source>
-        <translation>空容积</translation>
+        <translation> 空容积</translation>
     </message>
 </context>
 <context>
@@ -27114,7 +27719,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Base/QTGUI/qSlicerViewersToolBar.cxx" line="244"/>
         <source>Fine lines.</source>
-        <translation>细纹</translation>
+        <translation>细纹。</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/qSlicerViewersToolBar.cxx" line="249"/>
@@ -27124,7 +27729,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Base/QTGUI/qSlicerViewersToolBar.cxx" line="250"/>
         <source>Medium lines.</source>
-        <translation>中线</translation>
+        <translation>中线。</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/qSlicerViewersToolBar.cxx" line="254"/>
@@ -27335,7 +27940,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Modules/Loadable/VolumeRendering/qSlicerVolumeRenderingModule.cxx" line="96"/>
         <source>&lt;center&gt;&lt;table border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NAMIC.png&quot; alt&quot;NA-MIC&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NAC.png&quot; alt&quot;NAC&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;:Logos/BIRN-NoText.png&quot; alt&quot;BIRN&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NCIGT.png&quot; alt&quot;NCIGT&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.Some of the transfer functions were contributed by Kitware Inc. (VolView)</source>
-        <translation>&lt;center&gt;&lt;table border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NAMIC.png&quot; alt&quot;NA-MIC&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NAC.png&quot; alt&quot;NAC&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;:Logos/BIRN-NoText.png&quot; alt&quot;BIRN&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NCIGT.png&quot; alt&quot;NCIGT&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;这项工作得到了 NA-MIC、NAC、BIRN、NCIGT 和 Slicer Community 的支持。</translation>
+        <translation>&lt;center&gt;&lt;table border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NAMIC.png&quot; alt&quot;NA-MIC&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NAC.png&quot; alt&quot;NAC&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;img src=&quot;:Logos/BIRN-NoText.png&quot; alt&quot;BIRN&quot;&gt;&lt;/td&gt;&lt;td&gt;&lt;img src=&quot;:Logos/NCIGT.png&quot; alt&quot;NCIGT&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;这项工作得到了 NA-MIC、NAC、BIRN、NCIGT 和 Slicer Community 的支持。 (VolView)</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/VolumeRendering/qSlicerVolumeRenderingModule.cxx" line="144"/>
@@ -28035,7 +28640,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="451"/>
         <source>Extension updates: </source>
-        <translation>扩展更新：</translation>
+        <translation>扩展更新： </translation>
     </message>
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="496"/>

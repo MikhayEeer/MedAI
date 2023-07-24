@@ -18,6 +18,7 @@ from .SegmentEditorThresholdEffect import *
 
 from .SegmentEditorDrawTubeEffect import *
 from .SegmentEditorEngraveEffect import *
+from .SegmentEditorFastMarchingEffect import *
 from .SegmentEditorFloodFillingEffect import *
 from .SegmentEditorLocalThresholdEffect import *
 from .SegmentEditorWatershedEffect import *
@@ -43,6 +44,7 @@ editorEffectNames = [
   "SegmentEditorThresholdEffect",
   "SegmentEditorDrawTubeEffect",
   "SegmentEditorEngraveEffect",
+  "SegmentEditorFastMarchingEffect",
   "SegmentEditorFloodFillingEffect",
   "SegmentEditorLocalThresholdEffect",
   "SegmentEditorWatershedEffect",

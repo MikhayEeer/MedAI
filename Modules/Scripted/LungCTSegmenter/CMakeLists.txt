@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------
-set(MODULE_NAME AirwaySegmentation)
+set(MODULE_NAME LungCTSegmenter)
 
 #-----------------------------------------------------------------------------
 set(MODULE_PYTHON_SCRIPTS
@@ -19,7 +19,7 @@ slicerMacroBuildScriptedModule(
   WITH_GENERIC_TESTS
   )
 
-#-------do not build----------------------------------------------------------------------
+#---do not build test--------------------------------------------------------------------------
 #if(BUILD_TESTING)
 
   # Register the unittest subclass in the main script as a ctest.

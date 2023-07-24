@@ -4,6 +4,7 @@ set(modules
   DataProbe
   ImportItkSnapLabel
   LanguageTools
+  LungCTSegmenter
   PerformanceTests
   SampleData
   ScreenCapture
