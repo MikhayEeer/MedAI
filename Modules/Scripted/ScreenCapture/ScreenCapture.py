@@ -7,7 +7,8 @@ import vtk
 
 import slicer
 from slicer.ScriptedLoadableModule import *
-
+from slicer.i18n import tr as _
+from slicer.i18n import translate
 
 #
 # ScreenCapture
@@ -20,8 +21,8 @@ class ScreenCapture(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Screen Capture"
-        self.parent.categories = ["Utilities"]
+        self.parent.title = _("Screen Capture")
+        self.parent.categories = [_("Utilities")]
         self.parent.dependencies = []
         self.parent.contributors = ["Andras Lasso (PerkLab Queen's University)"]
         self.parent.helpText = """

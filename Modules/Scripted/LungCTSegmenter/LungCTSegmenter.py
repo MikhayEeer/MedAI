@@ -173,8 +173,8 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
           self.ui.label_lcts.text = usage_text
 
       # Populate comboboxes
-      list = ["very low detail","low detail", "medium low detail", "medium detail", "high detail"]
-      self.ui.detailLevelComboBox.addItems(list);
+      list = [_("very low detail"),_("low detail"), _("medium low detail"), _("medium detail"), _("high detail")]
+      self.ui.detailLevelComboBox.addItems(list)
 
       list = [
         "lungmask R231", 
@@ -630,9 +630,9 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
           # Segmentation has not started yet
           self.ui.adjustPointsGroupBox.enabled = False
           if not self.logic.inputVolume:
-              self.setInstructions("Select input volume.")
+              self.setInstructions(_("Select input volume."))
           else:
-              self.setInstructions('Click "Start" to initiate point placement.')
+              self.setInstructions(_('Click "Start" to initiate point placement.'))
       else:
           slicer.app.processEvents()
           rightLungF = self.logic.rightLungFiducials.GetNumberOfDefinedControlPoints()
@@ -671,11 +671,11 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
                   slicer.app.layoutManager().setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutOneUpGreenSliceView)
           else:
               if self.useAI:
-                  self.setInstructions('Click "Apply" to finalize.')
+                  self.setInstructions(_('Click "Apply" to finalize.'))
                   self.ui.tracheaPlaceWidget.placeModeEnabled = False
                   self.ui.adjustPointsGroupBox.enabled = True
               else:
-                  self.setInstructions('Verify that segmentation is complete. Click "Apply" to finalize.')
+                  self.setInstructions(_('Verify that segmentation is complete. Click "Apply" to finalize.'))
               slicer.app.layoutManager().setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutFourUpView)
               self.isSufficientNumberOfPointsPlaced = True
 
@@ -901,7 +901,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
             if not fiducialsLoadSuccess: 
                 # otherwise try loading markups from temp directory 
                 fiducialsLoadSuccess = self.loadFiducialsTempDir() 
-          self.setInstructions("Initializing segmentation...")
+          self.setInstructions(_("Initializing segmentation..."))
           self.isSufficientNumberOfPointsPlaced = False
           self.ui.updateIntensityButton.enabled = True
           self.logic.startSegmentation()
@@ -995,7 +995,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
           self.saveFiducialsTempDir()
           if self.saveFiducials: 
             self.saveFiducialsDataDir()
-          self.setInstructions('Finalizing the segmentation, please wait...')
+          self.setInstructions(_('Finalizing the segmentation, please wait...'))
           self.logic.shrinkMasks = self.shrinkMasks
           self.logic.detailedMasks = self.detailedMasks
           self.disableAllOutputCheckBoxes()

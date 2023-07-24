@@ -6,6 +6,7 @@ set(modules
   LanguageTools
   LungCTSegmenter
   PerformanceTests
+  PyTorchUtils
   SampleData
   ScreenCapture
   SegmentEditor

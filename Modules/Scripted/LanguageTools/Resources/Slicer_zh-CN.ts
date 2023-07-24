@@ -9028,7 +9028,7 @@ Developed of this module was partially funded by CZI EOSS grant.
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="130"/>
         <source>Login Form</source>
-        <translation>欢迎来到医疗AI三维重建</translation>
+        <translation type="unfinished">欢迎来到医疗AI三维重建-（0724-19:30译）</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="134"/>
@@ -9115,6 +9115,61 @@ and&lt;br&gt;
         <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="134"/>
         <source>Lung CT Segmenter layout</source>
         <translation>肺部CT分割器布局</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
+        <source>very low detail</source>
+        <translation>超低细节</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
+        <source>low detail</source>
+        <translation>低细节</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
+        <source>medium low detail</source>
+        <translation>中低细节</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
+        <source>medium detail</source>
+        <translation>中等细节</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="177"/>
+        <source>high detail</source>
+        <translation>高细节</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="633"/>
+        <source>Select input volume.</source>
+        <translation>选择输入数据。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="635"/>
+        <source>Click &quot;Start&quot; to initiate point placement.</source>
+        <translation>点击”开始“进行初始点放置。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="674"/>
+        <source>Click &quot;Apply&quot; to finalize.</source>
+        <translation>点击”应用“完成。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="678"/>
+        <source>Verify that segmentation is complete. Click &quot;Apply&quot; to finalize.</source>
+        <translation>验证分割是否完成。单击”应用“完成。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="904"/>
+        <source>Initializing segmentation...</source>
+        <translation>正在初始化分割...</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="998"/>
+        <source>Finalizing the segmentation, please wait...</source>
+        <translation>正在完成分割，请稍后...</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="17"/>
@@ -9640,6 +9695,115 @@ and&lt;br&gt;
     </message>
 </context>
 <context>
+    <name>PyTorchUtils</name>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="26"/>
+        <source>Torch:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="40"/>
+        <source>TorchVision:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="54"/>
+        <source>NVIDIA driver:</source>
+        <translation>NVIDIA驱动：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="71"/>
+        <source>Install/uninstall</source>
+        <translation>安装/卸载</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="77"/>
+        <source>Torch version requirement:</source>
+        <translation>Torch版本要求：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="84"/>
+        <source>Optional version requirement for installing Torch. For example, to install TorchVision version to earlier than 2.0, set this to &quot;&lt;2.0&quot;. The field has no effect if PyTorch is already installed.</source>
+        <translation>安装 Torch 的可选版本要求。例如，要安装 TorchVision 版本早于 2.0，请将其设置为“&lt; 2.0”。如果已安装 PyTorch，则该字段无效。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="87"/>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="104"/>
+        <source>default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="94"/>
+        <source>TorchVision version requirement:</source>
+        <translation>TorchVision版本要求：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="101"/>
+        <source>Optional version requirement for installing TorchVision. For example, to install TorchVision version 1.12 or later, set this to &quot;&gt;=1.12&quot;. The field has no effect if PyTorch is already installed.</source>
+        <translation>安装TorchVision的可选版本要求，例如，要安装 TorchVision 版本 1.12 或更高版本，请将其设置为 &quot;&gt;=1.12&quot;。如果已安装 PyTorch，则该字段无效。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="111"/>
+        <source>Computation backend:</source>
+        <translation>计算后端：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="126"/>
+        <source>Computation backend (cpu, cu116, cu117...). If set to &quot;automatic&quot; then the backend most suitable to the available hardware will be used.</source>
+        <translation>计算后端（cpu、cu116、cu117...）。如果设置为“自动”，则将使用最适合可用硬件的后端。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="133"/>
+        <source>automatic</source>
+        <translation>自动</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="138"/>
+        <source>cpu</source>
+        <translation>CPU</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="146"/>
+        <source>Detect all compatible computation backends and add them to the drop-down list.</source>
+        <translation>检测所有兼容的计算后端并将它们添加到下拉列表中。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="149"/>
+        <source>show all compatible</source>
+        <translation>显示所有兼容项</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="158"/>
+        <source>Install Torch and TorchVision</source>
+        <translation>安装Torch和TorchVision</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="161"/>
+        <source>Install PyTorch</source>
+        <translation>安装PyTorch</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="170"/>
+        <source>Uninstall Torch and TorchVision. Application restart may be required.</source>
+        <translation>卸载Torch和TorchVision。可能需要重新启动应用程序。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="173"/>
+        <source>Uninstall PyTorch</source>
+        <translation>卸载PyTorch</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="180"/>
+        <source>Restart Slicer. If Torch is in use, the application must be restarted before it can be uninstalled.</source>
+        <translation>重新启动切片器。如果 Torch 正在使用，则必须重新启动应用程序才能卸载。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/Resources/UI/PyTorchUtils.ui" line="183"/>
+        <source>Restart the application</source>
+        <translation>重启软件</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="Modules/Loadable/Markups/qSlicerMarkupsModule.cxx" line="107"/>
@@ -9773,6 +9937,19 @@ and&lt;br&gt;
         <location filename="Applications/SlicerApp/Testing/Python/Resources/UI/ScenePerformance.ui" line="168"/>
         <source>SceneView</source>
         <translation>场景视图</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCapture</name>
+    <message>
+        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="25"/>
+        <source>Screen Capture</source>
+        <translation>屏幕截图</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="26"/>
+        <source>Utilities</source>
+        <translation>实用工具</translation>
     </message>
 </context>
 <context>
@@ -17047,7 +17224,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Modules/Loadable/Texts/qSlicerTextsModule.cxx" line="65"/>
         <location filename="Modules/Loadable/Units/qSlicerUnitsModule.cxx" line="99"/>
         <source>Informatics</source>
-        <translation>信息学</translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="73"/>
@@ -17207,7 +17384,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Modules/CLI/RobustStatisticsSegmenter/RobustStatisticsSegmenter_tr.h" line="3"/>
         <location filename="Modules/CLI/SimpleRegionGrowingSegmentation/SimpleRegionGrowingSegmentation_tr.h" line="3"/>
         <source>Legacy</source>
-        <translation>遗产</translation>
+        <translation>旧技术</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Reformat/qSlicerReformatModule.cxx" line="85"/>
