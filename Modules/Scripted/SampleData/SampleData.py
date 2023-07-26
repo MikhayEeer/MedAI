@@ -9,7 +9,7 @@ import vtk
 import slicer
 from slicer.ScriptedLoadableModule import *
 from slicer.util import computeChecksum, extractAlgoAndDigest, TESTING_DATA_URL
-
+from slicer.i18n import tr as _
 
 #
 # SampleData methods
@@ -68,13 +68,13 @@ class SampleData(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Sample Data"
-        self.parent.categories = ["Informatics"]
+        self.parent.title = translate("SampleData", "Sample Data")
+        self.parent.categories = [translate("SampleData", "Informatics")]
         self.parent.dependencies = []
         self.parent.contributors = ["Steve Pieper (Isomics), Benjamin Long (Kitware), Jean-Christophe Fillion-Robin (Kitware)"]
-        self.parent.helpText = """
+        self.parent.helpText = translate("SampleData", """
 This module provides data sets that can be used for testing 3D Slicer.
-"""
+""")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
         self.parent.acknowledgementText = """
 <p>This work was was funded in part by Cancer Care Ontario
@@ -105,8 +105,8 @@ use it for commercial purposes.</p>
             slicer.modules.sampleDataSources = {}
 
     def addMenu(self):
-        a = qt.QAction('Download Sample Data', slicer.util.mainWindow())
-        a.setToolTip('Go to the SampleData module to download data from the network')
+        a = qt.QAction(translate("SampleData", 'Download Sample Data'), slicer.util.mainWindow())
+        a.setToolTip(translate("SampleData", 'Go to the SampleData module to download data from the network'))
         a.connect('triggered()', self.select)
 
         fileMenu = slicer.util.lookupTopLevelWidget('FileMenu')

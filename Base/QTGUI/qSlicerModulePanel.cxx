@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -125,7 +125,7 @@ void qSlicerModulePanel::setModule(qSlicerAbstractCoreModule* module)
     }
   else
     {
-    //d->HelpLabel->setHtml("");
+   // d->HelpLabel->setHtml("");
     }
 }
 

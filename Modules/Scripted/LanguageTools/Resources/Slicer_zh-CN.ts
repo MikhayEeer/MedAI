@@ -616,12 +616,12 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Docs/_extracli/BRAINSFit_tr.h" line="17"/>
         <source>Slicer Linear Transform</source>
-        <translation>Slicer线性变换</translation>
+        <translation>线性变换</translation>
     </message>
     <message>
         <location filename="Docs/_extracli/BRAINSFit_tr.h" line="18"/>
         <source>Slicer BSpline Transform</source>
-        <translation>Slicer BSpline变换</translation>
+        <translation>BSpline变换</translation>
     </message>
     <message>
         <location filename="Docs/_extracli/BRAINSFit_tr.h" line="19"/>
@@ -1415,7 +1415,7 @@ NOTE that it is suggested to use samplingPercentage instead of this option. Howe
     <message>
         <location filename="Docs/_extracli/BRAINSROIAuto_tr.h" line="7"/>
         <source>Hans Johnson(1,3,4); Kent Williams(1); Gregory Harris(1), Vincent Magnotta(1,2,3);  Andriy Fedorov(5), fedorov -at- bwh.harvard.edu (Slicer integration); (1=University of Iowa Department of Psychiatry, 2=University of Iowa Department of Radiology, 3=University of Iowa Department of Biomedical Engineering, 4=University of Iowa Department of Electrical and Computer Engineering, 5=Surgical Planning Lab, Harvard)  </source>
-        <translation>Hans Johnson(1,3,4); Kent Williams(1); Gregory Harris(1), Vincent Magnotta(1,2,3); Andriy Fedorov(5), fedorov -at- bwh.harvard.edu (Slicer integration); (1=爱荷华大学精神病学系，2=爱荷华大学放射学系，3=爱荷华大学生物医学工程系，4=爱荷华大学电子和计算机工程系，5=哈佛大学外科规划实验室)  </translation>
+        <translation>占位符  </translation>
     </message>
     <message>
         <location filename="Docs/_extracli/BRAINSROIAuto_tr.h" line="8"/>
@@ -2304,7 +2304,7 @@ Allows casting to the same type as the input volume.</source>
     <message>
         <location filename="Modules/CLI/CreateDICOMSeries/CreateDICOMSeries_tr.h" line="5"/>
         <source>Create a DICOM Series from a Slicer volume. User can specify values for selected DICOM tags in the UI. Given the number of tags DICOM series have, it is impossible to expose all tags in UI. So only important tags can be set by the user.</source>
-        <translation>从Slicer数据创建一个DICOM系列。用户可以在用户界面中为选定的DICOM标签指定值。鉴于DICOM系列的标签数量，不可能在用户界面中公开所有的标签。所以只有重要的标签可以由用户设置。</translation>
+        <translation>从数据创建一个DICOM系列。用户可以在用户界面中为选定的DICOM标签指定值。鉴于DICOM系列的标签数量，不可能在用户界面中公开所有的标签。所以只有重要的标签可以由用户设置。</translation>
     </message>
     <message>
         <location filename="Modules/CLI/CreateDICOMSeries/CreateDICOMSeries_tr.h" line="6"/>
@@ -2971,7 +2971,7 @@ MCDE不表现出经典各向异性扩散的边缘增强特性，经典各向异�
     <message>
         <location filename="Modules/CLI/CurvatureAnisotropicDiffusion/CurvatureAnisotropicDiffusion_tr.h" line="16"/>
         <source>The time step depends on the dimensionality of the image. In Slicer the images are 3D and the default (.0625) time step will provide a stable solution.</source>
-        <translation>时间步长取决于图像的维度。在Slicer中，图像是三维的，默认的（0.0625）时间步长将提供一个稳定的解决方案。</translation>
+        <translation>时间步长取决于图像的维度。图像是三维的，默认的（0.0625）时间步长将提供一个稳定的解决方案。</translation>
     </message>
     <message>
         <location filename="Modules/CLI/CurvatureAnisotropicDiffusion/CurvatureAnisotropicDiffusion_tr.h" line="18"/>
@@ -8746,6 +8746,33 @@ Do you want to proceed ? Fees needed if you continue to operate.
     </message>
 </context>
 <context>
+    <name>Endoscopy</name>
+    <message>
+        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="22"/>
+        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="23"/>
+        <source>Endoscopy</source>
+        <translation type="unfinished">内窥镜检查</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="34"/>
+        <source>
+Create a path model as a spline interpolation of a set of fiducial points.
+Pick the Camera to be modified by the path and the Fiducial List defining the control points.
+Clicking &quot;Create path&quot; will make a path model and enable the flythrough panel.
+You can manually scroll through the path with the Frame slider. The Play/Pause button toggles animated flythrough.
+The Frame Skip slider speeds up the animation by skipping points on the path.
+The Frame Delay slider slows down the animation by adding more time between frames.
+The View Angle provides is used to approximate the optics of an endoscopy system.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="80"/>
+        <source>Select a camera that will fly along this path.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Form</name>
     <message>
         <location filename="Libs/MRML/Widgets/Resources/UI/qMRMLTestModelViews.ui" line="14"/>
@@ -9028,7 +9055,7 @@ Developed of this module was partially funded by CZI EOSS grant.
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="130"/>
         <source>Login Form</source>
-        <translation type="unfinished">欢迎来到医疗AI三维重建-（0724-19:30译）</translation>
+        <translation type="unfinished">欢迎来到医疗AI三维重建</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="134"/>
@@ -9802,6 +9829,36 @@ and&lt;br&gt;
         <source>Restart the application</source>
         <translation>重启软件</translation>
     </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="18"/>
+        <source>PyTorch Utils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="19"/>
+        <source>Utilities</source>
+        <translation type="unfinished">实用工具</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="21"/>
+        <source>Fernando Perez-Garcia (University College London and King&apos;s College London)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="22"/>
+        <source>Andras Lasso (PerkLab Queen&apos;s University)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="25"/>
+        <source>This hidden module containing some tools to work with PyTorch inside Slicer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="56"/>
+        <source>Failed to detect compatible computation backends.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -9854,6 +9911,36 @@ and&lt;br&gt;
         <location filename="Base/QTGUI/RechargeForm.cxx" line="80"/>
         <source>Exit</source>
         <translation>退出</translation>
+    </message>
+</context>
+<context>
+    <name>SampleData</name>
+    <message>
+        <location filename="Modules/Scripted/SampleData/SampleData.py" line="72"/>
+        <source>Sample Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SampleData/SampleData.py" line="73"/>
+        <source>Informatics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SampleData/SampleData.py" line="78"/>
+        <source>
+This module provides data sets that can be used for testing 3D Slicer.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SampleData/SampleData.py" line="108"/>
+        <source>Download Sample Data</source>
+        <translation type="unfinished">下载示例数据</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SampleData/SampleData.py" line="109"/>
+        <source>Go to the SampleData module to download data from the network</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -9950,6 +10037,35 @@ and&lt;br&gt;
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="26"/>
         <source>Utilities</source>
         <translation>实用工具</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="32"/>
+        <source>
+This module captures image sequences and videos
+from dynamic contents shown in 3D and slice viewers.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="44"/>
+        <source>
+This work was was funded by Cancer Care Ontario
+and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SegmentEditor</name>
+    <message>
+        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="13"/>
+        <source>Segment Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="14"/>
+        <source>Segmentation</source>
+        <translation type="unfinished">分割</translation>
     </message>
 </context>
 <context>
@@ -10660,6 +10776,14 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     </message>
 </context>
 <context>
+    <name>SelfTests</name>
+    <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="31"/>
+        <source>Testing</source>
+        <translation type="unfinished">测试</translation>
+    </message>
+</context>
+<context>
     <name>Settings</name>
     <message>
         <location filename="Modules/Scripted/DataProbe/DataProbeLib/Resources/UI/settings.ui" line="20"/>
@@ -11244,6 +11368,128 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <location filename="Modules/Scripted/VectorToScalarVolume/Resources/UI/VectorToScalarVolume.ui" line="116"/>
         <source>Apply</source>
         <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="57"/>
+        <source>Vector to Scalar Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="58"/>
+        <source>Converters</source>
+        <translation>转换器</translation>
+    </message>
+</context>
+<context>
+    <name>WebServer</name>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="25"/>
+        <source>Web Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="26"/>
+        <source>Servers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="30"/>
+        <source>Provides an embedded web server for slicer that provides a web services API for interacting with slicer.
+    </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="32"/>
+        <source>
+This work was partially funded by NIH grant 3P41RR013218.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="61"/>
+        <source>Start server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="64"/>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="70"/>
+        <source>Start web server with the selected options.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="67"/>
+        <source>Stop server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="73"/>
+        <source>Open static pages in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="75"/>
+        <source>Open a connection to the server on the local machine with your system browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="78"/>
+        <source>Open static pages in internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="80"/>
+        <source>Open a connection with Qt to the server on the local machine.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="90"/>
+        <source>Clear Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="92"/>
+        <source>Clear the log window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="101"/>
+        <source>Advanced</source>
+        <translation type="unfinished">高级</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="109"/>
+        <source>Enable CORS: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="113"/>
+        <source>Slicer API: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="117"/>
+        <source>Slicer API exec: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="122"/>
+        <source>DICOMweb API: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="126"/>
+        <source>Static pages: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="131"/>
+        <source>Log to Console: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/WebServer/WebServer.py" line="136"/>
+        <source>Log to GUI: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -28668,7 +28914,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="124"/>
         <source>Customize Slicer</source>
-        <translation>自定义Slicer</translation>
+        <translation>设置界面</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="62"/>
@@ -28714,9 +28960,9 @@ This should only used by advanced users who understand the consequences of chang
 &lt;p&gt;We are always interested in improving 3D Slicer, to tell us about your problem or submit a bug report, open &lt;b&gt;Help -&amp;gt; Report a Bug&lt;/b&gt;.&lt;/p&gt;</source>
         <translation>&lt;table border=&quot;0&quot; align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;
 &lt;td style=&quot; vertical-align:middle;&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://discourse.slicer.org&quot;&gt;&lt;img src=&quot;qrc:Icons/Chat.png&quot; width=&quot;64&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td style=&quot; vertical-align:middle;&quot;&gt;&lt;p&gt;与我们分享您的故事 &lt;a href=&quot;https://discourse.slicer.org&quot;&gt;软件&lt;/a&gt;并让我们了解 软件 如何促进了您的研究。&lt;/p&gt;&lt;/td&gt;
+&lt;td style=&quot; vertical-align:middle;&quot;&gt;&lt;p&gt;欢迎您使用本软件！&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;我们一直致力于改进 软件，要告诉我们您的问题或提交错误报告，请打开&lt;b&gt;帮助 -&amp;gt; 报告错误&lt;/b&gt;.&lt;/p&gt;</translation>
+&lt;p&gt;上面有着一些常用功能&lt;/b&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="240"/>
@@ -28762,7 +29008,7 @@ This should only used by advanced users who understand the consequences of chang
 &lt;li&gt;&lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/user_interface.html#mouse-keyboard-shortcuts&quot;&gt;鼠标按钮， &amp;quot;热键&amp;quot; 及键盘快捷键&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/getting_started.html#tutorials&quot;&gt;浏览教程&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 &lt;p&gt;&lt;b&gt;联系我们&lt;/p&gt;
-&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://discourse.slicer.org/&quot;&gt;访问Slicer论坛&lt;/a&gt;&lt;/li&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://discourse.slicer.org/&quot;&gt;访问论坛&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://twitter.com/3dslicerapp&quot;&gt;在推特上加入我们&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://discourse.slicer.org/c/support/feature-requests/9&quot;&gt;搜索功能请求&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/get_help.html#i-want-to-report-a-problem&quot;&gt;反馈Bug&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
@@ -28834,13 +29080,12 @@ This should only used by advanced users who understand the consequences of chang
 &lt;p&gt;Development of 3D Slicer is supported by &lt;a href=&quot;https://www.na-mic.org/&quot;&gt;NA-MIC&lt;/a&gt;, &lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;NAC&lt;/a&gt;, &lt;a href=&quot;https://www.ncigt.org/&quot;&gt;NCIGT&lt;/a&gt;, &lt;a href=&quot;https://www.spl.harvard.edu&quot;&gt;SPL&lt;/a&gt; and the &lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/about.html#acknowledgments&quot;&gt;Slicer Community&lt;/a&gt;. See &lt;a href=&quot;https://www.slicer.org&quot;&gt;https://www.slicer.org&lt;/a&gt; for details.&lt;/p&gt;
 &lt;p&gt;We would also like to express our sincere thanks to members of the Slicer User Community who have helped us to design the contents of this Welcome Module, and whose feedback continues to improve functionality, usability and Slicer user experience.&lt;/p&gt;
 &lt;p&gt;This module was developed by Jean-Christophe Fillion-Robin and Julien Finet at Kitware, Inc., and by Wendy Plesniak, Sonia Pujol, Steve Pieper and Ron Kikinis at Brigham and Women&apos;s Hospital.&lt;/p&gt;</source>
-        <translation>&lt;table align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p align=&quot;center&quot;&gt;
+        <translation type="unfinished">&lt;table align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p align=&quot;center&quot;&gt;
 &lt;a href=&quot;https://www.na-mic.org/&quot;&gt;&lt;img src=&quot;qrc:Logos/NAMIC.png&quot; width=&quot;80&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://www.na-mic.org/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;&lt;img src=&quot;qrc:Logos/NAC.png&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://www.ncigt.org/&quot;&gt;&lt;img src=&quot;qrc:Logos/NCIGT.png&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://www.ncigt.org/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://www.spl.harvard.edu/&quot;&gt;&lt;img src=&quot;qrc:Logos/SPL.png&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://www.spl.harvard.edu/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;p&gt;软件的开发得到了以下方面的支持 &lt;a href=&quot;https://www.na-mic.org/&quot;&gt;NA-MIC&lt;/a&gt;, &lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;NAC&lt;/a&gt;, &lt;a href=&quot;https://www.ncigt.org/&quot;&gt;NCIGT&lt;/a&gt;, &lt;a href=&quot;https://www.spl.harvard.edu&quot;&gt;SPL&lt;/a&gt; and the &lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/about.html#acknowledgments&quot;&gt;Slicer Community&lt;/a&gt;. See &lt;a href=&quot;https://www.slicer.org&quot;&gt;https://www.slicer.org&lt;/a&gt; for details.&lt;/p&gt;
-&lt;p&gt;我们还要衷心感谢 成员，他们帮助我们设计了本欢迎模块的内容，他们的反馈意见不断改进着功能、可用性和 Slicer 用户体验。&lt;/p&gt;</translation>
+&lt;p&gt;软件的开发&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/qSlicerWelcomeModuleWidget.cxx" line="107"/>
@@ -28860,7 +29105,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/qSlicerWelcomeModuleWidget.cxx" line="181"/>
         <source>Unfortunately, this requested module is not available in this Slicer session.</source>
-        <translation>很遗憾此请求的模块在此Slicer中不可用。</translation>
+        <translation type="unfinished">很遗憾此请求的模块不可用。</translation>
     </message>
     <message numerus="yes">
         <location filename="Modules/Loadable/SlicerWelcome/qSlicerWelcomeModuleWidget.cxx" line="388"/>

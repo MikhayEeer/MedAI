@@ -20,7 +20,7 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
 
     def __init__(self):
         super().__init__()
-        self.loadType = _("Enhanced US volume")
+        self.loadType = translate("DICOMEnhancedUSVolumePlugin", "Enhanced US volume")
 
         self.tags['sopClassUID'] = "0008,0016"
         self.tags['seriesNumber'] = "0020,0011"
@@ -88,8 +88,8 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
             loadable.singleSequence = False  # put each instance in a separate sequence
             loadable.files = [filePath]
             loadable.name = name.strip()  # remove leading and trailing spaces, if any
-            loadable.warning = _("Loading of this image type is experimental. Please verify image geometry and report any problem is found.")
-            loadable.tooltip = _("Ultrasound volume")
+            loadable.warning = translate("DICOMEnhancedUSVolumePlugin", "Loading of this image type is experimental. Please verify image geometry and report any problem is found.")
+            loadable.tooltip = translate("DICOMEnhancedUSVolumePlugin", "Ultrasound volume")
             loadable.selected = True
             # Confidence is slightly larger than default scalar volume plugin's (0.5)
             # and DICOMVolumeSequencePlugin (0.7)

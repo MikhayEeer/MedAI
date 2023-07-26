@@ -5,7 +5,7 @@ import vtk.util.numpy_support
 
 import slicer
 from slicer.ScriptedLoadableModule import *
-
+from slicer.i18n import tr as _
 
 #
 # Endoscopy
@@ -18,11 +18,11 @@ class Endoscopy(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Endoscopy"
-        self.parent.categories = ["Endoscopy"]
+        self.parent.title = translate("Endoscopy", "Endoscopy")
+        self.parent.categories = [translate("Endoscopy", "Endoscopy")]
         self.parent.dependencies = []
         self.parent.contributors = ["Steve Pieper (Isomics)"]
-        self.parent.helpText = """
+        self.parent.helpText = translate("Endoscopy", """
 Create a path model as a spline interpolation of a set of fiducial points.
 Pick the Camera to be modified by the path and the Fiducial List defining the control points.
 Clicking "Create path" will make a path model and enable the flythrough panel.
@@ -30,7 +30,7 @@ You can manually scroll through the path with the Frame slider. The Play/Pause b
 The Frame Skip slider speeds up the animation by skipping points on the path.
 The Frame Delay slider slows down the animation by adding more time between frames.
 The View Angle provides is used to approximate the optics of an endoscopy system.
-"""
+""")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
         self.parent.acknowledgementText = """
 This work is supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colonoscopy
@@ -76,7 +76,7 @@ class EndoscopyWidget(ScriptedLoadableModuleWidget):
         # Camera node selector
         cameraNodeSelector = slicer.qMRMLNodeComboBox()
         cameraNodeSelector.objectName = 'cameraNodeSelector'
-        cameraNodeSelector.toolTip = "Select a camera that will fly along this path."
+        cameraNodeSelector.toolTip = translate("Endoscopy", "Select a camera that will fly along this path.")
         cameraNodeSelector.nodeTypes = ['vtkMRMLCameraNode']
         cameraNodeSelector.noneEnabled = False
         cameraNodeSelector.addEnabled = False

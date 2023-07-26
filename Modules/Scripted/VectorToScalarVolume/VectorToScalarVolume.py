@@ -9,6 +9,7 @@ import slicer
 from slicer.ScriptedLoadableModule import *
 from slicer.util import VTKObservationMixin
 from slicer.parameterNodeWrapper import parameterNodeWrapper
+from slicer.i18n import tr as _
 
 
 @contextmanager
@@ -52,8 +53,8 @@ class VectorToScalarVolume(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Vector to Scalar Volume"
-        self.parent.categories = ["Converters"]
+        self.parent.title = translate("VectorToScalarVolume", "Vector to Scalar Volume")
+        self.parent.categories = [translate("VectorToScalarVolume", "Converters")]
         self.parent.dependencies = []
         self.parent.contributors = ["Steve Pieper (Isomics)",
                                     "Pablo Hernandez-Cerdan (Kitware)",

@@ -500,7 +500,7 @@ set(Slicer_QRCC_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/Utilities/Scripts/qrcc.py" C
 #-----------------------------------------------------------------------------
 if(Slicer_BUILD_I18N_SUPPORT)
   set(Slicer_LANGUAGES
-    "fr"
+    "zh_CN"
     CACHE STRING "Semicolon separated list of supported Slicer languages. Expected format : language[_country] (both en and en_US are supported)."
     )
   mark_as_advanced(Slicer_LANGUAGES)

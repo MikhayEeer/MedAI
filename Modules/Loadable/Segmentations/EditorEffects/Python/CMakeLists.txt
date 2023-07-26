@@ -23,7 +23,6 @@ set(SegmentEditorEffects_PYTHON_SCRIPTS
   SegmentEditorThresholdEffect
   SegmentEditorDrawTubeEffect
   SegmentEditorEngraveEffect
-  SegmentEditorFastMarchingEffect
   SegmentEditorFloodFillingEffect
   SegmentEditorLocalThresholdEffect
   SegmentEditorWatershedEffect
@@ -45,7 +44,6 @@ set(SegmentEditorEffects_PYTHON_RESOURCES
   Resources/Icons/Threshold.png
   Resources/Icons/DrawTube.png
   Resources/Icons/Engrave.png
-  Resources/Icons/FastMarching.png
   Resources/Icons/FloodFilling.png
   Resources/Icons/LocalThreshold.png
   Resources/Icons/Watershed.png

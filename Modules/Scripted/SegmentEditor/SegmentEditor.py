@@ -1,7 +1,7 @@
 import slicer
 from slicer.ScriptedLoadableModule import *
 from slicer.util import VTKObservationMixin
-
+from slicer.i18n import tr as _
 
 #
 # SegmentEditor
@@ -9,8 +9,8 @@ from slicer.util import VTKObservationMixin
 class SegmentEditor(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Segment Editor"
-        self.parent.categories = ["", "Segmentation"]
+        self.parent.title = translate("SegmentEditor", "Segment Editor")
+        self.parent.categories = ["", translate("SegmentEditor", "Segmentation")]
         self.parent.dependencies = ["Segmentations", "SubjectHierarchy"]
         self.parent.contributors = ["Csaba Pinter (Queen's University), Andras Lasso (Queen's University)"]
         self.parent.helpText = """

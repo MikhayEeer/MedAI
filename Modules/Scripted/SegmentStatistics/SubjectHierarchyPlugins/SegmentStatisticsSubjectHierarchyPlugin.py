@@ -24,7 +24,7 @@ class SegmentStatisticsSubjectHierarchyPlugin(AbstractScriptedSubjectHierarchyPl
         scriptedPlugin.name = 'SegmentStatistics'
         AbstractScriptedSubjectHierarchyPlugin.__init__(self, scriptedPlugin)
 
-        self.segmentStatisticsAction = qt.QAction(_("Calculate statistics..."), scriptedPlugin)
+        self.segmentStatisticsAction = qt.QAction(translate("SegmentStatisticsSubjectHierarchyPlugin", "Calculate statistics..."), scriptedPlugin)
         self.segmentStatisticsAction.connect("triggered()", self.onCalculateStatistics)
 
     def canAddNodeToSubjectHierarchy(self, node, parentItemID):

@@ -21,19 +21,19 @@ class ScreenCapture(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = _("Screen Capture")
-        self.parent.categories = [_("Utilities")]
+        self.parent.title = translate("ScreenCapture", "Screen Capture")
+        self.parent.categories = [translate("ScreenCapture", "Utilities")]
         self.parent.dependencies = []
         self.parent.contributors = ["Andras Lasso (PerkLab Queen's University)"]
-        self.parent.helpText = """
+        self.parent.helpText = translate("ScreenCapture", """
 This module captures image sequences and videos
 from dynamic contents shown in 3D and slice viewers.
-"""
+""")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
-        self.parent.acknowledgementText = """
+        self.parent.acknowledgementText = translate("ScreenCapture", """
 This work was was funded by Cancer Care Ontario
 and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
-"""
+""")
 
 
 #

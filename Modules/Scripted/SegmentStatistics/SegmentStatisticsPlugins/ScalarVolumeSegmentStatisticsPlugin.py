@@ -144,55 +144,55 @@ class ScalarVolumeSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
         # @moselhy also could not find DICOM quantity code for "median"
 
         info["voxel_count"] = \
-            self.createMeasurementInfo(name="Voxel count", description=_("Number of voxels"), units="voxels",
-                                       quantityDicomCode=self.createCodedEntry("nvoxels", "99QIICR", _("Number of voxels"), True),
-                                       unitsDicomCode=self.createCodedEntry("voxels", "UCUM", _("voxels"), True))
+            self.createMeasurementInfo(name="Voxel count", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Number of voxels"), units="voxels",
+                                       quantityDicomCode=self.createCodedEntry("nvoxels", "99QIICR", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Number of voxels"), True),
+                                       unitsDicomCode=self.createCodedEntry("voxels", "UCUM", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "voxels"), True))
 
         info["volume_mm3"] = \
-            self.createMeasurementInfo(name="Volume mm3", description=_("Volume in mm3"), units="mm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", _("cubic millimeter"), True))
+            self.createMeasurementInfo(name="Volume mm3", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Volume in mm3"), units="mm3",
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Volume"), True),
+                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "cubic millimeter"), True))
 
         info["volume_cm3"] = \
-            self.createMeasurementInfo(name="Volume cm3", description=_("Volume in cm3"), units="cm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", _("cubic centimeter"), True),
+            self.createMeasurementInfo(name="Volume cm3", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Volume in cm3"), units="cm3",
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Volume"), True),
+                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "cubic centimeter"), True),
                                        measurementMethodDicomCode=self.createCodedEntry("126030", "DCM",
-                                                                                        _("Sum of segmented voxel volumes"), True))
+                                                                                        translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Sum of segmented voxel volumes"), True))
 
         info["min"] = \
-            self.createMeasurementInfo(name="Minimum", description=_("Minimum scalar value"),
+            self.createMeasurementInfo(name="Minimum", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Minimum scalar value"),
                                        units=scalarVolumeUnits.GetCodeMeaning(),
                                        quantityDicomCode=scalarVolumeQuantity.GetAsString(),
                                        unitsDicomCode=scalarVolumeUnits.GetAsString(),
-                                       derivationDicomCode=self.createCodedEntry("255605001", "SCT", _("Minimum"), True))
+                                       derivationDicomCode=self.createCodedEntry("255605001", "SCT", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Minimum"), True))
 
         info["max"] = \
-            self.createMeasurementInfo(name="Maximum", description=_("Maximum scalar value"),
+            self.createMeasurementInfo(name="Maximum", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Maximum scalar value"),
                                        units=scalarVolumeUnits.GetCodeMeaning(),
                                        quantityDicomCode=scalarVolumeQuantity.GetAsString(),
                                        unitsDicomCode=scalarVolumeUnits.GetAsString(),
-                                       derivationDicomCode=self.createCodedEntry("56851009", "SCT", _("Maximum"), True))
+                                       derivationDicomCode=self.createCodedEntry("56851009", "SCT", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Maximum"), True))
 
         info["mean"] = \
-            self.createMeasurementInfo(name="Mean", description=_("Mean scalar value"),
+            self.createMeasurementInfo(name="Mean", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Mean scalar value"),
                                        units=scalarVolumeUnits.GetCodeMeaning(),
                                        quantityDicomCode=scalarVolumeQuantity.GetAsString(),
                                        unitsDicomCode=scalarVolumeUnits.GetAsString(),
-                                       derivationDicomCode=self.createCodedEntry("373098007", "SCT", _("Mean"), True))
+                                       derivationDicomCode=self.createCodedEntry("373098007", "SCT", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Mean"), True))
 
         info["median"] = \
-            self.createMeasurementInfo(name="Median", description=_("Median scalar value"),
+            self.createMeasurementInfo(name="Median", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Median scalar value"),
                                        units=scalarVolumeUnits.GetCodeMeaning(),
                                        quantityDicomCode=scalarVolumeQuantity.GetAsString(),
                                        unitsDicomCode=scalarVolumeUnits.GetAsString(),
-                                       derivationDicomCode=self.createCodedEntry("median", "SCT", _("Median"), True))
+                                       derivationDicomCode=self.createCodedEntry("median", "SCT", translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Median"), True))
 
         info["stdev"] = \
-            self.createMeasurementInfo(name="Standard deviation", description=_("Standard deviation of scalar values"),
+            self.createMeasurementInfo(name="Standard deviation", description=translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", "Standard deviation of scalar values"),
                                        units=scalarVolumeUnits.GetCodeMeaning(),
                                        quantityDicomCode=scalarVolumeQuantity.GetAsString(),
                                        unitsDicomCode=scalarVolumeUnits.GetAsString(),
-                                       derivationDicomCode=self.createCodedEntry('386136009', 'SCT', _('Standard Deviation'), True))
+                                       derivationDicomCode=self.createCodedEntry('386136009', 'SCT', translate("SegmentStatisticsPlugins.ScalarVolumeSegmentStatisticsPlugin", 'Standard Deviation'), True))
 
         return info[key] if key in info else None
