@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -152,7 +152,7 @@ void qSlicerAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
   logoLabel->setObjectName("LogoLabel");
   logoLabel->setPixmap(qMRMLWidget::pixmapFromIcon(QIcon(":/ModulePanelLogo.png")));
   this->PanelDockWidget->setTitleBarWidget(logoLabel);
-
+  /*
   this->HelpMenu->addAction(helpDocumentationAction);
   this->HelpMenu->addAction(helpQuickStartAction);
   this->HelpMenu->addAction(helpGetHelpAction);
@@ -172,7 +172,9 @@ void qSlicerAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
   this->HelpMenu->addAction(helpAcknowledgmentsAction);
   this->HelpMenu->addSeparator();
   this->HelpMenu->addAction(helpAboutSlicerAppAction);
-
+*/
+  this->UserMenu->addSeparator();
+  this->UserMenu->addAction(helpKeyboardShortcutsAction);
   //----------------------------------------------------------------------------
   // Icons in the menu
   //----------------------------------------------------------------------------
@@ -181,11 +183,11 @@ void qSlicerAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
   QIcon informationIcon = mainWindow->style()->standardIcon(QStyle::SP_MessageBoxInformation);
   QIcon questionIcon = mainWindow->style()->standardIcon(QStyle::SP_MessageBoxQuestion);
 
-  helpAboutSlicerAppAction->setIcon(informationIcon);
-  helpReportBugOrFeatureRequestAction->setIcon(questionIcon);
+  //helpAboutSlicerAppAction->setIcon(informationIcon);
+  //helpReportBugOrFeatureRequestAction->setIcon(questionIcon);
 
-  setThemeIcon(helpAboutSlicerAppAction, "help-about");
-  setThemeIcon(helpReportBugOrFeatureRequestAction, "tools-report-bug");
+  //setThemeIcon(helpAboutSlicerAppAction, "help-about");
+  //setThemeIcon(helpReportBugOrFeatureRequestAction, "tools-report-bug");
 }
 
 //-----------------------------------------------------------------------------

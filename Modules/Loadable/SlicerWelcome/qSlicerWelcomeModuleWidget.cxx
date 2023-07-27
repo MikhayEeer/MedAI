@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -123,7 +123,6 @@ void qSlicerWelcomeModuleWidgetPrivate::setupUi(qSlicerWidget* widget)
           << this->FeedbackCollapsibleWidget
           << this->WelcomeAndAboutCollapsibleWidget
           << this->OtherUsefulHintsCollapsibleWidget
-          << this->AcknowledgmentCollapsibleWidget
           )
     {
     QTextBrowser* textBrowser = widget->findChild<QTextBrowser*>();
@@ -218,9 +217,10 @@ void qSlicerWelcomeModuleWidget::setup()
           this, SLOT (loadRemoteSampleData()));
   connect(d->EditApplicationSettingsButton, SIGNAL(clicked()),
           this, SLOT (editApplicationSettings()));
-  connect(d->ExploreLoadedDataPushButton, SIGNAL(clicked()),
-          this, SLOT (exploreLoadedData()));
-
+  //connect(d->ExploreLoadedDataPushButton, SIGNAL(clicked()),
+          //this, SLOT (exploreLoadedData()));
+  connect(d->LoadLanguageToolsPushButton, SIGNAL(clicked()),
+            this, SLOT (loadLanguageTools()));
 #ifndef Slicer_BUILD_DICOM_SUPPORT
   d->LoadDicomDataButton->hide();
 #endif
@@ -341,10 +341,12 @@ bool qSlicerWelcomeModuleWidget::loadRemoteSampleData()
 }
 
 //-----------------------------------------------------------------------------
-bool qSlicerWelcomeModuleWidget::exploreLoadedData()
+//bool qSlicerWelcomeModuleWidget::exploreLoadedData()
+bool qSlicerWelcomeModuleWidget::loadLanguageTools()
 {
   Q_D(qSlicerWelcomeModuleWidget);
-  return d->selectModule("Data");
+  //return d->selectModule("Data");
+  return d->selectModule("LanguageTools");
 }
 
 //---------------------------------------------------------------------------

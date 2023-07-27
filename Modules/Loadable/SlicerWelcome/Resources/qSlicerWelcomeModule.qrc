@@ -1,11 +1,12 @@
-<RCC>
-  <qresource>
-    <file>Icons/Chat.png</file> <!-- Adapted from https://openclipart.org/detail/170274/chat-button-by-scyg -->
-    <file>Icons/SlicerWelcome.png</file>
-  </qresource>
-  <qresource>
-    <file>Images/SlicerWWW-Original.png</file>
-    <file>Images/SlicerAdvancedGear-Original.png</file>
-    <file>Images/WelcomeSubjectHierarchy.png</file>
-  </qresource>
+﻿<RCC>
+	<qresource>
+		<file>Icons/Chat.png</file>
+		<!-- Adapted from https://openclipart.org/detail/170274/chat-button-by-scyg -->
+		<file>Icons/SlicerWelcome.png</file>
+	</qresource>
+	<qresource>
+		<file>Images/SlicerWWW-Original.png</file>
+		<file>Images/SlicerAdvancedGear-Original.png</file>
+		<file>Images/WelcomeLanguageTools.png</file>
+	</qresource>
 </RCC>
