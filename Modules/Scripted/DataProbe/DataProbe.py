@@ -23,12 +23,12 @@ class DataProbe(ScriptedLoadableModule):
         parent.title = "DataProbe"
         parent.categories = [translate("qSlicerAbstractCoreModule", "Quantification")]
         parent.contributors = ["Steve Pieper (Isomics)"]
-        parent.helpText = translate("DataProbe", """
+        parent.helpText = _("""
 The DataProbe module is used to get information about the current RAS position being
 indicated by the mouse position.
 """)
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
-        parent.acknowledgementText = translate("DataProbe", """This work is supported by NA-MIC, NAC, NCIGT, NIH U24 CA180918 (PIs Kikinis and Fedorov) and the Slicer Community.""")
+        parent.acknowledgementText = _("""This work is supported by NA-MIC, NAC, NCIGT, NIH U24 CA180918 (PIs Kikinis and Fedorov) and the Slicer Community.""")
         # TODO: need a DataProbe icon
         # parent.icon = qt.QIcon(':Icons/XLarge/SlicerDownloadMRHead.png')
         self.infoWidget = None
@@ -129,18 +129,18 @@ class DataProbeInfoWidget:
         # TODO: the volume nodes should have a way to generate
         # these strings in a generic way
         if not volumeNode:
-            return translate("DataProbe", "No volume")
+            return _("No volume")
         imageData = volumeNode.GetImageData()
         if not imageData:
-            return translate("DataProbe", "No Image")
+            return _("No Image")
         dims = imageData.GetDimensions()
         for ele in range(3):
             if ijk[ele] < 0 or ijk[ele] >= dims[ele]:
-                return translate("DataProbe", "Out of Frame")
+                return _("Out of Frame")
         pixel = ""
         if volumeNode.IsA("vtkMRMLLabelMapVolumeNode"):
             labelIndex = int(imageData.GetScalarComponentAsDouble(ijk[0], ijk[1], ijk[2], 0))
-            labelValue = translate("DataProbe", "Unknown")
+            labelValue = _("Unknown")
             displayNode = volumeNode.GetDisplayNode()
             if displayNode:
                 colorNode = displayNode.GetColorNode()
@@ -151,14 +151,14 @@ class DataProbeInfoWidget:
         if volumeNode.IsA("vtkMRMLDiffusionTensorVolumeNode"):
             point_idx = imageData.FindPoint(ijk[0], ijk[1], ijk[2])
             if point_idx == -1:
-                return translate("DataProbe", "Out of bounds")
+                return _("Out of bounds")
 
             if not imageData.GetPointData():
-                return translate("DataProbe", "No Point Data")
+                return _("No Point Data")
 
             tensors = imageData.GetPointData().GetTensors()
             if not tensors:
-                return translate("DataProbe", "No Tensor Data")
+                return _("No Tensor Data")
 
             tensor = imageData.GetPointData().GetTensors().GetTuple9(point_idx)
             scalarVolumeDisplayNode = volumeNode.GetScalarVolumeDisplayNode()
@@ -178,7 +178,7 @@ class DataProbeInfoWidget:
         # default - non label scalar volume
         numberOfComponents = imageData.GetNumberOfScalarComponents()
         if numberOfComponents > 3:
-            return translate("DataProbe", "{numberOfComponents} components").format(numberOfComponents=numberOfComponents)
+            return _("{numberOfComponents} components").format(numberOfComponents=numberOfComponents)
         for c in range(numberOfComponents):
             component = imageData.GetScalarComponentAsDouble(ijk[0], ijk[1], ijk[2], c)
             if component.is_integer():
@@ -290,9 +290,9 @@ class DataProbeInfoWidget:
         if hasattr(self.frame.parent(), 'text'):
             sceneName = slicer.mrmlScene.GetURL()
             if sceneName != "":
-                self.frame.parent().text = translate("DataProbe", "Data Probe: {sceneName}").format(sceneName=self.fitName(sceneName, nameSize=2 * self.nameSize))
+                self.frame.parent().text = _("Data Probe: {sceneName}").format(sceneName=self.fitName(sceneName, nameSize=2 * self.nameSize))
             else:
-                self.frame.parent().text = translate("DataProbe", "Data Probe")
+                self.frame.parent().text = _("Data Probe")
 
     def generateViewDescription(self, xyz, ras, sliceNode, sliceLogic):
 
@@ -324,7 +324,7 @@ class DataProbeInfoWidget:
 
     def generateLayerName(self, slicerLayerLogic):
         volumeNode = slicerLayerLogic.GetVolumeNode()
-        return "<b>%s</b>" % (self.fitName(volumeNode.GetName()) if volumeNode else translate("DataProbe", "None"))
+        return "<b>%s</b>" % (self.fitName(volumeNode.GetName()) if volumeNode else _("None"))
 
     def generateIJKPixelDescription(self, ijk, slicerLayerLogic):
         volumeNode = slicerLayerLogic.GetVolumeNode()
@@ -407,7 +407,7 @@ class DataProbeInfoWidget:
 
         # goto module button
         self.goToModule = qt.QPushButton('->', self.frame)
-        self.goToModule.setToolTip(translate("DataProbe", 'Go to the DataProbe module for more information and options'))
+        self.goToModule.setToolTip(_('Go to the DataProbe module for more information and options'))
         self.frame.layout().addWidget(self.goToModule)
         self.goToModule.connect("clicked()", self.onGoToModule)
         # hide this for now - there's not much to see in the module itself
@@ -421,7 +421,7 @@ class DataProbeInfoWidget:
         self.frame.layout().addWidget(self.showImageFrame)
         self.showImageFrame.setLayout(qt.QHBoxLayout())
         self.showImageFrame.layout().setContentsMargins(0, 3, 0, 3)
-        self.showImageBox = qt.QCheckBox(translate("DataProbe", 'Show Zoomed Slice'), self.showImageFrame)
+        self.showImageBox = qt.QCheckBox(_('Show Zoomed Slice'), self.showImageFrame)
         self.showImageFrame.layout().addWidget(self.showImageBox)
         self.showImageBox.connect("toggled(bool)", self.onShowImage)
         self.showImageBox.setChecked(False)
@@ -496,7 +496,7 @@ class DataProbeInfoWidget:
 
         # goto module button
         self.goToModule = qt.QPushButton('->', self.frame)
-        self.goToModule.setToolTip(translate("DataProbe", 'Go to the DataProbe module for more information and options'))
+        self.goToModule.setToolTip(_('Go to the DataProbe module for more information and options'))
         self.frame.layout().addWidget(self.goToModule)
         self.goToModule.connect("clicked()", self.onGoToModule)
         # hide this for now - there's not much to see in the module itself
@@ -536,7 +536,7 @@ class DataProbeWidget(ScriptedLoadableModuleWidget):
         # Instantiate and connect widgets ...
 
         settingsCollapsibleButton = ctk.ctkCollapsibleButton()
-        settingsCollapsibleButton.text = translate("DataProbe", "Slice View Annotations Settings")
+        settingsCollapsibleButton.text = _("Slice View Annotations Settings")
         self.layout.addWidget(settingsCollapsibleButton)
         settingsVBoxLayout = qt.QVBoxLayout(settingsCollapsibleButton)
         dataProbeInstance = slicer.modules.DataProbeInstance

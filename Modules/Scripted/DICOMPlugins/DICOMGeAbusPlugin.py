@@ -26,7 +26,7 @@ class DICOMGeAbusPluginClass(DICOMPlugin):
 
     def __init__(self):
         super().__init__()
-        self.loadType = translate("DICOMGeAbusPlugin", "GE ABUS")
+        self.loadType = _("GE ABUS")
 
         self.tags['sopClassUID'] = "0008,0016"
         self.tags['seriesNumber'] = "0020,0011"
@@ -112,8 +112,8 @@ class DICOMGeAbusPluginClass(DICOMPlugin):
             loadable = DICOMLoadable()
             loadable.files = [filePath]
             loadable.name = name.strip()  # remove leading and trailing spaces, if any
-            loadable.tooltip = translate("DICOMGeAbusPlugin", "GE Invenia ABUS")
-            loadable.warning = translate("DICOMGeAbusPlugin", "Loading of this image type is experimental. Please verify image size and orientation and report any problem is found.")
+            loadable.tooltip = _("GE Invenia ABUS")
+            loadable.warning = _("Loading of this image type is experimental. Please verify image size and orientation and report any problem is found.")
             loadable.selected = True
             loadable.confidence = 0.9  # this has to be higher than 0.7 (ultrasound sequence)
 

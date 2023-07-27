@@ -27,7 +27,7 @@ class SelfTests(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
         self.parent.title = "SelfTests"
-        self.parent.categories = [translate("SelfTests", "Testing")]
+        self.parent.categories = [_("Testing")]
         self.parent.contributors = ["Steve Pieper (Isomics)"]
         self.parent.helpText = """
 The SelfTests module allows developers to provide built-in self-tests (BIST) for slicer so that users can tell

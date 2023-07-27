@@ -399,87 +399,87 @@ class LabelmapSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
         # should be added too. Need to discuss with @dclunie. For now, a
         # QIICR private scheme placeholder.
         info["voxel_count"] = \
-            self.createMeasurementInfo(name="Voxel count", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Number of voxels"), units="voxels",
-                                       quantityDicomCode=self.createCodedEntry("nvoxels", "99QIICR", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Number of voxels"), True),
-                                       unitsDicomCode=self.createCodedEntry("voxels", "UCUM", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "voxels"), True))
+            self.createMeasurementInfo(name="Voxel count", description=_("Number of voxels"), units="voxels",
+                                       quantityDicomCode=self.createCodedEntry("nvoxels", "99QIICR", _("Number of voxels"), True),
+                                       unitsDicomCode=self.createCodedEntry("voxels", "UCUM", _("voxels"), True))
 
         info["volume_mm3"] = \
-            self.createMeasurementInfo(name="Volume mm3", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Volume in mm3"), units="mm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "cubic millimeter"), True))
+            self.createMeasurementInfo(name="Volume mm3", description=_("Volume in mm3"), units="mm3",
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
+                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", _("cubic millimeter"), True))
 
         info["volume_cm3"] = \
-            self.createMeasurementInfo(name="Volume cm3", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Volume in cm3"), units="cm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "cubic centimeter"), True),
+            self.createMeasurementInfo(name="Volume cm3", description=_("Volume in cm3"), units="cm3",
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
+                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", _("cubic centimeter"), True),
                                        measurementMethodDicomCode=self.createCodedEntry("126030", "DCM",
-                                                                                        translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Sum of segmented voxel volumes"), True))
+                                                                                        _("Sum of segmented voxel volumes"), True))
 
         info["centroid_ras"] = \
-            self.createMeasurementInfo(name="Centroid", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Location of the centroid in RAS"), units="", componentNames=["r", "a", "s"])
+            self.createMeasurementInfo(name="Centroid", description=_("Location of the centroid in RAS"), units="", componentNames=["r", "a", "s"])
 
         info["feret_diameter_mm"] = \
-            self.createMeasurementInfo(name="Feret diameter mm", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Feret diameter in mm"), units="mm")
+            self.createMeasurementInfo(name="Feret diameter mm", description=_("Feret diameter in mm"), units="mm")
 
         info["surface_area_mm2"] = \
-            self.createMeasurementInfo(name="Surface mm2", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Surface area in mm2"), units="mm2",
-                                       quantityDicomCode=self.createCodedEntry("000247", "99CHEMINF", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Surface area"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm2", "UCUM", translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "square millimeter"), True))
+            self.createMeasurementInfo(name="Surface mm2", description=_("Surface area in mm2"), units="mm2",
+                                       quantityDicomCode=self.createCodedEntry("000247", "99CHEMINF", _("Surface area"), True),
+                                       unitsDicomCode=self.createCodedEntry("mm2", "UCUM", _("square millimeter"), True))
 
         info["roundness"] = \
             self.createMeasurementInfo(name="Roundness",
-                                       description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Segment roundness. Calculated from ratio of the area of the hypersphere by the actual area. "
+                                       description=_("Segment roundness. Calculated from ratio of the area of the hypersphere by the actual area. "
                                                      "Value of 1 represents a spherical structure"), units="")
 
         info["flatness"] = \
             self.createMeasurementInfo(name="Flatness",
-                                       description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Segment flatness. Calculated from square root of the ratio of the second smallest principal moment by "
+                                       description=_("Segment flatness. Calculated from square root of the ratio of the second smallest principal moment by "
                                                      "the smallest. Value of 0 represents a flat structure.") + " ( https://hdl.handle.net/1926/584 )",
                                        units="")
 
         info["elongation"] = \
             self.createMeasurementInfo(name="Elongation",
-                                       description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Segment elongation. Calculated from square root of the ratio of the second largest principal moment "
+                                       description=_("Segment elongation. Calculated from square root of the ratio of the second largest principal moment "
                                                      "by the second smallest.") + " ( https://hdl.handle.net/1926/584 )",
                                        units="")
 
         info["oriented_bounding_box"] = \
-            self.createMeasurementInfo(name="Oriented bounding box", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Oriented bounding box"), units="")
+            self.createMeasurementInfo(name="Oriented bounding box", description=_("Oriented bounding box"), units="")
 
         info["obb_origin_ras"] = \
-            self.createMeasurementInfo(name="OBB origin", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Oriented bounding box origin in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="OBB origin", description=_("Oriented bounding box origin in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         info["obb_diameter_mm"] = \
-            self.createMeasurementInfo(name="OBB diameter", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Oriented bounding box diameter in mm"), units="mm",
+            self.createMeasurementInfo(name="OBB diameter", description=_("Oriented bounding box diameter in mm"), units="mm",
                                        componentNames=["x", "y", "z"])
 
         info["obb_direction_ras_x"] = \
-            self.createMeasurementInfo(name="OBB X direction", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Oriented bounding box X direction in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="OBB X direction", description=_("Oriented bounding box X direction in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         info["obb_direction_ras_y"] = \
-            self.createMeasurementInfo(name="OBB Y direction", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Oriented bounding box Y direction in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="OBB Y direction", description=_("Oriented bounding box Y direction in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         info["obb_direction_ras_z"] = \
-            self.createMeasurementInfo(name="OBB Z direction", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Oriented bounding box Z direction in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="OBB Z direction", description=_("Oriented bounding box Z direction in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         info["principal_moments"] = \
-            self.createMeasurementInfo(name="Principal moments", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Principal moments of inertia for x, y and z axes"),
+            self.createMeasurementInfo(name="Principal moments", description=_("Principal moments of inertia for x, y and z axes"),
                                        units="", componentNames=["x", "y", "z"])
 
         info["principal_axis_x"] = \
-            self.createMeasurementInfo(name="Principal X axis", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Principal X axis of rotation in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="Principal X axis", description=_("Principal X axis of rotation in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         info["principal_axis_y"] = \
-            self.createMeasurementInfo(name="Principal Y axis", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Principal Y axis of rotation in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="Principal Y axis", description=_("Principal Y axis of rotation in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         info["principal_axis_z"] = \
-            self.createMeasurementInfo(name="Principal Z axis", description=translate("SegmentStatisticsPlugins.LabelmapSegmentStatisticsPlugin", "Principal Z axis of rotation in RAS coordinates"), units="",
+            self.createMeasurementInfo(name="Principal Z axis", description=_("Principal Z axis of rotation in RAS coordinates"), units="",
                                        componentNames=["r", "a", "s"])
 
         return info[key] if key in info else None

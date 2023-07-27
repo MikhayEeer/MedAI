@@ -14,14 +14,14 @@ from slicer.i18n import translate
 class PyTorchUtils(ScriptedLoadableModule):
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
-    self.parent.title = translate("PyTorchUtils", "PyTorch Utils")
-    self.parent.categories = [translate("PyTorchUtils", 'Utilities')]
+    self.parent.title = _("PyTorch Utils")
+    self.parent.categories = [_('Utilities')]
     self.parent.dependencies = []
     self.parent.contributors = [
-      translate("PyTorchUtils", "Fernando Perez-Garcia (University College London and King's College London)"),
-      translate("PyTorchUtils", "Andras Lasso (PerkLab Queen's University)"),
+      _("Fernando Perez-Garcia (University College London and King's College London)"),
+      _("Andras Lasso (PerkLab Queen's University)"),
     ]
-    self.parent.helpText = translate("PyTorchUtils", 'This hidden module containing some tools to work with PyTorch inside Slicer.')
+    self.parent.helpText = _('This hidden module containing some tools to work with PyTorch inside Slicer.')
     self.parent.acknowledgementText = (
       'This work was funded by the Engineering and Physical Sciences'
       ' Research Council (EPSRC) and supported by the UCL Centre for Doctoral'
@@ -53,7 +53,7 @@ class PyTorchUtilsWidget(ScriptedLoadableModuleWidget):
     self.updateVersionInformation()
 
   def onDetect(self):
-    with slicer.util.tryWithErrorDisplay(translate("PyTorchUtils", "Failed to detect compatible computation backends."), waitCursor=True):
+    with slicer.util.tryWithErrorDisplay(_("Failed to detect compatible computation backends."), waitCursor=True):
       torchVersionRequirement = self.ui.torchVersionLineEdit.text
       backends = PyTorchUtilsLogic.getCompatibleComputationBackends(torchVersionRequirement=torchVersionRequirement)
       currentBackend = self.ui.backendComboBox.currentText

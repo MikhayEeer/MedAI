@@ -23,7 +23,7 @@ class DICOMSlicerDataBundlePluginClass(DICOMPlugin):
 
     def __init__(self):
         super().__init__()
-        self.loadType = translate("DICOMSlicerDataBundlePlugin", "Slicer Data Bundle")
+        self.loadType = _("Slicer Data Bundle")
         self.tags['seriesDescription'] = "0008,103e"
         self.tags['candygram'] = "cadb,0010"
         self.tags['zipSize'] = "cadb,1008"
@@ -71,7 +71,7 @@ class DICOMSlicerDataBundlePluginClass(DICOMPlugin):
                 loadable.files = [f]
                 loadable.name = name + ' - as Slicer Scene'
                 loadable.selected = True
-                loadable.tooltip = translate("DICOMSlicerDataBundlePlugin", 'Contains a Slicer scene')
+                loadable.tooltip = _('Contains a Slicer scene')
                 loadable.confidence = 0.9
                 loadables.append(loadable)
         return loadables
@@ -164,8 +164,8 @@ class DICOMSlicerDataBundlePluginClass(DICOMPlugin):
 
         # Define basic properties of the exportable
         exportable = slicer.qSlicerDICOMExportable()
-        exportable.name = translate("DICOMSlicerDataBundlePlugin", "Slicer data bundle")
-        exportable.tooltip = translate("DICOMSlicerDataBundlePlugin", "Creates a series that embeds the entire Slicer scene in a private DICOM tag")
+        exportable.name = _("Slicer data bundle")
+        exportable.tooltip = _("Creates a series that embeds the entire Slicer scene in a private DICOM tag")
         exportable.subjectHierarchyItemID = subjectHierarchyItemID
         exportable.pluginClass = self.__module__
         exportable.confidence = 0.1  # There could be more specialized volume types
@@ -177,7 +177,7 @@ class DICOMSlicerDataBundlePluginClass(DICOMPlugin):
     def export(self, exportables):
         shNode = slicer.vtkMRMLSubjectHierarchyNode.GetSubjectHierarchyNode(slicer.mrmlScene)
         if shNode is None:
-            error = translate("DICOMSlicerDataBundlePlugin", "Invalid subject hierarchy")
+            error = _("Invalid subject hierarchy")
             logging.error(error)
             return error
         dicomFiles = []

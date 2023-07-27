@@ -27,13 +27,13 @@ class DICOM(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
 
-        self.parent.title = translate("DICOM", "DICOM")
+        self.parent.title = _("DICOM")
         self.parent.categories = ["", translate("qSlicerAbstractCoreModule", "Informatics")]  # top level module
         self.parent.contributors = ["Steve Pieper (Isomics)", "Andras Lasso (PerkLab)"]
-        self.parent.helpText = translate("DICOM", "This module allows importing, loading, and exporting DICOM files,"
+        self.parent.helpText = _("This module allows importing, loading, and exporting DICOM files,"
                                  " and sending receiving data using DICOM networking.")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
-        self.parent.acknowledgementText = translate("DICOM", "This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.")
+        self.parent.acknowledgementText = _("This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.")
         self.parent.icon = qt.QIcon(':Icons/Medium/SlicerLoadDICOM.png')
         self.parent.dependencies = ["SubjectHierarchy"]
 
@@ -243,7 +243,7 @@ class DICOM(ScriptedLoadableModule):
         connection is made that will also cause the instance-created
         DICOM browser to be raised by this menu action"""
         a = self.parent.action()
-        a.setText(translate("DICOM", "Add DICOM Data"))
+        a.setText(_("Add DICOM Data"))
         fileMenu = slicer.util.lookupTopLevelWidget('FileMenu')
         if fileMenu:
             for child in fileMenu.children():
@@ -274,7 +274,7 @@ class DICOM(ScriptedLoadableModule):
             layout = qt.QVBoxLayout()
             self.viewWidget.setLayout(layout)
 
-            label = qt.QLabel(translate("DICOM", "DICOM database"))
+            label = qt.QLabel(_("DICOM database"))
             label.setSizePolicy(qt.QSizePolicy.Expanding, qt.QSizePolicy.Fixed)
             layout.addWidget(label)
             font = qt.QFont()
@@ -348,37 +348,37 @@ class _ui_DICOMSettingsPanel:
         vBoxLayout = qt.QVBoxLayout(parent)
         # Add generic settings
         genericGroupBox = ctk.ctkCollapsibleGroupBox()
-        genericGroupBox.title = translate("DICOM", "Generic DICOM settings")
+        genericGroupBox.title = _("Generic DICOM settings")
         genericGroupBoxFormLayout = qt.QFormLayout(genericGroupBox)
 
         directoryButton = ctk.ctkDirectoryButton()
-        genericGroupBoxFormLayout.addRow(translate("DICOM", "Database location:"), directoryButton)
+        genericGroupBoxFormLayout.addRow(_("Database location:"), directoryButton)
         parent.registerProperty(slicer.dicomDatabaseDirectorySettingsKey, directoryButton,
                                 "directory", str(qt.SIGNAL("directoryChanged(QString)")),
-                                translate("DICOM", "DICOM general settings"), ctk.ctkSettingsPanel.OptionRequireRestart)
+                                _("DICOM general settings"), ctk.ctkSettingsPanel.OptionRequireRestart)
         # Restart is forced because no mechanism is implemented that would reopen the DICOM database after
         # folder location is changed. It is easier to restart the application than implementing an update
         # mechanism.
 
         loadReferencesComboBox = ctk.ctkComboBox()
-        loadReferencesComboBox.toolTip = translate("DICOM", 
+        loadReferencesComboBox.toolTip = _(
             "Determines whether referenced DICOM series are"
             " offered when loading DICOM, or the automatic behavior if interaction is disabled."
             " Interactive selection of referenced series is the default selection")
-        loadReferencesComboBox.addItem(translate("DICOM", "Ask user"), qt.QMessageBox.InvalidRole)
-        loadReferencesComboBox.addItem(translate("DICOM", "Always"), qt.QMessageBox.Yes)
-        loadReferencesComboBox.addItem(translate("DICOM", "Never"), qt.QMessageBox.No)
+        loadReferencesComboBox.addItem(_("Ask user"), qt.QMessageBox.InvalidRole)
+        loadReferencesComboBox.addItem(_("Always"), qt.QMessageBox.Yes)
+        loadReferencesComboBox.addItem(_("Never"), qt.QMessageBox.No)
         loadReferencesComboBox.currentIndex = 0
-        genericGroupBoxFormLayout.addRow(translate("DICOM", "Load referenced series:"), loadReferencesComboBox)
+        genericGroupBoxFormLayout.addRow(_("Load referenced series:"), loadReferencesComboBox)
         parent.registerProperty(
             "DICOM/automaticallyLoadReferences", loadReferencesComboBox,
             "currentUserDataAsString", str(qt.SIGNAL("currentIndexChanged(int)")))
 
         detailedLoggingCheckBox = qt.QCheckBox()
-        detailedLoggingCheckBox.toolTip = translate("DICOM", 
+        detailedLoggingCheckBox.toolTip = _(
             "Log more details during DICOM operations."
             " Useful for investigating DICOM loading issues but may impact performance.")
-        genericGroupBoxFormLayout.addRow(translate("DICOM", "Detailed logging:"), detailedLoggingCheckBox)
+        genericGroupBoxFormLayout.addRow(_("Detailed logging:"), detailedLoggingCheckBox)
         detailedLoggingMapper = ctk.ctkBooleanMapper(detailedLoggingCheckBox, "checked", str(qt.SIGNAL("toggled(bool)")))
         parent.registerProperty(
             "DICOM/detailedLogging", detailedLoggingMapper,
@@ -415,8 +415,8 @@ class DICOMFileDialog:
 
     def __init__(self, qSlicerFileDialog):
         self.qSlicerFileDialog = qSlicerFileDialog
-        qSlicerFileDialog.fileType = translate("DICOM", 'DICOM Directory')
-        qSlicerFileDialog.description = translate("DICOM", 'Load directory into DICOM database')
+        qSlicerFileDialog.fileType = _('DICOM Directory')
+        qSlicerFileDialog.description = _('Load directory into DICOM database')
         qSlicerFileDialog.action = slicer.qSlicerFileDialog.Read
         self.directoriesToAdd = []
 
@@ -510,7 +510,7 @@ class DICOMFileDialog:
         # Make sure the browser is visible then display error message
         slicer.util.selectModule('DICOM')
         slicer.modules.dicom.widgetRepresentation().self().onOpenBrowserWidget()
-        slicer.util.warningDisplay(translate("DICOM", "Could not create a DICOM database with default settings. Please create a new database or"
+        slicer.util.warningDisplay(_("Could not create a DICOM database with default settings. Please create a new database or"
                                    " update the existing incompatible database using options shown in DICOM browser."))
         return False
 
@@ -519,7 +519,7 @@ class DICOMFileDialog:
             return
 
         if not DICOMFileDialog.validDirectories(self.directoriesToAdd):
-            message = translate("DICOM", "Import of files that have special (non-ASCII) characters in their names is not supported."
+            message = _("Import of files that have special (non-ASCII) characters in their names is not supported."
                         " It is recommended to move files into a different folder and retry."
                         " Try to import from current location anyway?")
             if not slicer.util.confirmYesNoDisplay(message):
@@ -581,13 +581,13 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
 
         # Add import options menu to import button
 
-        importButtonMenu = qt.QMenu(translate("DICOM", "Import options"), self.ui.importButton)
+        importButtonMenu = qt.QMenu(_("Import options"), self.ui.importButton)
         importButtonMenu.toolTipsVisible = True
         self.ui.importButton.setMenu(importButtonMenu)
         importButtonMenu.connect('aboutToShow()', self.aboutToShowImportOptionsMenu)
 
-        self.copyOnImportAction = qt.QAction(translate("DICOM", "Copy imported files to DICOM database"), importButtonMenu)
-        self.copyOnImportAction.setToolTip(translate("DICOM", "If enabled, all imported files are copied into the DICOM database."
+        self.copyOnImportAction = qt.QAction(_("Copy imported files to DICOM database"), importButtonMenu)
+        self.copyOnImportAction.setToolTip(_("If enabled, all imported files are copied into the DICOM database."
                                            " This is useful when importing from removable drives."))
         self.copyOnImportAction.setCheckable(True)
         importButtonMenu.addAction(self.copyOnImportAction)
@@ -786,20 +786,20 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
             newState = 0
 
         if newState == 0:
-            self.ui.listenerStateLabel.text = translate("DICOM", "not started")
+            self.ui.listenerStateLabel.text = _("not started")
             wasBlocked = self.ui.toggleListener.blockSignals(True)
             self.ui.toggleListener.checked = False
             self.ui.toggleListener.blockSignals(wasBlocked)
             if hasattr(slicer.modules, 'DICOMInstance'):  # custom applications may not have the standard DICOM module
                 slicer.modules.DICOMInstance.stopListener()
         if newState == 1:
-            self.ui.listenerStateLabel.text = translate("DICOM", "starting")
+            self.ui.listenerStateLabel.text = _("starting")
         if newState == 2:
             if hasattr(slicer, 'dicomListener'):
                 port = str(slicer.dicomListener.port)
             else:
-                port = translate("DICOM", "unknown")  #: used when port number is not defined
-            self.ui.listenerStateLabel.text = translate("DICOM", "running at port %s") % port
+                port = _("unknown")  #: used when port number is not defined
+            self.ui.listenerStateLabel.text = _("running at port %s") % port
             self.ui.toggleListener.checked = True
 
     def onListenerToAddFile(self):
@@ -815,7 +815,7 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
         """
         newFile = slicer.dicomListener.lastFileAdded
         if newFile:
-            slicer.util.showStatusMessage(translate("DICOM", "Received DICOM file: {filename}").format(filename=newFile), 1000)
+            slicer.util.showStatusMessage(_("Received DICOM file: {filename}").format(filename=newFile), 1000)
         self.databaseRefreshRequestTimer.start()
 
     def requestDatabaseRefresh(self):
@@ -878,10 +878,10 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
     def onClearDatabase(self):
         patientIds = slicer.dicomDatabase.patients()
         if len(patientIds) == 0:
-            slicer.util.infoDisplay(translate("DICOM", "DICOM database is already empty."))
+            slicer.util.infoDisplay(_("DICOM database is already empty."))
         else:
-            title = translate("DICOM", "Clear entire DICOM database")
-            message = translate("DICOM", 
+            title = _("Clear entire DICOM database")
+            message = _(
                 "Are you sure you want to delete all data and files copied into the database ({count} patients)?").format(count=len(patientIds))
             if not slicer.util.confirmYesNoDisplay(message, windowTitle=title):
                 return

@@ -2,6 +2,84 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN" sourcelanguage="en_US">
 <context>
+    <name>AbstractScriptedSegmentEditorAutoCompleteEffect</name>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="89"/>
+        <source>Auto-update</source>
+        <translation type="unfinished">自动更新</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="90"/>
+        <source>Auto-update results preview when input segments change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="94"/>
+        <source>Initialize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="96"/>
+        <source>Preview complete segmentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="106"/>
+        <source>Preview:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="109"/>
+        <source>Adjust visibility of results preview.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="117"/>
+        <source>Show 3D</source>
+        <translation type="unfinished">显示3D</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="118"/>
+        <source>Preview results in 3D.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="122"/>
+        <source>inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="124"/>
+        <source>results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="126"/>
+        <source>Display:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="128"/>
+        <source>Cancel</source>
+        <translation type="unfinished">取消</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="130"/>
+        <source>Clear preview and cancel auto-complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="132"/>
+        <source>Apply</source>
+        <translation type="unfinished">应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="134"/>
+        <source>Replace segments by previewed result</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AirwaySegmentation</name>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="22"/>
@@ -8751,7 +8829,7 @@ Do you want to proceed ? Fees needed if you continue to operate.
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="22"/>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="23"/>
         <source>Endoscopy</source>
-        <translation type="unfinished">内窥镜检查</translation>
+        <translation>内窥镜检查</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="34"/>
@@ -8764,12 +8842,20 @@ The Frame Skip slider speeds up the animation by skipping points on the path.
 The Frame Delay slider slows down the animation by adding more time between frames.
 The View Angle provides is used to approximate the optics of an endoscopy system.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+创建路径模型作为一组基准点的样条插值。
+选择要通过路径和定义控制点的基准列表修改的相机。
+单击“创建路径”将创建路径模型并启用飞行面板。
+您可以使用“框架”滑块手动滚动路径。播放/暂停按钮可切换动画飞越。
+跳帧滑块通过跳过路径上的点来加速动画。
+帧延迟滑块通过在帧之间添加更多时间来减慢动画速度。
+提供的视角用于近似内窥镜系统的光学系统。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="80"/>
         <source>Select a camera that will fly along this path.</source>
-        <translation type="unfinished"></translation>
+        <translation>选择沿着该路径行进的摄像头。</translation>
     </message>
 </context>
 <context>
@@ -9055,7 +9141,7 @@ Developed of this module was partially funded by CZI EOSS grant.
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="130"/>
         <source>Login Form</source>
-        <translation type="unfinished">欢迎来到医疗AI三维重建</translation>
+        <translation>欢迎来到医疗AI三维重建</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="134"/>
@@ -9832,32 +9918,32 @@ and&lt;br&gt;
     <message>
         <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="18"/>
         <source>PyTorch Utils</source>
-        <translation type="unfinished"></translation>
+        <translation>Pytorch工具</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="19"/>
         <source>Utilities</source>
-        <translation type="unfinished">实用工具</translation>
+        <translation>实用工具</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="21"/>
         <source>Fernando Perez-Garcia (University College London and King&apos;s College London)</source>
-        <translation type="unfinished"></translation>
+        <translation>翻译人员1</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="22"/>
         <source>Andras Lasso (PerkLab Queen&apos;s University)</source>
-        <translation type="unfinished"></translation>
+        <translation>翻译人员2</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="25"/>
         <source>This hidden module containing some tools to work with PyTorch inside Slicer.</source>
-        <translation type="unfinished"></translation>
+        <translation>这个隐藏模块包含一些在软件内与pytorch配合使用的工具。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="56"/>
         <source>Failed to detect compatible computation backends.</source>
-        <translation type="unfinished"></translation>
+        <translation>无法检测兼容的计算后端。</translation>
     </message>
 </context>
 <context>
@@ -9918,29 +10004,31 @@ and&lt;br&gt;
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="72"/>
         <source>Sample Data</source>
-        <translation type="unfinished"></translation>
+        <translation>样例数据</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="73"/>
         <source>Informatics</source>
-        <translation type="unfinished"></translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="78"/>
         <source>
 This module provides data sets that can be used for testing 3D Slicer.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+该模块提供用于软件测试的数据集。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="108"/>
         <source>Download Sample Data</source>
-        <translation type="unfinished">下载示例数据</translation>
+        <translation>下载示例数据</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="109"/>
         <source>Go to the SampleData module to download data from the network</source>
-        <translation type="unfinished"></translation>
+        <translation>进入样例数据模块，从网络下载数据</translation>
     </message>
 </context>
 <context>
@@ -10044,7 +10132,9 @@ This module provides data sets that can be used for testing 3D Slicer.
 This module captures image sequences and videos
 from dynamic contents shown in 3D and slice viewers.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+该模块从 3D 和切片查看器中显示的动态内容捕获图像序列和视频。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="44"/>
@@ -10052,7 +10142,9 @@ from dynamic contents shown in 3D and slice viewers.
 This work was was funded by Cancer Care Ontario
 and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+该模块是屏幕截图功能
+</translation>
     </message>
 </context>
 <context>
@@ -10060,12 +10152,12 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="13"/>
         <source>Segment Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>分割编辑器</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="14"/>
         <source>Segmentation</source>
-        <translation type="unfinished">分割</translation>
+        <translation>分割</translation>
     </message>
 </context>
 <context>
@@ -10780,7 +10872,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="31"/>
         <source>Testing</source>
-        <translation type="unfinished">测试</translation>
+        <translation>测试</translation>
     </message>
 </context>
 <context>
@@ -11372,7 +11464,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="57"/>
         <source>Vector to Scalar Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>矢量到标量数据</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="58"/>
@@ -11385,12 +11477,12 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="25"/>
         <source>Web Server</source>
-        <translation type="unfinished"></translation>
+        <translation>网络服务器</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="26"/>
         <source>Servers</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="30"/>
@@ -11408,7 +11500,7 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="61"/>
         <source>Start server</source>
-        <translation type="unfinished"></translation>
+        <translation>开启服务器</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="64"/>
@@ -11419,7 +11511,7 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="67"/>
         <source>Stop server</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭服务器</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="73"/>
@@ -11454,7 +11546,7 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="101"/>
         <source>Advanced</source>
-        <translation type="unfinished">高级</translation>
+        <translation>高级</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="109"/>
@@ -29080,7 +29172,7 @@ This should only used by advanced users who understand the consequences of chang
 &lt;p&gt;Development of 3D Slicer is supported by &lt;a href=&quot;https://www.na-mic.org/&quot;&gt;NA-MIC&lt;/a&gt;, &lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;NAC&lt;/a&gt;, &lt;a href=&quot;https://www.ncigt.org/&quot;&gt;NCIGT&lt;/a&gt;, &lt;a href=&quot;https://www.spl.harvard.edu&quot;&gt;SPL&lt;/a&gt; and the &lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/about.html#acknowledgments&quot;&gt;Slicer Community&lt;/a&gt;. See &lt;a href=&quot;https://www.slicer.org&quot;&gt;https://www.slicer.org&lt;/a&gt; for details.&lt;/p&gt;
 &lt;p&gt;We would also like to express our sincere thanks to members of the Slicer User Community who have helped us to design the contents of this Welcome Module, and whose feedback continues to improve functionality, usability and Slicer user experience.&lt;/p&gt;
 &lt;p&gt;This module was developed by Jean-Christophe Fillion-Robin and Julien Finet at Kitware, Inc., and by Wendy Plesniak, Sonia Pujol, Steve Pieper and Ron Kikinis at Brigham and Women&apos;s Hospital.&lt;/p&gt;</source>
-        <translation type="unfinished">&lt;table align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p align=&quot;center&quot;&gt;
+        <translation>&lt;table align=&quot;center&quot; cellspacing=&quot;0&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p align=&quot;center&quot;&gt;
 &lt;a href=&quot;https://www.na-mic.org/&quot;&gt;&lt;img src=&quot;qrc:Logos/NAMIC.png&quot; width=&quot;80&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://www.na-mic.org/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;&lt;img src=&quot;qrc:Logos/NAC.png&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://nac.spl.harvard.edu/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
 &lt;td&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://www.ncigt.org/&quot;&gt;&lt;img src=&quot;qrc:Logos/NCIGT.png&quot; style=&quot;vertical-align: middle;&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;https://www.ncigt.org/&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
@@ -29105,7 +29197,7 @@ This should only used by advanced users who understand the consequences of chang
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/qSlicerWelcomeModuleWidget.cxx" line="181"/>
         <source>Unfortunately, this requested module is not available in this Slicer session.</source>
-        <translation type="unfinished">很遗憾此请求的模块不可用。</translation>
+        <translation>很遗憾此请求的模块不可用。</translation>
     </message>
     <message numerus="yes">
         <location filename="Modules/Loadable/SlicerWelcome/qSlicerWelcomeModuleWidget.cxx" line="388"/>

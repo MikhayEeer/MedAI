@@ -53,8 +53,8 @@ class VectorToScalarVolume(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = translate("VectorToScalarVolume", "Vector to Scalar Volume")
-        self.parent.categories = [translate("VectorToScalarVolume", "Converters")]
+        self.parent.title = _("Vector to Scalar Volume")
+        self.parent.categories = [_("Converters")]
         self.parent.dependencies = []
         self.parent.contributors = ["Steve Pieper (Isomics)",
                                     "Pablo Hernandez-Cerdan (Kitware)",

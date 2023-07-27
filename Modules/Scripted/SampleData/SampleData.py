@@ -68,11 +68,11 @@ class SampleData(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = translate("SampleData", "Sample Data")
-        self.parent.categories = [translate("SampleData", "Informatics")]
+        self.parent.title = _("Sample Data")
+        self.parent.categories = [_("Informatics")]
         self.parent.dependencies = []
         self.parent.contributors = ["Steve Pieper (Isomics), Benjamin Long (Kitware), Jean-Christophe Fillion-Robin (Kitware)"]
-        self.parent.helpText = translate("SampleData", """
+        self.parent.helpText = _("""
 This module provides data sets that can be used for testing 3D Slicer.
 """)
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
@@ -105,8 +105,8 @@ use it for commercial purposes.</p>
             slicer.modules.sampleDataSources = {}
 
     def addMenu(self):
-        a = qt.QAction(translate("SampleData", 'Download Sample Data'), slicer.util.mainWindow())
-        a.setToolTip(translate("SampleData", 'Go to the SampleData module to download data from the network'))
+        a = qt.QAction(_('Download Sample Data'), slicer.util.mainWindow())
+        a.setToolTip(_('Go to the SampleData module to download data from the network'))
         a.connect('triggered()', self.select)
 
         fileMenu = slicer.util.lookupTopLevelWidget('FileMenu')

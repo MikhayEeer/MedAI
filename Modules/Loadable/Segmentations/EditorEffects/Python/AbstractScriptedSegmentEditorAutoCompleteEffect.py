@@ -7,7 +7,7 @@ import vtk
 import slicer
 
 from .AbstractScriptedSegmentEditorEffect import *
-
+from slicer.i18n import tr as _
 __all__ = ['AbstractScriptedSegmentEditorAutoCompleteEffect']
 
 
@@ -86,14 +86,14 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         return False
 
     def setupOptionsFrame(self):
-        self.autoUpdateCheckBox = qt.QCheckBox("Auto-update")
-        self.autoUpdateCheckBox.setToolTip("Auto-update results preview when input segments change.")
+        self.autoUpdateCheckBox = qt.QCheckBox(_("Auto-update"))
+        self.autoUpdateCheckBox.setToolTip(_("Auto-update results preview when input segments change."))
         self.autoUpdateCheckBox.setChecked(True)
         self.autoUpdateCheckBox.setEnabled(False)
 
-        self.previewButton = qt.QPushButton("Initialize")
+        self.previewButton = qt.QPushButton(_("Initialize"))
         self.previewButton.objectName = self.__class__.__name__ + 'Preview'
-        self.previewButton.setToolTip("Preview complete segmentation")
+        self.previewButton.setToolTip(_("Preview complete segmentation"))
         # qt.QSizePolicy(qt.QSizePolicy.Expanding, qt.QSizePolicy.Expanding)
         # fails on some systems, therefore set the policies using separate method calls
         qSize = qt.QSizePolicy()
@@ -103,10 +103,10 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         previewFrame = qt.QHBoxLayout()
         previewFrame.addWidget(self.autoUpdateCheckBox)
         previewFrame.addWidget(self.previewButton)
-        self.scriptedEffect.addLabeledOptionsWidget("Preview:", previewFrame)
+        self.scriptedEffect.addLabeledOptionsWidget(_("Preview:"), previewFrame)
 
         self.previewOpacitySlider = ctk.ctkSliderWidget()
-        self.previewOpacitySlider.setToolTip("Adjust visibility of results preview.")
+        self.previewOpacitySlider.setToolTip(_("Adjust visibility of results preview."))
         self.previewOpacitySlider.minimum = 0
         self.previewOpacitySlider.maximum = 1.0
         self.previewOpacitySlider.value = 0.0
@@ -114,24 +114,24 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         self.previewOpacitySlider.pageStep = 0.1
         self.previewOpacitySlider.spinBoxVisible = False
 
-        self.previewShow3DButton = qt.QPushButton("Show 3D")
-        self.previewShow3DButton.setToolTip("Preview results in 3D.")
+        self.previewShow3DButton = qt.QPushButton(_("Show 3D"))
+        self.previewShow3DButton.setToolTip(_("Preview results in 3D."))
         self.previewShow3DButton.setCheckable(True)
 
         displayFrame = qt.QHBoxLayout()
-        displayFrame.addWidget(qt.QLabel("inputs"))
+        displayFrame.addWidget(qt.QLabel(_("inputs")))
         displayFrame.addWidget(self.previewOpacitySlider)
-        displayFrame.addWidget(qt.QLabel("results"))
+        displayFrame.addWidget(qt.QLabel(_("results")))
         displayFrame.addWidget(self.previewShow3DButton)
-        self.scriptedEffect.addLabeledOptionsWidget("Display:", displayFrame)
+        self.scriptedEffect.addLabeledOptionsWidget(_("Display:"), displayFrame)
 
-        self.cancelButton = qt.QPushButton("Cancel")
+        self.cancelButton = qt.QPushButton(_("Cancel"))
         self.cancelButton.objectName = self.__class__.__name__ + 'Cancel'
-        self.cancelButton.setToolTip("Clear preview and cancel auto-complete")
+        self.cancelButton.setToolTip(_("Clear preview and cancel auto-complete"))
 
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton(_("Apply"))
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-        self.applyButton.setToolTip("Replace segments by previewed result")
+        self.applyButton.setToolTip(_("Replace segments by previewed result"))
 
         finishFrame = qt.QHBoxLayout()
         finishFrame.addWidget(self.cancelButton)

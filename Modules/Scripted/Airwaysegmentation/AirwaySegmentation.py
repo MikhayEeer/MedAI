@@ -18,15 +18,15 @@ class AirwaySegmentation(ScriptedLoadableModule):
 
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
-    self.parent.title = translate("AirwaySegmentation", "Airway Segmentation")
-    self.parent.categories = [translate("AirwaySegmentation", "Segmentation")]
+    self.parent.title = _("Airway Segmentation")
+    self.parent.categories = [_("Segmentation")]
     self.parent.dependencies = []
     self.parent.contributors = ["Pietro Nardelli (University College Cork)", "Andras Lasso (PerkLab, Queen's University)"]
-    self.parent.helpText = translate("AirwaySegmentation", """
+    self.parent.helpText = _("""
 Segment airways on CT images from a single input point in the trachea.
 See more information in the <a href="https://github.com/Slicer/SlicerAirwaySegmentation">extension documentation</a>.
 """)
-    self.parent.acknowledgementText = translate("AirwaySegmentation", """
+    self.parent.acknowledgementText = _("""
 This file was originally developed by Pietro Nardelli, University College of Cork (UCC).
 """)
 
@@ -194,10 +194,10 @@ class AirwaySegmentationWidget(ScriptedLoadableModuleWidget, VTKObservationMixin
 
     # Update buttons states and tooltips
     if self._parameterNode.GetNodeReference("InputVolume") and self._parameterNode.GetNodeReference("InputSeed"):
-      self.ui.applyButton.toolTip = translate("AirwaySegmentation", "Compute airway segmentation")
+      self.ui.applyButton.toolTip = _("Compute airway segmentation")
       self.ui.applyButton.enabled = True
     else:
-      self.ui.applyButton.toolTip = translate("AirwaySegmentation", "Select input CT volume and seed point")
+      self.ui.applyButton.toolTip = _("Select input CT volume and seed point")
       self.ui.applyButton.enabled = False
 
     # All the GUI updates are done
@@ -293,17 +293,17 @@ class AirwaySegmentationLogic(ScriptedLoadableModuleLogic):
     """
 
     if not inputVolume or not inputSeed or not outputSegmentation:
-      raise ValueError(translate("AirwaySegmentation", "Input volume or seed or output segmentation is invalid"))
+      raise ValueError(_("Input volume or seed or output segmentation is invalid"))
 
     import time
     startTime = time.time()
-    logging.info(translate("AirwaySegmentation", 'Processing started'))
+    logging.info(_('Processing started'))
 
 
     # Get convolution kernel
     convolutionKernel = self.convolutionKernelFromVolumeNode(inputVolume)
     if not convolutionKernel:
-      logging.warning(translate("AirwaySegmentation", "Convolution kernel is unknown, STANDARD will be used."))
+      logging.warning(_("Convolution kernel is unknown, STANDARD will be used."))
       convolutionKernel = "STANDARD"
 
     # Compute the segmentation

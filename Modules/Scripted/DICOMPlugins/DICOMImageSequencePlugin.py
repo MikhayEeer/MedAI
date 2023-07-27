@@ -30,7 +30,7 @@ class DICOMImageSequencePluginClass(DICOMPlugin):
 
     def __init__(self):
         super().__init__()
-        self.loadType = translate("DICOMImageSequencePlugin", "Image sequence")
+        self.loadType = _("Image sequence")
 
         self.tags['sopClassUID'] = "0008,0016"
         self.tags['seriesNumber'] = "0020,0011"
@@ -149,8 +149,8 @@ class DICOMImageSequencePluginClass(DICOMPlugin):
                     loadable.singleSequence = False  # put each instance in a separate sequence
                     loadable.files = [filePath]
                     loadable.name = name.strip()  # remove leading and trailing spaces, if any
-                    loadable.warning = translate("DICOMImageSequencePlugin", "Image spacing may need to be calibrated for accurate size measurements.")
-                    loadable.tooltip = translate("DICOMImageSequencePlugin", "{modality} image sequence").format(modality=modality)
+                    loadable.warning = _("Image spacing may need to be calibrated for accurate size measurements.")
+                    loadable.tooltip = _("{modality} image sequence").format(modality=modality)
                     loadable.selected = True
                     # Confidence is slightly larger than default scalar volume plugin's (0.5)
                     # but still leaving room for more specialized plugins.
@@ -164,7 +164,7 @@ class DICOMImageSequencePluginClass(DICOMPlugin):
                     # existing instance number, add this file
                     loadableIndex = instanceNumberToLoadableIndex[instanceNumber]
                     loadables[loadableIndex].files.append(filePath)
-                    loadable.tooltip = translate("DICOMImageSequencePlugin", "{modality} image sequence ({count} planes)").format(
+                    loadable.tooltip = _("{modality} image sequence ({count} planes)").format(
                         modality=modality, count=len(loadables[loadableIndex].files))
 
         if canBeCineMri and len(cineMriInstanceNumberToFilenameIndex) > 1:
@@ -183,7 +183,7 @@ class DICOMImageSequencePluginClass(DICOMPlugin):
             loadable.instanceNumbers = sorted(cineMriInstanceNumberToFilenameIndex)
             loadable.files = [cineMriInstanceNumberToFilenameIndex[instanceNumber] for instanceNumber in loadable.instanceNumbers]
             loadable.name = name.strip()  # remove leading and trailing spaces, if any
-            loadable.tooltip = translate("DICOMImageSequencePlugin", "{modality} image sequence").format(modality=ds.Modality)
+            loadable.tooltip = _("{modality} image sequence").format(modality=ds.Modality)
             loadable.selected = True
             if len(cineMriTriggerTimes) > 3:
                 if self.detailedLogging:

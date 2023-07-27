@@ -18,11 +18,11 @@ class Endoscopy(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = translate("Endoscopy", "Endoscopy")
-        self.parent.categories = [translate("Endoscopy", "Endoscopy")]
+        self.parent.title = _("Endoscopy")
+        self.parent.categories = [_("Endoscopy")]
         self.parent.dependencies = []
         self.parent.contributors = ["Steve Pieper (Isomics)"]
-        self.parent.helpText = translate("Endoscopy", """
+        self.parent.helpText = _("""
 Create a path model as a spline interpolation of a set of fiducial points.
 Pick the Camera to be modified by the path and the Fiducial List defining the control points.
 Clicking "Create path" will make a path model and enable the flythrough panel.
@@ -76,7 +76,7 @@ class EndoscopyWidget(ScriptedLoadableModuleWidget):
         # Camera node selector
         cameraNodeSelector = slicer.qMRMLNodeComboBox()
         cameraNodeSelector.objectName = 'cameraNodeSelector'
-        cameraNodeSelector.toolTip = translate("Endoscopy", "Select a camera that will fly along this path.")
+        cameraNodeSelector.toolTip = _("Select a camera that will fly along this path.")
         cameraNodeSelector.nodeTypes = ['vtkMRMLCameraNode']
         cameraNodeSelector.noneEnabled = False
         cameraNodeSelector.addEnabled = False

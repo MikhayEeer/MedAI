@@ -18,15 +18,15 @@ class LanguageTools(ScriptedLoadableModule):
 
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
-    self.parent.title = translate("LanguageTools", "Language Tools")
-    self.parent.categories = [translate("LanguageTools", "Utilities")]
+    self.parent.title = _("Language Tools")
+    self.parent.categories = [_("Utilities")]
     self.parent.dependencies = []
     self.parent.contributors = ["Andras Lasso (PerkLab)"]
-    self.parent.helpText = translate("LanguageTools", """
+    self.parent.helpText = _("""
 This module can build translation files and install them locally. It is useful for creating and testing translations.
 See more information in the <a href="https://github.com/Slicer/SlicerLanguagePacks">extension's documentation</a>.
 """)
-    self.parent.acknowledgementText = translate("LanguageTools", """
+    self.parent.acknowledgementText = _("""
 Developed of this module was partially funded by CZI EOSS grant.
 """)
 
@@ -138,7 +138,7 @@ class TextFinder(qt.QWidget):
       # Remove empty strings
       foundStrings = [foundString for foundString in foundStrings if foundString[1]]
       if not foundStrings:
-        raise ValueError(translate("LanguageTools", "Failed to extract any text from widget"))
+        raise ValueError(_("Failed to extract any text from widget"))
 
       import html
       import re
@@ -154,7 +154,7 @@ class TextFinder(qt.QWidget):
 
       result = slicer.util._messageDisplay(logging.INFO,
         f"<html>Click on the text to find it on the translation website:\n\n{links}</html>", qt.QMessageBox.Close,
-        windowTitle=translate("LanguageTools", "Translation lookup"), icon=qt.QMessageBox.Question,
+        windowTitle=_("Translation lookup"), icon=qt.QMessageBox.Question,
         standardButtons=qt.QMessageBox.Close | qt.QMessageBox.Retry)
       if result == qt.QMessageBox.Close:
         # cancelled
@@ -412,7 +412,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     """
     Run processing when user clicks "Apply" button.
     """
-    with slicer.util.tryWithErrorDisplay(translate("LanguageTools", "Update failed."), waitCursor=True):
+    with slicer.util.tryWithErrorDisplay(_("Update failed."), waitCursor=True):
       self.ui.statusTextEdit.clear()
       self.updateSettingsFromGUI()
 
@@ -439,7 +439,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       # (if user uses this module then it means that internationalization is needed).
       self.logic.enableInternationalization()
 
-      self.log(translate("LanguageTools", "Update completed! Select application language and restart the application to see the results."))
+      self.log(_("Update completed! Select application language and restart the application to see the results."))
 
     self.refreshLanguageList()
 
@@ -566,7 +566,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
     if not tsFiles:
       print(f"\n tsFolder is {tsFolder}" )
       print(f"\n translationFilesFolder is {self.translationFilesFolder}" )
-      raise ValueError(translate("LanguageTools", "No .ts files were found in the specified location."))
+      raise ValueError(_("No .ts files were found in the specified location."))
 
     if latestTsFileOnly:
       tsFiles = [tsFiles[-1]]
@@ -671,10 +671,10 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
   def convertTsFilesToQmFiles(self):
     if not self.translationFilesFolder:
-      raise ValueError(translate("LanguageTools", "Translation files folder is not specified."))
+      raise ValueError(_("Translation files folder is not specified."))
 
     if (not self.lreleasePath) or (not os.path.exists(self.lreleasePath)):
-      raise ValueError(translate("LanguageTools", "lrelease tool path is not specified."))
+      raise ValueError(_("lrelease tool path is not specified."))
 
     logging.info(f"Processing translation files in folder {self.translationFilesFolder}")
     import glob

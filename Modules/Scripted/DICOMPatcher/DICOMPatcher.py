@@ -21,13 +21,13 @@ class DICOMPatcher(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = translate("DICOMPatcher", "DICOM Patcher")
+        self.parent.title = _("DICOM Patcher")
         self.parent.categories = [translate("qSlicerAbstractCoreModule", "Utilities")]
         self.parent.dependencies = ["DICOM"]
         self.parent.contributors = ["Andras Lasso (PerkLab)"]
-        self.parent.helpText = translate("DICOMPatcher", """Fix common issues in DICOM files. This module may help fixing DICOM files that Slicer fails to import.""")
+        self.parent.helpText = _("""Fix common issues in DICOM files. This module may help fixing DICOM files that Slicer fails to import.""")
         self.parent.helpText += parent.defaultDocumentationLink
-        self.parent.acknowledgementText = translate("DICOMPatcher", """This file was originally developed by Andras Lasso, PerkLab.""")
+        self.parent.acknowledgementText = _("""This file was originally developed by Andras Lasso, PerkLab.""")
 
 
 #
@@ -48,7 +48,7 @@ class DICOMPatcherWidget(ScriptedLoadableModuleWidget):
         # Parameters Area
         #
         parametersCollapsibleButton = ctk.ctkCollapsibleButton()
-        parametersCollapsibleButton.text = translate("DICOMPatcher", "Parameters")
+        parametersCollapsibleButton.text = _("Parameters")
         self.layout.addWidget(parametersCollapsibleButton)
 
         # Layout within the dummy collapsible button
@@ -57,47 +57,47 @@ class DICOMPatcherWidget(ScriptedLoadableModuleWidget):
         self.inputDirSelector = ctk.ctkPathLineEdit()
         self.inputDirSelector.filters = ctk.ctkPathLineEdit.Dirs
         self.inputDirSelector.settingKey = 'DICOMPatcherInputDir'
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Input DICOM directory:"), self.inputDirSelector)
+        parametersFormLayout.addRow(_("Input DICOM directory:"), self.inputDirSelector)
 
         self.outputDirSelector = ctk.ctkPathLineEdit()
         self.outputDirSelector.filters = ctk.ctkPathLineEdit.Dirs
         self.outputDirSelector.settingKey = 'DICOMPatcherOutputDir'
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Output DICOM directory:"), self.outputDirSelector)
+        parametersFormLayout.addRow(_("Output DICOM directory:"), self.outputDirSelector)
 
         self.normalizeFileNamesCheckBox = qt.QCheckBox()
         self.normalizeFileNamesCheckBox.checked = True
-        self.normalizeFileNamesCheckBox.setToolTip(translate("DICOMPatcher", "Replace file and folder names with automatically generated names."
+        self.normalizeFileNamesCheckBox.setToolTip(_("Replace file and folder names with automatically generated names."
                                                      " Fixes errors caused by file path containins special characters or being too long."))
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Normalize file names"), self.normalizeFileNamesCheckBox)
+        parametersFormLayout.addRow(_("Normalize file names"), self.normalizeFileNamesCheckBox)
 
         self.forceSamePatientNameIdInEachDirectoryCheckBox = qt.QCheckBox()
         self.forceSamePatientNameIdInEachDirectoryCheckBox.checked = False
-        self.forceSamePatientNameIdInEachDirectoryCheckBox.setToolTip(translate("DICOMPatcher", 
+        self.forceSamePatientNameIdInEachDirectoryCheckBox.setToolTip(_(
             "Generate patient name and ID from the first file in a directory and force all"
             " other files in the same directory to have the same patient name and ID."
             " Enable this option if a separate patient directory is created for each patched file."))
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Force same patient name and ID in each directory"), self.forceSamePatientNameIdInEachDirectoryCheckBox)
+        parametersFormLayout.addRow(_("Force same patient name and ID in each directory"), self.forceSamePatientNameIdInEachDirectoryCheckBox)
 
         self.forceSameSeriesInstanceUidInEachDirectoryCheckBox = qt.QCheckBox()
         self.forceSameSeriesInstanceUidInEachDirectoryCheckBox.checked = False
-        self.forceSameSeriesInstanceUidInEachDirectoryCheckBox.setToolTip(translate("DICOMPatcher", 
+        self.forceSameSeriesInstanceUidInEachDirectoryCheckBox.setToolTip(_(
             "Generate a new series instance UID for each directory"
             " and set it in all files in that same directory."
             " Enable this option to force placing all frames in a folder into a single volume."))
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Force same series instance UID in each directory"), self.forceSameSeriesInstanceUidInEachDirectoryCheckBox)
+        parametersFormLayout.addRow(_("Force same series instance UID in each directory"), self.forceSameSeriesInstanceUidInEachDirectoryCheckBox)
 
         self.generateMissingIdsCheckBox = qt.QCheckBox()
         self.generateMissingIdsCheckBox.checked = True
-        self.generateMissingIdsCheckBox.setToolTip(translate("DICOMPatcher", "Generate missing patient, study, series IDs. It is assumed that"
+        self.generateMissingIdsCheckBox.setToolTip(_("Generate missing patient, study, series IDs. It is assumed that"
                                                      " all files in a directory belong to the same series. Fixes error caused by too aggressive anonymization"
                                                      " or incorrect DICOM image converters."))
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Generate missing patient/study/series IDs"), self.generateMissingIdsCheckBox)
+        parametersFormLayout.addRow(_("Generate missing patient/study/series IDs"), self.generateMissingIdsCheckBox)
 
         self.generateImagePositionFromSliceThicknessCheckBox = qt.QCheckBox()
         self.generateImagePositionFromSliceThicknessCheckBox.checked = True
-        self.generateImagePositionFromSliceThicknessCheckBox.setToolTip(translate("DICOMPatcher", "Generate 'image position sequence' for multi-frame files that only have"
+        self.generateImagePositionFromSliceThicknessCheckBox.setToolTip(_("Generate 'image position sequence' for multi-frame files that only have"
                                                                           " 'SliceThickness' field. Fixes error in Dolphin 3D CBCT scanners."))
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Generate slice position for multi-frame volumes"), self.generateImagePositionFromSliceThicknessCheckBox)
+        parametersFormLayout.addRow(_("Generate slice position for multi-frame volumes"), self.generateImagePositionFromSliceThicknessCheckBox)
 
         self.fixExposureFiascoCheckBox = qt.QCheckBox()
         self.fixExposureFiascoCheckBox.checked = True
@@ -123,22 +123,22 @@ class DICOMPatcherWidget(ScriptedLoadableModuleWidget):
 
         self.anonymizeDicomCheckBox = qt.QCheckBox()
         self.anonymizeDicomCheckBox.checked = False
-        self.anonymizeDicomCheckBox.setToolTip(translate("DICOMPatcher", "If checked, then some patient identifiable information will be removed from the patched DICOM files."
+        self.anonymizeDicomCheckBox.setToolTip(_("If checked, then some patient identifiable information will be removed from the patched DICOM files."
                                                  " There are many fields that can identify a patient, this function does not remove all of them."))
-        parametersFormLayout.addRow(translate("DICOMPatcher", "Partially anonymize"), self.anonymizeDicomCheckBox)
+        parametersFormLayout.addRow(_("Partially anonymize"), self.anonymizeDicomCheckBox)
 
         #
         # Patch Button
         #
-        self.patchButton = qt.QPushButton(translate("DICOMPatcher", "Patch"))
-        self.patchButton.toolTip = translate("DICOMPatcher", "Fix DICOM files in input directory and write them to output directory")
+        self.patchButton = qt.QPushButton(_("Patch"))
+        self.patchButton.toolTip = _("Fix DICOM files in input directory and write them to output directory")
         parametersFormLayout.addRow(self.patchButton)
 
         #
         # Import Button
         #
-        self.importButton = qt.QPushButton(translate("DICOMPatcher", "Import to DICOM database"))
-        self.importButton.toolTip = translate("DICOMPatcher", "Import DICOM files in output directory into the application's DICOM database")
+        self.importButton = qt.QPushButton(_("Import to DICOM database"))
+        self.importButton.toolTip = _("Import DICOM files in output directory into the application's DICOM database")
         parametersFormLayout.addRow(self.importButton)
 
         # connections
@@ -159,7 +159,7 @@ class DICOMPatcherWidget(ScriptedLoadableModuleWidget):
         pass
 
     def onPatchButton(self):
-        with slicer.util.tryWithErrorDisplay(translate("DICOMPatcher", "Unexpected error."), waitCursor=True):
+        with slicer.util.tryWithErrorDisplay(_("Unexpected error."), waitCursor=True):
 
             import tempfile
             if not self.outputDirSelector.currentPath:
@@ -256,7 +256,7 @@ class ForceSamePatientNameIdInEachDirectory(DICOMPatcherRule):
             if ds.PatientName:
                 self.patientName = ds.PatientName
             else:
-                self.patientName = translate("DICOMPatcher", "Unspecified Patient {patientIndex}").format(patientIndex=str(self.patientIndex))
+                self.patientName = _("Unspecified Patient {patientIndex}").format(patientIndex=str(self.patientIndex))
             if ds.PatientID:
                 self.patientID = ds.PatientID
             else:
@@ -321,7 +321,7 @@ class GenerateMissingIDs(DICOMPatcherRule):
         ds.SOPInstanceUID = pydicom.uid.generate_uid(None)
 
         if ds.PatientName == '':
-            ds.PatientName = translate("DICOMPatcher", "Unspecified Patient")
+            ds.PatientName = _("Unspecified Patient")
         if ds.PatientID == '':
             ds.PatientID = self.randomPatientID
         if ds.StudyInstanceUID == '':
@@ -531,7 +531,7 @@ class Anonymize(DICOMPatcherRule):
         ds.PatientsBirthDate = ''
         ds.PatientsSex = ''
         ds.StudyID = ''
-        ds.PatientName = translate("DICOMPatcher", "Unspecified Patient")
+        ds.PatientName = _("Unspecified Patient")
 
         # replace ids with random values - re-use if we have seen them before
         if ds.PatientID not in self.patientIDToRandomIDMap:
