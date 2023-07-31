@@ -8,6 +8,7 @@
 LoginForm::LoginForm(QWidget* parent): QDialog(parent)
 {
     initUI();
+    //this->setupUi(this);
     // load the user name in local cache
     ReadIniFile();
     connect(loginBtn,&QPushButton::clicked,this,&LoginForm::login);
@@ -128,6 +129,18 @@ void LoginForm::initUI()
 {
     //
     this->setWindowTitle(tr("Login Form"));
+    //this->setWindowFlags(Qt::FramelessWindowHint);
+
+    //QIcon icon(":/Icons/LoginIcon.png");
+    //this->setWindowIcon(icon);//
+
+    //this->setStyleSheet("backgroud-image: url(:/Icons/LoginBG.png)");
+    /*
+    QPixmap bg(":/Icons/LoginBG.png");
+    QBitmap bg_mask = bg.mask();
+    bg_mask.fill(128);
+    bg.setMask(bg_mask);
+    */
 
     //
     userNameLbl = new QLabel(this);   //new

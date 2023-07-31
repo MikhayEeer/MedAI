@@ -1,4 +1,4 @@
-project(qSlicerBaseQTGUI)
+﻿project(qSlicerBaseQTGUI)
 
 #
 # See CMake/SlicerMacroBuildBaseQtLibrary.cmake for details
@@ -304,6 +304,7 @@ set(KIT_UI_SRCS
   Resources/UI/qSlicerActionsDialog.ui
   Resources/UI/qSlicerDataDialog.ui
   Resources/UI/qSlicerExportNodeDialog.ui
+  Resources/UI/qSlicerLoginForm.ui
   Resources/UI/qSlicerModelsDialog.ui
   Resources/UI/qSlicerModuleFinderDialog.ui
   Resources/UI/qSlicerModulePanel.ui
@@ -360,6 +361,7 @@ endif()
 # Resources
 set(KIT_resources
   Resources/qSlicerBaseQTGUI.qrc
+  Resources/qSlicerUserResources.qrc
   ${qMRMLWidgets_SOURCE_DIR}/Resources/qMRMLWidgets.qrc
   )
 

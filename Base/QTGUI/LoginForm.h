@@ -7,6 +7,8 @@
 #include "post_manager.h"
 #include "qSlicerBaseQTGUIExport.h"
 
+#include "ui_qSlicerLoginForm.h"
+
 #include <QDialog>
 #include <QLabel>
 #include <QLineEdit>
@@ -15,7 +17,11 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QSettings>
+#include <QtCore>
+#include <QtGui>
+#include <QtWidgets>
 
+//#include "Resources/qSlicerUserResources.qrc"
 
 #include <QCryptographicHash>
 
@@ -24,7 +30,9 @@
 
 #pragma execution_character_set("utf-8")
 
-class Q_SLICER_BASE_QTGUI_EXPORT LoginForm : public QDialog
+class Q_SLICER_BASE_QTGUI_EXPORT LoginForm 
+    : public QDialog
+    , public Ui_LoginForm
 {
     Q_OBJECT //
 public:
