@@ -40,6 +40,7 @@ public:
     ~LoginForm();
     void ReadIniFile(); //
     void WriteIniFile(QString key, QString value);
+    //void initUI();
 
 public slots:
     void login(); //
@@ -48,13 +49,14 @@ public slots:
     void quit();
 
 private:
+    /*
     QLabel      *userNameLbl;
     QLabel      *pwdLbl;
     QLineEdit   *userNameLEd;      //
     QLineEdit   *pwdLEd;           //
     QPushButton *loginBtn;       //
     QPushButton *signUpBtn;      //
-    QPushButton *exitBtn;        //
+    QPushButton *exitBtn;        // */
     void initUI();
 
 //    QStringList m_userNameList;

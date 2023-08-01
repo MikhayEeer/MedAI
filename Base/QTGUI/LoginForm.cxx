@@ -8,9 +8,10 @@
 LoginForm::LoginForm(QWidget* parent): QDialog(parent)
 {
     initUI();
-    //this->setupUi(this);
+
     // load the user name in local cache
     ReadIniFile();
+
     connect(loginBtn,&QPushButton::clicked,this,&LoginForm::login);
     connect(signUpBtn,&QPushButton::clicked,this,&LoginForm::gotoSignUpForm);
     connect(exitBtn,&QPushButton::clicked,this,&LoginForm::quit);
@@ -127,75 +128,9 @@ void LoginForm::WriteIniFile(QString key, QString value){
 
 void LoginForm::initUI()
 {
-    //
-    this->setWindowTitle(tr("Login Form"));
-    //this->setWindowFlags(Qt::FramelessWindowHint);
-
-    //QIcon icon(":/Icons/LoginIcon.png");
-    //this->setWindowIcon(icon);//
-
-    //this->setStyleSheet("backgroud-image: url(:/Icons/LoginBG.png)");
-    /*
-    QPixmap bg(":/Icons/LoginBG.png");
-    QBitmap bg_mask = bg.mask();
-    bg_mask.fill(128);
-    bg.setMask(bg_mask);
-    */
-
-    //
-    userNameLbl = new QLabel(this);   //new
-    userNameLbl->setText(tr("ID:"));  //
-    //
-    userNameLEd = new QLineEdit(this);
-    userNameLEd->setPlaceholderText(tr("Please enter your phone number or email"));
-
-    //
-    pwdLbl = new QLabel(this);
-    pwdLbl->setText(tr("password:"));
-    //
-    pwdLEd = new QLineEdit(this);
-    pwdLEd->setPlaceholderText(tr("Please enter your password"));
-    pwdLEd->setEchoMode(QLineEdit::Password);//
-
-
-    loginBtn = new QPushButton(this);
-    loginBtn->setText(tr("Log in"));
-
-    signUpBtn = new QPushButton(this);
-    signUpBtn->setText(tr("Sign up"));
-
-    exitBtn = new QPushButton(this);
-    exitBtn->setText(tr("Exit"));
-
-    this->setFixedSize(340,186);
-
+    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
     setWindowFlag(Qt::WindowCloseButtonHint, false);
-
     setWindowFlag(Qt::WindowContextHelpButtonHint, false);
 
-    QHBoxLayout *HLayout1 = new QHBoxLayout;
-    HLayout1->addStretch(1);
-    HLayout1->addWidget(userNameLbl,1);
-    HLayout1->addWidget(userNameLEd,5);
-//        HLayout1->addWidget(m_userNameComboBox,5);
-    HLayout1->addStretch(1);
-
-    QHBoxLayout *HLayout2 = new QHBoxLayout;
-    HLayout2->addStretch(1);
-    HLayout2->addWidget(pwdLbl,1);
-    HLayout2->addWidget(pwdLEd,5);
-    HLayout2->addStretch(1);
-
-    QHBoxLayout *HLayout3 = new QHBoxLayout;
-    HLayout3->addStretch(1);
-    HLayout3->addWidget(loginBtn,1);
-    HLayout3->addWidget(signUpBtn,1);
-    HLayout3->addWidget(exitBtn,1);
-    HLayout3->addStretch(1);
-
-    QVBoxLayout *VLayout = new QVBoxLayout(this);
-    VLayout->addLayout(HLayout1);
-    VLayout->addLayout(HLayout2);
-    VLayout->addLayout(HLayout3);
-    this->setLayout(VLayout);
+    this->setupUi(this);
 }

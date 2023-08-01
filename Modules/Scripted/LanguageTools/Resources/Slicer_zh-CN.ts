@@ -8001,7 +8001,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOM/DICOM.py" line="31"/>
         <source>DICOM</source>
-        <translation></translation>
+        <translation>DICOM</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOM/DICOM.py" line="35"/>
@@ -9098,79 +9098,96 @@ Developed of this module was partially funded by CZI EOSS grant.
 <context>
     <name>LoginForm</name>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="28"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="32"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="61"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="80"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="29"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="33"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="62"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="81"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="28"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="29"/>
         <source>Some content is empty, please fill in all the content</source>
         <translation>部分内容为空，请填写</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="32"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="33"/>
         <source>The length of the password cannot be less than 6 charcters</source>
         <translation>密码长度不能少于6个字符</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="36"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="37"/>
         <source>Please wait</source>
         <translation>请稍后</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="62"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="63"/>
         <source>Your account balance is zero 
                                  Do you want to top up?</source>
         <translation>您的账户余额是0 
                                  需要充值吗?</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="81"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="82"/>
         <source>wrong password</source>
         <translation>密码错误</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="91"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="149"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="184"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="92"/>
         <source>Log in</source>
         <translation>登录</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="130"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="14"/>
         <source>Login Form</source>
         <translation>欢迎来到医疗AI三维重建</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="134"/>
         <source>ID:</source>
-        <translation>账号：</translation>
+        <translation type="vanished">账号：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="137"/>
         <source>Please enter your phone number or email</source>
-        <translation>请输入手机号或邮箱</translation>
+        <translation type="vanished">请输入手机号或邮箱</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="141"/>
         <source>password:</source>
+        <translation type="vanished">密码：</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="67"/>
+        <source>Password:</source>
         <translation>密码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="144"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="108"/>
         <source>Please enter your password</source>
         <translation>请输入密码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="152"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="127"/>
+        <source>User ID:</source>
+        <translation>账号：</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="159"/>
+        <source>Please enter your phone number</source>
+        <translation>请输入电话号码</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="216"/>
         <source>Sign up</source>
         <translation>注册</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="155"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="245"/>
         <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="248"/>
+        <source>Esc</source>
         <translation>退出</translation>
     </message>
 </context>
@@ -10150,14 +10167,12 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
 <context>
     <name>SegmentEditor</name>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="13"/>
         <source>Segment Editor</source>
-        <translation>分割编辑器</translation>
+        <translation type="vanished">分割编辑器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="14"/>
         <source>Segmentation</source>
-        <translation>分割</translation>
+        <translation type="vanished">分割</translation>
     </message>
 </context>
 <context>
@@ -23582,72 +23597,72 @@ Table column names : label, r, a, s, (or l, p, s), defined, selected, visible, l
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;保存时发生错误或警告。详情请查看状态图标&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="595"/>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1119"/>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1133"/>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1140"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="603"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1127"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1141"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1148"/>
         <source>Modified</source>
         <translation>已修改</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="595"/>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="889"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="603"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="897"/>
         <source>Not Modified</source>
         <translation>未修改</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="648"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="656"/>
         <source>Select a format</source>
         <translation>选择一种格式</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="674"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="682"/>
         <source>Output folder</source>
         <translation>输出文件夹</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="725"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="733"/>
         <source>Scene file was not saved because user chose not to overwrite existing file: %1.</source>
         <translation>场景文件未保存，因为用户选择不覆盖现有文件： %1。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="814"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="822"/>
         <source>Node %1 not saved, file name is empty.</source>
         <translation>节点 %1 未保存，文件名为空。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="824"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="832"/>
         <source>Node %1 was not saved because user chose not to overwrite existing file: %2.</source>
         <translation>节点 %1 未保存，因为用户选择不覆盖现有文件： %2。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="862"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="870"/>
         <source>Cannot write data file: %1.</source>
         <translation>无法写入数据文件： %1。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="867"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="875"/>
         <source>Failed to save node %1 to file %2.</source>
         <translation>节点 %1 保存到文件 %2 失败。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="916"/>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1120"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="924"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1128"/>
         <source>Scene</source>
         <translation>場景</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1432"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1440"/>
         <source>Any Data</source>
         <translation>任意数据</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1465"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1473"/>
         <source>Saving file...</source>
         <translation>保存文件...</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1466"/>
+        <location filename="Base/QTGUI/qSlicerSaveDataDialog.cxx" line="1474"/>
         <source>The file: %1 already exists. Do you want to replace it ?</source>
         <translation>文件 %1 已经存在，你想要替换它吗？</translation>
     </message>
