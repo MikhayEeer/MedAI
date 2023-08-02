@@ -408,6 +408,7 @@ class SlicerDICOMBrowser(VTKObservationMixin, qt.QWidget):
 
             def progressCallback(progressDialog, progressLabel, progressValue):
                 progressDialog.labelText = '\n' + _("Checking {what}").format(what=progressLabel)
+
                 slicer.app.processEvents()
                 progressDialog.setValue(progressValue)
                 slicer.app.processEvents()

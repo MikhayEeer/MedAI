@@ -8281,7 +8281,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="410"/>
         <source>Checking {what}</source>
-        <translation>检查{什么｝</translation>
+        <translation>检查{what}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="425"/>
@@ -8296,7 +8296,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="535"/>
         <source>Loading {what}</source>
-        <translation>加载{什么｝</translation>
+        <translation>加载{what}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="557"/>
