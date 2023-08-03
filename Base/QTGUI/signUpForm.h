@@ -3,6 +3,7 @@
 
 #pragma execution_character_set("utf-8")
 #include "qSlicerBaseQTGUIExport.h"
+#include "ui_qSlicerSignUpForm.h"
 
 #include <QDialog>
 #include <QLabel>
@@ -25,7 +26,9 @@
 #include "UserInfo.h"
 
 
-class Q_SLICER_BASE_QTGUI_EXPORT SignUpForm : public QDialog
+class Q_SLICER_BASE_QTGUI_EXPORT SignUpForm 
+    : public QDialog
+    , public Ui_SignUpForm
 {
     Q_OBJECT //
 public:
@@ -44,6 +47,7 @@ public slots:
     void afterServerSendCaptcha();
 
 private:
+    /*
     QLabel *phoneLbl;            // 
     QLabel *emailLbl;            // 
     QLabel *userNameLbl;         // 
@@ -61,7 +65,7 @@ private:
     QPushButton *signUpBtn;      // 
     QPushButton *returnBtn;      // 
     QPushButton *sendCaptchaBtn; // 
-
+*/
     QTimer *cpatchaTimer;        // 
     int limitTime;
 

@@ -318,6 +318,7 @@ set(KIT_UI_SRCS
   Resources/UI/qSlicerSettingsViewsPanel.ui
   Resources/UI/qSlicerSettingsDeveloperPanel.ui
   Resources/UI/qSlicerSettingsUserInformationPanel.ui
+  Resources/UI/qSlicerSignUpForm.ui
   Resources/UI/qSlicerWebWidget.ui
   )
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)

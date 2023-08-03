@@ -8132,7 +8132,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOM/DICOM.py" line="818"/>
         <source>Received DICOM file: {filename}</source>
-        <translation>接收到 DICOM 文件： {文件名｝</translation>
+        <translation>接收到 DICOM 文件： {filename}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOM/DICOM.py" line="881"/>
@@ -8202,12 +8202,12 @@ a = 仿射变换</translation>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="153"/>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="186"/>
         <source>{modality} image sequence</source>
-        <translation>{模式}图像序列</translation>
+        <translation>{modality}图像序列</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="167"/>
         <source>{modality} image sequence ({count} planes)</source>
-        <translation>{模式}图像序列（{数量}平面）</translation>
+        <translation>{modality}图像序列（{count}平面）</translation>
     </message>
 </context>
 <context>
@@ -8331,7 +8331,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="601"/>
         <source>Can be changed later in Application Settings / DICOM</source>
-        <translation>可稍后在应用程序设置/DICOM 中更改</translation>
+        <translation>可稍后在应用程序设置中更改/DICOM</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="628"/>
@@ -8534,7 +8534,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="129"/>
         <source>First volume is {imageScalarType1}, but second is {imageScalarType2}</source>
-        <translation>第一卷是 {图像标量类型1}，但第二卷是 {图像标量类型2}</translation>
+        <translation>第一卷是 {imageScalarType1}，但第二卷是 {imageScalarType2}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="134"/>
@@ -8544,12 +8544,12 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="187"/>
         <source>{count} files, first file: {filename}</source>
-        <translation>{count} 文件，第一个文件： {文件名｝</translation>
+        <translation>{count} 文件，第一个文件：{filename}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="261"/>
         <source>{count} files, grouped by {tag} = {value}. First file: {filename}</source>
-        <translation>按 {标签} = {数值} 分组的 {计数} 文件。第一个文件： {文件名｝</translation>
+        <translation>按  {tag} = {value} 分组的 {count} 文件。第一个文件： {filename}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="299"/>
@@ -8569,27 +8569,27 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="593"/>
         <source>Series &apos;{itemName}&apos; cannot be exported</source>
-        <translation>无法导出系列&apos;{项目名称}&apos;</translation>
+        <translation>无法导出系列&apos;{itemName}&apos;</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="610"/>
         <source>Unable to get study for series &apos;{volumeName}&apos;</source>
-        <translation>无法获取&quot;{体数据名}&quot;系列的研究报告</translation>
+        <translation>无法获取&quot;{volumeName}&quot;系列的研究报告</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="615"/>
         <source>Unable to get patient for series &apos;{volumeName}&apos;</source>
-        <translation>无法为系列&quot;{体数据名}&quot;获取患者信息</translation>
+        <translation>无法为系列&quot;{volumeName}&quot;获取患者信息</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="661"/>
         <source>Empty modality for series &apos;{volumeName}&apos;</source>
-        <translation>系列&quot;{卷名}&quot;的模式为空</translation>
+        <translation>系列&quot;{volumeName}&quot;的模式为空</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="675"/>
         <source>A series already exists in the database by SeriesInstanceUID {seriesInstanceUID}.</source>
-        <translation>数据库中已经存在一个系列，该系列的名称为 系列实例 UID {系列实例 UID}。</translation>
+        <translation>数据库中已经存在一个系列，该系列的名称为 系列实例 UID{seriesInstanceUID}。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="687"/>
@@ -8667,22 +8667,22 @@ a = 仿射变换</translation>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="167"/>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="173"/>
         <source>Series &apos;{itemName}&apos; cannot be exported as volume sequence</source>
-        <translation>系列&quot;{项目名称}&quot;无法作为卷序列导出</translation>
+        <translation>系列&quot;{itemName}&quot;无法作为卷序列导出</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="180"/>
         <source>Unable to get study for series &apos;{volumeName}&apos;</source>
-        <translation>无法获取&quot;{卷名}&quot;系列的研究报告</translation>
+        <translation>无法获取&quot;{volumeName}&quot;系列的研究报告</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="185"/>
         <source>Unable to get patient for series &apos;{volumeName}&apos;</source>
-        <translation>无法为系列&quot;{卷名}&quot;获取患者信息</translation>
+        <translation>无法为系列&quot;{volumeName}&quot;获取患者信息</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="214"/>
         <source>Empty modality for series &apos;{volumeName}&apos;</source>
-        <translation>系列&quot;{卷名}&quot;的模式为空</translation>
+        <translation>系列&quot;{volumeName}&quot;的模式为空</translation>
     </message>
 </context>
 <context>

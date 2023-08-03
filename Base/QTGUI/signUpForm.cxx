@@ -176,9 +176,9 @@ SignUpForm::SignUpForm(QDialog *parent): QDialog(parent)
 
     void SignUpForm::initUI(){
 
-        this->setWindowTitle(tr("Registration Form"));
+        
 
-
+        /*this->setWindowTitle(tr("Registration Form"));
         phoneLbl = new QLabel(this);
         phoneLbl->setText(tr("Phone Number:"));
 
@@ -289,5 +289,10 @@ SignUpForm::SignUpForm(QDialog *parent): QDialog(parent)
         VLayout->addLayout(HLayout5);
         VLayout->addLayout(HLayout6);
         VLayout->addLayout(HLayout7);
-        this->setLayout(VLayout);
+        this->setLayout(VLayout);*/
+        setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+        setWindowFlag(Qt::WindowCloseButtonHint, false);
+        setWindowFlag(Qt::WindowContextHelpButtonHint, false);
+
+        this->setupUi(this);
     }
