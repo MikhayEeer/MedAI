@@ -14,7 +14,6 @@ SignUpForm::SignUpForm(QDialog *parent): QDialog(parent)
         prePhone = "";
         preEmail = "";
 
-
         cpatchaTimer->setInterval(1000);
         connect(cpatchaTimer, SIGNAL(timeout()), this, SLOT(handleTimeout()));
         manager = new QNetworkAccessManager(this);
@@ -176,120 +175,6 @@ SignUpForm::SignUpForm(QDialog *parent): QDialog(parent)
 
     void SignUpForm::initUI(){
 
-        
-
-        /*this->setWindowTitle(tr("Registration Form"));
-        phoneLbl = new QLabel(this);
-        phoneLbl->setText(tr("Phone Number:"));
-
-        phoneLEd = new QLineEdit(this);
-        phoneLEd->setPlaceholderText(tr("Please enter phone number"));
-        phoneLEd->setMaxLength(11);
-
-
-        emailLbl = new QLabel(this);
-        emailLbl->setText(tr("Email Address:"));  //
-
-        emailLEd = new QLineEdit(this);
-        emailLEd->setPlaceholderText(tr("Please enter email"));
-
-
-        userNameLbl = new QLabel(this);
-        userNameLbl->setText(tr("User Name:"));  //
-
-        userNameLEd = new QLineEdit(this);
-        userNameLEd->setPlaceholderText(tr("Please enter user name"));//
-
-
-        pwdLbl = new QLabel(this);
-        pwdLbl->setText(tr("User Password:"));
-
-        pwdLEd = new QLineEdit(this);
-        pwdLEd->setPlaceholderText(tr("Please enter your password"));
-        pwdLEd->setEchoMode(QLineEdit::Password);//
-
-        
-        pwd2Lbl = new QLabel(this);
-        pwd2Lbl->setText(tr("Confirm Password:"));
-
-        pwd2LEd = new QLineEdit(this);
-        pwd2LEd->setPlaceholderText(tr("Please enter the password again"));
-        pwd2LEd->setEchoMode(QLineEdit::Password);//
-
-
-        captchaLbl = new QLabel(this);
-        captchaLbl->setText(tr("Verification Code:"));
-
-        captchaLEd = new QLineEdit(this);
-        captchaLEd->setPlaceholderText(tr("Please fill in the verification code"));
-        sendCaptchaBtn = new QPushButton(this);
-        sendCaptchaBtn->setText(tr("Send the verification code"));
-
-
-        signUpBtn = new QPushButton(this);
-        signUpBtn->setText(tr("Register"));
-
-        returnBtn = new QPushButton(this);
-        returnBtn->setText(tr("Cancel"));
-
-        this->setFixedSize(440,285);
-
-        setWindowFlag(Qt::WindowCloseButtonHint, false);
-
-        setWindowFlag(Qt::WindowContextHelpButtonHint, false);
-
-        QHBoxLayout *HLayout1 = new QHBoxLayout;
-        HLayout1->addStretch(1);
-        HLayout1->addWidget(phoneLbl,1);
-        HLayout1->addWidget(phoneLEd,5);
-        HLayout1->addStretch(1);
-
-        QHBoxLayout *HLayout2 = new QHBoxLayout;
-        HLayout2->addStretch(1);
-        HLayout2->addWidget(emailLbl,1);
-        HLayout2->addWidget(emailLEd,5);
-        HLayout2->addStretch(1);
-
-        QHBoxLayout *HLayout3 = new QHBoxLayout;
-        HLayout3->addStretch(1);
-        HLayout3->addWidget(userNameLbl,1);
-        HLayout3->addWidget(userNameLEd,5);
-        HLayout3->addStretch(1);
-
-        QHBoxLayout *HLayout4 = new QHBoxLayout;
-        HLayout4->addStretch(1);
-        HLayout4->addWidget(pwdLbl,1);
-        HLayout4->addWidget(pwdLEd,5);
-        HLayout4->addStretch(1);
-
-        QHBoxLayout *HLayout5 = new QHBoxLayout;
-        HLayout5->addStretch(1);
-        HLayout5->addWidget(pwd2Lbl,1);
-        HLayout5->addWidget(pwd2LEd,5);
-        HLayout5->addStretch(1);
-
-        QHBoxLayout *HLayout6 = new QHBoxLayout;
-        HLayout6->addStretch(1);
-        HLayout6->addWidget(captchaLbl,1);
-        HLayout6->addWidget(captchaLEd,3);
-        HLayout6->addWidget(sendCaptchaBtn,2);
-        HLayout6->addStretch(1);
-
-        QHBoxLayout *HLayout7 = new QHBoxLayout;
-        HLayout7->addStretch(1);
-        HLayout7->addWidget(signUpBtn,1);
-        HLayout7->addWidget(returnBtn,1);
-        HLayout7->addStretch(1);
-
-        QVBoxLayout *VLayout = new QVBoxLayout(this);
-        VLayout->addLayout(HLayout1);
-        VLayout->addLayout(HLayout2);
-        VLayout->addLayout(HLayout3);
-        VLayout->addLayout(HLayout4);
-        VLayout->addLayout(HLayout5);
-        VLayout->addLayout(HLayout6);
-        VLayout->addLayout(HLayout7);
-        this->setLayout(VLayout);*/
         setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
         setWindowFlag(Qt::WindowCloseButtonHint, false);
         setWindowFlag(Qt::WindowContextHelpButtonHint, false);

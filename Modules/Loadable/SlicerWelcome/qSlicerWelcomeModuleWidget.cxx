@@ -121,7 +121,7 @@ void qSlicerWelcomeModuleWidgetPrivate::setupUi(qSlicerWidget* widget)
   qSlicerCoreApplication* app = qSlicerCoreApplication::application();
   foreach(QWidget* widget, QWidgetList()
           << this->FeedbackCollapsibleWidget
-          << this->WelcomeAndAboutCollapsibleWidget
+          << this->TranslateDocWidget
           << this->OtherUsefulHintsCollapsibleWidget
           )
     {

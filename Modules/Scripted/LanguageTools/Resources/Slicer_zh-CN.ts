@@ -8269,7 +8269,7 @@ a = 仿射变换</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="242"/>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="427"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="428"/>
         <source>DICOM</source>
         <translation>DICOM</translation>
     </message>
@@ -8284,72 +8284,72 @@ a = 仿射变换</translation>
         <translation>检查{what}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="425"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="426"/>
         <source>Warning: {messages}</source>
         <translation>警告： {messages}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="426"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="427"/>
         <source>See python console for error message.</source>
         <translation>有关错误信息，请参见 python 控制台。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="535"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="536"/>
         <source>Loading {what}</source>
         <translation>加载{what}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="557"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="558"/>
         <source>DICOM loading</source>
         <translation>DICOM 加载</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="568"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="569"/>
         <source>Warning in DICOM plugin {load_type} when examining loadable {name}: {message}</source>
         <translation>检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {信息｝</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="573"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="574"/>
         <source>Warnings detected during load.  Examine data in Advanced mode for details.  Load anyway?</source>
         <translation>加载过程中检测到警告。 请在 &quot;高级 &quot;模式下检查数据，了解详情。 无论如何都要加载？</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="585"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="586"/>
         <source>Referenced datasets found</source>
         <translation>找到的参考数据集</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="589"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="590"/>
         <source>The loaded DICOM objects contain references to other datasets you did not select for loading. Please select Yes if you would like to load the following referenced datasets, No if you only want to load the originally selected series, or Cancel to abort loading.</source>
         <translation>加载的 DICOM 对象包含您未选择加载的其他数据集的引用。如果您想加载以下引用的数据集，请选择 &quot;是&quot;；如果您只想加载最初选择的系列，请选择 &quot;否&quot;；如果想放弃加载，请选择 &quot;取消&quot;。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="599"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="600"/>
         <source>Remember choice and stop asking</source>
         <translation>记住我的选择并不再询问</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="601"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="602"/>
         <source>Can be changed later in Application Settings / DICOM</source>
         <translation>可稍后在应用程序设置中更改/DICOM</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="628"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="629"/>
         <source>References</source>
         <translation>引用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="661"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="662"/>
         <source>DICOM Data</source>
         <translation>DICOM数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="661"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="662"/>
         <source>Reader</source>
         <translation>读者</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="661"/>
+        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="662"/>
         <source>Warnings</source>
         <translation>警告</translation>
     </message>
@@ -9098,48 +9098,48 @@ Developed of this module was partially funded by CZI EOSS grant.
 <context>
     <name>LoginForm</name>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="29"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="33"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="62"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="81"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="30"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="34"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="63"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="82"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="29"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="30"/>
         <source>Some content is empty, please fill in all the content</source>
         <translation>部分内容为空，请填写</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="33"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="34"/>
         <source>The length of the password cannot be less than 6 charcters</source>
         <translation>密码长度不能少于6个字符</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="37"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="38"/>
         <source>Please wait</source>
         <translation>请稍后</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="63"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="64"/>
         <source>Your account balance is zero 
                                  Do you want to top up?</source>
         <translation>您的账户余额是0 
                                  需要充值吗?</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="82"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="83"/>
         <source>wrong password</source>
         <translation>密码错误</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="184"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="92"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="202"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="93"/>
         <source>Log in</source>
         <translation>登录</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="14"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="20"/>
         <source>Login Form</source>
         <translation>欢迎来到医疗AI三维重建</translation>
     </message>
@@ -9156,37 +9156,37 @@ Developed of this module was partially funded by CZI EOSS grant.
         <translation type="vanished">密码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="67"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="79"/>
         <source>Password:</source>
         <translation>密码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="108"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="120"/>
         <source>Please enter your password</source>
         <translation>请输入密码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="127"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="145"/>
         <source>User ID:</source>
         <translation>账号：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="159"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="177"/>
         <source>Please enter your phone number</source>
         <translation>请输入电话号码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="216"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="234"/>
         <source>Sign up</source>
         <translation>注册</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="245"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="263"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="248"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="266"/>
         <source>Esc</source>
         <translation>退出</translation>
     </message>
@@ -11001,143 +11001,183 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
 <context>
     <name>SignUpForm</name>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="38"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="42"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="47"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="52"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="61"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="65"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="102"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="107"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="154"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="157"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="37"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="41"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="46"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="51"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="60"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="64"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="101"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="106"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="153"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="156"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="38"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="37"/>
         <source>Some content is empty, please check whether it has been filled!</source>
         <translation>某些内容为空，请检查是否已填充！</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="42"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="41"/>
         <source>The length of the password cannot be less than 6 characters</source>
         <translation>密码长度不能少于 6 个字符</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="47"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="46"/>
         <source>The two passwords are not the same</source>
         <translation>两个密码不一样</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="52"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="51"/>
         <source>The length of the user name cannot exceed 8 characters</source>
         <translation>用户名长度不能超过 8 个字符</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="61"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="60"/>
         <source>Please enter the verification code</source>
         <translation>请输入验证码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="65"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="64"/>
         <source>Phone number/email has been modified,please obtain the verification code again</source>
         <translation>电话号码/电子邮件已修改，请重新获取验证码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="102"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="101"/>
         <source>Registration success!</source>
         <translation>注册成功！</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="149"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="174"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="148"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="173"/>
         <source>(%1s)</source>
         <translation>(%1s)</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="154"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="153"/>
         <source>The verification code has been sent, please pay attention to check</source>
         <translation>验证码已发送，请注意检查</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="168"/>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="226"/>
+        <location filename="Base/QTGUI/signUpForm.cxx" line="167"/>
         <source>Send the verification code</source>
         <translation>发送验证码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="179"/>
         <source>Registration Form</source>
-        <translation>注册表</translation>
+        <translation type="vanished">注册表</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="183"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="390"/>
         <source>Phone Number:</source>
         <translation>手机号：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="186"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="211"/>
         <source>Please enter phone number</source>
         <translation>请输入电话号码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="191"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="20"/>
+        <source>Dialog</source>
+        <translation>对话框</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="240"/>
+        <source>please enter email address</source>
+        <translation>请输入邮箱地址</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="269"/>
+        <source>please enter user name</source>
+        <translation>请输入用户名</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="298"/>
+        <source>please enter password</source>
+        <translation>请输入密码</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="327"/>
+        <source>please confirm password</source>
+        <translation>请确认密码</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="358"/>
+        <source>please fill in verification code</source>
+        <translation>请填充验证码</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="371"/>
+        <source>Send Code</source>
+        <translation>发送验证码</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="419"/>
         <source>Email Address:</source>
         <translation>电子邮件地址：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="194"/>
-        <source>Please enter email</source>
-        <translation>请输入电子邮件</translation>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="477"/>
+        <source>Password:</source>
+        <translation>密码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="198"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="506"/>
+        <source>Confirm:</source>
+        <translation>确认密码：</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="535"/>
+        <source>Verify Code:</source>
+        <translation>验证码：</translation>
+    </message>
+    <message>
+        <source>Please enter email</source>
+        <translation type="vanished">请输入电子邮件</translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="448"/>
         <source>User Name:</source>
         <translation>用户名：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="201"/>
         <source>Please enter user name</source>
-        <translation>请输入用户名</translation>
+        <translation type="vanished">请输入用户名</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="205"/>
         <source>User Password:</source>
-        <translation>密码：</translation>
+        <translation type="vanished">密码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="208"/>
         <source>Please enter your password</source>
-        <translation>请输入密码</translation>
+        <translation type="vanished">请输入密码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="213"/>
         <source>Confirm Password:</source>
-        <translation>确认密码：</translation>
+        <translation type="vanished">确认密码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="216"/>
         <source>Please enter the password again</source>
-        <translation>请再次输入密码</translation>
+        <translation type="vanished">请再次输入密码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="221"/>
         <source>Verification Code:</source>
-        <translation>验证码：</translation>
+        <translation type="vanished">验证码：</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="224"/>
         <source>Please fill in the verification code</source>
-        <translation>请填充验证码</translation>
+        <translation type="vanished">请填充验证码</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="230"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="88"/>
         <source>Register</source>
         <translation>注册</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/signUpForm.cxx" line="233"/>
+        <location filename="Base/QTGUI/Resources/UI/qSlicerSignUpForm.ui" line="117"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -29014,7 +29054,7 @@ This should only used by advanced users who understand the consequences of chang
     </message>
     <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="59"/>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="469"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="480"/>
         <source>Raise the &quot;Extensions Manager&quot; wizard that allows to find, download and install Slicer extensions.&lt;br&gt;&lt;br&gt;An extension is a delivery package bundling together one or more Slicer modules.&lt;br&gt;&lt;br&gt;After installing an extension, the associated modules will be available in the module selector.</source>
         <translation>启动 &quot;扩展管理器&quot; 向导允许查找、下载和安装Slicer扩展。&lt;br&gt;&lt;br&gt;扩展是将一个或多个Slicer模块捆绑在一起的插件包。&lt;br&gt;&lt;br&gt;安装扩展后，相关模块将可在模块选择器中使用。</translation>
     </message>
@@ -29072,9 +29112,8 @@ p, li { white-space: pre-wrap; }
 &lt;p&gt;上面有着一些常用功能&lt;/b&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="240"/>
         <source>About</source>
-        <translation>关于我们</translation>
+        <translation type="vanished">关于我们</translation>
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;3D Slicer&lt;/b&gt; is a free open source software platform for medical image processing and 3D visualization of image data. This module contains some basic information and useful links to get you started using Slicer. For more information, please visit our website &lt;a href=&quot;https://www.slicer.org&quot;&gt;https://www.slicer.org&lt;/a&gt;.&lt;/p&gt;
@@ -29083,7 +29122,7 @@ p, li { white-space: pre-wrap; }
 &lt;p&gt;&lt;b&gt;3D Slicer&lt;/b&gt; is distributed under a BSD-style license; for details about the contribution and software license agreement, please see the &lt;a href=&quot;https://github.com/Slicer/Slicer/blob/main/License.txt&quot;&gt;3D Slicer Software License Agreement&lt;/a&gt;. This software has been designed for research purposes only and has not been reviewed or approved by the Food and Drug Administration, or by any other agency.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="291"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="302"/>
         <source>Documentation &amp;&amp; Tutorials</source>
         <translation>文档及教程</translation>
     </message>
@@ -29129,17 +29168,45 @@ p, li { white-space: pre-wrap; }
         <translation>加载语言包</translation>
     </message>
     <message>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="240"/>
+        <source>Translate Document</source>
+        <translation>翻译教程</translation>
+    </message>
+    <message>
         <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="273"/>
+        <source>**Translate  Tutorial :**  
+ Method 1: Click the &quot;LoadLanguagePak&quot; button on the
+homepage to jump to the language pack tool interface.
+ Method 2: Select the
+language tool under Utilities from the drop-down menu.  
+ After entering the
+language tool, there are translation files in the default path, just click the
+update button, and then restart the software to load the translated interface.
+
+</source>
+        <translation>**翻译教程**
+方式1：点击首页的“加载语言包”跳转到语言工具界面；
+方式2：通过下拉菜单选择实用工具下的语言工具进入语言工具界面；
+进入界面后，默认设置了翻译文件路径，只需要点击更新按钮，接着点击重启按钮即可运用翻译。
+
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="285"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3D Slicer&lt;/span&gt; is a free open source software platform for medical image processing and 3D visualization of image data. This module contains some basic information and useful links to get you started using Slicer. For more information, please visit our website &lt;a href=&quot;https://www.slicer.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://www.slicer.org&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3D Slicer&lt;/span&gt; is distributed under a BSD-style license; for details about the contribution and software license agreement, please see the &lt;a href=&quot;https://github.com/Slicer/Slicer/blob/main/License.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;3D Slicer Software License Agreement&lt;/span&gt;&lt;/a&gt;. This software has been designed for research purposes only and has not been reviewed or approved by the Food and Drug Administration, or by any other agency.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+&lt;p style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Translate  Tutorial :&lt;/span&gt;  &lt;br /&gt; Method 1: Click the &amp;quot;LoadLanguagePak&amp;quot; button on the homepage to jump to the language pack tool interface.&lt;br /&gt; Method 2: Select the language tool under Utilities from the drop-down menu.  &lt;br /&gt; After entering the language tool, there are translation files in the default path, just click the update button, and then restart the software to load the translated interface.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;翻译指南 :&lt;/span&gt;  &lt;br /&gt; 方式1：点击首页的“加载语言包”跳转到语言工具界面；&lt;br /&gt;方式2：通过下拉菜单选择实用工具下的语言工具进入语言工具界面；&lt;br /&gt;进入界面后，默认设置了翻译文件路径，只需要点击更新按钮，接着点击重启按钮即可运用翻译。
+&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="324"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="335"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -29164,49 +29231,49 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="360"/>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="415"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="371"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="426"/>
         <source>Click the button to check for updates now. Note that anonymized usage statistics will be recorded.</source>
         <translation>单击按钮立即检查更新。请注意，将记录匿名使用统计数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="363"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="374"/>
         <source>Updates</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="387"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="398"/>
         <source>Check for updates: </source>
         <translation>检查更新： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="399"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="410"/>
         <source>Periodically check for updates. Note that anonymized usage statistics will be recorded. If the box appears as partially checked it means that automatic updates are only checked for the application or for extensions, but not both - click the checkbox to enable/disable all automatic update checks.</source>
         <translation>定期检查更新。请注意，将记录匿名使用统计数据。如果复选框显示为 &quot;部分选中&quot;，则表示只检查应用程序或扩展的自动更新，而不是两者都检查--单击复选框可启用/禁用所有自动更新检查。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="402"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="413"/>
         <source>Automatically</source>
         <translation>自动</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="418"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="429"/>
         <source>Check now</source>
         <translation>现在检查</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="427"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="438"/>
         <source>Application update: </source>
         <translation>应用更新： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="446"/>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="472"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="457"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="483"/>
         <source>No information is available.</source>
         <translation>没有相关信息。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="459"/>
+        <location filename="Modules/Loadable/SlicerWelcome/Resources/UI/qSlicerWelcomeModuleWidget.ui" line="470"/>
         <source>Extension updates: </source>
         <translation>扩展更新： </translation>
     </message>

@@ -47,25 +47,7 @@ public slots:
     void afterServerSendCaptcha();
 
 private:
-    /*
-    QLabel *phoneLbl;            // 
-    QLabel *emailLbl;            // 
-    QLabel *userNameLbl;         // 
-    QLabel *pwdLbl;              // 
-    QLabel *pwd2Lbl;             // 
-    QLabel *captchaLbl;          // 
 
-    QLineEdit *phoneLEd;         // 
-    QLineEdit *emailLEd;         // 
-    QLineEdit *userNameLEd;      // 
-    QLineEdit *pwdLEd;           // 
-    QLineEdit *pwd2LEd;          // 
-    QLineEdit *captchaLEd;       // 
-
-    QPushButton *signUpBtn;      // 
-    QPushButton *returnBtn;      // 
-    QPushButton *sendCaptchaBtn; // 
-*/
     QTimer *cpatchaTimer;        // 
     int limitTime;
 
