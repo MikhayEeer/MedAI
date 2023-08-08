@@ -8306,7 +8306,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="569"/>
         <source>Warning in DICOM plugin {load_type} when examining loadable {name}: {message}</source>
-        <translation>检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {信息｝</translation>
+        <translation type="unfinished">检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {message}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="574"/>

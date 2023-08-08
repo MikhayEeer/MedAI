@@ -346,7 +346,7 @@ Fill segment in a selected region based on source volume intensity range<br>.
 
     roiNode = self.scriptedEffect.parameterSetNode().GetNodeReference(self.ROI_NODE_REFERENCE_ROLE)
     if roiNode is not None:
-      clippedSourceImageData = SegmentEditorEffect.cropOrientedImage(sourceImageData, roiNode)
+      clippedSourceImageData = SegmentEditorLocalThresholdEffect.cropOrientedImage(sourceImageData, roiNode)
     else:
       clippedSourceImageData = sourceImageData
 
