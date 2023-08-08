@@ -14,7 +14,7 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Logical operators'
+        scriptedEffect.name = '逻辑运算'
         self.operationsRequireModifierSegment = [LOGICAL_COPY, LOGICAL_UNION, LOGICAL_SUBTRACT, LOGICAL_INTERSECT]
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 

@@ -114,6 +114,8 @@
 // CTK includes
 #include <ctkCollapsibleButton.h>
 
+#pragma execution_character_set("utf-8")
+
 static const int BINARY_LABELMAP_SCALAR_TYPE = VTK_UNSIGNED_CHAR;
 // static const unsigned char BINARY_LABELMAP_VOXEL_FULL = 1; // unused
 static const unsigned char BINARY_LABELMAP_VOXEL_EMPTY = 0;
@@ -325,6 +327,21 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
   this->SegmentationHistory = vtkSmartPointer<vtkSegmentationHistory>::New();
 
   // Define default effect order
+  
+  //this->EffectNameOrder
+    // Thresholding is the the starting point for most segmentations
+    // (it can often create usable segmentation by itself, or used to define intensity range for painting)
+    // These strings are effect names that must not be translated.
+    //<< /*no tr*/ "Threshold" << "Local threshold"
+    // Local painting
+    //<< /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
+    // Global processing
+    //<< /*no tr*/ "Margin" << "Hollow" << "Smoothing"
+    // Global splitting, merging
+    //<< /*no tr*/ "Scissors" << "Islands" << "Logical operators"
+    // Operating on volumes
+    //<< /*no tr*/ "Mask volume"
+    //<< "Engrave" << "Fast marching" << "Flood filling" << "Surface cut" << "Watershed";
   this->EffectNameOrder
     // Thresholding is the the starting point for most segmentations
     // (it can often create usable segmentation by itself, or used to define intensity range for painting)
@@ -335,7 +352,7 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // Global processing
     << /*no tr*/ "Margin" << "Hollow" << "Smoothing"
     // Global splitting, merging
-    << /*no tr*/ "Scissors" << "Islands" << "Logical operators"
+    << /*no tr*/ "Scissors" << "Islands" << "逻辑运算"
     // Operating on volumes
     << /*no tr*/ "Mask volume"
     << "Engrave" << "Fast marching" << "Flood filling" << "Surface cut" << "Watershed";
