@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -346,16 +346,17 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // Thresholding is the the starting point for most segmentations
     // (it can often create usable segmentation by itself, or used to define intensity range for painting)
     // These strings are effect names that must not be translated.
-    << /*no tr*/ "Threshold" << "Local threshold"
+    << /*no tr*/ "阈值分割" << "Local threshold"
     // Local painting
     << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
     // Global processing
-    << /*no tr*/ "Margin" << "Hollow" << "Smoothing"
+    << /*no tr*/ "Margin" << "Hollow" << "平滑化"
     // Global splitting, merging
     << /*no tr*/ "Scissors" << "Islands" << "逻辑运算"
     // Operating on volumes
     << /*no tr*/ "Mask volume"
-    << "Engrave" << "Fast marching" << "Flood filling" << "Surface cut" << "Watershed";
+    << "Engrave" << "Fast marching" << "Flood filling" 
+    << "Surface cut" << "Watershed" << "Wrap Solidify";
   this->UnorderedEffectsVisible = true;
   this->DefaultTerminologyEntrySettingsKey = "Segmentations/DefaultTerminologyEntry";
   this->EffectColumnCount = 2;

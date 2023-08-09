@@ -22,8 +22,9 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
 
     def __init__(self, scriptedEffect):
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
-        scriptedEffect.name = _("Threshold")
-
+        scriptedEffect.name = _("阈值分割")#Threshold
+        #Neurosurgical***SelfTest.py  :  segmentEditorWidget.setActiveEffectByName("Threshold")
+        #SegmentationsModuleTest2.py  :  self().editor.effectByName("Threshold")
         self.segment2DFillOpacity = None
         self.segment2DOutlineOpacity = None
         self.previewedSegmentID = None
@@ -74,11 +75,13 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return _("""<html>Fill segment based on source volume intensity range<br>. Options:<p>
+        return _("""<html>基于元数据强度范围来填充分割<br>。 选项：<p>
 <ul style="margin: 0">
-<li><b>Use for masking:</b> set the selected intensity range as <dfn>Editable intensity range</dfn> and switch to Paint effect.</li>
+<li><b>用于蒙版：</b>将选定的强度范围设置为<dfn>可编辑的强度范围</dfn> and switch to Paint effect.</li>
 <li><b>Apply:</b> set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.</li>
 </ul><p></html>""")
+    #Fill segment based on source volume intensity range<br>. Options:<p>
+    #Use fot masking:</b> set the selected intensity range as <dfn>Editable intensity range</dfn>
 
     def activate(self):
         self.setCurrentSegmentTransparent()
@@ -147,7 +150,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.previewedSegmentID = None
 
     def setupOptionsFrame(self):
-        self.thresholdSliderLabel = qt.QLabel(_("Threshold Range:"))
+        self.thresholdSliderLabel = qt.QLabel(_("阈值范围："))#Threshold Range:
         self.thresholdSliderLabel.setToolTip(_("Set the range of the background values that should be labeled."))
         self.scriptedEffect.addOptionsWidget(self.thresholdSliderLabel)
 

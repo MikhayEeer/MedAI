@@ -15,7 +15,9 @@ class SegmentEditorSmoothingEffect(AbstractScriptedSegmentEditorPaintEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Smoothing'
+        scriptedEffect.name = '平滑化'#Smoothing
+        #NeurosurgicalPlanningTutorialMarkupsSelfTest.py 
+        #371,51: segmentEditorWidget.setActiveEffectByName("Smoothing")
         AbstractScriptedSegmentEditorPaintEffect.__init__(self, scriptedEffect)
 
     def clone(self):
@@ -31,7 +33,7 @@ class SegmentEditorSmoothingEffect(AbstractScriptedSegmentEditorPaintEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Make segment boundaries smoother<br> by removing extrusions and filling small holes. The effect can be either applied locally
+        return """<html>使得分割边界更加平滑<br> by removing extrusions and filling small holes. The effect can be either applied locally
 (by painting in viewers) or to the whole segment (by clicking Apply button). Available methods:<p>
 <ul style="margin: 0">
 <li><b>Median:</b> removes small details while keeps smooth contours mostly unchanged. Applied to selected segment only.</li>
@@ -41,6 +43,7 @@ class SegmentEditorSmoothingEffect(AbstractScriptedSegmentEditorPaintEffect):
 <li><b>Joint smoothing:</b> smoothes multiple segments at once, preserving watertight interface between them. Masking settings are bypassed.
 If segments overlap, segment higher in the segments table will have priority. <b>Applied to all visible segments.</b></li>
 </ul><p></html>"""
+        #Make segment boundaries smoother
 
     def setupOptionsFrame(self):
 

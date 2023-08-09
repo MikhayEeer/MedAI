@@ -1849,7 +1849,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedEverywhere)
             self.showStatusMessage(f'Smoothing {segmentName}')
             self.segmentEditorNode.SetSelectedSegmentID(_segID)
-            self.segmentEditorWidget.setActiveEffectByName("Smoothing")
+            self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
             effect = self.segmentEditorWidget.activeEffect()
             effect.setParameter("SmoothingMethod","GAUSSIAN")
             effect.setParameter("GaussianStandardDeviationMm","2")
@@ -2088,7 +2088,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedEverywhere)
                 self.showStatusMessage(f'Smoothing {_outputName}')
                 self.segmentEditorNode.SetSelectedSegmentID(_segID)
-                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
+                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","GAUSSIAN")
                 effect.setParameter("GaussianStandardDeviationMm","2")
@@ -2213,7 +2213,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             for i, segmentId in enumerate(segmentIds):
                 self.showStatusMessage(f'Filling holes ({i+1}/{len(segmentIds)})...')
                 self.segmentEditorNode.SetSelectedSegmentID(segmentId)
-                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
+                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","MORPHOLOGICAL_CLOSING")
                 effect.setParameter("KernelSizeMm","12")
@@ -2242,7 +2242,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             for i, segmentId in enumerate(segmentIds):
                 self.showStatusMessage(f'Smoothing ({i+1}/{len(segmentIds)})...')
                 self.segmentEditorNode.SetSelectedSegmentID(segmentId)
-                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
+                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","GAUSSIAN")
                 effect.setParameter("GaussianStandardDeviationMm","2")
@@ -2269,7 +2269,11 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             # Install PyTorch
             if not hasattr(slicer.modules, 'pytorchutils'):
                 slicer.util.messageBox("AI segmentation requires the PyTorchUtils module in the PyTorch extension. Install Pytorch and restart Slicer.")
+                print("\nMikhay: LungCT Seg.py line 2272 hint-> hasattr(slicer.modules, 'pytorchutils')== false,"
+                      +"please repair!\n")
                 return
+            print("\nMikhay: LungCT Seg.py line 2272 hint-> hasattr(slicer.modules, 'pytorchutils')== true!\n"
+                   +"        This program can find slicer modules : pytorchutils!\n")
             import PyTorchUtils
             torchLogic = PyTorchUtils.PyTorchUtilsLogic()
             if not torchLogic.torchInstalled():
@@ -2715,7 +2719,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 
                 self.showStatusMessage(f'Filling holes in airways ...')
                 self.segmentEditorNode.SetSelectedSegmentID("airways")
-                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
+                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","MORPHOLOGICAL_CLOSING")
                 effect.setParameter("KernelSizeMm","3")
@@ -2798,7 +2802,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedInsideSingleSegment)
 
                 self.showStatusMessage('Creating vessel mask with threshold effect ...')
-                self.segmentEditorWidget.setActiveEffectByName("Threshold")
+                self.segmentEditorWidget.setActiveEffectByName("阈值分割")#Threshold
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("AutoThresholdMethod","OTSU")
                 effect.setParameter("AutoThresholdMode","SET_LOWER_MAX")
@@ -2811,7 +2815,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
 
                 self.showStatusMessage(f'Filling holes in vessel mask ...')
                 self.segmentEditorNode.SetSelectedSegmentID("vesselmask")
-                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
+                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","MORPHOLOGICAL_CLOSING")
                 effect.setParameter("KernelSizeMm","3")

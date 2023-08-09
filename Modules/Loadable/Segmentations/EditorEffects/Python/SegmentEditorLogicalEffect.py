@@ -14,7 +14,7 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = '逻辑运算'
+        scriptedEffect.name = '逻辑运算'#Logical operators
         self.operationsRequireModifierSegment = [LOGICAL_COPY, LOGICAL_UNION, LOGICAL_SUBTRACT, LOGICAL_INTERSECT]
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -31,7 +31,7 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Apply logical operators or combine segments<br>. Available operations:<p>
+        return """<html>应用逻辑运算或组合分割<br>。 Available operations:<p>
 <ul style="margin: 0">
 <li><b>Copy:</b> replace the selected segment by the modifier segment.</li>
 <li><b>Add:</b> add modifier segment to current segment.</li>
@@ -42,14 +42,14 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
 <li><b>Fill:</b> completely fills selected segment.</li>
 </ul><p>
 <b>Selected segment:</b> segment selected in the segment list - above. <b>Modifier segment:</b> segment chosen in segment list in effect options - below.
-<p></html>"""
+<p></html>"""#Apply logical operators or combine segments
 
     def setupOptionsFrame(self):
 
         self.methodSelectorComboBox = qt.QComboBox()
-        self.methodSelectorComboBox.addItem("Copy", LOGICAL_COPY)
-        self.methodSelectorComboBox.addItem("Add", LOGICAL_UNION)
-        self.methodSelectorComboBox.addItem("Subtract", LOGICAL_SUBTRACT)
+        self.methodSelectorComboBox.addItem("复制", LOGICAL_COPY)#Copy
+        self.methodSelectorComboBox.addItem("添加", LOGICAL_UNION)#Add
+        self.methodSelectorComboBox.addItem("减去", LOGICAL_SUBTRACT)#Subtract
         self.methodSelectorComboBox.addItem("Intersect", LOGICAL_INTERSECT)
         self.methodSelectorComboBox.addItem("Invert", LOGICAL_INVERT)
         self.methodSelectorComboBox.addItem("Clear", LOGICAL_CLEAR)
