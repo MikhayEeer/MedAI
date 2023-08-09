@@ -28,6 +28,7 @@ set(SegmentEditorEffects_PYTHON_SCRIPTS
   SegmentEditorWatershedEffect
   SegmentEditorSplitVolumeEffect
   SegmentEditorSurfaceCutEffect
+  SegmentEditorWrapSolidifyEffect
   )
 
 set(SegmentEditorEffects_PYTHON_RESOURCES
@@ -49,6 +50,9 @@ set(SegmentEditorEffects_PYTHON_RESOURCES
   Resources/Icons/Watershed.png
   Resources/Icons/SplitVolume.png
   Resources/Icons/SurfaceCut.png
+  Resources/Icons/WrapSolidify.png
+
+  Resources/UI/WrapSolidify.ui
   )
 
 ctkMacroCompilePythonScript(

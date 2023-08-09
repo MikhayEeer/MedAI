@@ -23,6 +23,7 @@ from .SegmentEditorLocalThresholdEffect import *
 from .SegmentEditorWatershedEffect import *
 from .SegmentEditorSplitVolumeEffect import *
 from .SegmentEditorSurfaceCutEffect import *
+from .SegmentEditorWrapSolidifyEffect import *
 
 from SegmentEditorEffects import *
 
@@ -47,7 +48,8 @@ editorEffectNames = [
   "SegmentEditorLocalThresholdEffect",
   "SegmentEditorWatershedEffect",
   "SegmentEditorSplitVolumeEffect",
-  "SegmentEditorSurfaceCutEffect"
+  "SegmentEditorSurfaceCutEffect",
+  "SegmentEditorWrapSolidifyEffect"
   ]
 
 def registerEffects():
