@@ -2762,14 +2762,14 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
         self.maskedVolume = None
         if self.createVessels:
             self.increment_counter('counter_ve')
-            if not self.segmentEditorWidget.effectByName("Wrap Solidify"):
+            if not self.segmentEditorWidget.effectByName("实心包裹"):#Wrap Solidify
                 slicer.util.errorDisplay("Please install 'Wrap Solidify' extension using Extension Manager.")
             else:
                 # Create thoracic cavity from lung segmentations
                 self.showStatusMessage('Creating thoracic cavity segment with wrap solidify effect ...')
                 self.segmentEditorNode.SetSelectedSegmentID(thoracicCavityID)
                 
-                self.segmentEditorWidget.setActiveEffectByName("Wrap Solidify")
+                self.segmentEditorWidget.setActiveEffectByName("实心包裹")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("carveHolesInOuterSurface","False")
                 effect.setParameter("carveHolesInOuterSurfaceDiameter","10")

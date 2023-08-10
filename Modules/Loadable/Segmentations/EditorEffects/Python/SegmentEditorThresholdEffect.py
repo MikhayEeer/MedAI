@@ -22,7 +22,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
 
     def __init__(self, scriptedEffect):
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
-        scriptedEffect.name = _("阈值分割")#Threshold
+        scriptedEffect.name = "阈值分割"#Threshold
         #Neurosurgical***SelfTest.py  :  segmentEditorWidget.setActiveEffectByName("Threshold")
         #SegmentationsModuleTest2.py  :  self().editor.effectByName("Threshold")
         self.segment2DFillOpacity = None
@@ -75,11 +75,11 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return _("""<html>基于元数据强度范围来填充分割<br>。 选项：<p>
+        return """<html>基于元数据强度范围来填充分割<br>。 选项：<p>
 <ul style="margin: 0">
 <li><b>用于蒙版：</b>将选定的强度范围设置为<dfn>可编辑的强度范围</dfn> and switch to Paint effect.</li>
 <li><b>Apply:</b> set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.</li>
-</ul><p></html>""")
+</ul><p></html>"""
     #Fill segment based on source volume intensity range<br>. Options:<p>
     #Use fot masking:</b> set the selected intensity range as <dfn>Editable intensity range</dfn>
 
@@ -150,8 +150,8 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.previewedSegmentID = None
 
     def setupOptionsFrame(self):
-        self.thresholdSliderLabel = qt.QLabel(_("阈值范围："))#Threshold Range:
-        self.thresholdSliderLabel.setToolTip(_("Set the range of the background values that should be labeled."))
+        self.thresholdSliderLabel = qt.QLabel("阈值范围：")#Threshold Range:
+        self.thresholdSliderLabel.setToolTip("设置应标记的背景值范围")#Set the range of the background values that should be labeled.
         self.scriptedEffect.addOptionsWidget(self.thresholdSliderLabel)
 
         self.thresholdSlider = ctk.ctkRangeWidget()
@@ -160,16 +160,16 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.scriptedEffect.addOptionsWidget(self.thresholdSlider)
 
         self.autoThresholdModeSelectorComboBox = qt.QComboBox()
-        self.autoThresholdModeSelectorComboBox.addItem(_("threshold above"), MODE_SET_LOWER_MAX)
-        self.autoThresholdModeSelectorComboBox.addItem(_("threshold below"), MODE_SET_MIN_UPPER)
-        self.autoThresholdModeSelectorComboBox.addItem(_("set as lower value"), MODE_SET_LOWER)
-        self.autoThresholdModeSelectorComboBox.addItem(_("set as upper value"), MODE_SET_UPPER)
+        self.autoThresholdModeSelectorComboBox.addItem("阈值以上", MODE_SET_LOWER_MAX)
+        self.autoThresholdModeSelectorComboBox.addItem("阈值以下", MODE_SET_MIN_UPPER)
+        self.autoThresholdModeSelectorComboBox.addItem("set as lower value", MODE_SET_LOWER)
+        self.autoThresholdModeSelectorComboBox.addItem("set as upper value", MODE_SET_UPPER)
         self.autoThresholdModeSelectorComboBox.setToolTip("How to set lower and upper values of the threshold range."
                                                           " Threshold above/below: sets the range from the computed value to maximum/minimum."
                                                           " Set as lower/upper value: only modifies one side of the threshold range.")
 
         self.autoThresholdMethodSelectorComboBox = qt.QComboBox()
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Otsu"), METHOD_OTSU)
+        self.autoThresholdMethodSelectorComboBox.addItem("Otsu", METHOD_OTSU)
         self.autoThresholdMethodSelectorComboBox.addItem("Huang", METHOD_HUANG)
         self.autoThresholdMethodSelectorComboBox.addItem("IsoData", METHOD_ISO_DATA)
         # Kittler-Illingworth sometimes fails with an exception, but it does not cause any major issue,
@@ -197,7 +197,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.selectNextAutoThresholdButton.setToolTip("Select next thresholding method and set thresholds."
                                                       + " Useful for iterating through all available methods.")
 
-        self.setAutoThresholdButton = qt.QPushButton(_("Set"))
+        self.setAutoThresholdButton = qt.QPushButton("设置")
         self.setAutoThresholdButton.setToolTip("Set threshold using selected method.")
         # qt.QSizePolicy(qt.QSizePolicy.Expanding, qt.QSizePolicy.Expanding)
         # fails on some systems, therefore set the policies using separate method calls
@@ -213,7 +213,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         autoThresholdFrame.addWidget(self.setAutoThresholdButton, 2, 0, 1, 3)
 
         autoThresholdGroupBox = ctk.ctkCollapsibleGroupBox()
-        autoThresholdGroupBox.setTitle(_("Automatic threshold"))
+        autoThresholdGroupBox.setTitle("自动阈值")
         autoThresholdGroupBox.setLayout(autoThresholdFrame)
         autoThresholdGroupBox.collapsed = True
         self.scriptedEffect.addOptionsWidget(autoThresholdGroupBox)
@@ -223,21 +223,21 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         histogramBrushFrame = qt.QHBoxLayout()
         histogramFrame.addLayout(histogramBrushFrame)
 
-        self.regionLabel = qt.QLabel(_("Region shape:"))
+        self.regionLabel = qt.QLabel("区域形状：")
         histogramBrushFrame.addWidget(self.regionLabel)
 
         self.histogramBrushButtonGroup = qt.QButtonGroup()
         self.histogramBrushButtonGroup.setExclusive(True)
 
         self.boxROIButton = qt.QToolButton()
-        self.boxROIButton.setText(_("Box"))
+        self.boxROIButton.setText("箱形")
         self.boxROIButton.setCheckable(True)
         self.boxROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.boxROIButton)
         self.histogramBrushButtonGroup.addButton(self.boxROIButton)
 
         self.circleROIButton = qt.QToolButton()
-        self.circleROIButton.setText(_("Circle"))
+        self.circleROIButton.setText("圆形")
         self.circleROIButton.setCheckable(True)
         self.circleROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.circleROIButton)
