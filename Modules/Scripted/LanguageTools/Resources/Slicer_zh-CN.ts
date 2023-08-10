@@ -8306,7 +8306,7 @@ a = 仿射变换</translation>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="569"/>
         <source>Warning in DICOM plugin {load_type} when examining loadable {name}: {message}</source>
-        <translation type="unfinished">检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {message}</translation>
+        <translation>检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {message}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="574"/>
@@ -10273,128 +10273,331 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
 <context>
     <name>SegmentEditorThresholdEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="27"/>
         <source>Threshold</source>
-        <translation>阈值分割</translation>
+        <translation type="vanished">阈值分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="83"/>
         <source>&lt;html&gt;Fill segment based on source volume intensity range&lt;br&gt;. Options:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
 &lt;li&gt;&lt;b&gt;Use for masking:&lt;/b&gt; set the selected intensity range as &lt;dfn&gt;Editable intensity range&lt;/dfn&gt; and switch to Paint effect.&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;Apply:&lt;/b&gt; set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;根据源体积强度范围填充分段&lt;br&gt;. 选项:&lt;p&gt;
+        <translation type="vanished">&lt;html&gt;根据源体积强度范围填充分段&lt;br&gt;. 选项:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
 &lt;li&gt;&lt;b&gt;用于遮蔽:&lt;/b&gt; 将选定的强度范围设置为&lt;dfn&gt;可编辑的强度范围&lt;/dfn&gt;并切换到画图效果。&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;申请：&lt;/b&gt;在选定的片段中设置预览的片段。片段的先前内容将被覆盖。&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="150"/>
         <source>Threshold Range:</source>
-        <translation>阈值范围：</translation>
+        <translation type="vanished">阈值范围：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="151"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="28"/>
+        <source>阈值分割</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="86"/>
+        <source>&lt;html&gt;基于元数据强度范围来填充分割&lt;br&gt;。 选项：&lt;p&gt;
+&lt;ul style=&quot;margin: 0&quot;&gt;
+&lt;li&gt;&lt;b&gt;用于蒙版：&lt;/b&gt;将选定的强度范围设置为&lt;dfn&gt;可编辑的强度范围&lt;/dfn&gt; and switch to Paint effect.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Apply:&lt;/b&gt; set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;/html&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="153"/>
+        <source>阈值范围：</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="154"/>
         <source>Set the range of the background values that should be labeled.</source>
         <translation>设置应标注的背景值范围。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="160"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="163"/>
         <source>threshold above</source>
         <translation>以上阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="161"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="164"/>
         <source>threshold below</source>
         <translation>低于阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="162"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="165"/>
         <source>set as lower value</source>
         <translation>设定较低的阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="163"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="166"/>
         <source>set as upper value</source>
         <translation>设定较高的阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="169"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="172"/>
         <source>Otsu</source>
         <translation>大津</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="185"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="188"/>
         <source>Select method to compute threshold value automatically.</source>
         <translation>选择自动计算阈值的方法。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="197"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="200"/>
         <source>Set</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="213"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="216"/>
         <source>Automatic threshold</source>
         <translation>自动阈值分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="223"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="226"/>
         <source>Region shape:</source>
         <translation>区域形状：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="230"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="233"/>
         <source>Box</source>
         <translation>箱型</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="237"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="240"/>
         <source>Circle</source>
         <translation>圆</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="244"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="247"/>
         <source>Draw</source>
         <translation>绘制</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="251"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="254"/>
         <source>Line</source>
         <translation>线形</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="312"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="329"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="315"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="332"/>
         <source>Lower</source>
         <translation>较低</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="321"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="324"/>
         <source>Min</source>
         <translation>最小</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="336"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="339"/>
         <source>Mean</source>
         <translation>均值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="376"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="379"/>
         <source>Local histogram</source>
         <translation>局部柱状图</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="381"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="384"/>
         <source>Use for masking</source>
         <translation>用于遮蔽</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="385"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="388"/>
         <source>Apply</source>
         <translation>应用</translation>
+    </message>
+</context>
+<context>
+    <name>SegmentEditorWrapSolidify</name>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="29"/>
+        <source>Region:</source>
+        <translation>区域：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="60"/>
+        <source>Create shell:</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="91"/>
+        <source>Preserve surface cracks:</source>
+        <translation>保留表面裂纹：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="98"/>
+        <source>Offset direction:</source>
+        <translation>偏移方向：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="105"/>
+        <source>outside</source>
+        <translation>外部</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="125"/>
+        <source>Hollow out the solidified object and keep only a thin outer shell.</source>
+        <translation>将固体掏空，只保留薄外壳。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="135"/>
+        <source>inside</source>
+        <translation>内部</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="142"/>
+        <source>Thickness:</source>
+        <translation>厚度：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="149"/>
+        <source>Leaves gaps in the created shell where the original segment had surface cracks. Increase remesh oversampling if thin cracks are not preserved.</source>
+        <translation>在创建的外壳中留下间隙，其中原始分割有表面裂纹。如果未保留细裂纹，请增加重新网格过采样。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="159"/>
+        <source>Thickness of the output shell. If value is positive then extracted surface is used as outer surface, otherwise it will be used as inner surface.  If the value is smaller than the segmentation&apos;s resolution then the result may appear fragmented and so a model output or larger shell thickness must be chosen. If surface cracks do not need to be preserved then shell can be created using &quot;Hollow&quot; segment editor effect.</source>
+        <translation>输出壳的厚度。如果值为正，则提取的表面将用作外表面，否则将用作内表面。如果该值小于分割的分辨率，则结果可能会显得碎片化，因此必须选择模型输出或更大的壳厚度。如果不需要保留表面裂纹，则可以使用“空心”分割编辑器效果创建外壳。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="171"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="449"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="488"/>
+        <source>length</source>
+        <translation>长度</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="181"/>
+        <source>Output:</source>
+        <translation>输出：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="212"/>
+        <source>vtkMRMLModelNode</source>
+        <translation>vtkMRML 模型节点</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="217"/>
+        <source>Model</source>
+        <translation>模型</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="226"/>
+        <source>Create new Model</source>
+        <translation>创建新模型</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="233"/>
+        <source>New segment</source>
+        <translation>新分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="240"/>
+        <source>Overwrite segment</source>
+        <translation>覆盖分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="247"/>
+        <source>Model:</source>
+        <translation>模型：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="257"/>
+        <source>Advanced</source>
+        <translation>高级</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="269"/>
+        <source>Smoothing Factor used for operation, as the a surface representation of the segmentation will be used for this algorithm.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="288"/>
+        <source>Thickness of the output shell. If the value is very small then it may significantly increase the computation time and may appear fractured if output is segmentation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="306"/>
+        <source>x</source>
+        <translation type="unfinished">x</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="313"/>
+        <source>Save intermediate results:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="338"/>
+        <source>Save intermediate results as models. Useful for diagnostics of the solidification process.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="348"/>
+        <source>Increase this value if output seems not completely converged to input. Increases computation time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="367"/>
+        <source>Smoothing factor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="374"/>
+        <source>Oversampling:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="381"/>
+        <source>Number of iterations:</source>
+        <translation>迭代次数：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="391"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="416"/>
+        <source>Custom:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="423"/>
+        <source>Largest cavity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="430"/>
+        <source>Outer surface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="437"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="476"/>
+        <source>Cavities with smaller diameter than this threshold will not be carved out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="456"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="466"/>
+        <source>Propagate surface deeper into concave regions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="459"/>
+        <source>Carve holes:</source>
+        <translation>刻洞：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="469"/>
+        <source>Split cavities:</source>
+        <translation>分体腔：</translation>
     </message>
 </context>
 <context>
@@ -14012,7 +14215,7 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/Resources/UI/qMRMLSegmentEditorWidget.ui" line="147"/>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="415"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="433"/>
         <source>Segmentations</source>
         <translation>分割</translation>
     </message>
@@ -14086,67 +14289,67 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
         <translation>控制当前分割将覆盖的分割。未被覆盖的分割可能与选定分割重叠。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="401"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="419"/>
         <source>Everywhere</source>
         <translation>全局</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="402"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="420"/>
         <source>Inside all segments</source>
         <translation>所有分割内</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="403"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="421"/>
         <source>Inside all visible segments</source>
         <translation>所有可见分割内</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="404"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="422"/>
         <source>Outside all segments</source>
         <translation>所有分割外</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="405"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="423"/>
         <source>Outside all visible segments</source>
         <translation>所有可见分割外</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="409"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="427"/>
         <source>Overwrite all</source>
         <translation>全部覆盖</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="410"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="428"/>
         <source>Overwrite visible</source>
         <translation>覆盖可见</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="411"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="429"/>
         <source>Allow overlap</source>
         <translation>允许重叠</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="417"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="435"/>
         <source>Import/export nodes...</source>
         <translation>导入/导出节点...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="420"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="438"/>
         <source>Export to files...</source>
         <translation>导出到文件...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1042"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1060"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1043"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1061"/>
         <source>No editing</source>
         <translation>无编辑</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1371"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1389"/>
         <source>Editing requires binary labelmap source representation, but currently the source representation is %1. Changing the source representation requires conversion. Some details may be lost during conversion process.
 
 Change source representation to binary labelmap?</source>
@@ -14155,30 +14358,30 @@ Change source representation to binary labelmap?</source>
 将源表示法更改为二进制标签图？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1376"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1394"/>
         <source>Change source representation to binary labelmap?</source>
         <oldsource>Change master representation to binary labelmap?</oldsource>
         <translation>将主表示更改为二进制标签映射？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1397"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1415"/>
         <source>Failed to create binary labelmap representation in segmentation %1 for editing!
 Please see Segmentations module for details.</source>
         <translation>在分段 %1 中创建二进制标签图表示以供编辑失败！
 请参阅分割模块了解详情。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1399"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1417"/>
         <source>Failed to create binary labelmap for editing</source>
         <translation>无法创建用于编辑的二进制标签映射</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="2401"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="2419"/>
         <source>Inside </source>
         <translation>内部 </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3489"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3507"/>
         <source>Export segments to files</source>
         <translation>将片段导出到文件</translation>
     </message>
@@ -19720,36 +19923,41 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
     </message>
     <message>
         <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="425"/>
-        <source>Not found for this version of the application (r%2)</source>
-        <translation>未发现此版本的应用程序（r%2）</translation>
+        <source>Not found for this version of the application (r%1)</source>
+        <oldsource>Not found for this version of the application (r%2)</oldsource>
+        <translation>未发现此版本的应用程序(r%1)</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="433"/>
+        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="432"/>
+        <source>Incompatible with Slicer r%1 [built for r%2]</source>
+        <translation>与Slicer r%1不兼容 [为r%2建立]</translation>
+    </message>
+    <message>
         <source>Incompatible with Slicer r%2 [built for r%3]</source>
-        <translation>与Slicer r%2不兼容 [为r%3建立]</translation>
+        <translation type="vanished">与Slicer r%2不兼容 [为r%3建立]</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="450"/>
+        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="448"/>
         <source>Change log...</source>
         <translation>变更日志...</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="455"/>
+        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="453"/>
         <source>An update is available. Installed: %1. Available: %2.</source>
         <translation>有一个更新可用。已安装：%1。可用：%2。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="471"/>
+        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="469"/>
         <source>Version: %1. Disabled.</source>
         <translation>版本：%1。禁用。</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="478"/>
+        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="476"/>
         <source>Version: %1</source>
         <translation>版本: %1</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="486"/>
+        <location filename="Base/QTGUI/qSlicerExtensionsLocalWidget.cxx" line="484"/>
         <source>Not installed.</source>
         <translation>未安装。</translation>
     </message>
@@ -19879,161 +20087,191 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1701"/>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2371"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2452"/>
         <source>Failed to retrieve metadata for %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>无法检索 %1 扩展的元数据</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1743"/>
+        <source>Do you want to install &apos;%1&apos; now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1744"/>
+        <source>Install extension ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1761"/>
+        <source>Failed to install %1 extension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1784"/>
+        <source>Extension %1 has been installed from server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1786"/>
+        <source>Slicer must be restarted. Do you want to restart now ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1787"/>
+        <source>Restart slicer ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1824"/>
         <source>Failed downloading: %1</source>
         <translation>下载失败：%1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1754"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1835"/>
         <source>Could not create temporary file for writing: %1</source>
         <translation>无法创建用于写入的临时文件： %1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1775"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1856"/>
         <source>Failed to list extension archive &apos;%1&apos;</source>
         <translation>无法列出扩展存档“%1”</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1792"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1873"/>
         <source>No extension description found in archive &apos;%1&apos;</source>
         <translation>在存档 &apos;%1&apos; 中找不到扩展说明</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1805"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1886"/>
         <source>InstallExtension failed: extensionName is not set</source>
         <translation>安装扩展失败：未设置扩展名</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1810"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1891"/>
         <source>Skip installation of %1 extension. It is already installed.</source>
         <translation>跳过 %1 扩展的安装。它已安装。</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1816"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1897"/>
         <source>Extensions/InstallPath setting is not set</source>
         <translation>未设置扩展/安装路径</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1822"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1903"/>
         <source>Failed to create extension installation directory %1</source>
         <translation>无法创建扩展安装目录 %1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1930"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2011"/>
         <source>Error while installing dependent extensions:&lt;ul&gt;%1&lt;ul&gt;</source>
         <translation>安装依赖扩展时出错：&lt;ul&gt;%1&lt;ul&gt;</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1953"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2034"/>
         <source>%1 depends on the following extensions, which could not be found:</source>
         <extracomment>%1 is the extension name</extracomment>
         <translation>%1依赖于以下扩展，但无法找到这些扩展：</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1958"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2039"/>
         <source>The extension may not function properly.</source>
         <translation>扩展可能无法正常运行。</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1959"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2040"/>
         <source>Unresolved dependencies</source>
         <translation>未解析的依赖项</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2878"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2959"/>
         <source>&apos;extensionName&apos; parameter is not specified</source>
         <translation>未指定“扩展名称”参数</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1983"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2064"/>
         <source>Installed extension %1</source>
         <translation>已安装的扩展%1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2065"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2146"/>
         <source>Update extension information from server failed: timed out while waiting for server response from %1</source>
         <translation>从服务器更新扩展信息失败：在等待%1的服务器响应时超时了</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2120"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2201"/>
         <source>Failed to download extension metadata from server</source>
         <translation>无法从服务器下载扩展元数据</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2138"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2219"/>
         <source>Extension metadata response missed required &apos;extensionname&apos; field</source>
         <translation>缺少扩展元数据响应必填的“扩展名”字段</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2170"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2251"/>
         <source>Update check response for extension %1 missed required &apos;extension_id&apos; or &apos;revision&apos; field</source>
         <translation>更新扩展名 %1 的检查响应缺少必需的“extension_id”或“修订”字段</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2181"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2262"/>
         <source>Update found for %1 extension: &apos;%2&apos; installed, &apos;%3&apos; available, </source>
         <translation>找到 %1 扩展的更新：“%2”已安装，“%3”可用， </translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2256"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2337"/>
         <source>Failed downloading %1 extension from %2</source>
         <translation>从 %2 下载 %1 扩展失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2272"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2353"/>
         <source>Could not create .updates directory for update archive in %1</source>
         <translation>无法为%1的更新档案创建.更新目录</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2293"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2374"/>
         <source>Could not write file: &apos;%1&apos; (%2)</source>
         <extracomment>%1 is the path name, %2 is the error message</extracomment>
         <translation>无法写入文件：&apos;%1&apos; (%2)</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2357"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2438"/>
         <source>Missing download information for %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>缺少 %1 扩展的下载信息</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2389"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2470"/>
         <source>%1 extension scheduled for update</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>计划更新的%1扩展</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2435"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2516"/>
         <source>Failed to update %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>更新%1扩展失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2442"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2523"/>
         <source>Failed to update %1 extension: it is not scheduled for update</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>更新%1扩展失败：它没有被安排更新</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2566"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2647"/>
         <source>Failed to uninstall %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>卸载%1扩展失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2573"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2654"/>
         <source>Failed to uninstall %1 extension: extension is already loaded</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>未能卸载 %1 扩展：扩展已加载</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2848"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2929"/>
         <source>Extension %1 is incompatible</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>扩展 %1 不兼容</translation>
@@ -20043,26 +20281,26 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
         <translation type="vanished">扩展名称未指定</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3072"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3153"/>
         <source>Corrupted %1 extension package</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>损坏的 %1 扩展包</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3080"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3161"/>
         <source>Failed to extract %1 extension archive %2 into directory %3</source>
         <extracomment>%1 is extension name, %2 is extension package file path, %3 is destination path</extracomment>
         <translation>提取 %1 扩展档案 %2 到目录 %3 失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3125"/>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3132"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3206"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3213"/>
         <source>Failed to copy directory %1 into directory %2</source>
         <translation>复制目录%1到目录%2失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3139"/>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3146"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3220"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3227"/>
         <source>Failed to remove directory %1</source>
         <translation>移除目录%1失败</translation>
     </message>
