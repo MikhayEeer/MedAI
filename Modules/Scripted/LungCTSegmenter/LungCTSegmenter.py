@@ -2639,7 +2639,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             self.medianLungs = (medianRightLung + medianLeftLung) / 2.
             print("Median radiodensity of lungs = {0:.2f}".format(self.medianLungs) + " HU")
 
-            if not self.segmentEditorWidget.effectByName("Local Threshold"):
+            if not self.segmentEditorWidget.effectByName("局部阈值分割"):
                 slicer.util.errorDisplay("Please install 'SegmentEditorExtraEffects' extension using the extension manager.")
             else:
                 self.showStatusMessage('Airway segmentation ...')
@@ -2661,7 +2661,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.outputSegmentation.EndModify(wasModified)
 
                 self.segmentEditorNode.SetSelectedSegmentID("airways")
-                self.segmentEditorWidget.setActiveEffectByName("Local Threshold")
+                self.segmentEditorWidget.setActiveEffectByName("局部阈值分割")
                 effect = self.segmentEditorWidget.activeEffect()             
                 
                 effect.setParameter("AutoThresholdMethod","OTSU")

@@ -346,7 +346,7 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // Thresholding is the the starting point for most segmentations
     // (it can often create usable segmentation by itself, or used to define intensity range for painting)
     // These strings are effect names that must not be translated.
-    << /*no tr*/ "阈值分割" << "Local threshold"
+    << /*no tr*/ "阈值分割" << "局部阈值分割"
     // Local painting
     << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
     // Global processing

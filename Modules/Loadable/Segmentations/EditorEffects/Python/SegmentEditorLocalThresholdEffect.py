@@ -14,7 +14,7 @@ class SegmentEditorLocalThresholdEffect(SegmentEditorThresholdEffect):
 
   def __init__(self, scriptedEffect):
     SegmentEditorThresholdEffect.__init__(self, scriptedEffect)
-    scriptedEffect.name = 'Local Threshold'
+    scriptedEffect.name = '局部阈值分割'
     self.previewSteps = 4
 
   def clone(self):
@@ -31,17 +31,17 @@ class SegmentEditorLocalThresholdEffect(SegmentEditorThresholdEffect):
 
   def helpText(self):
     return """<html>
-Fill segment in a selected region based on source volume intensity range<br>.
+根据源数据强度范围填充选定区域中的分割<br>。
 <p>
-  <b>Ctrl + left-click:</b> Add the selected island within the threshold to the segment.
+  <b>Ctrl + 左键：</b> 将阈值内选定的岛添加到分割中。
 </p>
 <p>
-  Options:
+  选项：
   <ul style="feature: 0">
-    <li><b>Minimum diameter:</b> Prevent leaks through features that are smaller than the specified size.</li>
-    <li><b>Feature size:</b> Spatial smoothness constraint used for WaterShed. Larger values result in smoother extracted surface.</li>
-    <li><b>Segmentation algorithm:</b> Algorithm used to perform the selection on the specified region.</li>
-    <li><b>ROI:</b> Region of interest that the threshold segmentation will be perfomed within. Selecting a smaller region will reduce leaks and improve speed.</li>
+    <li><b>最小直径：</b> Prevent leaks through features that are smaller than the specified size.</li>
+    <li><b>特征尺寸：</b> Spatial smoothness constraint used for WaterShed. Larger values result in smoother extracted surface.</li>
+    <li><b>分割算法：</b> Algorithm used to perform the selection on the specified region.</li>
+    <li><b>ROI区域：</b> Region of interest that the threshold segmentation will be perfomed within. Selecting a smaller region will reduce leaks and improve speed.</li>
   </ul>
 </p>
 </html>"""
@@ -109,14 +109,14 @@ Fill segment in a selected region based on source volume intensity range<br>.
     self.minimumDiameterSpinBox.quantity = "length"
     self.minimumDiameterSpinBox.value = 3.0
     self.minimumDiameterSpinBox.singleStep = 0.5
-    self.minimumDiameterSpinBox.setToolTip("Minimum diameter of the structure. Regions that are connected to the selected point by a bridge"
-      " that this is thinner than this size will be excluded to prevent unwanted leaks through small holes.")
+    self.minimumDiameterSpinBox.setToolTip("结构的最小直径。通过桥连接到选定点的区域。"
+      " 比该尺寸更薄的部分将被排除，以防止通过小孔发生不必要的泄露。")
     self.kernelSizePixel = qt.QLabel()
-    self.kernelSizePixel.setToolTip("Minimum diameter of the structure in pixels. Computed from the segment's spacing and the specified feature size.")
+    self.kernelSizePixel.setToolTip("结构的最小直径（以像素为单位）。根据分割的间距和指定的特征尺寸计算。")
     minimumDiameterFrame = qt.QHBoxLayout()
     minimumDiameterFrame.addWidget(self.minimumDiameterSpinBox)
     minimumDiameterFrame.addWidget(self.kernelSizePixel)
-    self.minimumDiameterMmLabel = self.scriptedEffect.addLabeledOptionsWidget("Minimum diameter:", minimumDiameterFrame)
+    self.minimumDiameterMmLabel = self.scriptedEffect.addLabeledOptionsWidget("最小直径：", minimumDiameterFrame)
     self.scriptedEffect.addOptionsWidget(minimumDiameterFrame)
 
     # Add algorithm options
@@ -124,7 +124,7 @@ Fill segment in a selected region based on source volume intensity range<br>.
     self.segmentationAlgorithmSelector.addItem(SEGMENTATION_ALGORITHM_MASKING)
     self.segmentationAlgorithmSelector.addItem(SEGMENTATION_ALGORITHM_GROWCUT)
     self.segmentationAlgorithmSelector.addItem(SEGMENTATION_ALGORITHM_WATERSHED)
-    self.scriptedEffect.addLabeledOptionsWidget("Segmentation algorithm: ", self.segmentationAlgorithmSelector)
+    self.scriptedEffect.addLabeledOptionsWidget("分割算法：", self.segmentationAlgorithmSelector)
 
     # Add feature size selector
     self.featureSizeSpinBox = slicer.qMRMLSpinBox()
@@ -132,15 +132,15 @@ Fill segment in a selected region based on source volume intensity range<br>.
     self.featureSizeSpinBox.quantity = "length"
     self.featureSizeSpinBox.value = 3.0
     self.featureSizeSpinBox.singleStep = 0.5
-    self.featureSizeSpinBox.setToolTip("Spatial smoothness constraint used for WaterShed. Larger values result in smoother extracted surface.")
-    self.scriptedEffect.addLabeledOptionsWidget("Feature size: ", self.featureSizeSpinBox)
+    self.featureSizeSpinBox.setToolTip("用于分水岭的空间平滑度约束。值越大，提取的表面越平滑。")
+    self.scriptedEffect.addLabeledOptionsWidget("特征尺寸：", self.featureSizeSpinBox)
 
     # Add ROI options
     self.roiSelector = slicer.qMRMLNodeComboBox()
     self.roiSelector.nodeTypes = ['vtkMRMLMarkupsROINode', 'vtkMRMLAnnotationROINode']
     self.roiSelector.noneEnabled = True
     self.roiSelector.setMRMLScene(slicer.mrmlScene)
-    self.scriptedEffect.addLabeledOptionsWidget("ROI: ", self.roiSelector)
+    self.scriptedEffect.addLabeledOptionsWidget("ROI区域： ", self.roiSelector)
     self.roiSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.updateMRMLFromGUI)
 
     # Connections
