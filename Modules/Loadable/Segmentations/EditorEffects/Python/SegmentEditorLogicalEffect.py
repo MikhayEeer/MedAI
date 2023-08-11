@@ -31,17 +31,17 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>应用逻辑运算或组合分割<br>。 Available operations:<p>
+        return """<html>应用逻辑运算或组合分割<br>。 可用操作：<p>
 <ul style="margin: 0">
-<li><b>Copy:</b> replace the selected segment by the modifier segment.</li>
-<li><b>Add:</b> add modifier segment to current segment.</li>
-<li><b>Subtract:</b> subtract region of modifier segment from the selected segment.</li>
-<li><b>Intersect:</b> only keeps those regions in the select segment that are common with the modifier segment.</li>
-<li><b>Invert:</b> inverts selected segment.</li>
-<li><b>Clear:</b> clears selected segment.</li>
-<li><b>Fill:</b> completely fills selected segment.</li>
+<li><b>复制：</b> 用修改分割替代选定分割</li>
+<li><b>添加：</b> add modifier segment to current segment.</li>
+<li><b>减去：</b> subtract region of modifier segment from the selected segment.</li>
+<li><b>相交：</b> only keeps those regions in the select segment that are common with the modifier segment.</li>
+<li><b>反转：</b> inverts selected segment.</li>
+<li><b>清除：</b> clears selected segment.</li>
+<li><b>填充：</b> completely fills selected segment.</li>
 </ul><p>
-<b>Selected segment:</b> segment selected in the segment list - above. <b>Modifier segment:</b> segment chosen in segment list in effect options - below.
+<b>选定分割：</b> segment selected in the segment list - above. <b>Modifier segment:</b> segment chosen in segment list in effect options - below.
 <p></html>"""#Apply logical operators or combine segments
 
     def setupOptionsFrame(self):
@@ -50,26 +50,26 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
         self.methodSelectorComboBox.addItem("复制", LOGICAL_COPY)#Copy
         self.methodSelectorComboBox.addItem("添加", LOGICAL_UNION)#Add
         self.methodSelectorComboBox.addItem("减去", LOGICAL_SUBTRACT)#Subtract
-        self.methodSelectorComboBox.addItem("Intersect", LOGICAL_INTERSECT)
-        self.methodSelectorComboBox.addItem("Invert", LOGICAL_INVERT)
-        self.methodSelectorComboBox.addItem("Clear", LOGICAL_CLEAR)
-        self.methodSelectorComboBox.addItem("Fill", LOGICAL_FILL)
-        self.methodSelectorComboBox.setToolTip('Click <dfn>Show details</dfn> link above for description of operations.')
+        self.methodSelectorComboBox.addItem("相交", LOGICAL_INTERSECT)#Intersect
+        self.methodSelectorComboBox.addItem("反转", LOGICAL_INVERT)#Invert
+        self.methodSelectorComboBox.addItem("清除", LOGICAL_CLEAR)#Clear
+        self.methodSelectorComboBox.addItem("填充", LOGICAL_FILL)#Fill
+        self.methodSelectorComboBox.setToolTip('点击<dfn>显示更多</dfn> 以查看操作说明。')
 
-        self.bypassMaskingCheckBox = qt.QCheckBox("Bypass masking")
-        self.bypassMaskingCheckBox.setToolTip("Ignore all masking options and only modify the selected segment.")
+        self.bypassMaskingCheckBox = qt.QCheckBox("其他屏蔽")
+        self.bypassMaskingCheckBox.setToolTip("忽略所有屏蔽选项并仅修改选定分割")
         self.bypassMaskingCheckBox.objectName = self.__class__.__name__ + 'BypassMasking'
 
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton("应用")
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
 
         operationFrame = qt.QHBoxLayout()
         operationFrame.addWidget(self.methodSelectorComboBox)
         operationFrame.addWidget(self.applyButton)
         operationFrame.addWidget(self.bypassMaskingCheckBox)
-        self.marginSizeMmLabel = self.scriptedEffect.addLabeledOptionsWidget("Operation:", operationFrame)
+        self.marginSizeMmLabel = self.scriptedEffect.addLabeledOptionsWidget("操作：", operationFrame)
 
-        self.modifierSegmentSelectorLabel = qt.QLabel("Modifier segment:")
+        self.modifierSegmentSelectorLabel = qt.QLabel("修改分割：")
         self.scriptedEffect.addOptionsWidget(self.modifierSegmentSelectorLabel)
 
         self.modifierSegmentSelector = slicer.qMRMLSegmentsTableView()
@@ -79,7 +79,7 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
         self.modifierSegmentSelector.opacityColumnVisible = False
 
         self.modifierSegmentSelector.setMRMLScene(slicer.mrmlScene)
-        self.modifierSegmentSelector.setToolTip('Contents of this segment will be used for modifying the selected segment. This segment itself will not be changed.')
+        self.modifierSegmentSelector.setToolTip('该分割的内容将用于修改所选分割。该分割本身不会改变。')
         self.scriptedEffect.addOptionsWidget(self.modifierSegmentSelector)
 
         self.applyButton.connect('clicked()', self.onApply)

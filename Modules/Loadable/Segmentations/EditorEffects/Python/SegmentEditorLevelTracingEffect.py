@@ -36,11 +36,10 @@ class SegmentEditorLevelTracingEffect(AbstractScriptedSegmentEditorLabelEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Add uniform intensity region to selected segment<br>.
+        return """<html>将均匀强度区域添加岛选定分割<br>。
 <p><ul style="margin: 0">
-<li><b>Mouse move:</b> current background voxel is used to find a closed path that
-follows the same intensity value back to the starting point within the current slice.</li>
-<li><b>Left-click:</b> add the previewed region to the current segment.</li>
+<li><b>移动鼠标：</b> 当前背景体素用于查找遵循相同强度值返回当前切片内起始点的闭合路径</li>
+<li><b>单击左键：</b> 将预览区域添加岛当前分割</li>
 </ul><p></html>"""
 
     def setupOptionsFrame(self):
