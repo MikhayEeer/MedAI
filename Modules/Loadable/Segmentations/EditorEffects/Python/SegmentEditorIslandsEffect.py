@@ -8,8 +8,11 @@ import vtkITK
 import slicer
 
 from SegmentEditorEffects import *
-from slicer.i18n import tr as _
-from slicer.i18n import translate
+#from slicer.i18n import tr as _
+#from slicer.i18n import translate
+
+def _(str):
+    return str
 
 
 class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
@@ -41,38 +44,38 @@ class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
 
         self.keepLargestOptionRadioButton = qt.QRadioButton("保留最大岛屿")
         self.keepLargestOptionRadioButton.setToolTip(
-            "仅保留所选分割中最大的岛屿，删除该分割中的所有其他岛屿。")
+            "仅保留所选分割中最大的岛屿，删除该中的所有其他岛屿。")
         self.operationRadioButtons.append(self.keepLargestOptionRadioButton)
         self.widgetToOperationNameMap[self.keepLargestOptionRadioButton] = KEEP_LARGEST_ISLAND
 
-        self.keepSelectedOptionRadioButton = qt.QRadioButton(_("Keep selected island"))
+        self.keepSelectedOptionRadioButton = qt.QRadioButton(_("保留选定的岛屿"))
         self.keepSelectedOptionRadioButton.setToolTip(
-            "Click on an island in a slice view to keep that island and remove all other islands in selected segment.")
+            "单击切片视图中的一个岛可保留该岛并删除所选分割中的其他岛屿。")
         self.operationRadioButtons.append(self.keepSelectedOptionRadioButton)
         self.widgetToOperationNameMap[self.keepSelectedOptionRadioButton] = KEEP_SELECTED_ISLAND
 
-        self.removeSmallOptionRadioButton = qt.QRadioButton("Remove small islands")
+        self.removeSmallOptionRadioButton = qt.QRadioButton("移除小岛")
         self.removeSmallOptionRadioButton.setToolTip(
-            "Remove all islands from the selected segment that are smaller than the specified minimum size.")
+            "从所选分割中删除所有小于指定尺寸的岛屿。")
         self.operationRadioButtons.append(self.removeSmallOptionRadioButton)
         self.widgetToOperationNameMap[self.removeSmallOptionRadioButton] = REMOVE_SMALL_ISLANDS
 
-        self.removeSelectedOptionRadioButton = qt.QRadioButton("Remove selected island")
+        self.removeSelectedOptionRadioButton = qt.QRadioButton("删除选定岛")
         self.removeSelectedOptionRadioButton.setToolTip(
-            "Click on an island in a slice view to remove it from selected segment.")
+            "单击视图中的岛可将其从选定分割中删除。")
         self.operationRadioButtons.append(self.removeSelectedOptionRadioButton)
         self.widgetToOperationNameMap[self.removeSelectedOptionRadioButton] = REMOVE_SELECTED_ISLAND
 
-        self.addSelectedOptionRadioButton = qt.QRadioButton("Add selected island")
+        self.addSelectedOptionRadioButton = qt.QRadioButton("添加选定岛")
         self.addSelectedOptionRadioButton.setToolTip(
-            "Click on a region in a slice view to add it to selected segment.")
+            "单击切片视图中的区域将其添加到选定的分割。")
         self.operationRadioButtons.append(self.addSelectedOptionRadioButton)
         self.widgetToOperationNameMap[self.addSelectedOptionRadioButton] = ADD_SELECTED_ISLAND
 
-        self.splitAllOptionRadioButton = qt.QRadioButton("Split islands to segments")
+        self.splitAllOptionRadioButton = qt.QRadioButton("将岛分成多部分")
         self.splitAllOptionRadioButton.setToolTip(
-            "Create a new segment for each island of selected segment. Islands smaller than minimum size will be removed. " +
-            "Segments will be ordered by island size.")
+            "为所选分割的每个岛创建一个新分割。小于最小尺寸的岛将被删除。" +
+            "分割将按岛大小排序。")
         self.operationRadioButtons.append(self.splitAllOptionRadioButton)
         self.widgetToOperationNameMap[self.splitAllOptionRadioButton] = SPLIT_ISLANDS_TO_SEGMENTS
 
@@ -88,14 +91,14 @@ class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
         self.scriptedEffect.addOptionsWidget(operationLayout)
 
         self.minimumSizeSpinBox = qt.QSpinBox()
-        self.minimumSizeSpinBox.setToolTip("Islands consisting of less voxels than this minimum size, will be deleted.")
+        self.minimumSizeSpinBox.setToolTip("包含少于此最小尺寸的体素的岛屿将被删除。")
         self.minimumSizeSpinBox.setMinimum(0)
         self.minimumSizeSpinBox.setMaximum(vtk.VTK_INT_MAX)
         self.minimumSizeSpinBox.setValue(1000)
         self.minimumSizeSpinBox.suffix = " voxels"
-        self.minimumSizeLabel = self.scriptedEffect.addLabeledOptionsWidget("Minimum size:", self.minimumSizeSpinBox)
+        self.minimumSizeLabel = self.scriptedEffect.addLabeledOptionsWidget("最小尺寸：", self.minimumSizeSpinBox)
 
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton("应用")
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
