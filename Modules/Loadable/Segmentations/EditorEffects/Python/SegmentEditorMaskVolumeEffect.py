@@ -31,9 +31,9 @@ class SegmentEditorMaskVolumeEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Use the currently selected segment as a mask to blank out regions in a volume.
-<br> The mask is applied to the source volume by default.<p>
-Fill inside and outside operation creates a binary labelmap volume as output, with the inside and outside fill values modifiable.
+        return """<html>使用当前选定分割作为蒙版来消除数据中的区域。
+<br> 默认情况下，蒙版会应用于源数据。<p>
+填充内部和外部操作创建一个二进制的标签图作为输出，内部和外部填充值可以修改。
 </html>"""
 
     def setupOptionsFrame(self):
@@ -43,16 +43,16 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.invisibleIcon = qt.QIcon(":/Icons/Small/SlicerInvisible.png")
 
         # Fill operation buttons
-        self.fillInsideButton = qt.QRadioButton("Fill inside")
+        self.fillInsideButton = qt.QRadioButton("填充内部")
         self.operationRadioButtons.append(self.fillInsideButton)
         self.buttonToOperationNameMap[self.fillInsideButton] = 'FILL_INSIDE'
 
-        self.fillOutsideButton = qt.QRadioButton("Fill outside")
+        self.fillOutsideButton = qt.QRadioButton("填充外部")
         self.operationRadioButtons.append(self.fillOutsideButton)
         self.buttonToOperationNameMap[self.fillOutsideButton] = 'FILL_OUTSIDE'
 
-        self.binaryMaskFillButton = qt.QRadioButton("Fill inside and outside")
-        self.binaryMaskFillButton.setToolTip("Create a labelmap volume with specified inside and outside fill values.")
+        self.binaryMaskFillButton = qt.QRadioButton("同时填充")
+        self.binaryMaskFillButton.setToolTip("创建具有指定内部和外部填充值的标签图数据。")
         self.operationRadioButtons.append(self.binaryMaskFillButton)
         self.buttonToOperationNameMap[self.binaryMaskFillButton] = 'FILL_INSIDE_AND_OUTSIDE'
 
@@ -61,22 +61,22 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         operationLayout.addWidget(self.fillInsideButton, 0, 0)
         operationLayout.addWidget(self.fillOutsideButton, 1, 0)
         operationLayout.addWidget(self.binaryMaskFillButton, 0, 1)
-        self.scriptedEffect.addLabeledOptionsWidget("Operation:", operationLayout)
+        self.scriptedEffect.addLabeledOptionsWidget("操作：", operationLayout)
 
         # fill value
         self.fillValueEdit = ctk.ctkDoubleSpinBox()
-        self.fillValueEdit.setToolTip("Choose the voxel intensity that will be used to fill the masked region.")
-        self.fillValueLabel = qt.QLabel("Fill value: ")
+        self.fillValueEdit.setToolTip("选择将用于填充蒙版区域的体素强度。")
+        self.fillValueLabel = qt.QLabel("填充值：")
 
         # Binary mask fill outside value
         self.binaryMaskFillOutsideEdit = ctk.ctkDoubleSpinBox()
-        self.binaryMaskFillOutsideEdit.setToolTip("Choose the voxel intensity that will be used to fill outside the mask.")
-        self.fillOutsideLabel = qt.QLabel("Outside fill value: ")
+        self.binaryMaskFillOutsideEdit.setToolTip("选择将用于填充蒙版外部的体素强度。")
+        self.fillOutsideLabel = qt.QLabel("外部填充值： ")
 
         # Binary mask fill outside value
         self.binaryMaskFillInsideEdit = ctk.ctkDoubleSpinBox()
-        self.binaryMaskFillInsideEdit.setToolTip("Choose the voxel intensity that will be used to fill inside the mask.")
-        self.fillInsideLabel = qt.QLabel(" Inside fill value: ")
+        self.binaryMaskFillInsideEdit.setToolTip("选择将用于填充蒙版内部的体素强度。")
+        self.fillInsideLabel = qt.QLabel("内部填充值： ")
 
         for fillValueEdit in [self.fillValueEdit, self.binaryMaskFillOutsideEdit, self.binaryMaskFillInsideEdit]:
             fillValueEdit.decimalsOption = ctk.ctkDoubleSpinBox.DecimalsByValue + ctk.ctkDoubleSpinBox.DecimalsByKey + ctk.ctkDoubleSpinBox.InsertDecimals
@@ -105,13 +105,13 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         # Soft edge
         self.softEdgeMmSpinBox = slicer.qMRMLSpinBox()
         self.softEdgeMmSpinBox.setMRMLScene(slicer.mrmlScene)
-        self.softEdgeMmSpinBox.setToolTip("Standard deviation of the Gaussian function that blurs the edge of the mask."
-                                          " Higher value makes the edge softer.")
+        self.softEdgeMmSpinBox.setToolTip("模糊掩模边缘的高斯函数的标准差。"
+                                          "值越高，边缘越柔和。")
         self.softEdgeMmSpinBox.quantity = "length"
         self.softEdgeMmSpinBox.value = 0
         self.softEdgeMmSpinBox.minimum = 0
         self.softEdgeMmSpinBox.singleStep = 0.5
-        self.softEdgeMmLabel = self.scriptedEffect.addLabeledOptionsWidget("Soft edge:", self.softEdgeMmSpinBox)
+        self.softEdgeMmLabel = self.scriptedEffect.addLabeledOptionsWidget("柔化边缘：", self.softEdgeMmSpinBox)
         self.softEdgeMmSpinBox.connect("valueChanged(double)", self.softEdgeMmChanged)
 
         # input volume selector
@@ -124,7 +124,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.inputVolumeSelector.noneDisplay = "(Source volume)"
         self.inputVolumeSelector.showHidden = False
         self.inputVolumeSelector.setMRMLScene(slicer.mrmlScene)
-        self.inputVolumeSelector.setToolTip("Volume to mask. Default is current source volume node.")
+        self.inputVolumeSelector.setToolTip("遮罩数据。默认为当前源数据节点。")
         self.inputVolumeSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onInputVolumeChanged)
 
         self.inputVisibilityButton = qt.QToolButton()
@@ -133,7 +133,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         inputLayout = qt.QHBoxLayout()
         inputLayout.addWidget(self.inputVisibilityButton)
         inputLayout.addWidget(self.inputVolumeSelector)
-        self.scriptedEffect.addLabeledOptionsWidget("Input Volume: ", inputLayout)
+        self.scriptedEffect.addLabeledOptionsWidget("输入数据：", inputLayout)
 
         # output volume selector
         self.outputVolumeSelector = slicer.qMRMLNodeComboBox()
@@ -146,7 +146,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.outputVolumeSelector.noneDisplay = "(Create new Volume)"
         self.outputVolumeSelector.showHidden = False
         self.outputVolumeSelector.setMRMLScene(slicer.mrmlScene)
-        self.outputVolumeSelector.setToolTip("Masked output volume. It may be the same as the input volume for cumulative masking.")
+        self.outputVolumeSelector.setToolTip("蒙版输出数据。它可以与累积蒙版的输入数据相同。")
         self.outputVolumeSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onOutputVolumeChanged)
 
         self.outputVisibilityButton = qt.QToolButton()
@@ -155,12 +155,12 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         outputLayout = qt.QHBoxLayout()
         outputLayout.addWidget(self.outputVisibilityButton)
         outputLayout.addWidget(self.outputVolumeSelector)
-        self.scriptedEffect.addLabeledOptionsWidget("Output Volume: ", outputLayout)
+        self.scriptedEffect.addLabeledOptionsWidget("输出数据：", outputLayout)
 
         # Apply button
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton("应用")
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-        self.applyButton.setToolTip("Apply segment as volume mask. No undo operation available once applied.")
+        self.applyButton.setToolTip("将分割应用为数据蒙版。一旦应用，无法执行撤销操作。")
         self.scriptedEffect.addOptionsWidget(self.applyButton)
         self.applyButton.connect('clicked()', self.onApply)
 

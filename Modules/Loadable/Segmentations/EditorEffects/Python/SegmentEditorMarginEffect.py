@@ -31,44 +31,44 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return "Grow or shrink selected segment by specified margin size."
+        return "按指定的边距大小增大或缩小选定的分割。"
 
     def setupOptionsFrame(self):
 
         operationLayout = qt.QVBoxLayout()
 
-        self.shrinkOptionRadioButton = qt.QRadioButton("Shrink")
-        self.growOptionRadioButton = qt.QRadioButton("Grow")
+        self.shrinkOptionRadioButton = qt.QRadioButton("收缩")
+        self.growOptionRadioButton = qt.QRadioButton("生长")
         operationLayout.addWidget(self.shrinkOptionRadioButton)
         operationLayout.addWidget(self.growOptionRadioButton)
         self.growOptionRadioButton.setChecked(True)
 
-        self.scriptedEffect.addLabeledOptionsWidget("Operation:", operationLayout)
+        self.scriptedEffect.addLabeledOptionsWidget("操作：", operationLayout)
 
         self.marginSizeMMSpinBox = slicer.qMRMLSpinBox()
         self.marginSizeMMSpinBox.setMRMLScene(slicer.mrmlScene)
-        self.marginSizeMMSpinBox.setToolTip("Segment boundaries will be shifted by this distance. Positive value means the segments will grow, negative value means segment will shrink.")
+        self.marginSizeMMSpinBox.setToolTip("分割边界将移动该距离。正值意味着分割将增长，负则意味着分割缩小。")
         self.marginSizeMMSpinBox.quantity = "length"
         self.marginSizeMMSpinBox.value = 3.0
         self.marginSizeMMSpinBox.singleStep = 1.0
 
         self.marginSizeLabel = qt.QLabel()
-        self.marginSizeLabel.setToolTip("Size change in pixel. Computed from the segment's spacing and the specified margin size.")
+        self.marginSizeLabel.setToolTip("尺寸变化（以像素为单位）。根据分割的边界和指定的边距大小计算。")
 
         marginSizeFrame = qt.QHBoxLayout()
         marginSizeFrame.addWidget(self.marginSizeMMSpinBox)
-        self.marginSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget("Margin size:", marginSizeFrame)
+        self.marginSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget("边距尺寸：", marginSizeFrame)
         self.scriptedEffect.addLabeledOptionsWidget("", self.marginSizeLabel)
 
         self.applyToAllVisibleSegmentsCheckBox = qt.QCheckBox()
-        self.applyToAllVisibleSegmentsCheckBox.setToolTip("Grow or shrink all visible segments in this segmentation node. \
-                                                      This operation may take a while.")
+        self.applyToAllVisibleSegmentsCheckBox.setToolTip("增大或缩小该分段节点中的所有可见分割。 \
+                                                      此操作可能需要一段时间。")
         self.applyToAllVisibleSegmentsCheckBox.objectName = self.__class__.__name__ + 'ApplyToAllVisibleSegments'
-        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget("Apply to visible segments:", self.applyToAllVisibleSegmentsCheckBox)
+        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget("应用于可见分割：", self.applyToAllVisibleSegmentsCheckBox)
 
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton("应用")
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-        self.applyButton.setToolTip("Grows or shrinks selected segment /default) or all segments (checkbox) by the specified margin.")
+        self.applyButton.setToolTip("按指定的边距增大或缩小选定的分割（默认）或所有分割（复选框）。")
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
         self.applyButton.connect('clicked()', self.onApply)
