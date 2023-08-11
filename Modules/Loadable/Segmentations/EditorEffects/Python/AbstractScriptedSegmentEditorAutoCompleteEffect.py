@@ -86,14 +86,14 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         return False
 
     def setupOptionsFrame(self):
-        self.autoUpdateCheckBox = qt.QCheckBox(_("Auto-update"))
-        self.autoUpdateCheckBox.setToolTip(_("Auto-update results preview when input segments change."))
+        self.autoUpdateCheckBox = qt.QCheckBox(_("自动更新"))
+        self.autoUpdateCheckBox.setToolTip(_("输入分割更改时，自动更新结果预览。"))
         self.autoUpdateCheckBox.setChecked(True)
         self.autoUpdateCheckBox.setEnabled(False)
 
-        self.previewButton = qt.QPushButton(_("Initialize"))
+        self.previewButton = qt.QPushButton(_("初始化"))
         self.previewButton.objectName = self.__class__.__name__ + 'Preview'
-        self.previewButton.setToolTip(_("Preview complete segmentation"))
+        self.previewButton.setToolTip(_("预览完整分割"))
         # qt.QSizePolicy(qt.QSizePolicy.Expanding, qt.QSizePolicy.Expanding)
         # fails on some systems, therefore set the policies using separate method calls
         qSize = qt.QSizePolicy()
@@ -103,10 +103,10 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         previewFrame = qt.QHBoxLayout()
         previewFrame.addWidget(self.autoUpdateCheckBox)
         previewFrame.addWidget(self.previewButton)
-        self.scriptedEffect.addLabeledOptionsWidget(_("Preview:"), previewFrame)
+        self.scriptedEffect.addLabeledOptionsWidget(_("预览："), previewFrame)
 
         self.previewOpacitySlider = ctk.ctkSliderWidget()
-        self.previewOpacitySlider.setToolTip(_("Adjust visibility of results preview."))
+        self.previewOpacitySlider.setToolTip(_("调整结果预览的可见性。"))
         self.previewOpacitySlider.minimum = 0
         self.previewOpacitySlider.maximum = 1.0
         self.previewOpacitySlider.value = 0.0
@@ -114,24 +114,24 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         self.previewOpacitySlider.pageStep = 0.1
         self.previewOpacitySlider.spinBoxVisible = False
 
-        self.previewShow3DButton = qt.QPushButton(_("Show 3D"))
-        self.previewShow3DButton.setToolTip(_("Preview results in 3D."))
+        self.previewShow3DButton = qt.QPushButton(_("显示3D"))
+        self.previewShow3DButton.setToolTip(_("在3D视图中预览结果。"))
         self.previewShow3DButton.setCheckable(True)
 
         displayFrame = qt.QHBoxLayout()
-        displayFrame.addWidget(qt.QLabel(_("inputs")))
+        displayFrame.addWidget(qt.QLabel(_("输入")))
         displayFrame.addWidget(self.previewOpacitySlider)
-        displayFrame.addWidget(qt.QLabel(_("results")))
+        displayFrame.addWidget(qt.QLabel(_("结果")))
         displayFrame.addWidget(self.previewShow3DButton)
-        self.scriptedEffect.addLabeledOptionsWidget(_("Display:"), displayFrame)
+        self.scriptedEffect.addLabeledOptionsWidget(_("显示："), displayFrame)
 
-        self.cancelButton = qt.QPushButton(_("Cancel"))
+        self.cancelButton = qt.QPushButton(_("取消"))
         self.cancelButton.objectName = self.__class__.__name__ + 'Cancel'
-        self.cancelButton.setToolTip(_("Clear preview and cancel auto-complete"))
+        self.cancelButton.setToolTip(_("清除预览并取消自动完成"))
 
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_("应用"))
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-        self.applyButton.setToolTip(_("Replace segments by previewed result"))
+        self.applyButton.setToolTip(_("用预览结果替代分割。"))
 
         finishFrame = qt.QHBoxLayout()
         finishFrame.addWidget(self.cancelButton)

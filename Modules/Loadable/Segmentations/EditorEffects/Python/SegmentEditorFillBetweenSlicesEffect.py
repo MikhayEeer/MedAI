@@ -32,12 +32,12 @@ class SegmentEditorFillBetweenSlicesEffect(AbstractScriptedSegmentEditorAutoComp
         return """<html>切片之间的插值分割<br>。 说明：
 <p><ul>
 <li>使用任何编辑器效果在选定切片上创建完整的分割。
-Segmentation will only expanded if a slice is segmented but none of the direct neighbors are segmented, therefore
-do not use sphere brush with Paint effect and always leave at least one empty slice between segmented slices.</li>
-<li>All visible segments will be interpolated, not just the selected segment.</li>
-<li>The complete segmentation will be created by interpolating segmentations in empty slices.</li>
+仅当切片被分割但没有直接邻居被分割时，分割才会扩展，
+因此不要使用具有 Paint 效果的球体画笔，并且始终在分割的切片之间保留至少一个空切片。</li>
+<li>所有可见分割都将被插值，而不仅仅是所选段。</li>
+<li>完整的分割将通过在空切片中插入分割来创建。</li>
 </ul><p>
-Masking settings are ignored. If segments overlap, segment higher in the segments table will have priority.
+屏蔽设置将被忽略。如果分割重叠，则分割表中较高的分割将具有优先权。
 The effect uses  <a href="https://insight-journal.org/browse/publication/977">morphological contour interpolation method</a>.
 <p></html>"""
 

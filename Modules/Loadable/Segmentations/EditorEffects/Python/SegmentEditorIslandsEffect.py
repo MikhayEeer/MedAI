@@ -34,15 +34,14 @@ class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Edit islands (connected components) in a segment<br>. To get more information
-about each operation, hover the mouse over the option and wait for the tooltip to appear.</html>"""
+        return """<html>编辑分割中的岛屿 (连通子区域)<br>。 </html>"""
 
     def setupOptionsFrame(self):
         self.operationRadioButtons = []
 
-        self.keepLargestOptionRadioButton = qt.QRadioButton(_("Keep largest island"))
+        self.keepLargestOptionRadioButton = qt.QRadioButton("保留最大岛屿")
         self.keepLargestOptionRadioButton.setToolTip(
-            "Keep only the largest island in selected segment, remove all other islands in the segment.")
+            "仅保留所选分割中最大的岛屿，删除该分割中的所有其他岛屿。")
         self.operationRadioButtons.append(self.keepLargestOptionRadioButton)
         self.widgetToOperationNameMap[self.keepLargestOptionRadioButton] = KEEP_LARGEST_ISLAND
 

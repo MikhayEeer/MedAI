@@ -29,9 +29,9 @@ class SegmentEditorFloodFillingEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """Fill connected voxels with similar intensity\n.
-Click in the image to add voxels that have similar intensity to the clicked voxel.
-Masking settings can be used to restrict growing to a specific region.
+    return """以相似的强度值填充连接的体素\n。
+在图像中单击以添加与单击的体素具有相似强度的体素。
+屏蔽设置可用于限制生长到特定区域。
 """
 
   def activate(self):
@@ -41,23 +41,23 @@ Masking settings can be used to restrict growing to a specific region.
   def setupOptionsFrame(self):
 
     self.intensityToleranceSlider = ctk.ctkSliderWidget()
-    self.intensityToleranceSlider.setToolTip("Tolerance.")
+    self.intensityToleranceSlider.setToolTip("容许偏差。")
     self.intensityToleranceSlider.minimum = 0.01
     self.intensityToleranceSlider.maximum = 1000.0
     self.intensityToleranceSlider.value = 10
     self.intensityToleranceSlider.singleStep = 1.0
     self.intensityToleranceSlider.pageStep = 5.0
-    self.intensityToleranceLabel = self.scriptedEffect.addLabeledOptionsWidget("Intensity tolerance:", self.intensityToleranceSlider)
+    self.intensityToleranceLabel = self.scriptedEffect.addLabeledOptionsWidget("强度耐受性：", self.intensityToleranceSlider)
 
     self.neighborhoodSizeMmSlider = ctk.ctkSliderWidget()
-    self.neighborhoodSizeMmSlider.setToolTip("Regions are added only if all voxels in the neighborhood have similar intensities."
-      "Use higher values prevent leakage. Use lower values to allow capturing finer details.")
+    self.neighborhoodSizeMmSlider.setToolTip("仅当邻近区域中的所有体素具有相似强度时才会添加区域。"
+                                             "使用较高的值可防止泄漏。使用较低的值可以捕获更精细的细节。")
     self.neighborhoodSizeMmSlider.minimum = 0.0
     self.neighborhoodSizeMmSlider.maximum = 30.0
     self.neighborhoodSizeMmSlider.value = 1.0
     self.neighborhoodSizeMmSlider.singleStep = 0.01
     self.neighborhoodSizeMmSlider.pageStep = 0.5
-    self.neighborhoodSizeLabel = self.scriptedEffect.addLabeledOptionsWidget("Neighborhood size:", self.neighborhoodSizeMmSlider)
+    self.neighborhoodSizeLabel = self.scriptedEffect.addLabeledOptionsWidget("相邻体素大小：", self.neighborhoodSizeMmSlider)
 
     self.neighborhoodSizeMmSlider.connect("valueChanged(double)", self.updateMRMLFromGUI)
     self.intensityToleranceSlider.connect("valueChanged(double)", self.updateMRMLFromGUI)

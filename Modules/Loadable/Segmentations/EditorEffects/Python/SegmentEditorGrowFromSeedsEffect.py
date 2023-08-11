@@ -38,20 +38,18 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
         return qt.QIcon()
 
     def helpText(self):
-        return _("""<html>Growing segments to create complete segmentation<br>.
-Location, size, and shape of initial segments and content of source volume are taken into account.
-Final segment boundaries will be placed where source volume brightness changes abruptly. Instructions:<p>
+        return _("""<html>使分割生长成完整的分割<br>。
+考虑初始分割的位置、大小和形状以及源卷的内容。
+最终的分割边界将放置在源体积亮度突然变化的位置。说明：<p>
 <ul style="margin: 0">
-<li>Use Paint or other offects to draw seeds in each region that should belong to a separate segment.
-Paint each seed with a different segment. Minimum two segments are required.</li>
-<li>Click <dfn>Initialize</dfn> to compute preview of full segmentation.</li>
-<li>Browse through image slices. If previewed segmentation result is not correct then switch to
-Paint or other effects and add more seeds in the misclassified region. Full segmentation will be
-updated automatically within a few seconds</li>
-<li>Click <dfn>Apply</dfn> to update segmentation with the previewed result.</li>
+<li>使用 绘画 或其他效果在应属于单独片段的每个区域中绘制种子。
+用不同的部分为每颗种子涂上不同的部分。至少需要两段。</li>
+<li>点击 <dfn>初始化</dfn> 来计算完整分割的预览。</li>
+<li>浏览图像切片。如果预览的分割结果不正确，则切换到“绘画”或其他效果，
+                 并在错误分类的区域中添加更多种子。完整分割将在几秒钟内自动更新</li>
+<li>点击 <dfn>应用</dfn> 使用预览结果更新分割。</li>
 </ul><p>
-If segments overlap, segment higher in the segments table will have priority.
-The effect uses <a href="http://interactivemedical.org/imic2014/CameraReadyPapers/Paper%204/IMIC_ID4_FastGrowCut.pdf">fast grow-cut method</a>.
+如果分割重叠，则分割表中较前的分割将具有优先权。
 <p></html>""")
 
     def reset(self):
@@ -71,10 +69,9 @@ The effect uses <a href="http://interactivemedical.org/imic2014/CameraReadyPaper
         self.seedLocalityFactorSlider.decimals = 1
         self.seedLocalityFactorSlider.singleStep = 0.1
         self.seedLocalityFactorSlider.pageStep = 1.0
-        self.seedLocalityFactorSlider.setToolTip(_("""Increasing this value makes the effect of seeds more localized,
-                                                  thereby reducing leaks, but requires seed regions to be more evenly distributed in the image.
-                                                  The value is specified as an additional 'intensity level difference' per 'unit distance.'"""))
-        self.scriptedEffect.addLabeledOptionsWidget(_("Seed locality:"), self.seedLocalityFactorSlider)
+        self.seedLocalityFactorSlider.setToolTip(_("""增加该值会使种子的影响更加局部化，从而减少泄漏，但要求种子区域在图像中分布更均匀。
+                                                该值被指定为每“单位距离”的附加“强度水平差”。'"""))
+        self.scriptedEffect.addLabeledOptionsWidget(_("种子点位置："), self.seedLocalityFactorSlider)
         self.seedLocalityFactorSlider.connect('valueChanged(double)', self.updateAlgorithmParameterFromGUI)
 
     def setMRMLDefaults(self):

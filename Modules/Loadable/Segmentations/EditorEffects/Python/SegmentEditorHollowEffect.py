@@ -30,32 +30,32 @@ class SegmentEditorHollowEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """Make the selected segment hollow by replacing the segment with a uniform-thickness shell defined by the segment boundary."""
+        return """通过将分割替换为由分割边界定义的均匀厚度的壳，使所选分割成为空心。"""
 
     def setupOptionsFrame(self):
 
         operationLayout = qt.QVBoxLayout()
 
-        self.insideSurfaceOptionRadioButton = qt.QRadioButton("inside surface")
-        self.medialSurfaceOptionRadioButton = qt.QRadioButton("medial surface")
-        self.outsideSurfaceOptionRadioButton = qt.QRadioButton("outside surface")
+        self.insideSurfaceOptionRadioButton = qt.QRadioButton("内表面")
+        self.medialSurfaceOptionRadioButton = qt.QRadioButton("中间表面")
+        self.outsideSurfaceOptionRadioButton = qt.QRadioButton("外表面")
         operationLayout.addWidget(self.insideSurfaceOptionRadioButton)
         operationLayout.addWidget(self.medialSurfaceOptionRadioButton)
         operationLayout.addWidget(self.outsideSurfaceOptionRadioButton)
         self.insideSurfaceOptionRadioButton.setChecked(True)
 
-        self.scriptedEffect.addLabeledOptionsWidget("Use current segment as:", operationLayout)
+        self.scriptedEffect.addLabeledOptionsWidget("使用当前分割作为：", operationLayout)
 
         self.shellThicknessMMSpinBox = slicer.qMRMLSpinBox()
         self.shellThicknessMMSpinBox.setMRMLScene(slicer.mrmlScene)
-        self.shellThicknessMMSpinBox.setToolTip("Thickness of the hollow shell.")
+        self.shellThicknessMMSpinBox.setToolTip("空心壳厚度：")
         self.shellThicknessMMSpinBox.quantity = "length"
         self.shellThicknessMMSpinBox.minimum = 0.0
         self.shellThicknessMMSpinBox.value = 3.0
         self.shellThicknessMMSpinBox.singleStep = 1.0
 
         self.shellThicknessLabel = qt.QLabel()
-        self.shellThicknessLabel.setToolTip("Closest achievable thickness. Constrained by the segmentation's binary labelmap representation spacing.")
+        self.shellThicknessLabel.setToolTip("最接近的可达到的厚度。受分割的二进制标签图表示间距的约束。")
 
         shellThicknessFrame = qt.QHBoxLayout()
         shellThicknessFrame.addWidget(self.shellThicknessMMSpinBox)
@@ -63,14 +63,14 @@ class SegmentEditorHollowEffect(AbstractScriptedSegmentEditorEffect):
         self.scriptedEffect.addLabeledOptionsWidget("", self.shellThicknessLabel)
 
         self.applyToAllVisibleSegmentsCheckBox = qt.QCheckBox()
-        self.applyToAllVisibleSegmentsCheckBox.setToolTip("Apply hollow effect to all visible segments in this segmentation node. \
-                                                      This operation may take a while.")
+        self.applyToAllVisibleSegmentsCheckBox.setToolTip("对此分割节点中的所有可见分割应用空心效果。 \
+                                                      该操作可能需要一段时间。")
         self.applyToAllVisibleSegmentsCheckBox.objectName = self.__class__.__name__ + 'ApplyToAllVisibleSegments'
-        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget("Apply to visible segments:", self.applyToAllVisibleSegmentsCheckBox)
+        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget("应用到可见分割：", self.applyToAllVisibleSegmentsCheckBox)
 
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton("应用")
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-        self.applyButton.setToolTip("Makes the segment hollow by replacing it with a thick shell at the segment boundary.")
+        self.applyButton.setToolTip("通过在分割边界将其替换为厚壳来使分割变成空心。")
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
         self.applyButton.connect('clicked()', self.onApply)
