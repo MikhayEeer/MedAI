@@ -39,8 +39,9 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """<html>Use markup fiducials to create a tube<br>. The tube is generated to connect the placed points.
-</html>"""
+    return """<html>使用标记创建管道<br>。
+      管道是为了连接放置的点。
+</html>"""#The tube is generated to connect the placed points.
 
   def setupOptionsFrame(self):
     self.interpolationRadioButtons = []
@@ -55,28 +56,28 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
     self.fiducialPlacementToggle.deleteButton().show()
 
     # Edit surface button
-    self.editButton = qt.QPushButton("Edit")
+    self.editButton = qt.QPushButton("编辑")
     self.editButton.objectName = self.__class__.__name__ + 'Edit'
-    self.editButton.setToolTip("Edit the previously placed group of fiducials.")
+    self.editButton.setToolTip("编辑先前放置的基础组。")
 
     fiducialActionLayout = qt.QHBoxLayout()
     fiducialActionLayout.addWidget(self.fiducialPlacementToggle)
     fiducialActionLayout.addWidget(self.editButton)
-    self.scriptedEffect.addLabeledOptionsWidget("Fiducial Placement: ", fiducialActionLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("基准放置：", fiducialActionLayout)
 
     # Radius spinbox
     self.radiusSpinBox = slicer.qMRMLSpinBox()
     self.radiusSpinBox.value = self.logic.radius
     self.radiusSpinBox.quantity = 'length'
     self.radiusSpinBox.unitAwareProperties = slicer.qMRMLSpinBox.MaximumValue | slicer.qMRMLSpinBox.Precision | slicer.qMRMLSpinBox.Prefix | slicer.qMRMLSpinBox.Suffix
-    self.scriptedEffect.addLabeledOptionsWidget("Radius: ", self.radiusSpinBox)
+    self.scriptedEffect.addLabeledOptionsWidget("半径： ", self.radiusSpinBox)
 
-    # Interpolation buttons
-    self.piecewiseLinearButton = qt.QRadioButton("Piecewise linear")
+    # Interpolation buttons插值按钮
+    self.piecewiseLinearButton = qt.QRadioButton("分段线性")
     self.interpolationRadioButtons.append(self.piecewiseLinearButton)
     self.buttonToInterpolationTypeMap[self.piecewiseLinearButton] = "LINEAR"
 
-    self.cardinalSplineButton = qt.QRadioButton("Cardinal spline")
+    self.cardinalSplineButton = qt.QRadioButton("基数样条")
     self.interpolationRadioButtons.append(self.cardinalSplineButton)
     self.buttonToInterpolationTypeMap[self.cardinalSplineButton] = "CARDINAL_SPLINE"
 
@@ -84,11 +85,11 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
     self.interpolationRadioButtons.append(self.kochanekSplineButton)
     self.buttonToInterpolationTypeMap[self.kochanekSplineButton] = "KOCHANEK_SPLINE"
 
-    self.globalPolynomialButton = qt.QRadioButton("Global polynomial")
+    self.globalPolynomialButton = qt.QRadioButton("全局多项式")
     self.interpolationRadioButtons.append(self.globalPolynomialButton)
     self.buttonToInterpolationTypeMap[self.globalPolynomialButton] = "GLOBAL_POLYNOMIAL"
 
-    self.movingPolynomialButton = qt.QRadioButton("Moving polynomial")
+    self.movingPolynomialButton = qt.QRadioButton("移动多项式")
     self.interpolationRadioButtons.append(self.movingPolynomialButton)
     self.buttonToInterpolationTypeMap[self.movingPolynomialButton] = "MOVING_POLYNOMIAL"
 
@@ -108,18 +109,18 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
     interpolationLayout.addWidget(self.globalPolynomialButton, 1, 1)
     interpolationLayout.addWidget(self.movingPolynomialButton, 0, 2)
 
-    self.scriptedEffect.addLabeledOptionsWidget("Interpolation:", interpolationLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("插入：", interpolationLayout)
 
     # Apply button
-    self.applyButton = qt.QPushButton("Apply")
+    self.applyButton = qt.QPushButton("应用")
     self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-    self.applyButton.setToolTip("Generate tube from markup fiducials.")
+    self.applyButton.setToolTip("从标记基准生成管道。")
     self.scriptedEffect.addOptionsWidget(self.applyButton)
 
     # Cancel button
-    self.cancelButton = qt.QPushButton("Cancel")
+    self.cancelButton = qt.QPushButton("取消l")
     self.cancelButton.objectName = self.__class__.__name__ + 'Cancel'
-    self.cancelButton.setToolTip("Clear fiducials and remove from scene.")
+    self.cancelButton.setToolTip("清除基准并从场景中移除。")
 
     # Finish action buttons
     finishAction = qt.QHBoxLayout()
@@ -236,7 +237,8 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
       segmentationNode = self.scriptedEffect.parameterSetNode().GetSegmentationNode()
       displayNode = segmentationNode.GetDisplayNode()
       if displayNode is None:
-        logging.error("preview: Invalid segmentation display node!")
+        logging.error("预览： 分割显示的节点无效！")
+        #preview: Invalid segmentation display node!
       if self.segmentModel.GetDisplayNode():
         segmentID = self.scriptedEffect.parameterSetNode().GetSelectedSegmentID()
         if segmentID:
@@ -288,7 +290,8 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
 
   def onApply(self):
     if self.getNumberOfDefinedControlPoints() < 2:
-      logging.warning("Cannot apply, segment markup node has less than 2 control points")
+      logging.warning("无法应用，分段标记节点的控制点少于2个")
+      #Cannot apply, segment markup node has less than 2 control points
       return
 
     # Allow users revert to this state by clicking Undo

@@ -29,9 +29,9 @@ class SegmentEditorFillBetweenSlicesEffect(AbstractScriptedSegmentEditorAutoComp
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Interpolate segmentation between slices<br>. Instructions:
+        return """<html>切片之间的插值分割<br>。 说明：
 <p><ul>
-<li>Create complete segmentation on selected slices using any editor effect.
+<li>使用任何编辑器效果在选定切片上创建完整的分割。
 Segmentation will only expanded if a slice is segmented but none of the direct neighbors are segmented, therefore
 do not use sphere brush with Paint effect and always leave at least one empty slice between segmented slices.</li>
 <li>All visible segments will be interpolated, not just the selected segment.</li>

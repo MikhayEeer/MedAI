@@ -33,13 +33,14 @@ class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return """<html>Draw segment outline in slice viewers<br>.
+        return """<html>在视图中绘制分割轮廓<br>。
 <p><ul style="margin: 0">
-<li><b>Left-click:</b> add point.</li>
-<li><b>Left-button drag-and-drop:</b> add multiple points.</li>
-<li><b>x:</b> delete last point.</li>
-<li><b>Double-left-click</b> or <b>right-click</b> or <b>a</b> or <b>enter</b>: apply outline.</li>
+<li><b>单击左键：</b> 添加点</li>
+<li><b>左键拖放：</b> 添加多个点</li>
+<li><b>x:</b> 删除最后一个点</li>
+<li><b>双击左键</b> 或 <b>单击右键k</b> 或 <b>a</b> 或 <b>回车</b>： 应用轮廓</li>
 </ul><p></html>"""
+#Draw segment outline in slice viewers<br>.
 
     def deactivate(self):
         # Clear draw pipelines
@@ -149,7 +150,8 @@ class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
         # Add actor
         renderer = self.scriptedEffect.renderer(sliceWidget)
         if renderer is None:
-            logging.error("pipelineForWidget: Failed to get renderer!")
+            logging.error("pipelineForWidget: 无法获取渲染器!")
+            #pipelineForWidget: Failed to get renderer!
             return None
         self.scriptedEffect.addActor2D(sliceWidget, pipeline.actor)
 
