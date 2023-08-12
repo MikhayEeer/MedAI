@@ -7,9 +7,11 @@ import qt
 
 import slicer
 from SegmentEditorEffects import *
-from slicer.i18n import tr as _
-from slicer.i18n import translate
+#from slicer.i18n import tr as _
+#from slicer.i18n import translate
 
+def _(str):
+    return str
 
 class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
     """ ThresholdEffect is an Effect implementing the global threshold
@@ -78,7 +80,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         return """<html>基于元数据强度范围来填充分割<br>。 选项：<p>
 <ul style="margin: 0">
 <li><b>用于蒙版：</b>将选定的强度范围设置为<dfn>可编辑的强度范围</dfn> and switch to Paint effect.</li>
-<li><b>Apply:</b> set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.</li>
+<li><b>应用：</b> 在所选分割中应用预览的分割。 Previous contents of the segment is overwritten.</li>
 </ul><p></html>"""
     #Fill segment based on source volume intensity range<br>. Options:<p>
     #Use fot masking:</b> set the selected intensity range as <dfn>Editable intensity range</dfn>
@@ -244,14 +246,14 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.histogramBrushButtonGroup.addButton(self.circleROIButton)
 
         self.drawROIButton = qt.QToolButton()
-        self.drawROIButton.setText(_("Draw"))
+        self.drawROIButton.setText(_("绘制"))
         self.drawROIButton.setCheckable(True)
         self.drawROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.drawROIButton)
         self.histogramBrushButtonGroup.addButton(self.drawROIButton)
 
         self.lineROIButton = qt.QToolButton()
-        self.lineROIButton.setText(_("Line"))
+        self.lineROIButton.setText(_("线形"))
         self.lineROIButton.setCheckable(True)
         self.lineROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.lineROIButton)
