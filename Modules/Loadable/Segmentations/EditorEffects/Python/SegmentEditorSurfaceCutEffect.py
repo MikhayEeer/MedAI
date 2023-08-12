@@ -7,7 +7,7 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
   """This effect uses markup fiducials to segment the input volume"""
 
   def __init__(self, scriptedEffect):
-    scriptedEffect.name = 'Surface cut'
+    scriptedEffect.name = '表面切割'
     scriptedEffect.perSegment = True # this effect operates on a single selected segment
     AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -39,7 +39,7 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """<html>Use markup fiducials to fill a segment<br>. The surface is generated from the placed points.
+    return """<html>使用基础标记填充分割<br>。曲面由放置的点生成。
 </html>"""
 
   def setupOptionsFrame(self):
@@ -55,33 +55,33 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     self.fiducialPlacementToggle.deleteButton().show()
 
     # Edit surface button
-    self.editButton = qt.QPushButton("Edit")
+    self.editButton = qt.QPushButton("编辑")
     self.editButton.objectName = self.__class__.__name__ + 'Edit'
-    self.editButton.setToolTip("Edit the previously placed group of fiducials.")
+    self.editButton.setToolTip("编辑先前放置的组")
 
     fiducialAction = qt.QHBoxLayout()
     fiducialAction.addWidget(self.fiducialPlacementToggle)
     fiducialAction.addWidget(self.editButton)
-    self.scriptedEffect.addLabeledOptionsWidget("Fiducial Placement: ", fiducialAction)
+    self.scriptedEffect.addLabeledOptionsWidget("基础放置：", fiducialAction)
 
     #Operation buttons
-    self.eraseInsideButton = qt.QRadioButton("Erase inside")
+    self.eraseInsideButton = qt.QRadioButton("擦除内部")
     self.operationRadioButtons.append(self.eraseInsideButton)
     self.buttonToOperationNameMap[self.eraseInsideButton] = 'ERASE_INSIDE'
 
-    self.eraseOutsideButton = qt.QRadioButton("Erase outside")
+    self.eraseOutsideButton = qt.QRadioButton("擦除外部")
     self.operationRadioButtons.append(self.eraseOutsideButton)
     self.buttonToOperationNameMap[self.eraseOutsideButton] = 'ERASE_OUTSIDE'
 
-    self.fillInsideButton = qt.QRadioButton("Fill inside")
+    self.fillInsideButton = qt.QRadioButton("填充内部")
     self.operationRadioButtons.append(self.fillInsideButton)
     self.buttonToOperationNameMap[self.fillInsideButton] = 'FILL_INSIDE'
 
-    self.fillOutsideButton = qt.QRadioButton("Fill outside")
+    self.fillOutsideButton = qt.QRadioButton("填充外部")
     self.operationRadioButtons.append(self.fillOutsideButton)
     self.buttonToOperationNameMap[self.fillOutsideButton] = 'FILL_OUTSIDE'
 
-    self.setButton = qt.QRadioButton("Set")
+    self.setButton = qt.QRadioButton("设定")
     self.operationRadioButtons.append(self.setButton)
     self.buttonToOperationNameMap[self.setButton] = 'SET'
 
@@ -93,24 +93,24 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     operationLayout.addWidget(self.fillOutsideButton, 1, 1)
     operationLayout.addWidget(self.setButton, 0, 2)
 
-    self.scriptedEffect.addLabeledOptionsWidget("Operation:", operationLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("操作：", operationLayout)
 
     # Smooth model checkbox layout
     self.smoothModelCheckbox = qt.QCheckBox()
     self.smoothModelCheckbox.setChecked(True) # model smoothing initial default is True
-    self.smoothModelCheckbox.setToolTip("Model is smoothed if checked, faceted if unchecked")
-    self.scriptedEffect.addLabeledOptionsWidget("Smooth model:", self.smoothModelCheckbox)
+    self.smoothModelCheckbox.setToolTip("勾选后，则模型是平滑的；不勾选则是分面的。")
+    self.scriptedEffect.addLabeledOptionsWidget("平滑模型：", self.smoothModelCheckbox)
 
     # Apply button
-    self.applyButton = qt.QPushButton("Apply")
+    self.applyButton = qt.QPushButton("应用")
     self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-    self.applyButton.setToolTip("Generate surface from markup fiducials.")
+    self.applyButton.setToolTip("从基础标记生成曲面。")
     self.scriptedEffect.addOptionsWidget(self.applyButton)
 
     # Cancel button
-    self.cancelButton = qt.QPushButton("Cancel")
+    self.cancelButton = qt.QPushButton("取消")
     self.cancelButton.objectName = self.__class__.__name__ + 'Cancel'
-    self.cancelButton.setToolTip("Clear fiducials and remove from scene.")
+    self.cancelButton.setToolTip("清除并从场景移除标记。")
 
     #Finish action buttons
     finishAction = qt.QHBoxLayout()

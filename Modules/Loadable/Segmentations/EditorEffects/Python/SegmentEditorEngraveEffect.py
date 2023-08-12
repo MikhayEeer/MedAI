@@ -7,7 +7,7 @@ class SegmentEditorEngraveEffect(AbstractScriptedSegmentEditorEffect):
   """This effect uses markup fiducials to segment the input volume"""
 
   def __init__(self, scriptedEffect):
-    scriptedEffect.name = 'Engrave'
+    scriptedEffect.name = '添加文字'
     scriptedEffect.perSegment = True # this effect operates on a single selected segment
     AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -38,16 +38,16 @@ class SegmentEditorEngraveEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """<html>Engrave or emboss text on a segment's surface</html>"""
+    return """<html>在分割表面雕刻或浮雕文字</html>"""
 
   def setupOptionsFrame(self):
     self.modeRadioButtons = []
 
     # Text line edit
     self.textLineEdit = qt.QLineEdit()
-    self.textLineEdit.setToolTip("Text to be added")
-    self.textLineEdit.text = "Text"
-    self.textLineEditLabel = self.scriptedEffect.addLabeledOptionsWidget("Text:", self.textLineEdit)
+    self.textLineEdit.setToolTip("被添加的文本")
+    self.textLineEdit.text = "文本"
+    self.textLineEditLabel = self.scriptedEffect.addLabeledOptionsWidget("文本：", self.textLineEdit)
 
     # Fiducial Placement widget
     self.markupsPlacementToggle = slicer.qSlicerMarkupsPlaceWidget()
@@ -59,48 +59,48 @@ class SegmentEditorEngraveEffect(AbstractScriptedSegmentEditorEffect):
     self.markupsPlacementToggle.deleteButton().show()
 
     # Edit surface button
-    self.editButton = qt.QPushButton("Edit")
+    self.editButton = qt.QPushButton("编辑")
     self.editButton.objectName = self.__class__.__name__ + 'Edit'
-    self.editButton.setToolTip("Edit the previously placed plane.")
+    self.editButton.setToolTip("编辑先前放置的平面。")
 
     markupsActionLayout = qt.QHBoxLayout()
     markupsActionLayout.addWidget(self.markupsPlacementToggle)
     markupsActionLayout.addWidget(self.editButton)
-    self.scriptedEffect.addLabeledOptionsWidget("Placement: ", markupsActionLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("布置：", markupsActionLayout)
 
     # Resize button
-    self.interactionResizeButton = qt.QPushButton("Resize")
+    self.interactionResizeButton = qt.QPushButton("调整大小")
     self.interactionResizeButton.objectName = self.__class__.__name__ + 'Resize'
     self.interactionResizeButton.checkable = True
-    self.interactionResizeButton.setToolTip("Enable/disable resize of the text plane.")
+    self.interactionResizeButton.setToolTip("启用/禁用文本平面大小调整。")
 
     # Move button
-    self.interactionMoveButton = qt.QPushButton("Move")
+    self.interactionMoveButton = qt.QPushButton("移动")
     self.interactionMoveButton.objectName = self.__class__.__name__ + 'Move'
     self.interactionMoveButton.checkable = True
-    self.interactionMoveButton.setToolTip("Enable/disable translation and rotation of the text plane.")
+    self.interactionMoveButton.setToolTip("启用/禁用文本平面的平移和旋转。")
 
     interactionLayout = qt.QHBoxLayout()
     interactionLayout.addWidget(self.interactionResizeButton)
     interactionLayout.addWidget(self.interactionMoveButton)
-    self.scriptedEffect.addLabeledOptionsWidget("Interaction: ", interactionLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("交互：", interactionLayout)
 
     # Text depth slider
     self.textDepthSlider = ctk.ctkSliderWidget()
-    self.textDepthSlider.setToolTip("Thickness of the generated text.")
+    self.textDepthSlider.setToolTip("生成的文本的厚度。")
     self.textDepthSlider.minimum = 0.1
     self.textDepthSlider.maximum = 20.0
     self.textDepthSlider.value = 5
     self.textDepthSlider.singleStep = 0.1
     self.textDepthSlider.pageStep = 1.0
-    self.textDepthLabel = self.scriptedEffect.addLabeledOptionsWidget("Depth:", self.textDepthSlider)
+    self.textDepthLabel = self.scriptedEffect.addLabeledOptionsWidget("深度：", self.textDepthSlider)
 
     # Mode buttons
-    self.engraveButton = qt.QRadioButton("Engrave")
+    self.engraveButton = qt.QRadioButton("雕刻")
     self.modeRadioButtons.append(self.engraveButton)
     self.buttonToModeTypeMap[self.engraveButton] = "ENGRAVE"
 
-    self.embossButton = qt.QRadioButton("Emboss")
+    self.embossButton = qt.QRadioButton("浮雕")
     self.modeRadioButtons.append(self.embossButton)
     self.buttonToModeTypeMap[self.embossButton] = "EMBOSS"
 
@@ -109,18 +109,18 @@ class SegmentEditorEngraveEffect(AbstractScriptedSegmentEditorEffect):
     modeLayout.addWidget(self.engraveButton)
     modeLayout.addWidget(self.embossButton)
 
-    self.scriptedEffect.addLabeledOptionsWidget("Mode:", modeLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("方式：", modeLayout)
 
     # Apply button
-    self.applyButton = qt.QPushButton("Apply")
+    self.applyButton = qt.QPushButton("应用")
     self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-    self.applyButton.setToolTip("Generate tube from markup fiducials.")
+    self.applyButton.setToolTip("从标记基准生成管道。")
     self.scriptedEffect.addOptionsWidget(self.applyButton)
 
     # Cancel button
-    self.cancelButton = qt.QPushButton("Cancel")
+    self.cancelButton = qt.QPushButton("取消")
     self.cancelButton.objectName = self.__class__.__name__ + 'Cancel'
-    self.cancelButton.setToolTip("Clear fiducials and remove from scene.")
+    self.cancelButton.setToolTip("清除并从场景中移除标记。")
 
     # Finish action buttons
     finishAction = qt.QHBoxLayout()

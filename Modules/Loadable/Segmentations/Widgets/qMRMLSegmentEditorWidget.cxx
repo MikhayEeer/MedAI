@@ -355,8 +355,8 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     << /*no tr*/ "Scissors" << "Islands" << "逻辑运算"
     // Operating on volumes
     << /*no tr*/ "Mask volume"
-    << "Engrave" << "Fast marching" << "Flood filling" 
-    << "Surface cut" << "Watershed" << "固定包裹";
+    << "添加文字" << "Fast marching" << "Flood filling" 
+    << "表面切割" << "Watershed" << "固定包裹";
   this->UnorderedEffectsVisible = true;
   this->DefaultTerminologyEntrySettingsKey = "Segmentations/DefaultTerminologyEntry";
   this->EffectColumnCount = 2;

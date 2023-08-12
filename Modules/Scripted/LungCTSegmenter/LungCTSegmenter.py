@@ -1640,7 +1640,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
     def trimSegmentWithCube(self, id,r,a,s,offs_r,offs_a,offs_s) :
           
         self.segmentEditorNode.SetSelectedSegmentID(id)
-        self.segmentEditorWidget.setActiveEffectByName("Surface cut")
+        self.segmentEditorWidget.setActiveEffectByName("表面切割")
 
         effect = self.segmentEditorWidget.activeEffect()
 
