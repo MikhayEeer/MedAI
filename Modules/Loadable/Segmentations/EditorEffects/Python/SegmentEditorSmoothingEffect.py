@@ -48,55 +48,55 @@ If segments overlap, segment higher in the segments table will have priority. <b
     def setupOptionsFrame(self):
 
         self.methodSelectorComboBox = qt.QComboBox()
-        self.methodSelectorComboBox.addItem("Median", MEDIAN)
-        self.methodSelectorComboBox.addItem("Opening (remove extrusions)", MORPHOLOGICAL_OPENING)
-        self.methodSelectorComboBox.addItem("Closing (fill holes)", MORPHOLOGICAL_CLOSING)
-        self.methodSelectorComboBox.addItem("Gaussian", GAUSSIAN)
-        self.methodSelectorComboBox.addItem("Joint smoothing", JOINT_TAUBIN)
-        self.scriptedEffect.addLabeledOptionsWidget("Smoothing method:", self.methodSelectorComboBox)
+        self.methodSelectorComboBox.addItem("中值", MEDIAN)
+        self.methodSelectorComboBox.addItem("打开（移除拉伸）", MORPHOLOGICAL_OPENING)
+        self.methodSelectorComboBox.addItem("闭合（填充孔洞）", MORPHOLOGICAL_CLOSING)
+        self.methodSelectorComboBox.addItem("高斯", GAUSSIAN)
+        self.methodSelectorComboBox.addItem("关节平滑", JOINT_TAUBIN)
+        self.scriptedEffect.addLabeledOptionsWidget("平滑方法：", self.methodSelectorComboBox)
 
         self.kernelSizeMMSpinBox = slicer.qMRMLSpinBox()
         self.kernelSizeMMSpinBox.setMRMLScene(slicer.mrmlScene)
-        self.kernelSizeMMSpinBox.setToolTip("Diameter of the neighborhood that will be considered around each voxel. Higher value makes smoothing stronger (more details are suppressed).")
+        self.kernelSizeMMSpinBox.setToolTip("每个体素周围将考虑邻域的直径。 值越高，越平滑（损失更多的细节）。")
         self.kernelSizeMMSpinBox.quantity = "length"
         self.kernelSizeMMSpinBox.minimum = 0.0
         self.kernelSizeMMSpinBox.value = 3.0
         self.kernelSizeMMSpinBox.singleStep = 1.0
 
         self.kernelSizePixel = qt.QLabel()
-        self.kernelSizePixel.setToolTip("Diameter of the neighborhood in pixel. Computed from the segment's spacing and the specified kernel size.")
+        self.kernelSizePixel.setToolTip("邻域直径（以像素为单位）。 根据分割间距和指定的内核大小计算。")
 
         kernelSizeFrame = qt.QHBoxLayout()
         kernelSizeFrame.addWidget(self.kernelSizeMMSpinBox)
         kernelSizeFrame.addWidget(self.kernelSizePixel)
-        self.kernelSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget("Kernel size:", kernelSizeFrame)
+        self.kernelSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget("内核尺寸", kernelSizeFrame)
 
         self.gaussianStandardDeviationMMSpinBox = slicer.qMRMLSpinBox()
         self.gaussianStandardDeviationMMSpinBox.setMRMLScene(slicer.mrmlScene)
-        self.gaussianStandardDeviationMMSpinBox.setToolTip("Standard deviation of the Gaussian smoothing filter coefficients. Higher value makes smoothing stronger (more details are suppressed).")
+        self.gaussianStandardDeviationMMSpinBox.setToolTip("高斯平滑滤波器系数的标准偏差。值越高，越平滑（损失更多的细节）。")
         self.gaussianStandardDeviationMMSpinBox.quantity = "length"
         self.gaussianStandardDeviationMMSpinBox.value = 3.0
         self.gaussianStandardDeviationMMSpinBox.singleStep = 1.0
-        self.gaussianStandardDeviationMMLabel = self.scriptedEffect.addLabeledOptionsWidget("Standard deviation:", self.gaussianStandardDeviationMMSpinBox)
+        self.gaussianStandardDeviationMMLabel = self.scriptedEffect.addLabeledOptionsWidget("标准偏差：", self.gaussianStandardDeviationMMSpinBox)
 
         self.jointTaubinSmoothingFactorSlider = ctk.ctkSliderWidget()
-        self.jointTaubinSmoothingFactorSlider.setToolTip("Higher value means stronger smoothing.")
+        self.jointTaubinSmoothingFactorSlider.setToolTip("值越高，越平滑")
         self.jointTaubinSmoothingFactorSlider.minimum = 0.01
         self.jointTaubinSmoothingFactorSlider.maximum = 1.0
         self.jointTaubinSmoothingFactorSlider.value = 0.5
         self.jointTaubinSmoothingFactorSlider.singleStep = 0.01
         self.jointTaubinSmoothingFactorSlider.pageStep = 0.1
-        self.jointTaubinSmoothingFactorLabel = self.scriptedEffect.addLabeledOptionsWidget("Smoothing factor:", self.jointTaubinSmoothingFactorSlider)
+        self.jointTaubinSmoothingFactorLabel = self.scriptedEffect.addLabeledOptionsWidget("平滑因子：", self.jointTaubinSmoothingFactorSlider)
 
         self.applyToAllVisibleSegmentsCheckBox = qt.QCheckBox()
-        self.applyToAllVisibleSegmentsCheckBox.setToolTip("Apply smoothing effect to all visible segments in this segmentation node. \
-                                                      This operation may take a while.")
+        self.applyToAllVisibleSegmentsCheckBox.setToolTip("将平滑效果应用与此分割节点中所有可见分割 \
+                                                      该操作将花费一些时间。")
         self.applyToAllVisibleSegmentsCheckBox.objectName = self.__class__.__name__ + 'ApplyToAllVisibleSegments'
-        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget("Apply to visible segments:", self.applyToAllVisibleSegmentsCheckBox)
+        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget("应用到可见分割：", self.applyToAllVisibleSegmentsCheckBox)
 
-        self.applyButton = qt.QPushButton("Apply")
+        self.applyButton = qt.QPushButton("应用")
         self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-        self.applyButton.setToolTip("Apply smoothing to selected segment")
+        self.applyButton.setToolTip("将平滑应用于选定分割")
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
         self.methodSelectorComboBox.connect("currentIndexChanged(int)", self.updateMRMLFromGUI)
@@ -109,7 +109,7 @@ If segments overlap, segment higher in the segments table will have priority. <b
         # Customize smoothing brush
         self.scriptedEffect.setColorSmudgeCheckboxVisible(False)
         self.paintOptionsGroupBox = ctk.ctkCollapsibleGroupBox()
-        self.paintOptionsGroupBox.setTitle("Smoothing brush options")
+        self.paintOptionsGroupBox.setTitle("平滑笔刷选项")
         self.paintOptionsGroupBox.setLayout(qt.QVBoxLayout())
         self.paintOptionsGroupBox.layout().addWidget(self.scriptedEffect.paintOptionsFrame())
         self.paintOptionsGroupBox.collapsed = True
