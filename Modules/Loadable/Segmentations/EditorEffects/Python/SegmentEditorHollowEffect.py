@@ -14,7 +14,7 @@ class SegmentEditorHollowEffect(AbstractScriptedSegmentEditorEffect):
     """This effect makes a segment hollow by replacing it with a shell at the segment boundary"""
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Hollow'
+        scriptedEffect.name = '空心化'
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
     def clone(self):

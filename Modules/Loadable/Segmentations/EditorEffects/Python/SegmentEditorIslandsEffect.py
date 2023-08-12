@@ -20,7 +20,7 @@ class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = _("Islands")
+        scriptedEffect.name = _("岛屿")#Islands
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
         self.widgetToOperationNameMap = {}
 

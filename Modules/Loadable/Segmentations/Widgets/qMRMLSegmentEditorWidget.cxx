@@ -348,14 +348,15 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // These strings are effect names that must not be translated.
     << /*no tr*/ "阈值分割" << "局部阈值分割"
     // Local painting
-    << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" << "Level tracing" << "Grow from seeds" << "Fill between slices"
+    << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" 
+    << "Level tracing" << "Grow from seeds" << "Fill between slices"
     // Global processing
-    << /*no tr*/ "Margin" << "Hollow" << "平滑化"
+    << /*no tr*/ "Margin" << "空心化" << "平滑化"
     // Global splitting, merging
-    << /*no tr*/ "Scissors" << "Islands" << "逻辑运算"
+    << /*no tr*/ "Scissors" << "岛屿" << "逻辑运算"
     // Operating on volumes
     << /*no tr*/ "Mask volume"
-    << "添加文字" << "Fast marching" << "Flood filling" 
+    << "添加文字" << "Fast marching" << "泛洪算法" 
     << "表面切割" << "Watershed" << "固定包裹";
   this->UnorderedEffectsVisible = true;
   this->DefaultTerminologyEntrySettingsKey = "Segmentations/DefaultTerminologyEntry";
