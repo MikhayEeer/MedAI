@@ -15,7 +15,7 @@ class SegmentEditorSplitVolumeEffect(AbstractScriptedSegmentEditorEffect):
   """This effect creates a volume for each segment, cropped to the segment extent with optional padding."""
 
   def __init__(self, scriptedEffect):
-    scriptedEffect.name = 'Split volume'
+    scriptedEffect.name = '划分体数据'
     scriptedEffect.perSegment = True # this effect operates on a single selected segment
     AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -34,9 +34,9 @@ class SegmentEditorSplitVolumeEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """Create a volume node for each visible segment, or only the selected segment, cropped to the segment extent.\n
-Extent is expanded by the specified number of padding voxels along each axis. Voxels outside the segment are set to the requested fill value.
-Generated volumes are not affected by segmentation undo/redo operations.
+    return """为裁剪到分割范围的每个可见分割或仅选定分割创建数据节点。\n
+“Extent”沿每个轴按指定数量的填充体素展开。分割外的体素将设置为请求的填充值。
+生成的数据不受分割撤消/重做操作的影响。
 </html>"""
 
   def setMRMLDefaults(self):
@@ -84,20 +84,20 @@ Generated volumes are not affected by segmentation undo/redo operations.
     self.inputVolumeSelector.noneDisplay = "(Source volume)"
     self.inputVolumeSelector.showHidden = False
     self.inputVolumeSelector.setMRMLScene(slicer.mrmlScene)
-    self.inputVolumeSelector.setToolTip("Volume to split. Default is current source volume node.")
+    self.inputVolumeSelector.setToolTip("要拆分的数据。 默认为当前源数据节点。")
     self.inputVolumeSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.updateMRMLFromGUI)
 
     inputLayout = qt.QHBoxLayout()
     inputLayout.addWidget(self.inputVolumeSelector)
-    self.scriptedEffect.addLabeledOptionsWidget("Input Volume: ", inputLayout)
+    self.scriptedEffect.addLabeledOptionsWidget("输入体数据：", inputLayout)
 
     # Pad size
     self.padEdit = qt.QSpinBox()
-    self.padEdit.setToolTip("Choose the number of voxels used to pad the image in each dimension")
+    self.padEdit.setToolTip("选择用于在每个维度中填充图像的体素数量")
     self.padEdit.minimum = 0
     self.padEdit.maximum = 1000
     self.padEdit.connect("valueChanged(int)", self.updateMRMLFromGUI)
-    self.padLabel = qt.QLabel("Pad voxels: ")
+    self.padLabel = qt.QLabel("填充体素：")
 
     # Fill value layouts
     # addWidget(*Widget, row, column, rowspan, colspan)
@@ -107,12 +107,12 @@ Generated volumes are not affected by segmentation undo/redo operations.
     self.scriptedEffect.addOptionsWidget(padValueLayout)
 
     self.fillValueEdit = qt.QSpinBox()
-    self.fillValueEdit.setToolTip("Choose the voxel intensity that will be used to pad the output volumes.")
+    self.fillValueEdit.setToolTip("选择将用于填充输出体数据的体素强度。")
     self.fillValueEdit.minimum = -32768
     self.fillValueEdit.maximum = 65535
     self.fillValueEdit.value=0
     self.fillValueEdit.connect("valueChanged(int)", self.updateMRMLFromGUI)
-    self.fillValueLabel = qt.QLabel("Fill value: ")
+    self.fillValueLabel = qt.QLabel("填充值：")
 
     fillValueLayout = qt.QFormLayout()
     fillValueLayout.addRow(self.fillValueLabel, self.fillValueEdit)
@@ -121,15 +121,15 @@ Generated volumes are not affected by segmentation undo/redo operations.
     # Segment scope checkbox layout
     self.applyToAllVisibleSegmentsCheckBox = qt.QCheckBox()
     self.applyToAllVisibleSegmentsCheckBox.setChecked(True)
-    self.applyToAllVisibleSegmentsCheckBox.setToolTip("Apply to all visible segments, or only the selected segment.")
-    self.scriptedEffect.addLabeledOptionsWidget("Apply to visible segments: ", self.applyToAllVisibleSegmentsCheckBox)
+    self.applyToAllVisibleSegmentsCheckBox.setToolTip("应用于所有可见分割，或仅用于选定分割")
+    self.scriptedEffect.addLabeledOptionsWidget("应用到可见分割", self.applyToAllVisibleSegmentsCheckBox)
     # Connection
     self.applyToAllVisibleSegmentsCheckBox.connect('stateChanged(int)', self.onAllSegmentsCheckboxStateChanged)
 
     # Apply button
-    self.applyButton = qt.QPushButton("Apply")
+    self.applyButton = qt.QPushButton("应用")
     self.applyButton.objectName = self.__class__.__name__ + 'Apply'
-    self.applyButton.setToolTip("Generate a volume for each visible segment")
+    self.applyButton.setToolTip("为每个可见分割生成体数据")
     self.scriptedEffect.addOptionsWidget(self.applyButton)
     self.applyButton.connect('clicked()', self.onApply)
 
