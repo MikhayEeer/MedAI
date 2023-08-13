@@ -31,7 +31,7 @@ class SegmentEditorFastMarchingEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """<html>Expand the selected segment<br> to regions that have similar intensity.<p>
+    return """<html>功能未完成<br>Expand the selected segment to regions that have similar intensity.<p>
 Only the selected segment is expanded. No background segment is needed.
 The effect uses <a href="http://www.spl.harvard.edu/publications/item/view/193">fast marching method</a>.
 <p></html>"""

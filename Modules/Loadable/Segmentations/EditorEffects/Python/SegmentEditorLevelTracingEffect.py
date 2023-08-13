@@ -16,7 +16,7 @@ class SegmentEditorLevelTracingEffect(AbstractScriptedSegmentEditorLabelEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Level tracing'
+        scriptedEffect.name = '液面跟踪'#Level tracing
         AbstractScriptedSegmentEditorLabelEffect.__init__(self, scriptedEffect)
 
         # Effect-specific members

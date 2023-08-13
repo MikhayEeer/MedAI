@@ -19,7 +19,7 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
 
     def __init__(self, scriptedEffect):
         AbstractScriptedSegmentEditorAutoCompleteEffect.__init__(self, scriptedEffect)
-        scriptedEffect.name = _("Grow from seeds")
+        scriptedEffect.name = _("区域生长")
         self.minimumNumberOfSegments = 2
         self.clippedMasterImageDataRequired = True  # source volume intensities are used by this effect
         self.clippedMaskImageDataRequired = True  # masking is used

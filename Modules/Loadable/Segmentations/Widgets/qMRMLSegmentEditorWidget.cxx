@@ -349,13 +349,13 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     << /*no tr*/ "阈值分割" << "局部阈值分割"
     // Local painting
     << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" 
-    << "Level tracing" << "Grow from seeds" << "Fill between slices"
+    << "液面跟踪" << "区域生长" << "填充切片"
     // Global processing
     << /*no tr*/ "Margin" << "空心化" << "平滑化"
     // Global splitting, merging
     << /*no tr*/ "Scissors" << "岛屿" << "逻辑运算"
     // Operating on volumes
-    << /*no tr*/ "Mask volume"
+    << /*no tr*/ "Mask volume" << "划分体数据"
     << "添加文字" << "Fast marching" << "泛洪算法" 
     << "表面切割" << "Watershed" << "固定包裹";
   this->UnorderedEffectsVisible = true;
