@@ -2368,7 +2368,7 @@ Halting export.</source>
     <message>
         <location filename="Libs/Widgets/ctkErrorLogWidget.cpp" line="72"/>
         <source>Select messages in the list to see details here.</source>
-        <translation type="unfinished"></translation>
+        <translation>选择列表中的消息可在此查看详细信息。</translation>
     </message>
 </context>
 <context>
@@ -2555,12 +2555,12 @@ Halting export.</source>
     <message>
         <location filename="Libs/Widgets/ctkFittedTextBrowser.cpp" line="40"/>
         <source>Show details...</source>
-        <translation>显示详情...</translation>
+        <translation>显示更多...</translation>
     </message>
     <message>
         <location filename="Libs/Widgets/ctkFittedTextBrowser.cpp" line="41"/>
         <source>Hide details.</source>
-        <translation>隐藏细节。</translation>
+        <translation>隐藏更多.</translation>
     </message>
 </context>
 <context>
@@ -2802,7 +2802,7 @@ Halting export.</source>
     <message>
         <location filename="Libs/Widgets/ctkMenuComboBox.cpp" line="125"/>
         <source>Search...</source>
-        <translation>搜索。。。</translation>
+        <translation>搜索...</translation>
     </message>
 </context>
 <context>
@@ -3898,7 +3898,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Applications/ctkPluginBrowser/ctkPluginTableModel.cpp" line="105"/>
         <source>ACTIVE</source>
-        <translation type="unfinished">激活的</translation>
+        <translation>激活的</translation>
     </message>
     <message>
         <location filename="Applications/ctkPluginBrowser/ctkPluginTableModel.cpp" line="115"/>
@@ -4119,7 +4119,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Libs/Widgets/ctkSearchBox.cpp" line="72"/>
         <source>Search...</source>
-        <translation>搜索。。。</translation>
+        <translation>搜索...</translation>
     </message>
 </context>
 <context>
