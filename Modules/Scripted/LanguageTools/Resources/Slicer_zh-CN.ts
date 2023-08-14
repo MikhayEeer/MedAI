@@ -5144,7 +5144,7 @@ The filter assumes that both the source and reference are of the same type and t
     <message>
         <location filename="Modules/CLI/ModelMaker/ModelMaker_tr.h" line="5"/>
         <source>Create 3D surface models from segmented data.&lt;p&gt;Models are imported into Slicer under a model hierarchy node in a MRML scene. The model colors are set by the color table associated with the input volume (these colors will only be visible if you load the model scene file).&lt;/p&gt;&lt;p&gt;&lt;b&gt;IO:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Specify an &lt;i&gt;Input Volume&lt;/i&gt; that is a segmented label map volume. Create a new &lt;i&gt;Models&lt;/i&gt; hierarchy to provide a structure to contain the return models created from the input volume.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Create Multiple:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;If you specify a list of &lt;i&gt;Labels&lt;/i&gt;, it will over ride any start/end label settings.&lt;/p&gt;&lt;p&gt;If you click &lt;i&gt;Generate All&lt;/i&gt; it will over ride the list of labels and any start/end label settings.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Model Maker Parameters:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;You can set the number of smoothing iterations, target reduction in number of polygons (decimal percentage). Use 0 and 1 if you wish no smoothing nor decimation.&lt;br&gt;You can set the flags to split normals or generate point normals in this pane as well.&lt;br&gt;You can save a copy of the models after intermediate steps (marching cubes, smoothing, and decimation if not joint smoothing, otherwise just after decimation); these models are not saved in the mrml file, turn off deleting temporary files first in the python window:&lt;br&gt;&lt;i&gt;slicer.modules.modelmaker.cliModuleLogic().DeleteTemporaryFilesOff()&lt;/i&gt;&lt;/p&gt;</source>
-        <translation>根据分割数据创建 3D 曲面模型。&lt;p&gt;模型将导入到 MRML 场景中模型层次结构节点下的切片器中。模型颜色由与输入体积关联的颜色表设置（这些颜色仅在加载模型场景文件时可见）。&lt;/p&gt;&lt;p&gt;&lt;b&gt;IO：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;指定作为分段标签映射卷的&lt;i&gt;输入卷&lt;/i&gt;。创建新的模型层次结构以提供一个结构来包含从输入卷创建的返回&lt;i&gt;模型&lt;/i&gt;。&lt;/p&gt;&lt;p&gt;&lt;b&gt;创建多个：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;如果指定标签列表，它将覆盖任何开始/结束&lt;i&gt;标签&lt;/i&gt;设置。&lt;/p&gt;&lt;p&gt;如果单击&lt;i&gt;“全部生成”&lt;/i&gt;，它将覆盖标签列表和任何开始/结束标签设置。&lt;/p&gt;&lt;p&gt;&lt;b&gt;模型制作器参数：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;可以设置平滑迭代次数，目标减少多边形数量（十进制百分比）。如果不希望平滑或抽取，请使用 0 和 1。&lt;br&gt;您也可以在此窗格中将标志设置为分割法线或生成点法线。&lt;br&gt;您可以在中间步骤之后保存模型的副本（行进立方体、平滑和抽取，如果不是联合平滑，否则就在抽取之后）;这些模型不会保存在 mrml 文件中，请先在 python 窗口中关闭删除临时文件&lt;br&gt;&lt;i&gt;：slicer.modules.modelmaker.cliModuleLogic（）。DeleteTemporaryFilesOff（）&lt;/i&gt;&lt;/p&gt;</translation>
+        <translation>根据分割数据创建 3D 曲面模型。&lt;p&gt;模型将导入到 MRML 场景中模型层次结构节点下的切片器中。模型颜色由与输入体积关联的颜色表设置（这些颜色仅在加载模型场景文件时可见）。&lt;/p&gt;&lt;p&gt;&lt;b&gt;IO：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;指定作为分割标签映射卷的&lt;i&gt;输入卷&lt;/i&gt;。创建新的模型层次结构以提供一个结构来包含从输入卷创建的返回&lt;i&gt;模型&lt;/i&gt;。&lt;/p&gt;&lt;p&gt;&lt;b&gt;创建多个：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;如果指定标签列表，它将覆盖任何开始/结束&lt;i&gt;标签&lt;/i&gt;设置。&lt;/p&gt;&lt;p&gt;如果单击&lt;i&gt;“全部生成”&lt;/i&gt;，它将覆盖标签列表和任何开始/结束标签设置。&lt;/p&gt;&lt;p&gt;&lt;b&gt;模型制作器参数：&lt;/b&gt;&lt;/p&gt;&lt;p&gt;可以设置平滑迭代次数，目标减少多边形数量（十进制百分比）。如果不希望平滑或抽取，请使用 0 和 1。&lt;br&gt;您也可以在此窗格中将标志设置为分割法线或生成点法线。&lt;br&gt;您可以在中间步骤之后保存模型的副本（行进立方体、平滑和抽取，如果不是联合平滑，否则就在抽取之后）;这些模型不会保存在 mrml 文件中，请先在 python 窗口中关闭删除临时文件&lt;br&gt;&lt;i&gt;：slicer.modules.modelmaker.cliModuleLogic（）。DeleteTemporaryFilesOff（）&lt;/i&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="Modules/CLI/ModelMaker/ModelMaker_tr.h" line="6"/>
@@ -9384,7 +9384,7 @@ and&lt;br&gt;
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="149"/>
         <source>This parameter corresponds to the MinimumDiameterMm of the airway&apos;s &apos;LocalThreshold-&gt;GrowCut&apos; segmentation algorithm. &apos;very low detail&apos;=5; &apos;high detail&apos;=1. The recommended initial setting is: &apos;low detail&apos;.  A good estimate for this parameter is the width of the trachea. If you get leaks: re-run the segmentation with lower details. </source>
-        <translation>该参数对应于气道“LocalThreshold-&gt;GrowCut”分割算法的MinimumDiameterMm。 &apos;非常低​​的细节&apos;=5； “高细节”=1。推荐的初始设置是：“低细节”。该参数的一个很好的估计是气管的宽度。如果发生泄漏：以较低的细节重新运行分段。 </translation>
+        <translation>该参数对应于气道“LocalThreshold-&gt;GrowCut”分割算法的MinimumDiameterMm。 &apos;非常低​​的细节&apos;=5； “高细节”=1。推荐的初始设置是：“低细节”。该参数的一个很好的估计是气管的宽度。如果发生泄漏：以较低的细节重新运行分割。 </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="156"/>
@@ -10207,19 +10207,19 @@ updated automatically within a few seconds&lt;/li&gt;
 If segments overlap, segment higher in the segments table will have priority.
 The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraReadyPapers/Paper%204/IMIC_ID4_FastGrowCut.pdf&quot;&gt;fast grow-cut method&lt;/a&gt;.
 &lt;p&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;不断扩大分割片段，建立完整的分割&lt;br&gt;.
+        <translation>&lt;html&gt;不断扩大分割，建立完整的分割&lt;br&gt;.
 考虑初始分割的位置、大小和形状以及体数据的内容.
 最后的分割边界将放置在信号源亮度突然变化的地方。说明:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
-&lt;li&gt;使用 &quot;画图 &quot;或其他工具在每个区域中绘制应属于单独区段的种子.
-给每粒种子涂上不同的色块。至少需要两个线段.&lt;/li&gt;
+&lt;li&gt;使用 &quot;画图 &quot;或其他工具在每个区域中绘制应属于单独分割的种子.
+给每粒种子涂上不同的色块。至少需要两个分割.&lt;/li&gt;
 &lt;li&gt;点击 &lt;dfn&gt;初始化&lt;/dfn&gt;来计算完整分割预览。&lt;/li&gt;
 &lt;li&gt;浏览图像切片。如果预览的分割结果不正确，则切换到
 油漆或其他影响，并在错误分类区域添加更多种子。完全分割将
 几秒钟内自动更新&lt;/li&gt;
 &lt;li&gt;点击 &lt;dfn&gt;申请&lt;/dfn&gt; 来使用预览结果更新分割。&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;
-如果分割重叠，在分段表中位置较高的分段将具有优先权。
+如果分割重叠，在分割表中位置较高的分割将具有优先权。
 效果使用 &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraReadyPapers/Paper%204/IMIC_ID4_FastGrowCut.pdf&quot;&gt;fast grow-cut method&lt;/a&gt;.
 &lt;p&gt;&lt;/html&gt;</translation>
     </message>
@@ -10282,10 +10282,10 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
 &lt;li&gt;&lt;b&gt;Use for masking:&lt;/b&gt; set the selected intensity range as &lt;dfn&gt;Editable intensity range&lt;/dfn&gt; and switch to Paint effect.&lt;/li&gt;
 &lt;li&gt;&lt;b&gt;Apply:&lt;/b&gt; set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;html&gt;根据源体积强度范围填充分段&lt;br&gt;. 选项:&lt;p&gt;
+        <translation type="vanished">&lt;html&gt;根据源体积强度范围填充分割&lt;br&gt;. 选项:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
 &lt;li&gt;&lt;b&gt;用于遮蔽:&lt;/b&gt; 将选定的强度范围设置为&lt;dfn&gt;可编辑的强度范围&lt;/dfn&gt;并切换到画图效果。&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;申请：&lt;/b&gt;在选定的片段中设置预览的片段。片段的先前内容将被覆盖。&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;申请：&lt;/b&gt;在选定的分割中设置预览的分割。分割的先前内容将被覆盖。&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;&lt;/html&gt;</translation>
     </message>
     <message>
@@ -10520,7 +10520,7 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="288"/>
         <source>Thickness of the output shell. If the value is very small then it may significantly increase the computation time and may appear fractured if output is segmentation.</source>
-        <translation>输出壳的厚度。如果该值非常小，则可能会显着增加计算时间，并且如果输出是分段的，则可能会出现断裂。</translation>
+        <translation>输出壳的厚度。如果该值非常小，则可能会显着增加计算时间，并且如果输出是分割的，则可能会出现断裂。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="306"/>
@@ -10605,7 +10605,7 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="23"/>
         <source>Segment Statistics</source>
-        <translation>分段统计</translation>
+        <translation>分割统计</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="37"/>
@@ -10621,15 +10621,15 @@ Closed surface statistics (CS): surface mm2, volume mm3, volume cm3 (computed fr
 Requires segment closed surface representation.
 </source>
         <translation>
-使用此模块可计算分段的计数和体积，以及灰度背景体积的统计数据。
+使用此模块可计算分割的计数和体积，以及灰度背景体积的统计数据。
 计算字段：
-片段标签图统计 (LM)：体素计数、体积 mm3、体积 cm3。
-需要分段标签图表示。
-标量体积统计信息 (SV)：体素计数、体积 mm3、体积 cm3（在分段与标量体积重叠时）、
+分割标签图统计 (LM)：体素计数、体积 mm3、体积 cm3。
+需要分割标签图表示。
+标量体积统计信息 (SV)：体素计数、体积 mm3、体积 cm3（在分割与标量体积重叠时）、
 最小值、最大值、平均值、stdev（强度统计）。
-需要分段标签图表示和选择标量体积
+需要分割标签图表示和选择标量体积
 封闭表面统计（CS）：表面平方毫米、体积立方毫米、体积立方厘米（从封闭表面计算）。
-要求使用分段封闭表面表示法。
+要求使用分割封闭表面表示法。
 </translation>
     </message>
     <message>
@@ -10654,7 +10654,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="95"/>
         <source>Pick the segmentation to compute statistics for</source>
-        <translation>选择要计算统计数据的分段</translation>
+        <translation>选择要计算统计数据的分割</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="96"/>
@@ -10720,7 +10720,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="223"/>
         <source>Enabled segment statistics plugins:</source>
-        <translation>启用网段统计插件：</translation>
+        <translation>启用分割统计插件：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="225"/>
@@ -10735,13 +10735,13 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="297"/>
         <source>Edit Segment Statistics Parameters</source>
-        <translation>编辑网段统计参数</translation>
+        <translation>编辑分割统计参数</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="313"/>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="338"/>
         <source>Edit segment statistics plugin parameters:</source>
-        <translation>编辑段落统计插件参数：</translation>
+        <translation>编辑分割统计插件参数：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="315"/>
@@ -10890,17 +10890,17 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="432"/>
         <source>Segment roundness. Calculated from ratio of the area of the hypersphere by the actual area. Value of 1 represents a spherical structure</source>
-        <translation>线段圆度。根据超球面面积与实际面积之比计算得出。1 代表球形结构</translation>
+        <translation>分割圆度。根据超球面面积与实际面积之比计算得出。1 代表球形结构</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="437"/>
         <source>Segment flatness. Calculated from square root of the ratio of the second smallest principal moment by the smallest. Value of 0 represents a flat structure.</source>
-        <translation>分段平整度。根据第二小主矩与最小主矩之比的平方根计算得出。0 代表结构平坦。</translation>
+        <translation>分割平整度。根据第二小主矩与最小主矩之比的平方根计算得出。0 代表结构平坦。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="443"/>
         <source>Segment elongation. Calculated from square root of the ratio of the second largest principal moment by the second smallest.</source>
-        <translation>分段伸长率。根据第二大主矩与第二小主矩之比平方根计算。</translation>
+        <translation>分割伸长率。根据第二大主矩与第二小主矩之比平方根计算。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="447"/>
@@ -14242,7 +14242,7 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/Resources/UI/qMRMLSegmentEditorWidget.ui" line="251"/>
         <source>Segments Table</source>
-        <translation>分段表</translation>
+        <translation>分割表</translation>
     </message>
     <message>
         <source>Form</source>
@@ -14367,7 +14367,7 @@ Change source representation to binary labelmap?</source>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1415"/>
         <source>Failed to create binary labelmap representation in segmentation %1 for editing!
 Please see Segmentations module for details.</source>
-        <translation>在分段 %1 中创建二进制标签图表示以供编辑失败！
+        <translation>在分割 %1 中创建二进制标签图表示以供编辑失败！
 请参阅分割模块了解详情。</translation>
     </message>
     <message>
@@ -14383,7 +14383,7 @@ Please see Segmentations module for details.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3507"/>
         <source>Export segments to files</source>
-        <translation>将片段导出到文件</translation>
+        <translation>将分割导出到文件</translation>
     </message>
 </context>
 <context>
@@ -14616,12 +14616,12 @@ Please see Segmentations module for details.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationDisplayNodeWidget.cxx" line="208"/>
         <source>Selected segment: none</source>
-        <translation>选定段落：无</translation>
+        <translation>选定分割：无</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationDisplayNodeWidget.cxx" line="260"/>
         <source>Selected segment: %1</source>
-        <translation>选择的分段：%1</translation>
+        <translation>选择的分割：%1</translation>
     </message>
 </context>
 <context>
@@ -14786,7 +14786,7 @@ Do you want to crop the segmentation?
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationGeometryDialog.cxx" line="162"/>
         <source>Set reference image geometry and resample all segment labelmaps</source>
-        <translation>设置参考图像几何图形并对所有段标签图重新采样</translation>
+        <translation>设置参考图像几何图形并对所有分割标签图重新采样</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationGeometryDialog.cxx" line="166"/>
@@ -14881,7 +14881,7 @@ Do you want to crop the segmentation?
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationGeometryWidget.cxx" line="411"/>
         <source>No segmentation node specified!</source>
-        <translation>未指定分段节点！</translation>
+        <translation>未指定分割节点！</translation>
     </message>
 </context>
 <context>
@@ -14984,7 +14984,7 @@ Press and hold button to access advanced conversion and removal options.</source
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationRepresentationsListView.cxx" line="337"/>
         <source>Advanced segmentation conversion</source>
-        <translation>高级分段转换</translation>
+        <translation>高级分割转换</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentationRepresentationsListView.cxx" line="414"/>
@@ -15177,7 +15177,7 @@ Do you wish to proceed with changing master representation?</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1015"/>
         <source>Show only selected segments</source>
-        <translation>只显示选定的片段</translation>
+        <translation>只显示选定的分割</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1021"/>
@@ -15187,12 +15187,12 @@ Do you wish to proceed with changing master representation?</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1027"/>
         <source>Move selected segments up</source>
-        <translation>将所选区段上移</translation>
+        <translation>将所选分割上移</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1031"/>
         <source>Move selected segments down</source>
-        <translation>向下移动选定区段</translation>
+        <translation>向下移动选定分割</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1038"/>
@@ -15222,7 +15222,7 @@ Do you wish to proceed with changing master representation?</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1103"/>
         <source>Clear selected segments</source>
-        <translation>清除所选区段</translation>
+        <translation>清除所选分割</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1173"/>
@@ -15237,7 +15237,7 @@ Do you wish to proceed with changing master representation?</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentsTableView.cxx" line="1176"/>
         <source>Are you sure you want to clear the contents of the selected segments?</source>
-        <translation>您确定要清除所选区段的内容吗？</translation>
+        <translation>您确定要清除所选分割的内容吗？</translation>
     </message>
 </context>
 <context>
@@ -22707,7 +22707,7 @@ Table column names : label, r, a, s, (or l, p, s), defined, selected, visible, l
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="377"/>
         <source>Piecewise Linear</source>
-        <translation>分段线性</translation>
+        <translation>分割线性</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="387"/>
@@ -22907,7 +22907,7 @@ Table column names : label, r, a, s, (or l, p, s), defined, selected, visible, l
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="784"/>
         <source>Set the curve model&apos;s resolution (number of segments between individual markups)</source>
         <extracomment>Set the curve model&apos;s resolution (number of segments between individual markups)</extracomment>
-        <translation>设置曲线模型的分辨率（单个标记之间的段数）</translation>
+        <translation>设置曲线模型的分辨率（单个标记之间的分割数）</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="797"/>
@@ -24163,12 +24163,12 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorAbstractEffect.cxx" line="1031"/>
         <source>Operate on invisible segment?</source>
-        <translation>在无形段上运行？</translation>
+        <translation>在不可见分割上运行？</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorAbstractEffect.cxx" line="1032"/>
         <source>The currently selected segment is hidden. Would you like to make it visible?</source>
-        <translation>当前选择的片段是隐藏的。您想让它变为可见吗？</translation>
+        <translation>当前选择的分割是隐藏的。您想让它变为可见吗？</translation>
     </message>
 </context>
 <context>
@@ -24176,7 +24176,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorEraseEffect.cxx" line="74"/>
         <source>&lt;html&gt;Erase from current segment with a round brush&lt;br&gt;.&lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;&lt;li&gt;&lt;b&gt;Left-button drag-and-drop:&lt;/b&gt; erase from segment around the mouse pointer.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Shift + mouse wheel&lt;/b&gt; or &lt;b&gt;+/- keys:&lt;/b&gt; adjust brush size.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Ctrl + mouse wheel:&lt;/b&gt; slice view zoom in/out.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Editing is available both in slice and 3D views.&lt;p&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;用圆刷擦除当前区段&lt;br&gt;.&lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;&lt;li&gt;&lt;b&gt;左键拖放&lt;/b&gt;擦除鼠标指针周围的部分。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Shift + 鼠标滚轮&lt;/b&gt; or &lt;b&gt;+/- keys:&lt;/b&gt; 调整刷子大小。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Ctrl + 鼠标滚轮：&lt;/b&gt; 切片视图放大/缩小。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;可在切片视图和三维视图中进行编辑。&lt;p&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;用圆刷擦除当前分割&lt;br&gt;.&lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;&lt;li&gt;&lt;b&gt;左键拖放&lt;/b&gt;擦除鼠标指针周围的部分。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Shift + 鼠标滚轮&lt;/b&gt; or &lt;b&gt;+/- keys:&lt;/b&gt; 调整刷子大小。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Ctrl + 鼠标滚轮：&lt;/b&gt; 切片视图放大/缩小。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;可在切片视图和三维视图中进行编辑。&lt;p&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -24231,17 +24231,17 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorPaintEffect.cxx" line="1465"/>
         <source>Select segment by sampling the pixel locationwhere the brush stroke starts. If brush stroke starts in an empty area then the brush erases highlighted region from the selected segment.</source>
-        <translation>通过对画笔描边开始的像素位置进行采样来选择线段。如果画笔描边开始于空白区域，则画笔会擦除所选区段中的高亮区域。</translation>
+        <translation>通过对画笔描边开始的像素位置进行采样来选择分割。如果画笔描边开始于空白区域，则画笔会擦除所选分割中的高亮区域。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorPaintEffect.cxx" line="1472"/>
         <source>Erase all segments</source>
-        <translation>清除所有区段</translation>
+        <translation>清除所有分割</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorPaintEffect.cxx" line="1473"/>
         <source>If not checked then highlighted area is erased from all segments. If unchecked then only area is only erased from selected segment.</source>
-        <translation>如果不选中，则从所有区段中擦除高亮区域。如果不选中，则只从选定的区段中删除高亮区域。</translation>
+        <translation>如果不选中，则从所有分割中擦除高亮区域。如果不选中，则只从选定的分割中删除高亮区域。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorPaintEffect.cxx" line="1480"/>
@@ -24264,7 +24264,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorScissorsEffect.cxx" line="1180"/>
         <source>&lt;html&gt;Cut through the entire segment from the current viewpoint&lt;br&gt;.&lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;&lt;li&gt;&lt;b&gt;Left-button drag-and-drop:&lt;/b&gt; sweep out an outline.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Esc:&lt;/b&gt; cancel.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Editing is available both in slice and 3D views. In slice view cutting will be applied to all slices.&lt;p&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;从当前视角切过整个片段&lt;br&gt;.&lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;&lt;li&gt;&lt;b&gt;左键拖放&lt;/b&gt; 扫出一个大纲。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Esc:&lt;/b&gt; cancel.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;可在切片视图和 3D 视图中进行编辑。在切片视图中，切割将应用于所有切片。&lt;p&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;从当前视角切过整个分割&lt;br&gt;.&lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;&lt;li&gt;&lt;b&gt;左键拖放&lt;/b&gt; 扫出一个大纲。&lt;/li&gt;&lt;li&gt;&lt;b&gt;Esc:&lt;/b&gt; cancel.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;可在切片视图和 3D 视图中进行编辑。在切片视图中，切割将应用于所有切片。&lt;p&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorScissorsEffect.cxx" line="1202"/>
@@ -24379,7 +24379,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorScissorsEffect.cxx" line="1274"/>
         <source>Apply to visible segments:</source>
-        <translation>应用于可见段：</translation>
+        <translation>应用于可见分割：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/qSlicerSegmentEditorScissorsEffect.cxx" line="1275"/>
@@ -24467,7 +24467,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/Resources/UI/qSlicerSegmentationsModule.ui" line="135"/>
         <source>Go to Segment Editor module</source>
-        <translation>转到段编辑器模块</translation>
+        <translation>转到分割编辑器模块</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Resources/UI/qSlicerSegmentationsModule.ui" line="138"/>
@@ -24699,7 +24699,7 @@ Please choose an empty directory.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModule.cxx" line="100"/>
         <source>Segmentations module manages segmentations. Each segmentation can contain multiple segments, which correspond to one structure or ROI. Each segment can contain multiple data representations for the same structure, and the module supports automatic conversion between these representations as well as advanced display settings and import/export features.</source>
-        <translation>分段模块管理分段。每个分段可包含多个分段，分别对应一个结构或 ROI。每个分段可包含同一结构的多个数据表示，该模块支持这些数据表示之间的自动转换以及高级显示设置和导入/导出功能。</translation>
+        <translation>分割模块管理分割。每个分割可包含多个分割，分别对应一个结构或 ROI。每个分割可包含同一结构的多个数据表示，该模块支持这些数据表示之间的自动转换以及高级显示设置和导入/导出功能。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModule.cxx" line="113"/>
@@ -24756,7 +24756,7 @@ Please choose an empty directory.</source>
 Would you like to change the source representation of &apos;%5&apos; to &apos;%1&apos;?
 
 Note: This may result in unwanted data loss in %5.</source>
-        <translation>无法将源表示 &apos;%1&apos; 转换为目标源 &apos;%2&apos;，因此无法将分段 &apos;%3&apos; 从分段 &apos;%4&apos; 复制到 &apos;%5&apos;。
+        <translation>无法将源表示 &apos;%1&apos; 转换为目标源 &apos;%2&apos;，因此无法将分割 &apos;%3&apos; 从分割 &apos;%4&apos; 复制到 &apos;%5&apos;。
 
 您想将&quot;%5 &quot;的源表示法更改为&quot;%1 &quot;吗？
 
@@ -24785,7 +24785,7 @@ Note: This may result in unwanted data loss in %5.</source>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="924"/>
         <source>Segmentations/AlwaysCropDuringSegmentationNodeExport</source>
-        <translation>分段/在分段节点导出时始终裁剪</translation>
+        <translation>分割/在分割节点导出时始终裁剪</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="925"/>
@@ -24801,9 +24801,9 @@ Do you want to crop the segmentation?
         <source>Failed to export segments from segmentation %1 to labelmap node %2!
 
 Most probably the segment cannot be converted into binary labelmap representation.</source>
-        <translation>从分段 %1 向标签图节点 %2 输出分段失败！
+        <translation>从分割 %1 向标签图节点 %2 输出分割失败！
 
-很可能无法将分段转换为二进制标签图表示法。</translation>
+很可能无法将分割转换为二进制标签图表示法。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="1005"/>
@@ -24815,9 +24815,9 @@ Most probably the segment cannot be converted into binary labelmap representatio
         <source>Failed to export segments from segmentation %1 to models in folder %2!
 
 Most probably the segment cannot be converted into closed surface representation.</source>
-        <translation>无法从分割 %1 中将线段导出到文件夹 %2 中的模型！
+        <translation>无法从分割 %1 中将分割导出到文件夹 %2 中的模型！
 
-很可能是无法将分段转换为封闭曲面表示法。</translation>
+很可能是无法将分割转换为封闭曲面表示法。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/qSlicerSegmentationsModuleWidget.cxx" line="1021"/>
@@ -26969,12 +26969,12 @@ Select plugin to add node named
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="110"/>
         <source>Export visible segments to binary labelmap</source>
-        <translation>将可见线段导出为二进制标签图</translation>
+        <translation>将可见分割导出为二进制标签图</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="113"/>
         <source>Export visible segments to models</source>
-        <translation>将可见线段导出到模型</translation>
+        <translation>将可见分割导出到模型</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="116"/>
@@ -27028,7 +27028,7 @@ Select plugin to add node named
 Would you like to change the source representation of &apos;%4&apos; to &apos;%1&apos;?
 
 Note: This may result in unwanted data loss in %4.</source>
-        <translation>无法将源表示 &apos;%1&apos; 转换为目标源 &apos;%2&apos;，因此无法将节点 &apos;%3&apos; 导入分段 &apos;%4&apos;。
+        <translation>无法将源表示 &apos;%1&apos; 转换为目标源 &apos;%2&apos;，因此无法将节点 &apos;%3&apos; 导入分割 &apos;%4&apos;。
 
 您想将&quot;%4 &quot;的源表示法更改为&quot;%1 &quot;吗？
 
@@ -27100,9 +27100,9 @@ Please visit the Segmentation module and try the advanced create representation 
         <source>Failed to export segments from segmentation %1 to labelmap node!
 
 Most probably the segment cannot be converted into binary labelmap representation</source>
-        <translation>从分段 %1 向标签图节点导出数据段失败！
+        <translation>从分割 %1 向标签图节点导出数据分割失败！
 
-很可能无法将分段转换为二进制标签图表示法</translation>
+很可能无法将分割转换为二进制标签图表示法</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="1046"/>
@@ -27135,16 +27135,16 @@ Please visit the Segmentation module and try the advanced create representation 
         <source>Failed to export segments from segmentation %1 to models!
 
 Most probably the segment cannot be converted into closed surface representation.</source>
-        <translation>从分割 %1 向模型导出线段失败！
+        <translation>从分割 %1 向模型导出分割失败！
 
-很可能是无法将分段转换为封闭曲面表示法。</translation>
+很可能是无法将分割转换为封闭曲面表示法。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentationsPlugin.cxx" line="1331"/>
         <source>Failed to create %1 representation for segmentation %2 using defaultconversion parameters!
 
 Please visit the Segmentation module and try the advanced create representation function.</source>
-        <translation>使用默认转换参数为分段 %2 创建 %1 表示失败。</translation>
+        <translation>使用默认转换参数为分割 %2 创建 %1 表示失败。</translation>
     </message>
 </context>
 <context>
@@ -27157,7 +27157,7 @@ Please visit the Segmentation module and try the advanced create representation 
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="103"/>
         <source>Show all segments</source>
-        <translation>显示所有分段</translation>
+        <translation>显示所有分割</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="107"/>
@@ -27178,13 +27178,13 @@ Please visit the Segmentation module and try the advanced create representation 
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="127"/>
         <source>Set segment opacity in the sub-menu</source>
-        <translation>在子菜单中设置色段不透明度</translation>
+        <translation>在子菜单中设置分割不透明度</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="230"/>
         <source>Segment ID of the moved segment (%1) might exist in the target segmentation.
 Please check the error window for details.</source>
-        <translation>目标分段中可能存在已移动分段 (%1) 的分段 ID。
+        <translation>目标分割中可能存在已移动分割 (%1) 的分割 ID。
 请查看错误窗口了解详情。</translation>
     </message>
     <message>
@@ -27200,7 +27200,7 @@ Please check the error window for details.</source>
 Would you like to change the source representation of &apos;%5&apos; to &apos;%1&apos;?
 
 Note: This may result in unwanted data loss in %5.</source>
-        <translation>无法将源表示 &apos;%1&apos; 转换为目标源 &apos;%2&apos;，因此无法将分段 &apos;%3&apos; 从分段 &apos;%4&apos; 移动到 &apos;%5&apos;。
+        <translation>无法将源表示 &apos;%1&apos; 转换为目标源 &apos;%2&apos;，因此无法将分割 &apos;%3&apos; 从分割 &apos;%4&apos; 移动到 &apos;%5&apos;。
 
 您想将&quot;%5 &quot;的源表示法更改为&quot;%1 &quot;吗？
 
@@ -27233,7 +27233,7 @@ Note: This may result in unwanted data loss in %5.</source>
         <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="398"/>
         <source>Segment - Representations: %1, Color: (%2, %3, %4)
 Tags: %5</source>
-        <translation>片段 - 表示法：%1, 颜色：（%2, %3, %4）
+        <translation>分割 - 表示法：%1, 颜色：（%2, %3, %4）
 标签 %5</translation>
     </message>
 </context>
