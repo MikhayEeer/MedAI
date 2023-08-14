@@ -8,7 +8,7 @@ class SegmentEditorWatershedEffect(AbstractScriptedSegmentEditorAutoCompleteEffe
 
   def __init__(self, scriptedEffect):
     AbstractScriptedSegmentEditorAutoCompleteEffect.__init__(self, scriptedEffect)
-    scriptedEffect.name = 'Watershed'
+    scriptedEffect.name = '分水岭'
     self.minimumNumberOfSegments = 2
     self.clippedMasterImageDataRequired = True # source volume intensities are used by this effect
     self.growCutFilter = None
@@ -26,21 +26,19 @@ class SegmentEditorWatershedEffect(AbstractScriptedSegmentEditorAutoCompleteEffe
     return qt.QIcon()
 
   def helpText(self):
-    return """<html>Growing segments to create complete segmentation<br>.
-Location, size, and shape of initial segments and content of source volume are taken into account.
-Final segment boundaries will be placed where source volume brightness changes abruptly. Instructions:<p>
+    return """<html>不断增长分割以创建完整的分割<br>.
+考虑初始分割的位置、大小和形状以及源卷的内容。
+最终的分割边界将放置在源体数据强度突然变化的位置。是一种基于分水岭算法的区域生长。说明：<p>
 <ul style="margin: 0">
-<li>Use Paint or other offects to draw seeds in each region that should belong to a separate segment.
-Paint each seed with a different segment. Minimum two segments are required.</li>
-<li>Click <dfn>Initialize</dfn> to compute preview of full segmentation.</li>
-<li>Browse through image slices. If previewed segmentation result is not correct then switch to
-Paint or other effects and add more seeds in the misclassified region. Full segmentation will be
-updated automatically within a few seconds</li>
-<li>Click <dfn>Apply</dfn> to update segmentation with the previewed result.</li>
+<li>使用 绘制功能 或其他效果功能在应属于单独分割的每个区域中绘制种子。
+用不同的部分为每颗种子涂上不同的部分。至少需要两段分割。</li>
+<li>点击 <dfn>初始化</dfn> 计算完整分割预览。</li>
+<li>浏览图像切片，如果预览分割不正确，则切换到绘制或其他功能，
+在错误分类的区域添加更多种子点，完整分割将在几秒后自动更新。</li>
+<li>点击 <dfn>应用</dfn> 使用预览结果更新分割。</li>
 </ul><p>
-The effect is different from the Grow from seeds effect in that smoothness of structures can be defined, which can prevent leakage.<p>
-Masking settings are bypassed. If segments overlap, segment higher in the segments table will have priority.
-The effect uses <a href="https://itk.org/Doxygen/html/classitk_1_1MorphologicalWatershedFromMarkersImageFilter.html">watershed method</a>.
+该效果于“区域生长”功能的效果不同，可以定义结构的平滑度，从而可以防止泄露。<p>
+蒙版设置被绕过，如果分割重叠，则分割表中的排在上面的分割有优先权。
 <p></html>"""
 
   def reset(self):
@@ -58,8 +56,8 @@ The effect uses <a href="https://itk.org/Doxygen/html/classitk_1_1MorphologicalW
     self.objectScaleMmSlider.minimum = 0.0001  # object scale of 0 would throw an exception when calling sitk.GradientMagnitudeRecursiveGaussian
     self.objectScaleMmSlider.maximum = 10
     self.objectScaleMmSlider.value = 2.0
-    self.objectScaleMmSlider.setToolTip('Increasing this value smooths the segmentation and reduces leaks. This is the sigma used for edge detection.')
-    self.scriptedEffect.addLabeledOptionsWidget("Object scale:", self.objectScaleMmSlider)
+    self.objectScaleMmSlider.setToolTip('该值越大，越能平滑分割并减少泄露。这是用于边缘检测的求和。')
+    self.scriptedEffect.addLabeledOptionsWidget("对象规模：", self.objectScaleMmSlider)#Object scale:
     self.objectScaleMmSlider.connect('valueChanged(double)', self.updateAlgorithmParameterFromGUI)
 
   def setMRMLDefaults(self):
