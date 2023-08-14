@@ -4,79 +4,139 @@
 <context>
     <name>AbstractScriptedSegmentEditorAutoCompleteEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="89"/>
         <source>Auto-update</source>
-        <translation>自动更新</translation>
+        <translation type="vanished">自动更新</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="90"/>
         <source>Auto-update results preview when input segments change.</source>
-        <translation>输入分割更改时自动更新结果预览。</translation>
+        <translation type="vanished">输入分割更改时自动更新结果预览。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="94"/>
         <source>Initialize</source>
-        <translation>初始化</translation>
+        <translation type="vanished">初始化</translation>
+    </message>
+    <message>
+        <source>Preview complete segmentation</source>
+        <translation type="vanished">预览完整分割</translation>
+    </message>
+    <message>
+        <source>Preview:</source>
+        <translation type="vanished">预览：</translation>
+    </message>
+    <message>
+        <source>Adjust visibility of results preview.</source>
+        <translation type="vanished">调整结果预览可见性。</translation>
+    </message>
+    <message>
+        <source>Show 3D</source>
+        <translation type="vanished">显示3D</translation>
+    </message>
+    <message>
+        <source>Preview results in 3D.</source>
+        <translation type="vanished">在3D中预览结果。</translation>
+    </message>
+    <message>
+        <source>inputs</source>
+        <translation type="vanished">输入</translation>
+    </message>
+    <message>
+        <source>results</source>
+        <translation type="vanished">结果</translation>
+    </message>
+    <message>
+        <source>Display:</source>
+        <translation type="vanished">显示：</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="vanished">取消</translation>
+    </message>
+    <message>
+        <source>Clear preview and cancel auto-complete</source>
+        <translation type="vanished">清除预览并取消自动完成</translation>
+    </message>
+    <message>
+        <source>Apply</source>
+        <translation type="vanished">应用</translation>
+    </message>
+    <message>
+        <source>Replace segments by previewed result</source>
+        <translation type="vanished">用预览结果替换分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="91"/>
+        <source>自动更新</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="92"/>
+        <source>输入分割更改时，自动更新结果预览。</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="96"/>
-        <source>Preview complete segmentation</source>
-        <translation>预览完整分割</translation>
+        <source>初始化</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="106"/>
-        <source>Preview:</source>
-        <translation>预览：</translation>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="98"/>
+        <source>预览完整分割</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="109"/>
-        <source>Adjust visibility of results preview.</source>
-        <translation>调整结果预览可见性。</translation>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="108"/>
+        <source>预览：</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="117"/>
-        <source>Show 3D</source>
-        <translation>显示3D</translation>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="111"/>
+        <source>调整结果预览的可见性。</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="118"/>
-        <source>Preview results in 3D.</source>
-        <translation>在3D中预览结果。</translation>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="119"/>
+        <source>显示3D</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="122"/>
-        <source>inputs</source>
-        <translation>输入</translation>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="120"/>
+        <source>在3D视图中预览结果。</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="124"/>
-        <source>results</source>
-        <translation>结果</translation>
+        <source>输入</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="126"/>
-        <source>Display:</source>
-        <translation>显示：</translation>
+        <source>结果</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="128"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
+        <source>显示：</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="130"/>
-        <source>Clear preview and cancel auto-complete</source>
-        <translation>清除预览并取消自动完成</translation>
+        <source>取消</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="132"/>
-        <source>Apply</source>
-        <translation>应用</translation>
+        <source>清除预览并取消自动完成</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="134"/>
-        <source>Replace segments by previewed result</source>
-        <translation>用预览结果替换分割</translation>
+        <source>应用</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="136"/>
+        <source>用预览结果替代分割。</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -7993,6 +8053,19 @@ a = 仿射变换</translation>
     </message>
 </context>
 <context>
+    <name>CropVolumeSequence</name>
+    <message>
+        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="23"/>
+        <source>Crop volume sequence</source>
+        <translation>Crop体数据序列</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="24"/>
+        <source>Sequences</source>
+        <translation>序列</translation>
+    </message>
+</context>
+<context>
     <name>DICOM</name>
     <message>
         <source>Informatics</source>
@@ -8686,6 +8759,92 @@ a = 仿射变换</translation>
     </message>
 </context>
 <context>
+    <name>DMRIInstall</name>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="40"/>
+        <source>
+  The SlicerDMRI extension provides diffusion-related tools including:
+
+  &lt;ul&gt;
+    &lt;li&gt; Diffusion Tensor Estimation&lt;/li&gt;
+    &lt;li&gt;Tractography Display&lt;/li&gt;
+    &lt;li&gt;Tractography Seeding&lt;/li&gt;
+    &lt;li&gt;Fiber Tract Measurement&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  For more information, please visit:
+  &lt;br&gt;
+  &lt;br&gt;
+  &amp;nbsp;&amp;nbsp; &lt;a href=&quot;https://dmri.slicer.org&quot;&gt;https://dmri.slicer.org&lt;/a&gt;
+  &lt;br&gt;
+  &lt;br&gt;
+  Questions are welcome on the Slicer forum:
+  &lt;br&gt;
+  &lt;br&gt;
+  &amp;nbsp;&amp;nbsp; &lt;a href=&quot;https://discourse.slicer.org&quot;&gt;https://discourse.slicer.org&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="54"/>
+        <source>
+  &lt;h5 style=&quot;color:red&quot;&gt;The SlicerDMRI extension is currently unavailable.&lt;/h5&gt;&lt;br&gt;
+  Please try a manual installation via the Extensions Manager,
+  and contact the Slicer forum at:&lt;br&gt;&lt;br&gt;
+
+  &amp;nbsp;&amp;nbsp;&lt;a href=&quot;https://discourse.slicer.org&quot;&gt;https://discourse.slicer.org&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+
+  With the following information:&lt;br&gt;
+  Slicer version: {builddate}&lt;br&gt;
+  Slicer revision: {revision}&lt;br&gt;
+  Platform: {platform}
+  </source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="68"/>
+        <source>Diffusion</source>
+        <translation>扩散</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="69"/>
+        <source>Install Slicer Diffusion Tools (SlicerDMRI)</source>
+        <translation>安装扩展工具(DMRI)</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="71"/>
+        <source>Isaiah Norton (BWH), Lauren O&apos;Donnell (BWH)</source>
+        <translation>mikhay</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="78"/>
+        <source>
+    SlicerDMRI supported by NIH NCI ITCR U01CA199459 (Open Source Diffusion MRI
+    Technology For Brain Cancer Research), and made possible by NA-MIC, NAC,
+    BIRN, NCIGT, and the Slicer Community.
+    </source>
+        <translation>
+    扩散工具DMRI.
+    </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="99"/>
+        <source>Installs the &quot;SlicerDMRI&quot; extension from the Diffusion category.</source>
+        <translation>安装 Diffusion 类别中的“SlicerDMRI”扩展。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="115"/>
+        <source>&lt;h4&gt;SlicerDMRI is already installed.&lt;h4&gt;</source>
+        <translation>&lt;h4&gt;DMRI 已安装。&lt;h4&gt;</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/DMRIInstall/DMRIInstall.py" line="125"/>
+        <source>Restart to complete SlicerDMRI installation?</source>
+        <translation>重启软件以完成DMRI的安装？</translation>
+    </message>
+</context>
+<context>
     <name>DataProbe</name>
     <message>
         <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="30"/>
@@ -8853,9 +9012,71 @@ The View Angle provides is used to approximate the optics of an endoscopy system
 </translation>
     </message>
     <message>
+        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="47"/>
+        <source>
+This work is supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colonoscopy
+(See &lt;a&gt;https://www.na-mic.org/Wiki/index.php/NA-MIC_NCBC_Collaboration:NA-MIC_virtual_colonoscopy&lt;/a&gt;)
+NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
+</source>
+        <translation>
+内窥镜检查。
+</translation>
+    </message>
+    <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="80"/>
         <source>Select a camera that will fly along this path.</source>
         <translation>选择沿着该路径行进的摄像头。</translation>
+    </message>
+</context>
+<context>
+    <name>ExtensionWizard</name>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="46"/>
+        <source>Extension Wizard</source>
+        <translation>扩展向导页</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="48"/>
+        <source>Developer Tools</source>
+        <translation>开发者工具</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="50"/>
+        <source>Matthew Woehlke (Kitware)</source>
+        <translation>Mikhayeeer</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="53"/>
+        <source>
+This module provides tools to create and manage extensions from within Slicer.
+</source>
+        <translation>
+该模块提供了软件内创建和管理扩展的工具。
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="56"/>
+        <source>
+This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
+</source>
+        <translation>
+扩展向导。
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="127"/>
+        <source>Extension Tools</source>
+        <translation>扩展工具</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="129"/>
+        <source>Create Extension</source>
+        <translation>创建扩展</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="132"/>
+        <source>Select Extension</source>
+        <translation>选择扩展</translation>
     </message>
 </context>
 <context>
@@ -10167,31 +10388,44 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
 <context>
     <name>SegmentEditor</name>
     <message>
+        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="13"/>
+        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="23"/>
         <source>Segment Editor</source>
-        <translation type="vanished">分割编辑器</translation>
+        <translation>分割编辑器</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="16"/>
+        <source>MikhayEeer</source>
+        <translation></translation>
     </message>
     <message>
         <source>Segmentation</source>
         <translation type="vanished">分割</translation>
     </message>
+    <message>
+        <source>分割编辑器</source>
+        <translation type="vanished">测试添加i18n tr翻译效果，看到该句子说明生效</translation>
+    </message>
 </context>
 <context>
     <name>SegmentEditorDrawEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorDrawEffect.py" line="20"/>
         <source>Draw</source>
-        <translation>绘制</translation>
+        <translation type="vanished">绘制</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorDrawEffect.py" line="22"/>
+        <source>画笔</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorGrowFromSeedsEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="23"/>
         <source>Grow from seeds</source>
-        <translation>区域生长</translation>
+        <translation type="vanished">区域生长</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="57"/>
         <source>&lt;html&gt;Growing segments to create complete segmentation&lt;br&gt;.
 Location, size, and shape of initial segments and content of source volume are taken into account.
 Final segment boundaries will be placed where source volume brightness changes abruptly. Instructions:&lt;p&gt;
@@ -10207,7 +10441,7 @@ updated automatically within a few seconds&lt;/li&gt;
 If segments overlap, segment higher in the segments table will have priority.
 The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraReadyPapers/Paper%204/IMIC_ID4_FastGrowCut.pdf&quot;&gt;fast grow-cut method&lt;/a&gt;.
 &lt;p&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;不断扩大分割，建立完整的分割&lt;br&gt;.
+        <translation type="vanished">&lt;html&gt;不断扩大分割，建立完整的分割&lt;br&gt;.
 考虑初始分割的位置、大小和形状以及体数据的内容.
 最后的分割边界将放置在信号源亮度突然变化的地方。说明:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
@@ -10224,37 +10458,75 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
 &lt;p&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="76"/>
         <source>Increasing this value makes the effect of seeds more localized,
                                                   thereby reducing leaks, but requires seed regions to be more evenly distributed in the image.
                                                   The value is specified as an additional &apos;intensity level difference&apos; per &apos;unit distance.&apos;</source>
-        <translation>增加该值会使种子的效果更加局部化、
+        <translation type="vanished">增加该值会使种子的效果更加局部化、
                                                   从而减少泄漏，但要求种子区域在图像中分布更均匀。
                                                   该值指定为每 &quot;单位距离 &quot;的额外 &quot;强度级差&quot;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="77"/>
         <source>Seed locality:</source>
         <translatorcomment>种子点位置：</translatorcomment>
-        <translation>种子点位置：</translation>
+        <translation type="vanished">种子点位置：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="23"/>
+        <source>区域生长</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="55"/>
+        <source>&lt;html&gt;使分割生长成完整的分割&lt;br&gt;。
+考虑初始分割的位置、大小和形状以及源卷的内容。
+最终的分割边界将放置在源体积亮度突然变化的位置。是一种基础的基于阈值的区域生长。说明：&lt;p&gt;
+&lt;ul style=&quot;margin: 0&quot;&gt;
+&lt;li&gt;使用 绘画 或其他效果在应属于单独片段的每个区域中绘制种子。
+用不同的部分为每颗种子涂上不同的部分。至少需要两段。&lt;/li&gt;
+&lt;li&gt;点击 &lt;dfn&gt;初始化&lt;/dfn&gt; 来计算完整分割的预览。&lt;/li&gt;
+&lt;li&gt;浏览图像切片。如果预览的分割结果不正确，则切换到“绘画”或其他效果，
+                 并在错误分类的区域中添加更多种子。完整分割将在几秒钟内自动更新&lt;/li&gt;
+&lt;li&gt;点击 &lt;dfn&gt;应用&lt;/dfn&gt; 使用预览结果更新分割。&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;
+如果分割重叠，则分割表中较前的分割将具有优先权。
+&lt;p&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="73"/>
+        <source>增加该值会使种子的影响更加局部化，从而减少泄漏，但要求种子区域在图像中分布更均匀。
+                                                该值被指定为每“单位距离”的附加“强度水平差”。&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorGrowFromSeedsEffect.py" line="74"/>
+        <source>种子点位置：</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorIslandsEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorIslandsEffect.py" line="21"/>
         <source>Islands</source>
-        <translation>连通子区域</translation>
+        <translation type="vanished">连通子区域</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorIslandsEffect.py" line="43"/>
         <source>Keep largest island</source>
-        <translation>保持最大子区域</translation>
+        <translation type="vanished">保持最大子区域</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorIslandsEffect.py" line="49"/>
         <source>Keep selected island</source>
-        <translation>保留选定子区域</translation>
+        <translation type="vanished">保留选定子区域</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorIslandsEffect.py" line="24"/>
+        <source>岛屿</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorIslandsEffect.py" line="51"/>
+        <source>保留选定的岛屿</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -10293,124 +10565,130 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
         <translation type="vanished">阈值范围：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="28"/>
-        <source>阈值分割</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="86"/>
-        <source>&lt;html&gt;基于元数据强度范围来填充分割&lt;br&gt;。 选项：&lt;p&gt;
-&lt;ul style=&quot;margin: 0&quot;&gt;
-&lt;li&gt;&lt;b&gt;用于蒙版：&lt;/b&gt;将选定的强度范围设置为&lt;dfn&gt;可编辑的强度范围&lt;/dfn&gt; and switch to Paint effect.&lt;/li&gt;
-&lt;li&gt;&lt;b&gt;Apply:&lt;/b&gt; set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;&lt;/html&gt;</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="153"/>
-        <source>阈值范围：</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="154"/>
         <source>Set the range of the background values that should be labeled.</source>
-        <translation>设置应标注的背景值范围。</translation>
+        <translation type="vanished">设置应标注的背景值范围。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="163"/>
         <source>threshold above</source>
-        <translation>以上阈值</translation>
+        <translation type="vanished">以上阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="164"/>
         <source>threshold below</source>
-        <translation>低于阈值</translation>
+        <translation type="vanished">低于阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="165"/>
         <source>set as lower value</source>
-        <translation>设定较低的阈值</translation>
+        <translation type="vanished">设定较低的阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="166"/>
         <source>set as upper value</source>
-        <translation>设定较高的阈值</translation>
+        <translation type="vanished">设定较高的阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="172"/>
         <source>Otsu</source>
-        <translation>大津</translation>
+        <translation type="vanished">大津</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="188"/>
         <source>Select method to compute threshold value automatically.</source>
-        <translation>选择自动计算阈值的方法。</translation>
+        <translation type="vanished">选择自动计算阈值的方法。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="200"/>
         <source>Set</source>
-        <translation>设置</translation>
+        <translation type="vanished">设置</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="216"/>
         <source>Automatic threshold</source>
-        <translation>自动阈值分割</translation>
+        <translation type="vanished">自动阈值分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="226"/>
         <source>Region shape:</source>
-        <translation>区域形状：</translation>
+        <translation type="vanished">区域形状：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="233"/>
         <source>Box</source>
-        <translation>箱型</translation>
+        <translation type="vanished">箱型</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="240"/>
         <source>Circle</source>
-        <translation>圆</translation>
+        <translation type="vanished">圆</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="247"/>
         <source>Draw</source>
-        <translation>绘制</translation>
+        <translation type="vanished">绘制</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="254"/>
         <source>Line</source>
-        <translation>线形</translation>
+        <translation type="vanished">线形</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="315"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="332"/>
         <source>Lower</source>
-        <translation>较低</translation>
+        <translation type="vanished">较低</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="324"/>
         <source>Min</source>
-        <translation>最小</translation>
+        <translation type="vanished">最小</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="339"/>
         <source>Mean</source>
-        <translation>均值</translation>
+        <translation type="vanished">均值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="379"/>
         <source>Local histogram</source>
-        <translation>局部柱状图</translation>
+        <translation type="vanished">局部柱状图</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="384"/>
         <source>Use for masking</source>
-        <translation>用于遮蔽</translation>
+        <translation type="vanished">用于遮蔽</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="388"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="190"/>
+        <source>选择自动计算阈值的方法</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="249"/>
+        <source>绘制</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="256"/>
+        <source>线形</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="317"/>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="334"/>
+        <source>更小</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="326"/>
+        <source>最小</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="341"/>
+        <source>均值</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="381"/>
+        <source>局部直方图</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="386"/>
+        <source>用于蒙版</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorThresholdEffect.py" line="390"/>
+        <source>应用</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -10598,6 +10876,34 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="469"/>
         <source>Split cavities:</source>
         <translation>分体腔：</translation>
+    </message>
+</context>
+<context>
+    <name>SegmentEditorWrapSolidifyEffect</name>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="528"/>
+        <source>Region segment is not set</source>
+        <translation>区域分割未设置</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="530"/>
+        <source>Region segment cannot be the same segment as the current segment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="534"/>
+        <source>Region segment is empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="537"/>
+        <source>Invalid region: </source>
+        <translation>无效区域： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="560"/>
+        <source>Mesh has become empty during shrink-wrap iterations</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -11088,9 +11394,49 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
 <context>
     <name>SelfTests</name>
     <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="30"/>
+        <source>SelfTests</source>
+        <translation>自检</translation>
+    </message>
+    <message>
         <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="31"/>
         <source>Testing</source>
         <translation>测试</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="32"/>
+        <source>Steve Pieper (Isomics)</source>
+        <translation>mikhay</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="36"/>
+        <source>
+The SelfTests module allows developers to provide built-in self-tests (BIST) for slicer so that users can tell
+if their installed version of slicer are running as designed.
+</source>
+        <translation>
+SelfTests 模块允许开发人员为软件提供内置自测试 (BI​​ST)，以便用户可以判断他们安装的版本是否按设计运行。
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="51"/>
+        <source>
+This work is part of SparKit project, funded by Cancer Care Ontario (CCO)&apos;s ACRU program
+and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).
+</source>
+        <translation>
+自我测试管理。
+</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="89"/>
+        <source>Self Tests</source>
+        <translation>自检测试</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="93"/>
+        <source>Run All</source>
+        <translation>运行所有</translation>
     </message>
 </context>
 <context>
@@ -11746,14 +12092,17 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="30"/>
         <source>Provides an embedded web server for slicer that provides a web services API for interacting with slicer.
     </source>
-        <translation type="unfinished"></translation>
+        <translation>提供嵌入式 Web 服务器，该服务器提供用于与软件交互的 Web 服务 API。
+    </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="32"/>
         <source>
 This work was partially funded by NIH grant 3P41RR013218.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+web服务器。
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="61"/>
@@ -11764,7 +12113,7 @@ This work was partially funded by NIH grant 3P41RR013218.
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="64"/>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="70"/>
         <source>Start web server with the selected options.</source>
-        <translation type="unfinished"></translation>
+        <translation>使用所选选项启动服务器。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="67"/>
@@ -11774,22 +12123,22 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="73"/>
         <source>Open static pages in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>在外部浏览器中打开静态页面</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="75"/>
         <source>Open a connection to the server on the local machine with your system browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>使用系统浏览器打开与本地计算机上的服务器连接。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="78"/>
         <source>Open static pages in internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>在内部浏览器打开静态页面</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="80"/>
         <source>Open a connection with Qt to the server on the local machine.</source>
-        <translation type="unfinished"></translation>
+        <translation>使用Qt打开与本地计算机上的服务器连接。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="90"/>
@@ -11809,32 +12158,32 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="109"/>
         <source>Enable CORS: </source>
-        <translation type="unfinished"></translation>
+        <translation>启用CORS： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="113"/>
         <source>Slicer API: </source>
-        <translation type="unfinished"></translation>
+        <translation>软件API： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="117"/>
         <source>Slicer API exec: </source>
-        <translation type="unfinished"></translation>
+        <translation>软件API执行： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="122"/>
         <source>DICOMweb API: </source>
-        <translation type="unfinished"></translation>
+        <translation>Dicom网页API： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="126"/>
         <source>Static pages: </source>
-        <translation type="unfinished"></translation>
+        <translation>静态页面： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="131"/>
         <source>Log to Console: </source>
-        <translation type="unfinished"></translation>
+        <translation>登录到控制台： </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="136"/>
@@ -14215,7 +14564,7 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/Widgets/Resources/UI/qMRMLSegmentEditorWidget.ui" line="147"/>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="433"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="434"/>
         <source>Segmentations</source>
         <translation>分割</translation>
     </message>
@@ -14289,67 +14638,67 @@ should set &quot;backface&quot; and &quot;frontface&quot; to OFF in the Represen
         <translation>控制当前分割将覆盖的分割。未被覆盖的分割可能与选定分割重叠。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="419"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="420"/>
         <source>Everywhere</source>
         <translation>全局</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="420"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="421"/>
         <source>Inside all segments</source>
         <translation>所有分割内</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="421"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="422"/>
         <source>Inside all visible segments</source>
         <translation>所有可见分割内</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="422"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="423"/>
         <source>Outside all segments</source>
         <translation>所有分割外</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="423"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="424"/>
         <source>Outside all visible segments</source>
         <translation>所有可见分割外</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="427"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="428"/>
         <source>Overwrite all</source>
         <translation>全部覆盖</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="428"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="429"/>
         <source>Overwrite visible</source>
         <translation>覆盖可见</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="429"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="430"/>
         <source>Allow overlap</source>
         <translation>允许重叠</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="435"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="436"/>
         <source>Import/export nodes...</source>
         <translation>导入/导出节点...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="438"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="439"/>
         <source>Export to files...</source>
         <translation>导出到文件...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1060"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1061"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1061"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1062"/>
         <source>No editing</source>
         <translation>无编辑</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1389"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1390"/>
         <source>Editing requires binary labelmap source representation, but currently the source representation is %1. Changing the source representation requires conversion. Some details may be lost during conversion process.
 
 Change source representation to binary labelmap?</source>
@@ -14358,30 +14707,30 @@ Change source representation to binary labelmap?</source>
 将源表示法更改为二进制标签图？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1394"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1395"/>
         <source>Change source representation to binary labelmap?</source>
         <oldsource>Change master representation to binary labelmap?</oldsource>
         <translation>将主表示更改为二进制标签映射？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1415"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1416"/>
         <source>Failed to create binary labelmap representation in segmentation %1 for editing!
 Please see Segmentations module for details.</source>
         <translation>在分割 %1 中创建二进制标签图表示以供编辑失败！
 请参阅分割模块了解详情。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1417"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="1418"/>
         <source>Failed to create binary labelmap for editing</source>
         <translation>无法创建用于编辑的二进制标签映射</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="2419"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="2420"/>
         <source>Inside </source>
         <translation>内部 </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3507"/>
+        <location filename="Modules/Loadable/Segmentations/Widgets/qMRMLSegmentEditorWidget.cxx" line="3508"/>
         <source>Export segments to files</source>
         <translation>将分割导出到文件</translation>
     </message>
