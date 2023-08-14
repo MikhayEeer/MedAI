@@ -9,20 +9,16 @@ from slicer.util import VTKObservationMixin
 class SegmentEditor(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Segment Editor"
-        self.parent.categories = ["", "Segmentation"]
+        self.parent.title = "分割编辑器"#Segment Editor
+        self.parent.categories = ["", "分割"]#Segmentation
         self.parent.dependencies = ["Segmentations", "SubjectHierarchy"]
         self.parent.contributors = ["Csaba Pinter (Queen's University), Andras Lasso (Queen's University)"]
         self.parent.helpText = """
-This module allows editing segmentation objects by directly drawing and using segmentaiton tools on the contained segments.
-Representations other than the labelmap one (which is used for editing) are automatically updated real-time,
-so for example the closed surface can be visualized as edited in the 3D view.
+该模块允许通过直接在包含的分割上绘制和使用分割工具来编辑分割对象。
+除了标签图（用于编辑）之外的表示形式都会自动实时更新，因此例如可以在 3D 视图中将闭合表面可视化为编辑状态。
 """
         self.parent.helpText += parent.defaultDocumentationLink
-        self.parent.acknowledgementText = """
-This work is part of SparKit project, funded by Cancer Care Ontario (CCO)'s ACRU program
-and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).
-"""
+        self.parent.acknowledgementText = """分割编辑器"""
 
     def setup(self):
         # Register subject hierarchy plugin
