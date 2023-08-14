@@ -7,7 +7,7 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
   """This effect uses markup fiducials to segment the input volume"""
 
   def __init__(self, scriptedEffect):
-    scriptedEffect.name = 'Draw tube'
+    scriptedEffect.name = '伸缩管'#Draw tube
     scriptedEffect.perSegment = True # this effect operates on a single selected segment
     AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -81,7 +81,7 @@ class SegmentEditorDrawTubeEffect(AbstractScriptedSegmentEditorEffect):
     self.interpolationRadioButtons.append(self.cardinalSplineButton)
     self.buttonToInterpolationTypeMap[self.cardinalSplineButton] = "CARDINAL_SPLINE"
 
-    self.kochanekSplineButton = qt.QRadioButton("Kochanek spline")
+    self.kochanekSplineButton = qt.QRadioButton("Kochanek样条")
     self.interpolationRadioButtons.append(self.kochanekSplineButton)
     self.buttonToInterpolationTypeMap[self.kochanekSplineButton] = "KOCHANEK_SPLINE"
 

@@ -34,14 +34,14 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
         return """<html>应用逻辑运算或组合分割<br>。 可用操作：<p>
 <ul style="margin: 0">
 <li><b>复制：</b> 用修改分割替代选定分割</li>
-<li><b>添加：</b> add modifier segment to current segment.</li>
-<li><b>减去：</b> subtract region of modifier segment from the selected segment.</li>
-<li><b>相交：</b> only keeps those regions in the select segment that are common with the modifier segment.</li>
-<li><b>反转：</b> inverts selected segment.</li>
-<li><b>清除：</b> clears selected segment.</li>
-<li><b>填充：</b> completely fills selected segment.</li>
+<li><b>添加：</b> 将修改分割添加到当前分割</li>
+<li><b>减去：</b> 从选定分割中减去修改分割区域</li>
+<li><b>相交：</b> 仅保留选定分割和修改分割重合区域</li>
+<li><b>反转：</b> 反转选定分割</li>
+<li><b>清除：</b> 清除选定分割</li>
+<li><b>填充：</b> 完全填充选定分割</li>
 </ul><p>
-<b>选定分割：</b> segment selected in the segment list - above. <b>Modifier segment:</b> segment chosen in segment list in effect options - below.
+<b>选定分割：</b> 在分割表中选择的分割 <b>修改分割：</b> 在该模块中选择的分割，如下所示。
 <p></html>"""#Apply logical operators or combine segments
 
     def setupOptionsFrame(self):

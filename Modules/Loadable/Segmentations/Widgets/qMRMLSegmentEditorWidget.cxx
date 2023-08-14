@@ -348,7 +348,7 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     // These strings are effect names that must not be translated.
     << /*no tr*/ "阈值分割" << "局部阈值分割"
     // Local painting
-    << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" 
+    << /*no tr*/ "Paint" << "画笔" << "伸缩管" << "Erase" 
     << "液面跟踪" << "区域生长" << "填充切片"
     // Global processing
     << /*no tr*/ "边缘尺寸" << "空心化" << "平滑化"

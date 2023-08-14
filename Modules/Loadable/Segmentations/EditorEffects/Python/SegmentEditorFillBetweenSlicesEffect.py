@@ -38,7 +38,6 @@ class SegmentEditorFillBetweenSlicesEffect(AbstractScriptedSegmentEditorAutoComp
 <li>完整的分割将通过在空切片中插入分割来创建。</li>
 </ul><p>
 屏蔽设置将被忽略。如果分割重叠，则分割表中较高的分割将具有优先权。
-The effect uses  <a href="https://insight-journal.org/browse/publication/977">morphological contour interpolation method</a>.
 <p></html>"""
 
     def computePreviewLabelmap(self, mergedImage, outputLabelmap):

@@ -121,7 +121,7 @@ class SegmentEditorMaskVolumeEffect(AbstractScriptedSegmentEditorEffect):
         self.inputVolumeSelector.addEnabled = True
         self.inputVolumeSelector.removeEnabled = True
         self.inputVolumeSelector.noneEnabled = True
-        self.inputVolumeSelector.noneDisplay = "(Source volume)"
+        self.inputVolumeSelector.noneDisplay = "源体数据"#(Source volume)
         self.inputVolumeSelector.showHidden = False
         self.inputVolumeSelector.setMRMLScene(slicer.mrmlScene)
         self.inputVolumeSelector.setToolTip("遮罩数据。默认为当前源数据节点。")
@@ -143,7 +143,7 @@ class SegmentEditorMaskVolumeEffect(AbstractScriptedSegmentEditorEffect):
         self.outputVolumeSelector.removeEnabled = True
         self.outputVolumeSelector.renameEnabled = True
         self.outputVolumeSelector.noneEnabled = True
-        self.outputVolumeSelector.noneDisplay = "(Create new Volume)"
+        self.outputVolumeSelector.noneDisplay = "（创建新的体数据）"#noneDisplay无内容时显示： (Create new Volume)
         self.outputVolumeSelector.showHidden = False
         self.outputVolumeSelector.setMRMLScene(slicer.mrmlScene)
         self.outputVolumeSelector.setToolTip("蒙版输出数据。它可以与累积蒙版的输入数据相同。")
@@ -223,8 +223,8 @@ class SegmentEditorMaskVolumeEffect(AbstractScriptedSegmentEditorEffect):
         self.binaryMaskFillOutsideEdit.setVisible(operationName == "FILL_INSIDE_AND_OUTSIDE")
         self.fillOutsideLabel.setVisible(operationName == "FILL_INSIDE_AND_OUTSIDE")
         if operationName in ["FILL_INSIDE", "FILL_OUTSIDE"]:
-            if self.outputVolumeSelector.noneDisplay != "(Create new Volume)":
-                self.outputVolumeSelector.noneDisplay = "(Create new Volume)"
+            if self.outputVolumeSelector.noneDisplay != "（创建新体数据）":
+                self.outputVolumeSelector.noneDisplay = "（创建新体数据）"
                 self.outputVolumeSelector.nodeTypes = ["vtkMRMLScalarVolumeNode", "vtkMRMLLabelMapVolumeNode"]
         else:
             if self.outputVolumeSelector.noneDisplay != "(Create new Labelmap Volume)":

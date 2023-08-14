@@ -244,13 +244,13 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
             wasBlocked = self.previewOpacitySlider.blockSignals(True)
             self.previewOpacitySlider.value = self.getPreviewOpacity()
             self.previewOpacitySlider.blockSignals(wasBlocked)
-            self.previewButton.text = "Update"
+            self.previewButton.text = "更新"#Update
             self.previewShow3DButton.setEnabled(True)
             self.previewShow3DButton.setChecked(self.getPreviewShow3D())
             self.autoUpdateCheckBox.setEnabled(True)
             self.observeSegmentation(self.autoUpdateCheckBox.isChecked())
         else:
-            self.previewButton.text = "Initialize"
+            self.previewButton.text = "初始化"#Initialize
             self.autoUpdateCheckBox.setEnabled(False)
             self.previewShow3DButton.setEnabled(False)
             self.delayedAutoUpdateTimer.stop()
