@@ -12,6 +12,7 @@ import SlicerWizard.TemplateManager
 import SlicerWizard.Utilities
 
 from ExtensionWizardLib import *
+from slicer.i18n import tr as _
 
 
 # -----------------------------------------------------------------------------
@@ -41,17 +42,17 @@ def _settingsList(settings, key, convertToAbsolutePaths=False):
 class ExtensionWizard:
     # ---------------------------------------------------------------------------
     def __init__(self, parent):
-        parent.title = "Extension Wizard"
+        parent.title = _("Extension Wizard")
         parent.icon = qt.QIcon(":/Icons/Medium/ExtensionWizard.png")
-        parent.categories = ["Developer Tools"]
+        parent.categories = [_("Developer Tools")]
         parent.dependencies = []
-        parent.contributors = ["Matthew Woehlke (Kitware)"]
-        parent.helpText = """
+        parent.contributors = [_("Matthew Woehlke (Kitware)")]
+        parent.helpText = _("""
 This module provides tools to create and manage extensions from within Slicer.
-"""
-        parent.acknowledgementText = """
+""")
+        parent.acknowledgementText = _("""
 This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
-"""
+""")
         self.parent = parent
 
         self.settingsPanel = SettingsPanel()
@@ -122,13 +123,13 @@ class ExtensionWizardWidget:
         # Tools Area
         #
         self.toolsCollapsibleButton = ctk.ctkCollapsibleButton()
-        self.toolsCollapsibleButton.text = "Extension Tools"
+        self.toolsCollapsibleButton.text = _("Extension Tools")
         self.layout.addWidget(self.toolsCollapsibleButton)
 
-        self.createExtensionButton = createToolButton("Create Extension")
+        self.createExtensionButton = createToolButton(_("Create Extension"))
         self.createExtensionButton.connect('clicked(bool)', self.createExtension)
 
-        self.selectExtensionButton = createToolButton("Select Extension")
+        self.selectExtensionButton = createToolButton(_("Select Extension"))
         self.selectExtensionButton.connect('clicked(bool)', self.selectExtension)
 
         toolsLayout = qt.QVBoxLayout(self.toolsCollapsibleButton)

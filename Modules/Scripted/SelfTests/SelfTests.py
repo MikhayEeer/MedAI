@@ -26,18 +26,18 @@ class ExampleSelfTests:
 class SelfTests(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "SelfTests"
+        self.parent.title = _("SelfTests")
         self.parent.categories = [_("Testing")]
-        self.parent.contributors = ["Steve Pieper (Isomics)"]
-        self.parent.helpText = """
+        self.parent.contributors = [_("Steve Pieper (Isomics)")]
+        self.parent.helpText = _("""
 The SelfTests module allows developers to provide built-in self-tests (BIST) for slicer so that users can tell
 if their installed version of slicer are running as designed.
-"""
+""")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
-        self.parent.acknowledgementText = """
+        self.parent.acknowledgementText = _("""
 This work is part of SparKit project, funded by Cancer Care Ontario (CCO)'s ACRU program
 and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).
-"""
+""")
 
         #
         # slicer.selfTests is a dictionary of tests that are registered
@@ -86,11 +86,11 @@ class SelfTestsWidget(ScriptedLoadableModuleWidget):
 
         self.testList = ctk.ctkCollapsibleButton(self.parent)
         self.testList.setLayout(qt.QVBoxLayout())
-        self.testList.setText("Self Tests")
+        self.testList.setText(_("Self Tests"))
         self.layout.addWidget(self.testList)
         self.testList.collapsed = False
 
-        self.runAll = qt.QPushButton("Run All")
+        self.runAll = qt.QPushButton(_("Run All"))
         self.testList.layout().addWidget(self.runAll)
         self.runAll.connect('clicked()', self.onRunAll)
 

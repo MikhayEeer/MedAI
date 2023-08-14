@@ -21,7 +21,7 @@ class AirwaySegmentation(ScriptedLoadableModule):
     self.parent.title = _("Airway Segmentation")
     self.parent.categories = [_("Segmentation")]
     self.parent.dependencies = []
-    self.parent.contributors = ["Pietro Nardelli (University College Cork)", "Andras Lasso (PerkLab, Queen's University)"]
+    self.parent.contributors = ["mikhayeeer"]
     self.parent.helpText = _("""
 Segment airways on CT images from a single input point in the trachea.
 See more information in the <a href="https://github.com/Slicer/SlicerAirwaySegmentation">extension documentation</a>.

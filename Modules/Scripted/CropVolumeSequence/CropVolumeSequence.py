@@ -6,7 +6,7 @@ import vtk
 
 import slicer
 from slicer.ScriptedLoadableModule import *
-
+from slicer.i18n import tr as _
 
 #
 # CropVolumeSequence
@@ -19,8 +19,8 @@ class CropVolumeSequence(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Crop volume sequence"
-        self.parent.categories = ["Sequences"]
+        self.parent.title = _("Crop volume sequence")
+        self.parent.categories = [_("Sequences")]
         self.parent.dependencies = []
         self.parent.contributors = ["Andras Lasso (PerkLab, Queen's University)"]
         self.parent.helpText = """This module can crop and resample a volume sequence to reduce its size for faster rendering and processing."""
