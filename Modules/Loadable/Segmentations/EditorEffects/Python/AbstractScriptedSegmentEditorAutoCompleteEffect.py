@@ -7,9 +7,11 @@ import vtk
 import slicer
 
 from .AbstractScriptedSegmentEditorEffect import *
-from slicer.i18n import tr as _
+#from slicer.i18n import tr as _
 __all__ = ['AbstractScriptedSegmentEditorAutoCompleteEffect']
 
+def _(str):
+    return str
 
 #
 # Abstract class of python scripted segment editor auto-complete effects
