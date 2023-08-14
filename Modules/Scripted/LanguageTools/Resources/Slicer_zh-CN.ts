@@ -10515,42 +10515,42 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="269"/>
         <source>Smoothing Factor used for operation, as the a surface representation of the segmentation will be used for this algorithm.</source>
-        <translation type="unfinished"></translation>
+        <translation>用于操作的平滑系数，分割的表面表示将使用该算法。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="288"/>
         <source>Thickness of the output shell. If the value is very small then it may significantly increase the computation time and may appear fractured if output is segmentation.</source>
-        <translation type="unfinished"></translation>
+        <translation>输出壳的厚度。如果该值非常小，则可能会显着增加计算时间，并且如果输出是分段的，则可能会出现断裂。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="306"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="313"/>
         <source>Save intermediate results:</source>
-        <translation type="unfinished"></translation>
+        <translation>保存中间结果：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="338"/>
         <source>Save intermediate results as models. Useful for diagnostics of the solidification process.</source>
-        <translation type="unfinished"></translation>
+        <translation>将中间结果保存为模型。对于凝固过程的诊断很有用。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="348"/>
         <source>Increase this value if output seems not completely converged to input. Increases computation time.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果输出似乎没完全收敛于收入，请增大此值。将增加计算时间。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="367"/>
         <source>Smoothing factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>平滑系数：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="374"/>
         <source>Oversampling:</source>
-        <translation type="unfinished"></translation>
+        <translation>过采样：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="381"/>
@@ -10565,29 +10565,29 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="416"/>
         <source>Custom:</source>
-        <translation type="unfinished"></translation>
+        <translation>习惯：</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="423"/>
         <source>Largest cavity</source>
-        <translation type="unfinished"></translation>
+        <translation>最大腔体</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="430"/>
         <source>Outer surface</source>
-        <translation type="unfinished"></translation>
+        <translation>外表面</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="437"/>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="476"/>
         <source>Cavities with smaller diameter than this threshold will not be carved out.</source>
-        <translation type="unfinished"></translation>
+        <translation>直径小于此阈值的空腔将不会被雕刻出来。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="456"/>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="466"/>
         <source>Propagate surface deeper into concave regions</source>
-        <translation type="unfinished"></translation>
+        <translation>将表面传播到更深的凹陷区域</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="459"/>
@@ -11794,12 +11794,12 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="90"/>
         <source>Clear Log</source>
-        <translation type="unfinished"></translation>
+        <translation>清除日志</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="92"/>
         <source>Clear the log window.</source>
-        <translation type="unfinished"></translation>
+        <translation>清除日志窗口。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="101"/>
@@ -11839,7 +11839,7 @@ This work was partially funded by NIH grant 3P41RR013218.
     <message>
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="136"/>
         <source>Log to GUI: </source>
-        <translation type="unfinished"></translation>
+        <translation>登录到GUI： </translation>
     </message>
 </context>
 <context>
@@ -20095,32 +20095,32 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1743"/>
         <source>Do you want to install &apos;%1&apos; now?</source>
-        <translation type="unfinished"></translation>
+        <translation>你现在想安装&apos;%1&apos;吗？</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1744"/>
         <source>Install extension ?</source>
-        <translation type="unfinished"></translation>
+        <translation>安装扩展？</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1761"/>
         <source>Failed to install %1 extension</source>
-        <translation type="unfinished"></translation>
+        <translation>安装扩展%1失败</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1784"/>
         <source>Extension %1 has been installed from server.</source>
-        <translation type="unfinished"></translation>
+        <translation>扩展%1已经从服务器安装。</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1786"/>
         <source>Slicer must be restarted. Do you want to restart now ?</source>
-        <translation type="unfinished"></translation>
+        <translation>需要重启软件，您要现在重启吗？</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1787"/>
         <source>Restart slicer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>重启软件？</translation>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1824"/>
