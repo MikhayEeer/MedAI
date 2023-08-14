@@ -351,13 +351,13 @@ qMRMLSegmentEditorWidgetPrivate::qMRMLSegmentEditorWidgetPrivate(qMRMLSegmentEdi
     << /*no tr*/ "Paint" << "Draw" << "Draw Tube" << "Erase" 
     << "液面跟踪" << "区域生长" << "填充切片"
     // Global processing
-    << /*no tr*/ "Margin" << "空心化" << "平滑化"
+    << /*no tr*/ "边缘尺寸" << "空心化" << "平滑化"
     // Global splitting, merging
     << /*no tr*/ "Scissors" << "岛屿" << "逻辑运算"
     // Operating on volumes
     << /*no tr*/ "Mask volume" << "划分体数据"
     << "添加文字" << "Fast marching" << "泛洪算法" 
-    << "表面切割" << "Watershed" << "固定包裹";
+    << "表面切割" << "分水岭" << "固定包裹";
   this->UnorderedEffectsVisible = true;
   this->DefaultTerminologyEntrySettingsKey = "Segmentations/DefaultTerminologyEntry";
   this->EffectColumnCount = 2;

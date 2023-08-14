@@ -15,7 +15,7 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
     """
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'Margin'
+        scriptedEffect.name = '边缘尺寸'#Margin
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
     def clone(self):

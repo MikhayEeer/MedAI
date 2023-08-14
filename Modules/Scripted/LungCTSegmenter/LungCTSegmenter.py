@@ -1582,7 +1582,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
       intensityRange = [self.lungThresholdMin, self.lungThresholdMax]
       self.segmentEditorWidget.mrmlSegmentEditorNode().SetSourceVolumeIntensityMaskRange(intensityRange)
       # set effect
-      self.segmentEditorWidget.setActiveEffectByName("Grow from seeds")
+      self.segmentEditorWidget.setActiveEffectByName("区域生长")
       effect = self.segmentEditorWidget.activeEffect()
       # extent farther from control points than usual to capture lung edges
       effect.self().extentGrowthRatio = 0.5
@@ -1601,7 +1601,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
         if self.segmentEditorWidget:
             self.segmentEditorNode = self.segmentEditorWidget.mrmlSegmentEditorNode()
             # Cancel "Grow from seeds" (deletes preview segmentation)
-            self.segmentEditorWidget.setActiveEffectByName("Grow from seeds")
+            self.segmentEditorWidget.setActiveEffectByName("区域生长")
             effect = self.segmentEditorWidget.activeEffect()
             if effect:
                 effect.self().reset()
@@ -2253,7 +2253,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 for i, segmentId in enumerate(segmentIds):
                     self.showStatusMessage(f'Final shrinking ({i+1}/{len(segmentIds)})...')
                     self.segmentEditorNode.SetSelectedSegmentID(segmentId)
-                    self.segmentEditorWidget.setActiveEffectByName("Margin")
+                    self.segmentEditorWidget.setActiveEffectByName("边缘尺寸")
                     effect = self.segmentEditorWidget.activeEffect()
                     effect.setParameter("MarginSizeMm","-1")
                     effect.self().onApply()
@@ -2477,7 +2477,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.segmentEditorWidget.setSourceVolumeNode(self.inputVolume)
 
                 self.segmentEditorNode.SetSelectedSegmentID(tracheaSegID)
-                self.segmentEditorWidget.setActiveEffectByName("Margin")
+                self.segmentEditorWidget.setActiveEffectByName("边缘尺寸")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("MarginSizeMm","-1")
                 effect.self().onApply()

@@ -40,7 +40,7 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
     def helpText(self):
         return _("""<html>使分割生长成完整的分割<br>。
 考虑初始分割的位置、大小和形状以及源卷的内容。
-最终的分割边界将放置在源体积亮度突然变化的位置。说明：<p>
+最终的分割边界将放置在源体积亮度突然变化的位置。是一种基础的基于阈值的区域生长。说明：<p>
 <ul style="margin: 0">
 <li>使用 绘画 或其他效果在应属于单独片段的每个区域中绘制种子。
 用不同的部分为每颗种子涂上不同的部分。至少需要两段。</li>
