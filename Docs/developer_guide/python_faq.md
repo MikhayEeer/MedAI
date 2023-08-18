@@ -303,7 +303,7 @@ If `Developer mode` is enabled in the application settings then the `Reload and 
 :::{tip}
 On Windows, VS Code text editor is installed by default at:
 
-```txt
+```
 C:/Users/YourUserName/AppData/Local/Programs/Microsoft VS Code/Code.exe
 ```
 :::
@@ -345,3 +345,24 @@ In our example:
       ${MODULE_NAME}Lib/cool_maths.py
       ${MODULE_NAME}Lib/utils.py
       )
+
+## Can I use any Python package in a Slicer module
+
+You can install any Python package within Slicer's built-in Python environment.
+
+The convenience function {func}`slicer.util.pip_install` can be used to install packages into your Slicer module. To understand its usage, examine the [Install a Python package](/developer_guide/script_repository.md#install-a-python-package) example within the Script Repository.
+
+:::{warning}
+Since installing packages can have side effects on other extensions or the main application, here are some best practices to adhere to:
+
+**DO:**
+* ✅ Always include a confirmation dialog that clearly communicates the installation process, mirroring the approach in the linked example.
+* ✅ Document the dependencies your module relies upon.
+* ✅ Consider specifying version requirements using `>=X.Y` to avoid incompatible versions.
+* ✅ Verify that all Python packages are distributed as Python wheels. This is particularly important for dependencies including compiled code, as installing a wheel eliminates the need for users to install a compiler.
+
+**DON'T:**
+* ❌ Do not install any packages in the global scope (outside of all classes and functions) or in the module class constructor. This can significantly slow down application startup, and it may even prevent the module from loading.
+* ❌ Do not pin to a specific version of the package, as this may generate conflicts with other package versions, leading to unexpected environment modifications. Pinning dependencies should be considered only in the context of custom applications where the deployment environment is tightly controlled.
+:::
+
