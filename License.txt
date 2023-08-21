@@ -1,13 +1,5 @@
-
-更多信息敬请访问：
-                      https://www.iscas-medai.org
-3D Slicer许可证
-The 3D Slicer license below is a BSD style license, with extensions
-to cover contributions and other issues specific to 3D Slicer.
-
-
-3D Slicer Contribution and Software License Agreement ("Agreement")
-Version 1.0 (December 20, 2005)
+The license below is a BSD style license, with extensions
+to cover contributions and other issues specific.
 
 This Agreement covers contributions to and downloads from the 3D
 Slicer project ("Slicer") maintained by The Brigham and Women's
