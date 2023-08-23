@@ -24,7 +24,7 @@
     <message>
         <location filename="Libs/Widgets/ctkActionsWidget.cpp" line="88"/>
         <source>Shortcut(s)</source>
-        <translation>捷径(s)</translation>
+        <translation>快捷键(s)</translation>
     </message>
     <message>
         <location filename="Libs/Widgets/ctkActionsWidget.cpp" line="89"/>
@@ -52,12 +52,12 @@
     <message>
         <location filename="Libs/Widgets/Resources/UI/ctkAddRemoveComboBox.ui" line="59"/>
         <source>Remove select object</source>
-        <translation>移除选择对象</translation>
+        <translation>移除选定对象</translation>
     </message>
     <message>
         <location filename="Libs/Widgets/Resources/UI/ctkAddRemoveComboBox.ui" line="82"/>
         <source>Edit selected object</source>
-        <translation>编辑选定的对象</translation>
+        <translation>编辑选定对象</translation>
     </message>
     <message>
         <location filename="Libs/Widgets/ctkAddRemoveComboBox.cpp" line="75"/>
@@ -2815,7 +2815,7 @@ Halting export.</source>
     <message>
         <location filename="Libs/Widgets/ctkMessageBox.cpp" line="220"/>
         <source>Don&apos;t show this message again and always %1</source>
-        <translation>不再显示此消息，并且始终 %1</translation>
+        <translation>不再显示此消息，并始终选择 %1</translation>
     </message>
     <message>
         <location filename="Libs/Widgets/ctkMessageBox.cpp" line="335"/>
