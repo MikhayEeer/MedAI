@@ -98,7 +98,8 @@ message(STATUS "Configuring ${Slicer_MAIN_PROJECT_APPLICATION_NAME} default favo
 # Disclaimer popup
 #-----------------------------------------------------------------------------
 if(NOT DEFINED Slicer_DISCLAIMER_AT_STARTUP)
-  set(Slicer_DISCLAIMER_AT_STARTUP "Thank you for using %1!<br><br>This software is not intended for clinical use." CACHE STRING "Text displayed at the first startup of Slicer in a popup window")
+  #set(Slicer_DISCLAIMER_AT_STARTUP "Thank you for using %1!<br><br>This software is not intended for clinical use." CACHE STRING "Text displayed at the first startup of Slicer in a popup window")
+  set(Slicer_DISCLAIMER_AT_STARTUP "Thank you for using MedAI!<br>" CACHE STRING "Text displayed at the first startup of Slicer in a popup window")
   # Note: %1 is replaced by the application name and version. Add <br> for newline.
   # If the disclaimer text is set to empty then no disclaimer popup is displayed.
   mark_as_advanced(Slicer_DISCLAIMER_AT_STARTUP)
