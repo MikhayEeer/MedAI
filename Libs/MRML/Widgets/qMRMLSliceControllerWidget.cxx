@@ -117,11 +117,8 @@ qMRMLSliceControllerWidgetPrivate::~qMRMLSliceControllerWidgetPrivate() = defaul
 //---------------------------------------------------------------------------
 void qMRMLSliceControllerWidgetPrivate::setColor(QColor barColor)
 {
-  //this->SliceOffsetSlider->spinBox()->setAutoFillBackground(true);
   this->Superclass::setColor(barColor);
-  QPalette spinBoxPalette( this->SliceOffsetSlider->spinBox()->palette());
-  spinBoxPalette.setColor(QPalette::Base, barColor.lighter(130));
-  this->SliceOffsetSlider->spinBox()->setPalette(spinBoxPalette);
+  this->SliceOffsetSlider->spinBox()->setStyleSheet("background-color: transparent");
 }
 
 //---------------------------------------------------------------------------
@@ -393,7 +390,6 @@ void qMRMLSliceControllerWidgetPrivate::init()
   //this->FitToWindowToolButton->setIcon(fitToWindowIcon);
   this->FitToWindowToolButton->setAutoRaise(true);
   this->FitToWindowToolButton->setDefaultAction(this->actionFit_to_window);
-  this->FitToWindowToolButton->setFixedSize(15, 15);
   this->BarLayout->insertWidget(2, this->FitToWindowToolButton);
 
   this->SliderSpacer = new ctkDynamicSpacer(q);
