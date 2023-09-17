@@ -12,7 +12,7 @@ LoginForm::LoginForm(QWidget* parent): QDialog(parent)
     // load the user name in local cache
     ReadIniFile();
 
-    connect(loginBtn,&QPushButton::clicked,this,&LoginForm::login);
+    connect(loginBtn,&QPushButton::clicked,this,&LoginForm::close);
     connect(signUpBtn,&QPushButton::clicked,this,&LoginForm::gotoSignUpForm);
     connect(exitBtn,&QPushButton::clicked,this,&LoginForm::quit);
 
