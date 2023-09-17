@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.3...3.19.7 FATAL_ERROR)
+﻿cmake_minimum_required(VERSION 3.16.3...3.19.7 FATAL_ERROR)
 
 if("${CMAKE_VERSION}" VERSION_EQUAL "3.21.0")
   message(FATAL_ERROR "CMake version is ${CMAKE_VERSION} and using CMake==3.21.0 is not supported.\nSee https://gitlab.kitware.com/cmake/cmake/-/issues/22476")
@@ -329,7 +329,7 @@ mark_as_advanced(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 mark_as_superbuild(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 
 #set(Slicer_FORCED_REVISION "" CACHE STRING "Overwrite value of automatically set Slicer_REVISION")
-set(Slicer_FORCED_REVISION "31878")
+set(Slicer_FORCED_REVISION "31275")
 mark_as_advanced(Slicer_FORCED_REVISION)
 mark_as_superbuild(Slicer_FORCED_REVISION)
 
