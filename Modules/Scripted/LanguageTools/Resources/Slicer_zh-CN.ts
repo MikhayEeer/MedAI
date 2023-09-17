@@ -66,7 +66,7 @@
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="91"/>
         <source>自动更新</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="92"/>

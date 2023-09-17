@@ -483,7 +483,8 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
     self.translationFilesFolder = None
     #self.weblateComponents = [("3d-slicer", "Slicer"), ("ctk", "CTK")]
     #self.weblateEditTranslationUrl = "https://hosted.weblate.org/translate/3d-slicer"
-    self.preferredLanguage = "fr-FR"
+    #self.preferredLanguage = "fr-FR"
+    self.preferredLanguage = "zh-CN"
     #self.gitRepositoryName = "SlicerLanguageTranslations"
     self.logCallback = None
 
