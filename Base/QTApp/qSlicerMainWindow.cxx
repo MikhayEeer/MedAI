@@ -94,6 +94,7 @@
 #include "UserInfo.h"
 #include "LoginForm.h"
 #include "UserInfoForm.h"
+#include "backendAiManager.h"
 
 namespace
 {
@@ -1090,9 +1091,12 @@ void qSlicerMainWindow::on_ModuleHomeAction_triggered()
 }
 
 void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
-    UserInfoForm* _from = new UserInfoForm;
+    /*UserInfoForm* _from = new UserInfoForm;
     _from->setWindowModality(Qt::ApplicationModal);
-    _from->show();
+    _from->show();*/
+    backendAiManager* tmpForm = new backendAiManager(this);
+    tmpForm->setWindowModality(Qt::ApplicationModal);
+    tmpForm->showFileDialog();
 }
 
 void qSlicerMainWindow::on_actionLogOut_triggered() {

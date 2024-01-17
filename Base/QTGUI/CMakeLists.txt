@@ -32,6 +32,9 @@ set(KIT_SRCS
   deduction_dialog.h
   deduction_dialog.cpp
 
+  backendAiManager.h
+  backendAiManager.cpp
+
   qSlicerAbstractModule.cxx
   qSlicerAbstractModule.h
   qSlicerAbstractModulePanel.cxx
@@ -252,6 +255,8 @@ set(KIT_MOC_SRCS
   UserInfoForm.h
   post_manager.h
   deduction_dialog.h
+
+  backendAiManager.h
   )
 
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
