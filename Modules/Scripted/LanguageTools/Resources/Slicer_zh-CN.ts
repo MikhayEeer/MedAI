@@ -8348,8 +8348,9 @@ a = 仿射变换</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="403"/>
-        <source>Warning: {missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</source>
-        <translation>警告： 在磁盘上找不到数据库中列出的 {total_file_count} 所选文件中的 {missing_file_count} 文件。</translation>
+        <source>{missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</source>
+        <oldsource>Warning: {missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</oldsource>
+        <translation type="unfinished">警告： 在磁盘上找不到数据库中列出的 {total_file_count} 所选文件中的 {missing_file_count} 文件。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="410"/>
@@ -9139,17 +9140,17 @@ Developed of this module was partially funded by CZI EOSS grant.
         <translation>更新成功！选择应用程序语言并重新启动应用程序以应用新语言。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="569"/>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="570"/>
         <source>No .ts files were found in the specified location.</source>
         <translation>在指定位置未找到.ts文件。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="674"/>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="675"/>
         <source>Translation files folder is not specified.</source>
         <translation>未指定翻译文件目录。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="677"/>
+        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="678"/>
         <source>lrelease tool path is not specified.</source>
         <translation>未指定lrelease工具路径。</translation>
     </message>
@@ -9319,43 +9320,43 @@ Developed of this module was partially funded by CZI EOSS grant.
 <context>
     <name>LoginForm</name>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="30"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="34"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="63"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="82"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="31"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="35"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="64"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="83"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="30"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="31"/>
         <source>Some content is empty, please fill in all the content</source>
         <translation>部分内容为空，请填写</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="34"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="35"/>
         <source>The length of the password cannot be less than 6 charcters</source>
         <translation>密码长度不能少于6个字符</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="38"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="39"/>
         <source>Please wait</source>
         <translation>请稍后</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="64"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="65"/>
         <source>Your account balance is zero 
                                  Do you want to top up?</source>
         <translation>您的账户余额是0 
                                  需要充值吗?</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="83"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="84"/>
         <source>wrong password</source>
         <translation>密码错误</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="202"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="93"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="94"/>
         <source>Log in</source>
         <translation>登录</translation>
     </message>
@@ -10389,7 +10390,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <name>SegmentEditor</name>
     <message>
         <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="13"/>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="23"/>
+        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="24"/>
         <source>Segment Editor</source>
         <translation>分割编辑器</translation>
     </message>
@@ -11732,6 +11733,14 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
     </message>
 </context>
 <context>
+    <name>SomeContext</name>
+    <message>
+        <location filename="Libs/MRML/Core/Testing/vtkMRMLI18NTest1.cxx" line="58"/>
+        <source>SomeMessage</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TemplateKey</name>
     <message>
         <location filename="Utilities/Templates/Modules/Scripted/Resources/UI/TemplateKey.ui" line="17"/>
@@ -12189,6 +12198,29 @@ web服务器。
         <location filename="Modules/Scripted/WebServer/WebServer.py" line="136"/>
         <source>Log to GUI: </source>
         <translation>登录到GUI： </translation>
+    </message>
+</context>
+<context>
+    <name>backendAiManager</name>
+    <message>
+        <location filename="Base/QTGUI/backendAiManager.cpp" line="42"/>
+        <source>选择文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/backendAiManager.cpp" line="81"/>
+        <source>提示</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/backendAiManager.cpp" line="82"/>
+        <source>服务器处理中...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Base/QTGUI/backendAiManager.cpp" line="161"/>
+        <source>动静脉自动分割窗口</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -14226,12 +14258,12 @@ web服务器。
         <translation>P</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLPlotViewControllerWidget.cxx" line="339"/>
+        <location filename="Libs/MRML/Widgets/qMRMLPlotViewControllerWidget.cxx" line="338"/>
         <source>Save as SVG</source>
         <translation>另存为 SVG</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLPlotViewControllerWidget.cxx" line="340"/>
+        <location filename="Libs/MRML/Widgets/qMRMLPlotViewControllerWidget.cxx" line="339"/>
         <source>Scalable Vector Graphics (*.svg)</source>
         <translation>可缩放矢量图形 (*. svg)</translation>
     </message>
@@ -16260,12 +16292,12 @@ Do you wish to proceed with changing master representation?</source>
         <translation type="vanished">倾斜体</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="408"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="403"/>
         <source>Slice distance from RAS origin</source>
         <translation>距RAS原点的切片距离</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="2664"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="2661"/>
         <source>Continue</source>
         <translation>继续</translation>
     </message>
@@ -16273,122 +16305,122 @@ Do you wish to proceed with changing master representation?</source>
 <context>
     <name>qMRMLSliceControllerWidgetPrivate</name>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="488"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="485"/>
         <source>Linked</source>
         <translation>已链接</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="503"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="500"/>
         <source>Reformat</source>
         <translation>重定格式</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="518"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="515"/>
         <source>Lightbox view</source>
         <translation>灯箱视图</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="530"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="527"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="540"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="537"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="567"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="564"/>
         <source>Compositing</source>
         <translation>合成</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="588"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="585"/>
         <source>Slice spacing mode</source>
         <translation>切片间隔模式</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="592"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="589"/>
         <source>Manual spacing</source>
         <translation>手动间距</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="607"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="604"/>
         <source>Field of view</source>
         <translation>视野</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="632"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="629"/>
         <source>Slice model mode</source>
         <translation>切片模型模式</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="652"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="649"/>
         <source>Manual FOV</source>
         <translation>手动视场</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="677"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="674"/>
         <source>Manual Dimensions</source>
         <translation>手动维度</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="702"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="699"/>
         <source>Manual Origin</source>
         <translation>手动原点</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="731"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="728"/>
         <source>Segmentation</source>
         <translation>分割</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="740"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="737"/>
         <source>LabelMap</source>
         <translation>标签映射</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="749"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="746"/>
         <source>Advanced</source>
         <translation>高级</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="912"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="909"/>
         <source>Hide label volume outlines</source>
         <translation>隐藏标签数据轮廓</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="912"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="909"/>
         <source>Show label volume outlines</source>
         <translation>显示标签数据轮廓</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="917"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="914"/>
         <source>Hide reformat widget</source>
         <translation>隐藏重定格式小部件</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="917"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="914"/>
         <source>Show reformat widget</source>
         <translation>显示重定格式小部件</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1534"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1531"/>
         <source>Orientation marker</source>
         <translation>方向标记</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1570"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1567"/>
         <source>Ruler</source>
         <translation>标尺</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1582"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1579"/>
         <source>Slab Reconstruction</source>
         <translation>楼板重建</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1587"/>
+        <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="1584"/>
         <source>Slab Thickness</source>
         <translation>板厚</translation>
     </message>
@@ -16664,102 +16696,102 @@ Do you wish to proceed with changing master representation?</source>
 <context>
     <name>qMRMLSubjectHierarchyTreeView</name>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="236"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="234"/>
         <source>Rename</source>
         <translation>重命名</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="241"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="239"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="246"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="244"/>
         <source>Edit properties...</source>
         <translation>编辑属性...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="251"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="249"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="254"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="252"/>
         <source>Show</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="257"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="255"/>
         <source>Toggle visibility</source>
         <translation>切换可见性</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="274"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="272"/>
         <source>Interaction in 3D view</source>
         <translation>三维视图中的互动</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="276"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="274"/>
         <source>Allow interactively modify the transform in 3D views</source>
         <translation>允许在3D视图中以交互方式修改变换</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="280"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="278"/>
         <source>Edit transform properties...</source>
         <translation>编辑变换属性...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="281"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="279"/>
         <source>Edit properties of the current transform</source>
         <translation>编辑当前变换的属性</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="285"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="283"/>
         <source>Harden transform</source>
         <translation>固定变换</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="286"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="284"/>
         <source>Harden current transform on this node and all children nodes</source>
         <translation>固定此节点和所有子节点上的当前变换</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="290"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="288"/>
         <source>Create new transform</source>
         <translation>创建新的转换</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="291"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="289"/>
         <source>Create and apply new transform</source>
         <translation>创建并应用新的变换</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="297"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="295"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="299"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="297"/>
         <source>Remove parent transform from all the nodes in this branch</source>
         <translation>删除此分支中所有节点的父变换</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="373"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyExpandToDepthPlugin.cxx" line="66"/>
         <source>Expand tree to level...</source>
         <translation>将树扩展到水平...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="423"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="397"/>
         <source>Select plugin</source>
         <translation>选择插件</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="2070"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="2044"/>
         <source>Delete subject hierarchy branch?</source>
         <translation>删除主题层次结构分支？</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="2071"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qMRMLSubjectHierarchyTreeView.cxx" line="2045"/>
         <source>The deleted subject hierarchy item has children. Do you want to remove those too?
 
 If you choose yes, the whole branch will be deleted, including all children.
@@ -17239,7 +17271,7 @@ If you choose Yes to All, this question never appears again, and all subject hie
         <translation>更多</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLThreeDViewControllerWidget.cxx" line="280"/>
+        <location filename="Libs/MRML/Widgets/qMRMLThreeDViewControllerWidget.cxx" line="279"/>
         <source>1</source>
         <translation>1</translation>
     </message>
@@ -17926,12 +17958,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>qMRMLViewControllerBar</name>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLViewControllerBar.cxx" line="362"/>
+        <location filename="Libs/MRML/Widgets/qMRMLViewControllerBar.cxx" line="358"/>
         <source>Restore view layout</source>
         <translation>恢复布局</translation>
     </message>
     <message>
-        <location filename="Libs/MRML/Widgets/qMRMLViewControllerBar.cxx" line="367"/>
+        <location filename="Libs/MRML/Widgets/qMRMLViewControllerBar.cxx" line="363"/>
         <source>Maximize view</source>
         <translation>最大化视图</translation>
     </message>
@@ -18528,66 +18560,66 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>qSlicerApplication</name>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="366"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="376"/>
         <source>General</source>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="932"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="369"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="841"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="933"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="379"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="851"/>
         <source>Modules</source>
         <translation>模块</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="373"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="383"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="377"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="387"/>
         <source>Views</source>
         <translation>视图</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="381"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="391"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="385"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="395"/>
         <source>Extensions</source>
         <translation>扩展</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="389"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="399"/>
         <source>Cache</source>
         <translation>缓存</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="394"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="404"/>
         <source>Internationalization</source>
         <translation>国际化</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="400"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="410"/>
         <source>Python</source>
         <translation>Python</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="405"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="415"/>
         <source>Developer</source>
         <translation>开发者</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="513"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="549"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="523"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="559"/>
         <source>%1 has caught an application error, </source>
         <translation>%1 捕获了应用程序错误， </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="514"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="550"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="524"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="560"/>
         <source>please save your work and restart.
 
 </source>
@@ -18596,17 +18628,17 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="515"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="525"/>
         <source>The application has run out of memory. </source>
         <translation>应用程序已耗尽内存. </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="516"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="526"/>
         <source>winnt</source>
         <translation>获胜者</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="518"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="528"/>
         <source>Increasing virtual memory size in system settings or adding more RAM may fix this issue.
 
 </source>
@@ -18615,12 +18647,12 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="520"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="530"/>
         <source>linux</source>
         <translation>linux</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="522"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="532"/>
         <source>Increasing swap size in system settings or adding more RAM may fix this issue.
 
 </source>
@@ -18629,12 +18661,12 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="524"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="534"/>
         <source>darwin</source>
         <translation>darwin</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="526"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="536"/>
         <source>Increasing free disk space or adding more RAM may fix this issue.
 
 </source>
@@ -18643,7 +18675,7 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="530"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="540"/>
         <source>Adding more RAM may fix this issue.
 
 </source>
@@ -18652,14 +18684,14 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="532"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="551"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="542"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="561"/>
         <source>If you have a repeatable sequence of steps that causes this message, </source>
         <translation>如果您有一系列可重复的步骤导致此消息， </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="533"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="552"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="543"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="562"/>
         <source>please report the issue following instructions available at https://slicer.org
 
 
@@ -18670,8 +18702,8 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="534"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="553"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="544"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="563"/>
         <source>The message detail is:
 
 </source>
@@ -18680,19 +18712,19 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="535"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="554"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="545"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="564"/>
         <source>Exception thrown in event: </source>
         <translation>事件中引发异常： </translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="543"/>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="562"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="553"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="572"/>
         <source>Application Error</source>
         <translation>应用程序错误</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="719"/>
+        <location filename="Base/QTGUI/qSlicerApplication.cxx" line="729"/>
         <source>Are you sure you want to restart?</source>
         <translation>确定要重新启动吗？</translation>
     </message>
@@ -19139,32 +19171,32 @@ Graphics capabilities of this computer:
 <context>
     <name>qSlicerCoreApplication</name>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="834"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="864"/>
         <source>Failed to create %1 directory</source>
         <translation>创建 %1 目录失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1767"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1797"/>
         <source>Built on top of:</source>
         <translation>建立在以下基础上：</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1787"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1817"/>
         <source>Licensing Information</source>
         <translation>许可证信息</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1788"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1818"/>
         <source>Website</source>
         <translation>网站</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1789"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1819"/>
         <source>Acknowledgments</source>
         <translation>致谢</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1796"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1826"/>
         <source>Slicer is NOT an FDA approved medical device.&lt;br&gt;&lt;br&gt;Supported by: NA-MIC, NAC, BIRN, NCIGT and the Slicer Community.&lt;br&gt;&lt;br&gt;Special thanks to the NIH and our other supporters.&lt;br&gt;&lt;br&gt;This work is part of the National Alliance for Medical Image Computing (NA-MIC), funded by the National Institutes of Health through the NIH Roadmap for Medical Research, Grant U54 EB005149. Information on the National Centers for Biomedical Computing can be obtained from&lt;a href=&quot;https://commonfund.nih.gov/bioinformatics&quot;&gt;https://commonfund.nih.gov/bioinformatics&lt;/a&gt;.&lt;br&gt;&lt;br&gt;</source>
         <translation>Slicer不是FDA批准的医疗设备。&lt;br&gt;&lt;br&gt;支持的是。&lt;br&gt;&lt;br&gt;特别感谢美国国立卫生研究院和我们的其他支持者。&lt;br&gt;&lt;br&gt;这项工作是国家医学图像计算联盟（NA-MIC）的一部分，由美国国立卫生研究院通过NIH医学研究路线图资助，授予U54 EB005149。有关国家生物医学计算中心的信息可从&lt;a href=&quot;https://commonfund.nih.gov/bioinformatics&quot;&gt;https://commonfund.nih.gov/bioinformatics&lt;/a&gt;获得。&lt;br&gt;&lt;br&gt;</translation>
     </message>
@@ -19912,7 +19944,7 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
         <translation>编辑日志</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerErrorReportDialog.ui" line="122"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerErrorReportDialog.ui" line="135"/>
         <source>Log file content:</source>
         <translation>日志文件内容：</translation>
     </message>
@@ -20436,191 +20468,191 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
     </message>
     <message>
         <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1701"/>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2452"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2474"/>
         <source>Failed to retrieve metadata for %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>无法检索 %1 扩展的元数据</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1743"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1765"/>
         <source>Do you want to install &apos;%1&apos; now?</source>
         <translation>你现在想安装&apos;%1&apos;吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1744"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1766"/>
         <source>Install extension ?</source>
         <translation>安装扩展？</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1761"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1783"/>
         <source>Failed to install %1 extension</source>
         <translation>安装扩展%1失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1784"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1806"/>
         <source>Extension %1 has been installed from server.</source>
         <translation>扩展%1已经从服务器安装。</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1786"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1808"/>
         <source>Slicer must be restarted. Do you want to restart now ?</source>
         <translation>需要重启软件，您要现在重启吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1787"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1809"/>
         <source>Restart slicer ?</source>
         <translation>重启软件？</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1824"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1846"/>
         <source>Failed downloading: %1</source>
         <translation>下载失败：%1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1835"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1857"/>
         <source>Could not create temporary file for writing: %1</source>
         <translation>无法创建用于写入的临时文件： %1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1856"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1878"/>
         <source>Failed to list extension archive &apos;%1&apos;</source>
         <translation>无法列出扩展存档“%1”</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1873"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1895"/>
         <source>No extension description found in archive &apos;%1&apos;</source>
         <translation>在存档 &apos;%1&apos; 中找不到扩展说明</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1886"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1908"/>
         <source>InstallExtension failed: extensionName is not set</source>
         <translation>安装扩展失败：未设置扩展名</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1891"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1913"/>
         <source>Skip installation of %1 extension. It is already installed.</source>
         <translation>跳过 %1 扩展的安装。它已安装。</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1897"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1919"/>
         <source>Extensions/InstallPath setting is not set</source>
         <translation>未设置扩展/安装路径</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1903"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="1925"/>
         <source>Failed to create extension installation directory %1</source>
         <translation>无法创建扩展安装目录 %1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2011"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2033"/>
         <source>Error while installing dependent extensions:&lt;ul&gt;%1&lt;ul&gt;</source>
         <translation>安装依赖扩展时出错：&lt;ul&gt;%1&lt;ul&gt;</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2034"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2056"/>
         <source>%1 depends on the following extensions, which could not be found:</source>
         <extracomment>%1 is the extension name</extracomment>
         <translation>%1依赖于以下扩展，但无法找到这些扩展：</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2039"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2061"/>
         <source>The extension may not function properly.</source>
         <translation>扩展可能无法正常运行。</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2040"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2062"/>
         <source>Unresolved dependencies</source>
         <translation>未解析的依赖项</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2959"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2981"/>
         <source>&apos;extensionName&apos; parameter is not specified</source>
         <translation>未指定“扩展名称”参数</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2064"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2086"/>
         <source>Installed extension %1</source>
         <translation>已安装的扩展%1</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2146"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2168"/>
         <source>Update extension information from server failed: timed out while waiting for server response from %1</source>
         <translation>从服务器更新扩展信息失败：在等待%1的服务器响应时超时了</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2201"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2223"/>
         <source>Failed to download extension metadata from server</source>
         <translation>无法从服务器下载扩展元数据</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2219"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2241"/>
         <source>Extension metadata response missed required &apos;extensionname&apos; field</source>
         <translation>缺少扩展元数据响应必填的“扩展名”字段</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2251"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2273"/>
         <source>Update check response for extension %1 missed required &apos;extension_id&apos; or &apos;revision&apos; field</source>
         <translation>更新扩展名 %1 的检查响应缺少必需的“extension_id”或“修订”字段</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2262"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2284"/>
         <source>Update found for %1 extension: &apos;%2&apos; installed, &apos;%3&apos; available, </source>
         <translation>找到 %1 扩展的更新：“%2”已安装，“%3”可用， </translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2337"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2359"/>
         <source>Failed downloading %1 extension from %2</source>
         <translation>从 %2 下载 %1 扩展失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2353"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2375"/>
         <source>Could not create .updates directory for update archive in %1</source>
         <translation>无法为%1的更新档案创建.更新目录</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2374"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2396"/>
         <source>Could not write file: &apos;%1&apos; (%2)</source>
         <extracomment>%1 is the path name, %2 is the error message</extracomment>
         <translation>无法写入文件：&apos;%1&apos; (%2)</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2438"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2460"/>
         <source>Missing download information for %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>缺少 %1 扩展的下载信息</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2470"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2492"/>
         <source>%1 extension scheduled for update</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>计划更新的%1扩展</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2516"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2538"/>
         <source>Failed to update %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>更新%1扩展失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2523"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2545"/>
         <source>Failed to update %1 extension: it is not scheduled for update</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>更新%1扩展失败：它没有被安排更新</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2647"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2669"/>
         <source>Failed to uninstall %1 extension</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>卸载%1扩展失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2654"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2676"/>
         <source>Failed to uninstall %1 extension: extension is already loaded</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>未能卸载 %1 扩展：扩展已加载</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2929"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="2951"/>
         <source>Extension %1 is incompatible</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>扩展 %1 不兼容</translation>
@@ -20630,26 +20662,26 @@ If unchecked, the exported dataset will be added to the DICOM database.</source>
         <translation type="vanished">扩展名称未指定</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3153"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3175"/>
         <source>Corrupted %1 extension package</source>
         <extracomment>%1 is extension name</extracomment>
         <translation>损坏的 %1 扩展包</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3161"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3183"/>
         <source>Failed to extract %1 extension archive %2 into directory %3</source>
         <extracomment>%1 is extension name, %2 is extension package file path, %3 is destination path</extracomment>
         <translation>提取 %1 扩展档案 %2 到目录 %3 失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3206"/>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3213"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3228"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3235"/>
         <source>Failed to copy directory %1 into directory %2</source>
         <translation>复制目录%1到目录%2失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3220"/>
-        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3227"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3242"/>
+        <location filename="Base/QTCore/qSlicerExtensionsManagerModel.cxx" line="3249"/>
         <source>Failed to remove directory %1</source>
         <translation>移除目录%1失败</translation>
     </message>
@@ -21191,7 +21223,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
     </message>
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="256"/>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="374"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="375"/>
         <source>Layout</source>
         <translation>布局</translation>
     </message>
@@ -21287,7 +21319,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation>打开一个标准文件浏览器，该浏览器允许您选择对现有场景的变换。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="664"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="665"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
@@ -21492,7 +21524,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation>Ctrl+6</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="443"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="444"/>
         <source>&amp;Error Log</source>
         <translation>&amp;错误日志</translation>
     </message>
@@ -21501,7 +21533,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation type="vanished">显示错误日志。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="445"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="446"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
@@ -21821,7 +21853,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1203"/>
         <source>User Info</source>
-        <translation>用户信息</translation>
+        <translation>AI气道</translation>
     </message>
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1206"/>
@@ -21829,161 +21861,161 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation>查看用户信息</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="163"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="164"/>
         <source>Collapse/Expand the GUI panel and allows Slicer&apos;s viewers to occupy the entire application window</source>
         <translation>折叠/展开GUI面板并允许切片器的视窗占据整个应用程序窗口</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="320"/>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="334"/>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="348"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="321"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="335"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="349"/>
         <source>Select number of viewers...</source>
         <translation>选择视窗数量...</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="161"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="162"/>
         <source>Show &amp;Module Panel</source>
         <translation>显示和模块面板</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="189"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="190"/>
         <source>Module Selection</source>
         <translation>模块选择</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="434"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="435"/>
         <source>Error Log</source>
         <translation>错误日志</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="444"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="445"/>
         <source>Show/hide Error Log window</source>
         <translation>显示/隐藏错误日志窗口</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="468"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="469"/>
         <source>Python Console</source>
         <translation>Python 控制台</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="480"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="481"/>
         <source>Slicer Python Console</source>
         <translation>Slicer Python 控制台</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="491"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="492"/>
         <source>&amp;Python Console</source>
         <translation>&amp;Python控制台</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="492"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="493"/>
         <source>Show Python Console window for controlling the application&apos;s data, user interface, and internals</source>
         <translation>显示Python控制台窗口，用于控制应用程序的数据、用户界面和内部结构</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="494"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="495"/>
         <source>Ctrl+3</source>
         <translation>Ctrl+3</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="494"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="495"/>
         <source>Ctrl+`</source>
         <translation>Ctrl+`</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="594"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="595"/>
         <source>Clear History</source>
         <translation>清除历史记录</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="653"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="654"/>
         <source>Some data have been modified. Do you want to save them before exit?</source>
         <translation>某些数据已被修改，您想要在退出前保存它们吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="657"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="658"/>
         <source>The scene has been modified. Do you want to save it before exit?</source>
         <translation>场景已被修改，您想要在退出前保存它吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="662"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="663"/>
         <source>Save before exit?</source>
         <translation>退出前保存吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="666"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="667"/>
         <source>Exit (discard modifications)</source>
         <translation>退出(放弃修改)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="668"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="669"/>
         <source>Cancel exit</source>
         <translation>取消退出</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="698"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="699"/>
         <source>Some data have been modified. Do you want to save them before closing the scene?</source>
         <translation>一些数据已被修改，您想要在关闭场景前保存它们吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="702"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="703"/>
         <source>The scene has been modified. Do you want to save it before closing the scene?</source>
         <translation>场景已被修改，您想要在关闭场景之前保存它吗？</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="712"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="713"/>
         <source>Save before closing scene?</source>
         <translation>关闭场景前保存？</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="717"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="718"/>
         <source>Close scene (discard modifications)</source>
         <translation>关闭场景(放弃修改)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="718"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="719"/>
         <source>Save scene</source>
         <translation>保存场景</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="990"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="991"/>
         <source>Slicer Data Bundle Directory (Select Empty Directory)</source>
         <translation>Slicer数据包目录(选择空目录)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1022"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1023"/>
         <source>Save Data Bundle File</source>
         <translation>保存数据包文件</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1023"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1024"/>
         <source>Medical Reality Bundle (*.mrb)</source>
         <translation>医疗实况包 (*.mrb)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1054"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1055"/>
         <source>MRML Scene</source>
         <translation>MRML场景</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1100"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1104"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1101"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1105"/>
         <source>Are you sure to quit? 
                                                                  this would log out your account</source>
         <translation>您确定要退出吗？
                                                                  这将注销您的账户</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1104"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1108"/>
         <source>Keep quit</source>
         <translation>继续退出</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1105"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1109"/>
         <source>Cancel quit</source>
         <translation>取消退出</translation>
     </message>
@@ -26936,32 +26968,32 @@ p, li own white-space: pre-wrap; }
 <context>
     <name>qSlicerSubjectHierarchyDICOMPlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="102"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="106"/>
         <source>Create new subject</source>
         <translation>创建新主题</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="107"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="111"/>
         <source>Create child study</source>
         <translation>创建儿童研究</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="112"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="116"/>
         <source>Convert folder to subject</source>
         <translation>将文件夹转换为主题</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="117"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="121"/>
         <source>Convert folder to study</source>
         <translation>将文件夹转换为学习材料</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="122"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="126"/>
         <source>Export to DICOM...</source>
         <translation>导出到 DICOM...</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="486"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="515"/>
         <source>Data to export need to be under a study item, placed under a patient item in the subject hierarchy.
 Default patient and study will be created and the selected data and its related datasets will be moved in it for export.
 
@@ -26976,17 +27008,17 @@ If you&apos;d like to create the hierarchy manually, please click Cancel, then c
 点击 &quot;取消&quot;，手动创建病人/研究的层次结构，并在研究下拖放可导出的数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="491"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="520"/>
         <source>Create new patient and study for DICOM export?</source>
         <translation>为DICOM导出创建新的患者和研究？</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="587"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="616"/>
         <source>Anonymous</source>
         <translation>匿名的</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="615"/>
+        <location filename="Modules/Scripted/DICOMLib/SubjectHierarchyPlugins/qSlicerSubjectHierarchyDICOMPlugin.cxx" line="644"/>
         <source>No study description</source>
         <translation>无研究描述</translation>
     </message>
@@ -27048,24 +27080,34 @@ If you&apos;d like to create the hierarchy manually, please click Cancel, then c
 <context>
     <name>qSlicerSubjectHierarchyFolderPlugin</name>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="94"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="99"/>
         <source>Create new folder</source>
         <translation>创建新文件夹</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="99"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="104"/>
         <source>Create child folder</source>
         <translation>创建子文件夹</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="104"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="109"/>
         <source>Apply color to all children</source>
         <translation>为所有儿童涂上颜色</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="106"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="111"/>
         <source>If on, then children items will inherit the display properties (e.g. color or opacity) set to the folder</source>
         <translation>如果打开，则子项目将继承文件夹设置的显示属性（如颜色或不透明度）</translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="117"/>
+        <source>Show empty folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyFolderPlugin.cxx" line="119"/>
+        <source>If on, then folders that do not contain nodes (allowed by any filter) are shown, otherwise not</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -27223,12 +27265,12 @@ If you&apos;d like to create the hierarchy manually, please click Cancel, then c
 <context>
     <name>qSlicerSubjectHierarchyPluginLogic</name>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyPluginLogic.cxx" line="97"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyPluginLogic.cxx" line="98"/>
         <source>Edit properties...</source>
         <translation>编辑属性...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyPluginLogic.cxx" line="263"/>
+        <location filename="Modules/Loadable/SubjectHierarchy/Widgets/qSlicerSubjectHierarchyPluginLogic.cxx" line="266"/>
         <source>Equal confidence number found for more than one subject hierarchy plugin for adding new node to subject hierarchy.
 
 Select plugin to add node named
@@ -27573,16 +27615,21 @@ Note: This may result in unwanted data loss in %5.</source>
         <translation>无效</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="361"/>
-        <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="385"/>
+        <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="369"/>
+        <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="393"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="398"/>
+        <location filename="Modules/Loadable/Segmentations/SubjectHierarchyPlugins/qSlicerSubjectHierarchySegmentsPlugin.cxx" line="406"/>
+        <source>Segment - ID: %1, Representations: %2, Color: (%3, %4, %5)
+Tags: %6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Segment - Representations: %1, Color: (%2, %3, %4)
 Tags: %5</source>
-        <translation>分割 - 表示法：%1, 颜色：（%2, %3, %4）
+        <translation type="vanished">分割 - 表示法：%1, 颜色：（%2, %3, %4）
 标签 %5</translation>
     </message>
 </context>
@@ -29921,6 +29968,285 @@ p, li { white-space: pre-wrap; }
         <location filename="Modules/Loadable/SlicerWelcome/qSlicerWelcomeModuleWidget.cxx" line="426"/>
         <source>New application version is available: %1</source>
         <translation>新的应用程序版本可用： %1</translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLColorTableStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLColorTableStorageNode.cxx" line="319"/>
+        <location filename="Libs/MRML/Core/vtkMRMLColorTableStorageNode.cxx" line="320"/>
+        <location filename="Libs/MRML/Core/vtkMRMLColorTableStorageNode.cxx" line="326"/>
+        <location filename="Libs/MRML/Core/vtkMRMLColorTableStorageNode.cxx" line="327"/>
+        <source>MRML Color Table</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLCommandLineModuleNode</name>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="682"/>
+        <source>Idle</source>
+        <translation type="unfinished">空闲</translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="683"/>
+        <source>Scheduled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="684"/>
+        <source>Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="685"/>
+        <source>Cancelling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="686"/>
+        <source>Cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="687"/>
+        <source>Completing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="688"/>
+        <source>Completed</source>
+        <translation type="unfinished">已完成</translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="689"/>
+        <source>Completed with errors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/CLI/vtkMRMLCommandLineModuleNode.cxx" line="693"/>
+        <source>Unknown</source>
+        <translation type="unfinished">未知</translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLLinearTransformSequenceStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLLinearTransformSequenceStorageNode.cxx" line="602"/>
+        <location filename="Libs/MRML/Core/vtkMRMLLinearTransformSequenceStorageNode.cxx" line="612"/>
+        <source>Linear transform sequence</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLMarkupsFiducialStorageNode</name>
+    <message>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsFiducialStorageNode.cxx" line="788"/>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsFiducialStorageNode.cxx" line="795"/>
+        <source>Markups Fiducial CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsFiducialStorageNode.cxx" line="789"/>
+        <source>Annotation Fiducial CSV</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLMarkupsJsonStorageNode</name>
+    <message>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsJsonStorageNode.cxx" line="345"/>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsJsonStorageNode.cxx" line="346"/>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsJsonStorageNode.cxx" line="352"/>
+        <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsJsonStorageNode.cxx" line="353"/>
+        <source>Markups JSON</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLModelStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="746"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="765"/>
+        <source>VTK Polygon Mesh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="747"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="766"/>
+        <source>VTK XML Polygon Mesh</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="748"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="777"/>
+        <source>VTK Unstructured Grid</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="749"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="778"/>
+        <source>VTK XML Unstructured Grid</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="750"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="751"/>
+        <source>Movie.BYU Mesh</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="752"/>
+        <source>MetaIO Mesh</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="753"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="771"/>
+        <source>Stereolithography Mesh</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="754"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="772"/>
+        <source>Stanford Polygon Mesh</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="755"/>
+        <source>AVS Unstructured Grid</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="756"/>
+        <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="773"/>
+        <source>Wavefront Mesh</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLProceduralColorStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLProceduralColorStorageNode.cxx" line="221"/>
+        <location filename="Libs/MRML/Core/vtkMRMLProceduralColorStorageNode.cxx" line="222"/>
+        <location filename="Libs/MRML/Core/vtkMRMLProceduralColorStorageNode.cxx" line="228"/>
+        <location filename="Libs/MRML/Core/vtkMRMLProceduralColorStorageNode.cxx" line="229"/>
+        <source>MRML Color Function</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLSegmentationStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLSegmentationStorageNode.cxx" line="146"/>
+        <location filename="Libs/MRML/Core/vtkMRMLSegmentationStorageNode.cxx" line="176"/>
+        <source>Segmentation</source>
+        <translation type="unfinished">分割</translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLSequenceStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLSequenceStorageNode.cxx" line="208"/>
+        <location filename="Libs/MRML/Core/vtkMRMLSequenceStorageNode.cxx" line="209"/>
+        <location filename="Libs/MRML/Core/vtkMRMLSequenceStorageNode.cxx" line="215"/>
+        <location filename="Libs/MRML/Core/vtkMRMLSequenceStorageNode.cxx" line="216"/>
+        <source>MRML Sequence Bundle</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLShaderPropertyStorageNode</name>
+    <message>
+        <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLShaderPropertyStorageNode.cxx" line="489"/>
+        <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLShaderPropertyStorageNode.cxx" line="495"/>
+        <source>MRML Shader Property</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLTableSQLiteStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLTableSQLiteStorageNode.cxx" line="306"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTableSQLiteStorageNode.cxx" line="316"/>
+        <source>SQLight database</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLTableStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="228"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="230"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="236"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="238"/>
+        <source>Tab-separated values</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="229"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="237"/>
+        <source>Comma-separated values</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLTextStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="153"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="161"/>
+        <source>Text file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="154"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="162"/>
+        <source>XML document</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="155"/>
+        <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="163"/>
+        <source>JSON document</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLVolumePropertyStorageNode</name>
+    <message>
+        <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLVolumePropertyStorageNode.cxx" line="219"/>
+        <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLVolumePropertyStorageNode.cxx" line="225"/>
+        <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLVolumePropertyStorageNode.cxx" line="226"/>
+        <source>MRML Volume Property</source>
+        <extracomment>file format name</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>vtkMRMLVolumeSequenceStorageNode</name>
+    <message>
+        <location filename="Libs/MRML/Core/vtkMRMLVolumeSequenceStorageNode.cxx" line="591"/>
+        <location filename="Libs/MRML/Core/vtkMRMLVolumeSequenceStorageNode.cxx" line="601"/>
+        <source>Volume Sequence</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
