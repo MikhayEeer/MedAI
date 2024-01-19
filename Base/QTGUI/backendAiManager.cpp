@@ -64,7 +64,7 @@ void backendAiManager::uploadFile(QStringList files) {
     QString complete_fileName = filePath.mid(lastSlashIndex + 1);
     int dotIndex = complete_fileName.lastIndexOf(".");
     QString baseName = complete_fileName.left(dotIndex);
-    m_result_path = file_dir_path + "/肺血管分割结果" + baseName + ".nii.gz";
+    m_result_path = file_dir_path + "/气道分割结果" + baseName + ".nii.gz";
     qDebug() << file_dir_path;
     qDebug() << complete_fileName;
     qDebug() << baseName;
