@@ -1091,13 +1091,24 @@ void qSlicerMainWindow::on_ModuleHomeAction_triggered()
 }
 
 void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
-    /*UserInfoForm* _from = new UserInfoForm;
+    UserInfoForm* _from = new UserInfoForm;
     _from->setWindowModality(Qt::ApplicationModal);
-    _from->show();*/
+    _from->show();
+}
+
+void qSlicerMainWindow::on_actionAI_Airway_triggered() {
+
     backendAiManager* tmpForm = new backendAiManager(this);
     tmpForm->setWindowModality(Qt::ApplicationModal);
-    tmpForm->showFileDialog();
+    tmpForm->choose_file_for_airway();
 }
+
+void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
+    backendAiManager* tmpForm = new backendAiManager(this);
+    tmpForm->setWindowModality(Qt::ApplicationModal);
+    tmpForm->choose_file_for_vessel();
+}
+
 
 void qSlicerMainWindow::on_actionLogOut_triggered() {
     QMessageBox* msgBox = new QMessageBox(QMessageBox::Question, 

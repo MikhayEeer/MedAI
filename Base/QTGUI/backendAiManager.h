@@ -29,23 +29,33 @@ class Q_SLICER_BASE_QTGUI_EXPORT backendAiManager : public QWidget
 public:
     explicit backendAiManager(QWidget *parent = nullptr);
     ~backendAiManager();
-    void uploadFile(QStringList files);
-    void showFileDialog();
+
+    enum AI_MODEL {
+        AIRWAY = 0,
+        VESSEL = 1,
+    };
+
+    void choose_file_for_airway();
+    void choose_file_for_vessel();
 
 private:
+    void uploadFile(QStringList files, AI_MODEL kind);
+
     QLabel      *userNameLbl;
     QLabel      *pwdLbl;
-//    QPushButton *loginBtn;       //登录按钮
-//    QPushButton *exitBtn;        //退出按钮
-    QProgressDialog *m_progress;
-    QString m_result_path;
 
-    QHttpMultiPart *multiPart;
-    QNetworkReply* reply;
-    QNetworkAccessManager* manager;
-    QMessageBox *finishedDialog;
+	QPushButton* airwayBtn;      //airway按钮
+	QPushButton* vessel_button;
+	//    QPushButton *exitBtn;        //退出按钮
+	QProgressDialog* m_progress;
+	QString m_result_path;
 
-    void initUI();
+	QHttpMultiPart* multiPart;
+	QNetworkReply* reply;
+	QNetworkAccessManager* manager;
+	QMessageBox* finishedDialog;
+
+	void initUI();
 
 
 };
