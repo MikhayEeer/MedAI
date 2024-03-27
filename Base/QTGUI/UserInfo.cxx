@@ -7,7 +7,5 @@ int userInfoBalance = 0;
 
 //QString SERVER_URL = "http://127.0.0.1:5000";
 
-//QString SERVER_URL = "http://8.130.14.81:5656";
-//QString SERVER_URL = "http://123.60.6.225:5656";
-QString SERVER_URL = "http://119.45.186.16:5776";
-//QString SERVER_URL = "http://36.137.227.17:11143/upload";
+//QString SERVER_URL = "http://119.45.186.16:5776";
+QString SERVER_URL = "http://118.195.135.211:7756";

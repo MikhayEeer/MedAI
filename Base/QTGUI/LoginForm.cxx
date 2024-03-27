@@ -12,8 +12,8 @@ LoginForm::LoginForm(QWidget* parent): QDialog(parent)
     // load the user name in local cache
     ReadIniFile();
 
-    //connect(loginBtn,&QPushButton::clicked,this,&LoginForm::login);
-    connect(loginBtn, &QPushButton::clicked, this, &LoginForm::close);
+    connect(loginBtn,&QPushButton::clicked,this,&LoginForm::login);
+    //connect(loginBtn, &QPushButton::clicked, this, &LoginForm::close);
     connect(signUpBtn,&QPushButton::clicked,this,&LoginForm::gotoSignUpForm);
     connect(exitBtn,&QPushButton::clicked,this,&LoginForm::quit);
 
@@ -58,26 +58,29 @@ void LoginForm::finishedLogin(QJsonObject m_res){
         userInfoEmail = m_res.value("email").toString();
         userInfoName = m_res.value("uName").toString();
         userInfoBalance = m_res.value("balance").toString().toInt();
-
+        /*
         if( userInfoBalance <= 0 ){
             int flag = QMessageBox::information(this, 
                             tr("Hint"), 
                             tr("Your account balance is zero \n \
                                 Do you want to top up?"), 
                             QMessageBox::Yes, QMessageBox::No);
-            if( flag == QMessageBox::Yes ){
-                RechargeForm * tmpForm = new RechargeForm();
+            if (flag == QMessageBox::Yes) {
+                RechargeForm* tmpForm = new RechargeForm();
                 // lock the window
                 tmpForm->setWindowModality(Qt::ApplicationModal);
                 tmpForm->show();
             }
-            else exit(-1);
+            else {
+                //QMessageBox::warning(this, "Warning", "This !");
+                this->close();
+            }
         }
         // have amount
-        else{
+        else{   */
             WriteIniFile("AppUserName", userNameLEd->text() );
             this->close();
-        }
+        //}
     }
     else {
         QMessageBox::information(this, tr("Hint"), m_res.value("state").toString(), QMessageBox::Yes);
