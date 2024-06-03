@@ -8350,7 +8350,7 @@ a = 仿射变换</translation>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="403"/>
         <source>{missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</source>
         <oldsource>Warning: {missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</oldsource>
-        <translation type="unfinished">警告： 在磁盘上找不到数据库中列出的 {total_file_count} 所选文件中的 {missing_file_count} 文件。</translation>
+        <translation>警告： 在磁盘上找不到数据库中列出的 {total_file_count} 所选文件中的 {missing_file_count} 文件。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="410"/>
@@ -9322,8 +9322,7 @@ Developed of this module was partially funded by CZI EOSS grant.
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="31"/>
         <location filename="Base/QTGUI/LoginForm.cxx" line="35"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="64"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="83"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="86"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
@@ -9343,20 +9342,19 @@ Developed of this module was partially funded by CZI EOSS grant.
         <translation>请稍后</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="65"/>
         <source>Your account balance is zero 
                                  Do you want to top up?</source>
-        <translation>您的账户余额是0 
+        <translation type="vanished">您的账户余额是0 
                                  需要充值吗?</translation>
     </message>
     <message>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="84"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="87"/>
         <source>wrong password</source>
         <translation>密码错误</translation>
     </message>
     <message>
         <location filename="Base/QTGUI/Resources/UI/qSlicerLoginForm.ui" line="202"/>
-        <location filename="Base/QTGUI/LoginForm.cxx" line="94"/>
+        <location filename="Base/QTGUI/LoginForm.cxx" line="97"/>
         <source>Log in</source>
         <translation>登录</translation>
     </message>
@@ -10889,7 +10887,7 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="530"/>
         <source>Region segment cannot be the same segment as the current segment</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="534"/>
@@ -10904,7 +10902,7 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorWrapSolidifyEffect.py" line="560"/>
         <source>Mesh has become empty during shrink-wrap iterations</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -12083,6 +12081,200 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="58"/>
         <source>Converters</source>
         <translation>转换器</translation>
+    </message>
+</context>
+<context>
+    <name>VolumeClipWithModel</name>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="16"/>
+        <source>Volume clip with model</source>
+        <translation>图像数据裁剪（模型）</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="17"/>
+        <source>Segmentation</source>
+        <translation>分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="22"/>
+        <source>
+      Clip volume with a surface model. Optionally the surface model can be automatically generated from a set of sample markup points.
+      Please refer to &lt;a href=&quot;$a/Documentation/Nightly/Extensions/VolumeClip&quot;&gt;the documentation&lt;/a&gt;
+      </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="53"/>
+        <source>Parameters</source>
+        <translation>参数</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="68"/>
+        <source>Input volume that will be clipped.</source>
+        <translation>选择被裁剪的图像数据。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="69"/>
+        <source>Input Volume: </source>
+        <translation>选择数据： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="84"/>
+        <source>Choose the clipping surface model.</source>
+        <translation>选择裁剪面模型。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="85"/>
+        <source>Clipping surface: </source>
+        <translation>裁剪面： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="99"/>
+        <source>If markups are selected then the clipping surface will be generated from the markup points. The surface is updated automatically when markups are moved.</source>
+        <translation>如果选择，则将从标记点生成剪切面。当标记移动时，表面会自动更新。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="100"/>
+        <source>Clipping surface from markups: </source>
+        <translation>从标记获取裁剪面： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="107"/>
+        <source>If checked, voxel values will be filled outside the clipping surface.</source>
+        <translation>选中后，体素值将填充在裁剪表面之外。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="108"/>
+        <source>Clip outside: </source>
+        <translation>外部： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="114"/>
+        <source>Choose the voxel intensity that will be used to fill outside the clipped regions</source>
+        <translation>选择用于填充到裁剪区域外的体素强度</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="118"/>
+        <source>Outside Fill value: </source>
+        <translation>外部填充值： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="125"/>
+        <source>If checked, voxel values will be filled inside the clipping surface.</source>
+        <translation>选中后，体素值将填充在裁剪面内。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="126"/>
+        <source>Clip inside: </source>
+        <translation>内部： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="132"/>
+        <source>Choose the voxel intensity that will be used to fill Inside the clipped regions</source>
+        <translation>选择用于填充裁剪区域内的体素强度</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="136"/>
+        <source>Inside Fill value: </source>
+        <translation>内部填充值： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="150"/>
+        <source>Output Volume: </source>
+        <translation>输出到： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="157"/>
+        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="323"/>
+        <source>Clip volume with surface model.</source>
+        <translation>使用表面模型裁剪图像数据。</translation>
+    </message>
+</context>
+<context>
+    <name>VolumeClipWithRoi</name>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="17"/>
+        <source>Volume clip with ROI</source>
+        <translation>图像数据裁剪（ROI）</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="18"/>
+        <source>Segmentation</source>
+        <translation>分割</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="23"/>
+        <source>
+      Use this module to clip a volume with a ROI (fill with a constant value). It can be used for removing certain regions of a scalar or labelmap volume.
+      Please refer to &lt;a href=&quot;$a/Documentation/Nightly/Extensions/VolumeClip&quot;&gt;the documentation&lt;/a&gt;
+      </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="51"/>
+        <source>Parameters</source>
+        <translation>参数</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="58"/>
+        <source>Input volume: </source>
+        <translation>选择数据： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="65"/>
+        <source>Pick the volume to clip</source>
+        <translation>选择数据用于裁剪</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="70"/>
+        <source>Clipping ROI: </source>
+        <translation>裁剪用ROI： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="76"/>
+        <source>Pick the clipping region of interest (ROI)</source>
+        <translation>选择用于裁剪的ROI区域</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="84"/>
+        <source>If checked, voxel values will be filled outside the clipping ROI.</source>
+        <translation>选中后，体素值将填充在ROI外。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="85"/>
+        <source>Clip outside: </source>
+        <translation>外部： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="88"/>
+        <source>Fill value:</source>
+        <translation>填充值：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="105"/>
+        <source>Clipped output volume. It may be the same as the input volume for cumulative clipping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="106"/>
+        <source>Output Volume: </source>
+        <translation>输出到： </translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="109"/>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="245"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="111"/>
+        <source>Clip volume with ROI</source>
+        <translation>使用ROI裁剪数据</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="228"/>
+        <source>Working...</source>
+        <translation>执行中...</translation>
     </message>
 </context>
 <context>

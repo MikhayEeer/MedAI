@@ -91,9 +91,9 @@ void backendAiManager::uploadFile(QStringList files, AI_MODEL kind) {
 	//    qDebug() << m_result_path;
 
 
-	QNetworkRequest request(QUrl("http://120.224.26.32:13826/upload")); //119.45.186.16 // 127.0.0.1
+	QNetworkRequest request(QUrl("http://120.224.26.32:13910/upload")); //119.45.186.16 // 127.0.0.1
 	if (kind == AI_MODEL::VESSEL) {
-		request.setUrl(QUrl("http://120.224.26.32:13826/vessel_ai"));
+		request.setUrl(QUrl("http://120.224.26.32:13910/vessel_ai"));
 	}
 	multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
 

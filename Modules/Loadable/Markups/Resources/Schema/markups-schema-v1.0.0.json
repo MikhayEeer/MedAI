@@ -374,7 +374,7 @@
                                             "type": "string",
                                             "title": "Snap mode",
                                             "description": "How control points can be defined and moved.",
-                                            "default": "toVisibleSurface",
+                                            "default": "unconstrained",
                                             "enum": ["unconstrained", "toVisibleSurface"]
                                         }
                                     }

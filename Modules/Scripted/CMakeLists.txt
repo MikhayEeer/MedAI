@@ -13,6 +13,8 @@ set(modules
   SegmentStatistics
   SelfTests
   VectorToScalarVolume
+  VolumeClipWithModel
+  VolumeClipWithRoi
   WebServer
   )
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
