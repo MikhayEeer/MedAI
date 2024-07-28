@@ -52,8 +52,7 @@ public slots:
   //bool exploreLoadedData();
   bool loadLanguageTools();
   void setExtensionUpdatesAvailable(bool updateAvailable);
-  void setApplicationUpdateAvailable(bool updateAvailable);
-  void checkForUpdates();
+
 
 protected:
   void setup() override;

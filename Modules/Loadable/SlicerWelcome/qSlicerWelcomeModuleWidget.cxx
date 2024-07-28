@@ -98,15 +98,6 @@ void qSlicerWelcomeModuleWidgetPrivate::setupUi(qSlicerWidget* widget)
 
   this->Ui_qSlicerWelcomeModuleWidget::setupUi(widget);
 
-  // Make the "application update available" button at the top orange to make it stand out more.
-  QPalette palette = q->palette();
-  palette.setColor(this->ApplicationUpdateAvailableButton->foregroundRole(), QColor("orange"));
-  this->ApplicationUpdateAvailableButton->setPalette(palette);
-  this->ApplicationUpdateAvailableButton->hide();
-
-  this->CheckingForUpdatesText = qSlicerWelcomeModuleWidget::tr("Checking for updates...");
-  this->NoUpdatesWereFoundText = qSlicerWelcomeModuleWidget::tr("No updates were found.");
-
   // Create the button group ensuring that only one collabsibleWidgetButton will be open at a time
   ctkButtonGroup * group = new ctkButtonGroup(widget);
 
@@ -259,30 +250,6 @@ void qSlicerWelcomeModuleWidget::setup()
   d->OpenExtensionsManagerButton->hide();
 #endif
 
-#ifdef Slicer_BUILD_APPLICATIONUPDATE_SUPPORT
-  if (app && qSlicerApplicationUpdateManager::isApplicationUpdateEnabled())
-    {
-    QObject::connect(d->ApplicationUpdateAvailableButton, SIGNAL(clicked()),
-      qSlicerApplication::application(), SLOT(openApplicationDownloadWebsite()));
-    QObject::connect(d->ApplicationUpdateStatusButton, SIGNAL(clicked()),
-      qSlicerApplication::application(), SLOT(openApplicationDownloadWebsite()));
-    qSlicerApplicationUpdateManager* applicationUpdateManager = d->applicationUpdateManager();
-    if (applicationUpdateManager)
-      {
-      applicationUpdatesEnabled = true;
-      QObject::connect(applicationUpdateManager, SIGNAL(updateAvailable(bool)),
-        this, SLOT(setApplicationUpdateAvailable(bool)));
-      if (applicationUpdateManager->isUpdateAvailable())
-        {
-        this->setApplicationUpdateAvailable(true);
-        }
-
-      QObject::connect(applicationUpdateManager, SIGNAL(autoUpdateCheckChanged()),
-        this, SLOT(onAutoUpdateSettingsChanged()));
-      }
-    }
-#endif
-
   if (!extensionUpdatesEnabled && !applicationUpdatesEnabled)
     {
     d->AutomaticUpdatesCollapsibleWidget->hide();
@@ -295,9 +262,6 @@ void qSlicerWelcomeModuleWidget::setup()
     {
     QObject::connect(d->CheckForUpdatesAutomaticallyCheckBox, SIGNAL(stateChanged(int)),
       this, SLOT(onAutoUpdateCheckStateChanged(int)));
-
-    QObject::connect(d->CheckForUpdatesNowButton, SIGNAL(clicked()),
-      this, SLOT(checkForUpdates()));
 
     QObject::connect(d->ExtensionUpdatesStatusButton, SIGNAL(clicked()),
       qSlicerApplication::application(), SLOT(openExtensionsManagerDialog()));
@@ -398,70 +362,9 @@ void qSlicerWelcomeModuleWidget::setExtensionUpdatesAvailable(bool isAvailable)
 }
 
 //---------------------------------------------------------------------------
-void qSlicerWelcomeModuleWidget::setApplicationUpdateAvailable(bool update)
-{
-  Q_UNUSED(update);
-#ifdef Slicer_BUILD_APPLICATIONUPDATE_SUPPORT
-  Q_D(qSlicerWelcomeModuleWidget);
-  // Check if there was a change
-  QString latestVersion;
-  if (qSlicerApplicationUpdateManager::isApplicationUpdateEnabled())
-    {
-    qSlicerApplicationUpdateManager* applicationUpdateManager = d->applicationUpdateManager();
-    if (applicationUpdateManager && applicationUpdateManager->isUpdateAvailable())
-      {
-      latestVersion = applicationUpdateManager->latestReleaseVersion();
-      }
-    }
 
-  if (latestVersion.isEmpty())
-    {
-    d->ApplicationUpdateAvailableButton->hide();
-    d->ApplicationUpdateStatusButton->setEnabled(false);
-    d->ApplicationUpdateStatusButton->setText(d->NoUpdatesWereFoundText);
-    d->ApplicationUpdateStatusButton->setToolTip("");
-    }
-  else
-    {
-    QString buttonText = tr("New application version is available: %1").arg(latestVersion);
-    d->ApplicationUpdateAvailableButton->setText(buttonText);
-    d->ApplicationUpdateAvailableButton->show();
-    d->ApplicationUpdateStatusButton->setText(buttonText);
-    d->ApplicationUpdateStatusButton->setEnabled(true);
-    d->ApplicationUpdateStatusButton->setToolTip(d->ApplicationUpdateAvailableButton->toolTip());
-    }
-#endif
-}
 
 //-----------------------------------------------------------------------------
-void qSlicerWelcomeModuleWidget::checkForUpdates()
-{
-  Q_D(qSlicerWelcomeModuleWidget);
-
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
-  qSlicerExtensionsManagerModel* extensionsManagerModel = d->extensionsManagerModel();
-  if (extensionsManagerModel)
-    {
-    d->ExtensionUpdatesStatusButton->setText(d->CheckingForUpdatesText);
-    d->ExtensionUpdatesStatusButton->setEnabled(false);
-    // wait for completion so that checkForExtensionsUpdates works from the updated metadata
-    extensionsManagerModel->updateExtensionsMetadataFromServer(true, true);
-    extensionsManagerModel->checkForExtensionsUpdates();
-    }
-#endif
-
-#ifdef Slicer_BUILD_APPLICATIONUPDATE_SUPPORT
-  qSlicerApplicationUpdateManager* applicationUpdateManager = d->applicationUpdateManager();
-  if (applicationUpdateManager)
-    {
-    d->ApplicationUpdateStatusButton->setEnabled(false);
-    d->ApplicationUpdateStatusButton->setText(d->CheckingForUpdatesText);
-    d->ApplicationUpdateStatusButton->setToolTip("");
-    d->ApplicationUpdateAvailableButton->hide();
-    applicationUpdateManager->checkForUpdate(true, false);
-    }
-#endif
-}
 
 //-----------------------------------------------------------------------------
 void qSlicerWelcomeModuleWidget::onAutoUpdateCheckStateChanged(int state)

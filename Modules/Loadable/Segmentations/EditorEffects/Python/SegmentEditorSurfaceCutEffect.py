@@ -1,6 +1,8 @@
 import os
 import vtk, qt, slicer
 import logging
+import numpy as np
+import vtkSegmentationCorePython as vtkSegmentationCore
 from SegmentEditorEffects import *
 
 class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
@@ -101,6 +103,12 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     self.smoothModelCheckbox.setToolTip("勾选后，则模型是平滑的；不勾选则是分面的。")
     self.scriptedEffect.addLabeledOptionsWidget("平滑模型：", self.smoothModelCheckbox)
 
+    # 是否保留原段
+    self.keepOriginSegmentCheckbox = qt.QCheckBox()
+    self.keepOriginSegmentCheckbox.setChecked(True) # model smoothing initial default is True
+    self.keepOriginSegmentCheckbox.setToolTip("勾选后，则保留原来的分割；不勾选则是不保留原来的分割。")
+    self.scriptedEffect.addLabeledOptionsWidget("保留原分割：", self.keepOriginSegmentCheckbox)
+
     # Apply button
     self.applyButton = qt.QPushButton("应用")
     self.applyButton.objectName = self.__class__.__name__ + 'Apply'
@@ -123,6 +131,7 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
       button.connect('toggled(bool)',
       lambda toggle, widget=self.buttonToOperationNameMap[button]: self.onOperationSelectionChanged(widget, toggle))
     self.smoothModelCheckbox.connect('stateChanged(int)', self.onSmoothModelCheckboxStateChanged)
+    self.keepOriginSegmentCheckbox.connect('stateChanged(int)', self.onKeepOriginSegmentCheckboxStateChanged)
     self.applyButton.connect('clicked()', self.onApply)
     self.cancelButton.connect('clicked()', self.onCancel)
     self.editButton.connect('clicked()', self.onEdit)
@@ -159,8 +168,9 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     return slicer.util.mainWindow().cursor
 
   def setMRMLDefaults(self):
-    self.scriptedEffect.setParameterDefault("Operation", "SET")
+    self.scriptedEffect.setParameterDefault("Operation", "ERASE_INSIDE")
     self.scriptedEffect.setParameterDefault("SmoothModel", 1)
+    self.scriptedEffect.setParameterDefault("keepOriginSegment", 1)
 
   def updateGUIFromMRML(self):
     if slicer.mrmlScene.IsClosing():
@@ -184,6 +194,9 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
 
     self.smoothModelCheckbox.setChecked(
       self.scriptedEffect.integerParameter("SmoothModel") != 0)
+    
+    self.keepOriginSegmentCheckbox.setChecked(
+      self.scriptedEffect.integerParameter("keepOriginSegment") != 0)
   #
   # Effect specific methods (the above ones are the API methods to override)
   #
@@ -192,6 +205,11 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     if not toggle:
       return
     self.scriptedEffect.setParameter("Operation", operationName)
+
+  def onKeepOriginSegmentCheckboxStateChanged(self, newState):
+    keep = 1 if self.keepOriginSegmentCheckbox.isChecked() else 0
+    self.scriptedEffect.setParameter("keepOriginSegment", keep)
+    self.updateGUIFromMRML()
 
   def onSmoothModelCheckboxStateChanged(self, newState):
     smoothing = 1 if self.smoothModelCheckbox.isChecked() else 0
@@ -276,7 +294,61 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
         slicer.mrmlScene.RemoveNode(self.segmentMarkupNode)
       self.setAndObserveSegmentMarkupNode(None)
 
-  def onApply(self):
+  def extend_surface_2(self,points, expansion_factor=1.3,height=100.0):
+      # 计算新的扩展点
+      expanded_points = []
+
+      for point in points:
+          vector = np.array(point) - np.mean(points, axis=0)
+          expanded_point = np.array(point) + vector * expansion_factor+(0,0,height)
+          expanded_points.append(expanded_point.tolist())
+      return expanded_points    
+    
+  def extend_surface_1(self,points, expansion_factor=1.3):
+      # 计算新的扩展点
+      expanded_points = []
+
+      for point in points:
+          vector = np.array(point) - np.mean(points, axis=0)
+          expanded_point = np.array(point) + vector * expansion_factor
+          expanded_points.append(expanded_point.tolist())
+      return expanded_points
+
+  def getBoundPoints(self,points):
+      # 创建vtkPoints对象并插入点
+      vtk_points = vtk.vtkPoints()
+      for point in points:
+        vtk_points.InsertNextPoint(point)
+
+      # 创建一个PolyData对象来存储点
+      poly_data = vtk.vtkPolyData()
+      poly_data.SetPoints(vtk_points)
+
+      # 使用Delaunay2D进行三角化
+      delaunay = vtk.vtkDelaunay2D()
+      delaunay.SetInputData(poly_data)
+      delaunay.Update()
+
+      # 提取最外围的点
+      boundary_filter = vtk.vtkFeatureEdges()
+      boundary_filter.SetInputData(delaunay.GetOutput())
+      boundary_filter.BoundaryEdgesOn()
+      boundary_filter.NonManifoldEdgesOff()
+      boundary_filter.FeatureEdgesOff()
+      boundary_filter.ManifoldEdgesOff()
+      boundary_filter.Update()
+
+      # 获取最外围点
+      boundary_points = boundary_filter.GetOutput().GetPoints()
+
+      pp = [boundary_points.GetPoint(i) for i in range(boundary_points.GetNumberOfPoints())]
+
+      return pp
+
+  # 未修改前
+  def onApplyBefore(self):
+    logging.warning("start cut lalalal")
+
     if self.getNumberOfDefinedControlPoints() < 3:
       logging.warning("Cannot apply, segment markup node has less than 3 control points")
       return
@@ -295,6 +367,115 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     self.fiducialPlacementToggle.setCurrentNode(self.segmentMarkupNode)
     self.observeSegmentation(True)
     qt.QApplication.restoreOverrideCursor()
+
+
+  def onApplyMy(self):
+    logging.warning("start cut lalalal")
+
+    f = slicer.modules.SegmentEditorWidget.editor.activeEffect().self().segmentMarkupNode
+    points  = [f.GetNthControlPointPosition(i) for i in range(f.GetNumberOfControlPoints())]
+
+    points=self.getBoundPoints(points)
+    ext_points=self.extend_surface_1(points,1.4)
+
+    cur_segment_id=slicer.modules.SegmentEditorWidget.editor.currentSegmentID()
+    cur_segment=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GetSegment(cur_segment_id)
+    cur_segment_name=cur_segment.GetName()
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().SetMaskSegmentID(cur_segment_id)
+
+    segment_id_1=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GenerateUniqueSegmentID(cur_segment_id)
+    segment_id_2=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GenerateUniqueSegmentID(cur_segment_id)
+
+    segment_1 = vtkSegmentationCore.vtkSegment()
+    segment_1.DeepCopy(cur_segment)
+    segment_2 = vtkSegmentationCore.vtkSegment()
+    segment_2.DeepCopy(cur_segment)
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().AddSegment(segment_1,segment_id_1)
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().AddSegment(segment_2,segment_id_2)
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GetSegment(segment_id_1).SetName(cur_segment_name+"-1")
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GetSegment(segment_id_2).SetName(cur_segment_name+"-2")
+
+
+    ext_points1=ext_points+self.extend_surface_2(ext_points,1.4,300)    
+    ext_points2=points+ext_points+self.extend_surface_2(ext_points,1.4,-300)
+
+    for p in ext_points1:
+      f.AddControlPoint([p[0],p[1],p[2]])
+
+    # Allow users revert to this state by clicking Undo
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().scriptedEffect.saveStateForUndo()
+
+    # This can be a long operation - indicate it to the user
+    qt.QApplication.setOverrideCursor(qt.Qt.WaitCursor)
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().observeSegmentation(False)
+
+    for i in range(100):
+      slicer.modules.SegmentEditorWidget.editor.selectNextSegment()
+      seg_id=slicer.modules.SegmentEditorWidget.editor.currentSegmentID()
+      if seg_id==segment_id_1:
+        slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().SetMaskSegmentID(segment_id_1)
+
+        slicer.modules.SegmentEditorWidget.editor.activeEffect().self().logic.cutSurfaceWithModel(slicer.modules.SegmentEditorWidget.editor.activeEffect().self().segmentMarkupNode, slicer.modules.SegmentEditorWidget.editor.activeEffect().self().segmentModel)
+
+        f.RemoveAllControlPoints()
+        slicer.modules.SegmentEditorWidget.editor.selectNextSegment()
+
+        # 自定义相减逻辑
+        modifierSegmentID=segment_id_1
+        modifierSegmentLabelmap = slicer.vtkOrientedImageData()
+        segmentationNode=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode()
+        segmentationNode.GetBinaryLabelmapRepresentation(modifierSegmentID, modifierSegmentLabelmap)
+        # Get common geometry
+        commonGeometryString = segmentationNode.GetSegmentation().DetermineCommonLabelmapGeometry(
+            vtkSegmentationCore.vtkSegmentation.EXTENT_UNION_OF_SEGMENTS, None)
+        if not commonGeometryString:
+            logging.info("Logical operation skipped: all segments are empty")
+            return
+        commonGeometryImage = slicer.vtkOrientedImageData()
+        vtkSegmentationCore.vtkSegmentationConverter.DeserializeImageGeometry(commonGeometryString, commonGeometryImage, False)
+
+        # Make sure modifier segment has correct geometry
+        # (if modifier segment has been just copied over from another segment then its geometry may be different)
+        if not vtkSegmentationCore.vtkOrientedImageDataResample.DoGeometriesMatch(commonGeometryImage, modifierSegmentLabelmap):
+            modifierSegmentLabelmap_CommonGeometry = slicer.vtkOrientedImageData()
+            vtkSegmentationCore.vtkOrientedImageDataResample.ResampleOrientedImageToReferenceOrientedImage(
+                modifierSegmentLabelmap, commonGeometryImage, modifierSegmentLabelmap_CommonGeometry,
+                False,  # nearest neighbor interpolation,
+                True  # make sure resampled modifier segment is not cropped
+            )
+            modifierSegmentLabelmap = modifierSegmentLabelmap_CommonGeometry    
+        bypassMasking=1
+        self.scriptedEffect.modifySelectedSegmentByLabelmap(
+          modifierSegmentLabelmap, slicer.qSlicerSegmentEditorAbstractEffect.ModificationModeRemove, bypassMasking)
+
+        # 删除原段
+        if not self.keepOriginSegmentCheckbox.isChecked():
+          slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().RemoveSegment(cur_segment)
+
+        break
+      if seg_id==cur_segment_id:
+        break
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().reset()
+    # Create model node prior to markup node for display order
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().createNewModelNode()
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().createNewMarkupNode()
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().fiducialPlacementToggle.setCurrentNode(slicer.modules.SegmentEditorWidget.editor.activeEffect().self().segmentMarkupNode)
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().self().observeSegmentation(True)
+    qt.QApplication.restoreOverrideCursor()
+
+  def onApply(self):
+    if 'ERASE_INSIDE' != self.scriptedEffect.parameter("Operation"):
+      logging.warning("before start cut lalalal ")
+      self.onApplyBefore()
+      return
+
+    logging.warning("my start cut lalalal ")
+    self.onApplyMy()
+    return
 
   def observeSegmentation(self, observationEnabled):
     import vtkSegmentationCorePython as vtkSegmentationCore

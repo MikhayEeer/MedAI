@@ -228,7 +228,6 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="61"/>
         <source>vtkMRMLMarkupsFiducialNode</source>
-        <translation>vtkMRML 标记浮动节点</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="82"/>
@@ -10757,7 +10756,6 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="212"/>
         <source>vtkMRMLModelNode</source>
-        <translation>vtkMRML 模型节点</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/Resources/UI/WrapSolidify.ui" line="217"/>
@@ -23168,7 +23166,6 @@ Table column names : label, r, a, s, (or l, p, s), defined, selected, visible, l
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="79"/>
         <source>vtkMRMLMarkupsToModelNode</source>
-        <translation>vtkMRML 标记到模型节点</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="94"/>
@@ -23185,22 +23182,18 @@ Table column names : label, r, a, s, (or l, p, s), defined, selected, visible, l
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="104"/>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="135"/>
         <source>vtkMRMLModelNode</source>
-        <translation>vtkMRML 模型节点</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="135"/>
         <source>vtkMRMLMarkupsFiducialNode</source>
-        <translation>vtkMRML 标记浮动节点</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="135"/>
         <source>vtkMRMLMarkupsCurveNode</source>
-        <translation>vtkMRML 标记曲线节点</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="135"/>
         <source>vtkMRMLMarkupsNode</source>
-        <translation>vtkMRML 标记节点</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/MarkupsToModel/Resources/UI/qSlicerMarkupsToModelModuleWidget.ui" line="143"/>

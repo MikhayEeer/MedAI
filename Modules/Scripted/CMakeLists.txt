@@ -1,4 +1,5 @@
 set(modules
+  aaamodule
   Airwaysegmentation
   CropVolumeSequence
   DataProbe
