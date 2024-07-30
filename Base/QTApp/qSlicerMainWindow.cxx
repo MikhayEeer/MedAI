@@ -95,6 +95,7 @@
 #include "LoginForm.h"
 #include "UserInfoForm.h"
 #include "backendAiManager.h"
+#include "passworddialog.h"
 
 namespace
 {
@@ -1098,13 +1099,13 @@ void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
 
 void qSlicerMainWindow::on_actionAI_Airway_triggered() {
 
-    backendAiManager* tmpForm = new backendAiManager(this);
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
     tmpForm->setWindowModality(Qt::ApplicationModal);
     tmpForm->choose_file_for_airway();
 }
 
 void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
-    backendAiManager* tmpForm = new backendAiManager(this);
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
     tmpForm->setWindowModality(Qt::ApplicationModal);
     tmpForm->choose_file_for_vessel();
 }
@@ -1124,6 +1125,12 @@ void qSlicerMainWindow::on_actionLogOut_triggered() {
         m_LoginForm->setWindowModality(Qt::ApplicationModal);
         m_LoginForm->show();
     }
+}
+
+void qSlicerMainWindow::on_actionReviewPermission_triggered() {
+  PasswordDialog * tmpForm = new PasswordDialog();
+  tmpForm->setWindowModality(Qt::ApplicationModal);
+  tmpForm->show();
 }
 
 //---------------------------------------------------------------------------

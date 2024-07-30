@@ -35,6 +35,11 @@ set(KIT_SRCS
   backendAiManager.h
   backendAiManager.cpp
 
+  userlist.h
+  userlist.cpp
+  passworddialog.h
+  passworddialog.cpp
+
   qSlicerAbstractModule.cxx
   qSlicerAbstractModule.h
   qSlicerAbstractModulePanel.cxx
@@ -257,6 +262,8 @@ set(KIT_MOC_SRCS
   deduction_dialog.h
 
   backendAiManager.h
+  userlist.h
+  passworddialog.h
   )
 
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
