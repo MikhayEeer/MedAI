@@ -4,6 +4,7 @@
 #-----------------------------------------------------------------------------
 set(cli_modules
   AddScalarVolumes
+  AirwaySegmentationCLI
   CastScalarVolume
   CheckerBoardFilter
   CurvatureAnisotropicDiffusion

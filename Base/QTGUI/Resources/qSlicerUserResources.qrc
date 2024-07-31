@@ -1,0 +1,9 @@
+﻿<RCC>
+    <qresource prefix="/">
+        <file>Icons/LoginBG.png</file>
+        <file>Icons/LoginIcon.png</file>
+        <file>Icons/SignupBG.png</file>
+        <file>Icons/guangqi.png</file>
+        <file>Icons/guangqitext.png</file>
+    </qresource>
+</RCC>

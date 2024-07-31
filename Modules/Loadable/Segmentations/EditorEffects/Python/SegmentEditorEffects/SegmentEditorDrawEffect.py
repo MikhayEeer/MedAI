@@ -8,7 +8,10 @@ import slicer
 from slicer.i18n import tr as _
 
 from SegmentEditorEffects import *
-
+#from slicer.i18n import tr as _
+from slicer.i18n import translate
+def _(str):
+    return str
 
 class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
     """DrawEffect is a LabelEffect implementing the interactive draw
@@ -151,7 +154,8 @@ class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
         # Add actor
         renderer = self.scriptedEffect.renderer(sliceWidget)
         if renderer is None:
-            logging.error("pipelineForWidget: Failed to get renderer!")
+            logging.error("pipelineForWidget: 无法获取渲染器!")
+            #pipelineForWidget: Failed to get renderer!
             return None
         self.scriptedEffect.addActor2D(sliceWidget, pipeline.actor)
 

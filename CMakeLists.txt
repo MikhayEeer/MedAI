@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.3...3.19.7 FATAL_ERROR)
+﻿cmake_minimum_required(VERSION 3.16.3...3.19.7 FATAL_ERROR)
 
 if("${CMAKE_VERSION}" VERSION_EQUAL "3.21.0")
   message(FATAL_ERROR "CMake version is ${CMAKE_VERSION} and using CMake==3.21.0 is not supported.\nSee https://gitlab.kitware.com/cmake/cmake/-/issues/22476")
@@ -75,7 +75,7 @@ if(NOT DEFINED Slicer_VERSION_MAJOR)
   set(Slicer_VERSION_MAJOR "5")
 endif()
 if(NOT DEFINED Slicer_VERSION_MINOR)
-  set(Slicer_VERSION_MINOR "7")
+  set(Slicer_VERSION_MINOR "3")
 endif()
 if(NOT DEFINED Slicer_VERSION_PATCH)
   set(Slicer_VERSION_PATCH "0")
@@ -257,7 +257,7 @@ endif()
 #-----------------------------------------------------------------------------
 include(CMakeDependentOption)
 
-option(BUILD_TESTING "Test the project" ON)
+option(BUILD_TESTING "Test the project" OFF)#option(BUILD_TESTING "Test the project" ON)
 mark_as_superbuild(BUILD_TESTING)
 
 #option(WITH_MEMCHECK "Run tests through valgrind." OFF)
@@ -328,7 +328,8 @@ set(Slicer_FORCED_WC_LAST_CHANGED_DATE "" CACHE STRING "Overwrite value of auto-
 mark_as_advanced(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 mark_as_superbuild(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 
-set(Slicer_FORCED_REVISION "" CACHE STRING "Overwrite value of automatically set Slicer_REVISION")
+#set(Slicer_FORCED_REVISION "" CACHE STRING "Overwrite value of automatically set Slicer_REVISION")
+set(Slicer_FORCED_REVISION "32175")
 mark_as_advanced(Slicer_FORCED_REVISION)
 mark_as_superbuild(Slicer_FORCED_REVISION)
 
@@ -505,7 +506,7 @@ set(Slicer_QRCC_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/Utilities/Scripts/qrcc.py" C
 #-----------------------------------------------------------------------------
 if(Slicer_BUILD_I18N_SUPPORT)
   set(Slicer_LANGUAGES
-    "fr"
+    "zh_CN"
     CACHE STRING "Semicolon separated list of supported Slicer languages. Expected format : language[_country] (both en and en_US are supported)."
     )
   mark_as_advanced(Slicer_LANGUAGES)
@@ -642,7 +643,7 @@ endif()
     list(APPEND Slicer_REQUIRED_QT_MODULES X11Extras)
   endif()
 
-  find_package(Qt5 COMPONENTS Core QUIET)
+  find_package(Qt5 COMPONENTS Core LinguistTools QUIET)
   if(Slicer_BUILD_WEBENGINE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES
       WebEngine
@@ -655,9 +656,9 @@ endif()
   if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT OR Slicer_BUILD_APPLICATIONUPDATE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES Qml)
   endif()
-  if(Slicer_BUILD_I18N_SUPPORT)
-    list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
-  endif()
+  #if(Slicer_BUILD_I18N_SUPPORT)
+  #  list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
+  #endif()
   if(BUILD_TESTING)
     list(APPEND Slicer_REQUIRED_QT_MODULES Test)
   endif()

@@ -11,7 +11,7 @@ from slicer.i18n import tr as _
 from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
 from slicer.util import computeChecksum, extractAlgoAndDigest, TESTING_DATA_URL
-
+from slicer.i18n import tr as _
 
 #
 # SampleData methods

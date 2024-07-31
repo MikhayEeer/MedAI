@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>aaamodule</class>
+    <widget class="qMRMLWidget" name="aaamodule">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>325</width>
+                <height>111</height>
+            </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+                <widget class="ctkCollapsibleButton" name="outputsCollapsibleButton">
+                    <property name="text">
+                        <string>输出路径</string>
+                    </property>
+                    <layout class="QFormLayout" name="formLayout_1">
+                        <item>
+                            <widget class="ctkDirectoryButton" name="directoryButton">
+                                <property name="toolTip">
+                                    <string>选择输出路径</string>
+                                </property>
+                            </widget>
+                        </item>
+                    </layout>
+                </widget>
+            </item>
+            <item>
+                <widget class="QPushButton" name="applyButton">
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="toolTip">
+                        <string>Run the algorithm.</string>
+                    </property>
+                    <property name="text">
+                        <string>导出所有模型</string>
+                    </property>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <customwidgets>
+        <customwidget>
+            <class>qMRMLWidget</class>
+            <extends>QWidget</extends>
+            <header>qMRMLWidget.h</header>
+            <container>1</container>
+        </customwidget>
+        <customwidget>
+            <class>ctkCollapsibleButton</class>
+            <extends>QWidget</extends>
+            <header>ctkCollapsibleButton.h</header>
+            <container>1</container>
+        </customwidget>
+        <customwidget>
+            <class>ctkSliderWidget</class>
+            <extends>QWidget</extends>
+            <header>ctkSliderWidget.h</header>
+        </customwidget>
+    </customwidgets>
+    <resources/>
+    <connections>
+    </connections>
+</ui>

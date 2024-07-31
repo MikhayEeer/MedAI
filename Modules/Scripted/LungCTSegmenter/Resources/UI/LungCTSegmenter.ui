@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LungCTSegmenter</class>
+ <widget class="qMRMLWidget" name="LungCTSegmenter">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>603</width>
+    <height>1143</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_lcts">
+     <property name="toolTip">
+      <string>This simple use counter evaluates the global uses of the extension, manual assisted (man), total AI (ai), lungmask (lm), TotalSegmentator (ts), MONAILabel (ml), airway (aw) and vessel (ve) segmentations. Apart from a usage ping no other information is transmitted. Incomplete AI runs are not counted (installations), so ai + man may not add up to total.  </string>
+     </property>
+     <property name="text">
+      <string>LungCTSegmenter (x uses since 6/23)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="inputsCollapsibleButton">
+     <property name="text">
+      <string>Inputs</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Input volume:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="qMRMLNodeComboBox" name="inputVolumeSelector">
+        <property name="toolTip">
+         <string>Pick the input (CT Lung) to the algorithm.</string>
+        </property>
+        <property name="nodeTypes">
+         <stringlist>
+          <string>vtkMRMLScalarVolumeNode</string>
+         </stringlist>
+        </property>
+        <property name="showChildNodeTypes">
+         <bool>false</bool>
+        </property>
+        <property name="addEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="removeEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Output segmentation:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="qMRMLNodeComboBox" name="outputSegmentationSelector">
+        <property name="toolTip">
+         <string>Pick the output segmentatioon or create a new one.</string>
+        </property>
+        <property name="nodeTypes">
+         <stringlist>
+          <string>vtkMRMLSegmentationNode</string>
+         </stringlist>
+        </property>
+        <property name="showChildNodeTypes">
+         <bool>false</bool>
+        </property>
+        <property name="baseName">
+         <string>Lung segmentation</string>
+        </property>
+        <property name="noneEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="addEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="removeEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="editEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="renameEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="noneDisplay">
+         <string>Create new segmentation</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="outputsCollapsibleButton">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Segmentation</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="9" column="1">
+       <widget class="QComboBox" name="engineAIComboBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Select the  AI engine. 'lungmask' (U-Net) will create lungs and lobes, 'MONAILabel' (U-Net) lungs and airways, 'TotalSegmentator' (nnU-Net) lung lobes, trachea, pulmonary artery and the left atrium of the heart.  All engines require CUDA, some minutes processing time and a medium to high-end Nvidia GPU (RTX 1060+).</string>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="detailedAirwaysCheckBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="toolTip">
+         <string>Perform a 'Local Threshold' airway segmentation. </string>
+        </property>
+        <property name="text">
+         <string>Airway segmentation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="21" column="0">
+       <widget class="QPushButton" name="toggleSegmentationVisibilityButton">
+        <property name="text">
+         <string>Toggle segments visibility</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="detailLevelComboBox">
+        <property name="toolTip">
+         <string>This parameter corresponds to the MinimumDiameterMm of the airway's 'LocalThreshold-&gt;GrowCut' segmentation algorithm. 'very low detail'=5; 'high detail'=1. The recommended initial setting is: 'low detail'.  A good estimate for this parameter is the width of the trachea. If you get leaks: re-run the segmentation with lower details. </string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QCheckBox" name="useAICheckBox">
+        <property name="toolTip">
+         <string>If checked, lung and/or lobe segmentations will be generated  by either  'lungmask U-Net', a running 'MONAILabel' server or 'TotalSegmentator'. </string>
+        </property>
+        <property name="text">
+         <string>Use AI</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="createVesselsCheckBox">
+        <property name="toolTip">
+         <string>Perform a vessel segmentation and create an additional cropped CT volume with lungs, heart and mediastinum. </string>
+        </property>
+        <property name="text">
+         <string>Vessel segmentation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="loadLastFiducialsCheckBox">
+        <property name="toolTip">
+         <string>If checked, previously saved markups are loaded from data or temp directory when &quot;Start&quot; button is pressed. Lung CT Segmenter tries to load from data directory first, if not found from Slicer temp directory. </string>
+        </property>
+        <property name="text">
+         <string>Load last saved markups</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="ctkFittedTextBrowser" name="instructionsLabel">
+        <property name="toolTip">
+         <string>Find instructions here during the segmentation procedure.  </string>
+        </property>
+       </widget>
+      </item>
+      <item row="23" column="0" colspan="2">
+       <widget class="ctkCollapsibleGroupBox" name="adjustPointsGroupBox">
+        <property name="title">
+         <string>Adjust points </string>
+        </property>
+        <layout class="QFormLayout" name="formLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="toolTip">
+            <string>Place a marker somewhere on the right lung. </string>
+           </property>
+           <property name="text">
+            <string>Right lung:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="qSlicerMarkupsPlaceWidget" name="rightLungPlaceWidget">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Add additional or adjust existing right lung markers. </string>
+           </property>
+           <property name="buttonsVisible">
+            <bool>true</bool>
+           </property>
+           <property name="placeMultipleMarkups">
+            <enum>qSlicerMarkupsPlaceWidget::ForcePlaceMultipleMarkups</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="statusTip">
+            <string>Place a marker somewhere on the left lung. </string>
+           </property>
+           <property name="text">
+            <string>Left lung:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="qSlicerMarkupsPlaceWidget" name="leftLungPlaceWidget">
+           <property name="toolTip">
+            <string>Add additional or adjust existing left lung markers. </string>
+           </property>
+           <property name="statusTip">
+            <string>Place a marker somewhere on the left lung. </string>
+           </property>
+           <property name="placeMultipleMarkups">
+            <enum>qSlicerMarkupsPlaceWidget::ForcePlaceMultipleMarkups</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="toolTip">
+            <string>Place a marker on the upper trachea (above upper thoracic aperture) </string>
+           </property>
+           <property name="text">
+            <string>Other:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="qSlicerMarkupsPlaceWidget" name="tracheaPlaceWidget">
+           <property name="toolTip">
+            <string>Add additional or adjust existing trachea markers. </string>
+           </property>
+           <property name="placeMultipleMarkups">
+            <enum>qSlicerMarkupsPlaceWidget::ForcePlaceMultipleMarkups</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="21" column="1">
+       <widget class="QPushButton" name="toggleVolumeRenderingVisibilityButton">
+        <property name="text">
+         <string>Toggle volume rendering</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="1">
+       <widget class="QPushButton" name="applyButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Run the algorithm.</string>
+        </property>
+        <property name="text">
+         <string>Apply</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="0">
+       <widget class="QPushButton" name="cancelButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Cancel the current segmentation process.</string>
+        </property>
+        <property name="text">
+         <string>Cancel / Reset</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="0" colspan="2">
+       <widget class="QPushButton" name="startButton">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Press this button to start the segmentation process. </string>
+        </property>
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="outputCollapsibleButton">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Toggle lung segmentation outputs</string>
+     </property>
+     <property name="collapsed">
+      <bool>false</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="1" column="0">
+       <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" columnstretch="0,0,0,0">
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>4</number>
+        </property>
+        <property name="rightMargin">
+         <number>3</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>3</number>
+        </property>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="toggleRibsRightCheckBox">
+          <property name="toolTip">
+           <string>Toggle rib visibility.</string>
+          </property>
+          <property name="text">
+           <string>ribs right</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QCheckBox" name="toggleTumorCheckBox">
+          <property name="toolTip">
+           <string>Toggle tumor visibility, if manually segmented. </string>
+          </property>
+          <property name="text">
+           <string>tumor</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="toggleAirwaysCheckBox">
+          <property name="toolTip">
+           <string>Toggle airways visibility. </string>
+          </property>
+          <property name="text">
+           <string>airways</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="toggleLungRightCheckBox">
+          <property name="toolTip">
+           <string>Toggle right lung visibility.</string>
+          </property>
+          <property name="text">
+           <string>right</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QCheckBox" name="togglePACheckBox">
+          <property name="toolTip">
+           <string>Toggle pulmonary artery visibility.</string>
+          </property>
+          <property name="text">
+           <string>PA</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="toggleVesselMaskCheckBox">
+          <property name="toolTip">
+           <string>Toggle vesselmask visibility.</string>
+          </property>
+          <property name="text">
+           <string>vesselmask</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QCheckBox" name="toggleRibsLeftCheckBox">
+          <property name="toolTip">
+           <string>Toggle rib visibility.</string>
+          </property>
+          <property name="text">
+           <string>ribs left</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QCheckBox" name="toggleLowerLobeLeftCheckBox">
+          <property name="toolTip">
+           <string>Toggle lower left lobe visibility.</string>
+          </property>
+          <property name="text">
+           <string>lower left</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="toggleLungLeftCheckBox">
+          <property name="toolTip">
+           <string>Toggle left lung visibility.</string>
+          </property>
+          <property name="text">
+           <string>left</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="toggleMiddleLobeRightCheckBox">
+          <property name="toolTip">
+           <string>Toggle middle lobe visibility.</string>
+          </property>
+          <property name="text">
+           <string>middle right</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QCheckBox" name="togglePVCheckBox">
+          <property name="toolTip">
+           <string>Toggle pulmonary vein visibility.</string>
+          </property>
+          <property name="text">
+           <string>PV</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="toggleUpperLobeRightCheckBox">
+          <property name="toolTip">
+           <string>Toggle upper right lobe visibility.</string>
+          </property>
+          <property name="text">
+           <string>upper right</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QCheckBox" name="toggleUpperLobeLeftCheckBox">
+          <property name="toolTip">
+           <string>Toggle upper left lobe visibility.</string>
+          </property>
+          <property name="text">
+           <string>upper left</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QCheckBox" name="toggleLowerLobeRightCheckBox">
+          <property name="toolTip">
+           <string>Toggle lower right lobe visibility.</string>
+          </property>
+          <property name="text">
+           <string>lower right</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="batchProcessingCollapsibleButton">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Batch processing</string>
+     </property>
+     <property name="collapsed">
+      <bool>false</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="0" column="0" colspan="2">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>4</number>
+        </property>
+        <property name="rightMargin">
+         <number>3</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>4</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>Input folder:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="ctkPathLineEdit" name="inputDirectoryPathLineEdit">
+          <property name="toolTip">
+           <string>Specify the input data directory for batch processing</string>
+          </property>
+          <property name="filters">
+           <set>ctkPathLineEdit::Dirs|ctkPathLineEdit::Drives|ctkPathLineEdit::Executable|ctkPathLineEdit::NoDot|ctkPathLineEdit::NoDotDot|ctkPathLineEdit::Readable</set>
+          </property>
+          <property name="options">
+           <set>ctkPathLineEdit::ShowDirsOnly</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="ctkPathLineEdit" name="outputDirectoryPathLineEdit">
+          <property name="toolTip">
+           <string>Specify the output data directory for batch processing</string>
+          </property>
+          <property name="filters">
+           <set>ctkPathLineEdit::Dirs|ctkPathLineEdit::Drives|ctkPathLineEdit::Executable|ctkPathLineEdit::NoDot|ctkPathLineEdit::NoDotDot|ctkPathLineEdit::Readable</set>
+          </property>
+          <property name="options">
+           <set>ctkPathLineEdit::ShowDirsOnly</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QCheckBox" name="testModeCheckBox">
+          <property name="toolTip">
+           <string>If this is checked, batch processing will scan the complete input directory but do only the first three cases. </string>
+          </property>
+          <property name="text">
+           <string>Test mode: segment three cases from input folder</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>Output folder: </string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QCheckBox" name="niigzFormatCheckBox">
+          <property name="toolTip">
+           <string>CT.nrdd, each in a seperate subfolder, is the normal input format expected by batch processing. In case this is checked, batch processing expects ct.nii.gz in seperate subfolders as input files. Output will be generated in NIFTI format. </string>
+          </property>
+          <property name="text">
+           <string>Input is NIFTI format (*.nii.gz)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="cancelBatchProcessingButton">
+        <property name="text">
+         <string>Cancel batch processing</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="batchProcessingButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="toolTip">
+         <string>Run Lung CT Segmenter in batch processing mode. Each dataset must be present in a singular subfolder of the input folder. The input data directory will be recursively scanned for input files and segmented with options defined under &quot;Segmentation&quot;. &quot;*Use AI&quot; must be enabled and an appropriate AI engine must be selected in order to use batch processing.  Result files  will be written to the output directory in directories using the input subfolder names. Depending on your input data and hardware, the process may run for hours.  </string>
+        </property>
+        <property name="text">
+         <string>Batch process</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="advancedCollapsibleButton">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Advanced</string>
+     </property>
+     <property name="collapsed">
+      <bool>false</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Lung thresholds:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="ctkRangeWidget" name="LungThresholdRangeWidget">
+        <property name="toolTip">
+         <string>Select the threshold range to identify lung parenchyma.  In doubt do not touch. </string>
+        </property>
+        <property name="singleStep">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="minimum">
+         <double>-1500.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="minimumValue">
+         <double>-1500.000000000000000</double>
+        </property>
+        <property name="maximumValue">
+         <double>-400.000000000000000</double>
+        </property>
+        <property name="tickInterval">
+         <double>0.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Vessel thresholds:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="ctkRangeWidget" name="VesselThresholdRangeWidget">
+        <property name="toolTip">
+         <string>Set vessel thresholds depending on the vascular contrast medium used in your input volume. </string>
+        </property>
+        <property name="minimum">
+         <double>-1500.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>3000.000000000000000</double>
+        </property>
+        <property name="minimumValue">
+         <double>0.000000000000000</double>
+        </property>
+        <property name="maximumValue">
+         <double>3000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Volume rendering Shift</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="ctkSliderWidget" name="VolumeRenderingShiftSliderWidget">
+        <property name="minimum">
+         <double>-300.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>300.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="setDefaultButton">
+        <property name="toolTip">
+         <string>Reset lung range and airway range to default values.</string>
+        </property>
+        <property name="text">
+         <string>Reset to default</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="updateIntensityButton">
+        <property name="toolTip">
+         <string>Update current segmentation preview after lung intensity range changes</string>
+        </property>
+        <property name="text">
+         <string>Update </string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="saveFiducialsCheckBox">
+        <property name="toolTip">
+         <string>Save markups, created during mask segmentation, in current data directory. This happens when pressing &quot;Apply&quot;. Use &quot;Load last markups&quot; checkbox for loading the markups again after &quot;Cancel/Reset&quot; and &quot;Start&quot;. </string>
+        </property>
+        <property name="text">
+         <string>Save markups in data directory</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="detailedMasksCheckBox">
+        <property name="toolTip">
+         <string>Choose this if you want to create  ventral, dorsal, upper, middle and lower lung masks. Slows down the procedure.  </string>
+        </property>
+        <property name="text">
+         <string>Create regional lung masks </string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="calibrateDataCheckBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="toolTip">
+         <string>Check this to create a standardized copy of the input volume in the scene when using TotalSegmentator AI. The standardization function will use mean HU of &quot;trachea&quot; to define &quot;air&quot; (-1000 HU) and mean HU of &quot;left ileopsoas muscle&quot; to define &quot;muscle&quot; (30 HU) and  all voxels in the numpy array of the standardized  volume will be adapted. After this, the standardized volume will be normalized to air HU (-1000) and blood HU (30).  </string>
+        </property>
+        <property name="text">
+         <string>CT calibration</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="shrinkMasksCheckBox">
+        <property name="toolTip">
+         <string>This option shrinks the lung masks to avoid artifacts from pleura and pericardium. </string>
+        </property>
+        <property name="text">
+         <string>Auto shrink masks (1 mm)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="fastCheckBox">
+        <property name="toolTip">
+         <string>Try this on systems with low GPU memory (&lt; 7GB)</string>
+        </property>
+        <property name="text">
+         <string>Totalsegmentator: --fast option</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QCheckBox" name="smoothLungsCheckBox">
+        <property name="toolTip">
+         <string>Smooth AI generated lungs and lobes. Prolongs processing and is on by default.  </string>
+        </property>
+        <property name="text">
+         <string>Smooth lungs and lobes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QCheckBox" name="updateLungmaskCheckBox">
+        <property name="text">
+         <string>Update Lungmask AI</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ctkCollapsibleButton</class>
+   <extends>QWidget</extends>
+   <header>ctkCollapsibleButton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkCollapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>ctkCollapsibleGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkFittedTextBrowser</class>
+   <extends>QTextBrowser</extends>
+   <header>ctkFittedTextBrowser.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkPathLineEdit</class>
+   <extends>QWidget</extends>
+   <header>ctkPathLineEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkRangeWidget</class>
+   <extends>QWidget</extends>
+   <header>ctkRangeWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkSliderWidget</class>
+   <extends>QWidget</extends>
+   <header>ctkSliderWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerMarkupsPlaceWidget</class>
+   <extends>qSlicerWidget</extends>
+   <header>qSlicerMarkupsPlaceWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>LungCTSegmenter</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>inputVolumeSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>122</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>248</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LungCTSegmenter</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>rightLungPlaceWidget</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>165</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>298</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LungCTSegmenter</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>outputSegmentationSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LungCTSegmenter</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>leftLungPlaceWidget</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>438</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LungCTSegmenter</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>tracheaPlaceWidget</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>438</x>
+     <y>341</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>387</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

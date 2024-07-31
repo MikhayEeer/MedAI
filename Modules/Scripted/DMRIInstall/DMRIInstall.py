@@ -7,7 +7,7 @@ import slicer
 from slicer.i18n import tr as _
 from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
-
+from slicer.i18n import tr as _
 
 #
 # DMRIInstall
@@ -16,7 +16,7 @@ from slicer.ScriptedLoadableModule import *
 
 class DMRIInstall(ScriptedLoadableModule):
     helpText = textwrap.dedent(
-        """
+       _( """
   The SlicerDMRI extension provides diffusion-related tools including:
 
   <ul>
@@ -37,10 +37,10 @@ class DMRIInstall(ScriptedLoadableModule):
   <br>
   <br>
   &nbsp;&nbsp; <a href="https://discourse.slicer.org">https://discourse.slicer.org</a><br><br>
-  """)
+  """))
 
     errorText = textwrap.dedent(
-        """
+        _("""
   <h5 style="color:red">The SlicerDMRI extension is currently unavailable.</h5><br>
   Please try a manual installation via the Extensions Manager,
   and contact the Slicer forum at:<br><br>
@@ -51,7 +51,7 @@ class DMRIInstall(ScriptedLoadableModule):
   Slicer version: {builddate}<br>
   Slicer revision: {revision}<br>
   Platform: {platform}
-  """).format(builddate=slicer.app.applicationVersion,
+  """)).format(builddate=slicer.app.applicationVersion,
               revision=slicer.app.repositoryRevision,
               platform=slicer.app.platform)
 
@@ -66,7 +66,7 @@ class DMRIInstall(ScriptedLoadableModule):
         self.parent.categories = [translate("qSlicerAbstractCoreModule", "Diffusion")]
         self.parent.title = _("Install Slicer Diffusion Tools (SlicerDMRI)")
         self.parent.dependencies = []
-        self.parent.contributors = ["Isaiah Norton (BWH), Lauren O'Donnell (BWH)"]
+        self.parent.contributors = [_("Isaiah Norton (BWH), Lauren O'Donnell (BWH)")]
         self.parent.helpText = DMRIInstall.helpText
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
         self.parent.acknowledgementText = textwrap.dedent(

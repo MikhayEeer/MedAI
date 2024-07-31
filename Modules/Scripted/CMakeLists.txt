@@ -1,14 +1,21 @@
 set(modules
+  aaamodule
+  Airwaysegmentation
   CropVolumeSequence
   DataProbe
   ImportItkSnapLabel
+  LanguageTools
+  LungCTSegmenter
   PerformanceTests
+  PyTorchUtils
   SampleData
   ScreenCapture
   SegmentEditor
   SegmentStatistics
   SelfTests
   VectorToScalarVolume
+  VolumeClipWithModel
+  VolumeClipWithRoi
   WebServer
   )
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)

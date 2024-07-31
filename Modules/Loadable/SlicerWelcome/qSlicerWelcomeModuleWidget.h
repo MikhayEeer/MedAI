@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -48,10 +48,10 @@ public slots:
   bool loadRemoteSampleData();
   bool loadDicomData();
   void editApplicationSettings();
-  bool exploreLoadedData();
+  //bool exploreLoadedData();
+  bool loadLanguageTools();
   void setExtensionUpdatesAvailable(bool updateAvailable);
-  void setApplicationUpdateAvailable(bool updateAvailable);
-  void checkForUpdates();
+
 
 protected:
   void setup() override;

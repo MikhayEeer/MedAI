@@ -10,6 +10,8 @@ from SegmentEditorEffects import *
 
 from slicer.i18n import tr as _
 
+def _(str):
+    return str
 
 class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
     """ThresholdEffect is an Effect implementing the global threshold

@@ -8,7 +8,7 @@ import slicer
 from slicer.i18n import tr as _
 from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
-
+from slicer.i18n import tr as _
 
 #
 # CropVolumeSequence

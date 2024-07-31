@@ -87,7 +87,7 @@ mark_as_superbuild(Slicer_DEFAULT_HOME_MODULE)
 message(STATUS "Configuring ${Slicer_MAIN_PROJECT_APPLICATION_NAME} default home module [${Slicer_DEFAULT_HOME_MODULE}]")
 
 if(NOT DEFINED Slicer_DEFAULT_FAVORITE_MODULES)
-  set(Slicer_DEFAULT_FAVORITE_MODULES "Data, Volumes, Models, Transforms, Markups, SegmentEditor"
+  set(Slicer_DEFAULT_FAVORITE_MODULES "Data, SegmentEditor, AirwaySegmentation, LungCTSegmenter"
       CACHE STRING "Name of the modules shown on the toolbar by default (comma-separated list)")
   mark_as_advanced(Slicer_DEFAULT_FAVORITE_MODULES)
 endif()
@@ -98,7 +98,8 @@ message(STATUS "Configuring ${Slicer_MAIN_PROJECT_APPLICATION_NAME} default favo
 # Disclaimer popup
 #-----------------------------------------------------------------------------
 if(NOT DEFINED Slicer_DISCLAIMER_AT_STARTUP)
-  set(Slicer_DISCLAIMER_AT_STARTUP "Thank you for using %1!<br><br>This software is not intended for clinical use." CACHE STRING "Text displayed at the first startup of Slicer in a popup window")
+  #set(Slicer_DISCLAIMER_AT_STARTUP "Thank you for using %1!<br><br>This software is not intended for clinical use." CACHE STRING "Text displayed at the first startup of Slicer in a popup window")
+  set(Slicer_DISCLAIMER_AT_STARTUP "Thank you for using MedAI!<br>" CACHE STRING "Text displayed at the first startup of Slicer in a popup window")
   # Note: %1 is replaced by the application name and version. Add <br> for newline.
   # If the disclaimer text is set to empty then no disclaimer popup is displayed.
   mark_as_advanced(Slicer_DISCLAIMER_AT_STARTUP)

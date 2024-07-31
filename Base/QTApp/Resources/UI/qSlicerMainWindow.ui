@@ -14,7 +14,7 @@
   <widget class="QStatusBar" name="StatusBar"/>
   <widget class="QDockWidget" name="PanelDockWidget">
    <property name="features">
-    <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+    <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
    <property name="allowedAreas">
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
@@ -49,20 +49,20 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="qSlicerModulePanel" name="ModulePanel"/>
+      <widget class="qSlicerModulePanel" name="ModulePanel" native="true"/>
      </item>
      <item>
-      <widget class="ctkCollapsibleButton" name="DataProbeCollapsibleWidget">
+      <widget class="ctkCollapsibleButton" name="DataProbeCollapsibleWidget" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="text" stdset="0">
         <string>Data Probe</string>
        </property>
-       <property name="collapsedHeight">
+       <property name="collapsedHeight" stdset="0">
         <number>0</number>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout"/>
@@ -213,7 +213,7 @@
      <x>0</x>
      <y>0</y>
      <width>835</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="FileMenu">
@@ -310,15 +310,26 @@
     <addaction name="ModuleHomeAction"/>
     <addaction name="separator"/>
    </widget>
-   <widget class="QMenu" name="HelpMenu">
+   <widget class="QMenu" name="UserMenu">
     <property name="title">
-     <string>&amp;Help</string>
+     <string>&amp;User</string>
     </property>
+    <addaction name="actionLogOut"/>
+    <addaction name="actionViewUserInfo"/>
+    <addaction name="actionReviewPermission"/>
+   </widget>
+   <widget class="QMenu" name="AIMenu">
+    <property name="title">
+     <string>AI</string>
+    </property>
+    <addaction name="actionAI_Airway"/>
+    <addaction name="actionAI_Vessel"/>
    </widget>
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
    <addaction name="ViewMenu"/>
-   <addaction name="HelpMenu"/>
+   <addaction name="UserMenu"/>
+   <addaction name="AIMenu"/>
   </widget>
   <action name="FileLoadSceneAction">
    <property name="icon">
@@ -1186,6 +1197,47 @@
    </property>
    <property name="text">
     <string>Show Status Bar</string>
+   </property>
+  </action>
+  <action name="actionLogOut">
+   <property name="text">
+    <string>Log Out</string>
+   </property>
+   <property name="toolTip">
+    <string>Log out of the current login account</string>
+   </property>
+  </action>
+  <action name="actionViewUserInfo">
+   <property name="text">
+    <string>User Info</string>
+   </property>
+   <property name="toolTip">
+    <string>View user's information</string>
+   </property>
+  </action>
+  <action name="actionAIVessel">
+   <property name="text">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="action2">
+   <property name="text">
+    <string>2</string>
+   </property>
+  </action>
+  <action name="actionAI_Airway">
+   <property name="text">
+    <string>AI Airway</string>
+   </property>
+  </action>
+  <action name="actionAI_Vessel">
+   <property name="text">
+    <string>AI Vessel</string>
+   </property>
+  </action>
+  <action name="actionReviewPermission">
+   <property name="text">
+    <string>Review</string>
    </property>
   </action>
  </widget>
