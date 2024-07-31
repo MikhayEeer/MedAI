@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -279,8 +279,9 @@ void qMRMLSliceViewPrivate::updateWidgetFromMRML()
 // qMRMLSliceView methods
 
 // --------------------------------------------------------------------------
+//: Superclass(new qMRMLSliceViewPrivate(*this), _parent)
 qMRMLSliceView::qMRMLSliceView(QWidget* _parent)
-  : Superclass(new qMRMLSliceViewPrivate(*this), _parent)
+  : Superclass(_parent)
 {
   Q_D(qMRMLSliceView);
   d->init();
