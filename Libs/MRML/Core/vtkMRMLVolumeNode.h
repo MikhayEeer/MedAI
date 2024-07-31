@@ -44,13 +44,13 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   enum
-    {
+  {
     VoxelVectorTypeUndefined,
     VoxelVectorTypeSpatial,
     VoxelVectorTypeColorRGB,
     VoxelVectorTypeColorRGBA,
     VoxelVectorType_Last // must be last
-    };
+  };
 
   vtkMRMLNode* CreateNodeInstance() override = 0;
 
@@ -196,6 +196,10 @@ public:
   /// (0,dim[0],0,dim[1],0,dim[2]), which is not the case many times for segmentation merged labelmaps.
   void ShiftImageDataExtentToZeroStart();
 
+  /// Ensure that the IJK coordinate system is right-handed (IJKToRAS matrix determinant is positive).
+  /// This is the expectation in Slicer and most medical imaging software.
+  void SetIJKCoordinateSystemToRightHanded();
+
   ///
   /// alternative method to propagate events generated in Display nodes
   void ProcessMRMLEvents ( vtkObject * /*caller*/,
@@ -204,9 +208,9 @@ public:
 
   /// ImageDataModifiedEvent is generated when image data is changed
   enum
-    {
+  {
     ImageDataModifiedEvent = 18001
-    };
+  };
 
   ///
   /// Set/Get the ITK MetaDataDictionary
@@ -251,6 +255,14 @@ public:
   /// Convert between voxel type ID and name
   static const char *GetVoxelVectorTypeAsString(int id);
   static int GetVoxelVectorTypeFromString(const char *name);
+
+  /// Return true if the IJK coordinate system is right-handed (IJKToRAS matrix determinant is positive).
+  /// This is the expectation in Slicer and most medical imaging software.
+  static bool IsIJKCoordinateSystemRightHanded(vtkMatrix4x4* ijkToRasMatrix);
+
+  /// Switch the IJK coordinate system handedness between left-handed and right-handed
+  /// by inverting the K axis direction. The physical location of voxels do not change.
+  static void FlipIJKCoordinateSystemHandedness(vtkImageData* imageData, vtkMatrix4x4* ijkToRasMatrix);
 
 protected:
   vtkMRMLVolumeNode();

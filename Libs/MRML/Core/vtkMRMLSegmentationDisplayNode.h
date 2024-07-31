@@ -44,7 +44,7 @@ public:
 
   /// Display properties per segment
   struct SegmentDisplayProperties
-    {
+  {
     /// Override segment color
     /// By default it's invalid (-1,-1,-1), and only valid if different than color stored in segment. Its purpose is to enable showing per-view colors
     double OverrideColor[3];
@@ -62,15 +62,15 @@ public:
 
     // Initialize with default values
     SegmentDisplayProperties()
-      {
+    {
       OverrideColor[0] = SEGMENT_COLOR_NO_OVERRIDE;
       OverrideColor[1] = SEGMENT_COLOR_NO_OVERRIDE;
       OverrideColor[2] = SEGMENT_COLOR_NO_OVERRIDE;
-      }
+    }
 
     // Automatically generated operator= and copy constructor work
     // correctly for these members, so there is no need to define them.
-    };
+  };
 
   typedef std::map<std::string, SegmentDisplayProperties> SegmentDisplayPropertiesMap;
 
@@ -275,14 +275,28 @@ public:
   /// Get all visible segment IDs.
   std::vector<std::string> GetVisibleSegmentIDs();
 
+  //@{
+  /// Get/set flag to remove unused display properties when updating segment list.
+  /// When enabled, prevents unused display properties from accumulating in the display node.
+  /// By default it is enabled.
+  /// For use-cases such as replaying a segmentation sequence that has different segments at different time points
+  /// this flag should be disabled to ensure that display properties of all segments are preserved.
+  vtkGetMacro(RemoveUnusedDisplayProperties, bool);
+  vtkSetMacro(RemoveUnusedDisplayProperties, bool);
+  vtkBooleanMacro(RemoveUnusedDisplayProperties, bool);
+  //@}
+
 protected:
   /// Convenience function for getting all segment IDs.
   void GetSegmentIDs(std::vector<std::string>& segmentIDs, bool visibleSegmentsOnly);
 
+  //@{
   /// Update list of segment display properties.
   /// Remove entries for missing segments (if removeUnusedDisplayProperties is enabled)
   /// and add missing entries for existing segments.
-  void UpdateSegmentList(bool removeUnusedDisplayProperties = true);
+  void UpdateSegmentList();
+  void UpdateSegmentList(bool removeUnusedDisplayProperties);
+  //@}
 
 protected:
   vtkMRMLSegmentationDisplayNode();
@@ -329,6 +343,8 @@ protected:
   double Opacity2DFill{0.5};
   /// 2D outline opacity for the whole segmentation
   double Opacity2DOutline{1.0};
+
+  bool RemoveUnusedDisplayProperties{true};
 };
 
 #endif

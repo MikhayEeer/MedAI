@@ -83,9 +83,9 @@ class  VTK_SLICER_MARKUPS_MODULE_MRML_EXPORT vtkMRMLMarkupsNode : public vtkMRML
 public:
 
   struct ControlPoint
-    {
+  {
     ControlPoint()
-      {
+    {
       // position is 0
       this->Position[0] = 0.0;
       this->Position[1] = 0.0;
@@ -108,7 +108,7 @@ public:
       Visibility = true;
       PositionStatus = PositionUndefined;
       AutoCreated = false;
-      }
+    }
 
     // Positions and orientation in local coordinates.
     // If transform is applied to the markup node then world
@@ -128,7 +128,7 @@ public:
     bool Visibility;
     int PositionStatus;
     bool AutoCreated;
-    };
+  };
 
   typedef std::vector<ControlPoint*> ControlPointsListType;
 
@@ -148,8 +148,13 @@ public:
   /// chosen application language and should not be displayed to end users.
   virtual const char* GetMarkupType() {return "Markup";};
 
-  /// Get markup short name
-  virtual const char* GetDefaultNodeNamePrefix() {return "M";};
+  /// Get markup short name.
+  /// This may be displayed to the user and therefore it is translated to the application language.
+  virtual const char* GetDefaultNodeNamePrefix();
+
+  /// Get markup type GUI display name
+  /// This may be displayed to the user and therefore it is translated to the application language.
+  virtual const char* GetTypeDisplayName() override;
 
   /// Read node attributes from XML file
   void ReadXMLAttributes(const char** atts) override;
@@ -595,6 +600,7 @@ public:
   /// Apply the passed transformation to all of the control points
   /// \sa CanApplyNonLinearTransforms
   void ApplyTransform(vtkAbstractTransform* transform) override;
+  virtual void ApplyTransform(vtkAbstractTransform* transform, bool applyToLockedControlPoints);
 
   ///@{
   /// Get/Set the ControlPointLabelFormat string that defines the control point names.
@@ -1027,6 +1033,12 @@ protected:
   vtkCollection* Measurements;
 
   std::string PropertiesLabelText;
+
+  /// Store markup type GUI display name. Translated to the application language.
+  std::string TypeDisplayName;
+
+  /// Store markup short name. Translated to the application language.
+  std::string DefaultNodeNamePrefix;
 
   /// Transform that moves the xyz unit vectors and origin of the interaction handles to local coordinates
   vtkSmartPointer<vtkMatrix4x4> InteractionHandleToWorldMatrix;

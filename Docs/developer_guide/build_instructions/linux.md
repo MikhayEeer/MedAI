@@ -13,7 +13,7 @@ related to the building process in the [Slicer forum](https://discourse.slicer.o
 First, you need to install the tools that will be used for fetching the source
 code of Slicer, generating the project files, and building the project.
 
-- Git and Subversion for fetching the code and version control.
+- Git for fetching the code and version control.
 - GNU Compiler Collection (GCC) for code compilation.
 - CMake for configuration/generation of the project.
   - (Optional) CMake curses GUI to configure the project from the command line.
@@ -40,7 +40,7 @@ part of the *superbuild*:
 Install the development tools and the support libraries:
 
 ```console
-sudo apt update && sudo apt install git subversion build-essential cmake cmake-curses-gui cmake-qt-gui \
+sudo apt update && sudo apt install git build-essential cmake cmake-curses-gui cmake-qt-gui \
   qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev libqt5svg5-dev qtwebengine5-dev qtscript5-dev \
   qtbase5-private-dev libqt5x11extras5-dev libxt-dev libssl-dev
 ```
@@ -55,9 +55,9 @@ For more details, see the Slicer [CMakeLists.txt](https://github.com/Slicer/Slic
 Install the development tools and the support libraries:
 
 ```console
-sudo apt update && sudo apt install git git-lfs subversion build-essential \
-  qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev libqt5svg5-dev qtwebengine5-dev qtscript5-dev \
-  qtbase5-private-dev libqt5x11extras5-dev libxt-dev
+sudo apt update && sudo apt install git git-lfs build-essential \
+  libqt5x11extras5-dev qtmultimedia5-dev libqt5svg5-dev qtwebengine5-dev libqt5xmlpatterns5-dev qttools5-dev qtbase5-private-dev \
+  libxt-dev
 ```
 
 Install CMake manually by downloading CMake 3.25.3 or higher from the [CMake website](https://cmake.org/download/)
@@ -69,14 +69,26 @@ and is not compatible with the current development version of Slicer.
 For more details, see the Slicer [CMakeLists.txt](https://github.com/Slicer/Slicer/blob/98c092edb8f5a274277d2e486a4f7e584f58605e/CMakeLists.txt#L3-L5) file.
 :::
 
+### Ubuntu 22.04 (Jammy Jellyfish)
+
+Install the development tools and the support libraries:
+
+```console
+sudo apt update && sudo apt install git build-essential \
+  cmake cmake-curses-gui cmake-qt-gui \
+  libqt5x11extras5-dev qtmultimedia5-dev libqt5svg5-dev qtwebengine5-dev libqt5xmlpatterns5-dev qttools5-dev qtbase5-private-dev \
+  qtbase5-dev qt5-qmake
+```
+
 ### Ubuntu 21.10 (Impish Indri)
 
 Install the development tools and the support libraries:
 
 ```console
-sudo apt update && sudo apt install git subversion build-essential cmake cmake-curses-gui cmake-qt-gui \
-  qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev libqt5svg5-dev qtwebengine5-dev qtscript5-dev \
-  qtbase5-private-dev libqt5x11extras5-dev libxt-dev libssl-dev
+sudo apt update && sudo apt install git build-essential \
+  cmake cmake-curses-gui cmake-qt-gui \
+  libqt5x11extras5-dev qtmultimedia5-dev libqt5svg5-dev qtwebengine5-dev libqt5xmlpatterns5-dev qttools5-dev qtbase5-private-dev \
+  libxt-dev libssl-dev
 ```
 
 ### Ubuntu 20.04 (Focal Fossa)
@@ -90,23 +102,19 @@ To use Qt 5.15.2, we recommend you download and install following [these instruc
 Install the development tools and the support libraries:
 
 ```console
-sudo apt update && sudo apt install git subversion build-essential cmake cmake-curses-gui cmake-qt-gui \
-  qt5-default qtmultimedia5-dev qttools5-dev libqt5xmlpatterns5-dev libqt5svg5-dev qtwebengine5-dev qtscript5-dev \
-  qtbase5-private-dev libqt5x11extras5-dev libxt-dev
+sudo apt update && sudo apt install git build-essential \
+  cmake cmake-curses-gui cmake-qt-gui \
+  libqt5x11extras5-dev qtmultimedia5-dev libqt5svg5-dev qtwebengine5-dev libqt5xmlpatterns5-dev qttools5-dev qtbase5-private-dev \
+  libxt-dev qt5-default
 ```
 
 ### ArchLinux
 
 :::{warning}
-ArchLinux uses a rolling-release package distribution approach. This means that the versions of the packages will change over time and the following instructions might not be actual. **Last time tested: 2022-03-08.**
+ArchLinux uses a rolling-release package distribution approach. This means that the versions of the packages will change over time and the following instructions might not be actual. **Last time tested: 2024-01-01.**
 :::
 
-Install the development tools and the support libraries:
-
-```console
-sudo pacman -S git make patch subversion gcc cmake \
-  qt5-base qt5-multimedia qt5-tools qt5-xmlpatterns qt5-svg qt5-webengine qt5-script qt5-x11extras libxt
-```
+You could build Slicer using the `PKGBUILD` from AUR: [3dslicer](https://aur.archlinux.org/packages/3dslicer) and [3dslicer-git](https://aur.archlinux.org/packages/3dslicer-git).
 
 ### CentOS 7
 :::{note}

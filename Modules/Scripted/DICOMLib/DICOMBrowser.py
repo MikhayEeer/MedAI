@@ -2,6 +2,7 @@ import copy
 import logging
 import os
 
+import ctk
 import qt
 
 import slicer
@@ -11,6 +12,7 @@ from slicer.util import settingsValue, toBool
 from slicer.i18n import tr as _
 
 import DICOMLib
+from DICOMLib import DICOMUtils
 
 
 #########################################################
@@ -51,6 +53,19 @@ class SlicerDICOMBrowser(VTKObservationMixin, qt.QWidget):
 
         self.dicomBrowser = dicomBrowser if dicomBrowser is not None else slicer.app.createDICOMBrowserForMainDatabase()
 
+        # Add ctkVisualDICOMBrowser
+        self.dicomVisualBrowser = ctk.ctkDICOMVisualBrowserWidget()
+        self.dicomVisualBrowser.findChild(ctk.ctkCollapsibleGroupBox, "ActionsCollapsibleGroupBox").hide()
+        if settingsValue("DICOM/thumbnailsSize", False) == "large":
+            self.dicomVisualBrowser.thumbnailSize = ctk.ctkDICOMStudyItemWidget.Large
+        elif settingsValue("DICOM/thumbnailsSize", False) == "medium":
+            self.dicomVisualBrowser.thumbnailSize = ctk.ctkDICOMStudyItemWidget.Medium
+        elif settingsValue("DICOM/thumbnailsSize", False) == "small":
+            self.dicomVisualBrowser.thumbnailSize = ctk.ctkDICOMStudyItemWidget.Small
+
+        if settingsValue("DICOM/detailedLogging", False, converter=toBool):
+            ctk.ctk.setDICOMLogLevel(ctk.ctkErrorLogLevel.Debug)
+
         self.browserPersistent = settingsValue("DICOM/BrowserPersistent", False, converter=toBool)
         self.advancedView = settingsValue("DICOM/advancedView", 0, converter=int)
         self.horizontalTables = settingsValue("DICOM/horizontalTables", 0, converter=int)
@@ -65,6 +80,18 @@ class SlicerDICOMBrowser(VTKObservationMixin, qt.QWidget):
         self.dicomBrowser.dicomTableManager().connect("studiesDoubleClicked(QModelIndex)", self.patientStudySeriesDoubleClicked)
         self.dicomBrowser.dicomTableManager().connect("seriesDoubleClicked(QModelIndex)", self.patientStudySeriesDoubleClicked)
 
+        self.dicomVisualBrowser.setDatabaseDirectory(self.dicomBrowser.databaseDirectory)
+        self.dicomVisualBrowser.seriesRetrieved.connect(self.onSeriesRetrieved)
+        self.dicomVisualBrowser.connect("sendRequested(QStringList)", self.onSend)
+
+    def onSeriesRetrieved(self, seriesInstanceUIDs):
+        seriesList = [str(seriesInstanceUID) for seriesInstanceUID in seriesInstanceUIDs]
+        if seriesList is None or not seriesList:
+            return
+        nodes = DICOMUtils.loadSeriesByUID(seriesList)
+        if len(nodes) > 0 and not settingsValue("DICOM/BrowserPersistent", False, converter=toBool):
+            self.close()
+
     def open(self):
         self.show()
 
@@ -75,6 +102,55 @@ class SlicerDICOMBrowser(VTKObservationMixin, qt.QWidget):
     def onSend(self, fileList):
         if len(fileList):
             sendDialog = DICOMLib.DICOMSendDialog(fileList, self)
+
+    def createNewDatabaseDirectory(self):
+        if self.useExpertimentalVisualDICOMBrowser:
+            self.dicomVisualBrowser.createNewDatabaseDirectory()
+        else:
+            self.dicomBrowser.createNewDatabaseDirectory()
+
+    def setDatabaseDirectory(self, databaseDirectory):
+        self.dicomBrowser.databaseDirectory = databaseDirectory
+        self.dicomVisualBrowser.databaseDirectory = databaseDirectory
+
+    def importDirectoryMode(self):
+        if self.useExpertimentalVisualDICOMBrowser:
+            return self.dicomVisualBrowser.ImportDirectoryMode
+        else:
+            return self.dicomBrowser.ImportDirectoryMode
+
+    def setImportDirectoryMode(self, mode):
+        self.dicomVisualBrowser.ImportDirectoryMode = mode
+        self.dicomBrowser.ImportDirectoryMode = mode
+
+    def importFolder(self):
+        if self.useExpertimentalVisualDICOMBrowser:
+            self.dicomVisualBrowser.openImportDialog()
+        else:
+            self.dicomBrowser.openImportDialog()
+
+    def importDirectories(self, directoriesToAdd):
+        if self.useExpertimentalVisualDICOMBrowser:
+            self.dicomVisualBrowser.importDirectories(directoriesToAdd)
+        else:
+            self.dicomBrowser.importDirectories(directoriesToAdd)
+
+    def importDirectory(self, dicomFilesDirectory):
+        if self.useExpertimentalVisualDICOMBrowser:
+            self.dicomVisualBrowser.importDirectory(dicomFilesDirectory, self.importDirectoryMode())
+        else:
+            self.dicomBrowser.importDirectory(dicomFilesDirectory, self.importDirectoryMode())
+
+    def toggleBrowsers(self, useExpertimentalVisualDICOMBrowser):
+        self.useExpertimentalVisualDICOMBrowser = useExpertimentalVisualDICOMBrowser
+        self.settings.setValue("DICOM/UseExpertimentalVisualDICOMBrowser", bool(useExpertimentalVisualDICOMBrowser))
+
+        self.dicomVisualBrowser.visible = self.useExpertimentalVisualDICOMBrowser
+        self.dicomBrowser.visible = not self.useExpertimentalVisualDICOMBrowser
+        self.loadableTableFrame.visible = not self.useExpertimentalVisualDICOMBrowser
+        self.actionButtonsFrame.visible = not self.useExpertimentalVisualDICOMBrowser
+        if self.useExpertimentalVisualDICOMBrowser:
+            self.dicomVisualBrowser.onShowPatients()
 
     def setup(self, showPreview=False):
         """
@@ -94,6 +170,13 @@ class SlicerDICOMBrowser(VTKObservationMixin, qt.QWidget):
         horizontal = self.settings.setValue("DICOM/horizontalTables", 0)
         self.dicomBrowser.dicomTableManager().tableOrientation = qt.Qt.Horizontal if horizontal else qt.Qt.Vertical
         self.layout().addWidget(self.dicomBrowser)
+
+        self.dicomVisualBrowser.sendActionVisible = True
+        # Fix rendering groupbox
+        self.dicomVisualBrowser.serverSettingsGroupBox().setChecked(True)
+        self.dicomVisualBrowser.serverSettingsGroupBox().setChecked(False)
+        self.dicomVisualBrowser.databaseDirectorySettingsKey = slicer.dicomDatabaseDirectorySettingsKey
+        self.layout().addWidget(self.dicomVisualBrowser)
 
         self.userFrame = qt.QWidget()
         self.preview = qt.QWidget()

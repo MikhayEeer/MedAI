@@ -41,7 +41,6 @@ def haveGit():
 
 from . import __version__, __version_info__
 
-from .ExtensionDescription import ExtensionDescription
 from .ExtensionProject import ExtensionProject
 from .TemplateManager import TemplateManager
 from .Utilities import *
@@ -498,7 +497,7 @@ class ExtensionWizard:
             xiRemote.push(f"{xiBase}:refs/heads/{args.target}")
 
             # Determine if this is an addition or update to the index
-            xdf = name + ".s4ext"
+            xdf = name + ".json"
             if xdf in xiBase.commit.tree:
                 branch = f"update-{name}-{args.target}"
                 update = True
@@ -640,7 +639,7 @@ class ExtensionWizard:
             help="show list of available templates and associated substitution keys",
         )
         parser.add_argument(
-            "--describe", action="store_true", help="print the extension description (s4ext) to standard output",
+            "--describe", action="store_true", help="print the extension description (json) to standard output",
         )
 
         parser.add_argument(
@@ -712,16 +711,9 @@ class ExtensionWizard:
                          "Slicer-%s.%s" % tuple(__version_info__[:2]),
                          "Wizard", "Templates"),
         ]
-        descriptionFileTemplate = None
         for candidate in candidateBuiltInTemplatePaths:
             if os.path.exists(candidate):
                 self._templateManager.addPath(candidate)
-                descriptionFileTemplate = os.path.join(candidate, "Extensions", "extension_description.s4ext.in")
-        if descriptionFileTemplate is None or not os.path.exists(descriptionFileTemplate):
-            logging.warning("failed to locate template 'Extensions/extension_description.s4ext.in' "
-                            "in these directories: %s" % candidateBuiltInTemplatePaths)
-        else:
-            ExtensionDescription.DESCRIPTION_FILE_TEMPLATE = descriptionFileTemplate
 
         # Add user-specified template paths and keys
         self._templateManager.parseArguments(args)

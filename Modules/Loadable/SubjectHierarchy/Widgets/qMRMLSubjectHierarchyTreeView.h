@@ -108,6 +108,9 @@ public:
 
 public:
   Q_INVOKABLE vtkMRMLScene* mrmlScene()const;
+
+  /// Return the subject hierarchy node found in the current MRML scene.
+  /// While the scene is closing, this method may return a null pointer.
   Q_INVOKABLE vtkMRMLSubjectHierarchyNode* subjectHierarchyNode()const;
 
   /// Get current (=selected) item. If there are multiple items selected, then the first one is returned
@@ -277,16 +280,16 @@ public slots:
 
   /// Deprecated. Use setPluginAllowlist instead.
   void setPluginWhitelist(QStringList allowlist)
-    {
+  {
     qWarning("qMRMLSubjectHierarchyTreeView::setPluginWhitelist is deprecated. Use setPluginAllowlist instead.");
     this->setPluginAllowlist(allowlist);
-    }
+  }
   /// Deprecated. Use setPluginBlocklist instead.
   void setPluginBlacklist(QStringList blocklist)
-    {
+  {
     qWarning("qMRMLSubjectHierarchyTreeView::setPluginBlacklist is deprecated. Use setPluginBlocklist instead.");
     this->setPluginBlocklist(blocklist);
-    }
+  }
 
   /// Show hint to user about context menus
   /// \param visibility True if visibility context menu hint is to be shown, false for general context menu. False by default

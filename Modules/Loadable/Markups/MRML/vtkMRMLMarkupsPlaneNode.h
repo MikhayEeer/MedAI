@@ -90,12 +90,6 @@ public:
   /// Get markup type internal name
   const char* GetMarkupType() override {return "Plane";};
 
-  // Get markup type GUI display name
-  const char* GetTypeDisplayName() override {return "Plane";};
-
-  /// Get markup short name
-  const char* GetDefaultNodeNamePrefix() override {return "P";};
-
   /// Read node attributes from XML file
   void ReadXMLAttributes( const char** atts) override;
 
@@ -107,7 +101,8 @@ public:
   vtkMRMLCopyContentMacro(vtkMRMLMarkupsPlaneNode);
 
   /// Apply the passed transformation to the ROI
-  void ApplyTransform(vtkAbstractTransform* transform) override;
+  using Superclass::ApplyTransform;
+  void ApplyTransform(vtkAbstractTransform* transform, bool applyToLockedControlPoints) override;
 
   //@{
   /// Method for calculating the size of the plane along the direction vectors.

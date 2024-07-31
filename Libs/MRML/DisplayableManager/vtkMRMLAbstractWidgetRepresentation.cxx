@@ -25,10 +25,6 @@
 //----------------------------------------------------------------------
 vtkMRMLAbstractWidgetRepresentation::vtkMRMLAbstractWidgetRepresentation()
 {
-  // Default glyph scale used to be 3.0 (in Slicer-4.10 and earlier).
-  // This display scale factor value produces similar appearance of markup points.
-  this->ScreenScaleFactor = 0.2;
-
   this->PickingTolerance = 30.0;
   this->NeedToRender = false;
 
@@ -61,9 +57,9 @@ void vtkMRMLAbstractWidgetRepresentation
 void vtkMRMLAbstractWidgetRepresentation::SetRenderer(vtkRenderer *ren)
 {
   if ( ren == this->Renderer )
-    {
+  {
     return;
-    }
+  }
   this->Renderer = ren;
   this->Modified();
 }
@@ -78,9 +74,9 @@ vtkRenderer* vtkMRMLAbstractWidgetRepresentation::GetRenderer()
 void vtkMRMLAbstractWidgetRepresentation::SetApplicationLogic(vtkMRMLApplicationLogic* appLogic)
 {
   if (appLogic == this->ApplicationLogic)
-    {
+  {
     return;
-    }
+  }
   this->ApplicationLogic = appLogic;
   this->Modified();
 }
@@ -95,9 +91,9 @@ vtkMRMLApplicationLogic* vtkMRMLAbstractWidgetRepresentation::GetApplicationLogi
 void vtkMRMLAbstractWidgetRepresentation::SetViewNode(vtkMRMLAbstractViewNode* viewNode)
 {
   if (viewNode == this->ViewNode)
-    {
+  {
     return;
-    }
+  }
   this->ViewNode = viewNode;
   this->Modified();
 }
@@ -115,32 +111,31 @@ void vtkMRMLAbstractWidgetRepresentation::PrintSelf(ostream& os,
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
   this->Superclass::PrintSelf(os, indent);
   os << indent << "PickingTolerance : " << this->PickingTolerance <<"\n";
-  os << indent << "ScreenScaleFactor: " << this->ScreenScaleFactor << "\n";
+  os << indent << "ScreenScaleFactor: " << this->GetScreenScaleFactor() << "\n";
   os << indent << "Always On Top: " << (this->AlwaysOnTop ? "On\n" : "Off\n");
 }
-
 
 //-----------------------------------------------------------------------------
 void vtkMRMLAbstractWidgetRepresentation::AddActorsBounds(vtkBoundingBox& boundingBox,
   const std::vector<vtkProp*> &actors, double* additionalBounds /*=nullptr*/)
 {
   for (auto actor : actors)
-    {
+  {
     if (!actor->GetVisibility())
-      {
+    {
       continue;
-      }
+    }
     double* bounds = actor->GetBounds();
     if (!bounds)
-      {
-      continue;
-      }
-    boundingBox.AddBounds(bounds);
-    }
-  if (additionalBounds)
     {
-    boundingBox.AddBounds(additionalBounds);
+      continue;
     }
+    boundingBox.AddBounds(bounds);
+  }
+  if (additionalBounds)
+  {
+    boundingBox.AddBounds(additionalBounds);
+  }
 }
 
 //----------------------------------------------------------------------
@@ -153,17 +148,31 @@ void vtkMRMLAbstractWidgetRepresentation::UpdateFromMRML(
 void vtkMRMLAbstractWidgetRepresentation::UpdateRelativeCoincidentTopologyOffsets(vtkMapper* mapper)
 {
   if (this->AlwaysOnTop)
-    {
+  {
     // max value 65536 so we subtract 66000 to make sure we are
     // zero or negative
     mapper->SetRelativeCoincidentTopologyLineOffsetParameters(0, -66000);
     mapper->SetRelativeCoincidentTopologyPolygonOffsetParameters(0, -66000);
     mapper->SetRelativeCoincidentTopologyPointOffsetParameter(-66000);
-    }
+  }
   else
-    {
+  {
     mapper->SetRelativeCoincidentTopologyLineOffsetParameters(-1, -1);
     mapper->SetRelativeCoincidentTopologyPolygonOffsetParameters(-1, -1);
     mapper->SetRelativeCoincidentTopologyPointOffsetParameter(-1);
-    }
+  }
+}
+
+//-----------------------------------------------------------------------------
+double vtkMRMLAbstractWidgetRepresentation::GetScreenScaleFactor()
+{
+  if (this->GetViewNode())
+  {
+    return this->GetViewNode()->GetScreenScaleFactor();
+  }
+  else
+  {
+    // Default screen scale factor in view node
+    return 0.2;
+  }
 }

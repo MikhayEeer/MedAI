@@ -51,6 +51,7 @@ class vtkMRMLTableNode;
 class vtkPlane;
 class vtkPoints;
 class vtkPolyData;
+class vtkSlicerMarkupsInteractionWidget;
 class vtkSlicerMarkupsWidget;
 
 class VTK_SLICER_MARKUPS_MODULE_LOGIC_EXPORT vtkSlicerMarkupsLogic :
@@ -150,12 +151,12 @@ public:
 
   /// Enumeration listing valid annotation file types to load using LoadAnnotation
   enum
-    {
+  {
     AnnotationNone = 0,
     AnnotationFiducial,
     AnnotationRuler,
     AnnotationROI,
-    };
+  };
 
   /// Utility methods to operate on all control points in a markups node
   /// @{
@@ -286,7 +287,8 @@ public:
   /// \param markupsWidget vtkSlicerWidget associated to the MRMLMarkups node registered.
   void RegisterMarkupsNode(vtkMRMLMarkupsNode* markupsNode,
                            vtkSlicerMarkupsWidget* markupsWidget,
-                           bool createPushButton=true);
+                           bool createPushButton=true,
+                           vtkSlicerMarkupsInteractionWidget* interactionWidget=nullptr);
 
   /// Unregister a markup and its corresponding widget. This will trigger the
   /// vtkSlicerMarkupsLogic::MarkupUnregistered event.
@@ -303,6 +305,9 @@ public:
   /// \return pointer to associated vtkSlicerMarkupsWidget or nullptr if the MRML node
   /// class is not registered.
   vtkSlicerMarkupsWidget* GetWidgetByMarkupsType(const char* markupsType) const;
+
+  /// Returns the interaction widget for the specified markups type.
+  vtkSlicerMarkupsInteractionWidget* GetInteractionWidgetByMarkupsType(const char* markupsType) const;
 
   /// This returns an instance to a corresponding vtkMRMLMarkupsNode associated
   /// to the indicated markups name.
@@ -344,65 +349,65 @@ public:
   /// \deprecated Use CopyNthControlPointToNewList instead.
   bool CopyNthMarkupToNewList(int n, vtkMRMLMarkupsNode *markupsNode,
                               vtkMRMLMarkupsNode *newMarkupsNode)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::CopyNthMarkupToNewList method is deprecated, please use CopyNthControlPointToNewList instead");
     return this->CopyNthControlPointToNewList(n, markupsNode, newMarkupsNode);
-    }
+  }
   /// \deprecated Use MoveNthControlPointToNewList instead.
   bool MoveNthMarkupToNewList(int n, vtkMRMLMarkupsNode *markupsNode,
                               vtkMRMLMarkupsNode *newMarkupsNode, int newIndex)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::MoveNthMarkupToNewList method is deprecated, please use MoveNthControlPointToNewListAtIndex instead");
     return this->MoveNthControlPointToNewListAtIndex(n, markupsNode, newMarkupsNode, newIndex);
-    }
+  }
   /// \deprecated Use AddControlPoint instead.
   int AddFiducial(double r=0.0, double a=0.0, double s=0.0)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::AddFiducial method is deprecated, please use AddControlPoint instead");
     return this->AddControlPoint(r, a, s);
-    };
+  };
   /// \deprecated Use SetAllControlPointsVisibility instead.
   void SetAllMarkupsVisibility(vtkMRMLMarkupsNode *node, bool flag)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::SetAllMarkupsVisibility method is deprecated, please use SetAllControlPointsVisibility instead");
     this->SetAllControlPointsVisibility(node, flag);
-    };
+  };
   /// \deprecated Use ToggleAllControlPointsVisibility instead.
   void ToggleAllMarkupsVisibility(vtkMRMLMarkupsNode *node)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::ToggleAllMarkupsVisibility method is deprecated, please use ToggleAllControlPointsVisibility instead");
     this->ToggleAllControlPointsVisibility(node);
-    };
+  };
   /// \deprecated Use SetAllControlPointsLocked instead.
   void SetAllMarkupsLocked(vtkMRMLMarkupsNode *node, bool flag)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::SetAllMarkupsLocked method is deprecated, please use SetAllControlPointsLocked instead");
     this->SetAllControlPointsLocked(node, flag);
-    };
+  };
   /// \deprecated Use ToggleAllControlPointsLocked instead.
   void ToggleAllMarkupsLocked(vtkMRMLMarkupsNode *node)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::ToggleAllMarkupsLocked method is deprecated, please use ToggleAllControlPointsLocked instead");
     this->ToggleAllControlPointsLocked(node);
-    };
+  };
   /// \deprecated Use SetAllControlPointsSelected instead.
   void SetAllMarkupsSelected(vtkMRMLMarkupsNode *node, bool flag)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::SetAllMarkupsSelected method is deprecated, please use SetAllControlPointsSelected instead");
     this->SetAllControlPointsSelected(node, flag);
-    };
+  };
   /// \deprecated Use ToggleAllControlPointsSelected instead.
   void ToggleAllMarkupsSelected(vtkMRMLMarkupsNode *node)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::ToggleAllMarkupsSelected method is deprecated, please use ToggleAllControlPointsSelected instead");
     this->ToggleAllControlPointsSelected(node);
-    };
+  };
   /// \deprecated Use RenameAllControlPointsFromCurrentFormat instead.
   void RenameAllMarkupsFromCurrentFormat(vtkMRMLMarkupsNode *markupsNode)
-    {
+  {
     vtkWarningMacro("vtkSlicerMarkupsLogic::RenameAllMarkupsFromCurrentFormat method is deprecated, please use RenameAllControlPointsFromCurrentFormat instead");
     this->RenameAllControlPointsFromCurrentFormat(markupsNode);
-    };
+  };
 
   //@{
   /// Generate a unique color for a markup node.

@@ -20,41 +20,44 @@
 
 ==============================================================================*/
 
-#ifndef __vtkMRMLLinearTransformsDisplayableManager3D_h
-#define __vtkMRMLLinearTransformsDisplayableManager3D_h
+#ifndef __vtkMRMLLinearTransformsDisplayableManager_h
+#define __vtkMRMLLinearTransformsDisplayableManager_h
 
 // MRMLDisplayableManager includes
-#include "vtkMRMLAbstractThreeDViewDisplayableManager.h"
+#include "vtkMRMLAbstractSliceViewDisplayableManager.h"
 
+// Transforms MRMLDM includes
+#include "vtkMRMLTransformHandleWidget.h"
 #include "vtkSlicerTransformsModuleMRMLDisplayableManagerExport.h"
 
-class vtkAbstractWidget;
-class vtkMRMLTransformDisplayNode;
+// MRML includes
+#include <vtkMRMLTransformDisplayNode.h>
+#include <vtkMRMLTransformNode.h>
 
-
-/// \brief Display transforms in 3D views
+/// \brief Displayable manager for showing transforms in slice (2D) views.
 ///
-/// Displays transforms in 3D viewers as glyphs, deformed grid, or
-/// contour surfaces
+/// Displays transforms in slice viewers as glyphs, deformed grid, or
+/// contour lines
 ///
-class VTK_SLICER_TRANSFORMS_MODULE_MRMLDISPLAYABLEMANAGER_EXPORT vtkMRMLLinearTransformsDisplayableManager3D
-  : public vtkMRMLAbstractThreeDViewDisplayableManager
+class VTK_SLICER_TRANSFORMS_MODULE_MRMLDISPLAYABLEMANAGER_EXPORT vtkMRMLLinearTransformsDisplayableManager
+  : public vtkMRMLAbstractDisplayableManager
 {
+
 public:
 
-  static vtkMRMLLinearTransformsDisplayableManager3D* New();
-  vtkTypeMacro(vtkMRMLLinearTransformsDisplayableManager3D,vtkMRMLAbstractThreeDViewDisplayableManager);
+  static vtkMRMLLinearTransformsDisplayableManager* New();
+  vtkTypeMacro(vtkMRMLLinearTransformsDisplayableManager, vtkMRMLAbstractDisplayableManager);
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
-  /// \internal
-  /// For testing purposes only:
-  /// Return the widget associated with the given transform, if any.
-  vtkAbstractWidget* GetWidget(vtkMRMLTransformDisplayNode* displayNode);
+  /// Get a vtkMRMLTransformHandleWidget* given a node
+  vtkMRMLTransformHandleWidget* GetWidget(vtkMRMLTransformDisplayNode* markupsDisplayNode);
+  /// Get first visible widget for this markup
+  vtkMRMLTransformHandleWidget* GetWidget(vtkMRMLTransformNode* markupsNode);
 
 protected:
 
-  vtkMRMLLinearTransformsDisplayableManager3D();
-  ~vtkMRMLLinearTransformsDisplayableManager3D() override;
+  vtkMRMLLinearTransformsDisplayableManager();
+  ~vtkMRMLLinearTransformsDisplayableManager() override;
 
   void UnobserveMRMLScene() override;
   void OnMRMLSceneNodeAdded(vtkMRMLNode* node) override;
@@ -69,18 +72,20 @@ protected:
 
   void OnMRMLSceneEndBatchProcess() override;
 
-  /// Initialize the displayable manager
+  /// Initialize the displayable manager based on its associated
+  /// vtkMRMLSliceNode
   void Create() override;
 
-  void ProcessWidgetsEvents(vtkObject* caller, unsigned long event, void* callData) override;
+  bool CanProcessInteractionEvent(vtkMRMLInteractionEventData* eventData, double& closestDistance2) override;
+  bool ProcessInteractionEvent(vtkMRMLInteractionEventData* eventData) override;
 
 private:
 
-  vtkMRMLLinearTransformsDisplayableManager3D(const vtkMRMLLinearTransformsDisplayableManager3D&) = delete;
-  void operator=(const vtkMRMLLinearTransformsDisplayableManager3D&) = delete;
+  vtkMRMLLinearTransformsDisplayableManager(const vtkMRMLLinearTransformsDisplayableManager&) = delete;
+  void operator=(const vtkMRMLLinearTransformsDisplayableManager&) = delete;
 
   class vtkInternal;
-  vtkInternal* Internal;
+  vtkInternal * Internal;
   friend class vtkInternal;
 };
 

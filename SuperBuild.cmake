@@ -202,7 +202,7 @@ endmacro()
 
 Slicer_Remote_Add(vtkAddon
   GIT_REPOSITORY "${EP_GIT_PROTOCOL}://github.com/Slicer/vtkAddon"
-  GIT_TAG 960c2e3c8aa5155951930b53f1590f3db8f94d80
+  GIT_TAG 3f317421da77b9f6fd48aaf40608545db4fec3e0
   OPTION_NAME Slicer_BUILD_vtkAddon
   )
 list_conditional_append(Slicer_BUILD_vtkAddon Slicer_REMOTE_DEPENDENCIES vtkAddon)
@@ -246,7 +246,7 @@ list_conditional_append(Slicer_BUILD_MultiVolumeImporter Slicer_REMOTE_DEPENDENC
 
 Slicer_Remote_Add(SimpleFilters
   GIT_REPOSITORY ${EP_GIT_PROTOCOL}://github.com/SimpleITK/SlicerSimpleFilters.git
-  GIT_TAG 92e8db0030f6f9d9ea99dd5d8d1425b6b2189a68
+  GIT_TAG e82fc598bc010505e994b7ce22d953a9899a175c
   OPTION_NAME Slicer_BUILD_SimpleFilters
   OPTION_DEPENDS "Slicer_BUILD_QTSCRIPTEDMODULES;Slicer_USE_SimpleITK"
   LABELS REMOTE_MODULE
@@ -303,7 +303,7 @@ set(BRAINSTools_slicer_options
 
 Slicer_Remote_Add(BRAINSTools
   GIT_REPOSITORY ${EP_GIT_PROTOCOL}://github.com/BRAINSia/BRAINSTools.git
-  GIT_TAG "37b0a0f64cbff2b987fee321c9363554cee52b14"  # Jan 26th 2022
+  GIT_TAG "d88a4f43e7d6c7447876d20676b538185f5edea1"  # 2024-05-31
   LICENSE_FILES "https://www.apache.org/licenses/LICENSE-2.0.txt"
   OPTION_NAME Slicer_BUILD_BRAINSTOOLS
   OPTION_DEPENDS "Slicer_BUILD_CLI_SUPPORT;Slicer_BUILD_CLI"
@@ -337,7 +337,7 @@ list_conditional_append(Slicer_BUILD_LandmarkRegistration Slicer_REMOTE_DEPENDEN
 
 Slicer_Remote_Add(SurfaceToolbox
   GIT_REPOSITORY "${EP_GIT_PROTOCOL}://github.com/Slicer/SlicerSurfaceToolbox"
-  GIT_TAG f8b734436581ca0954d0303b16c6c17b69efdff3
+  GIT_TAG 09d5bf61655c1f276541797f6d2593a61eabf98d
   OPTION_NAME Slicer_BUILD_SurfaceToolbox
   OPTION_DEPENDS "Slicer_USE_PYTHONQT"
   LABELS REMOTE_MODULE

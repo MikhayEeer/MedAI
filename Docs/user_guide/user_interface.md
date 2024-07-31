@@ -183,6 +183,15 @@ View Controllers module provides an alternate way of displaying these controller
 
 ## Mouse & Keyboard Shortcuts
 
+### Alternate macOS Keybindings
+
+When using shortcuts on macOS, replace the following keys with their corresponding macOS version.
+
+| Key | macOS Key |
+| -------- | --------- |
+| `Ctrl` | `Command` / `⌘` |
+| `Alt`  | `Option` / `⌥` / `Alt` |
+
 ### Generic shortcuts
 
 | Shortcut | Operation |
@@ -245,6 +254,7 @@ view will not activate the view.
 | `Shift` + `Page Down` or `Shift` + `Keypad 3` | rotate to view from right side |
 | `Home` or `Keypad 7` | rotate to view from superior |
 | `Shift` + `Home` or `Shift` + `Keypad 7`| rotate to view from inferior |
+| `Ctrl` + `left-click` + `drag` | rotate view clockwise/counterclockwise |
 | `right-click` + `drag up/down` | zoom view in/out (`Alt` optional, useful during point placement) |
 | `Ctrl` + `mouse wheel` | zoom view in/out |
 | `Ctrl` + `b` | toggle tilt lock |

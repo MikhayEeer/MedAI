@@ -41,17 +41,17 @@ qSlicerStylePlugin::~qSlicerStylePlugin() = default;
 QStyle* qSlicerStylePlugin::create( const QString & key )
 {
   if (key.compare("Slicer", Qt::CaseInsensitive) == 0)
-    {
+  {
     return new qSlicerStyle();
-    }
+  }
   if (key.compare("Light Slicer", Qt::CaseInsensitive) == 0)
-    {
+  {
     return new qSlicerLightStyle();
-    }
+  }
   if (key.compare("Dark Slicer", Qt::CaseInsensitive) == 0)
-    {
+  {
     return new qSlicerDarkStyle();
-    }
+  }
   return nullptr;
 }
 
@@ -60,4 +60,3 @@ QStringList qSlicerStylePlugin::keys() const
 {
   return QStringList() << "Slicer" << "Light Slicer" << "Dark Slicer";
 }
-

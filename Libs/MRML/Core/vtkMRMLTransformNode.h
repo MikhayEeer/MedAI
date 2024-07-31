@@ -58,9 +58,9 @@ public:
   ///
   /// Finds the storage node and read the data
   void UpdateScene(vtkMRMLScene *scene) override
-    {
+  {
      Superclass::UpdateScene(scene);
-    };
+  };
 
   ///
   /// Returns 1 if transform is a non-composite linear transform, 0 otherwise (if composite transform or non-linear transform)
@@ -278,9 +278,9 @@ public:
   /// Typical usage would be to disable transform modified events, call a series of operations that change transforms
   /// and then re-enable transform modified events to invoke any pending notifications.
   virtual void TransformModified()
-    {
+  {
     this->InvokeCustomModifiedEvent(vtkMRMLTransformableNode::TransformModifiedEvent);
-    }
+  }
 
   bool GetModifiedSinceRead() override;
 
@@ -370,6 +370,11 @@ public:
   /// Reference role name from the transform node to the moving volume or fiducial node that participated in registration
   static const char* GetFixedNodeReferenceRole() { return "spatialRegistrationFixed"; };
 
+  /// The transformation center (rotation/scaling) that is rotated/scaled around
+  virtual void SetCenterOfTransformation(double x, double y, double z);
+  virtual void SetCenterOfTransformation(const double xyz[3]);
+  vtkGetVector3Macro(CenterOfTransformation, double);
+
 protected:
   vtkMRMLTransformNode();
   ~vtkMRMLTransformNode() override;
@@ -405,6 +410,8 @@ protected:
   /// GetMatrixTransformToParent and GetMatrixFromParent methods
   vtkMatrix4x4* CachedMatrixTransformToParent;
   vtkMatrix4x4* CachedMatrixTransformFromParent;
+
+  double CenterOfTransformation[3] {0.0, 0.0, 0.0};
 };
 
 #endif

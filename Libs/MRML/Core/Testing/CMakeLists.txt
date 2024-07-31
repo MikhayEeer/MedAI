@@ -81,6 +81,7 @@ create_test_sourcelist(Tests ${KIT}CxxTests.cxx
   vtkMRMLStorableNodeTest1.cxx
   vtkMRMLStorageNodeTest1.cxx
   vtkMRMLStreamingVolumeNodeTest1.cxx
+  vtkMRMLSubjectHierarchyNodeTest1.cxx
   vtkMRMLTableNodeTest1.cxx
   vtkMRMLTableStorageNodeTest1.cxx
   vtkMRMLTableSQLiteStorageNodeTest.cxx
@@ -193,6 +194,7 @@ simple_test( vtkMRMLSegmentationStorageNodeTest1
   DATA{${INPUT}/ITKSnapSegmentation.nii.gz}
   DATA{${INPUT}/OldSlicerSegmentation.seg.nrrd}
   DATA{${INPUT}/SlicerSegmentation.seg.nrrd}
+  ${TEMP}
   )
 simple_test( vtkMRMLSelectionNodeTest1 )
 simple_test( vtkMRMLSliceCompositeNodeTest1 )

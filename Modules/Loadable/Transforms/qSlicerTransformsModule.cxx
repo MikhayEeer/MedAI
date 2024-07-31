@@ -126,9 +126,9 @@ void qSlicerTransformsModule::setup()
 {
   qSlicerApplication * app = qSlicerApplication::application();
   if (!app)
-    {
+  {
     return;
-    }
+  }
   vtkSlicerTransformLogic* transformLogic =
     vtkSlicerTransformLogic::SafeDownCast(this->logic());
   app->coreIOManager()->registerIO(
@@ -139,8 +139,9 @@ void qSlicerTransformsModule::setup()
 
   // Register displayable managers
   vtkMRMLSliceViewDisplayableManagerFactory::GetInstance()->RegisterDisplayableManager("vtkMRMLTransformsDisplayableManager2D");
+  vtkMRMLSliceViewDisplayableManagerFactory::GetInstance()->RegisterDisplayableManager("vtkMRMLLinearTransformsDisplayableManager");
   vtkMRMLThreeDViewDisplayableManagerFactory::GetInstance()->RegisterDisplayableManager("vtkMRMLTransformsDisplayableManager3D");
-  vtkMRMLThreeDViewDisplayableManagerFactory::GetInstance()->RegisterDisplayableManager("vtkMRMLLinearTransformsDisplayableManager3D");
+  vtkMRMLThreeDViewDisplayableManagerFactory::GetInstance()->RegisterDisplayableManager("vtkMRMLLinearTransformsDisplayableManager");
 
   // Register Subject Hierarchy core plugins
   qSlicerSubjectHierarchyPluginHandler::instance()->registerPlugin(new qSlicerSubjectHierarchyTransformsPlugin());

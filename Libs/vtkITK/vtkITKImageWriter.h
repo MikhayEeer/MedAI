@@ -33,13 +33,13 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   enum
-    {
+  {
     VoxelVectorTypeUndefined,
     VoxelVectorTypeSpatial,
     VoxelVectorTypeColorRGB,
     VoxelVectorTypeColorRGBA,
     VoxelVectorType_Last // must be last
-    };
+  };
 
   ///
   /// Specify file name for the image file. You should specify either
@@ -96,6 +96,6 @@ private:
   void operator=(const vtkITKImageWriter&) = delete;
 };
 
-//vtkStandardNewMacro(vtkITKImageWriter)
+//vtkStandardNewMacro(vtkITKImageWriter);
 
 #endif

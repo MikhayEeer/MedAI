@@ -27,7 +27,7 @@ if(NOT Slicer_USE_SYSTEM_${proj})
   set(requirements_file ${CMAKE_BINARY_DIR}/${proj}-requirements.txt)
   file(WRITE ${requirements_file} [===[
   # [wheel]
-  wheel==0.41.2 --hash=sha256:75909db2664838d015e3d9139004ee16711748a52c8f336b52882266540215d8
+  wheel==0.43.0 --hash=sha256:55c570405f142630c6b9f72fe09d9b67cf1477fcf543ae5b8dcb1f5b7377da81
   # [/wheel]
   ]===])
 

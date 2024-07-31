@@ -78,10 +78,12 @@ if (WIN32)
   elseif (NOT MSVC_VERSION VERSION_GREATER 1929)
     # VS2019 is expected to be binary compatible with VS2015
     set(tbb_vsdir vc14)
-  elseif (NOT MSVC_VERSION VERSION_GREATER 1939)
+  elseif (NOT MSVC_VERSION VERSION_GREATER 1949)
     # VS2022 is expected to be binary compatible with VS2015
+    # Note that VS2022 covers both MSVC versions 193x and 194x as explained in
+    # https://devblogs.microsoft.com/cppblog/msvc-toolset-minor-version-number-14-40-in-vs-2022-v17-10/
     set(tbb_vsdir vc14)
-  elseif (tbb_enabled)
+  else()
     message(FATAL_ERROR "TBB does not support your Visual Studio compiler. [MSVC_VERSION: ${MSVC_VERSION}]")
   endif ()
   set(tbb_libdir lib/${tbb_archdir}/${tbb_vsdir})

@@ -159,7 +159,9 @@ def update_translations(component, source_code_dir, translations_dir, lupdate_pa
     ts_file_paths = glob.glob(ts_file_filter)
     create_new_component = False
     if not ts_file_paths:
-        logging.warning(f"No .ts files were found at {ts_file_filter}. A new translation source file will be created for {component} in en-US language.")
+        if not language:
+            language = "en-US"
+        logging.warning(f"No .ts files were found at {ts_file_filter}. A new translation source file will be created for {component} in {language} language.")
         create_new_component = True
 
     # Get list of translatable files based on file extension
@@ -228,7 +230,7 @@ def update_translations(component, source_code_dir, translations_dir, lupdate_pa
     # Run lupdate for each language
 
     if create_new_component:
-        ts_file_paths = [f"{translations_dir}/{component}_en-US.ts"]
+        ts_file_paths = [f"{translations_dir}/{component}_{language}.ts"]
 
     for ts_file_index, ts_file_path in enumerate(ts_file_paths):
         logging.debug(f"Updating {ts_file_path} ({ts_file_index+1}/{len(ts_file_paths)})")
@@ -249,7 +251,7 @@ def update_translations(component, source_code_dir, translations_dir, lupdate_pa
         proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=sys.stderr, cwd=source_code_dir)
         data, err = proc.communicate()
         if proc.returncode != 0:
-            raise RuntimeError(f"lupdate failed with exit code {proc.returncode}:\n\nCommand: {' '.join(command)}\n\n{data}\n\n{err}\n")
+            raise RuntimeError(f"lupdate failed with exit code {proc.returncode}:\n\nCommand: {' '.join(command)}\n\nData: {data}\n\nError: {err}\n")
 
         shutil.move(ts_file_path_in_source_tree, ts_file_path)
 
@@ -356,6 +358,57 @@ def extract_translatable_from_cli_modules(input_paths, exclude_filenames=None):
                     _generate_translation_header_from_cli_xml(os.path.join(root, name))
 
 
+def _get_string_values_from_json(data, keys):
+    """Get all string values from a JSON object that matches any of the the specified keys"""
+    values = []
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if isinstance(value, (dict, list)):
+                values.extend(_get_string_values_from_json(value, keys))
+            elif isinstance(value, str) and key in keys:
+                values.append(value)
+    elif isinstance(data, list):
+        for item in data:
+            values.extend(_get_string_values_from_json(item, keys))
+    return values
+
+def _generate_translation_header_from_json_file(filename, property_names):
+    """Generate a C++ header file from translatable properties found in a json file"""
+    logging.debug(f"Generating header file for Qt translation from {filename}")
+
+    file_path = os.path.abspath(filename)
+    if not os.path.isfile(file_path):
+        raise RuntimeError(f"Failed to extract translatable strings, file not found: {filename}")
+
+    with open(file_path, encoding="utf8") as file:
+        import json
+
+        try:
+            json_object = json.loads(file.read())
+        except json.decoder.JSONDecodeError:
+            raise RuntimeError(f"Failed to extract translatable strings, not a valid JSON file: {filename}")
+
+        translation_context = os.path.splitext(os.path.basename(filename))[0]
+
+        cpp_header_str = f"// Generated automatically by update_translations.py from {filename}\n\n"
+
+        translatable_strings = _get_string_values_from_json(json_object, property_names)
+
+        # Get unique strings with keeping the order
+        seen = set()
+        translatable_strings = [x for x in translatable_strings if x not in seen and not seen.add(x)]
+
+        for translatable_string in translatable_strings:
+            translatable_string = translatable_string.replace("\n", "\\n").replace('"', '\\"')
+            cpp_header_str += f'QT_TRANSLATE_NOOP("{translation_context}", "{translatable_string}")\n'
+
+        cpp_header_path = os.path.splitext(filename)[0] + "_tr.h"
+
+        logging.info("Writing output file: " + cpp_header_path)
+        with open(cpp_header_path, "w", encoding="utf8") as cpp_header_file:
+            cpp_header_file.write(cpp_header_str)
+
+
 def main(argv):
     parser = argparse.ArgumentParser(description="Update Qt translation files")
     parser.add_argument("--lupdate", default="lupdate", dest="lupdate_path",
@@ -405,6 +458,11 @@ def main(argv):
             "DiffusionTensorTest.xml",
         ]
         extract_translatable_from_cli_modules(cli_input_paths, cli_exclude_names)
+
+        # Slicer presets files translation
+        _generate_translation_header_from_json_file(
+            os.path.join(args.source_code_dir, "Modules/Loadable/Volumes/Resources/VolumeDisplayPresets.json"),
+            ["name", "description"])
     else:
         extract_translatable_from_cli_modules([args.source_code_dir])
 

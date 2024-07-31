@@ -96,11 +96,10 @@ void vtkMRMLTestThreeDViewDisplayableManager::OnMRMLSceneNodeAdded(vtkMRMLNode* 
 {
   vtkMRMLCameraNode * cameraNode = vtkMRMLCameraNode::SafeDownCast(node);
   if (!cameraNode)
-    {
+  {
     return;
-    }
+  }
   vtkMRMLTestThreeDViewDisplayableManager::NodeAddedCount++;
   //std::cout << "vtkMRMLTestThreeDViewDisplayableManager - NodeAdded - "
   //          << (node ? node->GetName() : "None")<< std::endl;
 }
-

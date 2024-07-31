@@ -168,8 +168,6 @@ else()
   #------------------------------------------------------------------------------
   # macOS specific configuration used by the "fix-up" script
   #------------------------------------------------------------------------------
-  set(CMAKE_INSTALL_NAME_TOOL "" CACHE FILEPATH "" FORCE)
-
   if(Slicer_USE_PYTHONQT)
     include(${Slicer_CMAKE_DIR}/SlicerBlockInstallExternalPythonModules.cmake)
   endif()
@@ -444,4 +442,3 @@ DeleteRegKey SHCTX \\\"SOFTWARE\\\\Classes\\\\${ext}\\\"
 endif()
 
 include(CPack)
-

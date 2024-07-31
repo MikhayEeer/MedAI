@@ -44,15 +44,15 @@ bool qSlicerWebPythonProxy::isPythonEvaluationAllowed()
 {
 #ifdef Slicer_USE_PYTHONQT
   if (this->pythonEvaluationAllowed)
-    {
+  {
     return true;
-    }
+  }
 
   qSlicerCoreApplication * app = qSlicerCoreApplication::application();
   if (!app || qSlicerCoreApplication::testAttribute(qSlicerCoreApplication::AA_DisablePython))
-    {
+  {
     return false;
-    }
+  }
 
   ctkMessageBox* confirmationBox = new ctkMessageBox(qSlicerApplication::application()->mainWindow());
   confirmationBox->setAttribute(Qt::WA_DeleteOnClose);
@@ -68,25 +68,41 @@ bool qSlicerWebPythonProxy::isPythonEvaluationAllowed()
   int resultCode = confirmationBox->exec();
 
   if (resultCode == QMessageBox::AcceptRole)
-    {
+  {
     this->pythonEvaluationAllowed = true;
-    }
+  }
 #endif
   return this->pythonEvaluationAllowed;
 }
 
 // --------------------------------------------------------------------------
-QString qSlicerWebPythonProxy::evalPython(const QString &python)
+QString qSlicerWebPythonProxy::evalPython(const QString &python, int mode)
 {
+  ctkAbstractPythonManager::ExecuteStringMode executeStringMode{ctkAbstractPythonManager::FileInput};
+  switch (mode)
+  {
+    case qSlicerWebPythonProxy::EvalInput:
+      executeStringMode = ctkAbstractPythonManager::EvalInput;
+      break;
+    case qSlicerWebPythonProxy::FileInput:
+      executeStringMode = ctkAbstractPythonManager::FileInput;
+      break;
+    case qSlicerWebPythonProxy::SingleInput:
+      executeStringMode = ctkAbstractPythonManager::SingleInput;
+      break;
+    default:
+      qWarning() << Q_FUNC_INFO << " failed: Unknown mode" << mode;
+      break;
+  }
 
   QString result;
 #ifdef Slicer_USE_PYTHONQT
   if (this->isPythonEvaluationAllowed())
-    {
+  {
     qSlicerPythonManager *pythonManager = qSlicerApplication::application()->pythonManager();
-    result = pythonManager->executeString(python).toString();
+    result = pythonManager->executeString(python, executeStringMode).toString();
     qDebug() << "Running " << python << " result is " << result;
-    }
+  }
 #else
   Q_UNUSED(python);
 #endif
