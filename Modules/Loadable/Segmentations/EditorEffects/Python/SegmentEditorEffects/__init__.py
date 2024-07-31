@@ -15,6 +15,15 @@ from .SegmentEditorMaskVolumeEffect import *
 from .SegmentEditorSmoothingEffect import *
 from .SegmentEditorThresholdEffect import *
 
+from .SegmentEditorDrawTubeEffect import *
+from .SegmentEditorEngraveEffect import *
+from .SegmentEditorFloodFillingEffect import *
+from .SegmentEditorLocalThresholdEffect import *
+from .SegmentEditorWatershedEffect import *
+from .SegmentEditorSplitVolumeEffect import *
+from .SegmentEditorSurfaceCutEffect import *
+from .SegmentEditorWrapSolidifyEffect import *
+
 from SegmentEditorEffects import *
 
 import logging
@@ -33,6 +42,14 @@ editorEffectNames = [
     "SegmentEditorMaskVolumeEffect",
     "SegmentEditorSmoothingEffect",
     "SegmentEditorThresholdEffect",
+    "SegmentEditorDrawTubeEffect",
+    "SegmentEditorEngraveEffect",
+    "SegmentEditorFloodFillingEffect",
+    "SegmentEditorLocalThresholdEffect",
+    "SegmentEditorWatershedEffect",
+    "SegmentEditorSplitVolumeEffect",
+    "SegmentEditorSurfaceCutEffect",
+    "SegmentEditorWrapSolidifyEffect"
 ]
 
 
