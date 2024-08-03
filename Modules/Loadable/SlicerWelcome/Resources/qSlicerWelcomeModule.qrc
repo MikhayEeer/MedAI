@@ -1,4 +1,4 @@
-﻿<RCC>
+<RCC>
     <qresource prefix="/">
         <file>Icons/Chat.png</file>
         <file>Icons/SlicerWelcome.png</file>
