@@ -3,7 +3,7 @@ from slicer.i18n import tr as _
 from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
 from slicer.util import VTKObservationMixin
-from slicer.i18n import tr as _
+
 
 #
 # SegmentEditor
@@ -174,4 +174,4 @@ class SegmentEditorTest(ScriptedLoadableModuleTest):
     def test_SegmentEditor1(self):
         """Add test here later."""
         self.delayDisplay("Starting the test")
-        self.delayDisplay('Test passed!')
+        self.delayDisplay("Test passed!")

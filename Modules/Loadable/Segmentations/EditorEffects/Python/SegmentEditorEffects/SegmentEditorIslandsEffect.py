@@ -9,11 +9,6 @@ import slicer
 from slicer.i18n import tr as _
 
 from SegmentEditorEffects import *
-#from slicer.i18n import tr as _
-#from slicer.i18n import translate
-
-def _(str):
-    return str
 
 
 class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):

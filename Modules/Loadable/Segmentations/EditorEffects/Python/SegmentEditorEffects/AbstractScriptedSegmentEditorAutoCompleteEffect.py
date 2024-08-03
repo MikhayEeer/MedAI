@@ -11,8 +11,6 @@ from .AbstractScriptedSegmentEditorEffect import *
 
 __all__ = ["AbstractScriptedSegmentEditorAutoCompleteEffect"]
 
-def _(str):
-    return str
 
 #
 # Abstract class of python scripted segment editor auto-complete effects
