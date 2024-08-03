@@ -2,10 +2,10 @@ import os
 import unittest
 import logging
 import vtk, qt, ctk, slicer
-from slicer.ScriptedLoadableModule import *
-from slicer.util import VTKObservationMixin
 from slicer.i18n import tr as _
 from slicer.i18n import translate
+from slicer.ScriptedLoadableModule import *
+from slicer.util import VTKObservationMixin
 
 #
 # LanguageTools
@@ -19,7 +19,7 @@ class LanguageTools(ScriptedLoadableModule):
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
     self.parent.title = _("Language Tools")
-    self.parent.categories = [_("Utilities")]
+    self.parent.categories = [translate("qSlicerAbstractCoreModule", "Utilities")]
     self.parent.dependencies = []
     self.parent.contributors = ["Andras Lasso (PerkLab)"]
     self.parent.helpText = _("""
@@ -153,8 +153,10 @@ class TextFinder(qt.QWidget):
       links += "</ul>"
 
       result = slicer.util._messageDisplay(logging.INFO,
-        f"<html>Click on the text to find it on the translation website:\n\n{links}</html>", qt.QMessageBox.Close,
-        windowTitle=_("Translation lookup"), icon=qt.QMessageBox.Question,
+        "<html>" + _("Click on the text to find it on the translation website:\n\n{links}").format(links=links) + "</html>",
+        qt.QMessageBox.Close,
+        windowTitle="Translation lookup",
+        icon=qt.QMessageBox.Question,
         standardButtons=qt.QMessageBox.Close | qt.QMessageBox.Retry)
       if result == qt.QMessageBox.Close:
         # cancelled
@@ -169,7 +171,7 @@ class TextFinder(qt.QWidget):
       objectInfo = widget.className()
       if widget.objectName:
         objectInfo += f" ({widget.objectName})"
-      if not slicer.util.confirmRetryCloseDisplay("Failed to extract any text from: " + objectInfo):
+      if not slicer.util.confirmRetryCloseDisplay(_("Failed to extract any text from: {object}").format(object=objectInfo)):
         # cancelled
         self.hideOverlay()
         return
@@ -216,6 +218,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.logic.logCallback = self.log
     self.textFinder.logic = self.logic
 
+    '''
     #self.refreshWeblateLanguageList()
 
     # Workaround for Slicer-5.0 (no Qt plugin was available for ctkLanguageComboBox)
@@ -228,7 +231,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       languageSelector.toolTip = self.ui.languageSelector.toolTip
       layout.addWidget(languageSelector)
       self.ui.languageSelector = languageSelector
-
+    '''
     self.ui.languageSelector.countryFlagsVisible = False
     self.ui.languageSelector.defaultLanguage = "zh"#"en"
     self.ui.languageSelector.directories = slicer.app.translationFolders()
@@ -500,7 +503,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
   def log(self, message):
     if self.logCallback:
       self.logCallback(message)
-  
+
   '''def weblatelanguages
   def weblateLanguages(self, component, forceUpdateFromServer=False):
     """Query list of languages 3d-slicer project has been translated to on Weblate.
@@ -539,7 +542,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
     return languages
   '''
-  
+
   def temporaryFolder(self):
     if not self._temporaryFolder:
       self._temporaryFolder = slicer.util.tempDirectory()
@@ -571,7 +574,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
     if latestTsFileOnly:
       tsFiles = [tsFiles[-1]]
-      self.log(f"Use translation file: {tsFiles[0]}")
+      self.log(_("Use translation file: {file}").format(file={tsFiles[0]}))
 
     import shutil
     import xml.etree.cElementTree as ET
@@ -580,7 +583,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
       locale = tree.getroot().attrib['language']  # such as 'zh-CN'
       baseName = os.path.basename(file).split('_')[0]
       shutil.copy(file, f"{self.translationFilesFolder}/{baseName}_{locale}.ts")
-  
+
   '''def download ts files from weblate or github
   def downloadTsFilesFromWeblate(self, downloadUrl, languages):
     """Download .ts files from Weblate.
@@ -695,7 +698,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
   def installQmFiles(self):
     if not self.translationFilesFolder:
-      raise ValueError("Translation files folder is not specified.")
+      raise ValueError(_("Translation files folder is not specified."))
 
     import shutil
     from pathlib import Path
@@ -713,14 +716,15 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
       numberOfInstalledFiles += 1
 
     if numberOfInstalledFiles == 0:
-      raise ValueError(f"No translation (qm) files were found at {self.translationFilesFolder}")
+      raise ValueError(_("No translation (qm) files were found at {location}").format(location=self.translationFilesFolder))
 
-    self.log(f"Update successfully completed.\nInstalled {numberOfInstalledFiles} translation files in {applicationTranslationFolder}.")
+    self.log(_("Update successfully completed.\nInstalled {count} translation files in {location}.").format(
+      count=numberOfInstalledFiles, location=applicationTranslationFolder))
 
   def installFontFiles(self):
 
     if not hasattr(slicer.app.applicationLogic(), 'GetFontsDirectory'):
-      self.log(f"This Slicer version does not support custom viewer fonts.")
+      self.log(_("This Slicer version does not support custom viewer fonts."))
       return
 
     applicationFontsFolder = slicer.app.applicationLogic().GetFontsDirectory()
@@ -743,7 +747,8 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
     slicer.app.userSettings().setValue('Views/FontFile/SansSerif', 'NotoSansTC-Regular.otf')
     slicer.app.userSettings().setValue('Views/FontFile/Serif', 'NotoSerifTC-Regular.otf')
 
-    self.log(f"Installed {numberOfInstalledFiles} font files in {applicationFontsFolder}.")
+    self.log(_("Installed {count} font files in {location}.").format(
+      count=numberOfInstalledFiles, location=applicationFontsFolder))
 
   def enableInternationalization(self, enabled=True):
     slicer.app.userSettings().setValue('Internationalization/Enabled', enabled)
@@ -768,6 +773,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 #
 # LanguageToolsTest
 #
+
 class LanguageToolsTest(ScriptedLoadableModuleTest):
   """
   This is the test case for your scripted module.

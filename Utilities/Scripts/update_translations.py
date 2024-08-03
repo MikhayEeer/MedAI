@@ -205,7 +205,7 @@ def update_translations(component, source_code_dir, translations_dir, lupdate_pa
                     continue
 
             # Skip Python file if internationalization is explicitly disabled in it
-            if str(source_file).endswith('.py'):
+            if str(source_file).endswith(".py"):
                 with open(source_file, encoding= "utf-8") as file_object:
                     source_code = file_object.read()
                 if "-*- i18n: disabled -*-" in source_code:
