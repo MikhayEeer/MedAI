@@ -281,7 +281,7 @@ void qMRMLSliceViewPrivate::updateWidgetFromMRML()
 // --------------------------------------------------------------------------
 //: Superclass(new qMRMLSliceViewPrivate(*this), _parent)
 qMRMLSliceView::qMRMLSliceView(QWidget* _parent)
-  : Superclass(_parent)
+    : Superclass(new qMRMLSliceViewPrivate(*this), _parent)
 {
   Q_D(qMRMLSliceView);
   d->init();
