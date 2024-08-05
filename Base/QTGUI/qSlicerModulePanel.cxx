@@ -124,9 +124,9 @@ void qSlicerModulePanel::setModule(qSlicerAbstractCoreModule* module)
     this->addModule(module);
   }
   else
-    {
-   // d->HelpLabel->setHtml("");
-    }
+  {
+    //d->HelpLabel->setHtml("");
+  }
 }
 
 //---------------------------------------------------------------------------

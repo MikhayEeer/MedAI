@@ -7,7 +7,7 @@ import slicer
 from slicer.i18n import tr as _
 from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
-from slicer.i18n import tr as _
+
 #
 # SelfTests
 #
@@ -88,11 +88,11 @@ class SelfTestsWidget(ScriptedLoadableModuleWidget):
 
         self.testList = ctk.ctkCollapsibleButton(self.parent)
         self.testList.setLayout(qt.QVBoxLayout())
-        self.testList.setText(_("Self Tests"))
+        self.testList.setText("Self Tests")
         self.layout.addWidget(self.testList)
         self.testList.collapsed = False
 
-        self.runAll = qt.QPushButton(_("Run All"))
+        self.runAll = qt.QPushButton("Run All")
         self.testList.layout().addWidget(self.runAll)
         self.runAll.connect("clicked()", self.onRunAll)
 

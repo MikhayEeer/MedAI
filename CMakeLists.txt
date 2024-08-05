@@ -81,7 +81,7 @@ if(NOT DEFINED Slicer_VERSION_MAJOR)
   set(Slicer_VERSION_MAJOR "5")
 endif()
 if(NOT DEFINED Slicer_VERSION_MINOR)
-  set(Slicer_VERSION_MINOR "3")
+  set(Slicer_VERSION_MINOR "7")
 endif()
 if(NOT DEFINED Slicer_VERSION_PATCH)
   set(Slicer_VERSION_PATCH "0")
@@ -263,7 +263,7 @@ endif()
 #-----------------------------------------------------------------------------
 include(CMakeDependentOption)
 
-option(BUILD_TESTING "Test the project" OFF)#option(BUILD_TESTING "Test the project" ON)
+option(BUILD_TESTING "Test the project" OFF)
 mark_as_superbuild(BUILD_TESTING)
 
 #option(WITH_MEMCHECK "Run tests through valgrind." OFF)
@@ -335,7 +335,7 @@ mark_as_advanced(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 mark_as_superbuild(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 
 #set(Slicer_FORCED_REVISION "" CACHE STRING "Overwrite value of automatically set Slicer_REVISION")
-set(Slicer_FORCED_REVISION "32175")
+set(Slicer_FORCED_REVISION "32961")
 mark_as_advanced(Slicer_FORCED_REVISION)
 mark_as_superbuild(Slicer_FORCED_REVISION)
 
@@ -649,7 +649,7 @@ endif()
     list(APPEND Slicer_REQUIRED_QT_MODULES X11Extras)
   endif()
 
-  find_package(Qt5 COMPONENTS Core LinguistTools QUIET)
+  find_package(Qt5 COMPONENTS Core QUIET)
   if(Slicer_BUILD_WEBENGINE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES
       WebEngine
@@ -662,9 +662,9 @@ endif()
   if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT OR Slicer_BUILD_APPLICATIONUPDATE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES Qml)
   endif()
-  #if(Slicer_BUILD_I18N_SUPPORT)
-  #  list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
-  #endif()
+  if(Slicer_BUILD_I18N_SUPPORT)
+    list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
+  endif()
   if(BUILD_TESTING)
     list(APPEND Slicer_REQUIRED_QT_MODULES Test)
   endif()

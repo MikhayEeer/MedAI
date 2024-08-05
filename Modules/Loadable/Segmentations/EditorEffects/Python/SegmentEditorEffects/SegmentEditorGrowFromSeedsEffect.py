@@ -9,8 +9,7 @@ import slicer
 from slicer.i18n import tr as _
 
 from SegmentEditorEffects import *
-from slicer.i18n import tr as _
-from slicer.i18n import translate
+
 
 class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoCompleteEffect):
     """AutoCompleteEffect is an effect that can create a full segmentation

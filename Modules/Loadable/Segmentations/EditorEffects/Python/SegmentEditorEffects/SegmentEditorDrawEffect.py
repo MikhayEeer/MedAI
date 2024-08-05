@@ -8,7 +8,7 @@ import slicer
 from slicer.i18n import tr as _
 
 from SegmentEditorEffects import *
-from slicer.i18n import translate
+
 
 class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
     """DrawEffect is a LabelEffect implementing the interactive draw

@@ -52,7 +52,6 @@ public slots:
   bool loadLanguageTools();
   void setExtensionUpdatesAvailable(bool updateAvailable);
 
-
 protected:
   void setup() override;
 
