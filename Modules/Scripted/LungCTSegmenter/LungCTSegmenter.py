@@ -384,7 +384,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       if not self.useAI:
           self.showCriticalError("Batch processing can only be done with 'Use AI' checked.")
       if self.createDetailedAirways and not (self.useAI and self.logic.engineAI.find("TotalSegmentator") == 0):
-          self.showCriticalError("Batch processing can not be used with  Local Threshold airway analysis.")
+          self.showCriticalError("Batch processing can not be used with  Local threshold airway analysis.")
       if not os.path.exists(self.batchProcessingInputDir):
           self.showCriticalError("Input folder does not exist.")
 
@@ -2639,7 +2639,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             self.medianLungs = (medianRightLung + medianLeftLung) / 2.
             print("Median radiodensity of lungs = {0:.2f}".format(self.medianLungs) + " HU")
 
-            if not self.segmentEditorWidget.effectByName("局部阈值分割"):
+            if not self.segmentEditorWidget.effectByName("Local threshold"):
                 slicer.util.errorDisplay("Please install 'SegmentEditorExtraEffects' extension using the extension manager.")
             else:
                 self.showStatusMessage('Airway segmentation ...')
@@ -2661,7 +2661,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.outputSegmentation.EndModify(wasModified)
 
                 self.segmentEditorNode.SetSelectedSegmentID("airways")
-                self.segmentEditorWidget.setActiveEffectByName("局部阈值分割")
+                self.segmentEditorWidget.setActiveEffectByName("Local threshold")
                 effect = self.segmentEditorWidget.activeEffect()             
                 
                 effect.setParameter("AutoThresholdMethod","OTSU")

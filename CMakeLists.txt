@@ -285,6 +285,9 @@ mark_as_superbuild(Slicer_BUILD_DIFFUSION_SUPPORT)
 option(Slicer_BUILD_I18N_SUPPORT "Build Slicer with Internationalization support" ON)
 mark_as_superbuild(Slicer_BUILD_I18N_SUPPORT)
 
+option(Slicer_BUILD_USAGE_LOGGING_SUPPORT "Build Slicer with support for software usage logging" ON)
+mark_as_superbuild(Slicer_BUILD_USAGE_LOGGING_SUPPORT)
+
 option(Slicer_BUILD_WEBENGINE_SUPPORT "Build Slicer with Qt WebEngine support" ON)
 mark_as_superbuild(Slicer_BUILD_WEBENGINE_SUPPORT)
 
@@ -512,7 +515,7 @@ set(Slicer_QRCC_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/Utilities/Scripts/qrcc.py" C
 #-----------------------------------------------------------------------------
 if(Slicer_BUILD_I18N_SUPPORT)
   set(Slicer_LANGUAGES
-    "zh_CN"
+    "fr"
     CACHE STRING "Semicolon separated list of supported Slicer languages. Expected format : language[_country] (both en and en_US are supported)."
     )
   mark_as_advanced(Slicer_LANGUAGES)
@@ -743,7 +746,8 @@ include(CTest)
 set(__conf_types "")
 if(CMAKE_CONFIGURATION_TYPES)
   # We need to pass the configuration type on the test command line.
-  set(__conf_types -C "$<CONFIG>")
+  #set(__conf_types -C "$<CONFIG>")
+  set(__conf_types -C "Release")
 endif()
 add_custom_target(Experimental ${CMAKE_CTEST_COMMAND} ${__conf_types} -D Experimental)
 

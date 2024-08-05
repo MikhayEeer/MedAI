@@ -129,7 +129,7 @@
          <bool>true</bool>
         </property>
         <property name="toolTip">
-         <string>Perform a 'Local Threshold' airway segmentation. </string>
+         <string>Perform a 'Local threshold' airway segmentation. </string>
         </property>
         <property name="text">
          <string>Airway segmentation</string>

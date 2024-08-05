@@ -1,11 +1,16 @@
 import os
 import vtk, qt, ctk, slicer
 import logging
+
 from SegmentEditorEffects import *
+
 import vtkITK
 import SimpleITK as sitk
 import sitkUtils
 import math
+
+import slicer
+from slicer.i18n import tr as _
 
 class SegmentEditorLocalThresholdEffect(SegmentEditorThresholdEffect):
   """ LocalThresholdEffect is an effect that can perform a localized threshold when the user ctrl-clicks on the image.
@@ -14,7 +19,8 @@ class SegmentEditorLocalThresholdEffect(SegmentEditorThresholdEffect):
 
   def __init__(self, scriptedEffect):
     SegmentEditorThresholdEffect.__init__(self, scriptedEffect)
-    scriptedEffect.name = '局部阈值分割'
+    scriptedEffect.name = "Local threshold"
+    scriptedEffect.title = _("Local threshold")
     self.previewSteps = 4
 
   def clone(self):
