@@ -422,6 +422,7 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
 
         f.RemoveAllControlPoints()
         slicer.modules.SegmentEditorWidget.editor.selectNextSegment()
+        slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().SetMaskSegmentID(segment_id_2)
 
         # 自定义相减逻辑
         modifierSegmentID=segment_id_1
@@ -476,6 +477,79 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
     logging.warning("my start cut lalalal ")
     self.onApplyMy()
     return
+
+    logging.warning("start cut lalalal")
+    if self.getNumberOfDefinedControlPoints() < 3:
+      logging.warning("Cannot apply, segment markup node has less than 3 control points")
+      return
+
+    points=self.getBoundPoints(points)
+    ext_points=self.extend_surface_1(points,1.4)
+
+    cur_segment_id=slicer.modules.SegmentEditorWidget.editor.currentSegmentID()
+    cur_segment=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GetSegment(cur_segment_id)
+    cur_segment_name=cur_segment.GetName()
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().SetMaskSegmentID(cur_segment_id)
+
+    segment_id_1=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GenerateUniqueSegmentID(cur_segment_id)
+    segment_id_2=slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GenerateUniqueSegmentID(cur_segment_id)
+
+    segment_1 = vtkSegmentationCore.vtkSegment()
+    segment_1.DeepCopy(cur_segment)
+    segment_2 = vtkSegmentationCore.vtkSegment()
+    segment_2.DeepCopy(cur_segment)
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().AddSegment(segment_1,segment_id_1)
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().AddSegment(segment_2,segment_id_2)
+
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GetSegment(segment_id_1).SetName(cur_segment_name+"-1")
+    slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().GetSegmentationNode().GetSegmentation().GetSegment(segment_id_2).SetName(cur_segment_name+"-2")
+    
+
+    f = self.segmentMarkupNode
+    points  = [f.GetNthControlPointPosition(i) for i in range(f.GetNumberOfControlPoints())]
+    
+    ext_points1=ext_points+self.extend_surface_2(ext_points,1.4,300)    
+    ext_points2=points+ext_points+self.extend_surface_2(ext_points,1.4,-300)
+
+    for p in ext_points1:
+      f.AddControlPoint([p[0],p[1],p[2]])
+
+    # Allow users revert to this state by clicking Undo
+    self.scriptedEffect.saveStateForUndo()
+
+    # This can be a long operation - indicate it to the user
+    qt.QApplication.setOverrideCursor(qt.Qt.WaitCursor)
+    self.observeSegmentation(False)
+    
+    for i in range(100):
+      slicer.modules.SegmentEditorWidget.editor.selectNextSegment()
+      seg_id=slicer.modules.SegmentEditorWidget.editor.currentSegmentID()
+      if seg_id==segment_1:
+        slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().SetMaskSegmentID(segment_1)
+
+        self.logic.cutSurfaceWithModel(self.segmentMarkupNode, self.segmentModel)
+        self.reset()
+        # Create model node prior to markup node for display order
+        self.createNewModelNode()
+        self.createNewMarkupNode()
+        self.fiducialPlacementToggle.setCurrentNode(self.segmentMarkupNode)
+
+        slicer.modules.SegmentEditorWidget.editor.activeEffect().parameterSetNode().SetMaskSegmentID(segment_2)
+
+        for p in ext_points2:
+          f.AddControlPoint([p[0],p[1],p[2]])
+
+        slicer.modules.SegmentEditorWidget.editor.selectNextSegment()
+        self.logic.cutSurfaceWithModel(self.segmentMarkupNode, self.segmentModel)
+
+        break
+      if seg_id==cur_segment_id:
+        break
+
+    self.observeSegmentation(True)
+    qt.QApplication.restoreOverrideCursor()
 
   def observeSegmentation(self, observationEnabled):
     import vtkSegmentationCorePython as vtkSegmentationCore

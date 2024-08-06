@@ -98,8 +98,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       self.lungThresholdMax = 0. 
       self.vesselThresholdMin = 0.
       self.vesselThresholdMax = 0.
-
-      
+ 
   
   class checkboxDetails: 
       def __init__(self, checkbox_name, uiID):
@@ -115,6 +114,17 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       return response.json()
     except requests.exceptions.RequestException as e:
         print(f"Unable to get counter values: {e}")
+    return None  # or some default values
+
+  def get_users(self, program):
+    try:
+      url = 'http://scientific-networks.de/get_users.php'
+      api_key = "WVnB2F7Uibt2TC"
+      params = {'api_key': api_key, 'prog': program, 'year': "2023"}
+      response = requests.get(url, params=params, timeout=5)
+      return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Unable to get users {e}")
     return None  # or some default values
 
   
@@ -142,6 +152,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       # in batch mode, without a graphical user interface.
       self.logic = LungCTSegmenterLogic()
 
+
       self.outputCheckBoxesDict = {
         "airways": self.ui.toggleAirwaysCheckBox, 
         "ribs right": self.ui.toggleRibsRightCheckBox,
@@ -167,21 +178,16 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         
         
       # use it
-      counter_values = self.get_counter_values()
-      if counter_values: 
-          usage_text = " LungCTSegmenter: " + counter_values['counter_lcts'] + " uses [man: " + counter_values['counter_man'] + " ai: " + counter_values['counter_ai'] + " lm: " + counter_values['counter_lm'] + " ts: " + counter_values['counter_ts'] + " ml: " + counter_values['counter_ml'] + " aw: " + counter_values['counter_aw'] + " ve: " + counter_values['counter_ve'] + "] since 5/23"       
-          self.ui.label_lcts.text = usage_text
-
+      
       # Populate comboboxes
       list = [_("very low detail"),_("low detail"), _("medium low detail"), _("medium detail"), _("high detail")]
-      self.ui.detailLevelComboBox.addItems(list)
+      self.ui.detailLevelComboBox.addItems(list);
 
       list = [
         "lungmask R231", 
         "lungmask LTRCLobes", 
         "lungmask LTRCLobes_R231", 
         "lungmask R231CovidWeb", 
-        "MONAILabel", 
         "TotalSegmentator lung basic", 
         "TotalSegmentator lung extended", 
         ]
@@ -322,6 +328,14 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       """
       Called each time the user opens a different module.
       """
+      if self.logic.outputSegmentation: 
+          segmentationNode = self.logic.outputSegmentation
+          segmentationNode.CreateDefaultDisplayNodes()
+          segmentationDisplayNode = segmentationNode.GetDisplayNode()
+          if not segmentationDisplayNode.GetVisibility2D():
+              segmentationDisplayNode.Visibility2DOn()
+              segmentationDisplayNode.Visibility3DOn()
+
       # Do not react to parameter node changes (GUI will be updated when the user enters into the module)
       self.removeObserver(self._parameterNode, vtk.vtkCommand.ModifiedEvent, self.updateGUIFromParameterNode)
       self.removeFiducialObservers()
@@ -384,7 +398,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       if not self.useAI:
           self.showCriticalError("Batch processing can only be done with 'Use AI' checked.")
       if self.createDetailedAirways and not (self.useAI and self.logic.engineAI.find("TotalSegmentator") == 0):
-          self.showCriticalError("Batch processing can not be used with  Local threshold airway analysis.")
+          self.showCriticalError("Batch processing can not be used with  Local Threshold airway analysis.")
       if not os.path.exists(self.batchProcessingInputDir):
           self.showCriticalError("Input folder does not exist.")
 
@@ -1416,6 +1430,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
     def engineAI(self, _name):
         self.getParameterNode().SetParameter("EngineAI", _name)
 
+    
     def brighterColor(self, rgb):
         import numpy as np
         scaleFactor = 1.5
@@ -1582,7 +1597,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
       intensityRange = [self.lungThresholdMin, self.lungThresholdMax]
       self.segmentEditorWidget.mrmlSegmentEditorNode().SetSourceVolumeIntensityMaskRange(intensityRange)
       # set effect
-      self.segmentEditorWidget.setActiveEffectByName("区域生长")
+      self.segmentEditorWidget.setActiveEffectByName("Grow from seeds")
       effect = self.segmentEditorWidget.activeEffect()
       # extent farther from control points than usual to capture lung edges
       effect.self().extentGrowthRatio = 0.5
@@ -1601,7 +1616,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
         if self.segmentEditorWidget:
             self.segmentEditorNode = self.segmentEditorWidget.mrmlSegmentEditorNode()
             # Cancel "Grow from seeds" (deletes preview segmentation)
-            self.segmentEditorWidget.setActiveEffectByName("区域生长")
+            self.segmentEditorWidget.setActiveEffectByName("Grow from seeds")
             effect = self.segmentEditorWidget.activeEffect()
             if effect:
                 effect.self().reset()
@@ -1849,7 +1864,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedEverywhere)
             self.showStatusMessage(f'Smoothing {segmentName}')
             self.segmentEditorNode.SetSelectedSegmentID(_segID)
-            self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
+            self.segmentEditorWidget.setActiveEffectByName("Smoothing")
             effect = self.segmentEditorWidget.activeEffect()
             effect.setParameter("SmoothingMethod","GAUSSIAN")
             effect.setParameter("GaussianStandardDeviationMm","2")
@@ -2088,7 +2103,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedEverywhere)
                 self.showStatusMessage(f'Smoothing {_outputName}')
                 self.segmentEditorNode.SetSelectedSegmentID(_segID)
-                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
+                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","GAUSSIAN")
                 effect.setParameter("GaussianStandardDeviationMm","2")
@@ -2144,8 +2159,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
         self.segmentEditorNode.SetOverwriteMode(slicer.vtkMRMLSegmentEditorNode.OverwriteNone) 
         self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedEverywhere)
         self.segmentEditorNode.SetSelectedSegmentID(selectedSegmentID)
-        #self.segmentEditorWidget.setActiveEffectByName("Logical operators")
-        self.segmentEditorWidget.setActiveEffectByName("逻辑运算")
+        self.segmentEditorWidget.setActiveEffectByName("Logical operators")
         effect = self.segmentEditorWidget.activeEffect()
         effect.setParameter("BypassMasking","1")
         effect.setParameter("ModifierSegmentID",modifierSegmentID)
@@ -2166,16 +2180,8 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             return False
 
 
-    def increment_counter(self, counter):
-        try:
-            url = 'http://scientific-networks.de/increment_counter.php'
-            api_key = "WVnB2F7Uibt2TC"
-            params = {'api_key': api_key, 'counter': counter}
-            requests.get(url, params=params,  timeout=5)
-        except requests.exceptions.RequestException as e:
-            print(f"Unable to increment counter: {e}")
 
-
+    
     def applySegmentation(self):
         if not self.segmentEditorWidget.activeEffect() and not self.useAI:
             # no region growing was done
@@ -2185,10 +2191,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
         startTime = time.time()
 
         # use it
-        self.increment_counter('counter_lcts')  # increment counter_lcts
-
         if not self.useAI: 
-            self.increment_counter('counter_man')
             self.showStatusMessage('Finalize region growing...')
             # Ensure closed surface representation is not present (would slow down computations)
             self.outputSegmentation.RemoveClosedSurfaceRepresentation()
@@ -2213,7 +2216,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             for i, segmentId in enumerate(segmentIds):
                 self.showStatusMessage(f'Filling holes ({i+1}/{len(segmentIds)})...')
                 self.segmentEditorNode.SetSelectedSegmentID(segmentId)
-                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
+                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","MORPHOLOGICAL_CLOSING")
                 effect.setParameter("KernelSizeMm","12")
@@ -2242,7 +2245,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             for i, segmentId in enumerate(segmentIds):
                 self.showStatusMessage(f'Smoothing ({i+1}/{len(segmentIds)})...')
                 self.segmentEditorNode.SetSelectedSegmentID(segmentId)
-                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
+                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","GAUSSIAN")
                 effect.setParameter("GaussianStandardDeviationMm","2")
@@ -2253,7 +2256,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 for i, segmentId in enumerate(segmentIds):
                     self.showStatusMessage(f'Final shrinking ({i+1}/{len(segmentIds)})...')
                     self.segmentEditorNode.SetSelectedSegmentID(segmentId)
-                    self.segmentEditorWidget.setActiveEffectByName("边缘尺寸")
+                    self.segmentEditorWidget.setActiveEffectByName("Margin")
                     effect = self.segmentEditorWidget.activeEffect()
                     effect.setParameter("MarginSizeMm","-1")
                     effect.self().onApply()
@@ -2269,11 +2272,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             # Install PyTorch
             if not hasattr(slicer.modules, 'pytorchutils'):
                 slicer.util.messageBox("AI segmentation requires the PyTorchUtils module in the PyTorch extension. Install Pytorch and restart Slicer.")
-                print("\nMikhay: LungCT Seg.py line 2272 hint-> hasattr(slicer.modules, 'pytorchutils')== false,"
-                      +"please repair!\n")
                 return
-            print("\nMikhay: LungCT Seg.py line 2272 hint-> hasattr(slicer.modules, 'pytorchutils')== true!\n"
-                   +"        This program can find slicer modules : pytorchutils!\n")
             import PyTorchUtils
             torchLogic = PyTorchUtils.PyTorchUtilsLogic()
             if not torchLogic.torchInstalled():
@@ -2281,8 +2280,18 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 torch = torchLogic.installTorch(askConfirmation=True)
                 if torch is None:
                   raise ValueError('Torch needs to be installed to use this module.')
-            else:
-                import torch
+            else:       
+                # torch is installed, check version
+                minimumTorchVersion = "2"
+                from packaging import version
+                print("Torch version:")
+                print(version.parse(torchLogic.torch.__version__))
+                if version.parse(torchLogic.torch.__version__) < version.parse(minimumTorchVersion):
+                    raise ValueError(f'PyTorch version {torchLogic.torch.__version__} is not compatible with this module.'
+                                     + f' Minimum required version is {minimumTorchVersion}. You can use "PyTorch Util" module to install PyTorch'
+                                     + f' with version requirement set to: >={minimumTorchVersion}')
+            
+            import torch
             if not torch.cuda.is_available():
                 logging.info('Pytorch CUDA is not available. AI will use CPU processing.')
                 if not slicer.util.confirmYesNoDisplay("Warning: Pytorch CUDA is not found on your system. The AI processing will last 3-10 minutes. Are you sure you want to continue AI segmentation?"):
@@ -2294,7 +2303,6 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 _doAI = True
                 logging.info('Pytorch CUDA is available. AI will use GPU processing.')
         if _doAI:
-            self.increment_counter('counter_ai')
             # use unsampled, original input volume and set geometry
             self.outputSegmentation.SetReferenceImageGeometryParameterFromVolumeNode(self.inputVolume)
             wasModified = self.outputSegmentation.StartModify()
@@ -2303,7 +2311,6 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             self.outputSegmentation.Modified()
             self.outputSegmentation.EndModify(wasModified)           
             if self.engineAI.find("lungmask") == 0:
-                self.increment_counter('counter_lm')
                 if self.updateAI:
                     if slicer.util.confirmYesNoDisplay("Updating lunkmask AI will restart 3D Slicer. Are you sure?"):
                         print("uninstalling lungmask ... ")
@@ -2411,11 +2418,19 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 logging.info("Segmentation done.")
 
             elif self.engineAI.find("TotalSegmentator") == 0:
-                self.increment_counter('counter_ts')
                 self.showStatusMessage(' Creating segmentations with TotalSegmentator ...')
                 tslogic = slicer.util.getModuleLogic('TotalSegmentator')
                 if not tslogic: 
                     raise RuntimeError("TotalSegmentator program logic not found - please install the TotalSegmentator extension.")
+
+                import shutil
+                import subprocess
+                versionInfo = subprocess.check_output([shutil.which('PythonSlicer'), "-m", "pip", "show", "TotalSegmentator"]).decode()
+                #print(versionInfo)      
+             
+                # Split the text into lines
+                #lines = versionInfo.split('\n')
+
 
                 self.tsOutputSegmentation = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLSegmentationNode', 'TotalSegmentator')
                 self.tsOutputExtendedSegmentation = None
@@ -2465,60 +2480,74 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 newSeg.DeepCopy(self.tsOutputSegmentation.GetSegmentation().GetSegment(tracheaSegID))
                 newSeg.SetName("trachea")
 
-                newSeg = slicer.vtkSegment()
-                newSeg.SetName("left erector spinae muscle")
-                tempSegmentationNode.GetSegmentation().AddSegment(newSeg,"left erector spinae muscle")
+                muscleSegID = None
+                self.referencemuscle = "no reference muscle found" 
                 muscleSegID = self.tsOutputSegmentation.GetSegmentation().GetSegmentIdBySegmentName("left erector spinae muscle")
-                newSeg.DeepCopy(self.tsOutputSegmentation.GetSegmentation().GetSegment(muscleSegID))
-                newSeg.SetName("left erector spinae muscle")
-                
+                if muscleSegID:              
+                    # TotalSegmentator v1
+                    self.referencemuscle = "left erector spinae muscle" 
+                else: 
+                    muscleSegID = self.tsOutputSegmentation.GetSegmentation().GetSegmentIdBySegmentName("left deep back muscle")
+                    if muscleSegID:
+                        # TotalSegmentator v2
+                        self.referencemuscle = "left deep back muscle" 
+                    
+                print("Reference: " + self.referencemuscle)
+                if muscleSegID:
+                    newSeg = slicer.vtkSegment()
+                    newSeg.SetName(self.referencemuscle)
+                    tempSegmentationNode.GetSegmentation().AddSegment(newSeg,self.referencemuscle)
+                    newSeg.DeepCopy(self.tsOutputSegmentation.GetSegmentation().GetSegment(muscleSegID))
+                    newSeg.SetName(self.referencemuscle)
+                    
                 # self.segmentEditorWidget.setSegmentationNode(self.outputSegmentation)
                 self.segmentEditorWidget.setSegmentationNode(tempSegmentationNode)
                 self.segmentEditorWidget.setSourceVolumeNode(self.inputVolume)
 
                 self.segmentEditorNode.SetSelectedSegmentID(tracheaSegID)
-                self.segmentEditorWidget.setActiveEffectByName("边缘尺寸")
+                self.segmentEditorWidget.setActiveEffectByName("Margin")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("MarginSizeMm","-1")
                 effect.self().onApply()
 
-                import SegmentStatistics
-                segStatLogic = SegmentStatistics.SegmentStatisticsLogic()
-              
-                segStatLogic.getParameterNode().SetParameter("Segmentation", tempSegmentationNode.GetID())
-                segStatLogic.getParameterNode().SetParameter("ScalarVolume", self.inputVolume.GetID())
-                segStatLogic.getParameterNode().SetParameter("LabelmapSegmentStatisticsPlugin.enabled", "True")
-                segStatLogic.getParameterNode().SetParameter("LabelmapSegmentStatisticsPlugin.centroid_ras.enabled", "True")
-                segStatLogic.getParameterNode().SetParameter("ScalarVolumeSegmentStatisticsPlugin.voxel_count.enabled", "False")
-                segStatLogic.getParameterNode().SetParameter("ScalarVolumeSegmentStatisticsPlugin.volume_mm3.enabled", "False")
-                segStatLogic.computeStatistics()
-                stats = segStatLogic.getStatistics()
-                
-                # Get mean HU of each segment, use trachea (air = -1000) and left erector spinae muscle (muscle = 30) for normalization
-                self.meanAir = 0.
-                self.meanMuscle = 0.
-                centroid_trachea = [0,0,0]
-                
-                segID = tempSegmentationNode.GetSegmentation().GetSegmentIdBySegmentName("trachea")
-                centroid_trachea = stats[segID,"LabelmapSegmentStatisticsPlugin.centroid_ras"]
-                self.meanAir = stats[segID,"ScalarVolumeSegmentStatisticsPlugin.mean"]
-                segID = tempSegmentationNode.GetSegmentation().GetSegmentIdBySegmentName("left erector spinae muscle")
-                self.meanMuscle = stats[segID,"ScalarVolumeSegmentStatisticsPlugin.mean"]
-                
-                print("Mean radiodensity of trachea = {0:.2f}".format(self.meanAir) + " HU")
-                
-                print("Mean radiodensity of left erector spinar muscle = {0:.2f}".format(self.meanMuscle) + " HU")
-                
+                if muscleSegID:
+                    import SegmentStatistics
+                    segStatLogic = SegmentStatistics.SegmentStatisticsLogic()
+             
+                    segStatLogic.getParameterNode().SetParameter("Segmentation", tempSegmentationNode.GetID())
+                    segStatLogic.getParameterNode().SetParameter("ScalarVolume", self.inputVolume.GetID())
+                    segStatLogic.getParameterNode().SetParameter("LabelmapSegmentStatisticsPlugin.enabled", "True")
+                    segStatLogic.getParameterNode().SetParameter("LabelmapSegmentStatisticsPlugin.centroid_ras.enabled", "True")
+                    segStatLogic.getParameterNode().SetParameter("ScalarVolumeSegmentStatisticsPlugin.voxel_count.enabled", "False")
+                    segStatLogic.getParameterNode().SetParameter("ScalarVolumeSegmentStatisticsPlugin.volume_mm3.enabled", "False")
+                    segStatLogic.computeStatistics()
+                    stats = segStatLogic.getStatistics()
+                    
+                    # Get mean HU of each segment, use trachea (air = -1000) and left deep back muscle (muscle = 30) for normalization
+                    self.meanAir = 0.
+                    self.meanMuscle = 0.
+                    centroid_trachea = [0,0,0]
+                    
+                    segID = tempSegmentationNode.GetSegmentation().GetSegmentIdBySegmentName("trachea")
+                    centroid_trachea = stats[segID,"LabelmapSegmentStatisticsPlugin.centroid_ras"]
+                    self.meanAir = stats[segID,"ScalarVolumeSegmentStatisticsPlugin.mean"]
+                    segID = tempSegmentationNode.GetSegmentation().GetSegmentIdBySegmentName(self.referencemuscle)
+                    self.meanMuscle = stats[segID,"ScalarVolumeSegmentStatisticsPlugin.mean"]
+                    
+                    print("Mean radiodensity of trachea = {0:.2f}".format(self.meanAir) + " HU")
+                    
+                    print("Mean radiodensity of deep back muscle muscle = {0:.2f}".format(self.meanMuscle) + " HU")
+                    
 
-                if self.calibrateData:
-                    self.showStatusMessage('Calibrate data ...')
-                    self.calibratedInputVolumeNode = slicer.modules.volumes.logic().CloneVolume(self.inputVolume, "CT_calibrated")
-                    voxels = slicer.util.arrayFromVolume(self.inputVolume)
-                    # voxels_standardized = self.standardize_ct_scan(voxels, mean_air, mean_muscle)
-                    voxels_calibrated = self.calibrate_ct_scan(voxels, self.meanAir, self.meanMuscle)
-                    slicer.util.updateVolumeFromArray(self.calibratedInputVolumeNode, voxels_calibrated)
-                    slicer.util.setSliceViewerLayers(self.calibratedInputVolumeNode)
-                    print(f"Calibrated volume created.")
+                    if self.calibrateData:
+                        self.showStatusMessage('Calibrate data ...')
+                        self.calibratedInputVolumeNode = slicer.modules.volumes.logic().CloneVolume(self.inputVolume, "CT_calibrated")
+                        voxels = slicer.util.arrayFromVolume(self.inputVolume)
+                        # voxels_standardized = self.standardize_ct_scan(voxels, mean_air, mean_muscle)
+                        voxels_calibrated = self.calibrate_ct_scan(voxels, self.meanAir, self.meanMuscle)
+                        slicer.util.updateVolumeFromArray(self.calibratedInputVolumeNode, voxels_calibrated)
+                        slicer.util.setSliceViewerLayers(self.calibratedInputVolumeNode)
+                        print(f"Calibrated volume created.")
                     
                 if self.detailedAirways:
                     # add one fiducial markup
@@ -2537,7 +2566,6 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 
             elif self.engineAI.find("MONAILabel") == 0:
 
-                self.increment_counter('counter_ml')
                 _runScripted = False
                 if _runScripted:
                    # This is not yet fully supported
@@ -2611,8 +2639,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
             self.addSegmentToSegment(self.outputSegmentation, "left lung", "lungs")
 
         if self.detailedAirways:
-        
-            self.increment_counter('counter_aw')
+
             segID = self.outputSegmentation.GetSegmentation().GetSegmentIdBySegmentName("other")
             if segID: 
                 self.outputSegmentation.GetSegmentation().RemoveSegment(segID)
@@ -2662,7 +2689,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
 
                 self.segmentEditorNode.SetSelectedSegmentID("airways")
                 self.segmentEditorWidget.setActiveEffectByName("Local threshold")
-                effect = self.segmentEditorWidget.activeEffect()             
+                effect = self.segmentEditorWidget.activeEffect()
                 
                 effect.setParameter("AutoThresholdMethod","OTSU")
                 effect.setParameter("AutoThresholdMode","SET_MIN_UPPER")
@@ -2670,9 +2697,11 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 effect.setParameter("FeatureSizeMm:","3")
                 effect.setParameter("HistogramSetLower","LOWER")
                 effect.setParameter("HistogramSetUpper","UPPER")
-                effect.setParameter("MaximumThreshold",self.medianLungs / 2)
+                effect.setParameter("MaximumThreshold",self.medianLungs)
                 effect.setParameter("MinimumThreshold",scalarRange[0])
-                                
+                print("MaximumThreshold: " + str(self.medianLungs))
+                print("MinimumThreshold: " + str(scalarRange[0]))
+
                 if self.airwaySegmentationDetailLevel == "very low detail":
                     effect.setParameter("MinimumDiameterMm","5")
                 if self.airwaySegmentationDetailLevel == "low detail":
@@ -2719,7 +2748,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 
                 self.showStatusMessage(f'Filling holes in airways ...')
                 self.segmentEditorNode.SetSelectedSegmentID("airways")
-                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
+                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","MORPHOLOGICAL_CLOSING")
                 effect.setParameter("KernelSizeMm","3")
@@ -2761,7 +2790,6 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
 
         self.maskedVolume = None
         if self.createVessels:
-            self.increment_counter('counter_ve')
             if not self.segmentEditorWidget.effectByName("实心包裹"):#Wrap Solidify
                 slicer.util.errorDisplay("Please install 'Wrap Solidify' extension using Extension Manager.")
             else:
@@ -2802,7 +2830,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
                 self.segmentEditorNode.SetMaskMode(slicer.vtkMRMLSegmentationNode.EditAllowedInsideSingleSegment)
 
                 self.showStatusMessage('Creating vessel mask with threshold effect ...')
-                self.segmentEditorWidget.setActiveEffectByName("阈值分割")#Threshold
+                self.segmentEditorWidget.setActiveEffectByName("Threshold")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("AutoThresholdMethod","OTSU")
                 effect.setParameter("AutoThresholdMode","SET_LOWER_MAX")
@@ -2815,7 +2843,7 @@ class LungCTSegmenterLogic(ScriptedLoadableModuleLogic):
 
                 self.showStatusMessage(f'Filling holes in vessel mask ...')
                 self.segmentEditorNode.SetSelectedSegmentID("vesselmask")
-                self.segmentEditorWidget.setActiveEffectByName("平滑化")#Smoothing
+                self.segmentEditorWidget.setActiveEffectByName("Smoothing")
                 effect = self.segmentEditorWidget.activeEffect()
                 effect.setParameter("SmoothingMethod","MORPHOLOGICAL_CLOSING")
                 effect.setParameter("KernelSizeMm","3")
