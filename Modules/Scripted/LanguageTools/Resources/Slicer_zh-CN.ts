@@ -67,58 +67,49 @@
 <context>
     <name>AirwaySegmentation</name>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="22"/>
         <source>Airway Segmentation</source>
-        <translation>气道分割</translation>
+        <translation type="vanished">气道分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="23"/>
         <source>Segmentation</source>
-        <translation>分割</translation>
+        <translation type="vanished">分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="29"/>
         <source>
 Segment airways on CT images from a single input point in the trachea.
 See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerAirwaySegmentation&quot;&gt;extension documentation&lt;/a&gt;.
 </source>
-        <translation>
+        <translation type="vanished">
 从气管中的单个输入点在CT图像上分割气道。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="38"/>
         <source>
 This file was originally developed by Pietro Nardelli, University College of Cork (UCC).
 </source>
-        <translation>
+        <translation type="vanished">
 气道分割。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="198"/>
         <source>Compute airway segmentation</source>
-        <translation>计算气道分割</translation>
+        <translation type="vanished">计算气道分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="201"/>
         <source>Select input CT volume and seed point</source>
-        <translation>选择输入的CT数据并设置种子点</translation>
+        <translation type="vanished">选择输入的CT数据并设置种子点</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="296"/>
         <source>Input volume or seed or output segmentation is invalid</source>
-        <translation>输入数据/种子点/输出分割无效</translation>
+        <translation type="vanished">输入数据/种子点/输出分割无效</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="300"/>
         <source>Processing started</source>
-        <translation>处理开始</translation>
+        <translation type="vanished">处理开始</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Airwaysegmentation/AirwaySegmentation.py" line="306"/>
         <source>Convolution kernel is unknown, STANDARD will be used.</source>
-        <translation>卷积核未知，将使用STANDARD。</translation>
+        <translation type="vanished">卷积核未知，将使用STANDARD。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Airwaysegmentation/Resources/UI/AirwaySegmentation.ui" line="17"/>
@@ -6452,73 +6443,60 @@ a = 仿射变换</translation>
 <context>
     <name>CropVolumeSequence</name>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="26"/>
         <source>Crop volume sequence</source>
-        <translation>裁剪体数据序列</translation>
+        <translation type="vanished">裁剪体数据序列</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="30"/>
         <source>This module can crop and resample a volume sequence to reduce its size for faster rendering and processing.</source>
-        <translation>该模块可以裁剪并重新采样体积序列以减小其尺寸，从而实现更快的渲染和处理。</translation>
+        <translation type="vanished">该模块可以裁剪并重新采样体积序列以减小其尺寸，从而实现更快的渲染和处理。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="42"/>
         <source>
 This file was originally developed by Andras Lasso
 </source>
-        <translation>
+        <translation type="vanished">
 这里是Crop体数据序列
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="56"/>
         <source>Parameters</source>
-        <translation>参数</translation>
+        <translation type="vanished">参数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="72"/>
         <source>Pick a sequence node of volumes that will be cropped and resampled.</source>
-        <translation>选择将要裁剪并重新采样的体积的序列节点。</translation>
+        <translation type="vanished">选择将要裁剪并重新采样的体积的序列节点。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="73"/>
         <source>Input volume sequence: </source>
-        <translation>输入体数据序列： </translation>
+        <translation type="vanished">输入体数据序列： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="85"/>
         <source>(Overwrite input)</source>
-        <translation>（覆盖输入）</translation>
+        <translation type="vanished">（覆盖输入）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="88"/>
         <source>Pick a sequence node where the cropped and resampled volumes will be stored.</source>
-        <translation>选择一个序列节点，用于存储裁剪和重采样的体积。</translation>
+        <translation type="vanished">选择一个序列节点，用于存储裁剪和重采样的体积。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="89"/>
         <source>Output volume sequence: </source>
-        <translation>输出体数据序列： </translation>
+        <translation type="vanished">输出体数据序列： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="104"/>
         <source>Select a crop volumes parameters.</source>
-        <translation>选择裁剪体积参数。</translation>
+        <translation type="vanished">选择裁剪体积参数。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="111"/>
         <source>Go to Crop Volume module to edit cropping parameters.</source>
-        <translation>进入裁剪体数据模块编辑裁剪参数。</translation>
+        <translation type="vanished">进入裁剪体数据模块编辑裁剪参数。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="114"/>
         <source>Crop volume settings: </source>
-        <translation>裁剪体数据设置： </translation>
+        <translation type="vanished">裁剪体数据设置： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="121"/>
         <source>Run the algorithm.</source>
-        <translation>运行算法。</translation>
+        <translation type="vanished">运行算法。</translation>
     </message>
     <message>
         <source>Sequences</source>
@@ -6532,751 +6510,602 @@ This file was originally developed by Andras Lasso
         <translation type="obsolete">信息学</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="32"/>
         <source>DICOM</source>
-        <translation>DICOM</translation>
+        <translation type="vanished">DICOM</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="36"/>
         <source>This module allows importing, loading, and exporting DICOM files, and sending receiving data using DICOM networking.</source>
-        <translation>该模块允许导入、加载和导出 DICOM 文件，以及使用 DICOM 网络发送接收数据。</translation>
+        <translation type="vanished">该模块允许导入、加载和导出 DICOM 文件，以及使用 DICOM 网络发送接收数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="38"/>
         <source>This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.</source>
-        <translation>该工作得到了Slicer的支持。</translation>
+        <translation type="vanished">该工作得到了Slicer的支持。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="247"/>
         <source>Add DICOM Data</source>
-        <translation>添加DICOM数据</translation>
+        <translation type="vanished">添加DICOM数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="278"/>
         <source>DICOM database</source>
-        <translation>DICOM数据库</translation>
+        <translation type="vanished">DICOM数据库</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="361"/>
         <source>Generic DICOM settings</source>
-        <translation>通用DICOM设置</translation>
+        <translation type="vanished">通用DICOM设置</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="364"/>
         <source>Database location:</source>
-        <translation>数据库位置：</translation>
+        <translation type="vanished">数据库位置：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="367"/>
         <source>DICOM general settings</source>
-        <translation>DICOM常规设置</translation>
+        <translation type="vanished">DICOM常规设置</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="377"/>
         <source>Determines whether referenced DICOM series are offered when loading DICOM, or the automatic behavior if interaction is disabled. Interactive selection of referenced series is the default selection</source>
-        <translation>确定加载 DICOM 时是否提供引用的 DICOM 系列，或者禁用交互时的自动行为。参考系列的交互式选择是默认选择</translation>
+        <translation type="vanished">确定加载 DICOM 时是否提供引用的 DICOM 系列，或者禁用交互时的自动行为。参考系列的交互式选择是默认选择</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="377"/>
         <source>Ask user</source>
-        <translation>询问用户</translation>
+        <translation type="vanished">询问用户</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="378"/>
         <source>Always</source>
-        <translation>总是</translation>
+        <translation type="vanished">总是</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="379"/>
         <source>Never</source>
-        <translation>从不</translation>
+        <translation type="vanished">从不</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="381"/>
         <source>Load referenced series:</source>
-        <translation>加载参考序列：</translation>
+        <translation type="vanished">加载参考序列：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="390"/>
         <source>Log more details during DICOM operations. Useful for investigating DICOM loading issues but may impact performance.</source>
-        <translation>记录 DICOM 操作过程中的更多细节。有助于调查 DICOM 加载问题，但可能会影响性能。</translation>
+        <translation type="vanished">记录 DICOM 操作过程中的更多细节。有助于调查 DICOM 加载问题，但可能会影响性能。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="390"/>
         <source>Detailed logging:</source>
-        <translation>详细记录：</translation>
+        <translation type="vanished">详细记录：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="400"/>
         <source>Determines the relative size of the thumbnails when using the visual DICOM browser</source>
-        <translation>确定使用可视 DICOM 浏览器时缩略图的相对大小</translation>
+        <translation type="vanished">确定使用可视 DICOM 浏览器时缩略图的相对大小</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="400"/>
         <source>Small</source>
-        <translation>小</translation>
+        <translation type="vanished">小</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="401"/>
         <source>Medium</source>
-        <translation>中</translation>
+        <translation type="vanished">中</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="402"/>
         <source>Large</source>
-        <translation>大</translation>
+        <translation type="vanished">大</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="404"/>
         <source>Thumbnails size:</source>
-        <translation>缩略图大小：</translation>
+        <translation type="vanished">缩略图大小：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="408"/>
         <source>DICOM settings</source>
-        <translation>DICOM设置</translation>
+        <translation type="vanished">DICOM设置</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="448"/>
         <source>DICOM Directory</source>
-        <translation>DICOM目录</translation>
+        <translation type="vanished">DICOM目录</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="449"/>
         <source>Load directory into DICOM database</source>
-        <translation>将目录载入 DICOM 数据库</translation>
+        <translation type="vanished">将目录载入 DICOM 数据库</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="543"/>
         <source>Could not create a DICOM database with default settings. Please create a new database or update the existing incompatible database using options shown in DICOM browser.</source>
-        <translation>无法使用默认设置创建 DICOM 数据库。请使用 DICOM 浏览器中显示的选项创建一个新数据库或更新现有的不兼容数据库。</translation>
+        <translation type="vanished">无法使用默认设置创建 DICOM 数据库。请使用 DICOM 浏览器中显示的选项创建一个新数据库或更新现有的不兼容数据库。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="554"/>
         <source>Import of files that have special (non-ASCII) characters in their names is not supported. It is recommended to move files into a different folder and retry. Try to import from current location anyway?</source>
-        <translation>不支持导入名称中包含特殊（非 ASCII）字符的文件。建议将文件移到其他文件夹后重试。还是尝试从当前位置导入？</translation>
+        <translation type="vanished">不支持导入名称中包含特殊（非 ASCII）字符的文件。建议将文件移到其他文件夹后重试。还是尝试从当前位置导入？</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="613"/>
         <source>Import options</source>
-        <translation>导入选项</translation>
+        <translation type="vanished">导入选项</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="618"/>
         <source>Copy imported files to DICOM database</source>
-        <translation>将导入的文件复制到 DICOM 数据库</translation>
+        <translation type="vanished">将导入的文件复制到 DICOM 数据库</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="620"/>
         <source>If enabled, all imported files are copied into the DICOM database. This is useful when importing from removable drives.</source>
-        <translation>如果启用，所有导入的文件都会复制到 DICOM 数据库中。这在从移动硬盘导入时非常有用。</translation>
+        <translation type="vanished">如果启用，所有导入的文件都会复制到 DICOM 数据库中。这在从移动硬盘导入时非常有用。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="627"/>
         <source>Show options</source>
-        <translation>显示选项</translation>
+        <translation type="vanished">显示选项</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="631"/>
         <source>Show experimental visual DICOM browser</source>
-        <translation>展示实验性的可视化 DICOM 浏览器</translation>
+        <translation type="vanished">展示实验性的可视化 DICOM 浏览器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="632"/>
         <source>If enabled, the DICOM browser widget will be substituted with new experimental visual browser.</source>
-        <translation>如果启用，DICOM 浏览器小部件将被新的实验性视觉浏览器取代。</translation>
+        <translation type="vanished">如果启用，DICOM 浏览器小部件将被新的实验性视觉浏览器取代。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="840"/>
         <source>not started</source>
-        <translation>未启动</translation>
+        <translation type="vanished">未启动</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="847"/>
         <source>starting</source>
-        <translation>开始</translation>
+        <translation type="vanished">开始</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="852"/>
         <source>unknown</source>
         <extracomment>used when port number is not defined</extracomment>
-        <translation>未知</translation>
+        <translation type="vanished">未知</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="852"/>
         <source>running at port %s</source>
-        <translation>在 %s 端口运行</translation>
+        <translation type="vanished">在 %s 端口运行</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="868"/>
         <source>Received DICOM file: {filename}</source>
-        <translation>接收到 DICOM 文件： {filename}</translation>
+        <translation type="vanished">接收到 DICOM 文件： {filename}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="944"/>
         <source>DICOM database is already empty.</source>
-        <translation>DICOM 数据库已空。</translation>
+        <translation type="vanished">DICOM 数据库已空。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="947"/>
         <source>Clear entire DICOM database</source>
-        <translation>清除整个DICOM数据库</translation>
+        <translation type="vanished">清除整个DICOM数据库</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="948"/>
         <source>Are you sure you want to delete all data and files copied into the database ({count} patients)?</source>
-        <translation>您确定要删除复制到数据库（{count} 患者）中的所有数据和文件吗？</translation>
+        <translation type="vanished">您确定要删除复制到数据库（{count} 患者）中的所有数据和文件吗？</translation>
     </message>
 </context>
 <context>
     <name>DICOMEnhancedUSVolumePlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMEnhancedUSVolumePlugin.py" line="26"/>
         <source>Enhanced US volume</source>
-        <translation>增加美国体数据</translation>
+        <translation type="vanished">增加美国体数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMEnhancedUSVolumePlugin.py" line="93"/>
         <source>Loading of this image type is experimental. Please verify image geometry and report any problem is found.</source>
-        <translation>此图像类型的加载是试验性的。请验证图像的几何形状并报告发现的任何问题。</translation>
+        <translation type="vanished">此图像类型的加载是试验性的。请验证图像的几何形状并报告发现的任何问题。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMEnhancedUSVolumePlugin.py" line="94"/>
         <source>Ultrasound volume</source>
-        <translation>超声波量</translation>
+        <translation type="vanished">超声波量</translation>
     </message>
 </context>
 <context>
     <name>DICOMGeAbusPlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMGeAbusPlugin.py" line="32"/>
         <source>GE ABUS</source>
-        <translation>通用电气公司</translation>
+        <translation type="vanished">通用电气公司</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMGeAbusPlugin.py" line="117"/>
         <source>GE Invenia ABUS</source>
-        <translation>通用电气公司英维尼阿博斯</translation>
+        <translation type="vanished">通用电气公司英维尼阿博斯</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMGeAbusPlugin.py" line="118"/>
         <source>Loading of this image type is experimental. Please verify image size and orientation and report any problem is found.</source>
-        <translation>此图像类型的加载是试验性的。请确认图像大小和方向，并报告发现的任何问题。</translation>
+        <translation type="vanished">此图像类型的加载是试验性的。请确认图像大小和方向，并报告发现的任何问题。</translation>
     </message>
 </context>
 <context>
     <name>DICOMImageSequencePlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="36"/>
         <source>Image sequence</source>
-        <translation>图像序列</translation>
+        <translation type="vanished">图像序列</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="173"/>
         <source>Image spacing may need to be calibrated for accurate size measurements.</source>
-        <translation>图像间距可能需要校准，以便准确测量尺寸。</translation>
+        <translation type="vanished">图像间距可能需要校准，以便准确测量尺寸。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="173"/>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="206"/>
         <source>{modality} image sequence</source>
-        <translation>{modality}图像序列</translation>
+        <translation type="vanished">{modality}图像序列</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMImageSequencePlugin.py" line="187"/>
         <source>{modality} image sequence ({count} planes)</source>
-        <translation>{modality}图像序列（{count}平面）</translation>
+        <translation type="vanished">{modality}图像序列（{count}平面）</translation>
     </message>
 </context>
 <context>
     <name>DICOMLib.DICOMBrowser</name>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="162"/>
         <source>DICOM Browser</source>
-        <translation>DICOM 浏览器</translation>
+        <translation type="vanished">DICOM 浏览器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="218"/>
         <source>Uncheck All</source>
-        <translation>全部取消选中</translation>
+        <translation type="vanished">全部取消选中</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="224"/>
         <source>Examine</source>
-        <translation>检查</translation>
+        <translation type="vanished">检查</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="230"/>
         <source>Load</source>
-        <translation>装载</translation>
+        <translation type="vanished">装载</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="233"/>
         <source>Load selected items into the scene</source>
-        <translation>将选定的项目加载到场景中</translation>
+        <translation type="vanished">将选定的项目加载到场景中</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="238"/>
         <source>Advanced</source>
-        <translation>高级</translation>
+        <translation type="vanished">高级</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="313"/>
         <source>The following data type is in your database:</source>
-        <translation>您的数据库中有以下数据类型：</translation>
+        <translation type="vanished">您的数据库中有以下数据类型：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="315"/>
         <source>The following data types are in your database:</source>
-        <translation>您的数据库中有以下数据类型：</translation>
+        <translation type="vanished">您的数据库中有以下数据类型：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="320"/>
         <source>The following extension is not installed, but may help you work with this data:</source>
-        <translation>未安装以下扩展，但可帮助您处理这些数据：</translation>
+        <translation type="vanished">未安装以下扩展，但可帮助您处理这些数据：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="322"/>
         <source>The following extensions are not installed, but may help you work with this data:</source>
-        <translation>未安装以下扩展，但可能有助于您使用这些数据：</translation>
+        <translation type="vanished">未安装以下扩展，但可能有助于您使用这些数据：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="326"/>
         <source>You can install extensions using the Extensions Manager option from the View menu.</source>
-        <translation>您可以使用 &quot;视图 &quot;菜单中的 &quot;扩展管理器 &quot;选项安装扩展。</translation>
+        <translation type="vanished">您可以使用 &quot;视图 &quot;菜单中的 &quot;扩展管理器 &quot;选项安装扩展。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="326"/>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="512"/>
         <source>DICOM</source>
-        <translation>DICOM</translation>
+        <translation type="vanished">DICOM</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="488"/>
         <source>{missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</source>
         <oldsource>Warning: {missing_file_count} of {total_file_count} selected files listed in the database cannot be found on disk.</oldsource>
-        <translation>警告： 在磁盘上找不到数据库中列出的 {total_file_count} 所选文件中的 {missing_file_count} 文件。</translation>
+        <translation type="vanished">警告： 在磁盘上找不到数据库中列出的 {total_file_count} 所选文件中的 {missing_file_count} 文件。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="495"/>
         <source>Checking {what}</source>
-        <translation>检查{what}</translation>
+        <translation type="vanished">检查{what}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="510"/>
         <source>Warning: {messages}</source>
-        <translation>警告： {messages}</translation>
+        <translation type="vanished">警告： {messages}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="511"/>
         <source>See python console for error message.</source>
-        <translation>有关错误信息，请参见 python 控制台。</translation>
+        <translation type="vanished">有关错误信息，请参见 python 控制台。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="621"/>
         <source>Loading {what}</source>
-        <translation>加载{what}</translation>
+        <translation type="vanished">加载{what}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="643"/>
         <source>DICOM loading</source>
-        <translation>DICOM 加载</translation>
+        <translation type="vanished">DICOM 加载</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="654"/>
         <source>Warning in DICOM plugin {load_type} when examining loadable {name}: {message}</source>
-        <translation>检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {message}</translation>
+        <translation type="vanished">检查可加载的 {name} 时，DICOM 插件 {load_type} 中出现警告： {message}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="659"/>
         <source>Warnings detected during load.  Examine data in Advanced mode for details.  Load anyway?</source>
-        <translation>加载过程中检测到警告。 请在 &quot;高级 &quot;模式下检查数据，了解详情。 无论如何都要加载？</translation>
+        <translation type="vanished">加载过程中检测到警告。 请在 &quot;高级 &quot;模式下检查数据，了解详情。 无论如何都要加载？</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="670"/>
         <source>Referenced datasets found</source>
-        <translation>找到的参考数据集</translation>
+        <translation type="vanished">找到的参考数据集</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="674"/>
         <source>The loaded DICOM objects contain references to other datasets you did not select for loading. Please select Yes if you would like to load the following referenced datasets, No if you only want to load the originally selected series, or Cancel to abort loading.</source>
-        <translation>加载的 DICOM 对象包含您未选择加载的其他数据集的引用。如果您想加载以下引用的数据集，请选择 &quot;是&quot;；如果您只想加载最初选择的系列，请选择 &quot;否&quot;；如果想放弃加载，请选择 &quot;取消&quot;。</translation>
+        <translation type="vanished">加载的 DICOM 对象包含您未选择加载的其他数据集的引用。如果您想加载以下引用的数据集，请选择 &quot;是&quot;；如果您只想加载最初选择的系列，请选择 &quot;否&quot;；如果想放弃加载，请选择 &quot;取消&quot;。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="684"/>
         <source>Remember choice and stop asking</source>
-        <translation>记住我的选择并不再询问</translation>
+        <translation type="vanished">记住我的选择并不再询问</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="686"/>
         <source>Can be changed later in Application Settings / DICOM</source>
-        <translation>可稍后在应用程序设置中更改/DICOM</translation>
+        <translation type="vanished">可稍后在应用程序设置中更改/DICOM</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="713"/>
         <source>References</source>
-        <translation>引用</translation>
+        <translation type="vanished">引用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="746"/>
         <source>DICOM Data</source>
-        <translation>DICOM数据</translation>
+        <translation type="vanished">DICOM数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="746"/>
         <source>Reader</source>
-        <translation>读者</translation>
+        <translation type="vanished">读者</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMLib/DICOMBrowser.py" line="746"/>
         <source>Warnings</source>
-        <translation>警告</translation>
+        <translation type="vanished">警告</translation>
     </message>
 </context>
 <context>
     <name>DICOMPatcher</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="26"/>
         <source>DICOM Patcher</source>
-        <translation>DICOM 补丁程序</translation>
+        <translation type="vanished">DICOM 补丁程序</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="30"/>
         <source>Fix common issues in DICOM files. This module may help fixing DICOM files that Slicer fails to import.</source>
-        <translation>修复 DICOM 文件中的常见问题。该模块可帮助修复 Slicer 无法导入的 DICOM 文件。</translation>
+        <translation type="vanished">修复 DICOM 文件中的常见问题。该模块可帮助修复 Slicer 无法导入的 DICOM 文件。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="40"/>
         <source>This file was originally developed by Andras Lasso, PerkLab.</source>
-        <translation>该文件最初由 PerkLab 的 Andras Lasso 开发。</translation>
+        <translation type="vanished">该文件最初由 PerkLab 的 Andras Lasso 开发。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="54"/>
         <source>Parameters</source>
-        <translation>参数</translation>
+        <translation type="vanished">参数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="62"/>
         <source>Input DICOM directory:</source>
-        <translation>输入 Dicom 目录：</translation>
+        <translation type="vanished">输入 Dicom 目录：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="67"/>
         <source>Output DICOM directory:</source>
-        <translation>输出Dicom目录：</translation>
+        <translation type="vanished">输出Dicom目录：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="72"/>
         <source>Replace file and folder names with automatically generated names. Fixes errors caused by file path containins special characters or being too long.</source>
-        <translation>用自动生成的名称替换文件和文件夹名称。修复因文件路径包含特殊字符或过长而导致的错误。</translation>
+        <translation type="vanished">用自动生成的名称替换文件和文件夹名称。修复因文件路径包含特殊字符或过长而导致的错误。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="73"/>
         <source>Normalize file names</source>
-        <translation>规范文件名</translation>
+        <translation type="vanished">规范文件名</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="80"/>
         <source>Generate patient name and ID from the first file in a directory and force all other files in the same directory to have the same patient name and ID. Enable this option if a separate patient directory is created for each patched file.</source>
-        <translation>从目录中的第一个文件生成患者姓名和 ID，并强制同一目录中的所有其他文件具有相同的患者姓名和 ID。如果要为每个补丁文件创建单独的患者目录，请启用此选项。</translation>
+        <translation type="vanished">从目录中的第一个文件生成患者姓名和 ID，并强制同一目录中的所有其他文件具有相同的患者姓名和 ID。如果要为每个补丁文件创建单独的患者目录，请启用此选项。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="81"/>
         <source>Force same patient name and ID in each directory</source>
-        <translation>在每个目录中强制使用相同的患者姓名和 ID</translation>
+        <translation type="vanished">在每个目录中强制使用相同的患者姓名和 ID</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="88"/>
         <source>Generate a new series instance UID for each directory and set it in all files in that same directory. Enable this option to force placing all frames in a folder into a single volume.</source>
-        <translation>为每个目录生成一个新的系列实例 UID，并将其设置在同一目录下的所有文件中。启用此选项可强制将文件夹中的所有帧放入一个卷中。</translation>
+        <translation type="vanished">为每个目录生成一个新的系列实例 UID，并将其设置在同一目录下的所有文件中。启用此选项可强制将文件夹中的所有帧放入一个卷中。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="89"/>
         <source>Force same series instance UID in each directory</source>
-        <translation>在每个目录中强制使用相同的系列实例 UID</translation>
+        <translation type="vanished">在每个目录中强制使用相同的系列实例 UID</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="95"/>
         <source>Generate missing patient, study, series IDs. It is assumed that all files in a directory belong to the same series. Fixes error caused by too aggressive anonymization or incorrect DICOM image converters.</source>
-        <translation>生成缺失的患者、研究和系列 ID。假定一个目录中的所有文件都属于同一个系列。修复因过于激进的匿名化或不正确的 DICOM 图像转换器而导致的错误。</translation>
+        <translation type="vanished">生成缺失的患者、研究和系列 ID。假定一个目录中的所有文件都属于同一个系列。修复因过于激进的匿名化或不正确的 DICOM 图像转换器而导致的错误。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="96"/>
         <source>Generate missing patient/study/series IDs</source>
-        <translation>生成缺失的患者/研究/系列 ID</translation>
+        <translation type="vanished">生成缺失的患者/研究/系列 ID</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="101"/>
         <source>Generate &apos;image position sequence&apos; for multi-frame files that only have &apos;SliceThickness&apos; field. Fixes error in Dolphin 3D CBCT scanners.</source>
-        <translation>为只有 &quot;切片厚度 &quot;字段的多帧文件生成 &quot;图像位置序列&quot;。修正 Dolphin 3D CBCT 扫描仪中的错误。</translation>
+        <translation type="vanished">为只有 &quot;切片厚度 &quot;字段的多帧文件生成 &quot;图像位置序列&quot;。修正 Dolphin 3D CBCT 扫描仪中的错误。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="102"/>
         <source>Generate slice position for multi-frame volumes</source>
-        <translation>为多帧卷生成切片位置</translation>
+        <translation type="vanished">为多帧卷生成切片位置</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="113"/>
         <source>If checked, then ultrasound image series are split by instance number. Useful if many ultrasound acquisitions appear in the same series.</source>
-        <translation>如果选中，则超声图像系列将按实例号拆分。如果同一系列中出现许多超声采集，则很有用。</translation>
+        <translation type="vanished">如果选中，则超声图像系列将按实例号拆分。如果同一系列中出现许多超声采集，则很有用。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="123"/>
         <source>If checked, then photometric interpretation of JPEG-compressed ultrasound will be set to YBR_FULL_422. This is useful for fixing inconsistency in JPEG-compressed images that used RGB as photometric interpretation due to ambiguity in the DICOM standard before CP156. See https://groups.google.com/g/comp.protocols.dicom/c/EPkbFOMBOhE and https://dicom.nema.org/medical/dicom/Final/cp156_ft.pdf for more details.</source>
-        <translation>如果选中，则 JPEG 压缩超声波的光度解释将设置为 YBR_FULL_422。这对于修复由于 CP156 之前的 DICOM 标准中的歧义而使用 RGB 作为光度解释的 JPEG 压缩图像中的不一致问题非常有用。有关更多详细信息，请参阅 https://groups.google.com/g/comp.protocols.dicom/c/EPkbFOMBOhE 和 https://dicom.nema.org/medical/dicom/Final/cp156_ft.pdf。</translation>
+        <translation type="vanished">如果选中，则 JPEG 压缩超声波的光度解释将设置为 YBR_FULL_422。这对于修复由于 CP156 之前的 DICOM 标准中的歧义而使用 RGB 作为光度解释的 JPEG 压缩图像中的不一致问题非常有用。有关更多详细信息，请参阅 https://groups.google.com/g/comp.protocols.dicom/c/EPkbFOMBOhE 和 https://dicom.nema.org/medical/dicom/Final/cp156_ft.pdf。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="146"/>
         <source>If checked, then some patient identifiable information will be removed from the patched DICOM files. There are many fields that can identify a patient, this function does not remove all of them.</source>
-        <translation>如果选中，则会从修补后的 DICOM 文件中删除一些可识别病人的信息。有许多字段可以识别病人，该功能不会删除所有字段。</translation>
+        <translation type="vanished">如果选中，则会从修补后的 DICOM 文件中删除一些可识别病人的信息。有许多字段可以识别病人，该功能不会删除所有字段。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="147"/>
         <source>Partially anonymize</source>
-        <translation>部分匿名</translation>
+        <translation type="vanished">部分匿名</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="154"/>
         <source>Fix DICOM files in input directory and write them to output directory</source>
-        <translation>修复输入目录中的 DICOM 文件并将其写入输出目录</translation>
+        <translation type="vanished">修复输入目录中的 DICOM 文件并将其写入输出目录</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="161"/>
         <source>Import DICOM files in output directory into the application&apos;s DICOM database</source>
-        <translation>将输出目录中的 DICOM 文件导入应用程序的 DICOM 数据库</translation>
+        <translation type="vanished">将输出目录中的 DICOM 文件导入应用程序的 DICOM 数据库</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="181"/>
         <source>Unexpected error.</source>
-        <translation>意外错误。</translation>
+        <translation type="vanished">意外错误。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="281"/>
         <source>Unspecified Patient {patientIndex}</source>
-        <translation>未指定病人 {patientIndex}</translation>
+        <translation type="vanished">未指定病人 {patientIndex}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="350"/>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="560"/>
         <source>Unspecified Patient</source>
-        <translation>不明病人</translation>
+        <translation type="vanished">不明病人</translation>
     </message>
 </context>
 <context>
     <name>DICOMScalarVolumePlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="37"/>
         <source>Scalar Volume</source>
-        <translation>标量体数据</translation>
+        <translation type="vanished">标量体数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="86"/>
         <source>Preferred back end.  Archetype was used by default in Slicer before June of 2017. Change this setting if data that previously loaded stops working (and report an issue).</source>
-        <translation>首选后端。 2017 年 6 月之前，Slicer 默认使用 Archetype。如果之前加载的数据停止工作，请更改此设置（并报告问题）。</translation>
+        <translation type="vanished">首选后端。 2017 年 6 月之前，Slicer 默认使用 Archetype。如果之前加载的数据停止工作，请更改此设置（并报告问题）。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="86"/>
         <source>DICOM reader approach:</source>
-        <translation>DICOM 阅读器方法：</translation>
+        <translation type="vanished">DICOM 阅读器方法：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="96"/>
         <source>Enable adding non-linear transform to regularize images acquired irregular geometry: non-rectilinear grid (such as tilted gantry CT acquisitions) and non-uniform slice spacing. If no regularization is applied then image may appear distorted if it was acquired with irregular geometry.</source>
-        <translation>启用添加非线性变换，对获取的不规则几何图形进行正则化处理：非直线网格（如倾斜龙门 CT 采集）和非均匀切片间距。如果不应用正则化，在不规则几何形状下获取的图像可能会出现失真。</translation>
+        <translation type="vanished">启用添加非线性变换，对获取的不规则几何图形进行正则化处理：非直线网格（如倾斜龙门 CT 采集）和非均匀切片间距。如果不应用正则化，在不规则几何形状下获取的图像可能会出现失真。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="96"/>
         <source>default (apply regularization transform)</source>
-        <translation>默认（应用正则化转换）</translation>
+        <translation type="vanished">默认（应用正则化转换）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="97"/>
         <source>none</source>
-        <translation>无</translation>
+        <translation type="vanished">无</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="98"/>
         <source>apply regularization transform</source>
-        <translation>应用正规化变换</translation>
+        <translation type="vanished">应用正规化变换</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="99"/>
         <source>harden regularization transform</source>
-        <translation>硬化正则化变换</translation>
+        <translation type="vanished">硬化正则化变换</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="102"/>
         <source>Acquisition geometry regularization:</source>
-        <translation>获取几何正则化：</translation>
+        <translation type="vanished">获取几何正则化：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="106"/>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="119"/>
         <source>DICOM examination settings</source>
-        <translation>DICOM 检查设置</translation>
+        <translation type="vanished">DICOM 检查设置</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="114"/>
         <source>Offer loading of individual slices or group of slices that were acquired at a specific time (content or trigger time). If this option is enabled then a large number of loadable items may be displayed in the Advanced section of DICOM browser.</source>
-        <translation>提供加载在特定时间（内容或触发时间）采集的单个切片或切片组。如果启用该选项，DICOM 浏览器的 &quot;高级 &quot;部分将显示大量可加载项目。</translation>
+        <translation type="vanished">提供加载在特定时间（内容或触发时间）采集的单个切片或切片组。如果启用该选项，DICOM 浏览器的 &quot;高级 &quot;部分将显示大量可加载项目。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="114"/>
         <source>Allow loading subseries by time:</source>
-        <translation>允许按时间加载子系列：</translation>
+        <translation type="vanished">允许按时间加载子系列：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="135"/>
         <source>First volume is {imageScalarType1}, but second is {imageScalarType2}</source>
-        <translation>第一卷是 {imageScalarType1}，但第二卷是 {imageScalarType2}</translation>
+        <translation type="vanished">第一卷是 {imageScalarType1}，但第二卷是 {imageScalarType2}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="140"/>
         <source>Pixel data mismatch</source>
-        <translation>像素数据不匹配</translation>
+        <translation type="vanished">像素数据不匹配</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="200"/>
         <source>{count} files, first file: {filename}</source>
-        <translation>{count} 文件，第一个文件：{filename}</translation>
+        <translation type="vanished">{count} 文件，第一个文件：{filename}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="306"/>
         <source>{count} files, grouped by {tag} = {value}. First file: {filename}</source>
-        <translation>按  {tag} = {value} 分组的 {count} 文件。第一个文件： {filename}</translation>
+        <translation type="vanished">按  {tag} = {value} 分组的 {count} 文件。第一个文件： {filename}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="344"/>
         <source>There is no pixel data attribute for the DICOM objects, but they might be readable as secondary capture images.</source>
-        <translation>DICOM 对象没有像素数据属性，但可以作为二次采集图像读取。</translation>
+        <translation type="vanished">DICOM 对象没有像素数据属性，但可以作为二次采集图像读取。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="606"/>
         <source>Creates a series of DICOM files from scalar volumes</source>
-        <translation>从标量卷创建一系列 DICOM 文件</translation>
+        <translation type="vanished">从标量卷创建一系列 DICOM 文件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="634"/>
         <source>Invalid subject hierarchy</source>
-        <translation>无效的主题层次结构</translation>
+        <translation type="vanished">无效的主题层次结构</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="638"/>
         <source>Series &apos;{itemName}&apos; cannot be exported</source>
-        <translation>无法导出系列&apos;{itemName}&apos;</translation>
+        <translation type="vanished">无法导出系列&apos;{itemName}&apos;</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="655"/>
         <source>Unable to get study for series &apos;{volumeName}&apos;</source>
-        <translation>无法获取&quot;{volumeName}&quot;系列的研究报告</translation>
+        <translation type="vanished">无法获取&quot;{volumeName}&quot;系列的研究报告</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="660"/>
         <source>Unable to get patient for series &apos;{volumeName}&apos;</source>
-        <translation>无法为系列&quot;{volumeName}&quot;获取患者信息</translation>
+        <translation type="vanished">无法为系列&quot;{volumeName}&quot;获取患者信息</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="709"/>
         <source>Empty modality for series &apos;{volumeName}&apos;</source>
-        <translation>系列&quot;{volumeName}&quot;的模式为空</translation>
+        <translation type="vanished">系列&quot;{volumeName}&quot;的模式为空</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="723"/>
         <source>A series already exists in the database by SeriesInstanceUID {seriesInstanceUID}.</source>
-        <translation>数据库中已经存在一个系列，该系列的名称为 系列实例 UID{seriesInstanceUID}。</translation>
+        <translation type="vanished">数据库中已经存在一个系列，该系列的名称为 系列实例 UID{seriesInstanceUID}。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMScalarVolumePlugin.py" line="735"/>
         <source>Creating DICOM files from scalar volume failed. See the application log for details.</source>
-        <translation>从标量卷创建 DICOM 文件失败。详情请查看应用程序日志。</translation>
+        <translation type="vanished">从标量卷创建 DICOM 文件失败。详情请查看应用程序日志。</translation>
     </message>
 </context>
 <context>
     <name>DICOMSlicerDataBundlePlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMSlicerDataBundlePlugin.py" line="28"/>
         <source>Slicer Data Bundle</source>
-        <translation>软件数据捆绑包</translation>
+        <translation type="vanished">软件数据捆绑包</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMSlicerDataBundlePlugin.py" line="76"/>
         <source>Contains a Slicer scene</source>
-        <translation>包含软件场景</translation>
+        <translation type="vanished">包含软件场景</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMSlicerDataBundlePlugin.py" line="169"/>
         <source>Slicer data bundle</source>
-        <translation>软件数据捆绑</translation>
+        <translation type="vanished">软件数据捆绑</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMSlicerDataBundlePlugin.py" line="170"/>
         <source>Creates a series that embeds the entire Slicer scene in a private DICOM tag</source>
-        <translation>创建一个系列，将整个 Slicer 场景嵌入到一个私有 DICOM 标签中</translation>
+        <translation type="vanished">创建一个系列，将整个 Slicer 场景嵌入到一个私有 DICOM 标签中</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMSlicerDataBundlePlugin.py" line="182"/>
         <source>Invalid subject hierarchy</source>
-        <translation>无效的主题层次结构</translation>
+        <translation type="vanished">无效的主题层次结构</translation>
     </message>
 </context>
 <context>
     <name>DICOMVolumeSequencePlugin</name>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="26"/>
         <source>Volume Sequence</source>
-        <translation>体数据序列</translation>
+        <translation type="vanished">体数据序列</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="96"/>
         <source>Creates a series of DICOM files from volume sequences</source>
-        <translation>从卷序列创建一系列 DICOM 文件</translation>
+        <translation type="vanished">从卷序列创建一系列 DICOM 文件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="101"/>
         <source>Volume sequence of {count} frames</source>
-        <translation>{计数}帧的卷序列</translation>
+        <translation type="vanished">{计数}帧的卷序列</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="102"/>
         <source>CT</source>
-        <translation>CT</translation>
+        <translation type="vanished">CT</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="103"/>
         <source>Unknown manufacturer</source>
-        <translation>未知制造商</translation>
+        <translation type="vanished">未知制造商</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="104"/>
         <source>Unknown model</source>
-        <translation>未知型号</translation>
+        <translation type="vanished">未知型号</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="158"/>
         <source>Invalid subject hierarchy</source>
-        <translation>无效的主题层次结构</translation>
+        <translation type="vanished">无效的主题层次结构</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="162"/>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="168"/>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="174"/>
         <source>Series &apos;{itemName}&apos; cannot be exported as volume sequence</source>
-        <translation>系列&quot;{itemName}&quot;无法作为卷序列导出</translation>
+        <translation type="vanished">系列&quot;{itemName}&quot;无法作为卷序列导出</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="181"/>
         <source>Unable to get study for series &apos;{volumeName}&apos;</source>
-        <translation>无法获取&quot;{volumeName}&quot;系列的研究报告</translation>
+        <translation type="vanished">无法获取&quot;{volumeName}&quot;系列的研究报告</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="186"/>
         <source>Unable to get patient for series &apos;{volumeName}&apos;</source>
-        <translation>无法为系列&quot;{volumeName}&quot;获取患者信息</translation>
+        <translation type="vanished">无法为系列&quot;{volumeName}&quot;获取患者信息</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPlugins/DICOMVolumeSequencePlugin.py" line="215"/>
         <source>Empty modality for series &apos;{volumeName}&apos;</source>
-        <translation>系列&quot;{volumeName}&quot;的模式为空</translation>
+        <translation type="vanished">系列&quot;{volumeName}&quot;的模式为空</translation>
     </message>
 </context>
 <context>
@@ -7319,92 +7148,74 @@ This file was originally developed by Andras Lasso
 <context>
     <name>DataProbe</name>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="31"/>
         <source>
 The DataProbe module is used to get information about the current RAS position being
 indicated by the mouse position.
 </source>
-        <translation>
+        <translation type="vanished">
 DataProbe 模块用于获取当前 RAS 位置的信息。
 由鼠标位置指示的当前 RAS 位置信息。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="35"/>
         <source>This work is supported by NA-MIC, NAC, NCIGT, NIH U24 CA180918 (PIs Kikinis and Fedorov) and the Slicer Community.</source>
-        <translation>这项工作得到了NA-MIC、NAC、BIRN、NCIGT、CTSC和Slicer社区的支持。</translation>
+        <translation type="vanished">这项工作得到了NA-MIC、NAC、BIRN、NCIGT、CTSC和Slicer社区的支持。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="134"/>
         <source>No volume</source>
-        <translation>无数据</translation>
+        <translation type="vanished">无数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="137"/>
         <source>No Image</source>
-        <translation>无图像</translation>
+        <translation type="vanished">无图像</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="141"/>
         <source>Out of Frame</source>
-        <translation>帧外</translation>
+        <translation type="vanished">帧外</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="145"/>
         <source>Unknown</source>
-        <translation>未知</translation>
+        <translation type="vanished">未知</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="157"/>
         <source>Out of bounds</source>
-        <translation>出界</translation>
+        <translation type="vanished">出界</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="160"/>
         <source>No Point Data</source>
-        <translation>无点数据</translation>
+        <translation type="vanished">无点数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="164"/>
         <source>No Tensor Data</source>
-        <translation>无张量数据</translation>
+        <translation type="vanished">无张量数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="182"/>
         <source>{numberOfComponents} components</source>
-        <translation>{numberOfComponents} 组件</translation>
+        <translation type="vanished">{numberOfComponents} 组件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="294"/>
         <source>Data Probe: {sceneName}</source>
-        <translation>坐标探针: {sceneName}</translation>
+        <translation type="vanished">坐标探针: {sceneName}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="25"/>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="298"/>
         <source>Data Probe</source>
-        <translation>数据探针</translation>
+        <translation type="vanished">数据探针</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="327"/>
         <source>None</source>
-        <translation>无</translation>
+        <translation type="vanished">无</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="410"/>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="500"/>
         <source>Go to the DataProbe module for more information and options</source>
-        <translation>转到坐标探针模块了解更多的信息和选项</translation>
+        <translation type="vanished">转到坐标探针模块了解更多的信息和选项</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="424"/>
         <source>Show Zoomed Slice</source>
-        <translation>显示缩放切片</translation>
+        <translation type="vanished">显示缩放切片</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="541"/>
         <source>Slice View Annotations Settings</source>
-        <translation>切片视图注释设置</translation>
+        <translation type="vanished">切片视图注释设置</translation>
     </message>
 </context>
 <context>
@@ -7458,9 +7269,8 @@ Do you want to proceed ? Fees needed if you continue to operate.
 <context>
     <name>Endoscopy</name>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="33"/>
         <source>Endoscopy</source>
-        <translation>内窥镜检查</translation>
+        <translation type="vanished">内窥镜检查</translation>
     </message>
     <message>
         <source>
@@ -7483,7 +7293,6 @@ The View Angle provides is used to approximate the optics of an endoscopy system
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="53"/>
         <source>
 Create or import a markups curve.
 Pick the Camera to use for either playing the flythrough or editing associated keyframes.
@@ -7496,7 +7305,7 @@ The Frame Delay slider slows down the animation by adding more time between fram
 The View Angle provides is used to approximate the optics of an endoscopy system.
 You can save the camera position at any point by clicking &quot;Save camera position&quot;.
 </source>
-        <translation>
+        <translation type="vanished">
 创建或导入标记曲线。
 选择用于播放飞越或编辑相关关键帧的相机。
 选择用于播放飞越的相机。
@@ -7510,200 +7319,117 @@ You can save the camera position at any point by clicking &quot;Save camera posi
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="67"/>
         <source>
 This work is supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colonoscopy
 (See &lt;a&gt;https://www.na-mic.org/Wiki/index.php/NA-MIC_NCBC_Collaboration:NA-MIC_virtual_colonoscopy&lt;/a&gt;)
 NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
 </source>
-        <translation>
+        <translation type="vanished">
 内窥镜检查。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="107"/>
         <source>Path</source>
-        <translation>路径</translation>
+        <translation type="vanished">路径</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="116"/>
         <source>Select a camera that will fly along this path.</source>
-        <translation>选择沿着该路径行进的摄像头。</translation>
+        <translation type="vanished">选择沿着该路径行进的摄像头。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="121"/>
         <source>Camera:</source>
-        <translation>摄像机：</translation>
+        <translation type="vanished">摄像机：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="128"/>
         <source>Select a curve to define control points for the path.</source>
-        <translation>选择一条曲线来定义路径的控制点。</translation>
+        <translation type="vanished">选择一条曲线来定义路径的控制点。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="133"/>
         <source>Curve to modify:</source>
-        <translation>要修改的曲线：</translation>
+        <translation type="vanished">要修改的曲线：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="140"/>
-        <source>Flythrough</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="148"/>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="418"/>
         <source>Play flythrough</source>
-        <translation>播放flythrough</translation>
+        <translation type="vanished">播放flythrough</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="150"/>
         <source>Start or stop the flythrough animation.</source>
-        <translation>开始或者停止flythrough动画。</translation>
+        <translation type="vanished">开始或者停止flythrough动画。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="158"/>
         <source>The current frame along the path.</source>
-        <translation>沿路径的当前帧。</translation>
+        <translation type="vanished">沿路径的当前帧。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="160"/>
         <source>Frame:</source>
-        <translation>帧：</translation>
+        <translation type="vanished">帧：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="166"/>
         <source>Number of frames to skip.</source>
-        <translation>需要跳过的帧数。</translation>
+        <translation type="vanished">需要跳过的帧数。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="170"/>
         <source>Frame skip:</source>
-        <translation>跳过帧：</translation>
+        <translation type="vanished">跳过帧：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="175"/>
         <source>Time delay between animation frames.</source>
-        <translation>动画帧之间的时间延迟。</translation>
+        <translation type="vanished">动画帧之间的时间延迟。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="181"/>
         <source>Frame delay:</source>
-        <translation>帧延迟：</translation>
+        <translation type="vanished">帧延迟：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="186"/>
-        <source>Field of view of the camera in degrees.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="191"/>
-        <source>View Angle:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="197"/>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="357"/>
-        <source>Save Keyframe Orientation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="199"/>
-        <source>Save the camera orientation for this frame.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="205"/>
-        <source>Delete Keyframe Orientation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="207"/>
-        <source>Delete the saved camera orientation for this frame.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="216"/>
         <source>First</source>
-        <translation>第一帧</translation>
+        <translation type="vanished">第一帧</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="218"/>
         <source>Go to the first user-supplied keyframe.</source>
-        <translation>转到第一个用户提供的关键帧。</translation>
+        <translation type="vanished">转到第一个用户提供的关键帧。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="223"/>
         <source>Back</source>
-        <translation>前一帧</translation>
+        <translation type="vanished">前一帧</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="225"/>
         <source>Go to the previous user-supplied keyframe.</source>
-        <translation>转到上一个用户提供的关键帧。</translation>
+        <translation type="vanished">转到上一个用户提供的关键帧。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="230"/>
         <source>Next</source>
-        <translation>下一帧</translation>
+        <translation type="vanished">下一帧</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="232"/>
         <source>Go to the next user-supplied keyframe.</source>
-        <translation>转到下一个用户提供的关键帧。</translation>
+        <translation type="vanished">转到下一个用户提供的关键帧。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="237"/>
         <source>Last</source>
-        <translation>最后帧</translation>
+        <translation type="vanished">最后帧</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="239"/>
         <source>Go to the last user-supplied keyframe.</source>
-        <translation>转到最后一个用户提供的关键帧。</translation>
+        <translation type="vanished">转到最后一个用户提供的关键帧。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="250"/>
         <source>Advanced</source>
-        <translation>高级</translation>
+        <translation type="vanished">高级</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="262"/>
-        <source>Select or create the destination model for exporting the flythrough path.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="268"/>
         <source>Output Model:</source>
-        <translation>输出模型：</translation>
+        <translation type="vanished">输出模型：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="272"/>
         <source>Export as model</source>
-        <translation>作为模型导出</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="274"/>
-        <source>Export the current flythrough path as a model.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="356"/>
-        <source>Update Keyframe Orientation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="411"/>
-        <source>Stop flythrough</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">作为模型导出</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizard</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="48"/>
         <source>Extension Wizard</source>
-        <translation>扩展向导页</translation>
+        <translation type="vanished">扩展向导页</translation>
     </message>
     <message>
         <source>Developer Tools</source>
@@ -7730,334 +7456,194 @@ This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="53"/>
         <source>This module provides tools to create and manage extensions from within Slicer.</source>
-        <translation>该模块提供在 MedAI 内部创建和管理扩展的工具。</translation>
+        <translation type="vanished">该模块提供在 MedAI 内部创建和管理扩展的工具。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="54"/>
         <source>This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.</source>
-        <translation>该工作得到了Slicer的支持。</translation>
+        <translation type="vanished">该工作得到了Slicer的支持。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="125"/>
         <source>Extension Tools</source>
-        <translation>扩展工具</translation>
+        <translation type="vanished">扩展工具</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="127"/>
         <source>Create Extension</source>
-        <translation>创建扩展</translation>
+        <translation type="vanished">创建扩展</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="130"/>
         <source>Select Extension</source>
-        <translation>选择扩展</translation>
+        <translation type="vanished">选择扩展</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="142"/>
         <source>Extension Editor</source>
-        <translation>扩展编辑器</translation>
+        <translation type="vanished">扩展编辑器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="156"/>
         <source>Add Module to Extension</source>
-        <translation>添加模块到扩展</translation>
+        <translation type="vanished">添加模块到扩展</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="160"/>
         <source>Edit Extension Metadata</source>
-        <translation>编辑扩展元数据</translation>
+        <translation type="vanished">编辑扩展元数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="165"/>
         <source>Name:</source>
-        <translation>名称：</translation>
+        <translation type="vanished">名称：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="166"/>
         <source>Location:</source>
-        <translation>位置：</translation>
+        <translation type="vanished">位置：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="167"/>
         <source>Repository:</source>
-        <translation>仓库：</translation>
+        <translation type="vanished">仓库：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="168"/>
         <source>Contents:</source>
-        <translation>内容：</translation>
+        <translation type="vanished">内容：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="247"/>
         <source>An error occurred while trying to create the extension.</source>
-        <translation>尝试创建扩展时发生错误。</translation>
+        <translation type="vanished">尝试创建扩展时发生错误。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="262"/>
         <source>Select Extension...</source>
-        <translation>选择扩展...</translation>
+        <translation type="vanished">选择扩展...</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="288"/>
         <source>Failed to open extension {path}.</source>
-        <translation>无法打开扩展 {path} 。</translation>
+        <translation type="vanished">无法打开扩展 {path} 。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="303"/>
         <source>(none)</source>
-        <translation>(无)</translation>
+        <translation type="vanished">(无)</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="305"/>
-        <source>(local git repository)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="308"/>
-        <source>(unknown local repository)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="386"/>
-        <source>{count} modules could not be registered</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="388"/>
-        <source>The {name} module could not be registered</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="394"/>
         <source>Module loading failed</source>
-        <translation>模块加载失败</translation>
+        <translation type="vanished">模块加载失败</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="404"/>
-        <source>The module factory manager reported an error. One or more of the requested module(s) and/or dependencies thereof may not have been loaded.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="404"/>
-        <source>Error loading module(s)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="427"/>
-        <source>An error occurred while trying to create the module.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="440"/>
-        <source>An error occurred while adding the module to the extension.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="445"/>
-        <source>The module has been created, but the extension CMakeLists.txt could not be updated. In order to include the module in the extension build, you will need to update the extension CMakeLists.txt by hand.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="492"/>
         <source>Python scripted modules</source>
-        <translation>Python脚本模块</translation>
+        <translation type="vanished">Python脚本模块</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="493"/>
         <source>Add Python scripted modules to the application</source>
-        <translation>向应用程序添加 Python 脚本模块</translation>
+        <translation type="vanished">向应用程序添加 Python 脚本模块</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizardLib.CreateComponentDialog</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="23"/>
         <source>Name:</source>
-        <translation>名称：</translation>
+        <translation type="vanished">名称：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="30"/>
         <source>Type:</source>
-        <translation>类型：</translation>
+        <translation type="vanished">类型：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="34"/>
         <source>Destination:</source>
-        <translation>目标：</translation>
+        <translation type="vanished">目标：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="65"/>
-        <source>{type} name may not be empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="66"/>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="73"/>
-        <source>Cannot create {type}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="72"/>
         <source>Destination must be an existing directory.</source>
-        <translation>目标必须是现有目录。</translation>
+        <translation type="vanished">目标必须是现有目录。</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizardLib.DirectoryListWidget</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/DirectoryListWidget.py" line="23"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="vanished">添加</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/DirectoryListWidget.py" line="28"/>
         <source>Remove</source>
-        <translation>移除</translation>
+        <translation type="vanished">移除</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/DirectoryListWidget.py" line="48"/>
         <source>Select folder</source>
-        <translation>选择目录</translation>
+        <translation type="vanished">选择目录</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizardLib.EditExtensionMetadataDialog</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="29"/>
         <source>Name:</source>
-        <translation>名称：</translation>
+        <translation type="vanished">名称：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="32"/>
         <source>Category:</source>
-        <translation>类别：</translation>
+        <translation type="vanished">类别：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="35"/>
         <source>Description:</source>
-        <translation>描述：</translation>
+        <translation type="vanished">描述：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="41"/>
         <source>Name</source>
-        <translation>姓名</translation>
+        <translation type="vanished">姓名</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="41"/>
         <source>Organization</source>
-        <translation>组织</translation>
+        <translation type="vanished">组织</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="42"/>
         <source>Contributors:</source>
-        <translation>贡献者：</translation>
+        <translation type="vanished">贡献者：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="73"/>
         <source>Extension name may not be empty.</source>
-        <translation>扩展名称不能为空。</translation>
+        <translation type="vanished">扩展名称不能为空。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="73"/>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="78"/>
         <source>Invalid metadata</source>
-        <translation>元数据无效</translation>
+        <translation type="vanished">元数据无效</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditExtensionMetadataDialog.py" line="77"/>
         <source>Extension description may not be empty.</source>
-        <translation>扩展描述不能为空</translation>
+        <translation type="vanished">扩展描述不能为空</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizardLib.EditableTreeWidget</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="31"/>
-        <source>(New item)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="52"/>
         <source>Move &amp;Up</source>
-        <translation>&amp;上移</translation>
+        <translation type="vanished">&amp;上移</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="57"/>
         <source>Move &amp;Down</source>
-        <translation>&amp;下移</translation>
+        <translation type="vanished">&amp;下移</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="62"/>
         <source>&amp;Delete</source>
-        <translation>&amp;删除</translation>
+        <translation type="vanished">&amp;删除</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="130"/>
         <source>Anonymous</source>
-        <translation>匿名的</translation>
+        <translation type="vanished">匿名的</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizardLib.LoadModulesDialog</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="45"/>
         <source>Enable developer mode</source>
-        <translation>启用开发者模式</translation>
+        <translation type="vanished">启用开发者模式</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="50"/>
-        <source>Sets the &apos;Developer mode&apos; application option to enabled. Enabling developer mode is recommended while developing scripted modules, as it makes the Reload and Testing section displayed in the module user interface.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="90"/>
-        <source>Add selected module to &apos;Additional module paths&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="94"/>
-        <source>Add selected modules to &apos;Additional module paths&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="118"/>
-        <source>The following modules can be loaded. Would you like to load them now?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="121"/>
-        <source>The following module can be loaded. Would you like to load it now?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="122"/>
         <source>At least one module must be provided</source>
-        <translation>必须至少提供一个模块</translation>
+        <translation type="vanished">必须至少提供一个模块</translation>
     </message>
 </context>
 <context>
     <name>ExtensionWizardLib.SettingsPanel</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="26"/>
-        <source>(Unavailable)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="28"/>
         <source>Built-in template path:</source>
-        <translation>内置模板路径：</translation>
+        <translation type="vanished">内置模板路径：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="31"/>
         <source>Additional template paths:</source>
-        <translation>附加模板路径：</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="37"/>
-        <source>Additional template paths for {category}:</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">附加模板路径：</translation>
     </message>
 </context>
 <context>
@@ -8071,141 +7657,114 @@ This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
 <context>
     <name>ImportItkSnapLabel</name>
     <message>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="18"/>
         <source>Import ITK-Snap label description</source>
-        <translation>导入ITK-Snap标签描述</translation>
+        <translation type="vanished">导入ITK-Snap标签描述</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="22"/>
         <source>Load ITK-Snap label description file (.label or .txt).</source>
-        <translation>加载ITK-Snap标签描述文件（.label或.txt）。</translation>
+        <translation type="vanished">加载ITK-Snap标签描述文件（.label或.txt）。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="44"/>
         <source>ITK-Snap label description file</source>
-        <translation>ITK-Snap标签描述文件</translation>
+        <translation type="vanished">ITK-Snap标签描述文件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="73"/>
         <source>Segmentation</source>
-        <translation type="unfinished">分割</translation>
+        <translation type="obsolete">分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="88"/>
         <source>Failed to load file: </source>
-        <translation>无法加载文件： </translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="143"/>
-        <source>Syntax error in line {line}</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">无法加载文件： </translation>
     </message>
 </context>
 <context>
     <name>LanguageTools</name>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="22"/>
         <source>Language Tools</source>
-        <translation>语言工具</translation>
+        <translation type="vanished">语言工具</translation>
     </message>
     <message>
         <source>Utilities</source>
         <translation type="vanished">实用工具</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="29"/>
         <source>
 This module can build translation files and install them locally. It is useful for creating and testing translations.
 See more information in the &lt;a href=&quot;https://github.com/Slicer/SlicerLanguagePacks&quot;&gt;extension&apos;s documentation&lt;/a&gt;.
 </source>
-        <translation>
+        <translation type="vanished">
 该模块可以构建翻译文件并在本地安装他们。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="39"/>
         <source>
 Developed of this module was partially funded by CZI EOSS grant.
 </source>
-        <translation>
+        <translation type="vanished">
 语言翻译工具。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="141"/>
         <source>Failed to extract any text from widget</source>
-        <translation>无法从小部件中提取任何文本</translation>
+        <translation type="vanished">无法从小部件中提取任何文本</translation>
     </message>
     <message>
         <source>Translation lookup</source>
         <translation type="vanished">翻译查找</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="156"/>
         <source>Click on the text to find it on the translation website:
 
 {links}</source>
-        <translation>点击文本即可在翻译网站上找到它：
+        <translation type="vanished">点击文本即可在翻译网站上找到它：
 
 {links}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="174"/>
         <source>Failed to extract any text from: {object}</source>
-        <translation>无法从 {object} 中提取任何文本</translation>
+        <translation type="vanished">无法从 {object} 中提取任何文本</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="418"/>
         <source>Update failed.</source>
-        <translation>更新失败。</translation>
+        <translation type="vanished">更新失败。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="445"/>
         <source>Update completed! Select application language and restart the application to see the results.</source>
-        <translation>更新成功！选择应用程序语言并重新启动应用程序以应用新语言。</translation>
+        <translation type="vanished">更新成功！选择应用程序语言并重新启动应用程序以应用新语言。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="573"/>
         <source>No .ts files were found in the specified location.</source>
-        <translation>在指定位置未找到.ts文件。</translation>
+        <translation type="vanished">在指定位置未找到.ts文件。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="577"/>
         <source>Use translation file: {file}</source>
-        <translation>使用翻译文件：{file}</translation>
+        <translation type="vanished">使用翻译文件：{file}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="678"/>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="701"/>
         <source>Translation files folder is not specified.</source>
-        <translation>未指定翻译文件目录。</translation>
+        <translation type="vanished">未指定翻译文件目录。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="681"/>
         <source>lrelease tool path is not specified.</source>
-        <translation>未指定lrelease工具路径。</translation>
+        <translation type="vanished">未指定lrelease工具路径。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="719"/>
         <source>No translation (qm) files were found at {location}</source>
-        <translation>在 {location} 未找到任何翻译 (qm) 文件</translation>
+        <translation type="vanished">在 {location} 未找到任何翻译 (qm) 文件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="721"/>
         <source>Update successfully completed.
 Installed {count} translation files in {location}.</source>
-        <translation>更新已成功完成。
+        <translation type="vanished">更新已成功完成。
 已在 {location} 安装了 {count} 个翻译文件。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="727"/>
         <source>This Slicer version does not support custom viewer fonts.</source>
-        <translation>此版本不支持自定义查看器字体。</translation>
+        <translation type="vanished">此版本不支持自定义查看器字体。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="750"/>
         <source>Installed {count} font files in {location}.</source>
-        <translation>已在 {location} 安装了 {count} 个字体文件。</translation>
+        <translation type="vanished">已在 {location} 安装了 {count} 个字体文件。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/Resources/UI/LanguageTools.ui" line="30"/>
@@ -8467,34 +8026,29 @@ Installed {count} translation files in {location}.</source>
 <context>
     <name>LungCTSegmenter</name>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="29"/>
         <source>Lung CT Segmenter</source>
-        <translation>肺部CT分割器</translation>
+        <translation type="vanished">肺部CT分割器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="30"/>
         <source>Chest Imaging Platform</source>
-        <translation>胸部影像平台</translation>
+        <translation type="vanished">胸部影像平台</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="32"/>
         <source>Rudolf Bumm (KSGR), Andras Lasso (PERK)</source>
-        <translation>--Nobody--</translation>
+        <translation type="vanished">--Nobody--</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="37"/>
         <source>
 This module segments lungs and airways from chest CT either with a few user-defined landmarks or by involving AI. 
 See more information in &lt;a href=&quot;https://github.com/rbumm/SlicerLungCTAnalyzer&quot;&gt;LungCTAnalyzer extension documentation&lt;/a&gt;.&lt;br&gt;
 
 </source>
-        <translation>
+        <translation type="vanished">
 该模块使用一些用户自定义的标志或者通过AI对胸部CT中的肺部和气道进行分割。&lt;br&gt;
 
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="59"/>
         <source>
 This extension was originally developed by Rudolf Bumm (KSKR) and Andras Lasso (PERK). 
 &lt;br&gt;&lt;br&gt;
@@ -8509,590 +8063,580 @@ and&lt;br&gt;
 &lt;a href=&quot;https://arxiv.org/abs/2208.05868&quot;&gt;https://arxiv.org/abs/2208.05868&lt;/a&gt;
 
 </source>
-        <translation>
+        <translation type="vanished">
 涉及AI分割
 
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="134"/>
         <source>Lung CT Segmenter layout</source>
-        <translation>肺部CT分割器布局</translation>
+        <translation type="vanished">肺部CT分割器布局</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
         <source>very low detail</source>
-        <translation>超低细节</translation>
+        <translation type="vanished">超低细节</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
         <source>low detail</source>
-        <translation>低细节</translation>
+        <translation type="vanished">低细节</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
         <source>medium low detail</source>
-        <translation>中低细节</translation>
+        <translation type="vanished">中低细节</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="176"/>
         <source>medium detail</source>
-        <translation>中等细节</translation>
+        <translation type="vanished">中等细节</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="177"/>
         <source>high detail</source>
-        <translation>高细节</translation>
+        <translation type="vanished">高细节</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="633"/>
         <source>Select input volume.</source>
-        <translation>选择输入数据。</translation>
+        <translation type="vanished">选择输入数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="635"/>
         <source>Click &quot;Start&quot; to initiate point placement.</source>
-        <translation>点击”开始“进行初始点放置。</translation>
+        <translation type="vanished">点击”开始“进行初始点放置。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="674"/>
         <source>Click &quot;Apply&quot; to finalize.</source>
-        <translation>点击”应用“完成。</translation>
+        <translation type="vanished">点击”应用“完成。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="678"/>
         <source>Verify that segmentation is complete. Click &quot;Apply&quot; to finalize.</source>
-        <translation>验证分割是否完成。单击”应用“完成。</translation>
+        <translation type="vanished">验证分割是否完成。单击”应用“完成。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="904"/>
         <source>Initializing segmentation...</source>
-        <translation>正在初始化分割...</translation>
+        <translation type="vanished">正在初始化分割...</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/LungCTSegmenter.py" line="998"/>
         <source>Finalizing the segmentation, please wait...</source>
-        <translation>正在完成分割，请稍后...</translation>
+        <translation type="vanished">正在完成分割，请稍后...</translation>
+    </message>
+    <message>
+        <source>This simple use counter evaluates the global uses of the extension, manual assisted (man), total AI (ai), lungmask (lm), TotalSegmentator (ts), MONAILabel (ml), airway (aw) and vessel (ve) segmentations. Apart from a usage ping no other information is transmitted. Incomplete AI runs are not counted (installations), so ai + man may not add up to total.  </source>
+        <translation type="vanished">这个简单的使用计数器评估扩展、手动辅助 (man)、总 AI (ai)、肺面罩 (lm)、TotalSegmentator (ts)、MONAILabel (ml)、气道 (aw) 和血管 (ve) 分割的全局使用。除了使用情况 ping 之外，不会传输其他信息。不完整的 AI 运行不会被计算在内（安装），因此 ai + man 可能不会合计到总数。  </translation>
+    </message>
+    <message>
+        <source>LungCTSegmenter (x uses since 6/23)</source>
+        <translation type="vanished">LungCTSegmenter（x 自 6/23 起使用）</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="17"/>
-        <source>This simple use counter evaluates the global uses of the extension, manual assisted (man), total AI (ai), lungmask (lm), TotalSegmentator (ts), MONAILabel (ml), airway (aw) and vessel (ve) segmentations. Apart from a usage ping no other information is transmitted. Incomplete AI runs are not counted (installations), so ai + man may not add up to total.  </source>
-        <translation>这个简单的使用计数器评估扩展、手动辅助 (man)、总 AI (ai)、肺面罩 (lm)、TotalSegmentator (ts)、MONAILabel (ml)、气道 (aw) 和血管 (ve) 分割的全局使用。除了使用情况 ping 之外，不会传输其他信息。不完整的 AI 运行不会被计算在内（安装），因此 ai + man 可能不会合计到总数。  </translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="20"/>
-        <source>LungCTSegmenter (x uses since 6/23)</source>
-        <translation>LungCTSegmenter（x 自 6/23 起使用）</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="27"/>
         <source>Inputs</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="33"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="23"/>
         <source>Input volume:</source>
         <translation>输入数据：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="40"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="30"/>
         <source>Pick the input (CT Lung) to the algorithm.</source>
         <translation>选择算法的输入（CT肺部）。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="43"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="33"/>
         <source>vtkMRMLScalarVolumeNode</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="61"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="51"/>
         <source>Output segmentation:</source>
         <translation>输出分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="68"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="58"/>
         <source>Pick the output segmentatioon or create a new one.</source>
         <translation>选择输出分割或者创建一个新的分割。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="71"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="61"/>
         <source>vtkMRMLSegmentationNode</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="79"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="69"/>
         <source>Lung segmentation</source>
         <translation>肺部分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="97"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="87"/>
         <source>Create new segmentation</source>
         <translation>创建新的分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="110"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="100"/>
         <source>Segmentation</source>
         <translation>分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="119"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="109"/>
         <source>Select the  AI engine. &apos;lungmask&apos; (U-Net) will create lungs and lobes, &apos;MONAILabel&apos; (U-Net) lungs and airways, &apos;TotalSegmentator&apos; (nnU-Net) lung lobes, trachea, pulmonary artery and the left atrium of the heart.  All engines require CUDA, some minutes processing time and a medium to high-end Nvidia GPU (RTX 1060+).</source>
         <translation>选择AI引擎。“lungmask”（U-Net）将创建肺和肺叶，“MONAILabel”（U-Net）将创建肺和气道，“TotalSegmentator”（nnU-Net）将创建肺叶、气管、肺动脉和心脏的左心房。所有引擎都需要 CUDA、几分钟的处理时间和中高端 Nvidia GPU (RTX 1060+)。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="132"/>
         <source>Perform a &apos;Local Threshold&apos; airway segmentation. </source>
-        <translation>执行“局部阈值”气道分割。 </translation>
+        <translation type="vanished">执行“局部阈值”气道分割。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="135"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="122"/>
+        <source>Perform a &apos;Local threshold&apos; airway segmentation. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="125"/>
         <source>Airway segmentation</source>
         <translation>气道分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="142"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="132"/>
         <source>Toggle segments visibility</source>
         <translation>切换分割可见性</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="149"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="139"/>
         <source>This parameter corresponds to the MinimumDiameterMm of the airway&apos;s &apos;LocalThreshold-&gt;GrowCut&apos; segmentation algorithm. &apos;very low detail&apos;=5; &apos;high detail&apos;=1. The recommended initial setting is: &apos;low detail&apos;.  A good estimate for this parameter is the width of the trachea. If you get leaks: re-run the segmentation with lower details. </source>
         <translation>该参数对应于气道“LocalThreshold-&gt;GrowCut”分割算法的MinimumDiameterMm。 &apos;非常低​​的细节&apos;=5； “高细节”=1。推荐的初始设置是：“低细节”。该参数的一个很好的估计是气管的宽度。如果发生泄漏：以较低的细节重新运行分割。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="156"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="146"/>
         <source>If checked, lung and/or lobe segmentations will be generated  by either  &apos;lungmask U-Net&apos;, a running &apos;MONAILabel&apos; server or &apos;TotalSegmentator&apos;. </source>
         <translation>如果选中，肺和/或肺叶分割将由“lungmask U-Net”、正在运行的“MONAILabel”服务器或“TotalSegmentator”生成。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="159"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="149"/>
         <source>Use AI</source>
         <translation>使用AI</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="166"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="156"/>
         <source>Perform a vessel segmentation and create an additional cropped CT volume with lungs, heart and mediastinum. </source>
         <translation>执行血管分割并创建包含肺、心脏和纵隔的额外裁剪 CT 体积。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="169"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="159"/>
         <source>Vessel segmentation</source>
         <translation>血管分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="176"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="166"/>
         <source>If checked, previously saved markups are loaded from data or temp directory when &quot;Start&quot; button is pressed. Lung CT Segmenter tries to load from data directory first, if not found from Slicer temp directory. </source>
         <translation>如果选中，则当按下“开始”按钮时，将从数据或临时目录加载以前保存的标记。如果未从切片器临时目录中找到，Lung CT Segmenter 会首先尝试从数据目录加载。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="179"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="169"/>
         <source>Load last saved markups</source>
         <translation>加载上次保存的标记</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="186"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="176"/>
         <source>Find instructions here during the segmentation procedure.  </source>
         <translation>在分割过程中请在此查找说明。  </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="193"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="183"/>
         <source>Adjust points </source>
         <translation>调整点 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="199"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="189"/>
         <source>Place a marker somewhere on the right lung. </source>
         <translation>在右肺放置标记。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="202"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="192"/>
         <source>Right lung:</source>
         <translation>右肺：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="212"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="202"/>
         <source>Add additional or adjust existing right lung markers. </source>
         <translation>添加额外的或调整现有的右肺标记。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="225"/>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="238"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="215"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="228"/>
         <source>Place a marker somewhere on the left lung. </source>
         <translation>在左肺某处放置一个标记。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="228"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="218"/>
         <source>Left lung:</source>
         <translation>左肺：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="235"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="225"/>
         <source>Add additional or adjust existing left lung markers. </source>
         <translation>添加额外的或调整现有的左肺标记。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="248"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="238"/>
         <source>Place a marker on the upper trachea (above upper thoracic aperture) </source>
         <translation>在上气管处做一个标记 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="251"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="241"/>
         <source>Other:</source>
         <translation>其他：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="258"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="248"/>
         <source>Add additional or adjust existing trachea markers. </source>
         <translation>添加额外的气管标记或调整现有的气管标记。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="271"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="261"/>
         <source>Toggle volume rendering</source>
         <translation>切换体积渲染</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="281"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="271"/>
         <source>Run the algorithm.</source>
         <translation>运行算法。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="284"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="274"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="294"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="284"/>
         <source>Cancel the current segmentation process.</source>
         <translation>取消当前分割进程。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="297"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="287"/>
         <source>Cancel / Reset</source>
         <translation>取消/重置</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="312"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="302"/>
         <source>Press this button to start the segmentation process. </source>
         <translation>点击此处开始分割。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="315"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="305"/>
         <source>Start</source>
         <translation>开始</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="328"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="318"/>
         <source>Toggle lung segmentation outputs</source>
         <translation>切换肺分割输出</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="354"/>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="414"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="344"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="404"/>
         <source>Toggle rib visibility.</source>
         <translation>切换肋骨可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="357"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="347"/>
         <source>ribs right</source>
         <translation>右肋骨</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="364"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="354"/>
         <source>Toggle tumor visibility, if manually segmented. </source>
         <translation>如果手动操作则切换肿瘤的可见性。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="367"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="357"/>
         <source>tumor</source>
         <translation>肿瘤</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="374"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="364"/>
         <source>Toggle airways visibility. </source>
         <translation>切换气道可见性。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="377"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="367"/>
         <source>airways</source>
         <translation>气道</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="384"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="374"/>
         <source>Toggle right lung visibility.</source>
         <translation>切换右肺可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="387"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="377"/>
         <source>right</source>
         <translation>右肺</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="394"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="384"/>
         <source>Toggle pulmonary artery visibility.</source>
         <translation>切换肺动脉可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="397"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="387"/>
         <source>PA</source>
         <translation>肺动脉</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="404"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="394"/>
         <source>Toggle vesselmask visibility.</source>
         <translation>切换血管可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="407"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="397"/>
         <source>vesselmask</source>
         <translation>血管</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="417"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="407"/>
         <source>ribs left</source>
         <translation>左肋骨</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="424"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="414"/>
         <source>Toggle lower left lobe visibility.</source>
         <translation>切换左下叶可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="427"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="417"/>
         <source>lower left</source>
         <translation>左下叶</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="434"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="424"/>
         <source>Toggle left lung visibility.</source>
         <translation>切换左肺可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="437"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="427"/>
         <source>left</source>
         <translation>左肺</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="444"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="434"/>
         <source>Toggle middle lobe visibility.</source>
         <translation>切换中叶可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="447"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="437"/>
         <source>middle right</source>
         <translation>中叶</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="454"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="444"/>
         <source>Toggle pulmonary vein visibility.</source>
         <translation>切换肺静脉可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="457"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="447"/>
         <source>PV</source>
         <translation>肺静脉</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="464"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="454"/>
         <source>Toggle upper right lobe visibility.</source>
         <translation>切换右上叶可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="467"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="457"/>
         <source>upper right</source>
         <translation>右上叶</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="474"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="464"/>
         <source>Toggle upper left lobe visibility.</source>
         <translation>切换左上叶可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="477"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="467"/>
         <source>upper left</source>
         <translation>左上叶</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="484"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="474"/>
         <source>Toggle lower right lobe visibility.</source>
         <translation>切换右下叶可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="487"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="477"/>
         <source>lower right</source>
         <translation>右下叶</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="502"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="492"/>
         <source>Batch processing</source>
         <translation>批处理</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="528"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="518"/>
         <source>Input folder:</source>
         <translation>输入文件夹：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="535"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="525"/>
         <source>Specify the input data directory for batch processing</source>
         <translation>指定批处理的输入数据目录</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="548"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="538"/>
         <source>Specify the output data directory for batch processing</source>
         <translation>指定批处理的输出数据目录</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="561"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="551"/>
         <source>If this is checked, batch processing will scan the complete input directory but do only the first three cases. </source>
         <translation>如果选中此项，批处理将扫描完整的输入目录，但仅执行前三种情况。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="564"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="554"/>
         <source>Test mode: segment three cases from input folder</source>
         <translation>测试模式：从输入文件夹中分割三个案例</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="571"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="561"/>
         <source>Output folder: </source>
         <translation>输出文件夹： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="578"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="568"/>
         <source>CT.nrdd, each in a seperate subfolder, is the normal input format expected by batch processing. In case this is checked, batch processing expects ct.nii.gz in seperate subfolders as input files. Output will be generated in NIFTI format. </source>
         <translation>CT.nrdd，每个都位于单独的子文件夹中，是批处理所需的正常输入格式。如果选中此选项，则批处理需要单独子文件夹中的 ct.nii.gz 作为输入文件。输出将以 NIFTI 格式生成。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="581"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="571"/>
         <source>Input is NIFTI format (*.nii.gz)</source>
         <translation>输入是NIFTI格式 (*.nii.gz)</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="590"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="580"/>
         <source>Cancel batch processing</source>
         <translation>取消批处理</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="600"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="590"/>
         <source>Run Lung CT Segmenter in batch processing mode. Each dataset must be present in a singular subfolder of the input folder. The input data directory will be recursively scanned for input files and segmented with options defined under &quot;Segmentation&quot;. &quot;*Use AI&quot; must be enabled and an appropriate AI engine must be selected in order to use batch processing.  Result files  will be written to the output directory in directories using the input subfolder names. Depending on your input data and hardware, the process may run for hours.  </source>
         <translation>以批处理模式运行 Lung CT Segmenter。每个数据集必须存在于输入文件夹的单个子文件夹中。将递归扫描输入数据目录以查找输入文件，并使用“分割”下定义的选项进行分割。必须启用“*使用 AI”并选择适当的 AI 引擎才能使用批处理。结果文件将被写入使用输入子文件夹名称的目录中的输出目录。根据您的输入数据和硬件，该过程可能会运行几个小时。  </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="603"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="593"/>
         <source>Batch process</source>
         <translation>批处理</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="616"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="606"/>
         <source>Advanced</source>
         <translation>高级</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="625"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="615"/>
         <source>Lung thresholds:</source>
         <translation>肺阈值：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="632"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="622"/>
         <source>Select the threshold range to identify lung parenchyma.  In doubt do not touch. </source>
         <translation>选择阈值范围来识别肺实质。有疑问请勿触摸。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="657"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="647"/>
         <source>Vessel thresholds:</source>
         <translation>血管阈值：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="664"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="654"/>
         <source>Set vessel thresholds depending on the vascular contrast medium used in your input volume. </source>
         <translation>根据输入体积中使用的血管造影剂设置血管阈值。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="683"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="673"/>
         <source>Volume rendering Shift</source>
         <translation>体积渲染偏移</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="703"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="693"/>
         <source>Reset lung range and airway range to default values.</source>
         <translation>将肺范围和气道范围重置为默认值。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="706"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="696"/>
         <source>Reset to default</source>
         <translation>恢复为默认值</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="713"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="703"/>
         <source>Update current segmentation preview after lung intensity range changes</source>
         <translation>肺部强度范围变化后更新当前分割预览</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="716"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="706"/>
         <source>Update </source>
         <translation>更新 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="723"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="713"/>
         <source>Save markups, created during mask segmentation, in current data directory. This happens when pressing &quot;Apply&quot;. Use &quot;Load last markups&quot; checkbox for loading the markups again after &quot;Cancel/Reset&quot; and &quot;Start&quot;. </source>
         <translation>将掩模分割期间创建的标记保存在当前数据目录中。按“应用”时会发生这种情况。使用“加载最后的标记”复选框可在“取消/重置”和“开始”后再次加载标记。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="726"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="716"/>
         <source>Save markups in data directory</source>
         <translation>将标记保存在数据目录中</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="733"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="723"/>
         <source>Choose this if you want to create  ventral, dorsal, upper, middle and lower lung masks. Slows down the procedure.  </source>
         <translation>如果您想创建腹侧、背侧、上肺、中肺和下肺面罩，请选择此选项。减慢程序速度。  </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="736"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="726"/>
         <source>Create regional lung masks </source>
         <translation>创建区域性肺部遮罩 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="746"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="736"/>
         <source>Check this to create a standardized copy of the input volume in the scene when using TotalSegmentator AI. The standardization function will use mean HU of &quot;trachea&quot; to define &quot;air&quot; (-1000 HU) and mean HU of &quot;left ileopsoas muscle&quot; to define &quot;muscle&quot; (30 HU) and  all voxels in the numpy array of the standardized  volume will be adapted. After this, the standardized volume will be normalized to air HU (-1000) and blood HU (30).  </source>
         <translation>选中此选项可在使用 TotalSegmentator AI 时创建场景中输入体积的标准化副本。标准化函数将使用“气管”的平均 HU 来定义“空气”（-1000 HU），使用“左回肠肌”的平均 HU 来定义“肌肉”（30 HU），并且标准化体积的 numpy 数组中的所有体素都将进行调整。此后，标准化体积将标准化为空气 HU (-1000) 和血液 HU (30)。  </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="749"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="739"/>
         <source>CT calibration</source>
         <translation>CT校准</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="756"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="746"/>
         <source>This option shrinks the lung masks to avoid artifacts from pleura and pericardium. </source>
         <translation>此选项会缩小肺遮罩以避免胸膜和心包的伪影。 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="759"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="749"/>
         <source>Auto shrink masks (1 mm)</source>
         <translation>自动收缩遮罩（1毫米）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="766"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="756"/>
         <source>Try this on systems with low GPU memory (&lt; 7GB)</source>
         <translation>在 GPU 内存较低 (&lt; 7GB) 的系统上尝试此操作</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="769"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="759"/>
         <source>Totalsegmentator: --fast option</source>
         <translation>全体分割器： --fast 选项</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="776"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="766"/>
         <source>Smooth AI generated lungs and lobes. Prolongs processing and is on by default.  </source>
         <translation>平滑的 AI 生成肺和肺叶。延长处理时间并默认处于启用状态。  </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="779"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="769"/>
         <source>Smooth lungs and lobes</source>
         <translation>平滑化肺部和肺叶</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="786"/>
+        <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="776"/>
         <source>Update Lungmask AI</source>
         <translation>更新肺部遮罩AI</translation>
     </message>
@@ -9206,34 +8750,28 @@ and&lt;br&gt;
         <translation>重启软件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="18"/>
         <source>PyTorch Utils</source>
-        <translation>Pytorch工具</translation>
+        <translation type="vanished">Pytorch工具</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="19"/>
         <source>Utilities</source>
-        <translation>实用工具</translation>
+        <translation type="vanished">实用工具</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="21"/>
         <source>Fernando Perez-Garcia (University College London and King&apos;s College London)</source>
-        <translation>翻译人员1</translation>
+        <translation type="vanished">翻译人员1</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="22"/>
         <source>Andras Lasso (PerkLab Queen&apos;s University)</source>
-        <translation>翻译人员2</translation>
+        <translation type="vanished">翻译人员2</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="25"/>
         <source>This hidden module containing some tools to work with PyTorch inside Slicer.</source>
-        <translation>这个隐藏模块包含一些在软件内与pytorch配合使用的工具。</translation>
+        <translation type="vanished">这个隐藏模块包含一些在软件内与pytorch配合使用的工具。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/PyTorchUtils/PyTorchUtils.py" line="56"/>
         <source>Failed to detect compatible computation backends.</source>
-        <translation>无法检测兼容的计算后端。</translation>
+        <translation type="vanished">无法检测兼容的计算后端。</translation>
     </message>
 </context>
 <context>
@@ -9307,162 +8845,64 @@ and&lt;br&gt;
 <context>
     <name>SampleData</name>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="77"/>
         <source>Sample Data</source>
-        <translation>样例数据</translation>
+        <translation type="vanished">样例数据</translation>
     </message>
     <message>
         <source>Informatics</source>
         <translation type="vanished">信息</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="83"/>
         <source>
 This module provides data sets that can be used for testing 3D Slicer.
 </source>
-        <translation>
+        <translation type="vanished">
 该模块提供用于软件测试的数据集。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="98"/>
-        <source>
-&lt;p&gt;This work was was funded in part by Cancer Care Ontario
-and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)&lt;/p&gt;
-
-&lt;p&gt;MRHead, CBCT-MR Head, and CT-MR Brain data sets were donated to 3D Slicer project by the persons visible in the images, to be used without any restrictions.&lt;/p&gt;
-
-&lt;p&gt;CTLiver dataset comes from &lt;a href=&quot;http://medicaldecathlon.com/&quot;&gt;Medical Decathlon project&lt;/a&gt; (imagesTr/liver_100.nii.gz in Task03_Liver collection)
-with a permissive copyright-license (&lt;a href=&quot;https://creativecommons.org/licenses/by-sa/4.0/&quot;&gt;CC-BY-SA 4.0&lt;/a&gt;), allowing for data to be shared, distributed and improved upon.&lt;/p&gt;
-
-&lt;p&gt;CTA abdomen (Panoramix) dataset comes from &lt;a href=&quot;https://www.osirix-viewer.com/resources/dicom-image-library/&quot;&gt;Osirix DICOM image library&lt;/a&gt;
-and is exclusively available for research and teaching. You are not authorized to redistribute or sell it, or
-use it for commercial purposes.&lt;/p&gt;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="113"/>
         <source>Download Sample Data</source>
-        <translation>下载示例数据</translation>
+        <translation type="vanished">下载示例数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="114"/>
         <source>Go to the SampleData module to download data from the network</source>
-        <translation>进入样例数据模块，从网络下载数据</translation>
+        <translation type="vanished">进入样例数据模块，从网络下载数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="516"/>
         <source>General</source>
-        <translation>通用</translation>
+        <translation type="vanished">通用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="517"/>
         <source>Development</source>
-        <translation>开发</translation>
+        <translation type="vanished">开发</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="639"/>
         <source>Failed to create cache folder {path}</source>
-        <translation>无法创建缓存文件夹 {path}</translation>
+        <translation type="vanished">无法创建缓存文件夹 {path}</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="641"/>
-        <source>Cache folder {path} is not writable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="694"/>
-        <source>Download failed (attempt {current} of {total})...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="748"/>
-        <source>Load failed (attempt {current} of {total}). Unable to delete and try again loading {path}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="752"/>
-        <source>Load failed (attempt {current} of {total})...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="889"/>
-        <source>Downloaded {sizeCompleted} ({percentCompleted}% of {sizeTotal})...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="906"/>
-        <source>Requesting download {name} from {uri} ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="909"/>
         <source>Download finished</source>
-        <translation>下载完成</translation>
+        <translation type="vanished">下载完成</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="911"/>
-        <source>Download failed: {errorMessage}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="912"/>
-        <source>Failed to download {uri} to {filePath}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="915"/>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="927"/>
         <source>Verifying checksum</source>
-        <translation>验证校验</translation>
+        <translation type="vanished">验证校验</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="919"/>
-        <source>Checksum verification failed. Computed checksum {currentChecksum} different from expected checksum {expectedChecksum}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="924"/>
         <source>Checksum OK</source>
-        <translation>校验正确</translation>
+        <translation type="vanished">校验正确</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="930"/>
-        <source>File already exists in cache but checksum is different - re-downloading it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="935"/>
-        <source>File already exists and checksum is OK - reusing it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="938"/>
-        <source>File already exists in cache - reusing it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="942"/>
-        <source>Requesting load {uri}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="946"/>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="963"/>
         <source>Load failed!</source>
-        <translation>加载失败！</translation>
+        <translation type="vanished">加载失败！</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="948"/>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="966"/>
         <source>Load finished</source>
-        <translation>加载完成</translation>
+        <translation type="vanished">加载完成</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="952"/>
         <source>Requesting load {name} from {uri} ...</source>
-        <translation>请求从 {uri} 加载 {name} ...</translation>
+        <translation type="vanished">请求从 {uri} 加载 {name} ...</translation>
     </message>
 </context>
 <context>
@@ -9551,649 +8991,178 @@ use it for commercial purposes.&lt;/p&gt;
 <context>
     <name>ScreenCapture</name>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="27"/>
         <source>Screen Capture</source>
-        <translation>屏幕截图</translation>
+        <translation type="vanished">屏幕截图</translation>
     </message>
     <message>
         <source>Utilities</source>
         <translation type="vanished">实用工具</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="34"/>
         <source>
 This module captures image sequences and videos
 from dynamic contents shown in 3D and slice viewers.
 </source>
-        <translation>
+        <translation type="vanished">
 该模块从 3D 和切片查看器中显示的动态内容捕获图像序列和视频。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="46"/>
         <source>
 This work was was funded by Cancer Care Ontario
 and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
 </source>
-        <translation>
+        <translation type="vanished">
 该模块是屏幕截图功能
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="77"/>
         <source>Input</source>
-        <translation>输入</translation>
+        <translation type="vanished">输入</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="90"/>
         <source>This slice or 3D view will be updated during capture.Only this view will be captured unless &apos;Capture all views&apos; option is enabled.</source>
-        <translation>此切片或 3D 视图将在捕获期间更新。除非启用“捕获所有视图”选项，否则只会捕获此视图。</translation>
+        <translation type="vanished">此切片或 3D 视图将在捕获期间更新。除非启用“捕获所有视图”选项，否则只会捕获此视图。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="91"/>
         <source>Main view: </source>
-        <translation>主视图： </translation>
+        <translation type="vanished">主视图： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="95"/>
-        <source>If checked, all views will be captured. If unchecked then only the selected view will be captured.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="96"/>
         <source>Capture all views:</source>
-        <translation>捕获所有视图：</translation>
+        <translation type="vanished">捕获所有视图：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="100"/>
         <source>Specify how the main view will be modified during capture.</source>
-        <translation>指定在捕获期间如何修改主视图。</translation>
+        <translation type="vanished">指定在捕获期间如何修改主视图。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="101"/>
         <source>Capture mode:</source>
-        <translation>捕获模式：</translation>
+        <translation type="vanished">捕获模式：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="104"/>
-        <source>Start sweep offset:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="110"/>
-        <source>Start slice sweep offset.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="114"/>
-        <source>End sweep offset:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="120"/>
-        <source>End slice sweep offset.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="124"/>
         <source>Rotation range:</source>
-        <translation>旋转范围：</translation>
+        <translation type="vanished">旋转范围：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="131"/>
-        <source>View rotation range, relative to current view orientation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="135"/>
         <source>Rotation axis:</source>
-        <translation>旋转轴：</translation>
+        <translation type="vanished">旋转轴：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="138"/>
-        <source>Yaw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="139"/>
-        <source>Pitch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="143"/>
         <source>Sequence:</source>
-        <translation>序列：</translation>
+        <translation type="vanished">序列：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="151"/>
-        <source>Items defined by this sequence browser will be replayed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="155"/>
         <source>Start index:</source>
-        <translation>起始索引：</translation>
+        <translation type="vanished">起始索引：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="159"/>
-        <source>First item in the sequence to capture.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="163"/>
         <source>End index:</source>
-        <translation>结束索引：</translation>
+        <translation type="vanished">结束索引：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="167"/>
-        <source>Last item in the sequence to capture.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="175"/>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="vanished">输出</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="178"/>
         <source>Output type:</source>
-        <translation>输出类型：</translation>
+        <translation type="vanished">输出类型：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="181"/>
-        <source>Select how captured images will be saved. Video mode requires setting of ffmpeg executable path in Advanced section.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="182"/>
         <source>image series</source>
-        <translation>图像序列</translation>
+        <translation type="vanished">图像序列</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="183"/>
         <source>video</source>
-        <translation>视频</translation>
+        <translation type="vanished">视频</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="184"/>
         <source>lightbox image</source>
-        <translation>灯箱图像</translation>
+        <translation type="vanished">灯箱图像</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="189"/>
         <source>Number of images:</source>
-        <translation>图像数量：</translation>
+        <translation type="vanished">图像数量：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="198"/>
-        <source>Number of images extracted between start and stop positions.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="206"/>
         <source>Output directory:</source>
-        <translation>输出目录：</translation>
+        <translation type="vanished">输出目录：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="213"/>
-        <source>String that defines file name, type, and numbering scheme. Default: image%05d.png.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="216"/>
-        <source>image_%05d.png</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="217"/>
-        <source>String that defines file name and type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="220"/>
-        <source>SlicerCapture.mp4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="221"/>
-        <source>String that defines output lightbox file name and type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="224"/>
-        <source>SlicerCaptureLightbox.png</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="228"/>
         <source>Output file name:</source>
-        <translation>输出文件名：</translation>
+        <translation type="vanished">输出文件名：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="230"/>
         <source>Video format:</source>
-        <translation>视频格式：</translation>
+        <translation type="vanished">视频格式：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="238"/>
         <source>Video length:</source>
-        <translation>视频长度：</translation>
+        <translation type="vanished">视频长度：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="247"/>
-        <source>Length of the exported video in seconds (without backward steps and repeating).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="250"/>
         <source>Video frame rate:</source>
-        <translation>视频帧速率：视频帧速率：</translation>
+        <translation type="vanished">视频帧速率：视频帧速率：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="259"/>
-        <source>Frame rate in frames per second.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="267"/>
         <source>Advanced</source>
-        <translation>高级</translation>
+        <translation type="vanished">高级</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="273"/>
-        <source>If checked, image series will be generated playing forward and then backward.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="274"/>
-        <source>Forward-backward:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="283"/>
-        <source>Number of times image series are repeated. Useful for making short videos longer for playback in software that does not support looped playback.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="284"/>
-        <source>Repeat:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="292"/>
-        <source>Set the path to ffmpeg executable. Download from: https://www.ffmpeg.org/</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="293"/>
-        <source>ffmpeg executable:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="297"/>
-        <source>&lt;qt&gt;&lt;b&gt;&lt;font color=&quot;red&quot;&gt;Set valid ffmpeg executable path! &lt;a href=&quot;https://slicer.readthedocs.io/en/latest/user_guide/modules/screencapture.html#setting-up-ffmpeg&quot;&gt;Help...&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/qt&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="305"/>
-        <source>Additional video conversion options passed to ffmpeg. Parameters -i (input files), -y(overwrite without asking), -r (frame rate), -start_number are specified by the module and thereforeshould not be included in this list.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="306"/>
         <source>Video extra options:</source>
-        <translation>视频附加选项：</translation>
+        <translation type="vanished">视频附加选项：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="314"/>
-        <source>Number of columns in lightbox image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="315"/>
-        <source>Lightbox image columns:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="321"/>
-        <source>Maximum number of images to be captured (without backward steps and repeating).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="322"/>
-        <source>Maximum number of images:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="327"/>
         <source>Screenshot</source>
-        <translation>截屏</translation>
+        <translation type="vanished">截屏</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="331"/>
-        <source>Select a volume node to store the captured image in the scene instead of just writing immediately to disk. Requires output &apos;Number of images&apos; to be set to 1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="333"/>
-        <source>Output volume node:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="337"/>
-        <source>If checked, images will be captured with view controllers visible.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="338"/>
-        <source>View controllers:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="342"/>
-        <source>If checked, images will be captured with transparent background.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="343"/>
-        <source>Transparent background:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="349"/>
-        <source>If checked, selected watermark image will be added to all exported images.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="354"/>
-        <source>Add a watermark image to all exported images.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="368"/>
-        <source>Size scaling applied to the watermark image. 100% is original size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="382"/>
-        <source>Opacity of the watermark image. 100% is fully opaque.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="394"/>
-        <source>Watermark image file in png format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="398"/>
         <source>Position:</source>
-        <translation>位置：</translation>
+        <translation type="vanished">位置：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="400"/>
         <source>Size:</source>
-        <translation>尺寸：</translation>
+        <translation type="vanished">尺寸：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="402"/>
         <source>Opacity:</source>
-        <translation>不透明度：</translation>
+        <translation type="vanished">不透明度：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="405"/>
-        <source>Watermark image:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="413"/>
-        <source>Capture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="414"/>
         <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="416"/>
-        <source>Capture slice sweep to image sequence.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="421"/>
-        <source>Show created output file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="538"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="542"/>
-        <source>single frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="539"/>
-        <source>slice sweep</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="540"/>
-        <source>slice fade</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="543"/>
-        <source>3D rotation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="545"/>
-        <source>sequence</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="688"/>
-        <source>Video encoder not detected on your system. Download ffmpeg video encoder?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="689"/>
-        <source>Download confirmation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="691"/>
-        <source>ffmpeg download failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="715"/>
-        <source>View controllers are only available to be shown when capturing all views.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="728"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1248"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1279"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1323"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1367"/>
-        <source>Write {filename}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="730"/>
-        <source>Write to volume node &apos;{volumeName}&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="766"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="773"/>
-        <source>Copy to {filename}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="791"/>
-        <source>Done.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="795"/>
-        <source>Error:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="830"/>
-        <source>H.264</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="831"/>
-        <source>H.264 (high-quality)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="832"/>
-        <source>MPEG-4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="833"/>
-        <source>MPEG-4 (high-quality)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="834"/>
-        <source>Animated GIF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="835"/>
-        <source>Animated GIF (grayscale)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1065"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1100"/>
-        <source>Capture image from view failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1129"/>
-        <source>Invalid vector volume node.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1143"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1152"/>
-        <source>Unsupported image format based on file name {filename}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1201"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1226"/>
-        <source>Invalid view node.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1213"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1223"/>
-        <source>Selected 3D view is not visible in the current layout.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1234"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1264"/>
-        <source>Selected slice view is not visible in the current layout.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1256"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1288"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1347"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1374"/>
-        <source>User requested cancel.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1377"/>
-        <source>Export to lightbox image...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1420"/>
-        <source>Lighbox image saved to file: {filename}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1423"/>
-        <source>Export to video...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1430"/>
-        <source>Video creation failed: ffmpeg executable path is not defined</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1432"/>
-        <source>Video creation failed: ffmpeg executable path is invalid: {path}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1445"/>
-        <source>Start ffmpeg:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1452"/>
-        <source>ffmpeg error output: {error}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1453"/>
-        <source>ffmpeg returned with error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1455"/>
-        <source>Video export succeeded to file: {path}</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">取消</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditor</name>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="15"/>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="118"/>
         <source>Segment Editor</source>
-        <translation>分割编辑器</translation>
+        <translation type="vanished">分割编辑器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="23"/>
         <source>
 This module allows editing segmentation objects by directly drawing and using segmentation tools on the contained segments.
 Representations other than the labelmap one (which is used for editing) are automatically updated real-time,
 so for example the closed surface can be visualized as edited in the 3D view.
 </source>
-        <translation>
+        <translation type="vanished">
 该模块允许通过直接绘制和使用所包含的分割上的分割工具来编辑分割对象。
 除了标签图（用于编辑）之外的表示形式都会自动实时更新，
 因此，封闭的表面可以在 3D 视图中可视化为已编辑。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="29"/>
         <source>
 This work is part of SparKit project, funded by Cancer Care Ontario (CCO)&apos;s ACRU program
 and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).
 </source>
-        <translation>
+        <translation type="vanished">
 自我测试管理。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="118"/>
         <source>Segment Editor is not compatible with slice viewers in light box mode.Views are being reset.</source>
-        <translation>分割编辑器与灯箱模式下的切片查看器不兼容。视图正在重置。</translation>
+        <translation type="vanished">分割编辑器与灯箱模式下的切片查看器不兼容。视图正在重置。</translation>
     </message>
     <message>
         <source>Segmentation</source>
@@ -10214,122 +9183,97 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
 <context>
     <name>SegmentEditorEffects.AbstractScriptedSegmentEditorAutoCompleteEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="93"/>
         <source>Auto-update</source>
-        <translation>自动更新</translation>
+        <translation type="vanished">自动更新</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="94"/>
         <source>Auto-update results preview when input segments change.</source>
-        <translation>输入分割更改时自动更新结果预览。</translation>
+        <translation type="vanished">输入分割更改时自动更新结果预览。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="98"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="261"/>
         <source>Initialize</source>
-        <translation>初始化</translation>
+        <translation type="vanished">初始化</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="100"/>
         <source>Preview complete segmentation</source>
-        <translation>预览完整分割</translation>
+        <translation type="vanished">预览完整分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="110"/>
         <source>Preview:</source>
-        <translation>预览：</translation>
+        <translation type="vanished">预览：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="113"/>
         <source>Adjust visibility of results preview.</source>
-        <translation>调整结果预览可见性。</translation>
+        <translation type="vanished">调整结果预览可见性。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="121"/>
         <source>Show 3D</source>
-        <translation>显示3D</translation>
+        <translation type="vanished">显示3D</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="122"/>
         <source>Preview results in 3D.</source>
-        <translation>在3D中预览结果。</translation>
+        <translation type="vanished">在3D中预览结果。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="126"/>
         <source>inputs</source>
-        <translation>输入</translation>
+        <translation type="vanished">输入</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="128"/>
         <source>results</source>
-        <translation>结果</translation>
+        <translation type="vanished">结果</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="130"/>
         <source>Display:</source>
-        <translation>显示：</translation>
+        <translation type="vanished">显示：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="132"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="134"/>
         <source>Clear preview and cancel auto-complete</source>
-        <translation>清除预览并取消自动完成</translation>
+        <translation type="vanished">清除预览并取消自动完成</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="136"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="138"/>
         <source>Replace segments by previewed result</source>
-        <translation>用预览结果替换分割</translation>
+        <translation type="vanished">用预览结果替换分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="177"/>
         <source>Segmentation operation is cancelled because an input segment was deleted.</source>
-        <translation>由于输入分割已被删除，分割操作被取消。</translation>
+        <translation type="vanished">由于输入分割已被删除，分割操作被取消。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="255"/>
         <source>Update</source>
-        <translation>升级</translation>
+        <translation type="vanished">升级</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="286"/>
         <source>Running {effectName} auto-complete...</source>
-        <translation>正在运行 {effectName} 自动完成...</translation>
+        <translation type="vanished">正在运行 {effectName} 自动完成...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="288"/>
         <source>Segmentation operation failed:</source>
-        <translation>分割操作失败：</translation>
+        <translation type="vanished">分割操作失败：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="450"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="462"/>
         <source>Minimum {minimumNumberOfSegments} visible segments are required.</source>
-        <translation>至少需要 {minimumNumberOfSegments} 个可见段。</translation>
+        <translation type="vanished">至少需要 {minimumNumberOfSegments} 个可见段。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/AbstractScriptedSegmentEditorAutoCompleteEffect.py" line="455"/>
         <source>Minimum {minimumNumberOfSegments} visible segments (or specification of editable area or intensity range) is required.</source>
-        <translation>需要最少 {minimumNumberOfSegments} 个可见段（或指定可编辑区域或强度范围）。</translation>
+        <translation type="vanished">需要最少 {minimumNumberOfSegments} 个可见段（或指定可编辑区域或强度范围）。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorDrawEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorDrawEffect.py" line="21"/>
         <source>Draw</source>
-        <translation>绘制</translation>
+        <translation type="vanished">绘制</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorDrawEffect.py" line="46"/>
         <source>Draw segment outline in slice viewers&lt;br&gt;.
 &lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;
 &lt;li&gt;&lt;b&gt;Left-click:&lt;/b&gt; add point.
@@ -10337,7 +9281,7 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
 &lt;li&gt;&lt;b&gt;x:&lt;/b&gt; delete last point.
 &lt;li&gt;&lt;b&gt;Double-left-click&lt;/b&gt; or &lt;b&gt;right-click&lt;/b&gt; or &lt;b&gt;a&lt;/b&gt; or &lt;b&gt;enter&lt;/b&gt;: apply outline.
 &lt;/ul&gt;&lt;p&gt;</source>
-        <translation>在切片查看器中绘制片段轮廓&lt;br&gt;。
+        <translation type="vanished">在切片查看器中绘制片段轮廓&lt;br&gt;。
 &lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;左键单击：&lt;/b&gt;添加点。
 &lt;li&gt;&lt;b&gt;左键拖放：&lt;/b&gt;添加多个点。
 &lt;li&gt;&lt;b&gt;x：&lt;/b&gt;删除最后一个点。
@@ -10348,12 +9292,10 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
 <context>
     <name>SegmentEditorEffects.SegmentEditorFillBetweenSlicesEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorFillBetweenSlicesEffect.py" line="22"/>
         <source>Fill between slices</source>
-        <translation>填充切片间隙</translation>
+        <translation type="vanished">填充切片间隙</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorFillBetweenSlicesEffect.py" line="48"/>
         <source>Interpolate segmentation between slices&lt;br&gt;. Instructions:
 &lt;p&gt;&lt;ul&gt;
 &lt;li&gt;Create complete segmentation on selected slices using any editor effect.
@@ -10365,7 +9307,7 @@ do not use sphere brush with Paint effect and always leave at least one empty sl
 Masking settings are ignored. If segments overlap, segment higher in the segments table will have priority.
 The effect uses  &lt;a href=&quot;https://insight-journal.org/browse/publication/977&quot;&gt;morphological contour interpolation method&lt;/a&gt;.
 &lt;p&gt;</source>
-        <translation>在切片之间插入分段&lt;br&gt;。说明：&lt;p&gt;&lt;ul&gt; &lt;li&gt;使用任何编辑器效果在选定切片上创建完整分段。
+        <translation type="vanished">在切片之间插入分段&lt;br&gt;。说明：&lt;p&gt;&lt;ul&gt; &lt;li&gt;使用任何编辑器效果在选定切片上创建完整分段。
 仅当切片已分段但未分段任何直接邻居时，分段才会扩展，因此请勿使用具有 Paint 效果的球体画笔，并且始终在分段切片之间留出至少一个空切片。
 &lt;li&gt;将插入所有可见分段，而不仅仅是选定的分段。
 &lt;li&gt;将通过在空切片中插入分段来创建完整分段。
@@ -10377,12 +9319,10 @@ The effect uses  &lt;a href=&quot;https://insight-journal.org/browse/publication
 <context>
     <name>SegmentEditorEffects.SegmentEditorGrowFromSeedsEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorGrowFromSeedsEffect.py" line="24"/>
         <source>Grow from seeds</source>
-        <translation>区域生长</translation>
+        <translation type="vanished">区域生长</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorGrowFromSeedsEffect.py" line="60"/>
         <source>Growing segments to create complete segmentation&lt;br&gt;.
         Location, size, and shape of initial segments and content of source volume are taken into account.
         Final segment boundaries will be placed where source volume brightness changes abruptly. Instructions:&lt;p&gt;
@@ -10398,7 +9338,7 @@ The effect uses  &lt;a href=&quot;https://insight-journal.org/browse/publication
         If segments overlap, segment higher in the segments table will have priority.
         The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraReadyPapers/Paper%204/IMIC_ID4_FastGrowCut.pdf&quot;&gt;fast grow-cut method&lt;/a&gt;.
         &lt;p&gt;</source>
-        <translation>Growing segments to create complete segmentation&lt;br&gt;.
+        <translation type="vanished">Growing segments to create complete segmentation&lt;br&gt;.
         Location, size, and shape of initial segments and content of source volume are taken into account.
         Final segment boundaries will be placed where source volume brightness changes abruptly. Instructions:&lt;p&gt;
         &lt;ul style=&quot;margin: 0&quot;&gt;
@@ -10415,238 +9355,195 @@ The effect uses  &lt;a href=&quot;https://insight-journal.org/browse/publication
         &lt;p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorGrowFromSeedsEffect.py" line="79"/>
         <source>Increasing this value makes the effect of seeds more localized, thereby reducing leaks, but requires seed regions to be more evenly distributed in the image. The value is specified as an additional &quot;intensity level difference&quot; per &quot;unit distance.&quot;</source>
-        <translation>增加此值可使种子的效果更加局部化，从而减少泄漏，但需要种子区域在图像中分布更均匀。该值指定为每“单位距离”的额外“强度级别差异”</translation>
+        <translation type="vanished">增加此值可使种子的效果更加局部化，从而减少泄漏，但需要种子区域在图像中分布更均匀。该值指定为每“单位距离”的额外“强度级别差异”</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorGrowFromSeedsEffect.py" line="80"/>
         <source>Seed locality:</source>
-        <translation>种子点位置：</translation>
+        <translation type="vanished">种子点位置：</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorHollowEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="20"/>
         <source>Hollow</source>
-        <translation>空心</translation>
+        <translation type="vanished">空心</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="38"/>
         <source>Make the selected segment hollow by replacing the segment with a uniform-thickness shell defined by the segment boundary.</source>
-        <translation>通过用由分割边界定义的均匀厚度的壳替换段，使选定的分割变成空心。</translation>
+        <translation type="vanished">通过用由分割边界定义的均匀厚度的壳替换段，使选定的分割变成空心。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="41"/>
         <source>inside surface</source>
-        <translation>内表面</translation>
+        <translation type="vanished">内表面</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="42"/>
         <source>medial surface</source>
-        <translation>内侧表面</translation>
+        <translation type="vanished">内侧表面</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="43"/>
         <source>outside surface</source>
-        <translation>外表面</translation>
+        <translation type="vanished">外表面</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="49"/>
         <source>Use current segment as:</source>
-        <translation>使用当前分割作为：</translation>
+        <translation type="vanished">使用当前分割作为：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="53"/>
         <source>Thickness of the hollow shell.</source>
-        <translation>空壳的厚度。</translation>
+        <translation type="vanished">空壳的厚度。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="60"/>
         <source>Closest achievable thickness. Constrained by the segmentation&apos;s binary labelmap representation spacing.</source>
-        <translation>最接近可实现的厚度。受分割的二进制标签图表示间距的限制。</translation>
+        <translation type="vanished">最接近可实现的厚度。受分割的二进制标签图表示间距的限制。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="64"/>
         <source>Shell thickness:</source>
-        <translation>壳体厚度：</translation>
+        <translation type="vanished">壳体厚度：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="69"/>
         <source>Apply hollow effect to all visible segments in this segmentation node. This operation may take a while.</source>
-        <translation>将镂空效果应用于此分割节点中所有可见的分割。此操作可能需要一段时间。</translation>
+        <translation type="vanished">将镂空效果应用于此分割节点中所有可见的分割。此操作可能需要一段时间。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="72"/>
         <source>Apply to visible segments:</source>
-        <translation>应用于可见分割：</translation>
+        <translation type="vanished">应用于可见分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="74"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="76"/>
         <source>Makes the segment hollow by replacing it with a thick shell at the segment boundary.</source>
-        <translation>通过在线段边界处用厚壳替换分割，使分割变成中空的。</translation>
+        <translation type="vanished">通过在线段边界处用厚壳替换分割，使分割变成中空的。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="131"/>
         <source>Not feasible at current resolution.</source>
-        <translation>在当前分辨率下不可行。</translation>
+        <translation type="vanished">在当前分辨率下不可行。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="134"/>
         <source>Actual:</source>
-        <translation>实际效果：</translation>
+        <translation type="vanished">实际效果：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="139"/>
         <source>Empty segment</source>
-        <translation>空分割</translation>
+        <translation type="vanished">空分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorHollowEffect.py" line="251"/>
         <source>Processing {segmentName}...</source>
-        <translation>正在处理{segmentName}...</translation>
+        <translation type="vanished">正在处理{segmentName}...</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorIslandsEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="20"/>
         <source>Islands</source>
-        <translation>岛屿</translation>
+        <translation type="vanished">岛屿</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="40"/>
         <source>Edit islands (connected components) in a segment&lt;br&gt;. To get more information
 about each operation, hover the mouse over the option and wait for the tooltip to appear.</source>
-        <translation>编辑线段中的岛屿（连通组件）&lt;br&gt;。要获取有关每个操作的更多信息，请将鼠标悬停在选项上并等待工具提示出现。</translation>
+        <translation type="vanished">编辑线段中的岛屿（连通组件）&lt;br&gt;。要获取有关每个操作的更多信息，请将鼠标悬停在选项上并等待工具提示出现。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="43"/>
         <source>Keep largest island</source>
-        <translation>保持最大岛屿</translation>
+        <translation type="vanished">保持最大岛屿</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="45"/>
         <source>Keep only the largest island in selected segment, remove all other islands in the segment.</source>
-        <translation>仅保留选定分割中最大的岛屿，删除该分割中的所有其他岛屿。</translation>
+        <translation type="vanished">仅保留选定分割中最大的岛屿，删除该分割中的所有其他岛屿。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="49"/>
         <source>Keep selected island</source>
-        <translation>保留选定岛屿</translation>
+        <translation type="vanished">保留选定岛屿</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="51"/>
         <source>Click on an island in a slice view to keep that island and remove all other islands in selected segment.</source>
-        <translation>单击切片视图中的某个岛屿可保留该岛屿并删除选定分割中的所有其他岛屿。</translation>
+        <translation type="vanished">单击切片视图中的某个岛屿可保留该岛屿并删除选定分割中的所有其他岛屿。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="55"/>
         <source>Remove small islands</source>
-        <translation>移除小的岛屿</translation>
+        <translation type="vanished">移除小的岛屿</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="57"/>
         <source>Remove all islands from the selected segment that are smaller than the specified minimum size.</source>
-        <translation>从选定的分割中删除所有小于指定最小尺寸的岛屿。</translation>
+        <translation type="vanished">从选定的分割中删除所有小于指定最小尺寸的岛屿。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="61"/>
         <source>Remove selected island</source>
-        <translation>移除选定岛屿</translation>
+        <translation type="vanished">移除选定岛屿</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="63"/>
         <source>Click on an island in a slice view to remove it from selected segment.</source>
-        <translation>单击切片视图中的某个岛屿可将其从选定的分割中移除。</translation>
+        <translation type="vanished">单击切片视图中的某个岛屿可将其从选定的分割中移除。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="67"/>
         <source>Add selected island</source>
-        <translation>增加选定岛屿</translation>
+        <translation type="vanished">增加选定岛屿</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="69"/>
         <source>Click on a region in a slice view to add it to selected segment.</source>
-        <translation>单击切片视图中的某个区域可将其添加到选定的分割。</translation>
+        <translation type="vanished">单击切片视图中的某个区域可将其添加到选定的分割。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="73"/>
         <source>Split islands to segments</source>
-        <translation>将连通子区域划分为小分割</translation>
+        <translation type="vanished">将连通子区域划分为小分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="76"/>
         <source>Create a new segment for each island of selected segment. Islands smaller than minimum size will be removed. Segments will be ordered by island size.</source>
-        <translation>为选定分割的每个岛创建一个新分割。小于最小尺寸的岛将被删除。分割将按岛大小排序。</translation>
+        <translation type="vanished">为选定分割的每个岛创建一个新分割。小于最小尺寸的岛将被删除。分割将按岛大小排序。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="92"/>
         <source>Islands consisting of less voxels than this minimum size, will be deleted.</source>
-        <translation>由少于此最小尺寸的体素组成的岛屿将被删除。</translation>
+        <translation type="vanished">由少于此最小尺寸的体素组成的岛屿将被删除。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="97"/>
         <source> voxels</source>
-        <translation> 体素</translation>
+        <translation type="vanished"> 体素</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="97"/>
         <source>Minimum size:</source>
-        <translation>最小尺寸：</translation>
+        <translation type="vanished">最小尺寸：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="99"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorIslandsEffect.py" line="399"/>
         <source>Click in a slice view to select an island.</source>
-        <translation>单击切片视图来选择一个岛屿。</translation>
+        <translation type="vanished">单击切片视图来选择一个岛屿。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorLevelTracingEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLevelTracingEffect.py" line="22"/>
         <source>Level tracing</source>
-        <translation>级别追踪</translation>
+        <translation type="vanished">级别追踪</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLevelTracingEffect.py" line="49"/>
         <source>Add uniform intensity region to selected segment&lt;br&gt;.
         &lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt;
         &lt;li&gt;&lt;b&gt;Mouse move:&lt;/b&gt; current background voxel is used to find a closed path that
         follows the same intensity value back to the starting point within the current slice.
         &lt;li&gt;&lt;b&gt;Left-click:&lt;/b&gt; add the previewed region to the current segment.
         &lt;/ul&gt;&lt;p&gt;</source>
-        <translation>将均匀强度区域添加到选定的片段&lt;br&gt;。
+        <translation type="vanished">将均匀强度区域添加到选定的片段&lt;br&gt;。
 &lt;p&gt;&lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;鼠标移动：&lt;/b&gt;当前背景体素用于查找一条闭合路径，该路径遵循相同的强度值回到当前切片内的起点。
 &lt;li&gt;&lt;b&gt;左键单击：&lt;/b&gt;将预览区域添加到当前片段。
 &lt;/ul&gt;&lt;p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLevelTracingEffect.py" line="108"/>
         <source>Slice view is not aligned with segmentation axis.&lt;br&gt;To use this effect, click the &apos;Slice views orientation&apos; warning button.</source>
-        <translation>切片视图未与分割轴对齐。&lt;br&gt;要使用此效果，请单击“切片视图方向”警告按钮。</translation>
+        <translation type="vanished">切片视图未与分割轴对齐。&lt;br&gt;要使用此效果，请单击“切片视图方向”警告按钮。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorLogicalEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="19"/>
         <source>Logical operators</source>
-        <translation>逻辑操作</translation>
+        <translation type="vanished">逻辑操作</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="50"/>
         <source>Apply logical operators or combine segments&lt;br&gt;. Available operations:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
 &lt;li&gt;&lt;b&gt;Copy:&lt;/b&gt; replace the selected segment by the modifier segment.
@@ -10660,7 +9557,7 @@ about each operation, hover the mouse over the option and wait for the tooltip t
 &lt;b&gt;Selected segment:&lt;/b&gt; segment selected in the segment list - above. &lt;b&gt;Modifier segment:&lt;/b&gt; segment chosen in
 segment list in effect options - below.
 &lt;p&gt;</source>
-        <translation>应用逻辑运算符或组合段&lt;br&gt;。可用操作：&lt;p&gt; &lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;复制：&lt;/b&gt;用修改段替换选定段。
+        <translation type="vanished">应用逻辑运算符或组合段&lt;br&gt;。可用操作：&lt;p&gt; &lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;复制：&lt;/b&gt;用修改段替换选定段。
 &lt;li&gt;&lt;b&gt;添加：&lt;/b&gt;将修改段添加到当前段。
 &lt;li&gt;&lt;b&gt;减去：&lt;/b&gt;从选定段中减去修改段的区域。
 &lt;li&gt;&lt;b&gt;相交：&lt;/b&gt;仅保留选定段中与修改段共同的区域。
@@ -10671,331 +9568,245 @@ segment list in effect options - below.
 &lt;p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="52"/>
         <source>Copy</source>
-        <translation>复制</translation>
+        <translation type="vanished">复制</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="53"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="vanished">添加</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="54"/>
         <source>Subtract</source>
-        <translation>减去</translation>
+        <translation type="vanished">减去</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="55"/>
         <source>Intersect</source>
-        <translation>相交</translation>
+        <translation type="vanished">相交</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="56"/>
         <source>Invert</source>
-        <translation>反转</translation>
+        <translation type="vanished">反转</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="57"/>
         <source>Clear</source>
-        <translation>清除</translation>
+        <translation type="vanished">清除</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="58"/>
         <source>Fill</source>
-        <translation>填充</translation>
+        <translation type="vanished">填充</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="59"/>
         <source>Click &lt;dfn&gt;Show details&lt;/dfn&gt; link above for description of operations.</source>
-        <translation>单击上面的&lt;dfn&gt;显示详细信息&lt;/dfn&gt;链接查看操作描述。</translation>
+        <translation type="vanished">单击上面的&lt;dfn&gt;显示详细信息&lt;/dfn&gt;链接查看操作描述。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="61"/>
         <source>Bypass masking</source>
-        <translation>忽略蒙版</translation>
+        <translation type="vanished">忽略蒙版</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="62"/>
         <source>Ignore all masking options and only modify the selected segment.</source>
-        <translation>忽略所有蒙版选项并仅修改选定的分割。</translation>
+        <translation type="vanished">忽略所有蒙版选项并仅修改选定的分割。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="65"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="72"/>
         <source>Operation:</source>
-        <translation>操作：</translation>
+        <translation type="vanished">操作：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="74"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="143"/>
         <source>Modifier segment:</source>
-        <translation>修饰符分割：</translation>
+        <translation type="vanished">修饰符分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="85"/>
         <source>Contents of this segment will be used for modifying the selected segment. This segment itself will not be changed.</source>
-        <translation>此分割的内容将用于修改所选分割。此分割本身不会被更改。</translation>
+        <translation type="vanished">此分割的内容将用于修改所选分割。此分割本身不会被更改。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="134"/>
         <source>Copy from segment:</source>
-        <translation>从分割复制：</translation>
+        <translation type="vanished">从分割复制：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="136"/>
         <source>Add segment:</source>
-        <translation>添加分割：</translation>
+        <translation type="vanished">添加分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="138"/>
         <source>Subtract segment:</source>
-        <translation>减去分割：</translation>
+        <translation type="vanished">减去分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="140"/>
         <source>Intersect with segment:</source>
-        <translation>与分割相交：</translation>
+        <translation type="vanished">与分割相交：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorLogicalEffect.py" line="144"/>
         <source>Please select a modifier segment in the list below.</source>
-        <translation>请在下面的列表中选择一个修饰符分割。</translation>
+        <translation type="vanished">请在下面的列表中选择一个修饰符分割。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorMarginEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="20"/>
         <source>Margin</source>
-        <translation>边缘</translation>
+        <translation type="vanished">边缘</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="38"/>
         <source>Grow or shrink selected segment by specified margin size.</source>
-        <translation>根据指定的边距大小来增大或缩小选定的段。</translation>
+        <translation type="vanished">根据指定的边距大小来增大或缩小选定的段。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="41"/>
         <source>Shrink</source>
-        <translation>收缩</translation>
+        <translation type="vanished">收缩</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="42"/>
         <source>Grow</source>
-        <translation>生长</translation>
+        <translation type="vanished">生长</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="47"/>
         <source>Operation:</source>
-        <translation>操作：</translation>
+        <translation type="vanished">操作：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="52"/>
         <source>Segment boundaries will be shifted by this distance. Positive value means the segments will grow, negative value means segment will shrink.</source>
-        <translation>分割边界将以此距离移动。正值表示分割将增大，负值表示分割将缩小。</translation>
+        <translation type="vanished">分割边界将以此距离移动。正值表示分割将增大，负值表示分割将缩小。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="58"/>
         <source>Size change in pixel. Computed from the segment&apos;s spacing and the specified margin size.</source>
-        <translation>像素大小变化。根据分割间距和指定的边距大小计算得出。</translation>
+        <translation type="vanished">像素大小变化。根据分割间距和指定的边距大小计算得出。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="62"/>
         <source>Margin size:</source>
-        <translation>边距大小：</translation>
+        <translation type="vanished">边距大小：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="67"/>
         <source>Grow or shrink all visible segments in this segmentation node. This operation may take a while.</source>
-        <translation>增大或缩小此分割节点中的所有可见分割。此操作可能需要一段时间。</translation>
+        <translation type="vanished">增大或缩小此分割节点中的所有可见分割。此操作可能需要一段时间。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="69"/>
         <source>Apply to visible segments:</source>
-        <translation>应用于可见分割：</translation>
+        <translation type="vanished">应用于可见分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="72"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="74"/>
         <source>Grows or shrinks selected segment /default) or all segments (checkbox) by the specified margin.</source>
-        <translation>根据指定的边距增大或缩小选定的分割（默认）或所有分割（复选框）。</translation>
+        <translation type="vanished">根据指定的边距增大或缩小选定的分割（默认）或所有分割（复选框）。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="122"/>
         <source>Not feasible at current resolution.</source>
-        <translation>在当前分辨率下不可行。</translation>
+        <translation type="vanished">在当前分辨率下不可行。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="125"/>
         <source>Actual:</source>
-        <translation>实际效果：</translation>
+        <translation type="vanished">实际效果：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="130"/>
         <source>Empty segment</source>
-        <translation>空分割</translation>
+        <translation type="vanished">空分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMarginEffect.py" line="242"/>
         <source>Processing {segmentName}...</source>
-        <translation>正在处理{segmentName}...</translation>
+        <translation type="vanished">正在处理{segmentName}...</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorMaskVolumeEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="15"/>
         <source>Mask volume</source>
-        <translation>蒙版数据</translation>
+        <translation type="vanished">蒙版数据</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="42"/>
         <source>Use the currently selected segment as a mask to blank out regions in a volume&lt;br&gt;.
 The mask is applied to the source volume by default.&lt;p&gt;
 Fill inside and outside operation creates a binary labelmap volume as output, with the inside and outside fill values modifiable.
 </source>
-        <translation>使用当前选定的分割作为蒙版来清空体积中的区域&lt;br&gt;。
+        <translation type="vanished">使用当前选定的分割作为蒙版来清空体积中的区域&lt;br&gt;。
 默认情况下，蒙版应用于源体数据。&lt;p&gt;
 填充内部和外部操作会创建一个二进制标签图体数据作为输出，其中内部和外部填充值可修改。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="49"/>
         <source>Fill inside</source>
-        <translation>内部填充</translation>
+        <translation type="vanished">内部填充</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="53"/>
         <source>Fill outside</source>
-        <translation>外部填充</translation>
+        <translation type="vanished">外部填充</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="57"/>
         <source>Fill inside and outside</source>
-        <translation>填充内部和外部</translation>
+        <translation type="vanished">填充内部和外部</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="58"/>
         <source>Create a labelmap volume with specified inside and outside fill values.</source>
-        <translation>创建具有指定内部和外部填充值的标签图体数据。</translation>
+        <translation type="vanished">创建具有指定内部和外部填充值的标签图体数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="67"/>
         <source>Operation:</source>
-        <translation>操作：</translation>
+        <translation type="vanished">操作：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="71"/>
         <source>Choose the voxel intensity that will be used to fill the masked region.</source>
-        <translation>选择用于填充蒙版区域的体素强度。</translation>
+        <translation type="vanished">选择用于填充蒙版区域的体素强度。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="72"/>
         <source>Fill value: </source>
-        <translation>填充值： </translation>
+        <translation type="vanished">填充值： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="76"/>
         <source>Choose the voxel intensity that will be used to fill outside the mask.</source>
-        <translation>选择用于填充蒙版外部的体素强度。</translation>
+        <translation type="vanished">选择用于填充蒙版外部的体素强度。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="77"/>
         <source>Outside fill value: </source>
-        <translation>外部填充值： </translation>
+        <translation type="vanished">外部填充值： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="81"/>
         <source>Choose the voxel intensity that will be used to fill inside the mask.</source>
-        <translation>选择用于填充蒙版内部的体素强度。</translation>
+        <translation type="vanished">选择用于填充蒙版内部的体素强度。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="82"/>
         <source> Inside fill value: </source>
-        <translation> 内部填充值： </translation>
+        <translation type="vanished"> 内部填充值： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="112"/>
         <source>Standard deviation of the Gaussian function that blurs the edge of the mask. Higher value makes the edge softer.</source>
-        <translation>模糊蒙版边缘的高斯函数的标准偏差。值越高，边缘越柔和。</translation>
+        <translation type="vanished">模糊蒙版边缘的高斯函数的标准偏差。值越高，边缘越柔和。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="117"/>
         <source>Soft edge:</source>
-        <translation>柔化边缘：</translation>
+        <translation type="vanished">柔化边缘：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="128"/>
-        <source>(Source volume)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="130"/>
         <source>Volume to mask. Default is current source volume node.</source>
-        <translation>用于蒙版的体数据。默认值为当前源数据节点。</translation>
+        <translation type="vanished">用于蒙版的体数据。默认值为当前源数据节点。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="139"/>
         <source>Input Volume: </source>
-        <translation>选择数据： </translation>
+        <translation type="vanished">选择数据： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="150"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="230"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="231"/>
-        <source>(Create new Volume)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="152"/>
-        <source>Masked output volume. It may be the same as the input volume for cumulative masking.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="161"/>
         <source>Output Volume: </source>
-        <translation>输出到： </translation>
+        <translation type="vanished">输出到： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="164"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="166"/>
-        <source>Apply segment as volume mask. No undo operation available once applied.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="234"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="235"/>
-        <source>(Create new Labelmap Volume)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorMaskVolumeEffect.py" line="301"/>
         <source>Failed to apply mask to volume.</source>
-        <translation>无法将蒙版应用到体数据。</translation>
+        <translation type="vanished">无法将蒙版应用到体数据。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorSmoothingEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="20"/>
         <source>Smoothing</source>
-        <translation>平滑</translation>
+        <translation type="vanished">平滑</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="47"/>
         <source>Make segment boundaries smoother&lt;br&gt; by removing extrusions and filling small holes. The effect can be either applied locally
 (by painting in viewers) or to the whole segment (by clicking Apply button). Available methods:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
@@ -11006,7 +9817,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
 &lt;li&gt;&lt;b&gt;Joint smoothing:&lt;/b&gt; smoothes multiple segments at once, preserving watertight interface between them. Masking settings are bypassed.
 If segments overlap, segment higher in the segments table will have priority. &lt;b&gt;Applied to all visible segments.&lt;/b&gt;
 &lt;/ul&gt;&lt;p&gt;</source>
-        <translation>通过移除挤压部分并填充小孔，使片段边界更平滑&lt;br&gt;。该效果可以局部应用（通过在查看器中绘制）或应用于整个片段（通过单击“应用”按钮）。可用方法：&lt;p&gt; &lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;中值：&lt;/b&gt;移除小细节，同时保持平滑轮廓基本不变。仅适用于选定的片段。
+        <translation type="vanished">通过移除挤压部分并填充小孔，使片段边界更平滑&lt;br&gt;。该效果可以局部应用（通过在查看器中绘制）或应用于整个片段（通过单击“应用”按钮）。可用方法：&lt;p&gt; &lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;中值：&lt;/b&gt;移除小细节，同时保持平滑轮廓基本不变。仅适用于选定的片段。
 &lt;li&gt;&lt;b&gt;打开：&lt;/b&gt;移除小于指定内核大小的挤压部分。仅适用于选定的片段。
 &lt;li&gt;&lt;b&gt;关闭：&lt;/b&gt;填充小于指定内核大小的尖角和孔。仅适用于选定的片段。
 &lt;li&gt;&lt;b&gt;高斯：&lt;/b&gt;平滑所有轮廓，倾向于缩小片段。仅适用于选定的片段。
@@ -11014,359 +9825,260 @@ If segments overlap, segment higher in the segments table will have priority. &l
 如果片段重叠，则片段表中较高的片段将具有优先权。 &lt;b&gt;应用于所有可见段。&lt;/b&gt; &lt;/ul&gt;&lt;p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="49"/>
         <source>Median</source>
-        <translation>中位数</translation>
+        <translation type="vanished">中位数</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="50"/>
         <source>Opening (remove extrusions)</source>
-        <translation>开放（移除挤压件）</translation>
+        <translation type="vanished">开放（移除挤压件）</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="51"/>
         <source>Closing (fill holes)</source>
-        <translation>闭合（填补漏洞）</translation>
+        <translation type="vanished">闭合（填补漏洞）</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="52"/>
         <source>Gaussian</source>
-        <translation>高斯</translation>
+        <translation type="vanished">高斯</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="53"/>
         <source>Joint smoothing</source>
-        <translation>联合平滑</translation>
+        <translation type="vanished">联合平滑</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="54"/>
         <source>Smoothing method:</source>
-        <translation>平滑方法：</translation>
+        <translation type="vanished">平滑方法：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="59"/>
         <source>Diameter of the neighborhood that will be considered around each voxel. Higher value makes smoothing stronger (more details are suppressed).</source>
-        <translation>每个体素周围将被考虑的邻域的直径。值越高，平滑度越高（抑制的细节越多）。</translation>
+        <translation type="vanished">每个体素周围将被考虑的邻域的直径。值越高，平滑度越高（抑制的细节越多）。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="66"/>
         <source>Diameter of the neighborhood in pixel. Computed from the segment&apos;s spacing and the specified kernel size.</source>
-        <translation>邻域的直径（以像素为单位）。根据线段间距和指定的核大小计算得出。</translation>
+        <translation type="vanished">邻域的直径（以像素为单位）。根据线段间距和指定的核大小计算得出。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="71"/>
         <source>Kernel size:</source>
-        <translation>内核大小：</translation>
+        <translation type="vanished">内核大小：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="76"/>
         <source>Standard deviation of the Gaussian smoothing filter coefficients. Higher value makes smoothing stronger (more details are suppressed).</source>
-        <translation>高斯平滑滤波器系数的标准偏差。值越高，平滑效果越好（抑制的细节越多）。</translation>
+        <translation type="vanished">高斯平滑滤波器系数的标准偏差。值越高，平滑效果越好（抑制的细节越多）。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="80"/>
         <source>Standard deviation:</source>
-        <translation>标准差：</translation>
+        <translation type="vanished">标准差：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="83"/>
         <source>Higher value means stronger smoothing.</source>
-        <translation>值越高，平滑度越高。</translation>
+        <translation type="vanished">值越高，平滑度越高。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="89"/>
         <source>Smoothing factor:</source>
-        <translation>平滑系数：</translation>
+        <translation type="vanished">平滑系数：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="93"/>
         <source>Apply smoothing effect to all visible segments in this segmentation node. This operation may take a while.</source>
-        <translation>对此分割节点中所有可见的片段应用平滑效果。此操作可能需要一段时间。</translation>
+        <translation type="vanished">对此分割节点中所有可见的片段应用平滑效果。此操作可能需要一段时间。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="95"/>
         <source>Apply to visible segments:</source>
-        <translation>应用于可见分割：</translation>
+        <translation type="vanished">应用于可见分割：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="98"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="100"/>
         <source>Apply smoothing to selected segment</source>
-        <translation>对选定段应用平滑处理</translation>
+        <translation type="vanished">对选定段应用平滑处理</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="113"/>
         <source>Smoothing brush options</source>
-        <translation>平滑画笔选项</translation>
+        <translation type="vanished">平滑画笔选项</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="230"/>
         <source>Smoothing {segmentName}...</source>
-        <translation>正在平滑 {segmentName}...</translation>
+        <translation type="vanished">正在平滑 {segmentName}...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="372"/>
         <source>Joint smoothing ...</source>
-        <translation>联合平滑...</translation>
+        <translation type="vanished">联合平滑...</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorSmoothingEffect.py" line="478"/>
         <source>Smoothing brush is not available for &apos;joint smoothing&apos; method.</source>
-        <translation>平滑刷不适用于“联合平滑”方法。</translation>
+        <translation type="vanished">平滑刷不适用于“联合平滑”方法。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorThresholdEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="28"/>
         <source>Threshold</source>
-        <translation>阈值分割</translation>
+        <translation type="vanished">阈值分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="92"/>
         <source>Fill segment based on source volume intensity range&lt;br&gt;. Options:&lt;p&gt;
 &lt;ul style=&quot;margin: 0&quot;&gt;
 &lt;li&gt;&lt;b&gt;Use for masking:&lt;/b&gt; set the selected intensity range as &lt;dfn&gt;Editable intensity range&lt;/dfn&gt; and switch to Paint effect.
 &lt;li&gt;&lt;b&gt;Apply:&lt;/b&gt; set the previewed segmentation in the selected segment. Previous contents of the segment is overwritten.
 &lt;/ul&gt;&lt;p&gt;</source>
-        <translation>根据源体积强度范围填充片段&lt;br&gt;。选项：&lt;p&gt; &lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;用于遮罩：&lt;/b&gt;将选定的强度范围设置为&lt;dfn&gt;可编辑强度范围&lt;/dfn&gt;并切换到绘画效果。
+        <translation type="vanished">根据源体积强度范围填充片段&lt;br&gt;。选项：&lt;p&gt; &lt;ul style=&quot;margin: 0&quot;&gt; &lt;li&gt;&lt;b&gt;用于遮罩：&lt;/b&gt;将选定的强度范围设置为&lt;dfn&gt;可编辑强度范围&lt;/dfn&gt;并切换到绘画效果。
 &lt;li&gt;&lt;b&gt;应用：&lt;/b&gt;在选定的片段中设置预览的分段。片段的先前内容将被覆盖。
 &lt;/ul&gt;&lt;p&gt;</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="169"/>
         <source>Threshold Range:</source>
-        <translation>阈值范围：</translation>
+        <translation type="vanished">阈值范围：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="170"/>
         <source>Set the range of the background values that should be labeled.</source>
-        <translation>设置应标注的背景值范围。</translation>
+        <translation type="vanished">设置应标注的背景值范围。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="179"/>
         <source>threshold above</source>
-        <translation>以上阈值</translation>
+        <translation type="vanished">以上阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="180"/>
         <source>threshold below</source>
-        <translation>低于阈值</translation>
+        <translation type="vanished">低于阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="181"/>
         <source>set as lower value</source>
-        <translation>设定较低的阈值</translation>
+        <translation type="vanished">设定较低的阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="182"/>
         <source>set as upper value</source>
-        <translation>设定较高的阈值</translation>
+        <translation type="vanished">设定较高的阈值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="185"/>
         <source>How to set lower and upper values of the threshold range. Threshold above/below: sets the range from the computed value to maximum/minimum. Set as lower/upper value: only modifies one side of the threshold range.</source>
-        <translation>如何设置阈值范围的下限和上限值。阈值上限/下限：设置从计算值到最大值/最小值的范围。设置为下限/上限值：仅修改阈值范围的一侧。</translation>
+        <translation type="vanished">如何设置阈值范围的下限和上限值。阈值上限/下限：设置从计算值到最大值/最小值的范围。设置为下限/上限值：仅修改阈值范围的一侧。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="188"/>
         <source>Otsu</source>
-        <translation type="unfinished">大津</translation>
+        <translation type="obsolete">大津</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="189"/>
-        <source>Huang</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="190"/>
-        <source>IsoData</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="193"/>
-        <source>Kittler-Illingworth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="198"/>
         <source>Maximum entropy</source>
-        <translation>最大熵</translation>
+        <translation type="vanished">最大熵</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="199"/>
-        <source>Moments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="200"/>
-        <source>Renyi entropy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="201"/>
-        <source>Shanbhag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="202"/>
         <source>Triangle</source>
-        <translation>三角</translation>
+        <translation type="vanished">三角</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="203"/>
-        <source>Yen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="204"/>
         <source>Select method to compute threshold value automatically.</source>
-        <translation>选择自动计算阈值的方法。</translation>
+        <translation type="vanished">选择自动计算阈值的方法。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="209"/>
         <source>Select previous thresholding method and set thresholds. Useful for iterating through all available methods.</source>
-        <translation>选择前一个阈值方法并设置阈值。适用于迭代所有可用方法。</translation>
+        <translation type="vanished">选择前一个阈值方法并设置阈值。适用于迭代所有可用方法。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="214"/>
         <source>Select next thresholding method and set thresholds. Useful for iterating through all available methods.</source>
-        <translation>选择下一个阈值方法并设置阈值。适用于迭代所有可用方法。</translation>
+        <translation type="vanished">选择下一个阈值方法并设置阈值。适用于迭代所有可用方法。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="216"/>
         <source>Set</source>
-        <translation>设置</translation>
+        <translation type="vanished">设置</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="217"/>
         <source>Set threshold using selected method.</source>
-        <translation>使用选定的方法设置阈值。</translation>
+        <translation type="vanished">使用选定的方法设置阈值。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="232"/>
         <source>Automatic threshold</source>
-        <translation>自动阈值分割</translation>
+        <translation type="vanished">自动阈值分割</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="242"/>
         <source>Region shape:</source>
-        <translation>区域形状：</translation>
+        <translation type="vanished">区域形状：</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="249"/>
         <source>Box</source>
-        <translation>箱型</translation>
+        <translation type="vanished">箱型</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="256"/>
         <source>Circle</source>
-        <translation>圆</translation>
+        <translation type="vanished">圆</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="263"/>
         <source>Draw</source>
-        <translation>绘制</translation>
+        <translation type="vanished">绘制</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="270"/>
         <source>Line</source>
-        <translation>线形</translation>
+        <translation type="vanished">线形</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="331"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="348"/>
         <source>Lower</source>
-        <translation>较低</translation>
+        <translation type="vanished">较低</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="340"/>
         <source>Min</source>
-        <translation>最小</translation>
+        <translation type="vanished">最小</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="341"/>
         <source>Minimum</source>
-        <translation>最小</translation>
+        <translation type="vanished">最小</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="355"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="373"/>
         <source>Mean</source>
-        <translation>均值</translation>
+        <translation type="vanished">均值</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="364"/>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="380"/>
         <source>Upper</source>
-        <translation>上层</translation>
+        <translation type="vanished">上层</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="387"/>
         <source>Max</source>
-        <translation>最大</translation>
+        <translation type="vanished">最大</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="388"/>
         <source>Maximum</source>
-        <translation>最大</translation>
+        <translation type="vanished">最大</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="395"/>
         <source>Local histogram</source>
-        <translation>局部柱状图</translation>
+        <translation type="vanished">局部柱状图</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="400"/>
         <source>Use for masking</source>
-        <translation>用于遮蔽</translation>
+        <translation type="vanished">用于遮蔽</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="401"/>
         <source>Use specified intensity range for masking and switch to Paint effect.</source>
-        <translation>使用指定的强度范围进行遮罩并切换到绘画效果。</translation>
+        <translation type="vanished">使用指定的强度范围进行遮罩并切换到绘画效果。</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="404"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="406"/>
         <source>Fill selected segment in regions that are in the specified intensity range.</source>
-        <translation>在指定强度范围内的区域中填充选定的段。</translation>
+        <translation type="vanished">在指定强度范围内的区域中填充选定的段。</translation>
     </message>
 </context>
 <context>
     <name>SegmentEditorEffects.SegmentEditorWrapSolidifyEffect</name>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorWrapSolidifyEffect.py" line="528"/>
         <source>Region segment is not set</source>
-        <translation>区域分割未设置</translation>
+        <translation type="vanished">区域分割未设置</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorWrapSolidifyEffect.py" line="530"/>
         <source>Region segment cannot be the same segment as the current segment</source>
-        <translation>区域分割不能与当前分割为同一段</translation>
+        <translation type="vanished">区域分割不能与当前分割为同一段</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorWrapSolidifyEffect.py" line="534"/>
         <source>Region segment is empty</source>
-        <translation>区域分割为空</translation>
+        <translation type="vanished">区域分割为空</translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorWrapSolidifyEffect.py" line="537"/>
         <source>Invalid region: </source>
-        <translation>无效区域： </translation>
+        <translation type="vanished">无效区域： </translation>
     </message>
     <message>
-        <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorWrapSolidifyEffect.py" line="560"/>
         <source>Mesh has become empty during shrink-wrap iterations</source>
-        <translation>在收缩包裹迭代过程中，网格已变为空</translation>
+        <translation type="vanished">在收缩包裹迭代过程中，网格已变为空</translation>
     </message>
 </context>
 <context>
@@ -11755,12 +10467,10 @@ The effect uses &lt;a href=&quot;http://interactivemedical.org/imic2014/CameraRe
 <context>
     <name>SegmentStatistics</name>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="23"/>
         <source>Segment Statistics</source>
-        <translation>分割统计</translation>
+        <translation type="vanished">分割统计</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="37"/>
         <source>
 Use this module to calculate counts and volumes for segments plus statistics on the grayscale background volume.
 Computed fields:
@@ -11772,7 +10482,7 @@ Requires segment labelmap representation and selection of a scalar volume
 Closed surface statistics (CS): surface mm2, volume mm3, volume cm3 (computed from closed surface).
 Requires segment closed surface representation.
 </source>
-        <translation>
+        <translation type="vanished">
 使用此模块可计算分割的计数和体积，以及灰度背景体积的统计数据。
 计算字段：
 分割标签图统计 (LM)：体素计数、体积 mm3、体积 cm3。
@@ -11785,149 +10495,116 @@ Requires segment closed surface representation.
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="42"/>
         <source>
 Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www.slicer.org for details.
 </source>
-        <translation>
+        <translation type="vanished">
 由 NA-MIC、NAC、BIRN、NCIGT 和 Slicer 社区支持。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="80"/>
         <source>Pick parameter set</source>
-        <translation>选取参数集</translation>
+        <translation type="vanished">选取参数集</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="86"/>
         <source>Inputs</source>
-        <translation>输入</translation>
+        <translation type="vanished">输入</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="96"/>
         <source>Pick the segmentation to compute statistics for</source>
-        <translation>选择要计算统计数据的分割</translation>
+        <translation type="vanished">选择要计算统计数据的分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="97"/>
         <source>Segmentation:</source>
-        <translation>分割项：</translation>
+        <translation type="vanished">分割项：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="108"/>
         <source>Select the scalar volume for intensity statistics calculations</source>
-        <translation>为强度统计计算选择标量体数据</translation>
+        <translation type="vanished">为强度统计计算选择标量体数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="109"/>
         <source>Scalar volume:</source>
-        <translation>标量体数据：</translation>
+        <translation type="vanished">标量体数据：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="114"/>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="vanished">输出</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="119"/>
         <source>Create new table</source>
-        <translation>创建新表</translation>
+        <translation type="vanished">创建新表</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="126"/>
         <source>Select the table where statistics will be saved into</source>
-        <translation>选择要保存统计数据的表格</translation>
+        <translation type="vanished">选择要保存统计数据的表格</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="129"/>
         <source>Output table:</source>
-        <translation>输出表：</translation>
+        <translation type="vanished">输出表：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="134"/>
         <source>Advanced</source>
-        <translation>高级</translation>
+        <translation type="vanished">高级</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="148"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="215"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="150"/>
         <source>Calculate Statistics.</source>
-        <translation>计算统计数据。</translation>
+        <translation type="vanished">计算统计数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="191"/>
         <source>Failed to compute results.</source>
-        <translation>计算结果失败。</translation>
+        <translation type="vanished">计算结果失败。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="197"/>
         <source>Working...</source>
-        <translation>工作...</translation>
+        <translation type="vanished">工作...</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="222"/>
         <source>Enabled segment statistics plugins:</source>
-        <translation>启用分割统计插件：</translation>
+        <translation type="vanished">启用分割统计插件：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="224"/>
         <source>{pluginName} Statistics</source>
-        <translation>{插件名称} 统计</translation>
+        <translation type="vanished">{插件名称} 统计</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="227"/>
         <source>Options</source>
-        <translation>选项</translation>
+        <translation type="vanished">选项</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="298"/>
         <source>Edit Segment Statistics Parameters</source>
-        <translation>编辑分割统计参数</translation>
+        <translation type="vanished">编辑分割统计参数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="314"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="339"/>
         <source>Edit segment statistics plugin parameters:</source>
-        <translation>编辑分割统计插件参数：</translation>
+        <translation type="vanished">编辑分割统计插件参数：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="316"/>
         <source>Done</source>
-        <translation>已完成</translation>
+        <translation type="vanished">已完成</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="318"/>
         <source>Finish editing.</source>
-        <translation>完成编辑。</translation>
+        <translation type="vanished">完成编辑。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="340"/>
         <source>Edit {pluginName} plugin parameters:</source>
-        <translation>编辑 {插件名称} 插件参数：</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="370"/>
-        <source>Segment</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">编辑 {插件名称} 插件参数：</translation>
     </message>
     <message>
         <source>Computed by {pluginName} Statistics plugin</source>
         <translation type="vanished">由 {插件名称} 统计插件计算</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="1013"/>
         <source>Add Data</source>
-        <translation>添加数据</translation>
+        <translation type="vanished">添加数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="1016"/>
         <source>Load Scene</source>
-        <translation>加载场景</translation>
+        <translation type="vanished">加载场景</translation>
     </message>
 </context>
 <context>
@@ -11937,40 +10614,32 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">表面积（平方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="14"/>
         <source>Closed Surface</source>
-        <translation>闭合曲面</translation>
+        <translation type="vanished">闭合曲面</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="60"/>
         <source>Surface area</source>
-        <translation>表面积</translation>
+        <translation type="vanished">表面积</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="61"/>
         <source>Surface area computed from closed surface representation.</source>
-        <translation>根据封闭表面表示计算的表面积。</translation>
+        <translation type="vanished">根据封闭表面表示计算的表面积。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="62"/>
         <source>mm2</source>
-        <translation>平方毫米</translation>
+        <translation type="vanished">平方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="68"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="75"/>
         <source>Volume computed from closed surface representation.</source>
-        <translation>根据封闭表面表示计算的体积。</translation>
+        <translation type="vanished">根据封闭表面表示计算的体积。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="69"/>
         <source>mm3</source>
-        <translation>立方毫米</translation>
+        <translation type="vanished">立方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="76"/>
         <source>cm3</source>
-        <translation>立方厘米</translation>
+        <translation type="vanished">立方厘米</translation>
     </message>
     <message>
         <source>square millimeter</source>
@@ -11981,10 +10650,8 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">体积（立方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="68"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ClosedSurfaceSegmentStatisticsPlugin.py" line="75"/>
         <source>Volume</source>
-        <translation>体数据</translation>
+        <translation type="vanished">体数据</translation>
     </message>
     <message>
         <source>cubic millimeter</source>
@@ -12014,202 +10681,60 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">体积（mm3）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="17"/>
         <source>Label Map</source>
-        <translation>标签图</translation>
+        <translation type="vanished">标签图</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="404"/>
         <source>Voxel count</source>
-        <translation>体素数</translation>
+        <translation type="vanished">体素数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="405"/>
         <source>Number of voxels in the binary labelmap representation of the segment.</source>
-        <translation>该分割的二进制标签图表示中的体素数量。</translation>
+        <translation type="vanished">该分割的二进制标签图表示中的体素数量。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="412"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="420"/>
         <source>Volume</source>
-        <translation>体积</translation>
+        <translation type="vanished">体积</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="413"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="421"/>
         <source>Volume of the segment computed from binary labelmap representation.</source>
-        <translation>根据二进制标签图表示计算出的分割的体积。</translation>
+        <translation type="vanished">根据二进制标签图表示计算出的分割的体积。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="414"/>
         <source>mm3</source>
-        <translation>立方毫米</translation>
+        <translation type="vanished">立方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="422"/>
         <source>cm3</source>
-        <translation>立方厘米</translation>
+        <translation type="vanished">立方厘米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="429"/>
         <source>Centroid</source>
-        <translation>形心</translation>
+        <translation type="vanished">形心</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="430"/>
         <source>Location of the centroid in RAS. Computed from binary labelmap representation.</source>
-        <translation>RAS 中的质心位置。根据二进制标签图表示计算得出。</translation>
+        <translation type="vanished">RAS 中的质心位置。根据二进制标签图表示计算得出。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="435"/>
         <source>Feret diameter</source>
-        <translation>Feret直径</translation>
+        <translation type="vanished">Feret直径</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="436"/>
         <source>Feret diameter of the segment computed from binary labelmap representation.</source>
-        <translation>根据二进制标签图表示计算出的线段的 Feret 直径。</translation>
+        <translation type="vanished">根据二进制标签图表示计算出的线段的 Feret 直径。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="436"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="486"/>
         <source>mm</source>
-        <translation>毫米</translation>
+        <translation type="vanished">毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="441"/>
         <source>Surface area of the segment computed from binary labelmap representation.</source>
-        <translation>根据二进制标签图表示计算出的分割的表面积。</translation>
+        <translation type="vanished">根据二进制标签图表示计算出的分割的表面积。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="441"/>
         <source>mm2</source>
-        <translation type="unfinished">平方毫米</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="447"/>
-        <source>Roundness</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="449"/>
-        <source>Segment roundness. Calculated from ratio of the area of the hypersphere by the actual area. Value of 1 represents a spherical structure. Computed from binary labelmap representation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="454"/>
-        <source>Flatness</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="457"/>
-        <source>Segment flatness. Calculated from square root of the ratio of the second smallest principal moment by the smallest. Value of 0 represents a flat structure. Computed from binary labelmap representation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="462"/>
-        <source>Elongation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="465"/>
-        <source>Segment elongation. Calculated from square root of the ratio of the second largest principal moment by the second smallest. Computed from binary labelmap representation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="471"/>
-        <source>Oriented bounding box. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="476"/>
-        <source>OBB origin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="478"/>
-        <source>Oriented bounding box origin in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="484"/>
-        <source>OBB diameter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="485"/>
-        <source>Oriented bounding box diameter. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="491"/>
-        <source>OBB X direction</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="492"/>
-        <source>Oriented bounding box X direction in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="497"/>
-        <source>OBB Y direction</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="499"/>
-        <source>Oriented bounding box Y direction in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="505"/>
-        <source>OBB Z direction</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="507"/>
-        <source>Oriented bounding box Z direction in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="513"/>
-        <source>Principal moments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="515"/>
-        <source>Principal moments of inertia for x, y and z axes. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="520"/>
-        <source>Principal X axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="522"/>
-        <source>Principal X axis of rotation in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="527"/>
-        <source>Principal Y axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="529"/>
-        <source>Principal Y axis of rotation in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="534"/>
-        <source>Principal Z axis</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="536"/>
-        <source>Principal Z axis of rotation in RAS coordinates. Computed from binary labelmap representation of the segment.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">平方毫米</translation>
     </message>
     <message>
         <source>cubic millimeter</source>
@@ -12240,9 +10765,8 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">表面积（平方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="440"/>
         <source>Surface area</source>
-        <translation>表面积</translation>
+        <translation type="vanished">表面积</translation>
     </message>
     <message>
         <source>square millimeter</source>
@@ -12261,9 +10785,8 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">分割伸长率。根据第二大主矩与第二小主矩之比平方根计算。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/LabelmapSegmentStatisticsPlugin.py" line="470"/>
         <source>Oriented bounding box</source>
-        <translation>定向边界框</translation>
+        <translation type="vanished">定向边界框</translation>
     </message>
     <message>
         <source>Oriented bounding box origin in RAS coordinates</source>
@@ -12317,66 +10840,28 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">体积（立方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="14"/>
         <source>Scalar Volume</source>
-        <translation>标量体数据</translation>
+        <translation type="vanished">标量体数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="147"/>
         <source>Voxel count</source>
-        <translation>体素数</translation>
+        <translation type="vanished">体素数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="149"/>
         <source>Number of voxels. Computed from region of the binary labelmap representation of the segment that overlaps with the input scalar volume.</source>
-        <translation>体素的数量。根据与输入标量体积重叠的段的二进制标签图表示的区域计算得出。</translation>
+        <translation type="vanished">体素的数量。根据与输入标量体积重叠的段的二进制标签图表示的区域计算得出。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="156"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="164"/>
         <source>Volume</source>
-        <translation>体积</translation>
+        <translation type="vanished">体积</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="157"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="165"/>
-        <source>Volume of the region of the binary labelmap representation that overlaps with the input scalar volume.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="158"/>
         <source>mm3</source>
-        <translation type="unfinished">立方毫米</translation>
+        <translation type="obsolete">立方毫米</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="166"/>
         <source>cm3</source>
-        <translation type="unfinished">立方厘米</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="172"/>
-        <source>Minimum input scalar volume voxel value within the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="179"/>
-        <source>Maximum input scalar volume voxel value within the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="186"/>
-        <source>Mean input scalar volume voxel value within the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="193"/>
-        <source>Median input scalar volume voxel value within the segment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="202"/>
-        <source>Standard deviation of input scalar volume voxel values within the segment.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">立方厘米</translation>
     </message>
     <message>
         <source>cubic millimeter</source>
@@ -12399,74 +10884,64 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">最小标量值</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="172"/>
         <source>Minimum</source>
-        <translation>最小</translation>
+        <translation type="vanished">最小</translation>
     </message>
     <message>
         <source>Maximum scalar value</source>
         <translation type="vanished">最大标量值</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="179"/>
         <source>Maximum</source>
-        <translation>最大</translation>
+        <translation type="vanished">最大</translation>
     </message>
     <message>
         <source>Mean scalar value</source>
         <translation type="vanished">平均标量值</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="186"/>
         <source>Mean</source>
-        <translation>均值</translation>
+        <translation type="vanished">均值</translation>
     </message>
     <message>
         <source>Median scalar value</source>
         <translation type="vanished">中位标量值</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="193"/>
         <source>Median</source>
-        <translation>中位数</translation>
+        <translation type="vanished">中位数</translation>
     </message>
     <message>
         <source>Standard deviation of scalar values</source>
         <translation type="vanished">标量值的标准偏差</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/ScalarVolumeSegmentStatisticsPlugin.py" line="201"/>
         <source>Standard Deviation</source>
-        <translation>标准偏差</translation>
+        <translation type="vanished">标准偏差</translation>
     </message>
 </context>
 <context>
     <name>SegmentStatisticsPlugins.SegmentStatisticsPluginBase</name>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="136"/>
         <source>{pluginName} plugin enabled</source>
         <extracomment>measurements that will be calculated by default</extracomment>
-        <translation>已启用 {插件名称} 插件</translation>
+        <translation type="vanished">已启用 {插件名称} 插件</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="146"/>
         <source>Select measurements: </source>
-        <translation>选择测量值： </translation>
+        <translation type="vanished">选择测量值： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="147"/>
         <source>all</source>
-        <translation>全部</translation>
+        <translation type="vanished">全部</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="150"/>
         <source>none</source>
-        <translation>无</translation>
+        <translation type="vanished">无</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatisticsPlugins/SegmentStatisticsPluginBase.py" line="153"/>
         <source>default</source>
-        <translation>默认</translation>
+        <translation type="vanished">默认</translation>
     </message>
 </context>
 <context>
@@ -12479,9 +10954,8 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
 <context>
     <name>SelfTests</name>
     <message>
-        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="31"/>
         <source>SelfTests</source>
-        <translation>自检</translation>
+        <translation type="vanished">自检</translation>
     </message>
     <message>
         <source>Testing</source>
@@ -12492,22 +10966,20 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
         <translation type="vanished">mikhay</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="37"/>
         <source>
 The SelfTests module allows developers to provide built-in self-tests (BIST) for slicer so that users can tell
 if their installed version of slicer are running as designed.
 </source>
-        <translation>
+        <translation type="vanished">
 SelfTests 模块允许开发人员为软件提供内置自测试 (BI​​ST)，以便用户可以判断他们安装的版本是否按设计运行。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="52"/>
         <source>
 This work is part of SparKit project, funded by Cancer Care Ontario (CCO)&apos;s ACRU program
 and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).
 </source>
-        <translation>
+        <translation type="vanished">
 自我测试管理。
 </translation>
     </message>
@@ -12823,22 +11295,19 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
 <context>
     <name>SubjectHierarchyPlugins.SegmentEditorSubjectHierarchyPlugin</name>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SubjectHierarchyPlugins/SegmentEditorSubjectHierarchyPlugin.py" line="28"/>
         <source>Segment this...</source>
-        <translation type="unfinished">分割...</translation>
+        <translation type="obsolete">分割...</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SubjectHierarchyPlugins/SegmentEditorSubjectHierarchyPlugin.py" line="106"/>
         <source>_Segmentation</source>
-        <translation type="unfinished">_分割</translation>
+        <translation type="obsolete">_分割</translation>
     </message>
 </context>
 <context>
     <name>SubjectHierarchyPlugins.SegmentStatisticsSubjectHierarchyPlugin</name>
     <message>
-        <location filename="Modules/Scripted/SegmentStatistics/SubjectHierarchyPlugins/SegmentStatisticsSubjectHierarchyPlugin.py" line="27"/>
         <source>Calculate statistics...</source>
-        <translation>计算统计数据...</translation>
+        <translation type="vanished">计算统计数据...</translation>
     </message>
 </context>
 <context>
@@ -13172,12 +11641,10 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="59"/>
         <source>Vector to Scalar Volume</source>
-        <translation>矢量到标量数据</translation>
+        <translation type="vanished">矢量到标量数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="75"/>
         <source>
     &lt;p&gt;Make a scalar (1 component) volume from a vector volume.&lt;/p&gt;
 
@@ -13189,7 +11656,7 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
     &lt;li&gt;computes the mean of all the components.&lt;/li&gt;
     &lt;/ul&gt;
     </source>
-        <translation>
+        <translation type="vanished">
     &lt;p&gt;从矢量体积中创建标量（1 个分量）体积。&lt;/p&gt;
 
     &lt;p&gt;它提供多种转换模式：&lt;/p&gt; &lt;ul&gt;
@@ -13200,88 +11667,24 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
     </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="88"/>
-        <source>
-Developed by Steve Pieper, Isomics, Inc.,
-partially funded by NIH grant 3P41RR013218-12S1 (NAC) and is part of the National Alliance
-for Medical Image Computing (NA-MIC), funded by the National Institutes of Health through the
-NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="89"/>
         <source>Luminance</source>
-        <translation>亮度</translation>
+        <translation type="vanished">亮度</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="90"/>
         <source>(RGB,RGBA) Luminance from first three components: 0.30*R + 0.59*G + 0.11*B + 0.0*A)</source>
-        <translation>（RGB，RGBA）前三个分量的亮度：0.30*R + 0.59*G + 0.11*B + 0.0*A）</translation>
+        <translation type="vanished">（RGB，RGBA）前三个分量的亮度：0.30*R + 0.59*G + 0.11*B + 0.0*A）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="93"/>
         <source>Average</source>
-        <translation>平均</translation>
+        <translation type="vanished">平均</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="94"/>
         <source>Average all the components.</source>
-        <translation>计算所有成分的平均值。</translation>
+        <translation type="vanished">计算所有成分的平均值。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="97"/>
-        <source>Single Component Extraction</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="98"/>
-        <source>Extract single component</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="257"/>
-        <source>Please select Input Vector Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="259"/>
-        <source>Please select Output Scalar Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="261"/>
-        <source>Please select a component to extract</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="285"/>
         <source>Failed to compute results.</source>
-        <translation>计算结果失败。</translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="321"/>
-        <source>no input volume node defined</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="325"/>
-        <source>no output volume node defined</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="330"/>
-        <source>input and output volume is the same. Create a new volume for output to avoid this error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="348"/>
-        <source>component to extract ({componentSelected}) is invalid. Image has only {componentsTotal} components.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="357"/>
-        <source>input has only {componentsTotal} components but requires at least 3 components for luminance conversion.</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">计算结果失败。</translation>
     </message>
     <message>
         <source>Converters</source>
@@ -13291,188 +11694,153 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
 <context>
     <name>VolumeClipWithModel</name>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="18"/>
         <source>Volume clip with model</source>
-        <translation>图像数据裁剪（模型）</translation>
+        <translation type="vanished">图像数据裁剪（模型）</translation>
     </message>
     <message>
         <source>Segmentation</source>
         <translation type="vanished">分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="56"/>
         <source>Parameters</source>
-        <translation>参数</translation>
+        <translation type="vanished">参数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="71"/>
         <source>Input volume that will be clipped.</source>
-        <translation>选择被裁剪的图像数据。</translation>
+        <translation type="vanished">选择被裁剪的图像数据。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="72"/>
         <source>Input Volume: </source>
-        <translation>选择数据： </translation>
+        <translation type="vanished">选择数据： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="87"/>
         <source>Choose the clipping surface model.</source>
-        <translation>选择裁剪面模型。</translation>
+        <translation type="vanished">选择裁剪面模型。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="88"/>
         <source>Clipping surface: </source>
-        <translation>裁剪面： </translation>
+        <translation type="vanished">裁剪面： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="102"/>
         <source>If markups are selected then the clipping surface will be generated from the markup points. The surface is updated automatically when markups are moved.</source>
-        <translation>如果选择，则将从标记点生成剪切面。当标记移动时，表面会自动更新。</translation>
+        <translation type="vanished">如果选择，则将从标记点生成剪切面。当标记移动时，表面会自动更新。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="103"/>
         <source>Clipping surface from markups: </source>
-        <translation>从标记获取裁剪面： </translation>
+        <translation type="vanished">从标记获取裁剪面： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="110"/>
         <source>If checked, voxel values will be filled outside the clipping surface.</source>
-        <translation>选中后，体素值将填充在裁剪表面之外。</translation>
+        <translation type="vanished">选中后，体素值将填充在裁剪表面之外。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="111"/>
         <source>Clip outside: </source>
-        <translation>外部： </translation>
+        <translation type="vanished">外部： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="117"/>
         <source>Choose the voxel intensity that will be used to fill outside the clipped regions</source>
-        <translation>选择用于填充到裁剪区域外的体素强度</translation>
+        <translation type="vanished">选择用于填充到裁剪区域外的体素强度</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="121"/>
         <source>Outside Fill value: </source>
-        <translation>外部填充值： </translation>
+        <translation type="vanished">外部填充值： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="128"/>
         <source>If checked, voxel values will be filled inside the clipping surface.</source>
-        <translation>选中后，体素值将填充在裁剪面内。</translation>
+        <translation type="vanished">选中后，体素值将填充在裁剪面内。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="129"/>
         <source>Clip inside: </source>
-        <translation>内部： </translation>
+        <translation type="vanished">内部： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="135"/>
         <source>Choose the voxel intensity that will be used to fill Inside the clipped regions</source>
-        <translation>选择用于填充裁剪区域内的体素强度</translation>
+        <translation type="vanished">选择用于填充裁剪区域内的体素强度</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="139"/>
         <source>Inside Fill value: </source>
-        <translation>内部填充值： </translation>
+        <translation type="vanished">内部填充值： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="153"/>
         <source>Output Volume: </source>
-        <translation>输出到： </translation>
+        <translation type="vanished">输出到： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="160"/>
-        <location filename="Modules/Scripted/VolumeClipWithModel/VolumeClipWithModel.py" line="326"/>
         <source>Clip volume with surface model.</source>
-        <translation>使用表面模型裁剪图像数据。</translation>
+        <translation type="vanished">使用表面模型裁剪图像数据。</translation>
     </message>
 </context>
 <context>
     <name>VolumeClipWithRoi</name>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="18"/>
         <source>Volume clip with ROI</source>
-        <translation>图像数据裁剪（ROI）</translation>
+        <translation type="vanished">图像数据裁剪（ROI）</translation>
     </message>
     <message>
         <source>Segmentation</source>
         <translation type="vanished">分割</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="26"/>
         <source>
       Use this module to clip a volume with a ROI (fill with a constant value). 
       It can be used for removing certain regions of a scalar or labelmap volume.
       </source>
-        <translation>
+        <translation type="vanished">
       使用此模块可以裁剪具有 ROI（用常数值填充）的体积。
       它可用于移除标量或标签图体积的某些区域。
       </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="52"/>
         <source>Parameters</source>
-        <translation>参数</translation>
+        <translation type="vanished">参数</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="59"/>
         <source>Input volume: </source>
-        <translation>选择数据： </translation>
+        <translation type="vanished">选择数据： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="66"/>
         <source>Pick the volume to clip</source>
-        <translation>选择数据用于裁剪</translation>
+        <translation type="vanished">选择数据用于裁剪</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="71"/>
         <source>Clipping ROI: </source>
-        <translation>裁剪用ROI： </translation>
+        <translation type="vanished">裁剪用ROI： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="77"/>
         <source>Pick the clipping region of interest (ROI)</source>
-        <translation>选择用于裁剪的ROI区域</translation>
+        <translation type="vanished">选择用于裁剪的ROI区域</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="85"/>
         <source>If checked, voxel values will be filled outside the clipping ROI.</source>
-        <translation>选中后，体素值将填充在ROI外。</translation>
+        <translation type="vanished">选中后，体素值将填充在ROI外。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="86"/>
         <source>Clip outside: </source>
-        <translation>外部： </translation>
+        <translation type="vanished">外部： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="89"/>
         <source>Fill value:</source>
-        <translation>填充值：</translation>
+        <translation type="vanished">填充值：</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="106"/>
         <source>Clipped output volume. It may be the same as the input volume for cumulative clipping.</source>
-        <translation>削波后的输出数据。对于累积削波，它可能与输入数据相同。</translation>
+        <translation type="vanished">削波后的输出数据。对于累积削波，它可能与输入数据相同。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="107"/>
         <source>Output Volume: </source>
-        <translation>输出到： </translation>
+        <translation type="vanished">输出到： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="110"/>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="246"/>
         <source>Apply</source>
-        <translation>应用</translation>
+        <translation type="vanished">应用</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="112"/>
         <source>Clip volume with ROI</source>
-        <translation>使用ROI裁剪数据</translation>
+        <translation type="vanished">使用ROI裁剪数据</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VolumeClipWithRoi/VolumeClipWithRoi.py" line="229"/>
         <source>Working...</source>
-        <translation>执行中...</translation>
+        <translation type="vanished">执行中...</translation>
     </message>
 </context>
 <context>
@@ -13551,9 +11919,8 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
 <context>
     <name>WebServer</name>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="31"/>
         <source>Web Server</source>
-        <translation>网络服务器</translation>
+        <translation type="vanished">网络服务器</translation>
     </message>
     <message>
         <source>Servers</source>
@@ -13574,139 +11941,112 @@ web服务器。
 </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="35"/>
         <source>Provides an embedded web server in Slicer that allows control of the application via web services API (HTTP requests).</source>
-        <translation>在 Slicer 中提供嵌入式 Web 服务器，允许通过 Web 服务 API（HTTP 请求）控制应用程序。</translation>
+        <translation type="vanished">在 Slicer 中提供嵌入式 Web 服务器，允许通过 Web 服务 API（HTTP 请求）控制应用程序。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="44"/>
         <source>This work was partially funded by NIH grant 3P41RR013218.</source>
-        <translation>这里是网络服务器。</translation>
+        <translation type="vanished">这里是网络服务器。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="65"/>
         <source>Start server</source>
-        <translation>开启服务器</translation>
+        <translation type="vanished">开启服务器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="68"/>
         <source>Start web server with the selected options.</source>
-        <translation>使用所选选项启动服务器。</translation>
+        <translation type="vanished">使用所选选项启动服务器。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="71"/>
         <source>Stop server</source>
-        <translation>关闭服务器</translation>
+        <translation type="vanished">关闭服务器</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="74"/>
         <source>Stop the web server.</source>
-        <translation>关闭这个网络服务器。</translation>
+        <translation type="vanished">关闭这个网络服务器。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="77"/>
         <source>Open static pages in external browser</source>
-        <translation>在外部浏览器中打开静态页面</translation>
+        <translation type="vanished">在外部浏览器中打开静态页面</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="79"/>
         <source>Open a connection to the server on the local machine with your system browser.</source>
-        <translation>使用系统浏览器打开与本地计算机上的服务器连接。</translation>
+        <translation type="vanished">使用系统浏览器打开与本地计算机上的服务器连接。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="82"/>
         <source>Open static pages in internal browser</source>
-        <translation>在内部浏览器打开静态页面</translation>
+        <translation type="vanished">在内部浏览器打开静态页面</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="84"/>
         <source>Open a connection with Qt to the server on the local machine.</source>
-        <translation>使用Qt打开与本地计算机上的服务器连接。</translation>
+        <translation type="vanished">使用Qt打开与本地计算机上的服务器连接。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="94"/>
         <source>Clear Log</source>
-        <translation>清除日志</translation>
+        <translation type="vanished">清除日志</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="96"/>
         <source>Clear the log window.</source>
-        <translation>清除日志窗口。</translation>
+        <translation type="vanished">清除日志窗口。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="104"/>
         <source>Advanced</source>
-        <translation>高级</translation>
+        <translation type="vanished">高级</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="113"/>
         <source>Enable CORS: </source>
-        <translation>启用CORS： </translation>
+        <translation type="vanished">启用CORS： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="113"/>
         <source>Enable Cross Origin Resource Sharing (stop server to change option). Warning: this option allows any web page to access the server.</source>
-        <translation>启用跨源资源共享（停止服务器以更改选项）。警告：此选项允许任何网页访问服务器。</translation>
+        <translation type="vanished">启用跨源资源共享（停止服务器以更改选项）。警告：此选项允许任何网页访问服务器。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="117"/>
         <source>Slicer API: </source>
-        <translation>软件API： </translation>
+        <translation type="vanished">软件API： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="117"/>
         <source>Enable remote control of Slicer application (stop server to change option)</source>
-        <translation>启用切片器应用程序的远程控制（停止服务器以更改选项）</translation>
+        <translation type="vanished">启用切片器应用程序的远程控制（停止服务器以更改选项）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="122"/>
         <source>Slicer API exec: </source>
-        <translation>软件API执行： </translation>
+        <translation type="vanished">软件API执行： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="122"/>
         <source>Enable execution of arbitrary Python command using Slicer API. It only has effect if Slicer API is enabled, too (stop server to change option).</source>
-        <translation>启用切片器应用程序的远程控制（停止服务器以更改选项）。</translation>
+        <translation type="vanished">启用切片器应用程序的远程控制（停止服务器以更改选项）。</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="126"/>
         <source>Enable serving Slicer DICOM database content via DICOMweb (stop server to change option)</source>
-        <translation>启用通过 DICOMweb 提供 Slicer DICOM 数据库内容（停止服务器以更改选项）</translation>
+        <translation type="vanished">启用通过 DICOMweb 提供 Slicer DICOM 数据库内容（停止服务器以更改选项）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="127"/>
         <source>DICOMweb API: </source>
-        <translation>Dicom网页API： </translation>
+        <translation type="vanished">Dicom网页API： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="131"/>
         <source>Static pages: </source>
-        <translation>静态页面： </translation>
+        <translation type="vanished">静态页面： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="131"/>
         <source>Enable serving static pages (stop server to change option)</source>
-        <translation>启用服务静态页面（停止服务器以更改选项）</translation>
+        <translation type="vanished">启用服务静态页面（停止服务器以更改选项）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="136"/>
         <source>Log to Console: </source>
-        <translation>登录到控制台： </translation>
+        <translation type="vanished">登录到控制台： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="136"/>
         <source>Copy log messages to the python console and parent terminal (disable to improve performance)</source>
-        <translation>将日志消息复制到 python 控制台和父终端（禁用以提高性能）</translation>
+        <translation type="vanished">将日志消息复制到 python 控制台和父终端（禁用以提高性能）</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="141"/>
         <source>Log to GUI: </source>
-        <translation>登录到GUI： </translation>
+        <translation type="vanished">登录到GUI： </translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="141"/>
         <source>Copy log messages to the log widget (disable to improve performance)</source>
-        <translation>将日志消息复制到日志小部件（禁用以提高性能）</translation>
+        <translation type="vanished">将日志消息复制到日志小部件（禁用以提高性能）</translation>
     </message>
 </context>
 <context>
@@ -19977,7 +18317,6 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>qSlicerAbstractCoreModule</name>
     <message>
-        <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="50"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="85"/>
         <location filename="Modules/Core/EventBroker/qSlicerEventBrokerModule.cxx" line="56"/>
         <location filename="Modules/Loadable/Cameras/qSlicerCamerasModule.cxx" line="45"/>
@@ -19985,9 +18324,6 @@ p, li { white-space: pre-wrap; }
         <translation>开发者工具</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOM/DICOM.py" line="33"/>
-        <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="19"/>
-        <location filename="Modules/Scripted/SampleData/SampleData.py" line="78"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="74"/>
         <location filename="Modules/Loadable/Colors/qSlicerColorsModule.cxx" line="83"/>
         <location filename="Modules/Loadable/Data/qSlicerDataModule.cxx" line="74"/>
@@ -20007,7 +18343,6 @@ p, li { white-space: pre-wrap; }
         <translation>向导</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SegmentEditor/SegmentEditor.py" line="16"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="76"/>
         <source>Segmentation</source>
         <translation>分割</translation>
@@ -20017,9 +18352,6 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">专门</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DICOMPatcher/DICOMPatcher.py" line="27"/>
-        <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="23"/>
-        <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="28"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="84"/>
         <source>Utilities</source>
         <translation>实用工具</translation>
@@ -20053,7 +18385,6 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">运算</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="60"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="82"/>
         <location filename="Modules/Loadable/CropVolume/qSlicerCropVolumeModule.cxx" line="77"/>
         <source>Converters</source>
@@ -20064,7 +18395,6 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">降噪</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/SelfTests/SelfTests.py" line="32"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="87"/>
         <source>Testing</source>
         <translation>测试</translation>
@@ -20079,8 +18409,6 @@ p, li { white-space: pre-wrap; }
         <translation>表面模型</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/DataProbe/DataProbe.py" line="26"/>
-        <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="24"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="77"/>
         <source>Quantification</source>
         <translation>量化</translation>
@@ -20091,7 +18419,6 @@ p, li { white-space: pre-wrap; }
         <translation>IGT</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="34"/>
         <location filename="Base/QTGUI/qSlicerModulesMenu.cxx" line="83"/>
         <source>Endoscopy</source>
         <translation>内窥镜检查</translation>
@@ -20107,7 +18434,6 @@ p, li { white-space: pre-wrap; }
         <translation>配准.专门化</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="27"/>
         <location filename="Modules/Loadable/Sequences/qSlicerSequencesModule.cxx" line="193"/>
         <source>Sequences</source>
         <translation>序列</translation>
@@ -20123,9 +18449,8 @@ p, li { white-space: pre-wrap; }
         <translation>在线文档</translation>
     </message>
     <message>
-        <location filename="Modules/Scripted/WebServer/WebServer.py" line="32"/>
         <source>Servers</source>
-        <translation>服务器</translation>
+        <translation type="vanished">服务器</translation>
     </message>
 </context>
 <context>
@@ -20943,32 +19268,32 @@ Graphics capabilities of this computer:
 <context>
     <name>qSlicerCoreApplication</name>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="867"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="868"/>
         <source>Failed to create %1 directory</source>
         <translation>创建 %1 目录失败</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1800"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1801"/>
         <source>Built on top of:</source>
         <translation>建立在以下基础上：</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1820"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1821"/>
         <source>Licensing Information</source>
         <translation>许可证信息</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1821"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1822"/>
         <source>Website</source>
         <translation>网站</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1822"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1823"/>
         <source>Acknowledgments</source>
         <translation>致谢</translation>
     </message>
     <message>
-        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1829"/>
+        <location filename="Base/QTCore/qSlicerCoreApplication.cxx" line="1830"/>
         <source>Slicer is NOT an FDA approved medical device.&lt;br&gt;&lt;br&gt;Supported by: NA-MIC, NAC, BIRN, NCIGT and the Slicer Community.&lt;br&gt;&lt;br&gt;Special thanks to the NIH and our other supporters.&lt;br&gt;&lt;br&gt;This work is part of the National Alliance for Medical Image Computing (NA-MIC), funded by the National Institutes of Health through the NIH Roadmap for Medical Research, Grant U54 EB005149. Information on the National Centers for Biomedical Computing can be obtained from&lt;a href=&quot;https://commonfund.nih.gov/bioinformatics&quot;&gt;https://commonfund.nih.gov/bioinformatics&lt;/a&gt;.&lt;br&gt;&lt;br&gt;</source>
         <translation>Slicer不是FDA批准的医疗设备。&lt;br&gt;&lt;br&gt;支持的是。&lt;br&gt;&lt;br&gt;特别感谢美国国立卫生研究院和我们的其他支持者。&lt;br&gt;&lt;br&gt;这项工作是国家医学图像计算联盟（NA-MIC）的一部分，由美国国立卫生研究院通过NIH医学研究路线图资助，授予U54 EB005149。有关国家生物医学计算中心的信息可从&lt;a href=&quot;https://commonfund.nih.gov/bioinformatics&quot;&gt;https://commonfund.nih.gov/bioinformatics&lt;/a&gt;获得。&lt;br&gt;&lt;br&gt;</translation>
     </message>
@@ -22933,7 +21258,7 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
     </message>
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="90"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="541"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="540"/>
         <source>Favorite Modules</source>
         <translation>收藏模块</translation>
     </message>
@@ -23020,73 +21345,73 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation type="vanished">用户</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="340"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="339"/>
         <source>Load Scene</source>
         <translation>加载场景</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="343"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="342"/>
         <source>Raise a file browser to select a scene (mrml, xcat or xml) to load. It first clears any existing scene in Slicer and resets the application state.</source>
         <translation>启动文件浏览器以选择要加载的场景（mrml、xcat或xml），它首先清除Slicer中的任何现有场景，并重置应用程序状态。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="352"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="351"/>
         <source>Load Data</source>
         <translation>加载数据</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="355"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="394"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="354"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="393"/>
         <source>Raise an &quot;Add Data&quot; widget that allows you to select individual datasets to add to the existing scene. This load option is most useful when you want to load many different data types at once (volumes, models, etc.) which may not yet be described by a scene file.</source>
         <translation>启动一个 &quot;添加数据&quot; 的小部件，允许您选择要添加到现有场景中的单个数据集。当您希望同时加载多种不同的数据类型（数据、模型等）时，此加载选项最有用，场景文件可能尚未对其进行描述。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="364"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="363"/>
         <source>Load DICOM</source>
         <translation>加载 DICOM</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="367"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="366"/>
         <source>Raise the DICOM module for loading DICOM datasets.</source>
         <translation>启动DICOM模块以加载DICOM数据集。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="379"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="378"/>
         <source>Import Scene</source>
         <translation>导入场景</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="382"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="381"/>
         <source>Raise a file browser to navigate and select a scene file to be added to the existing scene. The scene is not cleared.</source>
         <translation>启动文件浏览器以浏览并选择要添加到现有场景的场景文件，场景未被清除。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="391"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="390"/>
         <source>&amp;Add Data</source>
         <translation>&amp;添加数据</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="397"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="396"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="406"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="405"/>
         <source>Add Volume</source>
         <translation>添加数据</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="409"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="408"/>
         <source>Raise an &quot;Add Volume&quot; widget that allows you to select a volumetric dataset to add to the existing scene. The &quot;Volume Options&quot; panel can be used to clarify how a selected dataset should be loaded and displayed.</source>
         <translation>启动一个 &quot;添加数据&quot; 的小部件，允许您选择要添加到现有场景的数据集。&quot;数据选项&quot; 面板可用于阐明如何加载和显示选定的数据集。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="418"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="417"/>
         <source>Add Transform</source>
         <translation>添加变换</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="421"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="420"/>
         <source>Raise a standard file browser that allows you to select a transform to the existing scene.</source>
         <translation>打开一个标准文件浏览器，该浏览器允许您选择对现有场景的变换。</translation>
     </message>
@@ -23096,92 +21421,92 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="433"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="432"/>
         <source>Display the &quot;Save Data&quot; widget, which offers many options for saving a scene and/or individual datasets.</source>
         <translation>显示 &quot;保存数据&quot; 小部件，它提供保存场景和/或单个数据集的许多选项。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="436"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="435"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="445"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="444"/>
         <source>Save Scene To Directory</source>
         <translation>保存场景到目录</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="448"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="447"/>
         <source>UNDER CONSTRUCTION: Save the current scene to a stand alone directory.</source>
         <translation>禁用：将当前场景保存到一个独立目录。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="457"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="456"/>
         <source>Save Scene to MRB File</source>
         <translation>保存场景到 MRB 文件</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="460"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="459"/>
         <source>Create a Medical Reality Bundle containing the scene.</source>
         <translation>创建一个包含场景的MRB文件(医疗实况包)。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="469"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="468"/>
         <source>Close Scene</source>
         <translation>关闭场景</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="472"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="471"/>
         <source>Close the current scene and reset the application state. </source>
         <translation>关闭当前场景，重置应用程序状态。 </translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="475"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="474"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="480"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="479"/>
         <source>E&amp;xit</source>
         <translation>退出(&amp;X)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="483"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="482"/>
         <source>Quit the application</source>
         <translation>退出应用程序</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="492"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="491"/>
         <source>Undo</source>
         <translation>撤销</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="495"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="494"/>
         <source>Undo the history of undoable commands, from last to first.</source>
         <translation>撤消可撤消命令的历史记录，从最后一个到第一个。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="498"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="497"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="507"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="506"/>
         <source>Redo</source>
         <translation>恢复</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="510"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="509"/>
         <source>Redo the history of commands most recently undone, from last to first.</source>
         <translation>从最后一个到第一个，恢复最近撤消的命令的历史记录。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="513"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="512"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="430"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="429"/>
         <source>Save Data</source>
         <translation>保存数据</translation>
     </message>
@@ -23192,111 +21517,112 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
     </message>
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="323"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1229"/>
         <source>AI</source>
-        <translation></translation>
+        <translation>&amp;AI</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="522"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="521"/>
         <source>Extensions Manager</source>
         <translation>扩展管理器</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="525"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="524"/>
         <source>Raise the &quot;Extensions Manager&quot; wizard that provides status and information about available extensions</source>
         <translation>启动&quot;扩展管理&quot;向导，提供可用扩展的状态和信息</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="528"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="527"/>
         <source>Ctrl+4</source>
         <translation>Ctrl+4</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="533"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="532"/>
         <source>Cache &amp; Remote I/O Manager</source>
         <translation>缓存和远程I/O管理器</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="536"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="535"/>
         <source>The Cache and Remote Data Handling interface provides status and information about all remote data transfers, and allows some control over the local cache.</source>
         <translation>缓存和远程数据处理接口提供所有远程数据传输的状态和信息，并允许对本地缓存进行一些控制。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="544"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="543"/>
         <source>Open settings to the Modules panel where Favorite Modules can be defined.</source>
         <translation>打开模块面板的设置，可以定义最喜欢的模块。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="553"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="552"/>
         <source>Application Settings</source>
         <translation>应用程序设置</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="556"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="555"/>
         <source>The Application Settings provides options for controlling the application&apos;s user interface preferences into the application registry, so they are preserved across sessions.</source>
         <translation>应用程序设置提供了更改应用程序界面的一些选项，重启软件之后将之导入应用程序注册表，它们在整个会话中都会被保存。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="559"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="558"/>
         <source>Ctrl+2</source>
         <translation>Ctrl+2</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="568"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="567"/>
         <source>Cut</source>
         <translation>剪切</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="571"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="570"/>
         <source>Cut currently selected item and place in clipboard</source>
         <translation>剪切当前选定的项目并放入剪贴板</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="574"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="573"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="583"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="582"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="586"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="585"/>
         <source>Copy currently selected item to clipboard</source>
         <translation>复制当前选中的项目到剪贴板</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="589"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="588"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="598"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="597"/>
         <source>Paste</source>
         <translation>粘贴</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="601"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="600"/>
         <source>Paste the current contents of the clipboard</source>
         <translation>粘贴剪贴板的当前内容</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="604"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="603"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="615"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="614"/>
         <source>&amp;Maximize view</source>
         <translation>&amp;最大化视图</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="618"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="617"/>
         <source>Maximize/Minimize the current view.</source>
         <translation>最大化/最小化当前视图。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="621"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="620"/>
         <source>Ctrl+6</source>
         <translation>Ctrl+6</translation>
     </message>
@@ -23315,350 +21641,349 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="626"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="625"/>
         <source>Feedback: report usability issue (www)</source>
         <translation>反馈：报告可用性问题（www）</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="629"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="628"/>
         <source>Create a topic at the Slicer forum (https://discourse.slicer.org) to report any usability issues and make suggestions how to address them.</source>
         <translation>在Slicer论坛(https://discourse.slicer.org)上创建一个主题报告可用性问题并提出解决建议。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="634"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="633"/>
         <source>Feedback: make a feature request (www)</source>
         <translation>反馈：提出一个功能请求(www)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="637"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="636"/>
         <source>Create a topic at the Slicer forum (https://discourse.slicer.org) to request a new feature.</source>
         <translation>在Slicer论坛(https://discourse.slicer.org)上创建一个主题请求新功能。</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="642"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="641"/>
         <source>Load Module</source>
         <translation>加载模块</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="651"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="650"/>
         <source>Conventional</source>
         <translation>常规视窗(上下)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="663"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="662"/>
         <source>Four-Up</source>
         <translation>四格视窗(3D)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="675"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="674"/>
         <source>Dual 3D</source>
         <translation>双3D视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="687"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="686"/>
         <source>3D only</source>
         <translation>3D视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="699"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="698"/>
         <source>3D Table</source>
         <translation>3D视窗+表格</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="711"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="710"/>
         <source>Red slice only</source>
         <translation>红色视窗(水平位)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="723"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="722"/>
         <source>Yellow slice only</source>
         <translation>黄色视窗(矢状位)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="735"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="734"/>
         <source>Green slice only</source>
         <translation>绿色视窗(冠状位)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="747"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="746"/>
         <source>Tabbed 3D</source>
         <translation>3D视窗(分页式)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="759"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="758"/>
         <source>Tabbed slice</source>
         <translation>切片视窗(分页式)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="771"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="770"/>
         <source>Compare</source>
         <translation>比较视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="783"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="786"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="782"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="785"/>
         <source>Compare Widescreen</source>
         <translation>比较视窗(左右)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="798"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="797"/>
         <source>Two over two</source>
         <translation>2+2视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="801"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="800"/>
         <source>Two over Two Layout</source>
         <translation>二对二布局</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="813"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="812"/>
         <source>Home</source>
         <translation>首页</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="816"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="815"/>
         <source>Favorite module for easy access</source>
         <translation>易于访问的收藏模块</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="819"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="818"/>
         <source>Ctrl+H</source>
         <translation>Ctrl+H</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="831"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="830"/>
         <source>Conventional Widescreen</source>
         <translation>常规视窗(左右)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="840"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="839"/>
         <source>Triple 3D</source>
         <translation>三3D视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="849"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="848"/>
         <source>Three over three</source>
         <translation>3+3视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="858"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="857"/>
         <source>Four over four</source>
         <translation>4+4视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="867"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="930"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="866"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="929"/>
         <source>2 viewers</source>
         <translation>2视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="876"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="939"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="875"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="938"/>
         <source>3 viewers</source>
         <translation>3视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="885"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="948"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="884"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="947"/>
         <source>4 viewers</source>
         <translation>4视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="894"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="957"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="893"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="956"/>
         <source>5 viewers</source>
         <translation>5视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="903"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="966"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="902"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="965"/>
         <source>6 viewers</source>
         <translation>6视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="912"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="975"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="911"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="974"/>
         <source>7 viewers</source>
         <translation>7视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="921"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="984"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="920"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="983"/>
         <source>8 viewers</source>
         <translation>8视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="993"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="992"/>
         <source>Compare Grid</source>
         <translation>比较视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1002"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1001"/>
         <source>2x2 viewers</source>
         <translation>2x2视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1011"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1010"/>
         <source>3x3 viewers</source>
         <translation>3x3视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1020"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1019"/>
         <source>4x4 viewers</source>
         <translation>4x4视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1025"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1024"/>
         <source>Record Macro</source>
         <translation>录制宏</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1033"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1032"/>
         <source>Play Macro</source>
         <translation>运行宏</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1045"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1044"/>
         <source>Side by side</source>
         <translation>1×1切片视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1054"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1057"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1053"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1056"/>
         <source>Four by three slice</source>
         <translation>4×3切片视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1066"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1069"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1065"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1068"/>
         <source>Four by two slice</source>
         <translation>4×2切片视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1078"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1081"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1077"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1080"/>
         <source>Five by two slice</source>
         <translation>5×2切片视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1090"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1093"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1089"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1092"/>
         <source>Three by three slice</source>
         <translation>3×3切片视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1102"/>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1105"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1101"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1104"/>
         <source>Dual-monitor Four-Up</source>
         <translation>双显示器四合一</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1114"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1113"/>
         <source>Plot only</source>
         <translation>绘图视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1117"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1116"/>
         <source>Plot view</source>
         <translation>绘图视图</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1129"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1128"/>
         <source>Four-Up Plot</source>
         <translation>四格视窗(绘图)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1132"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1131"/>
         <source>Three slices and a plot in four-Up layout</source>
         <translation>3个切片和1个绘图的布局</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1144"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1143"/>
         <source>Conventional Plot</source>
         <translation>常规视窗+绘图</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1147"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1146"/>
         <source>Conventional three slices and 3D view with an additional plot</source>
         <translation>3个切片和3D视图加上一个额外的绘图视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1159"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1158"/>
         <source>Three over three Plot</source>
         <translation>切片视窗+3绘图</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1162"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1161"/>
         <source>Three plots over three slices</source>
         <translation>3个切片加上3个绘图视窗</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1171"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1170"/>
         <source>Four-Up Table</source>
         <translation>四格视窗(表格)</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1180"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1179"/>
         <source>Four-Up Quantitative</source>
         <translation>四格视窗(定量分析)+表格</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1183"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1182"/>
         <source>Four-up slice and 3D view with an additional table and plot</source>
         <translation>切片视窗带有额外的表格和绘图</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1188"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1187"/>
         <source>Reset to default</source>
         <translation>恢复为默认值</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1199"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1198"/>
         <source>Show Status Bar</source>
         <translation>显示状态栏</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1204"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1203"/>
         <source>Log Out</source>
         <translation>退出登录</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1207"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1206"/>
         <source>Log out of the current login account</source>
         <translation>注销当前登录账户</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1212"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1211"/>
         <source>User Info</source>
         <translation>用户信息</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1215"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1214"/>
         <source>View user&apos;s information</source>
         <translation>查看用户信息</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1220"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1219"/>
         <source>1</source>
         <translation>1</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1225"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1224"/>
         <source>2</source>
         <translation>2</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1230"/>
         <source>AI Airway</source>
-        <translation>AI气道</translation>
+        <translation type="vanished">AI气道</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1235"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1234"/>
         <source>AI Vessel</source>
         <translation>AI肺血管</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1240"/>
+        <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1239"/>
         <source>Review</source>
         <translation>权限审核</translation>
     </message>
@@ -23800,24 +22125,24 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
         <translation>MRML场景</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1116"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1118"/>
         <source>Hint</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1117"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1119"/>
         <source>Are you sure to quit? 
                                                                  this would log out your account</source>
         <translation>您确定要退出吗？
                                                                  这将注销您的账户</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1120"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1122"/>
         <source>Keep quit</source>
         <translation>继续退出</translation>
     </message>
     <message>
-        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1121"/>
+        <location filename="Base/QTApp/qSlicerMainWindow.cxx" line="1123"/>
         <source>Cancel quit</source>
         <translation>取消退出</translation>
     </message>

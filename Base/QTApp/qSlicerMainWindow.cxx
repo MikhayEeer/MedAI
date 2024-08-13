@@ -1101,13 +1101,15 @@ void qSlicerMainWindow::on_actionAI_Airway_triggered() {
 
     Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
     tmpForm->setWindowModality(Qt::ApplicationModal);
-    tmpForm->choose_file_for_airway();
+    //tmpForm->choose_file_for_airway();
+    tmpForm->show();
 }
 
 void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
     Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
     tmpForm->setWindowModality(Qt::ApplicationModal);
-    tmpForm->choose_file_for_vessel();
+    //tmpForm->choose_file_for_vessel();
+    tmpForm->show();
 }
 
 
