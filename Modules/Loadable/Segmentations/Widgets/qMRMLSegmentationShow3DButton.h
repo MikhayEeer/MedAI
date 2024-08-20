@@ -1,4 +1,4 @@
-/*=auto=========================================================================
+﻿/*=auto=========================================================================
 
  Portions (c) Copyright 2005 Brigham and Women's Hospital (BWH)
  All Rights Reserved.
@@ -53,8 +53,8 @@ public slots:
 protected slots:
   void onToggled(bool toggled=true);
   void onEnableSurfaceSmoothingToggled(bool smoothingEnabled);
-  void onEnableSurfaceNetsToggled(bool surfaceNetsEnabled);
-  void onEnableSurfaceNetsSmoothingToggled(bool surfaceNetsSmoothingEnabled);
+  //void onEnableSurfaceNetsToggled(bool surfaceNetsEnabled);
+  //void onEnableSurfaceNetsSmoothingToggled(bool surfaceNetsSmoothingEnabled);
   void onSurfaceSmoothingFactorChanged(double newSmoothingFactor);
   void updateWidgetFromMRML();
 
