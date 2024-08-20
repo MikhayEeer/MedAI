@@ -2397,3 +2397,22 @@ void qSlicerCoreApplication::openUrl(const QString& url)
 {
   emit urlReceived(url);
 }
+
+//------------------------------------------------------------------------------
+bool qSlicerCoreApplication::isUsageLoggingSupported() const
+{
+#ifdef Slicer_BUILD_USAGE_LOGGING_SUPPORT
+  return true;
+#else
+  return false;
+#endif
+}
+
+//------------------------------------------------------------------------------
+void qSlicerCoreApplication::logUsageEvent(const QString& component, const QString& event)
+{
+#ifdef Slicer_BUILD_USAGE_LOGGING_SUPPORT
+  Q_D(const qSlicerCoreApplication);
+  emit usageEventLogged(component, event);
+#endif
+}
