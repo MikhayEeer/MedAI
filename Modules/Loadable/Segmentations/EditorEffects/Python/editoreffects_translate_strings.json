@@ -1,0 +1,1297 @@
+[
+    {
+        "string": "Auto-update",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 93,
+        "column": 48,
+        "翻译": ""
+    },
+    {
+        "string": "Auto-update results preview when input segments change.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 94,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": "Initialize",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 98,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Preview complete segmentation",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 100,
+        "column": 39,
+        "翻译": ""
+    },
+    {
+        "string": "Preview:",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 110,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Adjust visibility of results preview.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 113,
+        "column": 46,
+        "翻译": ""
+    },
+    {
+        "string": "Show 3D",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 121,
+        "column": 51,
+        "翻译": ""
+    },
+    {
+        "string": "Preview results in 3D.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 122,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "inputs",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 126,
+        "column": 42,
+        "翻译": ""
+    },
+    {
+        "string": "results",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 128,
+        "column": 42,
+        "翻译": ""
+    },
+    {
+        "string": "Display:",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 130,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Cancel",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 132,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": "Clear preview and cancel auto-complete",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 134,
+        "column": 38,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 136,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Replace segments by previewed result",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 138,
+        "column": 37,
+        "翻译": ""
+    },
+    {
+        "string": "Segmentation operation is cancelled because an input segment was deleted.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 177,
+        "column": 47,
+        "翻译": ""
+    },
+    {
+        "string": "Update",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 254,
+        "column": 39,
+        "翻译": ""
+    },
+    {
+        "string": "Initialize",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 260,
+        "column": 39,
+        "翻译": ""
+    },
+    {
+        "string": "Running {effectName} auto-complete...",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 286,
+        "column": 39,
+        "翻译": ""
+    },
+    {
+        "string": "Segmentation operation failed:",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 288,
+        "column": 50,
+        "翻译": ""
+    },
+    {
+        "string": "Minimum {minimumNumberOfSegments} visible segments are required.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 450,
+        "column": 25,
+        "翻译": ""
+    },
+    {
+        "string": "Minimum {minimumNumberOfSegments} visible segments (or specification of editable area or intensity range) is required.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 455,
+        "column": 25,
+        "翻译": ""
+    },
+    {
+        "string": "Minimum {minimumNumberOfSegments} visible segments are required.",
+        "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
+        "line": 462,
+        "column": 21,
+        "翻译": ""
+    },
+    {
+        "string": "Draw",
+        "file": "SegmentEditorDrawEffect.py",
+        "line": 20,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Fill between slices",
+        "file": "SegmentEditorFillBetweenSlicesEffect.py",
+        "line": 20,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Grow from seeds",
+        "file": "SegmentEditorGrowFromSeedsEffect.py",
+        "line": 23,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Seed locality:",
+        "file": "SegmentEditorGrowFromSeedsEffect.py",
+        "line": 80,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Hollow",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 19,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "inside surface",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 41,
+        "column": 63,
+        "翻译": ""
+    },
+    {
+        "string": "medial surface",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 42,
+        "column": 63,
+        "翻译": ""
+    },
+    {
+        "string": "outside surface",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 43,
+        "column": 64,
+        "翻译": ""
+    },
+    {
+        "string": "Use current segment as:",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 49,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Thickness of the hollow shell.",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 53,
+        "column": 49,
+        "翻译": ""
+    },
+    {
+        "string": "Shell thickness:",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 64,
+        "column": 82,
+        "翻译": ""
+    },
+    {
+        "string": "Apply hollow effect to all visible segments in this segmentation node. This operation may take a while.",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 69,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Apply to visible segments:",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 72,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 74,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Makes the segment hollow by replacing it with a thick shell at the segment boundary.",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 76,
+        "column": 37,
+        "翻译": ""
+    },
+    {
+        "string": "Not feasible at current resolution.",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 130,
+        "column": 49,
+        "翻译": ""
+    },
+    {
+        "string": "Actual:",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 134,
+        "column": 49,
+        "翻译": ""
+    },
+    {
+        "string": "Empty segment",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 137,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Processing {segmentName}...",
+        "file": "SegmentEditorHollowEffect.py",
+        "line": 250,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": "Islands",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 19,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Keep largest island",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 43,
+        "column": 61,
+        "翻译": ""
+    },
+    {
+        "string": "Keep only the largest island in selected segment, remove all other islands in the segment.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 45,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Keep selected island",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 49,
+        "column": 62,
+        "翻译": ""
+    },
+    {
+        "string": "Click on an island in a slice view to keep that island and remove all other islands in selected segment.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 51,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Remove small islands",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 55,
+        "column": 61,
+        "翻译": ""
+    },
+    {
+        "string": "Remove all islands from the selected segment that are smaller than the specified minimum size.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 57,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Remove selected island",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 61,
+        "column": 64,
+        "翻译": ""
+    },
+    {
+        "string": "Click on an island in a slice view to remove it from selected segment.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 63,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Add selected island",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 67,
+        "column": 61,
+        "翻译": ""
+    },
+    {
+        "string": "Click on a region in a slice view to add it to selected segment.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 69,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Split islands to segments",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 73,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Islands consisting of less voxels than this minimum size, will be deleted.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 92,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": " voxels",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 96,
+        "column": 42,
+        "翻译": ""
+    },
+    {
+        "string": "Minimum size:",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 97,
+        "column": 77,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 99,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Click in a slice view to select an island.",
+        "file": "SegmentEditorIslandsEffect.py",
+        "line": 399,
+        "column": 41,
+        "翻译": ""
+    },
+    {
+        "string": "Level tracing",
+        "file": "SegmentEditorLevelTracingEffect.py",
+        "line": 21,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Local threshold",
+        "file": "SegmentEditorLocalThresholdEffect.py",
+        "line": 23,
+        "column": 28,
+        "翻译": ""
+    },
+    {
+        "string": "Logical operators",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 18,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Copy",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 52,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Add",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 53,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Subtract",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 54,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Intersect",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 55,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Invert",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 56,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Clear",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 57,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Fill",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 58,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Click <dfn>Show details</dfn> link above for description of operations.",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 59,
+        "column": 48,
+        "翻译": ""
+    },
+    {
+        "string": "Bypass masking",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 61,
+        "column": 51,
+        "翻译": ""
+    },
+    {
+        "string": "Ignore all masking options and only modify the selected segment.",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 62,
+        "column": 47,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 65,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Operation:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 72,
+        "column": 78,
+        "翻译": ""
+    },
+    {
+        "string": "Modifier segment:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 74,
+        "column": 55,
+        "翻译": ""
+    },
+    {
+        "string": "Copy from segment:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 133,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Add segment:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 135,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Subtract segment:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 137,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Intersect with segment:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 139,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Modifier segment:",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 141,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Please select a modifier segment in the list below.",
+        "file": "SegmentEditorLogicalEffect.py",
+        "line": 144,
+        "column": 41,
+        "翻译": ""
+    },
+    {
+        "string": "Margin",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 19,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Grow or shrink selected segment by specified margin size.",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 36,
+        "column": 16,
+        "翻译": ""
+    },
+    {
+        "string": "Shrink",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 41,
+        "column": 56,
+        "翻译": ""
+    },
+    {
+        "string": "Grow",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 42,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Operation:",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 47,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Margin size:",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 62,
+        "column": 78,
+        "翻译": ""
+    },
+    {
+        "string": "Grow or shrink all visible segments in this segmentation node. This operation may take a while.",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 67,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Apply to visible segments:",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 69,
+        "column": 91,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 72,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Grows or shrinks selected segment /default) or all segments (checkbox) by the specified margin.",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 74,
+        "column": 37,
+        "翻译": ""
+    },
+    {
+        "string": "Not feasible at current resolution.",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 121,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Actual:",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 125,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Empty segment",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 128,
+        "column": 41,
+        "翻译": ""
+    },
+    {
+        "string": "Processing {segmentName}...",
+        "file": "SegmentEditorMarginEffect.py",
+        "line": 241,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": "Mask volume",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 14,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Fill inside",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 49,
+        "column": 49,
+        "翻译": ""
+    },
+    {
+        "string": "Fill outside",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 53,
+        "column": 50,
+        "翻译": ""
+    },
+    {
+        "string": "Fill inside and outside",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 57,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Create a labelmap volume with specified inside and outside fill values.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 58,
+        "column": 46,
+        "翻译": ""
+    },
+    {
+        "string": "Operation:",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 67,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Choose the voxel intensity that will be used to fill the masked region.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 71,
+        "column": 39,
+        "翻译": ""
+    },
+    {
+        "string": "Fill value: ",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 72,
+        "column": 41,
+        "翻译": ""
+    },
+    {
+        "string": "Choose the voxel intensity that will be used to fill outside the mask.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 76,
+        "column": 51,
+        "翻译": ""
+    },
+    {
+        "string": "Outside fill value: ",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 77,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Choose the voxel intensity that will be used to fill inside the mask.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 81,
+        "column": 50,
+        "翻译": ""
+    },
+    {
+        "string": " Inside fill value: ",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 82,
+        "column": 42,
+        "翻译": ""
+    },
+    {
+        "string": "Soft edge:",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 117,
+        "column": 76,
+        "翻译": ""
+    },
+    {
+        "string": "(Source volume)",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 127,
+        "column": 48,
+        "翻译": ""
+    },
+    {
+        "string": "Volume to mask. Default is current source volume node.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 130,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Input Volume: ",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 139,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "(Create new Volume)",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 149,
+        "column": 49,
+        "翻译": ""
+    },
+    {
+        "string": "Masked output volume. It may be the same as the input volume for cumulative masking.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 152,
+        "column": 46,
+        "翻译": ""
+    },
+    {
+        "string": "Output Volume: ",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 161,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 164,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Apply segment as volume mask. No undo operation available once applied.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 166,
+        "column": 37,
+        "翻译": ""
+    },
+    {
+        "string": "(Create new Volume)",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 229,
+        "column": 57,
+        "翻译": ""
+    },
+    {
+        "string": "(Create new Volume)",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 230,
+        "column": 57,
+        "翻译": ""
+    },
+    {
+        "string": "(Create new Labelmap Volume)",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 233,
+        "column": 57,
+        "翻译": ""
+    },
+    {
+        "string": "(Create new Labelmap Volume)",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 234,
+        "column": 57,
+        "翻译": ""
+    },
+    {
+        "string": "Failed to apply mask to volume.",
+        "file": "SegmentEditorMaskVolumeEffect.py",
+        "line": 301,
+        "column": 46,
+        "翻译": ""
+    },
+    {
+        "string": "Smoothing",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 19,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Median",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 49,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Opening (remove extrusions)",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 50,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Closing (fill holes)",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 51,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Gaussian",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 52,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Joint smoothing",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 53,
+        "column": 45,
+        "翻译": ""
+    },
+    {
+        "string": "Smoothing method:",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 54,
+        "column": 53,
+        "翻译": ""
+    },
+    {
+        "string": "Kernel size:",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 71,
+        "column": 78,
+        "翻译": ""
+    },
+    {
+        "string": "Standard deviation:",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 80,
+        "column": 93,
+        "翻译": ""
+    },
+    {
+        "string": "Higher value means stronger smoothing.",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 83,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Smoothing factor:",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 89,
+        "column": 92,
+        "翻译": ""
+    },
+    {
+        "string": "Apply smoothing effect to all visible segments in this segmentation node. This operation may take a while.",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 93,
+        "column": 13,
+        "翻译": ""
+    },
+    {
+        "string": "Apply to visible segments:",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 95,
+        "column": 91,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 98,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Apply smoothing to selected segment",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 100,
+        "column": 37,
+        "翻译": ""
+    },
+    {
+        "string": "Smoothing brush options",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 113,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": "Smoothing {segmentName}...",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 230,
+        "column": 44,
+        "翻译": ""
+    },
+    {
+        "string": "Joint smoothing ...",
+        "file": "SegmentEditorSmoothingEffect.py",
+        "line": 372,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Threshold",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 26,
+        "column": 32,
+        "翻译": ""
+    },
+    {
+        "string": "Threshold Range:",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 169,
+        "column": 47,
+        "翻译": ""
+    },
+    {
+        "string": "Set the range of the background values that should be labeled.",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 170,
+        "column": 46,
+        "翻译": ""
+    },
+    {
+        "string": "threshold above",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 179,
+        "column": 56,
+        "翻译": ""
+    },
+    {
+        "string": "threshold below",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 180,
+        "column": 56,
+        "翻译": ""
+    },
+    {
+        "string": "set as lower value",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 181,
+        "column": 56,
+        "翻译": ""
+    },
+    {
+        "string": "set as upper value",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 182,
+        "column": 56,
+        "翻译": ""
+    },
+    {
+        "string": "Otsu",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 188,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Huang",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 189,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "IsoData",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 190,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Kittler-Illingworth",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 193,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Maximum entropy",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 198,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Moments",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 199,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Renyi entropy",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 200,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Shanbhag",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 201,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Triangle",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 202,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Yen",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 203,
+        "column": 58,
+        "翻译": ""
+    },
+    {
+        "string": "Select method to compute threshold value automatically.",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 204,
+        "column": 61,
+        "翻译": ""
+    },
+    {
+        "string": "Set",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 216,
+        "column": 54,
+        "翻译": ""
+    },
+    {
+        "string": "Set threshold using selected method.",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 217,
+        "column": 48,
+        "翻译": ""
+    },
+    {
+        "string": "Automatic threshold",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 232,
+        "column": 40,
+        "翻译": ""
+    },
+    {
+        "string": "Region shape:",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 242,
+        "column": 38,
+        "翻译": ""
+    },
+    {
+        "string": "Box",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 249,
+        "column": 35,
+        "翻译": ""
+    },
+    {
+        "string": "Circle",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 256,
+        "column": 38,
+        "翻译": ""
+    },
+    {
+        "string": "Draw",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 263,
+        "column": 36,
+        "翻译": ""
+    },
+    {
+        "string": "Line",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 270,
+        "column": 36,
+        "翻译": ""
+    },
+    {
+        "string": "Lower",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 331,
+        "column": 38,
+        "翻译": ""
+    },
+    {
+        "string": "Min",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 340,
+        "column": 59,
+        "翻译": ""
+    },
+    {
+        "string": "Minimum",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 341,
+        "column": 62,
+        "翻译": ""
+    },
+    {
+        "string": "Lower",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 348,
+        "column": 57,
+        "翻译": ""
+    },
+    {
+        "string": "Mean",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 355,
+        "column": 59,
+        "翻译": ""
+    },
+    {
+        "string": "Upper",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 364,
+        "column": 38,
+        "翻译": ""
+    },
+    {
+        "string": "Mean",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 373,
+        "column": 59,
+        "翻译": ""
+    },
+    {
+        "string": "Upper",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 380,
+        "column": 57,
+        "翻译": ""
+    },
+    {
+        "string": "Max",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 387,
+        "column": 59,
+        "翻译": ""
+    },
+    {
+        "string": "Maximum",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 388,
+        "column": 62,
+        "翻译": ""
+    },
+    {
+        "string": "Local histogram",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 395,
+        "column": 36,
+        "翻译": ""
+    },
+    {
+        "string": "Use for masking",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 400,
+        "column": 49,
+        "翻译": ""
+    },
+    {
+        "string": "Use specified intensity range for masking and switch to Paint effect.",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 401,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Apply",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 404,
+        "column": 43,
+        "翻译": ""
+    },
+    {
+        "string": "Fill selected segment in regions that are in the specified intensity range.",
+        "file": "SegmentEditorThresholdEffect.py",
+        "line": 406,
+        "column": 37,
+        "翻译": ""
+    },
+    {
+        "string": "Region segment is not set",
+        "file": "SegmentEditorWrapSolidifyEffect.py",
+        "line": 528,
+        "column": 26,
+        "翻译": ""
+    },
+    {
+        "string": "Region segment cannot be the same segment as the current segment",
+        "file": "SegmentEditorWrapSolidifyEffect.py",
+        "line": 530,
+        "column": 26,
+        "翻译": ""
+    },
+    {
+        "string": "Region segment is empty",
+        "file": "SegmentEditorWrapSolidifyEffect.py",
+        "line": 534,
+        "column": 26,
+        "翻译": ""
+    },
+    {
+        "string": "Invalid region: ",
+        "file": "SegmentEditorWrapSolidifyEffect.py",
+        "line": 537,
+        "column": 24,
+        "翻译": ""
+    },
+    {
+        "string": "Mesh has become empty during shrink-wrap iterations",
+        "file": "SegmentEditorWrapSolidifyEffect.py",
+        "line": 560,
+        "column": 26,
+        "翻译": ""
+    }
+]
