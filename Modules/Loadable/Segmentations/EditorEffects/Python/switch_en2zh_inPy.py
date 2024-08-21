@@ -121,7 +121,7 @@ if __name__ == '__main__':
         search_pattern = r'_\(["\']([^"\']+?)["\']\)'
         find_strings_in_python_files(switch_directory, search_pattern, output_file)
 
-    if args.replace or True:
+    if args.replace:
         translation_file = os.path.join(pwd, relative_path, translation_file)
         print(f" The translation file is: {translation_file}")
         replace_strings_in_python_files(switch_directory, translation_file, args.mode)
