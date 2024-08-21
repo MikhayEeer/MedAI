@@ -60,6 +60,8 @@ def replace_strings_in_python_files(directory, translation_file, mode = 'en2zh')
     for item in translations:
         original_string = item['string']
         translated_string = item['翻译']
+        if translated_string == "":
+            continue
         if original_string and translated_string:
             translated_strings[original_string] = translated_string
     
@@ -82,21 +84,29 @@ def replace_strings_in_python_files(directory, translation_file, mode = 'en2zh')
                 new_content = content
                 for original, translated in dict.items():
                     pattern = re.escape(original)
-                    new_content = re.sub(rf'_\("{pattern}"\)', rf'_{translated!r}', new_content)
-                    new_content = re.sub(rf'_\(\'{pattern}\'\)', rf'_{translated!r}', new_content)
+                    new_content = re.sub(rf'_\("{pattern}"\)', rf'_({translated!r})', new_content)
+                    new_content = re.sub(rf'_\(\'{pattern}\'\)', rf'_({translated!r})', new_content)
 
                 with open(file_path, 'w', encoding='utf-8') as f:
-                    f.write(new_content)
+                    f.write(new_content)   
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('--extract', action='store_true', help='Extract strings from Python files')
-    parser.add_argument('--replace', action='store_true', help='Replace strings in Python files based on a translation file')
+    parser.add_argument('-p','--path', type=str, default=r"F:\MdAI\mdai-src", 
+                        help='The path of the repository')
+    parser.add_argument('-x','--extract', action='store_true', 
+                        help='Extract strings from Python files')
+    parser.add_argument('-r','--replace', action='store_true', 
+                        help='Replace strings in Python files based on a translation file')
+    parser.add_argument('-m','--mode', type=str, default='en2zh', 
+                        help='Choose the mode: en2zh or zh2en',
+                        choices=['en2zh', 'zh2en'])
     args = parser.parse_args()
 
     pwd = os.getcwd()
     print(f"The current working directory is: {pwd}")
 
+    pwd = args.path
     relative_path ="Modules\Loadable\Segmentations\EditorEffects\Python"
     switch_directory = 'SegmentEditorEffects'
     output_file = 'editoreffects_translate_strings.json'
@@ -111,7 +121,7 @@ if __name__ == '__main__':
         search_pattern = r'_\(["\']([^"\']+?)["\']\)'
         find_strings_in_python_files(switch_directory, search_pattern, output_file)
 
-    if args.replace:
+    if args.replace or True:
         translation_file = os.path.join(pwd, relative_path, translation_file)
         print(f" The translation file is: {translation_file}")
-        replace_strings_in_python_files(switch_directory, translation_file)
+        replace_strings_in_python_files(switch_directory, translation_file, args.mode)

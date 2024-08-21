@@ -4,7 +4,7 @@
         "file": "AbstractScriptedSegmentEditorAutoCompleteEffect.py",
         "line": 93,
         "column": 48,
-        "翻译": ""
+        "翻译": "自动更新"
     },
     {
         "string": "Auto-update results preview when input segments change.",
@@ -165,7 +165,7 @@
         "file": "SegmentEditorDrawEffect.py",
         "line": 20,
         "column": 32,
-        "翻译": ""
+        "翻译": "绘制"
     },
     {
         "string": "Fill between slices",
