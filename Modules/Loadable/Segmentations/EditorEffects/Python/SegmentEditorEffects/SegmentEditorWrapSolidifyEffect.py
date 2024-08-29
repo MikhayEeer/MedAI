@@ -525,16 +525,16 @@ class WrapSolidifyLogic(object):
     elif self.region == REGION_SEGMENT:
       # create initial region from segment (that will be grown)
       if not self.regionSegmentId:
-        raise ValueError(_('区域分割未设置'))
+        raise ValueError(_('Region segment is not set'))
       if self.regionSegmentId == self.segmentId:
-        raise ValueError(_('区域分割不能与当前分割相同'))
+        raise ValueError(_('Region segment cannot be the same segment as the current segment'))
       initialRegionPd = vtk.vtkPolyData()
       self.segmentationNode.GetClosedSurfaceRepresentation(self.regionSegmentId, initialRegionPd)
       if not initialRegionPd or initialRegionPd.GetNumberOfPoints() == 0:
-        raise ValueError(_('区域分割为空'))
+        raise ValueError(_('Region segment is empty'))
       # initialRegionPd = self._remeshPolydata(initialRegionPd, self._inputSpacing*5.0)  # simplify the mesh
     else:
-      raise ValueError(_('无效区域：')+self.region)
+      raise ValueError(_('Invalid region: ')+self.region)
 
     cleanPolyData = vtk.vtkCleanPolyData()
     cleanPolyData.SetInputData(initialRegionPd)
@@ -557,7 +557,7 @@ class WrapSolidifyLogic(object):
       self._log('Shrinking %s/%s...' %(iterationIndex+1, self.shrinkwrapIterations))
       if shrunkenPd.GetNumberOfPoints()<=1 or self._inputPd.GetNumberOfPoints()<=1:
         # we must not feed empty polydata into vtkSmoothPolyDataFilter because it would crash the application
-        raise ValueError(_('在收缩包裹迭代过程中，网格变为空'))
+        raise ValueError(_('Mesh has become empty during shrink-wrap iterations'))
       smoothFilter = vtk.vtkSmoothPolyDataFilter()
       smoothFilter.SetInputData(0, shrunkenPd)
       smoothFilter.SetInputData(1, self._inputPd)  # constrain smoothed points to the input surface

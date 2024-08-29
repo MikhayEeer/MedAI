@@ -20,7 +20,7 @@ class SegmentEditorLocalThresholdEffect(SegmentEditorThresholdEffect):
   def __init__(self, scriptedEffect):
     SegmentEditorThresholdEffect.__init__(self, scriptedEffect)
     scriptedEffect.name = "Local threshold"
-    scriptedEffect.title = _('局部阈值')
+    scriptedEffect.title = _('Local threshold')
     self.previewSteps = 4
 
   def clone(self):

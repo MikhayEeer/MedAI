@@ -17,7 +17,7 @@ class SegmentEditorDrawEffect(AbstractScriptedSegmentEditorLabelEffect):
 
     def __init__(self, scriptedEffect):
         scriptedEffect.name = "Draw"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _('绘制')
+        scriptedEffect.title = _('Draw')
         self.drawPipelines = {}
         AbstractScriptedSegmentEditorLabelEffect.__init__(self, scriptedEffect)
 

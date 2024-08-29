@@ -90,14 +90,14 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         return False
 
     def setupOptionsFrame(self):
-        self.autoUpdateCheckBox = qt.QCheckBox(_('自动更新'))
-        self.autoUpdateCheckBox.setToolTip(_('当输入分割发生变化时，自动更新结果预览。'))
+        self.autoUpdateCheckBox = qt.QCheckBox(_('Auto-update'))
+        self.autoUpdateCheckBox.setToolTip(_('Auto-update results preview when input segments change.'))
         self.autoUpdateCheckBox.setChecked(True)
         self.autoUpdateCheckBox.setEnabled(False)
 
-        self.previewButton = qt.QPushButton(_('初始化'))
+        self.previewButton = qt.QPushButton(_('Initialize'))
         self.previewButton.objectName = self.__class__.__name__ + "Preview"
-        self.previewButton.setToolTip(_('预览完整分割'))
+        self.previewButton.setToolTip(_('Preview complete segmentation'))
         # qt.QSizePolicy(qt.QSizePolicy.Expanding, qt.QSizePolicy.Expanding)
         # fails on some systems, therefore set the policies using separate method calls
         qSize = qt.QSizePolicy()
@@ -107,10 +107,10 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         previewFrame = qt.QHBoxLayout()
         previewFrame.addWidget(self.autoUpdateCheckBox)
         previewFrame.addWidget(self.previewButton)
-        self.scriptedEffect.addLabeledOptionsWidget(_('预览：'), previewFrame)
+        self.scriptedEffect.addLabeledOptionsWidget(_('Preview:'), previewFrame)
 
         self.previewOpacitySlider = ctk.ctkSliderWidget()
-        self.previewOpacitySlider.setToolTip(_('调整结果预览的可见性。'))
+        self.previewOpacitySlider.setToolTip(_('Adjust visibility of results preview.'))
         self.previewOpacitySlider.minimum = 0
         self.previewOpacitySlider.maximum = 1.0
         self.previewOpacitySlider.value = 0.0
@@ -118,24 +118,24 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         self.previewOpacitySlider.pageStep = 0.1
         self.previewOpacitySlider.spinBoxVisible = False
 
-        self.previewShow3DButton = qt.QPushButton(_('显示3D'))
-        self.previewShow3DButton.setToolTip(_('以3D形式预览结果。'))
+        self.previewShow3DButton = qt.QPushButton(_('Show 3D'))
+        self.previewShow3DButton.setToolTip(_('Preview results in 3D.'))
         self.previewShow3DButton.setCheckable(True)
 
         displayFrame = qt.QHBoxLayout()
-        displayFrame.addWidget(qt.QLabel(_('输入')))
+        displayFrame.addWidget(qt.QLabel(_('inputs')))
         displayFrame.addWidget(self.previewOpacitySlider)
-        displayFrame.addWidget(qt.QLabel(_('结果')))
+        displayFrame.addWidget(qt.QLabel(_('results')))
         displayFrame.addWidget(self.previewShow3DButton)
-        self.scriptedEffect.addLabeledOptionsWidget(_('显示：'), displayFrame)
+        self.scriptedEffect.addLabeledOptionsWidget(_('Display:'), displayFrame)
 
-        self.cancelButton = qt.QPushButton(_('取消'))
+        self.cancelButton = qt.QPushButton(_('Cancel'))
         self.cancelButton.objectName = self.__class__.__name__ + "Cancel"
-        self.cancelButton.setToolTip(_('清除预览并取消自动完成'))
+        self.cancelButton.setToolTip(_('Clear preview and cancel auto-complete'))
 
-        self.applyButton = qt.QPushButton(_('应用'))
+        self.applyButton = qt.QPushButton(_('Apply'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
-        self.applyButton.setToolTip(_('用预览结果替换分割'))
+        self.applyButton.setToolTip(_('Replace segments by previewed result'))
 
         finishFrame = qt.QHBoxLayout()
         finishFrame.addWidget(self.cancelButton)
@@ -174,7 +174,7 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
                 # selected segment was deleted, cancel segmentation
                 logging.debug("Segmentation operation is cancelled because an input segment was deleted")
                 self.onCancel()
-                slicer.util.showStatusMessage(_('分割操作已取消，因为一个输入分割被删除。'), 3000)
+                slicer.util.showStatusMessage(_('Segmentation operation is cancelled because an input segment was deleted.'), 3000)
                 return
             segmentLabelmap = segment.GetRepresentation(vtkSegmentationCore.vtkSegmentationConverter.GetSegmentationBinaryLabelmapRepresentationName())
             if segmentID in self.selectedSegmentModifiedTimes \
@@ -251,13 +251,13 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
             wasBlocked = self.previewOpacitySlider.blockSignals(True)
             self.previewOpacitySlider.value = self.getPreviewOpacity()
             self.previewOpacitySlider.blockSignals(wasBlocked)
-            self.previewButton.text = _('更新')
+            self.previewButton.text = _('Update')
             self.previewShow3DButton.setEnabled(True)
             self.previewShow3DButton.setChecked(self.getPreviewShow3D())
             self.autoUpdateCheckBox.setEnabled(True)
             self.observeSegmentation(self.autoUpdateCheckBox.isChecked())
         else:
-            self.previewButton.text = _('初始化')
+            self.previewButton.text = _('Initialize')
             self.autoUpdateCheckBox.setEnabled(False)
             self.previewShow3DButton.setEnabled(False)
             self.delayedAutoUpdateTimer.stop()
@@ -283,9 +283,9 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
             return
         self.previewComputationInProgress = True
 
-        slicer.util.showStatusMessage(_('正在运行 {effectName} 自动完成...').format(effectName=self.scriptedEffect.name), 2000)
+        slicer.util.showStatusMessage(_('Running {effectName} auto-complete...').format(effectName=self.scriptedEffect.name), 2000)
         try:
-            with slicer.util.tryWithErrorDisplay(_('分割操作失败：'), waitCursor=True):
+            with slicer.util.tryWithErrorDisplay(_('Segmentation operation failed:'), waitCursor=True):
                 self.preview()
         finally:
             self.previewComputationInProgress = False
@@ -447,19 +447,19 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
                 if editableAreaSpecified and self.selectedSegmentIds.GetNumberOfValues() < self.minimumNumberOfSegmentsWithEditableArea:
                     logging.error(f"Auto-complete operation failed: at least {self.minimumNumberOfSegmentsWithEditableArea} visible segments are required when editable area is defined")
                     raise RuntimeError(
-                        _('需要至少 {minimumNumberOfSegments} 个可见分割。').format(
+                        _('Minimum {minimumNumberOfSegments} visible segments are required.').format(
                             minimumNumberOfSegments=self.minimumNumberOfSegmentsWithEditableArea))
                 elif (not editableAreaSpecified) and self.selectedSegmentIds.GetNumberOfValues() < self.minimumNumberOfSegments:
                     logging.error(f"Auto-complete operation skipped: at least {self.minimumNumberOfSegmentsWithEditableArea} visible segments or setting of editable area is required")
                     raise RuntimeError(
-                        _('需要至少 {minimumNumberOfSegments} 个可见分割（或可编辑区域或强度范围的指定）。').format(
+                        _('Minimum {minimumNumberOfSegments} visible segments (or specification of editable area or intensity range) is required.').format(
                             minimumNumberOfSegments=self.minimumNumberOfSegments))
             elif self.selectedSegmentIds.GetNumberOfValues() < self.minimumNumberOfSegments:
                 # Same number of input segments required regardless of editable area
                 logging.error(f"Auto-complete operation failed: at least {self.minimumNumberOfSegments} visible segments are required")
                 self.selectedSegmentIds = None
                 raise RuntimeError(
-                    _('需要至少 {minimumNumberOfSegments} 个可见分割。').format(
+                    _('Minimum {minimumNumberOfSegments} visible segments are required.').format(
                         minimumNumberOfSegments=self.minimumNumberOfSegments))
 
             # Compute merged labelmap extent (effective extent slightly expanded)
