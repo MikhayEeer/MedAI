@@ -1,4 +1,4 @@
-/*=auto=========================================================================
+﻿/*=auto=========================================================================
 
   Portions (c) Copyright 2005 Brigham and Women's Hospital (BWH) All Rights Reserved.
 
@@ -986,6 +986,7 @@ bool vtkMRMLSliceLogic::UpdateBlendLayers(vtkImageBlend* blend, const std::deque
 
   // Update blend mode: if clip to background is disabled, blending occurs over the entire extent
   // of all layers, not just within the background volume region.
+  /*
   if (clipToBackgroundVolume)
   {
     blend->BlendAlphaOff();
@@ -993,7 +994,7 @@ bool vtkMRMLSliceLogic::UpdateBlendLayers(vtkImageBlend* blend, const std::deque
   else
   {
     blend->BlendAlphaOn();
-  }
+  }*/
 
   bool modified = (blend->GetMTime() > oldBlendMTime);
   return modified;

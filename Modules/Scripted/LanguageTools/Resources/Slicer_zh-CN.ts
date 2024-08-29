@@ -8186,7 +8186,7 @@ and&lt;br&gt;
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="122"/>
         <source>Perform a &apos;Local threshold&apos; airway segmentation. </source>
-        <translation type="unfinished"></translation>
+        <translation>执行“局部阈值”气道分割。 </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="125"/>
