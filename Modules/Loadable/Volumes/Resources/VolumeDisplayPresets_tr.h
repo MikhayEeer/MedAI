@@ -1,4 +1,4 @@
-// Generated automatically by update_translations.py from F:\MdAI\mdai-src\Modules/Loadable/Volumes/Resources/VolumeDisplayPresets.json
+// Generated automatically by update_translations.py from f:\MdAI\mdai-src\Modules/Loadable/Volumes/Resources/VolumeDisplayPresets.json
 
 QT_TRANSLATE_NOOP("VolumeDisplayPresets", "CT-Bone")
 QT_TRANSLATE_NOOP("VolumeDisplayPresets", "Emphasize bone in a CT volume.")
