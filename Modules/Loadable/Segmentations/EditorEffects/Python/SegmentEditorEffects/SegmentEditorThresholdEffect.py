@@ -260,7 +260,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.histogramBrushButtonGroup.addButton(self.circleROIButton)
 
         self.drawROIButton = qt.QToolButton()
-        self.drawROIButton.setText(_("Draw"))
+        self.drawROIButton.setText(_('Draw'))
         self.drawROIButton.setCheckable(True)
         self.drawROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.drawROIButton)

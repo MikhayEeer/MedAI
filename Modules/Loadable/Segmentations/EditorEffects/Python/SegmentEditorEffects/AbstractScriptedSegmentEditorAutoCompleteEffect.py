@@ -90,7 +90,7 @@ class AbstractScriptedSegmentEditorAutoCompleteEffect(AbstractScriptedSegmentEdi
         return False
 
     def setupOptionsFrame(self):
-        self.autoUpdateCheckBox = qt.QCheckBox(_("Auto-update"))
+        self.autoUpdateCheckBox = qt.QCheckBox(_('Auto-update'))
         self.autoUpdateCheckBox.setToolTip(_("Auto-update results preview when input segments change."))
         self.autoUpdateCheckBox.setChecked(True)
         self.autoUpdateCheckBox.setEnabled(False)
