@@ -107,7 +107,7 @@ if __name__ == '__main__':
     print(f"The current working directory is: {pwd}")
 
     pwd = args.path
-    relative_path ="Modules\Loadable\Segmentations\EditorEffects\Python"
+    relative_path = os.path.join('Modules','Loadable','Segmentations','EditorEffects','Python')
     switch_directory = 'SegmentEditorEffects'
     output_file = 'editoreffects_translate_strings.json'
     translation_file = 'editoreffects_translate_strings.json'
