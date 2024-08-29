@@ -20,7 +20,7 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
     def __init__(self, scriptedEffect):
         AbstractScriptedSegmentEditorAutoCompleteEffect.__init__(self, scriptedEffect)
         scriptedEffect.name = "Grow from seeds"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Grow from seeds")
+        scriptedEffect.title = _('从种子生长')
         self.minimumNumberOfSegments = 2
         self.minimumNumberOfSegmentsWithEditableArea = 1  # if mask is specified then one input segment is sufficient
         self.clippedMasterImageDataRequired = True  # source volume intensities are used by this effect
@@ -77,7 +77,7 @@ class SegmentEditorGrowFromSeedsEffect(AbstractScriptedSegmentEditorAutoComplete
         self.seedLocalityFactorSlider.setToolTip(_('Increasing this value makes the effect of seeds more localized,'
                                                    ' thereby reducing leaks, but requires seed regions to be more evenly distributed in the image.'
                                                    ' The value is specified as an additional "intensity level difference" per "unit distance."'))
-        self.scriptedEffect.addLabeledOptionsWidget(_("Seed locality:"), self.seedLocalityFactorSlider)
+        self.scriptedEffect.addLabeledOptionsWidget(_('种子局部性：'), self.seedLocalityFactorSlider)
         self.seedLocalityFactorSlider.connect("valueChanged(double)", self.updateAlgorithmParameterFromGUI)
 
     def setMRMLDefaults(self):

@@ -15,7 +15,7 @@ class SegmentEditorLogicalEffect(AbstractScriptedSegmentEditorEffect):
 
     def __init__(self, scriptedEffect):
         scriptedEffect.name = "Logical operators"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Logical operators")
+        scriptedEffect.title = _('逻辑运算符')
         self.operationsRequireModifierSegment = [LOGICAL_COPY, LOGICAL_UNION, LOGICAL_SUBTRACT, LOGICAL_INTERSECT]
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -49,29 +49,29 @@ segment list in effect options - below.
 
     def setupOptionsFrame(self):
         self.methodSelectorComboBox = qt.QComboBox()
-        self.methodSelectorComboBox.addItem(_("Copy"), LOGICAL_COPY)
-        self.methodSelectorComboBox.addItem(_("Add"), LOGICAL_UNION)
-        self.methodSelectorComboBox.addItem(_("Subtract"), LOGICAL_SUBTRACT)
-        self.methodSelectorComboBox.addItem(_("Intersect"), LOGICAL_INTERSECT)
-        self.methodSelectorComboBox.addItem(_("Invert"), LOGICAL_INVERT)
-        self.methodSelectorComboBox.addItem(_("Clear"), LOGICAL_CLEAR)
-        self.methodSelectorComboBox.addItem(_("Fill"), LOGICAL_FILL)
-        self.methodSelectorComboBox.setToolTip(_("Click <dfn>Show details</dfn> link above for description of operations."))
+        self.methodSelectorComboBox.addItem(_('复制'), LOGICAL_COPY)
+        self.methodSelectorComboBox.addItem(_('添加'), LOGICAL_UNION)
+        self.methodSelectorComboBox.addItem(_('减去'), LOGICAL_SUBTRACT)
+        self.methodSelectorComboBox.addItem(_('交集'), LOGICAL_INTERSECT)
+        self.methodSelectorComboBox.addItem(_('反转'), LOGICAL_INVERT)
+        self.methodSelectorComboBox.addItem(_('清除'), LOGICAL_CLEAR)
+        self.methodSelectorComboBox.addItem(_('填充'), LOGICAL_FILL)
+        self.methodSelectorComboBox.setToolTip(_('点击上面的 <dfn>显示详细信息</dfn> 链接以获取操作说明。'))
 
-        self.bypassMaskingCheckBox = qt.QCheckBox(_("Bypass masking"))
-        self.bypassMaskingCheckBox.setToolTip(_("Ignore all masking options and only modify the selected segment."))
+        self.bypassMaskingCheckBox = qt.QCheckBox(_('绕过遮罩'))
+        self.bypassMaskingCheckBox.setToolTip(_('忽略所有遮罩选项，仅修改选定的分割。'))
         self.bypassMaskingCheckBox.objectName = self.__class__.__name__ + "BypassMasking"
 
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_('应用'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
 
         operationFrame = qt.QHBoxLayout()
         operationFrame.addWidget(self.methodSelectorComboBox)
         operationFrame.addWidget(self.applyButton)
         operationFrame.addWidget(self.bypassMaskingCheckBox)
-        self.marginSizeMmLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Operation:"), operationFrame)
+        self.marginSizeMmLabel = self.scriptedEffect.addLabeledOptionsWidget(_('操作：'), operationFrame)
 
-        self.modifierSegmentSelectorLabel = qt.QLabel(_("Modifier segment:"))
+        self.modifierSegmentSelectorLabel = qt.QLabel(_('修饰分割：'))
         self.scriptedEffect.addOptionsWidget(self.modifierSegmentSelectorLabel)
 
         self.modifierSegmentSelector = slicer.qMRMLSegmentsTableView()
@@ -130,18 +130,18 @@ segment list in effect options - below.
         self.modifierSegmentSelector.setVisible(modifierSegmentRequired)
 
         if operation == LOGICAL_COPY:
-            self.modifierSegmentSelectorLabel.text = _("Copy from segment:")
+            self.modifierSegmentSelectorLabel.text = _('从分割复制：')
         elif operation == LOGICAL_UNION:
-            self.modifierSegmentSelectorLabel.text = _("Add segment:")
+            self.modifierSegmentSelectorLabel.text = _('添加分割：')
         elif operation == LOGICAL_SUBTRACT:
-            self.modifierSegmentSelectorLabel.text = _("Subtract segment:")
+            self.modifierSegmentSelectorLabel.text = _('减去分割：')
         elif operation == LOGICAL_INTERSECT:
-            self.modifierSegmentSelectorLabel.text = _("Intersect with segment:")
+            self.modifierSegmentSelectorLabel.text = _('与分割交集：')
         else:
-            self.modifierSegmentSelectorLabel.text = _("Modifier segment:")
+            self.modifierSegmentSelectorLabel.text = _('修饰分割：')
 
         if modifierSegmentRequired and not modifierSegmentID:
-            self.applyButton.setToolTip(_("Please select a modifier segment in the list below."))
+            self.applyButton.setToolTip(_('请选择下面列表中的修饰分割。'))
             self.applyButton.enabled = False
         else:
             self.applyButton.setToolTip("")

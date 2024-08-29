@@ -11,7 +11,7 @@ class SegmentEditorMaskVolumeEffect(AbstractScriptedSegmentEditorEffect):
 
     def __init__(self, scriptedEffect):
         scriptedEffect.name = "Mask volume"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Mask volume")
+        scriptedEffect.title = _('遮罩体数据')
         scriptedEffect.perSegment = True  # this effect operates on a single selected segment
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
@@ -46,16 +46,16 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.invisibleIcon = qt.QIcon(":/Icons/Small/SlicerInvisible.png")
 
         # Fill operation buttons
-        self.fillInsideButton = qt.QRadioButton(_("Fill inside"))
+        self.fillInsideButton = qt.QRadioButton(_('填充内部'))
         self.operationRadioButtons.append(self.fillInsideButton)
         self.buttonToOperationNameMap[self.fillInsideButton] = "FILL_INSIDE"
 
-        self.fillOutsideButton = qt.QRadioButton(_("Fill outside"))
+        self.fillOutsideButton = qt.QRadioButton(_('填充外部'))
         self.operationRadioButtons.append(self.fillOutsideButton)
         self.buttonToOperationNameMap[self.fillOutsideButton] = "FILL_OUTSIDE"
 
-        self.binaryMaskFillButton = qt.QRadioButton(_("Fill inside and outside"))
-        self.binaryMaskFillButton.setToolTip(_("Create a labelmap volume with specified inside and outside fill values."))
+        self.binaryMaskFillButton = qt.QRadioButton(_('内部和外部都填充'))
+        self.binaryMaskFillButton.setToolTip(_('创建一个具有指定内部和外部填充值的标签图像体数据。'))
         self.operationRadioButtons.append(self.binaryMaskFillButton)
         self.buttonToOperationNameMap[self.binaryMaskFillButton] = "FILL_INSIDE_AND_OUTSIDE"
 
@@ -64,21 +64,21 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         operationLayout.addWidget(self.fillInsideButton, 0, 0)
         operationLayout.addWidget(self.fillOutsideButton, 1, 0)
         operationLayout.addWidget(self.binaryMaskFillButton, 0, 1)
-        self.scriptedEffect.addLabeledOptionsWidget(_("Operation:"), operationLayout)
+        self.scriptedEffect.addLabeledOptionsWidget(_('操作：'), operationLayout)
 
         # fill value
         self.fillValueEdit = ctk.ctkDoubleSpinBox()
-        self.fillValueEdit.setToolTip(_("Choose the voxel intensity that will be used to fill the masked region."))
-        self.fillValueLabel = qt.QLabel(_("Fill value: "))
+        self.fillValueEdit.setToolTip(_('选择用于填充遮罩区域的体素强度。'))
+        self.fillValueLabel = qt.QLabel(_('填充值：'))
 
         # Binary mask fill outside value
         self.binaryMaskFillOutsideEdit = ctk.ctkDoubleSpinBox()
-        self.binaryMaskFillOutsideEdit.setToolTip(_("Choose the voxel intensity that will be used to fill outside the mask."))
-        self.fillOutsideLabel = qt.QLabel(_("Outside fill value: "))
+        self.binaryMaskFillOutsideEdit.setToolTip(_('选择用于填充遮罩外部的体素强度。'))
+        self.fillOutsideLabel = qt.QLabel(_('外部填充值：'))
 
         # Binary mask fill outside value
         self.binaryMaskFillInsideEdit = ctk.ctkDoubleSpinBox()
-        self.binaryMaskFillInsideEdit.setToolTip(_("Choose the voxel intensity that will be used to fill inside the mask."))
+        self.binaryMaskFillInsideEdit.setToolTip(_('选择用于填充遮罩内部的体素强度。'))
         self.fillInsideLabel = qt.QLabel(_(" Inside fill value: "))
 
         for fillValueEdit in [self.fillValueEdit, self.binaryMaskFillOutsideEdit, self.binaryMaskFillInsideEdit]:
@@ -114,7 +114,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.softEdgeMmSpinBox.value = 0
         self.softEdgeMmSpinBox.minimum = 0
         self.softEdgeMmSpinBox.singleStep = 0.5
-        self.softEdgeMmLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Soft edge:"), self.softEdgeMmSpinBox)
+        self.softEdgeMmLabel = self.scriptedEffect.addLabeledOptionsWidget(_('柔和边缘：'), self.softEdgeMmSpinBox)
         self.softEdgeMmSpinBox.connect("valueChanged(double)", self.softEdgeMmChanged)
 
         # input volume selector
@@ -124,10 +124,10 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.inputVolumeSelector.addEnabled = True
         self.inputVolumeSelector.removeEnabled = True
         self.inputVolumeSelector.noneEnabled = True
-        self.inputVolumeSelector.noneDisplay = _("(Source volume)")
+        self.inputVolumeSelector.noneDisplay = _('（源体数据）')
         self.inputVolumeSelector.showHidden = False
         self.inputVolumeSelector.setMRMLScene(slicer.mrmlScene)
-        self.inputVolumeSelector.setToolTip(_("Volume to mask. Default is current source volume node."))
+        self.inputVolumeSelector.setToolTip(_('要遮罩的体数据。默认是当前源体数据节点。'))
         self.inputVolumeSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onInputVolumeChanged)
 
         self.inputVisibilityButton = qt.QToolButton()
@@ -136,7 +136,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         inputLayout = qt.QHBoxLayout()
         inputLayout.addWidget(self.inputVisibilityButton)
         inputLayout.addWidget(self.inputVolumeSelector)
-        self.scriptedEffect.addLabeledOptionsWidget(_("Input Volume: "), inputLayout)
+        self.scriptedEffect.addLabeledOptionsWidget(_('输入体数据：'), inputLayout)
 
         # output volume selector
         self.outputVolumeSelector = slicer.qMRMLNodeComboBox()
@@ -146,10 +146,10 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.outputVolumeSelector.removeEnabled = True
         self.outputVolumeSelector.renameEnabled = True
         self.outputVolumeSelector.noneEnabled = True
-        self.outputVolumeSelector.noneDisplay = _("(Create new Volume)")
+        self.outputVolumeSelector.noneDisplay = _('（创建新体数据）')
         self.outputVolumeSelector.showHidden = False
         self.outputVolumeSelector.setMRMLScene(slicer.mrmlScene)
-        self.outputVolumeSelector.setToolTip(_("Masked output volume. It may be the same as the input volume for cumulative masking."))
+        self.outputVolumeSelector.setToolTip(_('遮罩输出体数据。对于累积遮罩，它可以与输入体数据相同。'))
         self.outputVolumeSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onOutputVolumeChanged)
 
         self.outputVisibilityButton = qt.QToolButton()
@@ -158,12 +158,12 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         outputLayout = qt.QHBoxLayout()
         outputLayout.addWidget(self.outputVisibilityButton)
         outputLayout.addWidget(self.outputVolumeSelector)
-        self.scriptedEffect.addLabeledOptionsWidget(_("Output Volume: "), outputLayout)
+        self.scriptedEffect.addLabeledOptionsWidget(_('输出体数据：'), outputLayout)
 
         # Apply button
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_('应用'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
-        self.applyButton.setToolTip(_("Apply segment as volume mask. No undo operation available once applied."))
+        self.applyButton.setToolTip(_('将分割应用为体数据遮罩。应用后无法撤销操作。'))
         self.scriptedEffect.addOptionsWidget(self.applyButton)
         self.applyButton.connect("clicked()", self.onApply)
 
@@ -226,12 +226,12 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.binaryMaskFillOutsideEdit.setVisible(operationName == "FILL_INSIDE_AND_OUTSIDE")
         self.fillOutsideLabel.setVisible(operationName == "FILL_INSIDE_AND_OUTSIDE")
         if operationName in ["FILL_INSIDE", "FILL_OUTSIDE"]:
-            if self.outputVolumeSelector.noneDisplay != _("(Create new Volume)"):
-                self.outputVolumeSelector.noneDisplay = _("(Create new Volume)")
+            if self.outputVolumeSelector.noneDisplay != _('（创建新体数据）'):
+                self.outputVolumeSelector.noneDisplay = _('（创建新体数据）')
                 self.outputVolumeSelector.nodeTypes = ["vtkMRMLScalarVolumeNode", "vtkMRMLLabelMapVolumeNode"]
         else:
-            if self.outputVolumeSelector.noneDisplay != _("(Create new Labelmap Volume)"):
-                self.outputVolumeSelector.noneDisplay = _("(Create new Labelmap Volume)")
+            if self.outputVolumeSelector.noneDisplay != _('（创建新标签图体数据）'):
+                self.outputVolumeSelector.noneDisplay = _('（创建新标签图体数据）')
                 self.outputVolumeSelector.nodeTypes = ["vtkMRMLLabelMapVolumeNode", "vtkMRMLScalarVolumeNode"]
 
         self.inputVisibilityButton.setIcon(self.visibleIcon if self.isVolumeVisible(inputVolume) else self.invisibleIcon)
@@ -298,7 +298,7 @@ Fill inside and outside operation creates a binary labelmap volume as output, wi
         self.updateMRMLFromGUI()
 
     def onApply(self):
-        with slicer.util.tryWithErrorDisplay(_("Failed to apply mask to volume."), waitCursor=True):
+        with slicer.util.tryWithErrorDisplay(_('应用遮罩到体数据时失败。'), waitCursor=True):
             inputVolume = self.getInputVolume()
             outputVolume = self.outputVolumeSelector.currentNode()
             operationMode = self.scriptedEffect.parameter("Operation")

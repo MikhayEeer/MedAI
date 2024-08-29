@@ -23,7 +23,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
     def __init__(self, scriptedEffect):
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
         scriptedEffect.name = "Threshold"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Threshold")
+        scriptedEffect.title = _('阈值')
 
         self.segment2DFillOpacity = None
         self.segment2DOutlineOpacity = None
@@ -166,8 +166,8 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.previewedSegmentID = None
 
     def setupOptionsFrame(self):
-        self.thresholdSliderLabel = qt.QLabel(_("Threshold Range:"))
-        self.thresholdSliderLabel.setToolTip(_("Set the range of the background values that should be labeled."))
+        self.thresholdSliderLabel = qt.QLabel(_('阈值范围：'))
+        self.thresholdSliderLabel.setToolTip(_('设置应标记的背景值范围。'))
         self.scriptedEffect.addOptionsWidget(self.thresholdSliderLabel)
 
         self.thresholdSlider = ctk.ctkRangeWidget()
@@ -176,32 +176,32 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.scriptedEffect.addOptionsWidget(self.thresholdSlider)
 
         self.autoThresholdModeSelectorComboBox = qt.QComboBox()
-        self.autoThresholdModeSelectorComboBox.addItem(_("threshold above"), MODE_SET_LOWER_MAX)
-        self.autoThresholdModeSelectorComboBox.addItem(_("threshold below"), MODE_SET_MIN_UPPER)
-        self.autoThresholdModeSelectorComboBox.addItem(_("set as lower value"), MODE_SET_LOWER)
-        self.autoThresholdModeSelectorComboBox.addItem(_("set as upper value"), MODE_SET_UPPER)
+        self.autoThresholdModeSelectorComboBox.addItem(_('阈值以上'), MODE_SET_LOWER_MAX)
+        self.autoThresholdModeSelectorComboBox.addItem(_('阈值以下'), MODE_SET_MIN_UPPER)
+        self.autoThresholdModeSelectorComboBox.addItem(_('设置为较低值'), MODE_SET_LOWER)
+        self.autoThresholdModeSelectorComboBox.addItem(_('设置为较高值'), MODE_SET_UPPER)
         self.autoThresholdModeSelectorComboBox.setToolTip(_("How to set lower and upper values of the threshold range."
                                                             " Threshold above/below: sets the range from the computed value to maximum/minimum."
                                                             " Set as lower/upper value: only modifies one side of the threshold range."))
 
         self.autoThresholdMethodSelectorComboBox = qt.QComboBox()
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Otsu"), METHOD_OTSU)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Huang"), METHOD_HUANG)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("IsoData"), METHOD_ISO_DATA)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Otsu'), METHOD_OTSU)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Huang'), METHOD_HUANG)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('IsoData'), METHOD_ISO_DATA)
         # Kittler-Illingworth sometimes fails with an exception, but it does not cause any major issue,
         # it just logs an error message and does not compute a new threshold value
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Kittler-Illingworth"), METHOD_KITTLER_ILLINGWORTH)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Kittler-Illingworth'), METHOD_KITTLER_ILLINGWORTH)
         # Li sometimes crashes (index out of range error in
         # ITK/Modules/Filtering/Thresholding/include/itkLiThresholdCalculator.hxx#L94)
         # We can add this method back when issue is fixed in ITK.
         # self.autoThresholdMethodSelectorComboBox.addItem("Li", METHOD_LI)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Maximum entropy"), METHOD_MAXIMUM_ENTROPY)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Moments"), METHOD_MOMENTS)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Renyi entropy"), METHOD_RENYI_ENTROPY)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Shanbhag"), METHOD_SHANBHAG)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Triangle"), METHOD_TRIANGLE)
-        self.autoThresholdMethodSelectorComboBox.addItem(_("Yen"), METHOD_YEN)
-        self.autoThresholdMethodSelectorComboBox.setToolTip(_("Select method to compute threshold value automatically."))
+        self.autoThresholdMethodSelectorComboBox.addItem(_('最大熵'), METHOD_MAXIMUM_ENTROPY)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Moments'), METHOD_MOMENTS)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Renyi entropy'), METHOD_RENYI_ENTROPY)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Shanbhag'), METHOD_SHANBHAG)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('三角形'), METHOD_TRIANGLE)
+        self.autoThresholdMethodSelectorComboBox.addItem(_('Yen'), METHOD_YEN)
+        self.autoThresholdMethodSelectorComboBox.setToolTip(_('选择方法自动计算阈值。'))
 
         self.selectPreviousAutoThresholdButton = qt.QToolButton()
         self.selectPreviousAutoThresholdButton.text = "<"
@@ -213,8 +213,8 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.selectNextAutoThresholdButton.setToolTip(_("Select next thresholding method and set thresholds."
                                                         " Useful for iterating through all available methods."))
 
-        self.setAutoThresholdButton = qt.QPushButton(_("Set"))
-        self.setAutoThresholdButton.setToolTip(_("Set threshold using selected method."))
+        self.setAutoThresholdButton = qt.QPushButton(_('设置'))
+        self.setAutoThresholdButton.setToolTip(_('使用选定的方法设置阈值。'))
         # qt.QSizePolicy(qt.QSizePolicy.Expanding, qt.QSizePolicy.Expanding)
         # fails on some systems, therefore set the policies using separate method calls
         qSize = qt.QSizePolicy()
@@ -229,7 +229,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         autoThresholdFrame.addWidget(self.setAutoThresholdButton, 2, 0, 1, 3)
 
         autoThresholdGroupBox = ctk.ctkCollapsibleGroupBox()
-        autoThresholdGroupBox.setTitle(_("Automatic threshold"))
+        autoThresholdGroupBox.setTitle(_('自动阈值'))
         autoThresholdGroupBox.setLayout(autoThresholdFrame)
         autoThresholdGroupBox.collapsed = True
         self.scriptedEffect.addOptionsWidget(autoThresholdGroupBox)
@@ -239,35 +239,35 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         histogramBrushFrame = qt.QHBoxLayout()
         histogramFrame.addLayout(histogramBrushFrame)
 
-        self.regionLabel = qt.QLabel(_("Region shape:"))
+        self.regionLabel = qt.QLabel(_('区域形状：'))
         histogramBrushFrame.addWidget(self.regionLabel)
 
         self.histogramBrushButtonGroup = qt.QButtonGroup()
         self.histogramBrushButtonGroup.setExclusive(True)
 
         self.boxROIButton = qt.QToolButton()
-        self.boxROIButton.setText(_("Box"))
+        self.boxROIButton.setText(_('方框'))
         self.boxROIButton.setCheckable(True)
         self.boxROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.boxROIButton)
         self.histogramBrushButtonGroup.addButton(self.boxROIButton)
 
         self.circleROIButton = qt.QToolButton()
-        self.circleROIButton.setText(_("Circle"))
+        self.circleROIButton.setText(_('圆形'))
         self.circleROIButton.setCheckable(True)
         self.circleROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.circleROIButton)
         self.histogramBrushButtonGroup.addButton(self.circleROIButton)
 
         self.drawROIButton = qt.QToolButton()
-        self.drawROIButton.setText(_('Draw'))
+        self.drawROIButton.setText(_('绘制'))
         self.drawROIButton.setCheckable(True)
         self.drawROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.drawROIButton)
         self.histogramBrushButtonGroup.addButton(self.drawROIButton)
 
         self.lineROIButton = qt.QToolButton()
-        self.lineROIButton.setText(_("Line"))
+        self.lineROIButton.setText(_('线'))
         self.lineROIButton.setCheckable(True)
         self.lineROIButton.clicked.connect(self.updateMRMLFromGUI)
         histogramBrushFrame.addWidget(self.lineROIButton)
@@ -328,7 +328,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         ###
         # Lower histogram threshold buttons
 
-        lowerGroupBox = qt.QGroupBox(_("Lower"))
+        lowerGroupBox = qt.QGroupBox(_('下限'))
         lowerHistogramLayout = qt.QHBoxLayout()
         lowerHistogramLayout.setContentsMargins(0, 3, 0, 3)
         lowerGroupBox.setLayout(lowerHistogramLayout)
@@ -337,22 +337,22 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.histogramLowerMethodButtonGroup.setExclusive(True)
 
         self.histogramLowerThresholdMinimumButton = qt.QToolButton()
-        self.histogramLowerThresholdMinimumButton.setText(_("Min"))
-        self.histogramLowerThresholdMinimumButton.setToolTip(_("Minimum"))
+        self.histogramLowerThresholdMinimumButton.setText(_('最小值'))
+        self.histogramLowerThresholdMinimumButton.setToolTip(_('最小值'))
         self.histogramLowerThresholdMinimumButton.setCheckable(True)
         self.histogramLowerThresholdMinimumButton.clicked.connect(self.updateMRMLFromGUI)
         lowerHistogramLayout.addWidget(self.histogramLowerThresholdMinimumButton)
         self.histogramLowerMethodButtonGroup.addButton(self.histogramLowerThresholdMinimumButton)
 
         self.histogramLowerThresholdLowerButton = qt.QToolButton()
-        self.histogramLowerThresholdLowerButton.setText(_("Lower"))
+        self.histogramLowerThresholdLowerButton.setText(_('下限'))
         self.histogramLowerThresholdLowerButton.setCheckable(True)
         self.histogramLowerThresholdLowerButton.clicked.connect(self.updateMRMLFromGUI)
         lowerHistogramLayout.addWidget(self.histogramLowerThresholdLowerButton)
         self.histogramLowerMethodButtonGroup.addButton(self.histogramLowerThresholdLowerButton)
 
         self.histogramLowerThresholdAverageButton = qt.QToolButton()
-        self.histogramLowerThresholdAverageButton.setText(_("Mean"))
+        self.histogramLowerThresholdAverageButton.setText(_('平均值'))
         self.histogramLowerThresholdAverageButton.setCheckable(True)
         self.histogramLowerThresholdAverageButton.clicked.connect(self.updateMRMLFromGUI)
         lowerHistogramLayout.addWidget(self.histogramLowerThresholdAverageButton)
@@ -361,7 +361,7 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         ###
         # Upper histogram threshold buttons
 
-        upperGroupBox = qt.QGroupBox(_("Upper"))
+        upperGroupBox = qt.QGroupBox(_('上限'))
         upperHistogramLayout = qt.QHBoxLayout()
         upperHistogramLayout.setContentsMargins(0, 3, 0, 3)
         upperGroupBox.setLayout(upperHistogramLayout)
@@ -370,40 +370,40 @@ class SegmentEditorThresholdEffect(AbstractScriptedSegmentEditorEffect):
         self.histogramUpperMethodButtonGroup.setExclusive(True)
 
         self.histogramUpperThresholdAverageButton = qt.QToolButton()
-        self.histogramUpperThresholdAverageButton.setText(_("Mean"))
+        self.histogramUpperThresholdAverageButton.setText(_('平均值'))
         self.histogramUpperThresholdAverageButton.setCheckable(True)
         self.histogramUpperThresholdAverageButton.clicked.connect(self.updateMRMLFromGUI)
         upperHistogramLayout.addWidget(self.histogramUpperThresholdAverageButton)
         self.histogramUpperMethodButtonGroup.addButton(self.histogramUpperThresholdAverageButton)
 
         self.histogramUpperThresholdUpperButton = qt.QToolButton()
-        self.histogramUpperThresholdUpperButton.setText(_("Upper"))
+        self.histogramUpperThresholdUpperButton.setText(_('上限'))
         self.histogramUpperThresholdUpperButton.setCheckable(True)
         self.histogramUpperThresholdUpperButton.clicked.connect(self.updateMRMLFromGUI)
         upperHistogramLayout.addWidget(self.histogramUpperThresholdUpperButton)
         self.histogramUpperMethodButtonGroup.addButton(self.histogramUpperThresholdUpperButton)
 
         self.histogramUpperThresholdMaximumButton = qt.QToolButton()
-        self.histogramUpperThresholdMaximumButton.setText(_("Max"))
-        self.histogramUpperThresholdMaximumButton.setToolTip(_("Maximum"))
+        self.histogramUpperThresholdMaximumButton.setText(_('最大值'))
+        self.histogramUpperThresholdMaximumButton.setToolTip(_('最大值'))
         self.histogramUpperThresholdMaximumButton.setCheckable(True)
         self.histogramUpperThresholdMaximumButton.clicked.connect(self.updateMRMLFromGUI)
         upperHistogramLayout.addWidget(self.histogramUpperThresholdMaximumButton)
         self.histogramUpperMethodButtonGroup.addButton(self.histogramUpperThresholdMaximumButton)
 
         histogramGroupBox = ctk.ctkCollapsibleGroupBox()
-        histogramGroupBox.setTitle(_("Local histogram"))
+        histogramGroupBox.setTitle(_('局部直方图'))
         histogramGroupBox.setLayout(histogramFrame)
         histogramGroupBox.collapsed = True
         self.scriptedEffect.addOptionsWidget(histogramGroupBox)
 
-        self.useForPaintButton = qt.QPushButton(_("Use for masking"))
-        self.useForPaintButton.setToolTip(_("Use specified intensity range for masking and switch to Paint effect."))
+        self.useForPaintButton = qt.QPushButton(_('用于遮罩'))
+        self.useForPaintButton.setToolTip(_('使用指定的强度范围进行遮罩，并切换到绘画效果。'))
         self.scriptedEffect.addOptionsWidget(self.useForPaintButton)
 
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_('应用'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
-        self.applyButton.setToolTip(_("Fill selected segment in regions that are in the specified intensity range."))
+        self.applyButton.setToolTip(_('在指定强度范围内填充选定的区域。'))
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
         self.useForPaintButton.connect("clicked()", self.onUseForPaint)

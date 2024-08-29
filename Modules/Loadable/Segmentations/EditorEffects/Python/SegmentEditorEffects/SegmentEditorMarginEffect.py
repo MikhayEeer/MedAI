@@ -16,7 +16,7 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
 
     def __init__(self, scriptedEffect):
         scriptedEffect.name = "Margin"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Margin")
+        scriptedEffect.title = _('边距')
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
 
     def clone(self):
@@ -33,18 +33,18 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
         return qt.QIcon()
 
     def helpText(self):
-        return _("Grow or shrink selected segment by specified margin size.")
+        return _('按指定边距大小扩展或收缩选定的分割。')
 
     def setupOptionsFrame(self):
         operationLayout = qt.QVBoxLayout()
 
-        self.shrinkOptionRadioButton = qt.QRadioButton(_("Shrink"))
-        self.growOptionRadioButton = qt.QRadioButton(_("Grow"))
+        self.shrinkOptionRadioButton = qt.QRadioButton(_('收缩'))
+        self.growOptionRadioButton = qt.QRadioButton(_('扩展'))
         operationLayout.addWidget(self.shrinkOptionRadioButton)
         operationLayout.addWidget(self.growOptionRadioButton)
         self.growOptionRadioButton.setChecked(True)
 
-        self.scriptedEffect.addLabeledOptionsWidget(_("Operation:"), operationLayout)
+        self.scriptedEffect.addLabeledOptionsWidget(_('操作：'), operationLayout)
 
         self.marginSizeMMSpinBox = slicer.qMRMLSpinBox()
         self.marginSizeMMSpinBox.setMRMLScene(slicer.mrmlScene)
@@ -59,19 +59,19 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
 
         marginSizeFrame = qt.QHBoxLayout()
         marginSizeFrame.addWidget(self.marginSizeMMSpinBox)
-        self.marginSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Margin size:"), marginSizeFrame)
+        self.marginSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget(_('边距大小：'), marginSizeFrame)
         self.scriptedEffect.addLabeledOptionsWidget("", self.marginSizeLabel)
 
         self.applyToAllVisibleSegmentsCheckBox = qt.QCheckBox()
         self.applyToAllVisibleSegmentsCheckBox.setToolTip(
-            _("Grow or shrink all visible segments in this segmentation node. This operation may take a while."))
+            _('在此分割节点中扩展或收缩所有可见的分割。此操作可能需要一些时间。'))
         self.applyToAllVisibleSegmentsCheckBox.objectName = self.__class__.__name__ + "ApplyToAllVisibleSegments"
-        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Apply to visible segments:"),
+        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget(_('应用于可见分割：'),
                                                                                           self.applyToAllVisibleSegmentsCheckBox)
 
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_('应用'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
-        self.applyButton.setToolTip(_("Grows or shrinks selected segment /default) or all segments (checkbox) by the specified margin."))
+        self.applyButton.setToolTip(_('按指定边距扩展或收缩选定的分割（默认）或所有分割（复选框）。'))
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
         self.applyButton.connect("clicked()", self.onApply)
@@ -118,14 +118,14 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
             selectedSegmentLabelmapSpacing = selectedSegmentLabelmap.GetSpacing()
             marginSizePixel = self.getMarginSizePixel()
             if marginSizePixel[0] < 1 or marginSizePixel[1] < 1 or marginSizePixel[2] < 1:
-                self.marginSizeLabel.text = _("Not feasible at current resolution.")
+                self.marginSizeLabel.text = _('在当前分辨率下不可行。')
                 self.applyButton.setEnabled(False)
             else:
                 marginSizeMM = self.getMarginSizeMM()
-                self.marginSizeLabel.text = _("Actual:") + " {} x {} x {} mm ({}x{}x{} pixel)".format(*marginSizeMM, *marginSizePixel)
+                self.marginSizeLabel.text = _('实际：') + " {} x {} x {} mm ({}x{}x{} pixel)".format(*marginSizeMM, *marginSizePixel)
                 self.applyButton.setEnabled(True)
         else:
-            self.marginSizeLabel.text = _("Empty segment")
+            self.marginSizeLabel.text = _('空分割')
 
         applyToAllVisibleSegments = qt.Qt.Unchecked if self.scriptedEffect.integerParameter("ApplyToAllVisibleSegments") == 0 else qt.Qt.Checked
         wasBlocked = self.applyToAllVisibleSegmentsCheckBox.blockSignals(True)
@@ -238,7 +238,7 @@ class SegmentEditorMarginEffect(AbstractScriptedSegmentEditorEffect):
                 # select input segments one by one, process
                 for index in range(inputSegmentIDs.GetNumberOfValues()):
                     segmentID = inputSegmentIDs.GetValue(index)
-                    self.showStatusMessage(_("Processing {segmentName}...")
+                    self.showStatusMessage(_('正在处理 {segmentName}...')
                                            .format(segmentName=segmentationNode.GetSegmentation().GetSegment(segmentID).GetName()))
                     self.scriptedEffect.parameterSetNode().SetSelectedSegmentID(segmentID)
                     self.processMargin()

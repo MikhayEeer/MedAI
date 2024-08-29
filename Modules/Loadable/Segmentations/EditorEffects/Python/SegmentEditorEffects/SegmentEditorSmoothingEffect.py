@@ -16,7 +16,7 @@ class SegmentEditorSmoothingEffect(AbstractScriptedSegmentEditorPaintEffect):
 
     def __init__(self, scriptedEffect):
         scriptedEffect.name = "Smoothing"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Smoothing")
+        scriptedEffect.title = _('平滑')
         AbstractScriptedSegmentEditorPaintEffect.__init__(self, scriptedEffect)
 
     def clone(self):
@@ -46,12 +46,12 @@ If segments overlap, segment higher in the segments table will have priority. <b
 
     def setupOptionsFrame(self):
         self.methodSelectorComboBox = qt.QComboBox()
-        self.methodSelectorComboBox.addItem(_("Median"), MEDIAN)
-        self.methodSelectorComboBox.addItem(_("Opening (remove extrusions)"), MORPHOLOGICAL_OPENING)
-        self.methodSelectorComboBox.addItem(_("Closing (fill holes)"), MORPHOLOGICAL_CLOSING)
-        self.methodSelectorComboBox.addItem(_("Gaussian"), GAUSSIAN)
-        self.methodSelectorComboBox.addItem(_("Joint smoothing"), JOINT_TAUBIN)
-        self.scriptedEffect.addLabeledOptionsWidget(_("Smoothing method:"), self.methodSelectorComboBox)
+        self.methodSelectorComboBox.addItem(_('中值'), MEDIAN)
+        self.methodSelectorComboBox.addItem(_('开运算（去除突起）'), MORPHOLOGICAL_OPENING)
+        self.methodSelectorComboBox.addItem(_('闭运算（填补孔洞）'), MORPHOLOGICAL_CLOSING)
+        self.methodSelectorComboBox.addItem(_('高斯'), GAUSSIAN)
+        self.methodSelectorComboBox.addItem(_('联合平滑'), JOINT_TAUBIN)
+        self.scriptedEffect.addLabeledOptionsWidget(_('平滑方法：'), self.methodSelectorComboBox)
 
         self.kernelSizeMMSpinBox = slicer.qMRMLSpinBox()
         self.kernelSizeMMSpinBox.setMRMLScene(slicer.mrmlScene)
@@ -68,7 +68,7 @@ If segments overlap, segment higher in the segments table will have priority. <b
         kernelSizeFrame = qt.QHBoxLayout()
         kernelSizeFrame.addWidget(self.kernelSizeMMSpinBox)
         kernelSizeFrame.addWidget(self.kernelSizePixel)
-        self.kernelSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Kernel size:"), kernelSizeFrame)
+        self.kernelSizeMMLabel = self.scriptedEffect.addLabeledOptionsWidget(_('内核大小：'), kernelSizeFrame)
 
         self.gaussianStandardDeviationMMSpinBox = slicer.qMRMLSpinBox()
         self.gaussianStandardDeviationMMSpinBox.setMRMLScene(slicer.mrmlScene)
@@ -77,27 +77,27 @@ If segments overlap, segment higher in the segments table will have priority. <b
         self.gaussianStandardDeviationMMSpinBox.quantity = "length"
         self.gaussianStandardDeviationMMSpinBox.value = 3.0
         self.gaussianStandardDeviationMMSpinBox.singleStep = 1.0
-        self.gaussianStandardDeviationMMLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Standard deviation:"), self.gaussianStandardDeviationMMSpinBox)
+        self.gaussianStandardDeviationMMLabel = self.scriptedEffect.addLabeledOptionsWidget(_('标准差：'), self.gaussianStandardDeviationMMSpinBox)
 
         self.jointTaubinSmoothingFactorSlider = ctk.ctkSliderWidget()
-        self.jointTaubinSmoothingFactorSlider.setToolTip(_("Higher value means stronger smoothing."))
+        self.jointTaubinSmoothingFactorSlider.setToolTip(_('值越高，平滑效果越强。'))
         self.jointTaubinSmoothingFactorSlider.minimum = 0.01
         self.jointTaubinSmoothingFactorSlider.maximum = 1.0
         self.jointTaubinSmoothingFactorSlider.value = 0.5
         self.jointTaubinSmoothingFactorSlider.singleStep = 0.01
         self.jointTaubinSmoothingFactorSlider.pageStep = 0.1
-        self.jointTaubinSmoothingFactorLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Smoothing factor:"), self.jointTaubinSmoothingFactorSlider)
+        self.jointTaubinSmoothingFactorLabel = self.scriptedEffect.addLabeledOptionsWidget(_('平滑因子：'), self.jointTaubinSmoothingFactorSlider)
 
         self.applyToAllVisibleSegmentsCheckBox = qt.QCheckBox()
         self.applyToAllVisibleSegmentsCheckBox.setToolTip(
-            _("Apply smoothing effect to all visible segments in this segmentation node. This operation may take a while."))
+            _('将平滑效果应用于此分割节点中的所有可见分割。此操作可能需要一些时间。'))
         self.applyToAllVisibleSegmentsCheckBox.objectName = self.__class__.__name__ + "ApplyToAllVisibleSegments"
-        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Apply to visible segments:"),
+        self.applyToAllVisibleSegmentsLabel = self.scriptedEffect.addLabeledOptionsWidget(_('应用于可见分割：'),
                                                                                           self.applyToAllVisibleSegmentsCheckBox)
 
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_('应用'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
-        self.applyButton.setToolTip(_("Apply smoothing to selected segment"))
+        self.applyButton.setToolTip(_('对选定分割应用平滑'))
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
         self.methodSelectorComboBox.connect("currentIndexChanged(int)", self.updateMRMLFromGUI)
@@ -110,7 +110,7 @@ If segments overlap, segment higher in the segments table will have priority. <b
         # Customize smoothing brush
         self.scriptedEffect.setColorSmudgeCheckboxVisible(False)
         self.paintOptionsGroupBox = ctk.ctkCollapsibleGroupBox()
-        self.paintOptionsGroupBox.setTitle(_("Smoothing brush options"))
+        self.paintOptionsGroupBox.setTitle(_('平滑刷选项'))
         self.paintOptionsGroupBox.setLayout(qt.QVBoxLayout())
         self.paintOptionsGroupBox.layout().addWidget(self.scriptedEffect.paintOptionsFrame())
         self.paintOptionsGroupBox.collapsed = True
@@ -227,7 +227,7 @@ If segments overlap, segment higher in the segments table will have priority. <b
                     return
                 for index in range(inputSegmentIDs.GetNumberOfValues()):
                     segmentID = inputSegmentIDs.GetValue(index)
-                    self.showStatusMessage(_("Smoothing {segmentName}...").format(
+                    self.showStatusMessage(_('正在平滑 {segmentName}...').format(
                         segmentName=segmentationNode.GetSegmentation().GetSegment(segmentID).GetName()))
                     self.scriptedEffect.parameterSetNode().SetSelectedSegmentID(segmentID)
                     self.smoothSelectedSegment(maskImage, maskExtent)
@@ -369,7 +369,7 @@ If segments overlap, segment higher in the segments table will have priority. <b
     def smoothMultipleSegments(self, maskImage=None, maskExtent=None):
         import vtkSegmentationCorePython as vtkSegmentationCore
 
-        self.showStatusMessage(_("Joint smoothing ..."))
+        self.showStatusMessage(_('联合平滑...'))
         # Generate merged labelmap of all visible segments
         segmentationNode = self.scriptedEffect.parameterSetNode().GetSegmentationNode()
         visibleSegmentIds = vtk.vtkStringArray()

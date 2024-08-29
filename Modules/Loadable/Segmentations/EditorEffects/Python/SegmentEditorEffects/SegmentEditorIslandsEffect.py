@@ -16,7 +16,7 @@ class SegmentEditorIslandsEffect(AbstractScriptedSegmentEditorEffect):
 
     def __init__(self, scriptedEffect):
         scriptedEffect.name = "Islands"  # no tr (don't translate it because modules find effects by name)
-        scriptedEffect.title = _("Islands")
+        scriptedEffect.title = _('岛屿')
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
         self.widgetToOperationNameMap = {}
 
@@ -40,37 +40,37 @@ about each operation, hover the mouse over the option and wait for the tooltip t
     def setupOptionsFrame(self):
         self.operationRadioButtons = []
 
-        self.keepLargestOptionRadioButton = qt.QRadioButton(_("Keep largest island"))
+        self.keepLargestOptionRadioButton = qt.QRadioButton(_('保留最大岛屿'))
         self.keepLargestOptionRadioButton.setToolTip(
-            _("Keep only the largest island in selected segment, remove all other islands in the segment."))
+            _('仅保留选定分割中的最大岛屿，移除分割中的所有其他岛屿。'))
         self.operationRadioButtons.append(self.keepLargestOptionRadioButton)
         self.widgetToOperationNameMap[self.keepLargestOptionRadioButton] = KEEP_LARGEST_ISLAND
 
-        self.keepSelectedOptionRadioButton = qt.QRadioButton(_("Keep selected island"))
+        self.keepSelectedOptionRadioButton = qt.QRadioButton(_('保留选定的岛屿'))
         self.keepSelectedOptionRadioButton.setToolTip(
-            _("Click on an island in a slice view to keep that island and remove all other islands in selected segment."))
+            _('在切片视图中点击一个岛屿以保留该岛屿，并移除选定分割中的所有其他岛屿。'))
         self.operationRadioButtons.append(self.keepSelectedOptionRadioButton)
         self.widgetToOperationNameMap[self.keepSelectedOptionRadioButton] = KEEP_SELECTED_ISLAND
 
-        self.removeSmallOptionRadioButton = qt.QRadioButton(_("Remove small islands"))
+        self.removeSmallOptionRadioButton = qt.QRadioButton(_('移除小岛屿'))
         self.removeSmallOptionRadioButton.setToolTip(
-            _("Remove all islands from the selected segment that are smaller than the specified minimum size."))
+            _('从选定分割中移除所有小于指定最小尺寸的岛屿。'))
         self.operationRadioButtons.append(self.removeSmallOptionRadioButton)
         self.widgetToOperationNameMap[self.removeSmallOptionRadioButton] = REMOVE_SMALL_ISLANDS
 
-        self.removeSelectedOptionRadioButton = qt.QRadioButton(_("Remove selected island"))
+        self.removeSelectedOptionRadioButton = qt.QRadioButton(_('移除选定的岛屿'))
         self.removeSelectedOptionRadioButton.setToolTip(
-            _("Click on an island in a slice view to remove it from selected segment."))
+            _('在切片视图中点击一个岛屿以将其从选定分割中移除。'))
         self.operationRadioButtons.append(self.removeSelectedOptionRadioButton)
         self.widgetToOperationNameMap[self.removeSelectedOptionRadioButton] = REMOVE_SELECTED_ISLAND
 
-        self.addSelectedOptionRadioButton = qt.QRadioButton(_("Add selected island"))
+        self.addSelectedOptionRadioButton = qt.QRadioButton(_('添加选定的岛屿'))
         self.addSelectedOptionRadioButton.setToolTip(
-            _("Click on a region in a slice view to add it to selected segment."))
+            _('在切片视图中点击一个区域以将其添加到选定分割中。'))
         self.operationRadioButtons.append(self.addSelectedOptionRadioButton)
         self.widgetToOperationNameMap[self.addSelectedOptionRadioButton] = ADD_SELECTED_ISLAND
 
-        self.splitAllOptionRadioButton = qt.QRadioButton(_("Split islands to segments"))
+        self.splitAllOptionRadioButton = qt.QRadioButton(_('将岛屿分割为分割'))
         self.splitAllOptionRadioButton.setToolTip(
             _("Create a new segment for each island of selected segment. Islands smaller than minimum size will be removed. "
               "Segments will be ordered by island size."))
@@ -89,14 +89,14 @@ about each operation, hover the mouse over the option and wait for the tooltip t
         self.scriptedEffect.addOptionsWidget(operationLayout)
 
         self.minimumSizeSpinBox = qt.QSpinBox()
-        self.minimumSizeSpinBox.setToolTip(_("Islands consisting of less voxels than this minimum size, will be deleted."))
+        self.minimumSizeSpinBox.setToolTip(_('由少于该最小尺寸的体素组成的岛屿将被删除。'))
         self.minimumSizeSpinBox.setMinimum(0)
         self.minimumSizeSpinBox.setMaximum(vtk.VTK_INT_MAX)
         self.minimumSizeSpinBox.setValue(1000)
         self.minimumSizeSpinBox.suffix = _(" voxels")
-        self.minimumSizeLabel = self.scriptedEffect.addLabeledOptionsWidget(_("Minimum size:"), self.minimumSizeSpinBox)
+        self.minimumSizeLabel = self.scriptedEffect.addLabeledOptionsWidget(_('最小尺寸：'), self.minimumSizeSpinBox)
 
-        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton = qt.QPushButton(_('应用'))
         self.applyButton.objectName = self.__class__.__name__ + "Apply"
         self.scriptedEffect.addOptionsWidget(self.applyButton)
 
@@ -396,7 +396,7 @@ about each operation, hover the mouse over the option and wait for the tooltip t
         segmentSelectionRequired = self.currentOperationRequiresSegmentSelection()
         self.applyButton.setEnabled(not segmentSelectionRequired)
         if segmentSelectionRequired:
-            self.applyButton.setToolTip(_("Click in a slice view to select an island."))
+            self.applyButton.setToolTip(_('在切片视图中点击以选择一个岛屿。'))
         else:
             self.applyButton.setToolTip("")
 
