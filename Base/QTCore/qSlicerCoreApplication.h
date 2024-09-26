@@ -604,6 +604,24 @@ public:
   /// If returns false then calling `logUsageEvent` method has no effect.
   bool isUsageLoggingSupported() const;
 
+  /// Processes command line arguments specified as file paths or URLs.
+  ///
+  /// This function iterates through the provided list of URIs.
+  /// For each URL in the list, the signal urlReceived() is emitted.
+  /// After processing the URLs, the remaining file paths are loaded using loadFiles().
+  Q_INVOKABLE void handleURIArguments(const QStringList& fileNames);
+
+  ///@{
+  /// Set/Get if post-startup default handling of URI arguments is enabled.
+  ///
+  /// When enabled, the function `handleURIArguments()` will process command-line
+  /// arguments automatically post-startup.
+  ///
+  /// \sa handleURIArguments()
+  bool isURIArgumentHandlingEnabled() const;
+  void setURIArgumentHandlingEnabled(bool enabled);
+  ///}@
+
 public slots:
 
   /// Restart the application with the arguments passed at startup time

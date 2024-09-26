@@ -174,6 +174,38 @@ protected:
 };
 #endif
 
+namespace
+{
+
+// --------------------------------------------------------------------------
+struct qSlicerScopedTerminalOutputSettings
+{
+  qSlicerScopedTerminalOutputSettings(
+      ctkErrorLogAbstractModel* errorLogModel,
+      const ctkErrorLogTerminalOutput::TerminalOutputs& terminalOutputs):
+    ErrorLogModel(errorLogModel)
+  {
+    if (errorLogModel == nullptr)
+    {
+      qWarning() << Q_FUNC_INFO << " failed: errorLogModel is invalid";
+      return;
+    }
+    this->Saved = errorLogModel->terminalOutputs();
+    errorLogModel->setTerminalOutputs(terminalOutputs);
+  }
+  ~qSlicerScopedTerminalOutputSettings()
+  {
+    if (this->ErrorLogModel == nullptr)
+    {
+      return;
+    }
+    this->ErrorLogModel->setTerminalOutputs(this->Saved);
+  }
+  ctkErrorLogAbstractModel* ErrorLogModel{nullptr};
+  ctkErrorLogTerminalOutput::TerminalOutputs Saved;
+};
+
+}
 
 //-----------------------------------------------------------------------------
 class qSlicerApplicationPrivate : public qSlicerCoreApplicationPrivate
@@ -685,6 +717,14 @@ void qSlicerApplication::handleCommandLineArguments()
     this->errorLogModel()->disableAllMsgHandler();
   }
 
+  if (options->ignoreRest() || !options->unparsedArguments().isEmpty())
+  {
+    qSlicerScopedTerminalOutputSettings currentTerminalOutputSettings(
+      this->errorLogModel(), ctkErrorLogTerminalOutput::None);
+
+    qDebug() << "Ignored arguments:" << options->unparsedArguments();
+  }
+
   this->Superclass::handleCommandLineArguments();
 
   this->setToolTipsEnabled(!options->disableToolTips());
@@ -1054,30 +1094,6 @@ void qSlicerApplication::setupFileLogging()
 
   // Set current log file path
   d->ErrorLogModel->setFilePath(currentLogFilePath);
-}
-
-namespace
-{
-
-// --------------------------------------------------------------------------
-struct qSlicerScopedTerminalOutputSettings
-{
-  qSlicerScopedTerminalOutputSettings(
-      ctkErrorLogAbstractModel* errorLogModel,
-      const ctkErrorLogTerminalOutput::TerminalOutputs& terminalOutputs):
-    ErrorLogModel(errorLogModel)
-  {
-    this->Saved = errorLogModel->terminalOutputs();
-    errorLogModel->setTerminalOutputs(terminalOutputs);
-  }
-  ~qSlicerScopedTerminalOutputSettings()
-  {
-    this->ErrorLogModel->setTerminalOutputs(this->Saved);
-  }
-  ctkErrorLogAbstractModel* ErrorLogModel;
-  ctkErrorLogTerminalOutput::TerminalOutputs Saved;
-};
-
 }
 
 // --------------------------------------------------------------------------

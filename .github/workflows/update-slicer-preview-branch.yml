@@ -1,0 +1,105 @@
+name: Update Preview Branch
+
+on:
+  schedule:
+    # Daily at 04:00 AM UTC (this corresponds to the time set in CTestConfig.cmake + 1 hour)
+    #
+    # This workflow is synchronized with the nightly builds on the Kitware-hosted dashboards,
+    # which are configured via crontab to trigger daily at 11:00 PM Eastern Time (ET). The conversion
+    # from ET to UTC depends on whether daylight saving time is in effect:
+    #
+    # - During the spring/summer months (typically March to November), Eastern Daylight Time (EDT),
+    #   which is UTC-04:00, is observed. Thus, 11:00 PM EDT corresponds to 03:00 AM UTC.
+    # - During the autumn/winter months (typically November to March), Eastern Standard Time (EST),
+    #   which is UTC-05:00, is observed. Thus, 11:00 PM EST corresponds to 04:00 AM UTC.
+    #
+    # The build jobs are configured to start via the crontab on the Kitware-hosted dashboards at
+    # 11:00 PM ET, and this workflow is scheduled to run daily at 04:00 AM UTC to ensure it executes
+    # after the nightly builds have started and completed their source checkout, regardless of daylight
+    # saving time.
+    #
+    # This is important because the preview branch should be updated to reflect the state of the
+    # repository as of the latest nightly build.
+    - cron: "0 4 * * *"
+  # Manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  update-slicer-preview-branch:
+    permissions:
+      # Needed in publish step to update the preview branch
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          ref: main
+          # The 'fetch-depth' option ensures that a sufficient number of commits are retrieved (250)
+          # to allow the "git rev-parse" command used below to accurately reference a commit based
+          # on time.
+          # This mitigates potential warnings that occur when there aren't enough commits fetched.
+          # We assume no more than 250 commits are made in a single day.
+          fetch-depth: 250
+
+      - name: Install time zone and daylight-saving time data
+        run: |
+          sudo apt-get -y install tzdata
+        env:
+          DEBIAN_FRONTEND: noninteractive
+
+      - name: "Compute last preview build date"
+        id: preview
+        run: |
+          # Get the current hour in 24-hour format
+          current_hour=$(date +%H)
+          # Check if the current time is before or after 11 PM
+          if [ "$current_hour" -lt 23 ]; then
+            # If before 11 PM, return the date of the previous day
+            date=$(TZ=":US/Eastern" date -d "yesterday" +"%Y-%m-%d")
+          else
+            # If it's 11 PM or later, return today's date
+            date=$(TZ=":US/Eastern" date +"%Y-%m-%d")
+          fi
+          echo $date
+          echo "date=$date" >> $GITHUB_OUTPUT
+
+      - name: "Convert dashboard start time from ET to UTC"
+        id: convert
+        run: |
+          time=$(TZ=":US/Eastern" date -d"$DATE 23:00:00" "+%Y-%m-%d %H:%M:%S %z")
+          echo "time [$time]"
+          echo "time=$time" >> $GITHUB_OUTPUT
+        env:
+          DATE: ${{ steps.preview.outputs.date }}
+
+      - name: "Retrieve preview branch SHA"
+        id: retrieve
+        run: |
+          sha=$(TZ=":US/Eastern" git rev-list -1 --before="${TIME}" main)
+          echo "sha [$sha]"
+          echo "sha=$sha" >> $GITHUB_OUTPUT
+        env:
+          TIME: ${{ steps.convert.outputs.time }}
+
+      - uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1.11.0
+        id: app-token
+        with:
+          app-id: ${{ vars.SLICER_APP_ID }}
+          private-key: ${{ secrets.SLICER_APP_PRIVATE_KEY }}
+
+      - name: "Publish"
+        run: |
+          if [ -z "$SHA" ]; then
+            echo "::error ::Failed to retrieve SHA"
+            exit 1
+          fi
+          remote=https://${SLICERBOT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git
+          git push $remote $SHA:refs/heads/${PREVIEW_BRANCH} --force
+        env:
+          SHA: ${{ steps.retrieve.outputs.sha }}
+          SLICERBOT_GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          REPOSITORY: ${{ github.repository }}
+          PREVIEW_BRANCH: nightly-main
