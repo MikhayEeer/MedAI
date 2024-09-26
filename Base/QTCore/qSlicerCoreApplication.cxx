@@ -211,6 +211,7 @@ qSlicerCoreApplicationPrivate::qSlicerCoreApplicationPrivate(
   this->RevisionUserSettings = nullptr;
   this->ReturnCode = qSlicerCoreApplication::ExitNotRequested;
   this->CoreCommandOptions = QSharedPointer<qSlicerCoreCommandOptions>(coreCommandOptions);
+  this->URIArgumentHandlingEnabled = true;
   this->CoreIOManager = QSharedPointer<qSlicerCoreIOManager>(coreIOManager);
 #ifdef Slicer_BUILD_DICOM_SUPPORT
   this->DICOMDatabase = QSharedPointer<ctkDICOMDatabase>(new ctkDICOMDatabase);
@@ -1113,12 +1114,6 @@ void qSlicerCoreApplication::handlePreApplicationCommandLineArguments()
     d->quickExit(EXIT_SUCCESS);
   }
 
-  if (options->ignoreRest())
-  {
-    qDebug() << "Ignored arguments:" << options->unparsedArguments();
-    return;
-  }
-
   if (!options->settingsDisabled() && options->keepTemporarySettings())
   {
     this->showConsoleMessage("Argument '--keep-temporary-settings' requires "
@@ -1139,43 +1134,57 @@ void qSlicerCoreApplication::handlePreApplicationCommandLineArguments()
 }
 
 //-----------------------------------------------------------------------------
-void qSlicerCoreApplication::handleCommandLineArguments()
+void qSlicerCoreApplication::handleURIArguments(const QStringList& fileNames)
 {
-  qSlicerCoreCommandOptions* options = this->coreCommandOptions();
-
   QStringList filesToLoad;
-  QStringList unparsedArguments = options->unparsedArguments();
-  if (unparsedArguments.length() > 0 &&
-      options->pythonScript().isEmpty() &&
-      options->extraPythonScript().isEmpty())
+
+  foreach(QString fileName, fileNames)
   {
-    foreach(QString fileName, unparsedArguments)
+    QUrl url = QUrl(fileName);
+    if (url.scheme().toLower() == this->applicationName().toLower()) // Scheme is case insensitive
     {
-      QUrl url = QUrl(fileName);
-      if (url.scheme().toLower() == this->applicationName().toLower()) // Scheme is case insensitive
-      {
-        qDebug() << "URL received via command-line: " << fileName;
-        emit urlReceived(fileName);
-        continue;
-      }
-
-      QFileInfo file(fileName);
-      if (file.exists())
-      {
-        qDebug() << "Local filepath received via command-line: " << fileName;
-        // Do not load immediately but just collect the files into a list and load at once
-        // so that all potential loading errors can be also reported at once.
-        filesToLoad << fileName;
-        continue;
-      }
-
-      qDebug() << "Ignore argument received via command-line (not a valid URL or existing local file): " << fileName;
+      qDebug() << "URL received via command-line: " << fileName;
+      emit urlReceived(fileName);
+      continue;
     }
+
+    QFileInfo file(fileName);
+    if (file.exists())
+    {
+      qDebug() << "Local filepath received via command-line: " << fileName;
+      // Do not load immediately but just collect the files into a list and load at once
+      // so that all potential loading errors can be also reported at once.
+      filesToLoad << fileName;
+      continue;
+    }
+
+    qDebug() << "Ignore argument received via command-line (not a valid URL or existing local file): " << fileName;
   }
 
   if (!filesToLoad.isEmpty())
   {
     this->loadFiles(filesToLoad);
+  }
+}
+
+//-----------------------------------------------------------------------------
+CTK_GET_CPP(qSlicerCoreApplication, bool, isURIArgumentHandlingEnabled, URIArgumentHandlingEnabled);
+CTK_SET_CPP(qSlicerCoreApplication, bool, setURIArgumentHandlingEnabled, URIArgumentHandlingEnabled);
+
+//-----------------------------------------------------------------------------
+void qSlicerCoreApplication::handleCommandLineArguments()
+{
+  Q_D(qSlicerCoreApplication);
+
+  qSlicerCoreCommandOptions* options = this->coreCommandOptions();
+
+  QStringList unparsedArguments = options->unparsedArguments();
+  if (unparsedArguments.length() > 0 &&
+      options->pythonScript().isEmpty() &&
+      options->extraPythonScript().isEmpty() &&
+      d->URIArgumentHandlingEnabled)
+  {
+    this->handleURIArguments(unparsedArguments);
   }
 
 #ifndef Slicer_USE_PYTHONQT
