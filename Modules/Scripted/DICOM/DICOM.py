@@ -10,7 +10,6 @@ from slicer.util import settingsValue, toBool
 from slicer.ScriptedLoadableModule import *
 
 import DICOMLib
-from DICOMLib import DICOMUtils
 from slicer.i18n import tr as _
 from slicer.i18n import translate
 
@@ -161,6 +160,8 @@ class DICOM(ScriptedLoadableModule):
         slicer.util.selectModule("DICOM")
         slicer.app.processEvents()
 
+        from DICOMLib import DICOMUtils
+
         importedSeriesInstanceUIDs = DICOMUtils.importFromDICOMWeb(
             dicomWebEndpoint=queryMap["dicomweb_endpoint"],
             studyInstanceUID=queryMap["studyUID"],
@@ -306,9 +307,7 @@ class DICOM(ScriptedLoadableModule):
         dataProbe = mw.findChild("QWidget", "DataProbeCollapsibleWidget") if mw else None
         if self.currentViewArrangement == slicer.vtkMRMLLayoutNode.SlicerLayoutDicomBrowserView:
             # View has been changed to the DICOM browser view
-            useExpertimentalVisualDICOMBrowser = settingsValue("DICOM/UseExpertimentalVisualDICOMBrowser", False, converter=toBool)
             self.browserWidget.show()
-            self.browserWidget.toggleBrowsers(useExpertimentalVisualDICOMBrowser)
             # If we are in DICOM module, hide the Data Probe to have more space for the module
             try:
                 inDicomModule = slicer.modules.dicom.widgetRepresentation().isEntered
@@ -392,20 +391,6 @@ class _ui_DICOMSettingsPanel:
         parent.registerProperty(
             "DICOM/detailedLogging", detailedLoggingMapper,
             "valueAsInt", str(qt.SIGNAL("valueAsIntChanged(int)")))
-        detailedLoggingCheckBox.stateChanged.connect(self.onDetailedLoggingStateChanged)
-
-        thumbnailsSizeComboBox = ctk.ctkComboBox()
-        thumbnailsSizeComboBox.toolTip = _(
-            "Determines the relative size of the thumbnails when using the visual DICOM browser")
-        thumbnailsSizeComboBox.addItem(_("Small"), "small")
-        thumbnailsSizeComboBox.addItem(_("Medium"), "medium")
-        thumbnailsSizeComboBox.addItem(_("Large"), "large")
-        thumbnailsSizeComboBox.currentIndex = 1
-        genericGroupBoxFormLayout.addRow(_("Thumbnails size:"), thumbnailsSizeComboBox)
-        parent.registerProperty(
-            "DICOM/thumbnailsSize", thumbnailsSizeComboBox,
-            "currentUserDataAsString", str(qt.SIGNAL("currentIndexChanged(int)")),
-            _("DICOM settings"), ctk.ctkSettingsPanel.OptionRequireRestart)
 
         vBoxLayout.addWidget(genericGroupBox)
 
@@ -418,12 +403,6 @@ class _ui_DICOMSettingsPanel:
                 vBoxLayout.addWidget(pluginGroupBox)
                 plugins[pluginName].settingsPanelEntry(parent, pluginGroupBox)
         vBoxLayout.addStretch(1)
-
-    def onDetailedLoggingStateChanged(self, detailedLoggingState):
-        if detailedLoggingState == qt.Qt.Checked:
-          ctk.ctk.setDICOMLogLevel(ctk.ctkErrorLogLevel.Debug)
-        else:
-          ctk.ctk.setDICOMLogLevel(ctk.ctkErrorLogLevel.Warning)
 
 
 class DICOMSettingsPanel(ctk.ctkSettingsPanel):
@@ -530,7 +509,7 @@ class DICOMFileDialog:
         # Try to create a database with default settings
         if slicer.modules.DICOMInstance.browserWidget is None:
             slicer.util.selectModule("DICOM")
-        slicer.modules.DICOMInstance.browserWidget.createNewDatabaseDirectory()
+        slicer.modules.DICOMInstance.browserWidget.dicomBrowser.createNewDatabaseDirectory()
         if slicer.dicomDatabase and slicer.dicomDatabase.isOpen:
             # DICOM database created successfully
             return True
@@ -556,7 +535,7 @@ class DICOMFileDialog:
                 return
 
         slicer.util.selectModule("DICOM")
-        slicer.modules.DICOMInstance.browserWidget.importDirectories(self.directoriesToAdd)
+        slicer.modules.DICOMInstance.browserWidget.dicomBrowser.importDirectories(self.directoriesToAdd)
         self.directoriesToAdd = []
 
 
@@ -592,12 +571,11 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
         self.layout.addWidget(uiWidget)
         self.ui = slicer.util.childWidgetVariables(uiWidget)
 
-        # Add SlicerDICOMBrowser
         self.browserWidget = DICOMLib.SlicerDICOMBrowser()
         self.browserWidget.objectName = "SlicerDICOMBrowser"
+
         slicer.modules.DICOMInstance.setBrowserWidgetInDICOMLayout(self.browserWidget)
 
-        # Setup layout manager
         layoutManager = slicer.app.layoutManager()
         if layoutManager is not None:
             layoutManager.layoutChanged.connect(self.onLayoutChanged)
@@ -622,21 +600,6 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
         importButtonMenu.addAction(self.copyOnImportAction)
         self.copyOnImportAction.connect("toggled(bool)", self.copyOnImportToggled)
 
-        # Add show options menu to showBrowser button
-
-        showBrowserButtonMenu = qt.QMenu(_("Show options"), self.ui.showBrowserButton)
-        showBrowserButtonMenu.toolTipsVisible = True
-        self.ui.showBrowserButton.setMenu(showBrowserButtonMenu)
-
-        self.toggleVisualBrowserAction = qt.QAction(_("Show experimental visual DICOM browser"), showBrowserButtonMenu)
-        self.toggleVisualBrowserAction.setToolTip(_("If enabled, the DICOM browser widget will be substituted with new experimental visual browser."))
-        self.toggleVisualBrowserAction.setCheckable(True)
-        self.toggleVisualBrowserAction.checked = settingsValue("DICOM/UseExpertimentalVisualDICOMBrowser", False, converter=toBool)
-        showBrowserButtonMenu.addAction(self.toggleVisualBrowserAction)
-        self.toggleVisualBrowserAction.connect("toggled(bool)", self.onShowBrowser)
-
-        # Connect subjectHierarchyTree
-
         self.ui.subjectHierarchyTree.setMRMLScene(slicer.mrmlScene)
         self.ui.subjectHierarchyTree.currentItemChanged.connect(self.onCurrentItemChanged)
         self.ui.subjectHierarchyTree.currentItemModified.connect(self.onCurrentItemModified)
@@ -652,6 +615,7 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
 
         self.ui.toggleListener.connect("toggled(bool)", self.onToggleListener)
 
+        settings = qt.QSettings()
         self.ui.runListenerAtStart.checked = settingsValue("DICOM/RunListenerAtStart", False, converter=toBool)
         self.ui.runListenerAtStart.connect("toggled(bool)", self.onRunListenerAtStart)
 
@@ -680,7 +644,6 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
         self.ui.directoryButton.directoryChanged.connect(self.updateDatabaseDirectoryFromWidget)
         self.ui.directoryButton.sizePolicy = qt.QSizePolicy(qt.QSizePolicy.Ignored, qt.QSizePolicy.Fixed)
         self.browserWidget.dicomBrowser.databaseDirectoryChanged.connect(self.updateDatabaseDirectoryFromBrowser)
-        self.browserWidget.dicomVisualBrowser.databaseDirectoryChanged.connect(self.updateDatabaseDirectoryFromVisualBrowser)
 
         self.ui.browserAutoHideCheckBox.checked = not settingsValue("DICOM/BrowserPersistent", False, converter=toBool)
         self.ui.browserAutoHideCheckBox.stateChanged.connect(self.onBrowserAutoHideStateChanged)
@@ -740,7 +703,7 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
 
     def exit(self):
         self.removeListenerObservers()
-        self.closeBrowser()
+        self.browserWidget.close()
 
     def addListenerObservers(self):
         if not hasattr(slicer, "dicomListener"):
@@ -784,35 +747,28 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
             return
 
         if oldSubjectHierarchyCurrentVisibility != self.subjectHierarchyCurrentVisibility and self.subjectHierarchyCurrentVisibility:
-            self.closeBrowser()
+            self.browserWidget.close()
 
     def toggleBrowserWidget(self):
         if self.ui.showBrowserButton.checked:
             self.onOpenBrowserWidget()
         else:
-            self.closeBrowser()
-
-    def closeBrowser(self):
-        if self.browserWidget:
-            self.browserWidget.close()
+            if self.browserWidget:
+                self.browserWidget.close()
 
     def aboutToShowImportOptionsMenu(self):
-        self.copyOnImportAction.checked = self.browserWidget.importDirectoryMode() == ctk.ctkDICOMBrowser.ImportDirectoryCopy
+        self.copyOnImportAction.checked = self.browserWidget.dicomBrowser.ImportDirectoryMode == ctk.ctkDICOMBrowser.ImportDirectoryCopy
 
     def copyOnImportToggled(self, copyOnImport):
         if self.copyOnImportAction.checked:
-            self.browserWidget.setImportDirectoryMode(ctk.ctkDICOMBrowser.ImportDirectoryCopy)
+            self.browserWidget.dicomBrowser.ImportDirectoryMode = ctk.ctkDICOMBrowser.ImportDirectoryCopy
         else:
-            self.browserWidget.setImportDirectoryMode(ctk.ctkDICOMBrowser.ImportDirectoryAddLink)
-
-    def onShowBrowser(self):
-        useExpertimentalVisualDICOMBrowser = self.toggleVisualBrowserAction.checked
-        self.browserWidget.toggleBrowsers(useExpertimentalVisualDICOMBrowser)
+            self.browserWidget.dicomBrowser.ImportDirectoryMode = ctk.ctkDICOMBrowser.ImportDirectoryAddLink
 
     def importFolder(self):
         if not DICOMFileDialog.createDefaultDatabase():
             return
-        self.browserWidget.importFolder()
+        self.browserWidget.dicomBrowser.openImportDialog()
 
     def onOpenBrowserWidget(self):
         slicer.app.layoutManager().setLayout(slicer.vtkMRMLLayoutNode.SlicerLayoutDicomBrowserView)
@@ -914,25 +870,12 @@ class DICOMWidget(ScriptedLoadableModuleWidget):
         settings.setValue("DICOM/RunListenerAtStart", toggled)
 
     def updateDatabaseDirectoryFromWidget(self, databaseDirectory):
-        self.browserWidget.setDatabaseDirectory(databaseDirectory)
+        self.browserWidget.dicomBrowser.databaseDirectory = databaseDirectory
 
     def updateDatabaseDirectoryFromBrowser(self, databaseDirectory):
         wasBlocked = self.ui.directoryButton.blockSignals(True)
         self.ui.directoryButton.directory = databaseDirectory
         self.ui.directoryButton.blockSignals(wasBlocked)
-
-        wasBlocked = self.browserWidget.dicomVisualBrowser.blockSignals(True)
-        self.browserWidget.dicomVisualBrowser.setDatabaseDirectory(databaseDirectory)
-        self.browserWidget.dicomVisualBrowser.blockSignals(wasBlocked)
-
-    def updateDatabaseDirectoryFromVisualBrowser(self, databaseDirectory):
-        wasBlocked = self.ui.directoryButton.blockSignals(True)
-        self.ui.directoryButton.directory = databaseDirectory
-        self.ui.directoryButton.blockSignals(wasBlocked)
-
-        wasBlocked = self.browserWidget.dicomBrowser.blockSignals(True)
-        self.browserWidget.dicomBrowser.setDatabaseDirectory(databaseDirectory)
-        self.browserWidget.dicomBrowser.blockSignals(wasBlocked)
 
     def onBrowserAutoHideStateChanged(self, autoHideState):
         if self.browserWidget:
@@ -984,7 +927,7 @@ class DICOMFileReader:
 
         # instantiate a new DICOM browser (and create DICOM database if not created yet)
         slicer.util.selectModule("DICOM")
-        browserWidget = slicer.modules.DICOMWidget.browserWidget
-        browserWidget.importDirectory(dicomFilesDirectory)
+        dicomBrowser = slicer.modules.DICOMWidget.browserWidget.dicomBrowser
+        dicomBrowser.importDirectory(dicomFilesDirectory, dicomBrowser.ImportDirectoryMode)
 
         return True

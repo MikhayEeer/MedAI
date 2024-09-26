@@ -52,7 +52,7 @@ public:
   QStringList dependencies()const override;
 
   /// Display name for the module
-  qSlicerGetTitleMacro(tr("Transforms"));
+  qSlicerGetTitleMacro("Transforms");
 
   /// Help text of the module
   QString helpText()const override;

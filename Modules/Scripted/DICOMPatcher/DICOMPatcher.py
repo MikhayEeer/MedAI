@@ -107,30 +107,13 @@ class DICOMPatcherWidget(ScriptedLoadableModuleWidget):
                                                   " (see the 'exposure fiasco' - http://dclunie.blogspot.com/2008/11/dicom-exposure-attribute-fiasco.html).")
         parametersFormLayout.addRow("Fix invalid exposure tags", self.fixExposureFiascoCheckBox)
 
-        self.splitUltrasoundSeriesByInstanceNumberCheckBox = qt.QCheckBox()
-        self.splitUltrasoundSeriesByInstanceNumberCheckBox.checked = False
-        self.splitUltrasoundSeriesByInstanceNumberCheckBox.setToolTip(_("If checked, then ultrasound image series are split by instance number."
-                                                                        " Useful if many ultrasound acquisitions appear in the same series."))
-        parametersFormLayout.addRow("Split ultrasound series by instance number", self.splitUltrasoundSeriesByInstanceNumberCheckBox)
-
-        self.fixCompressedUltrasoundPhotometricInterpretationCheckBox = qt.QCheckBox()
-        self.fixCompressedUltrasoundPhotometricInterpretationCheckBox.checked = True
-        self.fixCompressedUltrasoundPhotometricInterpretationCheckBox.setToolTip(_(
-            "If checked, then photometric interpretation of JPEG-compressed ultrasound will be set to YBR_FULL_422."
-            " This is useful for fixing inconsistency in JPEG-compressed images that used RGB as photometric interpretation"
-            " due to ambiguity in the DICOM standard before CP156."
-            " See https://groups.google.com/g/comp.protocols.dicom/c/EPkbFOMBOhE"
-            " and https://dicom.nema.org/medical/dicom/Final/cp156_ft.pdf for more details."))
-        parametersFormLayout.addRow("Fix compressed ultrasound photometric interpretation", self.fixCompressedUltrasoundPhotometricInterpretationCheckBox)
-
-
         characterSetLayout = qt.QHBoxLayout()
 
         self.specifyCharacterSetCheckBox = qt.QCheckBox()
         self.specifyCharacterSetCheckBox.checked = False
         self.specifyCharacterSetCheckBox.setToolTip(
             "If checked, then SpecificCharacterSet is set to the specified value in all DICOM files"
-            " where the character set is not UTF8 (ISO_IR 192) already. It is recommended to enable this if patient name does not show up correctly.")
+            " where the character set is not specified already. It is recommended to enable this if patient name does not show up correctly.")
         characterSetLayout.addWidget(self.specifyCharacterSetCheckBox)
 
         self.specifyCharacterSetLineEdit = qt.QLineEdit()
@@ -191,10 +174,6 @@ class DICOMPatcherWidget(ScriptedLoadableModuleWidget):
             self.logic.clearRules()
             if self.fixExposureFiascoCheckBox.checked:
                 self.logic.addRule("FixExposureFiasco")
-            if self.splitUltrasoundSeriesByInstanceNumberCheckBox.checked:
-                self.logic.addRule("SplitUltrasoundSeriesByInstanceNumber")
-            if self.fixCompressedUltrasoundPhotometricInterpretationCheckBox.checked:
-                self.logic.addRule("FixCompressedUltrasoundPhotometricInterpretation")
             if self.forceSamePatientNameIdInEachDirectoryCheckBox.checked:
                 self.logic.addRule("ForceSamePatientNameIdInEachDirectory")
             if self.forceSameSeriesInstanceUidInEachDirectoryCheckBox.checked:
@@ -236,7 +215,7 @@ class DICOMPatcherRule:
     def addLog(self, text):
         logging.info(text)
         if self.logCallback:
-            self.logCallback("  " + text)
+            self.logCallback(text)
 
     def processStart(self, inputRootDir, outputRootDir):
         pass
@@ -254,6 +233,9 @@ class DICOMPatcherRule:
         return filepath
 
 
+#
+#
+#
 
 
 class ForceSamePatientNameIdInEachDirectory(DICOMPatcherRule):
@@ -365,6 +347,9 @@ class GenerateMissingIDs(DICOMPatcherRule):
             ds.SeriesNumber = self.numberOfSeriesInStudyMap[ds.StudyInstanceUID]
 
 
+#
+#
+#
 
 
 class RemoveDICOMDIR(DICOMPatcherRule):
@@ -375,6 +360,9 @@ class RemoveDICOMDIR(DICOMPatcherRule):
         return True
 
 
+#
+#
+#
 
 
 class FixPrivateMediaStorageSOPClassUID(DICOMPatcherRule):
@@ -393,6 +381,9 @@ class FixPrivateMediaStorageSOPClassUID(DICOMPatcherRule):
             ds.SOPClassUID = CTImageStorageSOPClassUID
 
 
+#
+#
+#
 
 
 class AddMissingSliceSpacingToMultiframe(DICOMPatcherRule):
@@ -473,6 +464,9 @@ class AddMissingSliceSpacingToMultiframe(DICOMPatcherRule):
             ds.PerFrameFunctionalGroupsSequence = perFrameFunctionalGroupsSequence
 
 
+#
+#
+#
 
 
 class FixExposureFiasco(DICOMPatcherRule):
@@ -491,6 +485,9 @@ class FixExposureFiasco(DICOMPatcherRule):
                 ds["00188151"] = pydicom.DataElement(tag="00188151", VR="DS", value=str(float(val) * 1000))
 
 
+#
+#
+#
 
 
 class UseCharacterSet(DICOMPatcherRule):
@@ -500,23 +497,17 @@ class UseCharacterSet(DICOMPatcherRule):
     """
 
     def processDataSet(self, ds):
-        characterSet = self.parameters.get("CharacterSet")
-        if not characterSet:
+        if not self.parameters["CharacterSet"]:
             raise RuntimeError("'CharacterSet' parameter must be specified")
-
-        if hasattr(ds, "SpecificCharacterSet") and ds.SpecificCharacterSet == "ISO_IR 192":
-            # UTF8 is assumed to be correct (the software that created the instance
-            # is aware of UTF8), therefore character set is not modified
-            self.addLog("Character set is already UTF8 (ISO_IR 192), keep it as is.")
-            return
-
-        self.addLog(f"Set character set to {characterSet}.")
-        ds.SpecificCharacterSet = characterSet
-        ds.decode()
-        ds.SpecificCharacterSet = "ISO_IR 192"
-        slicer.ds = ds
+        if not hasattr(ds, "SpecificCharacterSet"):
+            ds.SpecificCharacterSet = self.parameters["CharacterSet"]
+            ds.decode()
+            ds.SpecificCharacterSet = "ISO_IR 192"
 
 
+#
+#
+#
 
 
 class Anonymize(DICOMPatcherRule):
@@ -568,6 +559,9 @@ class Anonymize(DICOMPatcherRule):
         ds.SeriesInstanceUID = self.seriesUIDToRandomUIDMap[ds.SeriesInstanceUID]
 
 
+#
+#
+#
 
 
 class NormalizeFileNames(DICOMPatcherRule):
@@ -600,72 +594,6 @@ class NormalizeFileNames(DICOMPatcherRule):
         prefix = ds.Modality.lower() if hasattr(ds, "Modality") else ""
         filePath = self.outputRootDir + "/" + folderName + "/" + self.getNextItemName(prefix, folderName) + ".dcm"
         return filePath
-
-
-
-
-class SplitUltrasoundSeriesByInstanceNumber(DICOMPatcherRule):
-    def __init__(self, parameters=None):
-        super().__init__(parameters)
-        self.requiredTags = ["SOPClassUID", "SeriesInstanceUID", "SeriesNumber", "InstanceNumber"]
-        self.supportedSOPClassUIDs = [
-            "1.2.840.10008.5.1.4.1.1.3.1",  # Ultrasound Multiframe Image Storage
-            "1.2.840.10008.5.1.4.1.1.6.1",  # Ultrasound Image Storage
-        ]
-
-    def processStart(self, inputRootDir, outputRootDir):
-        self.seriesInstanceUidAndInstanceNumberToNewSeriesInstanceUidMap = {}
-
-    def processDataSet(self, ds):
-        import pydicom
-
-        # Return if this is not an ultrasound series or there is no instance number
-        for tag in self.requiredTags:
-            if not hasattr(ds, tag):
-                return
-        if ds.SOPClassUID not in self.supportedSOPClassUIDs:
-            return
-
-        # Get the new series instance UID for this series instance UID and instance number
-        seriesInstanceUidAndInstanceNumber = (ds.SeriesInstanceUID, ds.InstanceNumber)
-        if seriesInstanceUidAndInstanceNumber not in self.seriesInstanceUidAndInstanceNumberToNewSeriesInstanceUidMap:
-            self.seriesInstanceUidAndInstanceNumberToNewSeriesInstanceUidMap[seriesInstanceUidAndInstanceNumber] = pydicom.uid.generate_uid(None)
-
-        # Set the new series instance UID
-        ds.SeriesInstanceUID = self.seriesInstanceUidAndInstanceNumberToNewSeriesInstanceUidMap[seriesInstanceUidAndInstanceNumber]
-        # Generate new series number (otherwise it would be difficult to identify the series)
-        ds.SeriesNumber = ds.SeriesNumber * 1000 + ds.InstanceNumber
-
-
-
-
-class FixCompressedUltrasoundPhotometricInterpretation(DICOMPatcherRule):
-    def __init__(self, parameters=None):
-        super().__init__(parameters)
-        self.requiredTags = ["SOPClassUID"]
-        self.supportedSOPClassUIDs = [
-            "1.2.840.10008.5.1.4.1.1.3.1",  # Ultrasound Multiframe Image Storage
-            "1.2.840.10008.5.1.4.1.1.6.1",  # Ultrasound Image Storage
-        ]
-
-    def processStart(self, inputRootDir, outputRootDir):
-        self.seriesInstanceUidAndInstanceNumberToNewSeriesInstanceUidMap = {}
-
-    def processDataSet(self, ds):
-        import pydicom
-
-        # Return if this is not an ultrasound series
-        for tag in self.requiredTags:
-            if not hasattr(ds, tag):
-                return
-        if ds.SOPClassUID not in self.supportedSOPClassUIDs:
-            return
-
-        # If the image is JPEG-compressed then
-        if ds.file_meta.TransferSyntaxUID == pydicom.uid.JPEGBaseline8Bit:
-            if ds.PhotometricInterpretation == "RGB":
-                self.addLog("Compressed JPEG image was found with RGB photometric interpretation. Changed it to YBR_FULL_422.")
-                ds.PhotometricInterpretation = "YBR_FULL_422"
 
 
 #
@@ -864,7 +792,6 @@ class DICOMPatcherTest(ScriptedLoadableModuleTest):
         logic.addRule("UseCharacterSet", {"CharacterSet": "cp1251"})
         logic.addRule("Anonymize")
         logic.addRule("NormalizeFileNames")
-        logic.addRule("SplitUltrasoundSeriesByInstanceNumber")
         logic.patchDicomDir(inputTestDir, outputTestDir)
 
         self.delayDisplay("Verify generated files")
