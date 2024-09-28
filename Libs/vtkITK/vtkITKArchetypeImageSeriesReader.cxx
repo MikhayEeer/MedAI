@@ -298,6 +298,7 @@ itk::ImageIOBase::Pointer vtkITKArchetypeImageSeriesReader::GetImageIO(const cha
       itk::ImageSeriesReader<ImageType>::Pointer seriesReader =
         itk::ImageSeriesReader<ImageType>::New();
       seriesReader->SetFileNames(this->FileNames);
+      seriesReader->SetForceOrthogonalDirection(false);
 #ifdef VTKITK_BUILD_DICOM_SUPPORT
       if (this->ArchetypeIsDICOM)
       {
