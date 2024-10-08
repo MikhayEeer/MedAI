@@ -63,7 +63,8 @@ int SlicerAppMain(int argc, char* argv[])
 
   if (!window.isNull())
   {
-    QString windowTitle = QString("%1 %2").arg(window->windowTitle()).arg(Slicer_VERSION_FULL);
+    //QString windowTitle = QString("%1 %2").arg(window->windowTitle()).arg(Slicer_VERSION_FULL);
+    QString windowTitle = QString("MedAI");
     window->setWindowTitle(windowTitle);
   }
 
