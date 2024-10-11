@@ -14,7 +14,10 @@ For documentation, tutorials, and more information, please see:
 - https://www.slicer.org
 
 See License.txt for information on using and contributing.
-
+## How to generate qt linguist file(\*.ts)
+```bash
+python Utilities\Scripts\update_translations.py -s f:\MdAI\mdai-src -t Modules\Scripted\LanguageTools\Resources\ -l zh-CN -r -v --lupdate D:\Programs\Qt\6.3.0\msvc2019_64\bin\lupdate.exe
+```
 
 ## update log
 
