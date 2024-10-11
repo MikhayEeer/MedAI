@@ -274,7 +274,9 @@ endfunction()
 
 # Convenience variable used below: This is the name of the application (e.g Slicer)
 # whereas Slicer_MAIN_PROJECT is the application project name (e.g SlicerApp, AwesomeApp, ...)
-set(app_name ${${Slicer_MAIN_PROJECT}_APPLICATION_NAME})
+#set(app_name ${${Slicer_MAIN_PROJECT}_APPLICATION_NAME})
+set(app_name "MedAI")
+set(old_app_name "Slicer")
 
 macro(slicer_cpack_set varname)
   if(DEFINED ${app_name}_${varname})
@@ -302,47 +304,54 @@ if(UNIX AND NOT APPLE AND "${CMAKE_BUILD_TYPE}" STREQUAL "Release")
   set(CPACK_STRIP_FILES 1)
 endif()
 
+#set(${app_name}_CPACK_PACKAGE_NAME ${app_name})
 set(${app_name}_CPACK_PACKAGE_NAME ${app_name})
 slicer_cpack_set("CPACK_PACKAGE_NAME")
 
-set(Slicer_CPACK_PACKAGE_VENDOR ${Slicer_ORGANIZATION_NAME})
+#set(Slicer_CPACK_PACKAGE_VENDOR ${Slicer_ORGANIZATION_NAME})
+set(MedAI_CPACK_PACKAGE_VENDOR "MedAI.org")
 slicer_cpack_set("CPACK_PACKAGE_VENDOR")
 
 set(Slicer_CPACK_PACKAGE_VERSION_MAJOR "${Slicer_VERSION_MAJOR}")
-set(${app_name}_CPACK_PACKAGE_VERSION_MAJOR ${Slicer_MAIN_PROJECT_VERSION_MAJOR})
+#set(${app_name}_CPACK_PACKAGE_VERSION_MAJOR ${Slicer_MAIN_PROJECT_VERSION_MAJOR})
+set(${app_name}_CPACK_PACKAGE_VERSION_MAJOR "1")
 slicer_cpack_set("CPACK_PACKAGE_VERSION_MAJOR")
 
 set(Slicer_CPACK_PACKAGE_VERSION_MINOR "${Slicer_VERSION_MINOR}")
-set(${app_name}_CPACK_PACKAGE_VERSION_MINOR ${Slicer_MAIN_PROJECT_VERSION_MINOR})
+#set(${app_name}_CPACK_PACKAGE_VERSION_MINOR ${Slicer_MAIN_PROJECT_VERSION_MINOR})
+set(${app_name}_CPACK_PACKAGE_VERSION_MINOR "0")
 slicer_cpack_set("CPACK_PACKAGE_VERSION_MINOR")
 
 set(Slicer_CPACK_PACKAGE_VERSION_PATCH "${Slicer_VERSION_PATCH}")
-set(${app_name}_CPACK_PACKAGE_VERSION_PATCH ${Slicer_MAIN_PROJECT_VERSION_PATCH})
+#set(${app_name}_CPACK_PACKAGE_VERSION_PATCH ${Slicer_MAIN_PROJECT_VERSION_PATCH})
+set(${app_name}_CPACK_PACKAGE_VERSION_PATCH "0")
 slicer_cpack_set("CPACK_PACKAGE_VERSION_PATCH")
 
 set(Slicer_CPACK_PACKAGE_VERSION "${Slicer_VERSION_FULL}")
-set(${app_name}_CPACK_PACKAGE_VERSION ${Slicer_MAIN_PROJECT_VERSION_FULL})
+#set(${app_name}_CPACK_PACKAGE_VERSION ${Slicer_MAIN_PROJECT_VERSION_FULL})
+set(${app_name}_CPACK_PACKAGE_VERSION "1.0.0")
 slicer_cpack_set("CPACK_PACKAGE_VERSION")
 
 set(CPACK_SYSTEM_NAME "${Slicer_OS}-${Slicer_ARCHITECTURE}")
 
-set(Slicer_CPACK_PACKAGE_INSTALL_DIRECTORY "${${app_name}_CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION}")
+#set(Slicer_CPACK_PACKAGE_INSTALL_DIRECTORY "${${app_name}_CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION}")
+set(${app_name}_CPACK_PACKAGE_INSTALL_DIRECTORY "${${app_name}_CPACK_PACKAGE_NAME} ${CPACK_PACKAGE_VERSION}")
 slicer_cpack_set("CPACK_PACKAGE_INSTALL_DIRECTORY")
 
 #
 # The following global properties are defined in Applications/<main_application_name>/slicer-application-properties.cmake
 #
 
-get_property(${app_name}_CPACK_PACKAGE_DESCRIPTION_FILE GLOBAL PROPERTY ${app_name}_DESCRIPTION_FILE)
+get_property(${app_name}_CPACK_PACKAGE_DESCRIPTION_FILE GLOBAL PROPERTY ${old_app_name}_DESCRIPTION_FILE)
 slicer_cpack_set("CPACK_PACKAGE_DESCRIPTION_FILE")
 
-get_property(${app_name}_CPACK_RESOURCE_FILE_LICENSE GLOBAL PROPERTY ${app_name}_LICENSE_FILE)
+get_property(${app_name}_CPACK_RESOURCE_FILE_LICENSE GLOBAL PROPERTY ${old_app_name}_LICENSE_FILE)
 slicer_cpack_set("CPACK_RESOURCE_FILE_LICENSE")
 
-get_property(${app_name}_CPACK_PACKAGE_DESCRIPTION_SUMMARY GLOBAL PROPERTY ${app_name}_DESCRIPTION_SUMMARY)
+get_property(${app_name}_CPACK_PACKAGE_DESCRIPTION_SUMMARY GLOBAL PROPERTY ${old_app_name}_DESCRIPTION_SUMMARY)
 slicer_cpack_set("CPACK_PACKAGE_DESCRIPTION_SUMMARY")
 
-get_property(${app_name}_CPACK_PACKAGE_ICON GLOBAL PROPERTY ${app_name}_APPLE_ICON_FILE)
+get_property(${app_name}_CPACK_PACKAGE_ICON GLOBAL PROPERTY ${old_app_name}_APPLE_ICON_FILE)
 if(APPLE)
   slicer_cpack_set("CPACK_PACKAGE_ICON")
 endif()
@@ -405,9 +414,9 @@ if(CPACK_GENERATOR STREQUAL "NSIS")
   set(PACKAGE_APPLICATION_NAME "${APPLICATION_NAME} ${CPACK_PACKAGE_VERSION}")
   slicer_verbose_set(CPACK_PACKAGE_EXECUTABLES "..\\\\${EXECUTABLE_NAME}" "${PACKAGE_APPLICATION_NAME}")
 
-  get_property(${app_name}_CPACK_NSIS_MUI_ICON GLOBAL PROPERTY ${app_name}_WIN_ICON_FILE)
+  get_property(${app_name}_CPACK_NSIS_MUI_ICON GLOBAL PROPERTY ${old_app_name}_WIN_ICON_FILE)
   slicer_cpack_set("CPACK_NSIS_MUI_ICON")
-  slicer_verbose_set(CPACK_NSIS_INSTALLED_ICON_NAME "${app_name}.exe")
+  slicer_verbose_set(CPACK_NSIS_INSTALLED_ICON_NAME "${old_app_name}.exe")
   slicer_verbose_set(CPACK_NSIS_MUI_FINISHPAGE_RUN "../${APPLICATION_NAME}.exe")
 
   # -------------------------------------------------------------------------
