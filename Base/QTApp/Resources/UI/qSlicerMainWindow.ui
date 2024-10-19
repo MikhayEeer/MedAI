@@ -320,7 +320,7 @@
    </widget>
    <widget class="QMenu" name="AIMenu">
     <property name="title">
-     <string>Feature</string>
+     <string>AI</string>
     </property>
     <addaction name="actionAI_Airway"/>
    </widget>
@@ -1226,7 +1226,7 @@
   </action>
   <action name="actionAI_Airway">
    <property name="text">
-    <string>Reconstruction</string>
+    <string>AI</string>
    </property>
   </action>
   <action name="actionAI_Vessel">
