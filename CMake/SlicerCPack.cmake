@@ -275,7 +275,7 @@ endfunction()
 # Convenience variable used below: This is the name of the application (e.g Slicer)
 # whereas Slicer_MAIN_PROJECT is the application project name (e.g SlicerApp, AwesomeApp, ...)
 #set(app_name ${${Slicer_MAIN_PROJECT}_APPLICATION_NAME})
-set(app_name "MedAI")
+set(app_name "MedAI-3D")
 set(old_app_name "Slicer")
 
 macro(slicer_cpack_set varname)
@@ -309,7 +309,7 @@ set(${app_name}_CPACK_PACKAGE_NAME ${app_name})
 slicer_cpack_set("CPACK_PACKAGE_NAME")
 
 #set(Slicer_CPACK_PACKAGE_VENDOR ${Slicer_ORGANIZATION_NAME})
-set(MedAI_CPACK_PACKAGE_VENDOR "MedAI.org")
+set(MedAI-3D_CPACK_PACKAGE_VENDOR "MedAI-3D.org")
 slicer_cpack_set("CPACK_PACKAGE_VENDOR")
 
 set(Slicer_CPACK_PACKAGE_VERSION_MAJOR "${Slicer_VERSION_MAJOR}")
@@ -329,7 +329,7 @@ slicer_cpack_set("CPACK_PACKAGE_VERSION_PATCH")
 
 set(Slicer_CPACK_PACKAGE_VERSION "${Slicer_VERSION_FULL}")
 #set(${app_name}_CPACK_PACKAGE_VERSION ${Slicer_MAIN_PROJECT_VERSION_FULL})
-set(${app_name}_CPACK_PACKAGE_VERSION "1.0.0")
+set(${app_name}_CPACK_PACKAGE_VERSION "1.0")
 slicer_cpack_set("CPACK_PACKAGE_VERSION")
 
 set(CPACK_SYSTEM_NAME "${Slicer_OS}-${Slicer_ARCHITECTURE}")

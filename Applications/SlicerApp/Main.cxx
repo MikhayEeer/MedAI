@@ -1,4 +1,4 @@
-/*==============================================================================
+﻿/*==============================================================================
 
   Program: 3D Slicer
 
@@ -27,6 +27,8 @@
 
 // SlicerApp includes
 #include "qSlicerAppMainWindow.h"
+
+#pragma execution_character_set("utf-8")
 
 namespace
 {
@@ -64,7 +66,7 @@ int SlicerAppMain(int argc, char* argv[])
   if (!window.isNull())
   {
     //QString windowTitle = QString("%1 %2").arg(window->windowTitle()).arg(Slicer_VERSION_FULL);
-    QString windowTitle = QString("MedAI");
+      QString windowTitle = QString("%1 光齐1.0").arg(window->windowTitle());
     window->setWindowTitle(windowTitle);
   }
 

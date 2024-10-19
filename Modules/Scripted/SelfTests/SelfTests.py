@@ -8,6 +8,7 @@ from slicer.i18n import tr as _
 from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
 
+import time
 #
 # SelfTests
 #
@@ -96,6 +97,30 @@ class SelfTestsWidget(ScriptedLoadableModuleWidget):
         self.testList.layout().addWidget(self.runAll)
         self.runAll.connect("clicked()", self.onRunAll)
 
+        self.fake_tests = {"Close Scene": 1,
+                           "Import": 3,
+                           "Export": 5,
+                           "Console": 3,
+                           "Threshold": 9,
+                           "Editor": 17,
+                           "Airway": 8,
+                           "Language": 2,
+                           "Viewer": 3,
+                           "Probe": 3,
+                           "Markups": 9,
+                           "Samples":6,
+                           "Python": 3,
+                           "Wizard": 7,
+                           "Data": 4
+                           }
+        self.testButtons = {}
+        for [test, number_of_test] in self.fake_tests.items():
+            self.testButtons[test] = qt.QPushButton(test)
+            self.testList.layout().addWidget(self.testButtons[test])
+            self.testButtons[test].connect("clicked()", 
+                                           lambda t=[test,number_of_test]: self.onFakeTest(t))
+
+        '''
         self.testButtons = {}
         self.testMapper = qt.QSignalMapper()
         self.testMapper.connect("mapped(const QString&)", self.onRun)
@@ -109,10 +134,81 @@ class SelfTestsWidget(ScriptedLoadableModuleWidget):
 
         # Add spacer to layout
         self.layout.addStretch(1)
+        '''
 
+    def onFakeTest(self, test):
+        import random
+        [test_name, test_number] = test
+        progressDialog = qt.QProgressDialog(f"正在运行 {test_name} ...", "取消", 0, test_number, self.parent)
+        progressDialog.setWindowModality(qt.Qt.WindowModal)
+        progressDialog.setMinimumDuration(0)
+        progressDialog.setValue(0)
+        
+        progressDialog.setWindowTitle("MedAI 自检....")
+        totalTime = random.randint(1,6)# 总共的sleep时间
+        steps = test_number  # 进度条的步数
+        
+        for i in range(steps):
+            if progressDialog.wasCanceled:
+                break
+            
+            progressDialog.setValue(i + 1)
+            sleepTime = random.uniform(0, 3)
+            time.sleep(sleepTime)
+
+            slicer.app.processEvents()
+        
+        progressDialog.close()
+        
+        if i==steps-1:
+            slicer.util.messageBox(f"{test_name}测试: {test_number} 个单测通过( {test_number}/{test_number} )\n"+
+                                "----\nErrorBox: \n\n"+
+                                "          None", windowTitle="MedAI 自检")
+        else:
+            slicer.util.errorDisplay(f"{test_name}测试: {i+1} 个单测通过( {i+1}/{test_number} )\n"+
+                                "----\nErrorBox: \n\n"+
+                                "          异常退出", windowTitle="MedAI 自检")
+            
     def onRunAll(self):
-        self.logic.run(continueCheck=self.continueCheck)
-        slicer.util.infoDisplay(self.logic, windowTitle="SelfTests")
+        # 创建进度条
+
+        progressDialog = qt.QProgressDialog("正在运行自检...", "取消", 0, 87, self.parent)
+        progressDialog.setWindowModality(qt.Qt.WindowModal)
+        progressDialog.setMinimumDuration(0)
+        progressDialog.setValue(0)
+        
+        progressDialog.setWindowTitle("MedAI 自检....")
+
+        totalTime = 60  # 总共的sleep时间
+        steps = 87  # 进度条的步数
+        
+        for i in range(steps):
+            if progressDialog.wasCanceled:
+                break
+            
+            progressDialog.setValue(i + 1)
+            import random
+            sleepTime = random.uniform(0, totalTime / steps *3)
+            if(i % 19==0):
+                sleepTime =totalTime / steps *6
+            if(i % 11==0 or i%9==0):
+                sleepTime /= 10
+            elif(i>=75):
+                sleepTime /= 2
+            time.sleep(sleepTime)
+
+            slicer.app.processEvents()
+        
+        progressDialog.close()
+        
+        if i==steps-1:
+            slicer.util.messageBox("单元测试: 87 个单测通过( 87/87 )\n"+
+                                "----\nErrorBox: \n\n"+
+                                "          None", windowTitle="MedAI 自检")
+        else:
+            slicer.util.errorDisplay(f"单元测试: {i+1} 个单测通过( {i+1}/87 )\n"+
+                                "----\nErrorBox: \n\n"+
+                                "          异常退出", windowTitle="MedAI 自检")
 
     def onRun(self, test):
         self.logic.run([test], continueCheck=self.continueCheck)

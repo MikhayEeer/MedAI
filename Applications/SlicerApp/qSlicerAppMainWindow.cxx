@@ -145,7 +145,7 @@ void qSlicerAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
   //----------------------------------------------------------------------------
   // Configure
   //----------------------------------------------------------------------------
-  mainWindow->setWindowTitle("MedAI");
+  mainWindow->setWindowTitle("MedAI-3D");
   mainWindow->setWindowIcon(QIcon(":/Icons/Medium/DesktopIcon.png"));
 
   QLabel* logoLabel = new QLabel();
