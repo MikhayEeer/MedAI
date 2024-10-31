@@ -1112,6 +1112,12 @@ void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
     tmpForm->show();
 }
 
+void qSlicerMainWindow::on_actionAnonymize_triggered() {
+    DicomAnonymizer* tmpForm = new DicomAnonymizer;
+    tmpForm->setWindowModality(Qt::ApplicationModal);
+    tmpForm->show();
+}
+
 
 void qSlicerMainWindow::on_actionLogOut_triggered() {
     QMessageBox* msgBox = new QMessageBox(QMessageBox::Question, 

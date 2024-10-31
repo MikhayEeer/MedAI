@@ -291,3 +291,121 @@ void Backend_AI_Processing_manager::initUI(){
     VLayout->addLayout(HLayout3);
     this->setLayout(VLayout);
 }
+
+DicomAnonymizer::DicomAnonymizer(QWidget *parent) : QDialog(parent) {
+    initUI();
+}
+
+DicomAnonymizer::~DicomAnonymizer() {
+}
+
+void DicomAnonymizer::initUI() {
+    this->setWindowTitle(tr("DICOM匿名化"));
+    this->setFixedSize(400, 200);
+    
+    QVBoxLayout* mainLayout = new QVBoxLayout(this);
+    
+    importButton = new QPushButton(tr("导入DICOM文件"), this);
+    anonymizeButton = new QPushButton(tr("开始匿名化"), this);
+    cancelButton = new QPushButton(tr("取消"), this);
+    
+    statusLabel = new QLabel(tr("请选择DICOM文件\n匿名化将会覆盖原路径"), this);
+    progressBar = new QProgressBar(this);
+    progressBar->setVisible(false);
+    
+    QHBoxLayout* buttonLayout = new QHBoxLayout();
+    buttonLayout->addWidget(importButton);
+    buttonLayout->addWidget(anonymizeButton);
+    buttonLayout->addWidget(cancelButton);
+    
+    mainLayout->addWidget(statusLabel);
+    mainLayout->addWidget(progressBar);
+    mainLayout->addLayout(buttonLayout);
+    
+    anonymizeButton->setEnabled(false);
+    
+    connect(importButton, &QPushButton::clicked, this, &DicomAnonymizer::onImportButtonClicked);
+    connect(anonymizeButton, &QPushButton::clicked, this, &DicomAnonymizer::onAnonymizeButtonClicked);
+    connect(cancelButton, &QPushButton::clicked, this, &DicomAnonymizer::onCancelButtonClicked);
+}
+
+void DicomAnonymizer::onImportButtonClicked() {
+    selectedDicomPath = QFileDialog::getExistingDirectory(this, tr("选择DICOM文件夹"));
+    if(!selectedDicomPath.isEmpty()) {
+        QDir dir(selectedDicomPath);
+        dicomFiles = dir.entryList(QStringList() << "*.dcm", QDir::Files);
+        if(dicomFiles.isEmpty()) {
+            statusLabel->setText(tr("所选文件夹中未找到DICOM文件"));
+            anonymizeButton->setEnabled(false);
+        } else {
+            statusLabel->setText(tr("已选择 %1 个DICOM文件").arg(dicomFiles.size()));
+            anonymizeButton->setEnabled(true);
+        }
+    }
+}
+
+void DicomAnonymizer::onAnonymizeButtonClicked() {
+    if(selectedDicomPath.isEmpty() || dicomFiles.isEmpty()) {
+        return;
+    }
+    QString anonymizedPatientName;
+    QString newName = QInputDialog::getText(this, tr("患者昵称"), tr("请输入匿名后的患者昵称\n(留空则使用默认值[Anonymous]):"));
+    if(!newName.isEmpty()) {
+        anonymizedPatientName = newName;
+    } else {
+        anonymizedPatientName = "Anonymous";
+    }
+
+    progressBar->setVisible(true);
+    progressBar->setRange(0, dicomFiles.size());
+    progressBar->setValue(0);
+    
+    importButton->setEnabled(false);
+    anonymizeButton->setEnabled(false);
+    
+    for(int i = 0; i < dicomFiles.size(); i++) {
+        QString filePath = selectedDicomPath + "/" + dicomFiles[i];
+        anonymizeDicom(filePath, anonymizedPatientName);
+        progressBar->setValue(i + 1);
+    }
+    
+    statusLabel->setText(tr("匿名化完成"));
+    emit anonymizationFinished();
+    
+    importButton->setEnabled(true);
+    anonymizeButton->setEnabled(true);
+}
+
+void DicomAnonymizer::onCancelButtonClicked() {
+    this->close();
+}
+
+void DicomAnonymizer::anonymizeDicom(const QString& dicomPath,const QString& patientName) {
+    // 打开DICOM文件
+    DcmFileFormat fileformat;
+    OFCondition status = fileformat.loadFile(dicomPath.toStdString().c_str());
+    if (status.bad()) {
+        statusLabel->setText(tr("无法打开文件: %1").arg(dicomPath));
+        return;
+    }
+
+    DcmDataset *dataset = fileformat.getDataset();
+
+    // 匿名化关键字段
+    dataset->putAndInsertString(DCM_PatientName, patientName.toStdString().c_str());
+    dataset->putAndInsertString(DCM_PatientID, "ID000000");
+    dataset->putAndInsertString(DCM_PatientBirthDate, "19700101");
+    dataset->putAndInsertString(DCM_PatientSex, "O");
+    dataset->putAndInsertString(DCM_InstitutionName, "Anonymous Institution");
+    dataset->putAndInsertString(DCM_ReferringPhysicianName, "Anonymous Physician");
+
+    // 保存匿名化后的文件
+    QString anonymizedPath = dicomPath;
+    //anonymizedPath.replace(".dcm", "_anonymized.dcm");
+    status = fileformat.saveFile(anonymizedPath.toStdString().c_str());
+    
+    if (status.bad()) {
+        statusLabel->setText(tr("保存文件失败: %1").arg(anonymizedPath));
+        return;
+    }
+}

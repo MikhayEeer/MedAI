@@ -24,6 +24,13 @@
 #include "qSlicerBaseQTGUIExport.h"
 #include "post_manager.h"
 
+// DICOM匿名化相关头文件
+#include <QProgressBar>
+#include <QInputDialog>
+#include "dcmtk/config/osconfig.h"
+#include "dcmtk/dcmdata/dctk.h"
+
+
 #pragma execution_character_set("utf-8")
 
 class Q_SLICER_BASE_QTGUI_EXPORT Backend_AI_Processing_manager : public QWidget
@@ -76,6 +83,34 @@ private:
 	QMessageBox* finishedDialog;
 
 	void initUI();
+};
+
+class Q_SLICER_BASE_QTGUI_EXPORT DicomAnonymizer : public QDialog {
+    Q_OBJECT
+public:
+    explicit DicomAnonymizer(QWidget *parent = nullptr);
+    ~DicomAnonymizer();
+
+signals:
+    void anonymizationFinished();
+
+public slots:
+    void onImportButtonClicked();
+    void onAnonymizeButtonClicked();
+    void onCancelButtonClicked();
+
+private:
+    void initUI();
+    void anonymizeDicom(const QString& dicomPath, const QString& patientName);
+    
+    QPushButton* importButton;
+    QPushButton* anonymizeButton; 
+    QPushButton* cancelButton;
+    QLabel* statusLabel;
+    QProgressBar* progressBar;
+    
+    QString selectedDicomPath;
+    QStringList dicomFiles;
 };
 
 #endif // BACKEND_AI_MANAGER_H

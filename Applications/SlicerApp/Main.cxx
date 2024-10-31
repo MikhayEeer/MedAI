@@ -48,8 +48,8 @@ int SlicerAppMain(int argc, char* argv[])
     return app.returnCode();
   }
 
-  AuthForm* _authForm = new AuthForm;
-  if (_authForm->whetherAuthPassed() == false)return -1;
+  //AuthForm* _authForm = new AuthForm;
+  //if (_authForm->whetherAuthPassed() == false)return -1;
 
   LoginForm* _loginForm = new LoginForm;
   //QScopedPointer<LoginForm> _loginForm = new LoginForm();
