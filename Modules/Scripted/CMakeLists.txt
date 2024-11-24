@@ -1,6 +1,7 @@
 set(modules
   aaamodule
   Airwaysegmentation
+  BafflePlanner
   CropVolumeSequence
   DataProbe
   ImportItkSnapLabel
