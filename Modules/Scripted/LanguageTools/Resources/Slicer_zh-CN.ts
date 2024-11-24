@@ -154,6 +154,322 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     </message>
 </context>
 <context>
+    <name>BafflePlanner</name>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="22"/>
+        <source>Baffle Planner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="23"/>
+        <source>Cardiac</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="245"/>
+        <source>Flattening in progress... </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="250"/>
+        <source>The NURBS conversion requires the NurbsFitting module in the SlicerHeartPrivate extension. Install SlicerHeartPrivate and restart Slicer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="257"/>
+        <source>Flattening in progress...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="263"/>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="393"/>
+        <source>Flatten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="29"/>
+        <source>Clip model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="47"/>
+        <source>Complete model:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="54"/>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="195"/>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="450"/>
+        <source>vtkMRMLModelNode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="75"/>
+        <source>Clipping plane:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="88"/>
+        <source>Show:</source>
+        <translation>显示：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="97"/>
+        <source>Complete</source>
+        <translation>完成</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="104"/>
+        <source>Clipped (+)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="111"/>
+        <source>Clipped (-)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="123"/>
+        <source>Create baffle model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="141"/>
+        <source>Baffle model:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="151"/>
+        <source>Thickness:</source>
+        <translation>厚度：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="161"/>
+        <source>Surface points:</source>
+        <translation>曲面点：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="168"/>
+        <source>Pick the input to the algorithm.</source>
+        <translation>选择算法输入项。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="171"/>
+        <source>vtkMRMLMarkupsClosedCurveNode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="179"/>
+        <source>BC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="200"/>
+        <source>Baffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="210"/>
+        <source>Input curve:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="217"/>
+        <source>Update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="227"/>
+        <source>Contour points:</source>
+        <translation>轮廓点：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="236"/>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="258"/>
+        <source>Set threshold value for computing the output image. Voxels that have intensities lower than this value will set to zero.</source>
+        <translation type="unfinished">设置用于计算输出图像的阈值。强度低于此值的体素将设置为零。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="282"/>
+        <source>Radius scale:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="289"/>
+        <source>Set &gt;1 scale to make the generated surface extend beyond the input curve.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="314"/>
+        <source>NURBS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="332"/>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="353"/>
+        <source>Allows a different style of interaction with the surface with finer control over the inside.
+
+After conversion the ability to edit it as model will be lost (the section above disabled).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="337"/>
+        <source>Convert to NURBS surface:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="344"/>
+        <source>vtkMRMLMarkupsGridSurfaceNode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="358"/>
+        <source>Convert</source>
+        <translation type="unfinished">转换</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="368"/>
+        <source>Flatten baffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="386"/>
+        <source>Fixed points:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="402"/>
+        <source>Flattened image file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="412"/>
+        <source>BafflePlanner/FlattenedImageFile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="415"/>
+        <source>Image file (*.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="424"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="443"/>
+        <source>Flattened model:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CombineModels</name>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/CombineModels.py" line="22"/>
+        <source>Combine Models</source>
+        <translation>组合模型</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/CombineModels.py" line="23"/>
+        <source>Surface Models</source>
+        <translation>表面模型</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="17"/>
+        <source>Inputs</source>
+        <translation>输入</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="23"/>
+        <source>Input model A:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="30"/>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="64"/>
+        <source>Select a model node input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="33"/>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="67"/>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="172"/>
+        <source>vtkMRMLModelNode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="57"/>
+        <source>Input model B:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="91"/>
+        <source>Operation:</source>
+        <translation>操作：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="122"/>
+        <source>Union (A|B)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="129"/>
+        <source>Intersection (A&amp;&amp;B)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="136"/>
+        <source>Difference (A-B)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="143"/>
+        <source>Difference (B-A)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="156"/>
+        <source>Outputs</source>
+        <translation>输出</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="162"/>
+        <source>Output model:</source>
+        <translation>输出模型：</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="169"/>
+        <source>Pick the output to the algorithm.</source>
+        <translation type="unfinished">选择输出到算法。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="195"/>
+        <source>Create new model node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="208"/>
+        <source>Run the algorithm.</source>
+        <translation type="unfinished">运行算法。</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="211"/>
+        <source>Apply</source>
+        <translation>应用</translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="221"/>
+        <source>Toggles between showing input models or output model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="224"/>
+        <source>Toggle inputs/output visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CropVolumeSequence</name>
     <message>
         <location filename="Modules/Scripted/CropVolumeSequence/CropVolumeSequence.py" line="26"/>
