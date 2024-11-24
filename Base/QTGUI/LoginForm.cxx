@@ -111,14 +111,32 @@ void LoginForm::quit(){
     exit(-1);
 }
 
-//
-void LoginForm::ReadIniFile(){
-//        m_userNameList.clear();
-    QSettings *_config = new QSettings(CONFIGPATH, QSettings::IniFormat);
+//读取配置信息
+void LoginForm::ReadIniFile() {
+    //        m_userNameList.clear();
+    QSettings* _config = new QSettings(CONFIGPATH, QSettings::IniFormat);
     userNameLEd->setText(_config->value("AppUserName").toString());
-    if(userNameLEd->text().length() > 1) pwdLEd->setFocus();
+    if (userNameLEd->text().length() > 1) pwdLEd->setFocus();
+
+    // get url
+    SERVER_URL = _config->value("SERVER_URL").toString();
+    AI_URL_AIRWAY = _config->value("AI_URL_AIRWAY").toString();
+    AI_URL_VESSEL = _config->value("AI_URL_VESSEL").toString();
+    if (SERVER_URL.length() < 3) {
+        SERVER_URL = "http://36.139.232.121:11176";
+        WriteIniFile("SERVER_URL", SERVER_URL);
+    }
+    if (AI_URL_AIRWAY.length() < 3) {
+        AI_URL_AIRWAY = "http://36.139.232.121:11180";
+        WriteIniFile("AI_URL_AIRWAY", AI_URL_AIRWAY);
+    }
+    if (AI_URL_VESSEL.length() < 3) {
+        AI_URL_VESSEL = "http://36.140.183.72:11082";
+        WriteIniFile("AI_URL_VESSEL", AI_URL_VESSEL);
+    }
     delete _config;
 }
+
 
 //
 void LoginForm::WriteIniFile(QString key, QString value){

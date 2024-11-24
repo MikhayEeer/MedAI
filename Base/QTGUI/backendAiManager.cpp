@@ -144,12 +144,12 @@ void Backend_AI_Processing_manager::uploadFile() {
 //    qDebug() << baseName;
 //    qDebug() << m_result_path;
 
-    QNetworkRequest request(QUrl("http://36.139.232.121:11180/upload")); //119.45.186.16 // 127.0.0.1
-    if(_choosed_model == AI_MODEL::VESSEL) {
-        request.setUrl(QUrl("http://120.224.26.32:43810/vessel_ai"));
+    QNetworkRequest request(QUrl(AI_URL_AIRWAY + "/upload")); //13910
+    if (_choosed_model == AI_MODEL::VESSEL) {
+        request.setUrl(QUrl(AI_URL_VESSEL + "/vessel_ai"));
     }
-    else if(_choosed_model == AI_MODEL::VESSELV2) {
-        request.setUrl(QUrl("http://120.224.26.32:43810/vessel_v2"));
+    else if (_choosed_model == AI_MODEL::VESSELV2) {
+        request.setUrl(QUrl(AI_URL_VESSEL + "/vessel_v2"));
     }
 
     multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
