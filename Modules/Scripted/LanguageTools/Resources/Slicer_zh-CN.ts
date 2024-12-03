@@ -158,60 +158,60 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="22"/>
         <source>Baffle Planner</source>
-        <translation type="unfinished"></translation>
+        <translation>障板规划器</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="23"/>
         <source>Cardiac</source>
-        <translation type="unfinished"></translation>
+        <translation>心脏</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="245"/>
         <source>Flattening in progress... </source>
-        <translation type="unfinished"></translation>
+        <translation>扁平化正在进行中…… </translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="250"/>
         <source>The NURBS conversion requires the NurbsFitting module in the SlicerHeartPrivate extension. Install SlicerHeartPrivate and restart Slicer.</source>
-        <translation type="unfinished"></translation>
+        <translation>NURBS转换需要SlicerHeartPrivate扩展中的NurbsFitting模块。安装SlicerHeartPrivate并重启Slicer。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="257"/>
         <source>Flattening in progress...</source>
-        <translation type="unfinished"></translation>
+        <translation>扁平化正在进行中……</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/BafflePlanner.py" line="263"/>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="393"/>
         <source>Flatten</source>
-        <translation type="unfinished"></translation>
+        <translation>扁平化</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="29"/>
         <source>Clip model</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切模型</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="47"/>
         <source>Complete model:</source>
-        <translation type="unfinished"></translation>
+        <translation>完整的模型:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="54"/>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="195"/>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="450"/>
         <source>vtkMRMLModelNode</source>
-        <translation type="unfinished"></translation>
+        <translation>vtkMRMLModelNode</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="75"/>
         <source>Clipping plane:</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切面:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="88"/>
         <source>Show:</source>
-        <translation>显示：</translation>
+        <translation>展示：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="97"/>
@@ -221,22 +221,22 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="104"/>
         <source>Clipped (+)</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切 (+)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="111"/>
         <source>Clipped (-)</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切 (-)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="123"/>
         <source>Create baffle model</source>
-        <translation type="unfinished"></translation>
+        <translation>创建障板模型</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="141"/>
         <source>Baffle model:</source>
-        <translation type="unfinished"></translation>
+        <translation>障板模型：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="151"/>
@@ -246,7 +246,7 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="161"/>
         <source>Surface points:</source>
-        <translation>曲面点：</translation>
+        <translation>表面点：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="168"/>
@@ -256,53 +256,53 @@ This file was originally developed by Pietro Nardelli, University College of Cor
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="171"/>
         <source>vtkMRMLMarkupsClosedCurveNode</source>
-        <translation type="unfinished"></translation>
+        <translation>vtkMRMLMarkupsClosedCurveNode</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="179"/>
         <source>BC</source>
-        <translation type="unfinished"></translation>
+        <translation>BC</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="200"/>
         <source>Baffle</source>
-        <translation type="unfinished"></translation>
+        <translation>障板</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="210"/>
         <source>Input curve:</source>
-        <translation type="unfinished"></translation>
+        <translation>输入曲线:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="217"/>
         <source>Update</source>
-        <translation>更新</translation>
+        <translation>升级</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="227"/>
         <source>Contour points:</source>
-        <translation>轮廓点：</translation>
+        <translation>轮廓点:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="236"/>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="258"/>
         <source>Set threshold value for computing the output image. Voxels that have intensities lower than this value will set to zero.</source>
-        <translation type="unfinished">设置用于计算输出图像的阈值。强度低于此值的体素将设置为零。</translation>
+        <translation>设置用于计算输出图像的阈值。强度低于此值的体素将设置为零。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="282"/>
         <source>Radius scale:</source>
-        <translation type="unfinished"></translation>
+        <translation>半径刻度：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="289"/>
         <source>Set &gt;1 scale to make the generated surface extend beyond the input curve.</source>
-        <translation type="unfinished"></translation>
+        <translation>设置 &gt;1 比例可使生成的曲面超出输入曲线。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="314"/>
         <source>NURBS</source>
-        <translation type="unfinished"></translation>
+        <translation>NURBS</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="332"/>
@@ -310,47 +310,49 @@ This file was originally developed by Pietro Nardelli, University College of Cor
         <source>Allows a different style of interaction with the surface with finer control over the inside.
 
 After conversion the ability to edit it as model will be lost (the section above disabled).</source>
-        <translation type="unfinished"></translation>
+        <translation>允许与表面进行不同风格的交互，并对内部进行更精细的控制。
+
+转换后，将失去编辑模型的功能（上述部分已禁用）。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="337"/>
         <source>Convert to NURBS surface:</source>
-        <translation type="unfinished"></translation>
+        <translation>转换为 NURBS 曲面：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="344"/>
         <source>vtkMRMLMarkupsGridSurfaceNode</source>
-        <translation type="unfinished"></translation>
+        <translation>vtkMRMLMarkupsGridSurfaceNode</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="358"/>
         <source>Convert</source>
-        <translation type="unfinished">转换</translation>
+        <translation>转换</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="368"/>
         <source>Flatten baffle</source>
-        <translation type="unfinished"></translation>
+        <translation>压平障板</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="386"/>
         <source>Fixed points:</source>
-        <translation type="unfinished"></translation>
+        <translation>固定的点:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="402"/>
         <source>Flattened image file:</source>
-        <translation type="unfinished"></translation>
+        <translation>平面图像文件：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="412"/>
         <source>BafflePlanner/FlattenedImageFile</source>
-        <translation type="unfinished"></translation>
+        <translation>障板规划器/平面化图像文件</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="415"/>
         <source>Image file (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>图像文件 (*.png)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="424"/>
@@ -360,7 +362,7 @@ After conversion the ability to edit it as model will be lost (the section above
     <message>
         <location filename="Modules/Scripted/BafflePlanner/Resources/UI/BafflePlanner.ui" line="443"/>
         <source>Flattened model:</source>
-        <translation type="unfinished"></translation>
+        <translation>扁平的模型:</translation>
     </message>
 </context>
 <context>
@@ -383,25 +385,25 @@ After conversion the ability to edit it as model will be lost (the section above
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="23"/>
         <source>Input model A:</source>
-        <translation type="unfinished"></translation>
+        <translation>输入模型A：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="30"/>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="64"/>
         <source>Select a model node input</source>
-        <translation type="unfinished"></translation>
+        <translation>选择一个模型节点输入</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="33"/>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="67"/>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="172"/>
         <source>vtkMRMLModelNode</source>
-        <translation type="unfinished"></translation>
+        <translation>vtkMRMLModelNode</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="57"/>
         <source>Input model B:</source>
-        <translation type="unfinished"></translation>
+        <translation>输入模型B：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="91"/>
@@ -411,22 +413,22 @@ After conversion the ability to edit it as model will be lost (the section above
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="122"/>
         <source>Union (A|B)</source>
-        <translation type="unfinished"></translation>
+        <translation>联合 (A|B)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="129"/>
         <source>Intersection (A&amp;&amp;B)</source>
-        <translation type="unfinished"></translation>
+        <translation>交叉 (A&amp;&amp;B)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="136"/>
         <source>Difference (A-B)</source>
-        <translation type="unfinished"></translation>
+        <translation>差异 (A-B)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="143"/>
         <source>Difference (B-A)</source>
-        <translation type="unfinished"></translation>
+        <translation>差异 (B-A)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="156"/>
@@ -441,17 +443,17 @@ After conversion the ability to edit it as model will be lost (the section above
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="169"/>
         <source>Pick the output to the algorithm.</source>
-        <translation type="unfinished">选择输出到算法。</translation>
+        <translation>选择输出到算法。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="195"/>
         <source>Create new model node</source>
-        <translation type="unfinished"></translation>
+        <translation>创建新模型节点</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="208"/>
         <source>Run the algorithm.</source>
-        <translation type="unfinished">运行算法。</translation>
+        <translation>运行算法。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="211"/>
@@ -461,12 +463,12 @@ After conversion the ability to edit it as model will be lost (the section above
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="221"/>
         <source>Toggles between showing input models or output model</source>
-        <translation type="unfinished"></translation>
+        <translation>在显示输入模型或输出模型之间切换</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/CombineModels/Resources/UI/CombineModels.ui" line="224"/>
         <source>Toggle inputs/output visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>切换输入/输出可见性</translation>
     </message>
 </context>
 <context>
@@ -1380,69 +1382,69 @@ Do you want to proceed ? Fees needed if you continue to operate.
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="303"/>
         <source>DICOM匿名化</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="308"/>
         <source>导入DICOM文件</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="309"/>
         <source>开始匿名化</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="310"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="312"/>
         <source>请选择DICOM文件
 匿名化将会覆盖原路径</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="333"/>
         <source>选择DICOM文件夹</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="338"/>
         <source>所选文件夹中未找到DICOM文件</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="341"/>
         <source>已选择 %1 个DICOM文件</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="352"/>
         <source>患者昵称</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="352"/>
         <source>请输入匿名后的患者昵称
 (留空则使用默认值[Anonymous]):</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="372"/>
         <source>匿名化完成</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="388"/>
         <source>无法打开文件: %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Base/QTGUI/backendAiManager.cpp" line="408"/>
         <source>保存文件失败: %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1518,13 +1520,13 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="140"/>
         <source>Flythrough</source>
-        <translation type="unfinished"></translation>
+        <translation>Flythrough</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="148"/>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="418"/>
         <source>Play flythrough</source>
-        <translation>播放flythrough</translation>
+        <translation>开始flythrough</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="150"/>
@@ -1564,33 +1566,33 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="186"/>
         <source>Field of view of the camera in degrees.</source>
-        <translation type="unfinished"></translation>
+        <translation>照相机的视场以度为单位。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="191"/>
         <source>View Angle:</source>
-        <translation type="unfinished"></translation>
+        <translation>视角:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="197"/>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="357"/>
         <source>Save Keyframe Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>保存关键帧方向</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="199"/>
         <source>Save the camera orientation for this frame.</source>
-        <translation type="unfinished"></translation>
+        <translation>保存这一帧的相机方向。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="205"/>
         <source>Delete Keyframe Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>删除关键帧方向</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="207"/>
         <source>Delete the saved camera orientation for this frame.</source>
-        <translation type="unfinished"></translation>
+        <translation>删除此帧保存的相机方向。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="216"/>
@@ -1640,7 +1642,7 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="262"/>
         <source>Select or create the destination model for exporting the flythrough path.</source>
-        <translation type="unfinished"></translation>
+        <translation>选择或创建导出flythrough路径的目标模型。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="268"/>
@@ -1655,17 +1657,17 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="274"/>
         <source>Export the current flythrough path as a model.</source>
-        <translation type="unfinished"></translation>
+        <translation>将当前的flythrough路径导出为模型。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="356"/>
         <source>Update Keyframe Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>更新关键帧方向</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/Endoscopy/Endoscopy.py" line="411"/>
         <source>Stop flythrough</source>
-        <translation type="unfinished"></translation>
+        <translation>停止flythrough</translation>
     </message>
 </context>
 <context>
@@ -1758,22 +1760,22 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="305"/>
         <source>(local git repository)</source>
-        <translation type="unfinished"></translation>
+        <translation>(本地 git 仓库）</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="308"/>
         <source>(unknown local repository)</source>
-        <translation type="unfinished"></translation>
+        <translation>(未知本地仓库）</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="386"/>
         <source>{count} modules could not be registered</source>
-        <translation type="unfinished"></translation>
+        <translation>无法注册 {count} 模块</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="388"/>
         <source>The {name} module could not be registered</source>
-        <translation type="unfinished"></translation>
+        <translation>无法注册 {name} 模块</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="394"/>
@@ -1783,27 +1785,27 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="404"/>
         <source>The module factory manager reported an error. One or more of the requested module(s) and/or dependencies thereof may not have been loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>模块工厂管理器报告错误。请求的一个或多个模块和/或其依赖项可能尚未加载。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="404"/>
         <source>Error loading module(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>错误加载模块</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="427"/>
         <source>An error occurred while trying to create the module.</source>
-        <translation type="unfinished"></translation>
+        <translation>尝试创建模块时发生错误。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="440"/>
         <source>An error occurred while adding the module to the extension.</source>
-        <translation type="unfinished"></translation>
+        <translation>将模块添加到扩展时发生错误。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="445"/>
         <source>The module has been created, but the extension CMakeLists.txt could not be updated. In order to include the module in the extension build, you will need to update the extension CMakeLists.txt by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>模块已经创建，但是扩展名CMakeLists.txt无法更新。为了在扩展构建中包含该模块，您需要手动更新扩展CMakeLists.txt。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizard.py" line="492"/>
@@ -1836,13 +1838,13 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="65"/>
         <source>{type} name may not be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>{type}名称不能为空。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="66"/>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="73"/>
         <source>Cannot create {type}</source>
-        <translation type="unfinished"></translation>
+        <translation>无法创建{type}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/CreateComponentDialog.py" line="72"/>
@@ -1922,7 +1924,7 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="31"/>
         <source>(New item)</source>
-        <translation type="unfinished"></translation>
+        <translation>(新项目)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/EditableTreeWidget.py" line="52"/>
@@ -1955,27 +1957,27 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="50"/>
         <source>Sets the &apos;Developer mode&apos; application option to enabled. Enabling developer mode is recommended while developing scripted modules, as it makes the Reload and Testing section displayed in the module user interface.</source>
-        <translation type="unfinished"></translation>
+        <translation>将“开发者模式”应用程序选项设置为启用。在开发脚本模块时，建议启用开发人员模式，因为它使Reload和Testing部分显示在模块用户界面中。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="90"/>
         <source>Add selected module to &apos;Additional module paths&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>将所选模块添加到“附加模块路径”</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="94"/>
         <source>Add selected modules to &apos;Additional module paths&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>将所选模块添加到“附加模块路径”</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="118"/>
         <source>The following modules can be loaded. Would you like to load them now?</source>
-        <translation type="unfinished"></translation>
+        <translation>可以加载以下模块。您现在要装吗？</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="121"/>
         <source>The following module can be loaded. Would you like to load it now?</source>
-        <translation type="unfinished"></translation>
+        <translation>可以加载以下模块。您想现在装吗？</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/LoadModulesDialog.py" line="122"/>
@@ -1988,7 +1990,7 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="26"/>
         <source>(Unavailable)</source>
-        <translation type="unfinished"></translation>
+        <translation>(不可用)</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="28"/>
@@ -2003,7 +2005,7 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ExtensionWizard/ExtensionWizardLib/SettingsPanel.py" line="37"/>
         <source>Additional template paths for {category}:</source>
-        <translation type="unfinished"></translation>
+        <translation>{category}的附加模板路径：</translation>
     </message>
 </context>
 <context>
@@ -2044,7 +2046,7 @@ NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community.
     <message>
         <location filename="Modules/Scripted/ImportItkSnapLabel/ImportItkSnapLabel.py" line="143"/>
         <source>Syntax error in line {line}</source>
-        <translation type="unfinished"></translation>
+        <translation>行{line}语法错误</translation>
     </message>
 </context>
 <context>
@@ -2105,7 +2107,7 @@ Developed of this module was partially funded by CZI EOSS grant.
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="536"/>
         <source>Failed to query list of components from Weblate ({status_code}:{reason})</source>
-        <translation type="unfinished"></translation>
+        <translation>从Weblate查询组件列表失败（{status_code}:{reason}）</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/LanguageTools/LanguageTools.py" line="577"/>
@@ -3250,7 +3252,19 @@ with a permissive copyright-license (&lt;a href=&quot;https://creativecommons.or
 and is exclusively available for research and teaching. You are not authorized to redistribute or sell it, or
 use it for commercial purposes.&lt;/p&gt;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+&lt;p&gt;This work was was funded in part by Cancer Care Ontario
+and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)&lt;/p&gt;
+
+&lt;p&gt;MRHead, CBCT-MR Head, and CT-MR Brain data sets were donated to 3D Slicer project by the persons visible in the images, to be used without any restrictions.&lt;/p&gt;
+
+&lt;p&gt;CTLiver dataset comes from &lt;a href=&quot;http://medicaldecathlon.com/&quot;&gt;Medical Decathlon project&lt;/a&gt; (imagesTr/liver_100.nii.gz in Task03_Liver collection)
+with a permissive copyright-license (&lt;a href=&quot;https://creativecommons.org/licenses/by-sa/4.0/&quot;&gt;CC-BY-SA 4.0&lt;/a&gt;), allowing for data to be shared, distributed and improved upon.&lt;/p&gt;
+
+&lt;p&gt;CTA abdomen (Panoramix) dataset comes from &lt;a href=&quot;https://www.osirix-viewer.com/resources/dicom-image-library/&quot;&gt;Osirix DICOM image library&lt;/a&gt;
+and is exclusively available for research and teaching. You are not authorized to redistribute or sell it, or
+use it for commercial purposes.&lt;/p&gt;
+</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="113"/>
@@ -3280,32 +3294,32 @@ use it for commercial purposes.&lt;/p&gt;
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="641"/>
         <source>Cache folder {path} is not writable</source>
-        <translation type="unfinished"></translation>
+        <translation>缓存文件夹{path}不可写</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="694"/>
         <source>Download failed (attempt {current} of {total})...</source>
-        <translation type="unfinished"></translation>
+        <translation>下载失败(attempt {current} of {total})...</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="748"/>
         <source>Load failed (attempt {current} of {total}). Unable to delete and try again loading {path}</source>
-        <translation type="unfinished"></translation>
+        <translation>加载失败(attempt {current} of {total}). 无法删除并重试加载{path}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="752"/>
         <source>Load failed (attempt {current} of {total})...</source>
-        <translation type="unfinished"></translation>
+        <translation>加载失败(attempt {current} of {total})...</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="889"/>
         <source>Downloaded {sizeCompleted} ({percentCompleted}% of {sizeTotal})...</source>
-        <translation type="unfinished"></translation>
+        <translation>下载{sizeCompleted} ({percentCompleted}% of {sizeTotal})...</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="906"/>
         <source>Requesting download {name} from {uri} ...</source>
-        <translation type="unfinished"></translation>
+        <translation>请求从{uri}下载{name} ...</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="909"/>
@@ -3315,12 +3329,12 @@ use it for commercial purposes.&lt;/p&gt;
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="911"/>
         <source>Download failed: {errorMessage}</source>
-        <translation type="unfinished"></translation>
+        <translation>下载失败：{errorMessage}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="912"/>
         <source>Failed to download {uri} to {filePath}</source>
-        <translation type="unfinished"></translation>
+        <translation>下载{uri}到{filePath}失败</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="915"/>
@@ -3331,7 +3345,7 @@ use it for commercial purposes.&lt;/p&gt;
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="919"/>
         <source>Checksum verification failed. Computed checksum {currentChecksum} different from expected checksum {expectedChecksum}</source>
-        <translation type="unfinished"></translation>
+        <translation>校验和验证失败。计算的校验和{currentChecksum}与期望的校验和{expectedChecksum}不同</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="924"/>
@@ -3341,22 +3355,22 @@ use it for commercial purposes.&lt;/p&gt;
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="930"/>
         <source>File already exists in cache but checksum is different - re-downloading it.</source>
-        <translation type="unfinished"></translation>
+        <translation>文件已经存在于缓存中，但校验和不同-重新下载它。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="935"/>
         <source>File already exists and checksum is OK - reusing it.</source>
-        <translation type="unfinished"></translation>
+        <translation>文件已经存在并且校验和是OK的-重用它。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="938"/>
         <source>File already exists in cache - reusing it.</source>
-        <translation type="unfinished"></translation>
+        <translation>文件已经存在于缓存中-正在重用它。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="942"/>
         <source>Requesting load {uri}</source>
-        <translation type="unfinished"></translation>
+        <translation>请求加载{uri}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SampleData/SampleData.py" line="946"/>
@@ -3504,7 +3518,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="95"/>
         <source>If checked, all views will be captured. If unchecked then only the selected view will be captured.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果选中，所有视图都将被捕获。如果未选中，则只捕获选定的视图。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="96"/>
@@ -3524,22 +3538,22 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="104"/>
         <source>Start sweep offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>开始扫描偏移量：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="110"/>
         <source>Start slice sweep offset.</source>
-        <translation type="unfinished"></translation>
+        <translation>开始切片扫描偏移量。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="114"/>
         <source>End sweep offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>结束扫描偏移量：</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="120"/>
         <source>End slice sweep offset.</source>
-        <translation type="unfinished"></translation>
+        <translation>结束切片扫描偏移量。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="124"/>
@@ -3549,7 +3563,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="131"/>
         <source>View rotation range, relative to current view orientation.</source>
-        <translation type="unfinished"></translation>
+        <translation>视图旋转范围，相对于当前视图方向。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="135"/>
@@ -3574,7 +3588,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="151"/>
         <source>Items defined by this sequence browser will be replayed.</source>
-        <translation type="unfinished"></translation>
+        <translation>此序列浏览器定义的项将被重放。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="155"/>
@@ -3584,7 +3598,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="159"/>
         <source>First item in the sequence to capture.</source>
-        <translation type="unfinished"></translation>
+        <translation>要捕获的序列中的第一项。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="163"/>
@@ -3594,7 +3608,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="167"/>
         <source>Last item in the sequence to capture.</source>
-        <translation type="unfinished"></translation>
+        <translation>要捕获的序列中的最后一项。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="175"/>
@@ -3609,7 +3623,7 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="181"/>
         <source>Select how captured images will be saved. Video mode requires setting of ffmpeg executable path in Advanced section.</source>
-        <translation type="unfinished"></translation>
+        <translation>选择如何保存捕获的图像。视频模式需要在高级部分设置ffmpeg可执行路径。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="182"/>
@@ -4023,47 +4037,47 @@ and the Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCA
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1377"/>
         <source>Export to lightbox image...</source>
-        <translation type="unfinished"></translation>
+        <translation>导出到灯箱图像…</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1420"/>
         <source>Lighbox image saved to file: {filename}</source>
-        <translation type="unfinished"></translation>
+        <translation>保存到文件的灯箱图像：{filename}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1423"/>
         <source>Export to video...</source>
-        <translation type="unfinished"></translation>
+        <translation>导出为视频…</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1430"/>
         <source>Video creation failed: ffmpeg executable path is not defined</source>
-        <translation type="unfinished"></translation>
+        <translation>视频创建失败：没有定义ffmpeg可执行路径</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1432"/>
         <source>Video creation failed: ffmpeg executable path is invalid: {path}</source>
-        <translation type="unfinished"></translation>
+        <translation>视频创建失败：ffmpeg可执行路径无效：{path}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1445"/>
         <source>Start ffmpeg:</source>
-        <translation type="unfinished"></translation>
+        <translation>ffmpeg开始:</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1452"/>
         <source>ffmpeg error output: {error}</source>
-        <translation type="unfinished"></translation>
+        <translation>Ffmpeg错误输出：{error}</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1453"/>
         <source>ffmpeg returned with error</source>
-        <translation type="unfinished"></translation>
+        <translation>返回错误的Ffmpeg</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/ScreenCapture/ScreenCapture.py" line="1455"/>
         <source>Video export succeeded to file: {path}</source>
-        <translation type="unfinished"></translation>
+        <translation>视频导出成功文件：{path}</translation>
     </message>
 </context>
 <context>
@@ -5069,22 +5083,22 @@ If segments overlap, segment higher in the segments table will have priority. &l
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="188"/>
         <source>Otsu</source>
-        <translation type="unfinished"></translation>
+        <translation>Otsu</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="189"/>
         <source>Huang</source>
-        <translation type="unfinished"></translation>
+        <translation>Huang</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="190"/>
         <source>IsoData</source>
-        <translation type="unfinished"></translation>
+        <translation>IsoData</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="193"/>
         <source>Kittler-Illingworth</source>
-        <translation type="unfinished"></translation>
+        <translation>Kittler-Illingworth</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="198"/>
@@ -5094,17 +5108,17 @@ If segments overlap, segment higher in the segments table will have priority. &l
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="199"/>
         <source>Moments</source>
-        <translation type="unfinished"></translation>
+        <translation>时刻</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="200"/>
         <source>Renyi entropy</source>
-        <translation type="unfinished"></translation>
+        <translation>Renyi熵</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="201"/>
         <source>Shanbhag</source>
-        <translation type="unfinished"></translation>
+        <translation>Shanbhag</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="202"/>
@@ -5114,7 +5128,7 @@ If segments overlap, segment higher in the segments table will have priority. &l
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="203"/>
         <source>Yen</source>
-        <translation type="unfinished"></translation>
+        <translation>Yen</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Segmentations/EditorEffects/Python/SegmentEditorEffects/SegmentEditorThresholdEffect.py" line="204"/>
@@ -5603,7 +5617,7 @@ Supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See https://www
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="370"/>
         <source>Segment</source>
-        <translation type="unfinished"></translation>
+        <translation>分割</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentStatistics/SegmentStatistics.py" line="1013"/>
@@ -6280,7 +6294,7 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
     <message>
         <location filename="Libs/MRML/Core/Testing/vtkMRMLI18NTest1.cxx" line="59"/>
         <source>SomeMessage</source>
-        <translation type="unfinished"></translation>
+        <translation>一些消息</translation>
     </message>
 </context>
 <context>
@@ -6288,12 +6302,12 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
     <message>
         <location filename="Modules/Scripted/SegmentEditor/SubjectHierarchyPlugins/SegmentEditorSubjectHierarchyPlugin.py" line="28"/>
         <source>Segment this...</source>
-        <translation type="unfinished">分割...</translation>
+        <translation>分割...</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/SegmentEditor/SubjectHierarchyPlugins/SegmentEditorSubjectHierarchyPlugin.py" line="106"/>
         <source>_Segmentation</source>
-        <translation type="unfinished">_分割</translation>
+        <translation>_分割</translation>
     </message>
 </context>
 <context>
@@ -6498,7 +6512,7 @@ and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO)
     <message>
         <location filename="Modules/Scripted/DICOM/Resources/UI/DICOM.ui" line="51"/>
         <source>Show DICOM database browser window</source>
-        <translation type="unfinished"></translation>
+        <translation>显示DICOM数据库浏览器窗口</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/DICOM/Resources/UI/DICOM.ui" line="54"/>
@@ -6673,7 +6687,10 @@ Developed by Steve Pieper, Isomics, Inc.,
 partially funded by NIH grant 3P41RR013218-12S1 (NAC) and is part of the National Alliance
 for Medical Image Computing (NA-MIC), funded by the National Institutes of Health through the
 NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
-        <translation type="unfinished"></translation>
+        <translation>由Isomics公司的Steve Pieper开发，
+部分由NIH拨款3P41RR013218-12S1 （NAC）资助，是国家联盟的一部分
+医学图像计算（NA-MIC），由美国国立卫生研究院通过
+美国国立卫生研究院医学研究路线图，资助U54 EB005149。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="89"/>
@@ -6698,27 +6715,27 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="97"/>
         <source>Single Component Extraction</source>
-        <translation type="unfinished"></translation>
+        <translation>Single Component Extraction</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="98"/>
         <source>Extract single component</source>
-        <translation type="unfinished"></translation>
+        <translation>提取单组分</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="257"/>
         <source>Please select Input Vector Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择输入矢量数据</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="259"/>
         <source>Please select Output Scalar Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择输出标量数据</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="261"/>
         <source>Please select a component to extract</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择要提取的组件</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="285"/>
@@ -6728,27 +6745,27 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="321"/>
         <source>no input volume node defined</source>
-        <translation type="unfinished"></translation>
+        <translation>没有定义输入数据节点</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="325"/>
         <source>no output volume node defined</source>
-        <translation type="unfinished"></translation>
+        <translation>没有定义输出数据节点</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="330"/>
         <source>input and output volume is the same. Create a new volume for output to avoid this error.</source>
-        <translation type="unfinished"></translation>
+        <translation>输入和输出数据相同。为输出创建一个新数据以避免此错误。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="348"/>
         <source>component to extract ({componentSelected}) is invalid. Image has only {componentsTotal} components.</source>
-        <translation type="unfinished"></translation>
+        <translation>要提取的组件（{componentSelected}）无效。Image只有{componentsTotal}组件。</translation>
     </message>
     <message>
         <location filename="Modules/Scripted/VectorToScalarVolume/VectorToScalarVolume.py" line="357"/>
         <source>input has only {componentsTotal} components but requires at least 3 components for luminance conversion.</source>
-        <translation type="unfinished"></translation>
+        <translation>input只有{componentsTotal}分量，但需要至少3个分量进行亮度转换。</translation>
     </message>
 </context>
 <context>
@@ -6985,7 +7002,7 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
     <message>
         <location filename="Modules/Loadable/Volumes/Resources/VolumeDisplayPresets_tr.h" line="13"/>
         <source>PET</source>
-        <translation type="unfinished"></translation>
+        <translation>PET</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Volumes/Resources/VolumeDisplayPresets_tr.h" line="14"/>
@@ -6995,7 +7012,7 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
     <message>
         <location filename="Modules/Loadable/Volumes/Resources/VolumeDisplayPresets_tr.h" line="15"/>
         <source>DTI</source>
-        <translation type="unfinished"></translation>
+        <translation>DTI</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Volumes/Resources/VolumeDisplayPresets_tr.h" line="16"/>
@@ -7786,12 +7803,12 @@ NIH Roadmap for Medical Research, Grant U54 EB005149.</source>
     <message>
         <location filename="Modules/Loadable/Markups/Widgets/qMRMLMarkupsCurveSettingsWidget.cxx" line="129"/>
         <source>Spline</source>
-        <translation type="unfinished"></translation>
+        <translation>样条</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Markups/Widgets/qMRMLMarkupsCurveSettingsWidget.cxx" line="133"/>
         <source>Kochanek spline</source>
-        <translation type="unfinished"></translation>
+        <translation>Kochanek样条</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Markups/Widgets/qMRMLMarkupsCurveSettingsWidget.cxx" line="137"/>
@@ -11219,12 +11236,12 @@ Do you wish to proceed with changing source representation?</source>
     <message>
         <location filename="Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1302"/>
         <source>Clip to background</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切到背景</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Widgets/Resources/UI/qMRMLSliceControllerWidget.ui" line="1305"/>
         <source>Control if the layers blending would clip the rendering to the background volume</source>
-        <translation type="unfinished"></translation>
+        <translation>控制图层混合是否会将渲染剪切到背景体积</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Widgets/qMRMLSliceControllerWidget.cxx" line="407"/>
@@ -16815,12 +16832,12 @@ Click OK to wait for them to complete, or choose Ignore to close the Extensions 
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1231"/>
         <source>AI</source>
-        <translation type="unfinished"></translation>
+        <translation>AI</translation>
     </message>
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1246"/>
         <source>Anonymize</source>
-        <translation type="unfinished">Dicom匿名化</translation>
+        <translation>匿名化</translation>
     </message>
     <message>
         <location filename="Base/QTApp/Resources/UI/qSlicerMainWindow.ui" line="1236"/>
@@ -23430,7 +23447,7 @@ Tags: %6</source>
     <message>
         <location filename="Modules/Loadable/Terminologies/Widgets/Resources/UI/qSlicerTerminologyNavigatorWidget.ui" line="376"/>
         <source>Select all</source>
-        <translation type="unfinished"></translation>
+        <translation>全选</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Terminologies/Widgets/Resources/UI/qSlicerTerminologyNavigatorWidget.ui" line="407"/>
@@ -24794,7 +24811,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLColorTableStorageNode.cxx" line="331"/>
         <source>MRML Color Table</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MRML颜色表</translation>
     </message>
 </context>
 <context>
@@ -24865,7 +24882,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsAngleNode.cxx" line="49"/>
         <source>A</source>
-        <translation type="unfinished">A</translation>
+        <translation>A</translation>
     </message>
 </context>
 <context>
@@ -24878,7 +24895,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsClosedCurveNode.cxx" line="60"/>
         <source>CC</source>
-        <translation type="unfinished"></translation>
+        <translation>CC</translation>
     </message>
 </context>
 <context>
@@ -24891,7 +24908,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsCurveNode.cxx" line="81"/>
         <source>OC</source>
-        <translation type="unfinished"></translation>
+        <translation>OC</translation>
     </message>
 </context>
 <context>
@@ -24945,7 +24962,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsLineNode.cxx" line="50"/>
         <source>L</source>
-        <translation type="unfinished"></translation>
+        <translation>L</translation>
     </message>
 </context>
 <context>
@@ -24953,7 +24970,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsNode.cxx" line="541"/>
         <source>M</source>
-        <translation type="unfinished">M</translation>
+        <translation>M</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsNode.cxx" line="551"/>
@@ -24971,7 +24988,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsPlaneNode.cxx" line="57"/>
         <source>P</source>
-        <translation type="unfinished">P</translation>
+        <translation>P</translation>
     </message>
 </context>
 <context>
@@ -24984,7 +25001,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Modules/Loadable/Markups/MRML/vtkMRMLMarkupsROINode.cxx" line="66"/>
         <source>R</source>
-        <translation type="unfinished">R</translation>
+        <translation>R</translation>
     </message>
 </context>
 <context>
@@ -24994,55 +25011,55 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="777"/>
         <source>VTK Polygon Mesh</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>VTK多边形网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="749"/>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="779"/>
         <source>VTK XML Polygon Mesh</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>VTK XML多边形网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="751"/>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="794"/>
         <source>VTK Unstructured Grid</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>VTK非结构化网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="753"/>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="796"/>
         <source>VTK XML Unstructured Grid</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>VTK XML非结构化网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="755"/>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="757"/>
         <source>Movie.BYU Mesh</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Movie.BYU Mesh</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="759"/>
         <source>MetaIO Mesh</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MetaIO网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="761"/>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="785"/>
         <source>Stereolithography Mesh</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Stereolithography网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="763"/>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="787"/>
         <source>Stanford Polygon Mesh</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Stanford多边形网格</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLModelStorageNode.cxx" line="765"/>
@@ -25067,7 +25084,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLProceduralColorStorageNode.cxx" line="233"/>
         <source>MRML Color Function</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MRML颜色函数</translation>
     </message>
 </context>
 <context>
@@ -25089,7 +25106,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLSequenceStorageNode.cxx" line="220"/>
         <source>MRML Sequence Bundle</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MRML序列包</translation>
     </message>
 </context>
 <context>
@@ -25099,7 +25116,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLShaderPropertyStorageNode.cxx" line="497"/>
         <source>MRML Shader Property</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MRML着色属性</translation>
     </message>
 </context>
 <context>
@@ -25109,7 +25126,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLTableSQLiteStorageNode.cxx" line="318"/>
         <source>SQLight database</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>SQLight数据库</translation>
     </message>
 </context>
 <context>
@@ -25121,14 +25138,14 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="245"/>
         <source>Tab-separated values</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>制表符分隔的值</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="232"/>
         <location filename="Libs/MRML/Core/vtkMRMLTableStorageNode.cxx" line="243"/>
         <source>Comma-separated values</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>逗号分隔值</translation>
     </message>
 </context>
 <context>
@@ -25158,7 +25175,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="262"/>
         <location filename="Libs/MRML/Core/vtkMRMLTextStorageNode.cxx" line="276"/>
         <source>Text file (.%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>文本文件（.%1）</translation>
     </message>
 </context>
 <context>
@@ -25176,17 +25193,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="443"/>
         <source>Unable to read DiffusionTensorVolume data from file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>无法从文件“%1”读取DiffusionTensorVolume数据</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="452"/>
         <source>Unable to read ScalarVolume data from file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>无法从文件“%1”读取ScalarVolume数据</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="462"/>
         <source>Not a scalar volume file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>不是标量数据文件：‘%1’</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="505"/>
@@ -25206,22 +25223,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="595"/>
         <source>Spatial vectors will be written to non-NRRD file format (%1). In this format, voxels are saved as regular vectors. If the file is imported again then vector axis directions may be flipped. It is recommended to save volumes that contain spatial vectors in NRRD file format.</source>
-        <translation type="unfinished"></translation>
+        <translation>空间向量将被写入非nrrd文件格式（%1）。在这种格式中，体素被保存为常规向量。如果文件再次导入，则矢量轴方向可能会翻转。建议将包含空间矢量的数据保存为NRRD文件格式。</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="638"/>
         <source>Unable to remove old version of file: &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>无法删除旧版本的文件：“%1”</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="648"/>
         <source>Error renaming file to &apos;%1&apos;, rename returned code %2</source>
-        <translation type="unfinished"></translation>
+        <translation>重命名文件为“%1”错误，重命名返回代码%2</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="740"/>
         <source>VTK file format can only store LPS axis oriented images. Orientation of the saved image may be incorrect. NRRD file format is recommended for storing this image.</source>
-        <translation type="unfinished"></translation>
+        <translation>VTK文件格式只能存储面向LPS轴的图像。保存图像的方向可能不正确。建议使用NRRD文件格式存储此映像。</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="769"/>
@@ -25241,37 +25258,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="869"/>
         <source>Failed to delete directory &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>删除目录“%1”失败</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="876"/>
         <source>Failed to create directory &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>创建目录“%1”失败</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="936"/>
         <source>Failed to write &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>写入“%1”失败</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="951"/>
         <source>Failed to open directory &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>打开目录“%1”失败</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="1065"/>
         <source>The archetype file &apos;%1&apos; wasn&apos;t written out when writing &apos;%2&apos; in &apos;%3&apos;. Only these %4 file(s) have been written: %5. Old name is &apos;%6&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>在“%3”中写入“%2”时，原型文件“%1”未被写入。只有这些%4文件被写入：%5。旧名称是“%6”。</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="1088"/>
         <source>Failed to remove temporary directory &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>删除临时目录“%1”失败</translation>
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="1137"/>
         <source>Displacements are expected to be stored as double or float. Vector values will not be converted from LPS to RAS.</source>
-        <translation type="unfinished"></translation>
+        <translation>位移预计将存储为双精度或浮点数。矢量值不会从LPS转换为RAS。</translation>
     </message>
 </context>
 <context>
@@ -25282,7 +25299,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Modules/Loadable/VolumeRendering/MRML/vtkMRMLVolumePropertyStorageNode.cxx" line="219"/>
         <source>MRML Volume Property</source>
         <extracomment>File format name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>MRML数据属性</translation>
     </message>
 </context>
 <context>
