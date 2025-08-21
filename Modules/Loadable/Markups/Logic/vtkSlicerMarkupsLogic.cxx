@@ -98,7 +98,7 @@
 // STD includes
 #include <cassert>
 #include <list>
-
+// 应该就是标记点的通用基本操作
 //----------------------------------------------------------------------------
 class vtkSlicerMarkupsLogic::vtkInternal
 {
@@ -434,7 +434,7 @@ void vtkSlicerMarkupsLogic::RegisterNodes()
 
   vtkNew<vtkMRMLMarkupsPlaneNode> planeNode;
   vtkNew<vtkSlicerPlaneWidget> planeWidget;
-  this->RegisterMarkupsNode(planeNode, planeWidget);
+  this->RegisterMarkupsNode(planeNode, planeWidget); // 注册平面标记点
   scene->RegisterNodeClass(vtkSmartPointer<vtkMRMLMarkupsPlaneDisplayNode>::New());
   scene->RegisterNodeClass(vtkSmartPointer<vtkMRMLMarkupsPlaneJsonStorageNode>::New());
 
@@ -796,7 +796,7 @@ int vtkSlicerMarkupsLogic::AddControlPoint(double r, double a, double s)
     }
   vtkDebugMacro("AddControlPoint: adding a control point to the list " << listID);
   // add a control point to the active point list
-  return fiducialNode->AddControlPoint(vtkVector3d(r,a,s), std::string());
+  return fiducialNode->AddControlPoint(vtkVector3d(r,a,s), std::string()); // 添加新的控制点
 }
 
 //---------------------------------------------------------------------------
@@ -911,7 +911,7 @@ void vtkSlicerMarkupsLogic::FocusCameraOnNthPointInMarkup(
   // and focus the camera there
   cameraNode->SetFocalPoint(point[0], point[1], point[2]);
 }
-
+// 从文件中导入控制点
 //---------------------------------------------------------------------------
 char* vtkSlicerMarkupsLogic::LoadMarkups(const char* fileName, const char* nodeName/*=nullptr*/, vtkMRMLMessageCollection* userMessages/*=nullptr*/)
 {
@@ -1580,7 +1580,7 @@ void vtkSlicerMarkupsLogic::ConvertAnnotationLinesROIsToMarkups(vtkStringArray* 
       vtkSmartPointer<vtkMRMLMarkupsNode> markupsNode;
       vtkSmartPointer<vtkMRMLAnnotationPointDisplayNode> annotationPointDisplayNode;
       vtkSmartPointer<vtkMRMLAnnotationLineDisplayNode> annotationLineDisplayNode;
-      if (vtkMRMLAnnotationRulerNode::SafeDownCast(annotationNode))
+      if (vtkMRMLAnnotationRulerNode::SafeDownCast(annotationNode)) // 判断是否是vtkMRMLAnnotationRulerNode结点
         {
         vtkMRMLAnnotationRulerNode* annotationRulerNode = vtkMRMLAnnotationRulerNode::SafeDownCast(annotationNode);
         markupsNode = vtkSmartPointer<vtkMRMLMarkupsLineNode>::Take(

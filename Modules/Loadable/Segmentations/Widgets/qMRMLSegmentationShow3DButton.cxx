@@ -85,9 +85,9 @@ void qMRMLSegmentationShow3DButtonPrivate::init()
   this->SurfaceSmoothingSlider = new ctkSliderWidget(surfaceSmoothingFactorMenu);
   this->SurfaceSmoothingSlider->setToolTip(
     qMRMLSegmentationShow3DButton::tr("Higher value means stronger smoothing during closed surface representation conversion."));
-  this->SurfaceSmoothingSlider->setDecimals(2);
-  this->SurfaceSmoothingSlider->setRange(0.0, 1.0);
-  this->SurfaceSmoothingSlider->setSingleStep(0.1);
+  this->SurfaceSmoothingSlider->setDecimals(4); // 
+  this->SurfaceSmoothingSlider->setRange(0.000, 1.000);
+  this->SurfaceSmoothingSlider->setSingleStep(0.001);
   this->SurfaceSmoothingSlider->setValue(0.5);
   this->SurfaceSmoothingSlider->setTracking(false);
   QObject::connect(this->SurfaceSmoothingSlider, SIGNAL(valueChanged(double)),

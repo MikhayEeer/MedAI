@@ -810,8 +810,8 @@ bool qSlicerSegmentEditorScissorsEffectPrivate::updateBrushModel(qMRMLWidget* vi
     {
     return false;
     }
-
-  // Skirt
+  
+  // Skirt 挡板
   vtkNew<vtkCellArray> closedSurfacePolys;
   vtkNew<vtkCellArray> closedSurfaceStrips;
   closedSurfaceStrips->InsertNextCell(numberOfPoints * 2 + 2);
@@ -821,7 +821,7 @@ bool qSlicerSegmentEditorScissorsEffectPrivate::updateBrushModel(qMRMLWidget* vi
     }
   closedSurfaceStrips->InsertCellPoint(0);
   closedSurfaceStrips->InsertCellPoint(1);
-  // Front cap
+  // Front cap 前盖
   closedSurfacePolys->InsertNextCell(numberOfPoints);
   for (int i = 0; i < numberOfPoints; i++)
     {

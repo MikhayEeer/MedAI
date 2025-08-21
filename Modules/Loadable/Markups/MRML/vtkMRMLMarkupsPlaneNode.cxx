@@ -879,7 +879,7 @@ void vtkMRMLMarkupsPlaneNode::ProcessMRMLEvents(vtkObject* caller, unsigned long
     {
     if (!this->IsUpdatingControlPointsFromPlane && !this->IsUpdatingPlaneFromControlPoints)
       {
-      this->UpdatePlaneFromControlPoints();
+      this->UpdatePlaneFromControlPoints(); // 处理事件
       }
     }
   else if (event == vtkCommand::ModifiedEvent && caller == this->BaseToNodeMatrix.GetPointer())
@@ -1007,7 +1007,7 @@ void vtkMRMLMarkupsPlaneNode::SetSizeWorld(double sizeX_World, double sizeY_Worl
 }
 
 //----------------------------------------------------------------------------
-void vtkMRMLMarkupsPlaneNode::SetPlaneBounds(double x0, double x1, double y0, double y1)
+void vtkMRMLMarkupsPlaneNode::SetPlaneBounds(double x0, double x1, double y0, double y1) // 设置面的边界
 {
   if (this->PlaneBounds[0] == x0 && this->PlaneBounds[1] == x1
     && this->PlaneBounds[2] == y0 && this->PlaneBounds[3] == y1)
@@ -1063,7 +1063,7 @@ void vtkMRMLMarkupsPlaneNode::UpdateInteractionHandleToWorldMatrix()
     }
   this->InteractionHandleToWorldMatrix->DeepCopy(handleToWorldMatrix);
 }
-
+// 计算世界坐标系中一个点到平面的最近点，并返回两者之间的距离
 //---------------------------------------------------------------------------
 double vtkMRMLMarkupsPlaneNode::GetClosestPointOnPlaneWorld(const double posWorld[3], double closestPosWorld[3], bool infinitePlane/*=true*/)
 {
@@ -1300,7 +1300,7 @@ void vtkMRMLMarkupsPlaneNode::CalculatePlaneBounds(vtkPoints* cornerPoints, doub
     }
   box.GetBounds(bounds);
 }
-
+// 更新平面
 //----------------------------------------------------------------------------
 void vtkMRMLMarkupsPlaneNode::UpdatePlaneFromControlPoints()
 {

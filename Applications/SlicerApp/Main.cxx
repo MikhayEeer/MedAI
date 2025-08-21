@@ -32,50 +32,53 @@
 namespace
 {
 
-//----------------------------------------------------------------------------
-int SlicerAppMain(int argc, char* argv[])
-{
-  typedef qSlicerAppMainWindow SlicerMainWindowType;
-  typedef qSlicerStyle SlicerAppStyle;
+  //----------------------------------------------------------------------------
+  int SlicerAppMain(int argc, char *argv[])
+  {
 
-  qSlicerApplicationHelper::preInitializeApplication(argv[0], new SlicerAppStyle);
+    // vtkGenericWarningMacro("start go go"); // 输出警告信息
 
-  qSlicerApplication app(argc, argv);
-  if (app.returnCode() != -1)
+    typedef qSlicerAppMainWindow SlicerMainWindowType;
+    typedef qSlicerStyle SlicerAppStyle;
+
+    qSlicerApplicationHelper::preInitializeApplication(argv[0], new SlicerAppStyle);
+
+    qSlicerApplication app(argc, argv);
+    if (app.returnCode() != -1)
     {
-    return app.returnCode();
+      return app.returnCode();
     }
 
-/*  QTranslator* trans = new QTranslator;
-  /////////////////////////////////////modify to your own path////////////////////////////////////////////////////
-  trans->load("F:\\Slicer\\SlicerR-build714\\Slicer-build\\medai_zh_Hans.qm");
-  //trans->load   cmake binary dir
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  app.installTranslator(trans);*/
-  
-  LoginForm* _loginForm = new LoginForm;
-  //QScopedPointer<LoginForm> _loginForm = new LoginForm();
-  _loginForm->setWindowModality(Qt::ApplicationModal);
-  _loginForm->exec();
+    /*  QTranslator* trans = new QTranslator;
+      /////////////////////////////////////modify to your own path////////////////////////////////////////////////////
+      trans->load("F:\\Slicer\\SlicerR-build714\\Slicer-build\\medai_zh_Hans.qm");
+      //trans->load   cmake binary dir
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      app.installTranslator(trans);*/
 
-  QScopedPointer<SlicerMainWindowType> window;
-  QScopedPointer<QSplashScreen> splashScreen;
+    // LoginForm* _loginForm = new LoginForm;
+    // //QScopedPointer<LoginForm> _loginForm = new LoginForm();
+    // _loginForm->setWindowModality(Qt::ApplicationModal);
+    // _loginForm->exec();
 
-  int exitCode = qSlicerApplicationHelper::postInitializeApplication<SlicerMainWindowType>(
+    QScopedPointer<SlicerMainWindowType> window;
+    QScopedPointer<QSplashScreen> splashScreen;
+
+    int exitCode = qSlicerApplicationHelper::postInitializeApplication<SlicerMainWindowType>(
         app, splashScreen, window);
-  if (exitCode != 0)
+    if (exitCode != 0)
     {
-    return exitCode;
+      return exitCode;
     }
 
-  if (!window.isNull())
+    if (!window.isNull())
     {
-    QString windowTitle = QString("%1 %2").arg(window->windowTitle()).arg(Slicer_VERSION_FULL);
-    window->setWindowTitle(windowTitle);
+      QString windowTitle = QString("%1 %2").arg(window->windowTitle()).arg(Slicer_VERSION_FULL);
+      window->setWindowTitle(windowTitle);
     }
 
-  return app.exec();
-}
+    return app.exec();
+  }
 
 } // end of anonymous namespace
 

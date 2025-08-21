@@ -8,6 +8,7 @@
 #include <vtkCubeSource.h>
 #include <vtkDataSetSurfaceFilter.h>
 #include <vtkDelaunay3D.h>
+#include <vtkDelaunay2D.h>
 #include <vtkGlyph3D.h>
 #include <vtkLinearSubdivisionFilter.h>
 #include <vtkLineSource.h>
@@ -18,14 +19,16 @@
 #include <vtkTransform.h>
 #include <vtkTransformFilter.h>
 #include <vtkUnstructuredGrid.h>
+#include <iostream>
 
 //------------------------------------------------------------------------------
 // constants within this file
 static const double COMPARE_TO_ZERO_TOLERANCE = 0.0001;
-static const double MINIMUM_SURFACE_EXTRUSION_AMOUNT = 0.01; // if a surface is flat/linear, give it at least this much depth
+// static const double MINIMUM_SURFACE_EXTRUSION_AMOUNT = 0.01; // if a surface is flat/linear, give it at least this much depth
+static const double MINIMUM_SURFACE_EXTRUSION_AMOUNT = 0.0; // if a surface is flat/linear, give it at least this much depth
 
 //------------------------------------------------------------------------------
-vtkStandardNewMacro( vtkSlicerMarkupsToModelClosedSurfaceGeneration );
+vtkStandardNewMacro(vtkSlicerMarkupsToModelClosedSurfaceGeneration);
 
 //------------------------------------------------------------------------------
 vtkSlicerMarkupsToModelClosedSurfaceGeneration::vtkSlicerMarkupsToModelClosedSurfaceGeneration()
@@ -38,179 +41,120 @@ vtkSlicerMarkupsToModelClosedSurfaceGeneration::~vtkSlicerMarkupsToModelClosedSu
 }
 
 //------------------------------------------------------------------------------
-bool vtkSlicerMarkupsToModelClosedSurfaceGeneration::GenerateClosedSurfaceModel(vtkPoints* inputPoints, vtkPolyData* outputPolyData,
-  double delaunayAlpha, bool smoothing, bool forceConvex)
+bool vtkSlicerMarkupsToModelClosedSurfaceGeneration::GenerateClosedSurfaceModel(vtkPoints *inputPoints, vtkPolyData *outputPolyData,
+                                                                                double delaunayAlpha, bool smoothing, bool forceConvex)
 {
   if (inputPoints == NULL)
   {
-    vtkGenericWarningMacro("Input points are null. No model generated.");
-    return false;
+    vtkGenericWarningMacro("Input points are null. No model generated."); // 如果inputPoints为空，输出警告信息
+    return false;                                                         // 返回false表示失败
   }
 
   if (outputPolyData == NULL)
   {
-    vtkGenericWarningMacro("Output poly data is null. No model generated.");
-    return false;
+    vtkGenericWarningMacro("Output poly data is null. No model generated."); // 如果outputPolyData为空，输出警告信息
+    return false;                                                            // 返回false表示失败
   }
 
-  int numberOfPoints = inputPoints->GetNumberOfPoints();
+  int numberOfPoints = inputPoints->GetNumberOfPoints(); // 获取输入点的数量
   if (numberOfPoints == 0)
   {
-    // No markup points, the output should be empty
-    return true;
+    // No markup points, the output should be empty // 如果没有标记点，输出应为空
+    return true; // 返回true表示成功但没有生成模型
   }
 
-  vtkSmartPointer< vtkCellArray > inputCellArray = vtkSmartPointer< vtkCellArray >::New();
-  inputCellArray->InsertNextCell(numberOfPoints);
+  vtkSmartPointer<vtkCellArray> inputCellArray = vtkSmartPointer<vtkCellArray>::New();
+  inputCellArray->InsertNextCell(numberOfPoints); // 插入一个包含所有点的单元
   for (int i = 0; i < numberOfPoints; i++)
   {
-    inputCellArray->InsertCellPoint(i);
+    inputCellArray->InsertCellPoint(i); // 将每个点插入单元中
   }
 
-  vtkSmartPointer< vtkPolyData > inputPolyData = vtkSmartPointer< vtkPolyData >::New();
-  inputPolyData->SetLines(inputCellArray);
-  inputPolyData->SetPoints(inputPoints);
+  vtkSmartPointer<vtkPolyData> inputPolyData = vtkSmartPointer<vtkPolyData>::New(); // 创建一个新的vtkPolyData对象
+  inputPolyData->SetLines(inputCellArray);                                          // 设置线条数据
+  inputPolyData->SetPoints(inputPoints);                                            // 设置线条数据
 
-  vtkSmartPointer< vtkDelaunay3D > delaunay = vtkSmartPointer< vtkDelaunay3D >::New();
+  // 使用 vtkDelaunay2D 进行二维三角化
+  vtkSmartPointer<vtkDelaunay2D> delaunay = vtkSmartPointer<vtkDelaunay2D>::New();
+  delaunay->SetInputData(inputPolyData);
   delaunay->SetAlpha(delaunayAlpha);
-  delaunay->AlphaTrisOff();
-  delaunay->AlphaLinesOff();
-  delaunay->AlphaVertsOff();
+  delaunay->Update();
+  // vtkSmartPointer< vtkDelaunay3D > delaunay = vtkSmartPointer< vtkDelaunay3D >::New();// 创建一个新的Delaunay3D对象
+  // delaunay->SetAlpha(delaunayAlpha);// 设置alpha值
+  // delaunay->AlphaTrisOff();// 关闭alpha三角形
+  // delaunay->AlphaLinesOff();// 关闭alpha线条
+  // delaunay->AlphaVertsOff();// 关闭alpha顶点
 
-  vtkSmartPointer< vtkMatrix4x4 > boundingAxesToRasTransformMatrix = vtkSmartPointer< vtkMatrix4x4 >::New();
-  ComputeTransformMatrixFromBoundingAxes(inputPoints, boundingAxesToRasTransformMatrix);
+  vtkSmartPointer<vtkMatrix4x4> boundingAxesToRasTransformMatrix = vtkSmartPointer<vtkMatrix4x4>::New(); // 创建一个新的4x4矩阵
+  ComputeTransformMatrixFromBoundingAxes(inputPoints, boundingAxesToRasTransformMatrix);                 // 计算从边界轴到RAS的变换矩阵
 
-  vtkSmartPointer< vtkMatrix4x4 > rasToBoundingAxesTransformMatrix = vtkSmartPointer< vtkMatrix4x4 >::New();
-  vtkMatrix4x4::Invert(boundingAxesToRasTransformMatrix, rasToBoundingAxesTransformMatrix);
+  vtkSmartPointer<vtkMatrix4x4> rasToBoundingAxesTransformMatrix = vtkSmartPointer<vtkMatrix4x4>::New(); // 创建一个新的4x4矩阵
+  vtkMatrix4x4::Invert(boundingAxesToRasTransformMatrix, rasToBoundingAxesTransformMatrix);              // 计算变换矩阵的逆矩阵
 
-  double smallestBoundingExtentRanges[3] = { 0.0, 0.0, 0.0 }; // temporary values
-  ComputeTransformedExtentRanges(inputPoints, rasToBoundingAxesTransformMatrix, smallestBoundingExtentRanges);
+  double smallestBoundingExtentRanges[3] = {0.0, 0.0, 0.0};                                                    // temporary values // 初始化一个包含三个元素的数组，用于存储最小边界范围
+  ComputeTransformedExtentRanges(inputPoints, rasToBoundingAxesTransformMatrix, smallestBoundingExtentRanges); // 计算变换后的范围
 
-  PointArrangement pointArrangement = ComputePointArrangement(smallestBoundingExtentRanges);
+  PointArrangement pointArrangement = ComputePointArrangement(smallestBoundingExtentRanges); // 计算点排列类型
 
-  switch (pointArrangement)
+  switch (pointArrangement) // 根据点排列类型选择处理方式
   {
-    case POINT_ARRANGEMENT_SINGULAR:
-    {
-      vtkSmartPointer<vtkCubeSource> cubeSource = vtkSmartPointer<vtkCubeSource>::New();
-      // there is only one point, we cannot compute extent or extrusion from this.
-      double extrusionMagnitude = MINIMUM_SURFACE_EXTRUSION_AMOUNT;
-      if ( numberOfPoints > 1 )
-      {
-        vtkGenericWarningMacro( "There is more than one input point, but they form a singularity. " <<
-                                "Giving depth of " << MINIMUM_SURFACE_EXTRUSION_AMOUNT << "." );
-      }
-      cubeSource->SetBounds(-extrusionMagnitude, extrusionMagnitude,
-        -extrusionMagnitude, extrusionMagnitude,
-        -extrusionMagnitude, extrusionMagnitude);
-
-      vtkSmartPointer<vtkGlyph3D> glyph = vtkSmartPointer<vtkGlyph3D>::New();
-      glyph->SetSourceConnection(cubeSource->GetOutputPort());
-      glyph->SetInputData(inputPolyData);
-      glyph->Update();
-
-      delaunay->SetInputConnection(glyph->GetOutputPort());
-
-      break;
-    }
-    case POINT_ARRANGEMENT_LINEAR:
-    {
-      // draw a "square" around the line (make it a rectangular prism)
-      vtkSmartPointer<vtkRegularPolygonSource> squareSource = vtkSmartPointer<vtkRegularPolygonSource>::New();
-      squareSource->SetCenter(0.0, 0.0, 0.0);
-      double extrusionMagnitude = ComputeSurfaceExtrusionAmount(smallestBoundingExtentRanges); // need to give some depth
-      squareSource->SetRadius(extrusionMagnitude);
-      squareSource->SetNumberOfSides(4);
-      double lineAxis[3] = { 0.0, 0.0, 0.0 }; // temporary values
-      const int LINE_AXIS_INDEX = 0; // The largest (and only meaningful) axis is in the 0th column
-      // the bounding axes are stored in the columns of transformFromBoundingAxes
-      GetNthColumnInMatrix(boundingAxesToRasTransformMatrix, LINE_AXIS_INDEX, lineAxis);
-      squareSource->SetNormal(lineAxis);
-
-      vtkSmartPointer<vtkGlyph3D> glyph = vtkSmartPointer<vtkGlyph3D>::New();
-      glyph->SetSourceConnection(squareSource->GetOutputPort());
-      glyph->SetInputData(inputPolyData);
-      glyph->Update();
-
-      delaunay->SetInputConnection(glyph->GetOutputPort());
-
-      break;
-    }
-    case POINT_ARRANGEMENT_PLANAR:
-    {
-      // extrude additional points on either side of the plane
-      vtkSmartPointer<vtkLineSource> lineSource = vtkSmartPointer<vtkLineSource>::New();
-      double planeNormal[3] = { 0.0, 0.0, 0.0 }; // temporary values
-      const int PLANE_NORMAL_INDEX = 2; // The plane normal has the smallest variation, and is stored in the last column
-      // the bounding axes are stored in the columns of transformFromBoundingAxes
-      GetNthColumnInMatrix(boundingAxesToRasTransformMatrix, PLANE_NORMAL_INDEX, planeNormal);
-      double extrusionMagnitude = ComputeSurfaceExtrusionAmount(smallestBoundingExtentRanges); // need to give some depth
-      double point1[3] = { planeNormal[0], planeNormal[1], planeNormal[2] };
-      vtkMath::MultiplyScalar(point1, extrusionMagnitude);
-      lineSource->SetPoint1(point1);
-      double point2[3] = { planeNormal[0], planeNormal[1], planeNormal[2] };
-      vtkMath::MultiplyScalar(point2, -extrusionMagnitude);
-      lineSource->SetPoint2(point2);
-
-      vtkSmartPointer<vtkGlyph3D> glyph = vtkSmartPointer<vtkGlyph3D>::New();
-      glyph->SetSourceConnection(lineSource->GetOutputPort());
-      glyph->SetInputData(inputPolyData);
-      glyph->Update();
-
-      delaunay->SetInputConnection(glyph->GetOutputPort());
-
-      break;
-    }
-    case POINT_ARRANGEMENT_NONPLANAR:
-    {
-      delaunay->SetInputData(inputPolyData);
-      break;
-    }
-    default: // unsupported or invalid
-    {
-      vtkGenericWarningMacro("Unsupported pointArrangementType detected: " << pointArrangement << ". Aborting closed surface generation.");
-      return false;
-    }
+  case POINT_ARRANGEMENT_NONPLANAR: // 非平面排列情况--- 其他的都是无用的代码
+  {
+    delaunay->SetInputData(inputPolyData); // 设置Delaunay的输入数据
+    break;
+  }
+  default: // unsupported or invalid // 不支持或无效的排列情况
+  {
+    vtkGenericWarningMacro("Unsupported pointArrangementType detected: " << pointArrangement << ". Aborting closed surface generation.");
+    return false; // 返回false表示失败
+  }
   }
 
-  vtkSmartPointer< vtkDataSetSurfaceFilter > surfaceFilter = vtkSmartPointer< vtkDataSetSurfaceFilter >::New();
-  surfaceFilter->SetInputConnection(delaunay->GetOutputPort());
-  surfaceFilter->Update();
+  vtkSmartPointer<vtkDataSetSurfaceFilter> surfaceFilter = vtkSmartPointer<vtkDataSetSurfaceFilter>::New(); // 创建一个新的DataSetSurfaceFilter对象
+  surfaceFilter->SetInputConnection(delaunay->GetOutputPort());                                             // 设置输入连接
+  surfaceFilter->Update();                                                                                  // 更新数据
 
-  vtkSmartPointer<vtkPolyDataNormals> normals = vtkSmartPointer<vtkPolyDataNormals>::New();
-  normals->SetFeatureAngle(100); // TODO: This needs some justification, or set as an input parameter
+  vtkSmartPointer<vtkPolyDataNormals> normals = vtkSmartPointer<vtkPolyDataNormals>::New(); // 创建一个新的PolyDataNormals对象
+  // normals->SetFeatureAngle(0); //  原来是100 TODO: This needs some justification, or set as an input parameter // 设置特征角
+  normals->SetFeatureAngle(180); // 设置特征角为180度以确保法线计算不会闭合曲面
 
-  if (smoothing && pointArrangement == POINT_ARRANGEMENT_NONPLANAR)
-  {
-    vtkSmartPointer< vtkButterflySubdivisionFilter > subdivisionFilter = vtkSmartPointer< vtkButterflySubdivisionFilter >::New();
-    subdivisionFilter->SetInputConnection(surfaceFilter->GetOutputPort());
-    subdivisionFilter->SetNumberOfSubdivisions(3);
-    subdivisionFilter->Update();
-    if (forceConvex)
-    {
-      vtkSmartPointer< vtkDelaunay3D > convexHull = vtkSmartPointer< vtkDelaunay3D >::New();
-      convexHull->SetInputConnection(subdivisionFilter->GetOutputPort());
-      convexHull->Update();
-      vtkSmartPointer< vtkDataSetSurfaceFilter > surfaceFilter = vtkSmartPointer< vtkDataSetSurfaceFilter >::New();
-      surfaceFilter->SetInputData(convexHull->GetOutput());
-      surfaceFilter->Update();
-      normals->SetInputConnection(surfaceFilter->GetOutputPort());
-    }
-    else
-    {
-      normals->SetInputConnection(subdivisionFilter->GetOutputPort());
-    }
+  vtkGenericWarningMacro("1.1smoothing:" << smoothing << ",  forceConvex:" << forceConvex);
+
+  if (smoothing) // 如果需要平滑处理并且点排列类型为非平面
+  {              // 创建一个新的ButterflySubdivisionFilter对象
+    vtkSmartPointer<vtkButterflySubdivisionFilter> subdivisionFilter = vtkSmartPointer<vtkButterflySubdivisionFilter>::New();
+    subdivisionFilter->SetInputConnection(surfaceFilter->GetOutputPort()); // 设置输入连接
+    subdivisionFilter->SetNumberOfSubdivisions(3);                         // 设置细分次数
+    subdivisionFilter->Update();                                           // 更新数据，会更新surfaceFilter的信息
+                                                                           // if (forceConvex)                                                       // 如果需要强制凸性
+                                                                           // {
+    // vtkSmartPointer<vtkDelaunay3D> convexHull = vtkSmartPointer<vtkDelaunay3D>::New();                        // 创建一个新的Delaunay3D对象
+    // convexHull->SetInputConnection(subdivisionFilter->GetOutputPort());                                       // 设置输入连接
+    // convexHull->Update();                                                                                     // 更新数据
+    // vtkSmartPointer<vtkDataSetSurfaceFilter> surfaceFilter = vtkSmartPointer<vtkDataSetSurfaceFilter>::New(); // 创建一个新的DataSetSurfaceFilter对象
+    // surfaceFilter->SetInputData(convexHull->GetOutput());                                                     // 设置输入数据
+    // surfaceFilter->Update();
+    // 更新数据
+    // normals->SetInputConnection(surfaceFilter->GetOutputPort());
+    normals->SetInputConnection(subdivisionFilter->GetOutputPort());
+
+    // 设置法线计算的输入连接
+    // }
+    // else
+    // {
+    //   normals->SetInputConnection(subdivisionFilter->GetOutputPort()); // 设置法线计算的输入连接
+    // }
   }
   else
   {
-    vtkNew<vtkLinearSubdivisionFilter> linearSubdivision;
-    linearSubdivision->SetInputConnection(surfaceFilter->GetOutputPort());
-    normals->SetInputConnection(linearSubdivision->GetOutputPort());
+    vtkNew<vtkLinearSubdivisionFilter> linearSubdivision;                  // 创建一个新的LinearSubdivisionFilter对象
+    linearSubdivision->SetInputConnection(surfaceFilter->GetOutputPort()); // 设置输入连接
+    normals->SetInputConnection(linearSubdivision->GetOutputPort());       // 设置法线计算的输入连接
   }
-  normals->Update();
+  normals->Update(); // 更新数据
 
-  outputPolyData->DeepCopy(normals->GetOutput());
-  return true;
+  outputPolyData->DeepCopy(normals->GetOutput()); // 深拷贝结果到输出数据
+  return true;                                    // 返回true表示成功
 }
 
 //------------------------------------------------------------------------------
@@ -224,7 +168,7 @@ bool vtkSlicerMarkupsToModelClosedSurfaceGeneration::GenerateClosedSurfaceModel(
 // Neither of these limitations will prevent the overall logic from functioning
 // correctly, but it is worth keeping in mind, and worth changing should a need
 // arise
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformMatrixFromBoundingAxes(vtkPoints* points, vtkMatrix4x4* boundingAxesToRasTransformMatrix)
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformMatrixFromBoundingAxes(vtkPoints *points, vtkMatrix4x4 *boundingAxesToRasTransformMatrix)
 {
   if (points == NULL)
   {
@@ -243,11 +187,11 @@ void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformMatrixFromB
 
   // Compute the plane using the smallest bounding box that can have arbitrary axes
   vtkSmartPointer<vtkOBBTree> obbTree = vtkSmartPointer<vtkOBBTree>::New();
-  double cornerOBBOrigin[3] = { 0.0, 0.0, 0.0 }; // unused
-  double variationMaximumOBBAxis[3] = { 0.0, 0.0, 0.0 };
-  double variationMediumOBBAxis[3] = { 0.0, 0.0, 0.0 };
-  double variationMinimumOBBAxis[3] = { 0.0, 0.0, 0.0 };
-  double relativeAxisSizes[3] = { 0.0, 0.0, 0.0 }; // unused, the values represented herein are unclear
+  double cornerOBBOrigin[3] = {0.0, 0.0, 0.0}; // unused
+  double variationMaximumOBBAxis[3] = {0.0, 0.0, 0.0};
+  double variationMediumOBBAxis[3] = {0.0, 0.0, 0.0};
+  double variationMinimumOBBAxis[3] = {0.0, 0.0, 0.0};
+  double relativeAxisSizes[3] = {0.0, 0.0, 0.0}; // unused, the values represented herein are unclear
   obbTree->ComputeOBB(points, cornerOBBOrigin, variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis, relativeAxisSizes);
 
   // now to store the desired results in the appropriate axis of the output matrix.
@@ -340,7 +284,7 @@ vtkSlicerMarkupsToModelClosedSurfaceGeneration::PointArrangement vtkSlicerMarkup
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformedExtentRanges(vtkPoints* points, vtkMatrix4x4* transformMatrix, double outputExtentRanges[3])
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformedExtentRanges(vtkPoints *points, vtkMatrix4x4 *transformMatrix, double outputExtentRanges[3])
 {
   if (points == NULL)
   {
@@ -360,23 +304,23 @@ void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformedExtentRan
     return;
   }
 
-  vtkSmartPointer< vtkTransform > transform = vtkSmartPointer< vtkTransform >::New();
+  vtkSmartPointer<vtkTransform> transform = vtkSmartPointer<vtkTransform>::New();
   transform->SetMatrix(transformMatrix);
   transform->Update();
 
   // can't transform points directly, so need to store in a container
-  vtkSmartPointer< vtkPolyData > polyDataWithPoints = vtkSmartPointer< vtkPolyData >::New();
+  vtkSmartPointer<vtkPolyData> polyDataWithPoints = vtkSmartPointer<vtkPolyData>::New();
   polyDataWithPoints->SetPoints(points);
 
-  vtkSmartPointer< vtkTransformFilter > transformFilter = vtkSmartPointer< vtkTransformFilter >::New();
+  vtkSmartPointer<vtkTransformFilter> transformFilter = vtkSmartPointer<vtkTransformFilter>::New();
   transformFilter->SetTransform(transform);
   transformFilter->SetInputData(polyDataWithPoints);
   transformFilter->Update();
 
   // the extent can be extracted from the output points object (poly data bounds does not work)
-  vtkPoints* transformedPoints = transformFilter->GetPolyDataOutput()->GetPoints();
+  vtkPoints *transformedPoints = transformFilter->GetPolyDataOutput()->GetPoints();
   transformedPoints->ComputeBounds();
-  double* extents = transformedPoints->GetBounds(); // { xmin, xmax, ymin, ymax, zmin, zmax }
+  double *extents = transformedPoints->GetBounds(); // { xmin, xmax, ymin, ymax, zmin, zmax }
 
   for (int i = 0; i < 3; i++)
   {
@@ -404,15 +348,15 @@ double vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeSurfaceExtrusionAm
   if (surfaceExtrusionAmount < MINIMUM_SURFACE_EXTRUSION_AMOUNT)
   {
     vtkGenericWarningMacro("Surface extrusion amount smaller than " << MINIMUM_SURFACE_EXTRUSION_AMOUNT << " : " << surfaceExtrusionAmount << ". "
-      << "Consider checking the points for singularity. Setting surface extrusion amount to default "
-      << MINIMUM_SURFACE_EXTRUSION_AMOUNT << ".");
+                                                                    << "Consider checking the points for singularity. Setting surface extrusion amount to default "
+                                                                    << MINIMUM_SURFACE_EXTRUSION_AMOUNT << ".");
     surfaceExtrusionAmount = MINIMUM_SURFACE_EXTRUSION_AMOUNT;
   }
   return surfaceExtrusionAmount;
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::SetNthColumnInMatrix(vtkMatrix4x4* matrix, int n, const double axis[3])
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::SetNthColumnInMatrix(vtkMatrix4x4 *matrix, int n, const double axis[3])
 {
   if (matrix == NULL)
   {
@@ -438,7 +382,7 @@ void vtkSlicerMarkupsToModelClosedSurfaceGeneration::SetNthColumnInMatrix(vtkMat
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::GetNthColumnInMatrix(vtkMatrix4x4* matrix, int n, double outputAxis[3])
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::GetNthColumnInMatrix(vtkMatrix4x4 *matrix, int n, double outputAxis[3])
 {
   if (matrix == NULL)
   {
@@ -464,7 +408,7 @@ void vtkSlicerMarkupsToModelClosedSurfaceGeneration::GetNthColumnInMatrix(vtkMat
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::PrintSelf( ostream &os, vtkIndent indent )
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::PrintSelf(ostream &os, vtkIndent indent)
 {
-  Superclass::PrintSelf( os, indent );
+  Superclass::PrintSelf(os, indent);
 }
