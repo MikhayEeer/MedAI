@@ -33,46 +33,53 @@
 namespace
 {
 
-//----------------------------------------------------------------------------
-int SlicerAppMain(int argc, char* argv[])
-{
-  typedef qSlicerAppMainWindow SlicerMainWindowType;
-  typedef qSlicerStyle SlicerAppStyle;
-
-  qSlicerApplicationHelper::preInitializeApplication(argv[0], new SlicerAppStyle);
-
-  qSlicerApplication app(argc, argv);
-  if (app.returnCode() != -1)
+  //----------------------------------------------------------------------------
+  int SlicerAppMain(int argc, char *argv[])
   {
-    return app.returnCode();
-  }
+    // vtkGenericWarningMacro("start go go"); // 输出警告信息
 
-  LoginForm* _loginForm = new LoginForm;
+    typedef qSlicerAppMainWindow SlicerMainWindowType;
+    typedef qSlicerStyle SlicerAppStyle;
 
-  _loginForm->setWindowModality(Qt::ApplicationModal);
-  _loginForm->exec();
+    qSlicerApplicationHelper::preInitializeApplication(argv[0], new SlicerAppStyle);
 
-  QScopedPointer<SlicerMainWindowType> window;
-  QScopedPointer<QSplashScreen> splashScreen;
+    qSlicerApplication app(argc, argv);
+    if (app.returnCode() != -1)
+    {
+      return app.returnCode();
+    }
 
-  app.setURIArgumentHandlingEnabled(true);
+    LoginForm* _loginForm = new LoginForm;
+    _loginForm->setWindowModality(Qt::ApplicationModal);
+    _loginForm->exec();
 
-  int exitCode = qSlicerApplicationHelper::postInitializeApplication<SlicerMainWindowType>(
+    /*  QTranslator* trans = new QTranslator;
+      /////////////////////////////////////modify to your own path////////////////////////////////////////////////////
+      trans->load("F:\\Slicer\\SlicerR-build714\\Slicer-build\\medai_zh_Hans.qm");
+      //trans->load   cmake binary dir
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      app.installTranslator(trans);*/
+
+    app.setURIArgumentHandlingEnabled(true);
+
+    QScopedPointer<SlicerMainWindowType> window;
+    QScopedPointer<QSplashScreen> splashScreen;
+
+    int exitCode = qSlicerApplicationHelper::postInitializeApplication<SlicerMainWindowType>(
         app, splashScreen, window);
-  if (exitCode != 0)
-  {
-    return exitCode;
-  }
+    if (exitCode != 0)
+    {
+      return exitCode;
+    }
 
-  if (!window.isNull())
-  {
-    //QString windowTitle = QString("%1 %2").arg(window->windowTitle()).arg(Slicer_VERSION_FULL);
+    if (!window.isNull())
+    {
       QString windowTitle = QString("%1 光齐1.0").arg(window->windowTitle());
-    window->setWindowTitle(windowTitle);
-  }
+      window->setWindowTitle(windowTitle);
+    }
 
-  return app.exec();
-}
+    return app.exec();
+  }
 
 } // end of anonymous namespace
 
