@@ -596,9 +596,9 @@ bool vtkMRMLAbstractViewNode::SetAndObserveParentLayoutNode(vtkMRMLNode* node)
 double* vtkMRMLAbstractViewNode::GetRedColor()
 {
   // #F34A33
-  static double redColor[3] = {243. / 255.,
-                                74. / 255.,
-                                51. / 255.};
+  static double redColor[3] = {238. / 255.,
+                                238. / 255.,
+                                238. / 255.};
   return redColor;
 }
 
@@ -606,9 +606,9 @@ double* vtkMRMLAbstractViewNode::GetRedColor()
 double* vtkMRMLAbstractViewNode::GetYellowColor()
 {
   // #EDD54C
-  static double yellowColor[3] = {237. / 255.,
-                                  213. / 255.,
-                                   76. / 255.};
+  static double yellowColor[3] = {238. / 255.,
+                                  238. / 255.,
+                                   238. / 255.};
   return yellowColor;
 }
 
@@ -616,9 +616,9 @@ double* vtkMRMLAbstractViewNode::GetYellowColor()
 double* vtkMRMLAbstractViewNode::GetGreenColor()
 {
   // #6EB04B
-  static double greenColor[3] = {110. / 255.,
-                                 176. / 255.,
-                                  75. / 255.};
+  static double greenColor[3] = {238. / 255.,
+                                 238. / 255.,
+                                  238. / 255.};
   return greenColor;
 }
 
@@ -646,9 +646,9 @@ double* vtkMRMLAbstractViewNode::GetGrayColor()
 double* vtkMRMLAbstractViewNode::GetThreeDViewBlueColor()
 {
   // #7483E9
-  static double blueColor[3] = {116. / 255.,
-                                131. / 255.,
-                                233. / 255.};
+  static double blueColor[3] = {238. / 255.,
+                                238. / 255.,
+                                238. / 255.};
   return blueColor;
 }
 
