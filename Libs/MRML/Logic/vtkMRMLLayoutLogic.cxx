@@ -1407,7 +1407,7 @@ void vtkMRMLLayoutLogic::UpdateCompareViewLayoutDefinitions()
     "    <view class=\"vtkMRMLSliceNode\" singletontag=\"Red\">"
     "     <property name=\"orientation\" action=\"default\">Axial</property>"
     "     <property name=\"viewlabel\" action=\"default\">R</property>"
-    "     <property name=\"viewcolor\" action=\"default\">#F34A33</property>"
+    "     <property name=\"viewcolor\" action=\"default\">#EEEEEE</property>"
     "    </view>"
     "   </item>"
     "   <item>"
