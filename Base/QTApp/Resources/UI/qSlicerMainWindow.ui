@@ -65,6 +65,7 @@
        <property name="collapsedHeight">
         <number>0</number>
        </property>
+       <!-- 目前这个布局是空的（没有 <item> 子节点），但是运行时 Slicer 会往里面动态加小部件 -->
        <layout class="QHBoxLayout" name="horizontalLayout"/>
       </widget>
      </item>
