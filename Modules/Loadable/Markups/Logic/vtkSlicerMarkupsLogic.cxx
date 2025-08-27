@@ -800,7 +800,6 @@ int vtkSlicerMarkupsLogic::AddControlPoint(double r, double a, double s)
   // add a control point to the active point list
   return fiducialNode->AddControlPoint(vtkVector3d(r,a,s), std::string());
 }
-
 //---------------------------------------------------------------------------
 void vtkSlicerMarkupsLogic::JumpSlicesToLocation(double x, double y, double z, bool centered,
                                                  int viewGroup /* =-1 */, vtkMRMLSliceNode* exclude /* =nullptr */)
