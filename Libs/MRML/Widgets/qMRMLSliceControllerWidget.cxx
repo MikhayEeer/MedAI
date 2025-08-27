@@ -1901,7 +1901,7 @@ void qMRMLSliceControllerWidget::setSliceViewColor(const QColor& newSliceViewCol
     return;
     }
   // this will update the widget color
-  this->mrmlSliceNode()->SetLayoutColor(newSliceViewColor.redF(), newSliceViewColor.greenF(), newSliceViewColor.blueF());
+  this->mrmlSliceNode()->SetLayoutColor(0.9333, 0.9333, 0.9333);
 }
 
 //---------------------------------------------------------------------------

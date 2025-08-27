@@ -61,7 +61,7 @@ void qMRMLAbstractViewWidget::setViewColor(const QColor& newViewColor)
     return;
     }
   double layoutColor[3] = { newViewColor.redF(), newViewColor.greenF(), newViewColor.blueF() };
-  this->mrmlAbstractViewNode()->SetLayoutColor(layoutColor);
+  this->mrmlAbstractViewNode()->SetLayoutColor(0.9333, 0.9333, 0.9333);
 }
 
 //---------------------------------------------------------------------------

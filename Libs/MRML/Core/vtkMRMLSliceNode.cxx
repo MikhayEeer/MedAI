@@ -1015,23 +1015,23 @@ void vtkMRMLSliceNode::ReadXMLAttributes(const char** atts)
     // Slicer3 scene file. Grok a color
     if (layoutName.find("Compare") == 0)
       {
-      this->SetLayoutColor(vtkMRMLAbstractViewNode::GetCompareColor());
+      this->SetLayoutColor(0.9333, 0.9333, 0.9333);
       }
     else if (layoutName == "Red")
       {
-      this->SetLayoutColor(vtkMRMLAbstractViewNode::GetRedColor());
+      this->SetLayoutColor(0.9333, 0.9333, 0.9333);
       }
     else if (layoutName == "Yellow")
       {
-      this->SetLayoutColor(vtkMRMLAbstractViewNode::GetYellowColor());
+      this->SetLayoutColor(0.9333, 0.9333, 0.9333);
       }
     else if (layoutName == "Green")
       {
-      this->SetLayoutColor(vtkMRMLAbstractViewNode::GetGreenColor());
+      this->SetLayoutColor(0.9333, 0.9333, 0.9333);
       }
     else
       {
-      this->SetLayoutColor(vtkMRMLAbstractViewNode::GetGrayColor());
+      this->SetLayoutColor(0.9333, 0.9333, 0.9333);
       }
     }
 
@@ -1151,7 +1151,7 @@ void vtkMRMLSliceNode::Reset(vtkMRMLNode* defaultNode)
     {
     this->SetDefaultOrientation(defaultOrientation.c_str());
     }
-  this->SetLayoutColor(layoutColor);
+  this->SetLayoutColor(0.9333, 0.9333, 0.9333);
   this->EndModify(wasModified);
 }
 

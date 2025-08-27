@@ -1699,7 +1699,7 @@ void vtkMRMLLayoutLogic::ApplyProperty(const ViewProperty& property, vtkMRMLNode
       }
     double color[3];
     vtkMRMLColors::toRGBColor(value.c_str(), color);
-    viewNode->SetLayoutColor(color);
+    viewNode->SetLayoutColor(0.9333, 0.9333, 0.9333);
     }
   // Lightbox
   if (name == std::string("lightboxrows"))

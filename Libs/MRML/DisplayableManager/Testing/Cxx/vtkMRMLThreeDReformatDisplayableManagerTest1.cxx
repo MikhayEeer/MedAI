@@ -959,14 +959,14 @@ int vtkMRMLThreeDReformatDisplayableManagerTest1(int argc, char* argv[])
   // Visible when added
   vtkNew<vtkMRMLSliceNode> sliceNodeRed;
   // TODO: This color should be taken into account, not the layout name
-  sliceNodeRed->SetLayoutColor(vtkMRMLAbstractViewNode::GetRedColor());
+  sliceNodeRed->SetLayoutColor(0.9333, 0.9333, 0.9333);
   sliceNodeRed->SetWidgetVisible(1);
 
   scene->AddNode(sliceNodeRed.GetPointer());
 
   // Locked to Camera
   vtkNew<vtkMRMLSliceNode> sliceNodeYellow;
-  sliceNodeYellow->SetLayoutColor(vtkMRMLAbstractViewNode::GetYellowColor());
+  sliceNodeYellow->SetLayoutColor(0.9333, 0.9333, 0.9333);
   sliceNodeYellow->SetWidgetVisible(1);
   sliceNodeYellow->SetWidgetNormalLockedToCamera(1);
 
@@ -974,7 +974,7 @@ int vtkMRMLThreeDReformatDisplayableManagerTest1(int argc, char* argv[])
 
   // Delayed Visibility
   vtkNew<vtkMRMLSliceNode> sliceNodeGreen;
-  sliceNodeGreen->SetLayoutColor(vtkMRMLAbstractViewNode::GetGreenColor());
+  sliceNodeGreen->SetLayoutColor(0.9333, 0.9333, 0.9333);
   sliceNodeGreen->SetWidgetNormalLockedToCamera(1);
   sliceNodeGreen->SetSliceOffset(-20);
 
@@ -993,7 +993,7 @@ int vtkMRMLThreeDReformatDisplayableManagerTest1(int argc, char* argv[])
 
   // Imported slice
   vtkNew<vtkMRMLSliceNode> sliceNodeImported;
-  sliceNodeImported->SetLayoutColor(0.5, 0.3, 0.4);
+  sliceNodeImported->SetLayoutColor(0.9333, 0.9333, 0.9333);
   sliceNodeImported->SetSliceOffset(10.);
   sliceNodeImported->SetWidgetVisible(1);
 
@@ -1004,7 +1004,7 @@ int vtkMRMLThreeDReformatDisplayableManagerTest1(int argc, char* argv[])
 
   // Restored slice
   vtkNew<vtkMRMLSliceNode> sliceNodeRestored;
-  sliceNodeRestored->SetLayoutColor(0.8, 0.8, 0.8);
+  sliceNodeRestored->SetLayoutColor(0.9333, 0.9333, 0.9333);
   sliceNodeRestored->SetSliceOffset(-10.);
   sliceNodeRestored->SetWidgetVisible(1);
 
