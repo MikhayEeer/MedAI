@@ -698,57 +698,57 @@ std::string vtkSlicerMarkupsLogic::AddNewFiducialNode(const char *name, vtkMRMLS
 }
 
 //---------------------------------------------------------------------------
-// vtkMRMLMarkupsNode* vtkSlicerMarkupsLogic::AddNewMarkupsNode(
-//   std::string className, std::string nodeName/*=std::string()*/, vtkMRMLScene* scene/*=nullptr*/)
-// {
-//   if (!scene)
-//     {
-//     scene = this->GetMRMLScene();
-//     }
-//   if (!scene)
-//     {
-//     vtkErrorMacro("AddNewMarkupsNode: no scene to add a markups node to");
-//     return nullptr;
-//     }
+vtkMRMLMarkupsNode* vtkSlicerMarkupsLogic::AddNewMarkupsNode(
+  std::string className, std::string nodeName/*=std::string()*/, vtkMRMLScene* scene/*=nullptr*/)
+{
+  if (!scene)
+    {
+    scene = this->GetMRMLScene();
+    }
+  if (!scene)
+    {
+    vtkErrorMacro("AddNewMarkupsNode: no scene to add a markups node to");
+    return nullptr;
+    }
 
-//   vtkSmartPointer<vtkMRMLNode> node = vtkSmartPointer<vtkMRMLNode>::Take(
-//     scene->CreateNodeByClass(className.c_str()));
-//   vtkMRMLMarkupsNode* markupsNode = vtkMRMLMarkupsNode::SafeDownCast(node);
+  vtkSmartPointer<vtkMRMLNode> node = vtkSmartPointer<vtkMRMLNode>::Take(
+    scene->CreateNodeByClass(className.c_str()));
+  vtkMRMLMarkupsNode* markupsNode = vtkMRMLMarkupsNode::SafeDownCast(node);
 
-//   // If node class is not known in the provided scene then create it using the main scene
-//   if (!markupsNode)
-//     {
-//     vtkMRMLScene* mainScene = this->GetMRMLScene();
-//     node = vtkSmartPointer<vtkMRMLNode>::Take(mainScene->CreateNodeByClass(className.c_str()));
-//     markupsNode = vtkMRMLMarkupsNode::SafeDownCast(node);
-//     }
+  // If node class is not known in the provided scene then create it using the main scene
+  if (!markupsNode)
+    {
+    vtkMRMLScene* mainScene = this->GetMRMLScene();
+    node = vtkSmartPointer<vtkMRMLNode>::Take(mainScene->CreateNodeByClass(className.c_str()));
+    markupsNode = vtkMRMLMarkupsNode::SafeDownCast(node);
+    }
 
-//   if (!markupsNode)
-//     {
-//     vtkErrorMacro("AddNewMarkupsNode: failed to instantiate class " << className);
-//     return nullptr;
-//     }
+  if (!markupsNode)
+    {
+    vtkErrorMacro("AddNewMarkupsNode: failed to instantiate class " << className);
+    return nullptr;
+    }
 
-//   // Set node name
-//   if (nodeName.empty())
-//     {
-//     nodeName = scene->GenerateUniqueName(markupsNode->GetDefaultNodeNamePrefix());
-//     }
-//   markupsNode->SetName(nodeName.c_str());
+  // Set node name
+  if (nodeName.empty())
+    {
+    nodeName = scene->GenerateUniqueName(markupsNode->GetDefaultNodeNamePrefix());
+    }
+  markupsNode->SetName(nodeName.c_str());
 
-//   // Add the new node and display node to the scene
-//   scene->AddNode(markupsNode);
-//   markupsNode->CreateDefaultDisplayNodes();
+  // Add the new node and display node to the scene
+  scene->AddNode(markupsNode);
+  markupsNode->CreateDefaultDisplayNodes();
 
-//   // Special case: for ROI nodes, we create alternating colors.
-//   // If it turns out to be a well-liked feature then we can enable this for all markup types
-//   if (className == "vtkMRMLMarkupsROINode")
-//     {
-//     markupsNode->GetDisplayNode()->SetSelectedColor(this->GenerateUniqueColor().GetData());
-//     }
+  // Special case: for ROI nodes, we create alternating colors.
+  // If it turns out to be a well-liked feature then we can enable this for all markup types
+  if (className == "vtkMRMLMarkupsROINode")
+    {
+    markupsNode->GetDisplayNode()->SetSelectedColor(this->GenerateUniqueColor().GetData());
+    }
 
-//   return markupsNode;
-// }
+  return markupsNode;
+}
 
 //---------------------------------------------------------------------------
 int vtkSlicerMarkupsLogic::AddControlPoint(double r, double a, double s)
