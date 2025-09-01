@@ -8,6 +8,8 @@ include(SlicerMacroBuildApplication)
 # --------------------------------------------------------------------------
 SlicerReadApplicationProperties()
 
+set(SlicerApp_APPLICATION_NAME "MedAI" CACHE STRING "Name of the application" FORCE)
+
 # --------------------------------------------------------------------------
 # Folder
 # --------------------------------------------------------------------------
