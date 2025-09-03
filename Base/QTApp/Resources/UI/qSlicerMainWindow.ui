@@ -53,24 +53,6 @@
      <item>
       <widget class="qSlicerModulePanel" name="ModulePanel"/>
      </item>
-     <item>
-      <widget class="ctkCollapsibleButton" name="DataProbeCollapsibleWidget">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Data Probe</string>
-       </property>
-       <property name="collapsedHeight">
-        <number>0</number>
-       </property>
-       <!-- 目前这个布局是空的（没有 <item> 子节点），但是运行时 Slicer 会往里面动态加小部件 -->
-       <layout class="QHBoxLayout" name="horizontalLayout"/>
-      </widget>
-     </item>
     </layout>
    </widget>
   </widget>
