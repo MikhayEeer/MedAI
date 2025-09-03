@@ -177,25 +177,25 @@ void qSlicerModulePanel::addModule(qSlicerAbstractCoreModule* module)
     }
   help.replace("\\n", "<br>");
 
-  d->HelpCollapsibleButton->setVisible(this->isHelpAndAcknowledgmentVisible() && !help.isEmpty());
-  d->HelpLabel->setHtml(help);
-  d->AcknowledgementLabel->clear();
+  //d->HelpCollapsibleButton->setVisible(this->isHelpAndAcknowledgmentVisible() && !help.isEmpty());
+  //d->HelpLabel->setHtml(help);
+  //d->AcknowledgementLabel->clear();
   qSlicerAbstractModule* guiModule = qobject_cast<qSlicerAbstractModule*>(module);
   if (guiModule && !guiModule->logo().isNull())
     {
-    d->AcknowledgementLabel->document()->addResource(QTextDocument::ImageResource,
-      QUrl("module://logo.png"), QVariant(guiModule->logo()));
-    d->AcknowledgementLabel->append(
-      QString("<center><img src=\"module://logo.png\"/></center><br>"));
+    //d->AcknowledgementLabel->document()->addResource(QTextDocument::ImageResource,
+    //  QUrl("module://logo.png"), QVariant(guiModule->logo()));
+    //d->AcknowledgementLabel->append(
+    //  QString("<center><img src=\"module://logo.png\"/></center><br>"));
     }
   QString acknowledgement = module->acknowledgementText();
-  d->AcknowledgementLabel->insertHtml(acknowledgement);
+  //d->AcknowledgementLabel->insertHtml(acknowledgement);
   if (!module->contributors().isEmpty())
     {
     QString contributors = module->contributors().join(", ");
     QString contributorsText = QString("<br/><u>%1</u> <i>").arg(tr("Contributors:"));
     contributorsText += contributors + "</i><br/>";
-    d->AcknowledgementLabel->append(contributorsText);
+    //d->AcknowledgementLabel->append(contributorsText);
     }
 
   moduleWidget->installEventFilter(this);
@@ -261,14 +261,14 @@ void qSlicerModulePanel::setHelpAndAcknowledgmentVisible(bool value)
   d->HelpAndAcknowledgmentVisible = value;
   if (value)
     {
-    if (!d->HelpLabel->toHtml().isEmpty())
-      {
-      d->HelpCollapsibleButton->setVisible(true);
+    //if (!d->HelpLabel->toHtml().isEmpty())
+     // {
+    //  d->HelpCollapsibleButton->setVisible(true);
       }
-    }
+    //}
   else
     {
-    d->HelpCollapsibleButton->setVisible(false);
+    //d->HelpCollapsibleButton->setVisible(false);
     }
 }
 
@@ -312,8 +312,8 @@ QSize qSlicerModulePanel::minimumSizeHint()const
 void qSlicerModulePanelPrivate::setupUi(qSlicerWidget * widget)
 {
   this->Ui_qSlicerModulePanel::setupUi(widget);
-  this->HelpLabel->setOpenExternalLinks(true);
-  this->AcknowledgementLabel->setOpenExternalLinks(true);
+  //this->HelpLabel->setOpenExternalLinks(true);
+  //this->AcknowledgementLabel->setOpenExternalLinks(true);
 }
 
 /*
