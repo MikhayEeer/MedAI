@@ -138,6 +138,9 @@ void Backend_AI_Processing_manager::uploadFile() {
     if(_choosed_model != AI_MODEL::AIRWAY) {
         m_result_path = file_dir_path + "/肺部血管分割" + baseName + ".nii.gz";
     }
+    if (_choosed_model == AI_MODEL::VESSELV2) {
+        m_result_path = file_dir_path + "/肺段分割" + baseName + ".nii.gz";
+    }
     qDebug() << filePath;
 //    qDebug() << file_dir_path;
 //    qDebug() << complete_fileName;
@@ -260,7 +263,8 @@ void Backend_AI_Processing_manager::initUI(){
     vessel_button = new QPushButton(this);
     vessel_button->setText("肺部血管自动重建");
 
-    vessel_v2_button = new QPushButton("肺部血管(改进测试)", this);
+    //vessel_v2_button = new QPushButton("肺部血管(改进测试)", this);
+    vessel_v2_button = new QPushButton("肺段", this);
 
     this->setFixedSize(570,160);
     // 不显示右上角的关闭

@@ -288,6 +288,25 @@ class CombineModelsLogic(ScriptedLoadableModuleLogic):
     if not parameterNode.GetParameter("Operation"):
       parameterNode.SetParameter("Operation", "union")
 
+
+#   https://github.com/PerkLab/SlicerSandbox/blob/master/CombineModels/CombineModels.py
+#   https://github.com/Slicer/SlicerSurfaceToolbox/blob/master/SurfaceToolbox/SurfaceToolbox.py
+  # @staticmethod
+  def computeNormals(inputModel, outputModel, autoOrient=False, flip=True, split=False, splitAngle=30.0):
+    """Generate surface normals for geometry algorithms or for improving visualization.
+    :param splitAngle: Normals will be split only along those edges where angle is larger than this value.
+    """
+    normals = vtk.vtkPolyDataNormals()
+    normals.SetInputData(inputModel.GetPolyData())
+    normals.SetAutoOrientNormals(autoOrient)
+    normals.SetFlipNormals(flip)
+    normals.SetSplitting(split)
+    if split:
+      # only applicable if splitting is enabled
+      normals.SetFeatureAngle(splitAngle)
+    normals.Update()
+    outputModel.SetAndObservePolyData(normals.GetOutput())
+
   def process(self, inputModelA, inputModelB, outputModel, operation):
     """
     Run the processing algorithm.
@@ -345,6 +364,14 @@ class CombineModelsLogic(ScriptedLoadableModuleLogic):
     # combine.DecPolysOff()  # default on
     combine.Update()
 
+    normals = vtk.vtkPolyDataNormals()
+    normals.SetInputData(inputModelB.GetPolyData())
+    normals.SetAutoOrientNormals(False)
+    normals.SetFlipNormals(True)
+    normals.SetSplitting(False)
+    normals.Update()
+    inputModelB.SetAndObservePolyData(normals.GetOutput())
+
     outputModel.SetAndObservePolyData(combine.GetOutput())
     outputModel.CreateDefaultDisplayNodes()
     # The filter creates a few scalars, don't show them by default, as they would be somewhat distracting
@@ -352,6 +379,11 @@ class CombineModelsLogic(ScriptedLoadableModuleLogic):
 
     stopTime = time.time()
     logging.info('Processing completed in {0:.2f} seconds'.format(stopTime-startTime))
+
+    # inputModelB.CreateDefaultDisplayNodes()
+    # inputModelB.AddDefaultStorageNode()
+
+    # self.computeNormals(inputModelB, inputModelB)
 
 #
 # CombineModelsTest

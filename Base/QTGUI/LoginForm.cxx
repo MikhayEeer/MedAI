@@ -123,15 +123,15 @@ void LoginForm::ReadIniFile() {
     AI_URL_AIRWAY = _config->value("AI_URL_AIRWAY").toString();
     AI_URL_VESSEL = _config->value("AI_URL_VESSEL").toString();
     if (SERVER_URL.length() < 3) {
-        SERVER_URL = "http://36.139.232.121:11176";
+        SERVER_URL = "http://js2.blockelite.cn:10264";
         WriteIniFile("SERVER_URL", SERVER_URL);
     }
     if (AI_URL_AIRWAY.length() < 3) {
-        AI_URL_AIRWAY = "http://36.139.232.121:11180";
+        AI_URL_AIRWAY = "http://js2.blockelite.cn:10268";
         WriteIniFile("AI_URL_AIRWAY", AI_URL_AIRWAY);
     }
     if (AI_URL_VESSEL.length() < 3) {
-        AI_URL_VESSEL = "http://36.140.183.72:11082";
+        AI_URL_VESSEL = "http://js2.blockelite.cn:12864";
         WriteIniFile("AI_URL_VESSEL", AI_URL_VESSEL);
     }
     delete _config;

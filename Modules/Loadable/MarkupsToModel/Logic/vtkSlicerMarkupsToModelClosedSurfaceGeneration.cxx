@@ -1,4 +1,4 @@
-ï»¿#include "vtkSlicerMarkupsToModelClosedSurfaceGeneration.h"
+#include "vtkSlicerMarkupsToModelClosedSurfaceGeneration.h"
 
 #include "vtkMRMLModelNode.h"
 #include "vtkMRMLMarkupsFiducialNode.h"
@@ -19,6 +19,7 @@
 #include <vtkTransform.h>
 #include <vtkTransformFilter.h>
 #include <vtkUnstructuredGrid.h>
+#include <iostream>
 
 //------------------------------------------------------------------------------
 // constants within this file
@@ -40,118 +41,120 @@ vtkSlicerMarkupsToModelClosedSurfaceGeneration::~vtkSlicerMarkupsToModelClosedSu
 }
 
 //------------------------------------------------------------------------------
-bool vtkSlicerMarkupsToModelClosedSurfaceGeneration::GenerateClosedSurfaceModel(vtkPoints* inputPoints, vtkPolyData* outputPolyData,
-    double delaunayAlpha, bool smoothing, bool forceConvex)
+bool vtkSlicerMarkupsToModelClosedSurfaceGeneration::GenerateClosedSurfaceModel(vtkPoints *inputPoints, vtkPolyData *outputPolyData,
+                                                                                double delaunayAlpha, bool smoothing, bool forceConvex)
 {
-    vtkGenericWarningMacro("GenerateClosedSurfaceModel____"); // è¾“å‡ºè­¦å‘Šä¿¡æ¯
-    if (inputPoints == NULL)
-    {
-        vtkGenericWarningMacro("Input points are null. No model generated."); // å¦‚æœinputPointsä¸ºç©ºï¼Œè¾“å‡ºè­¦å‘Šä¿¡æ¯
-        return false; // è¿”å›falseè¡¨ç¤ºå¤±è´¥
-    }
+  if (inputPoints == NULL)
+  {
+    vtkGenericWarningMacro("Input points are null. No model generated."); // Èç¹ûinputPointsÎª¿Õ£¬Êä³ö¾¯¸æĞÅÏ¢
+    return false;                                                         // ·µ»Øfalse±íÊ¾Ê§°Ü
+  }
 
-    if (outputPolyData == NULL)
-    {
-        vtkGenericWarningMacro("Output poly data is null. No model generated.");// å¦‚æœoutputPolyDataä¸ºç©ºï¼Œè¾“å‡ºè­¦å‘Šä¿¡æ¯
-        return false;// è¿”å›falseè¡¨ç¤ºå¤±è´¥
-    }
+  if (outputPolyData == NULL)
+  {
+    vtkGenericWarningMacro("Output poly data is null. No model generated."); // Èç¹ûoutputPolyDataÎª¿Õ£¬Êä³ö¾¯¸æĞÅÏ¢
+    return false;                                                            // ·µ»Øfalse±íÊ¾Ê§°Ü
+  }
 
-    int numberOfPoints = inputPoints->GetNumberOfPoints();// è·å–è¾“å…¥ç‚¹çš„æ•°é‡
-    if (numberOfPoints == 0)
-    {
-        // No markup points, the output should be empty // å¦‚æœæ²¡æœ‰æ ‡è®°ç‚¹ï¼Œè¾“å‡ºåº”ä¸ºç©º
-        return true; // è¿”å›trueè¡¨ç¤ºæˆåŠŸä½†æ²¡æœ‰ç”Ÿæˆæ¨¡å‹
-    }
+  int numberOfPoints = inputPoints->GetNumberOfPoints(); // »ñÈ¡ÊäÈëµãµÄÊıÁ¿
+  if (numberOfPoints == 0)
+  {
+    // No markup points, the output should be empty // Èç¹ûÃ»ÓĞ±ê¼Çµã£¬Êä³öÓ¦Îª¿Õ
+    return true; // ·µ»Øtrue±íÊ¾³É¹¦µ«Ã»ÓĞÉú³ÉÄ£ĞÍ
+  }
 
-    vtkSmartPointer< vtkCellArray > inputCellArray = vtkSmartPointer< vtkCellArray >::New();
-    inputCellArray->InsertNextCell(numberOfPoints);// æ’å…¥ä¸€ä¸ªåŒ…å«æ‰€æœ‰ç‚¹çš„å•å…ƒ
-    for (int i = 0; i < numberOfPoints; i++)
-    {
-        inputCellArray->InsertCellPoint(i);// å°†æ¯ä¸ªç‚¹æ’å…¥å•å…ƒä¸­
-    }
+  vtkSmartPointer<vtkCellArray> inputCellArray = vtkSmartPointer<vtkCellArray>::New();
+  inputCellArray->InsertNextCell(numberOfPoints); // ²åÈëÒ»¸ö°üº¬ËùÓĞµãµÄµ¥Ôª
+  for (int i = 0; i < numberOfPoints; i++)
+  {
+    inputCellArray->InsertCellPoint(i); // ½«Ã¿¸öµã²åÈëµ¥ÔªÖĞ
+  }
 
-    vtkSmartPointer< vtkPolyData > inputPolyData = vtkSmartPointer< vtkPolyData >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„vtkPolyDataå¯¹è±¡
-    inputPolyData->SetLines(inputCellArray);// è®¾ç½®çº¿æ¡æ•°æ®
-    inputPolyData->SetPoints(inputPoints);// è®¾ç½®çº¿æ¡æ•°æ®
+  vtkSmartPointer<vtkPolyData> inputPolyData = vtkSmartPointer<vtkPolyData>::New(); // ´´½¨Ò»¸öĞÂµÄvtkPolyData¶ÔÏó
+  inputPolyData->SetLines(inputCellArray);                                          // ÉèÖÃÏßÌõÊı¾İ
+  inputPolyData->SetPoints(inputPoints);                                            // ÉèÖÃÏßÌõÊı¾İ
 
-    // ä½¿ç”¨ vtkDelaunay2D è¿›è¡ŒäºŒç»´ä¸‰è§’åŒ–
-    vtkSmartPointer<vtkDelaunay2D> delaunay = vtkSmartPointer<vtkDelaunay2D>::New();
-    delaunay->SetInputData(inputPolyData);
-    delaunay->SetAlpha(delaunayAlpha);
-    delaunay->Update();
-    //vtkSmartPointer< vtkDelaunay3D > delaunay = vtkSmartPointer< vtkDelaunay3D >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„Delaunay3Då¯¹è±¡
-    //delaunay->SetAlpha(delaunayAlpha);// è®¾ç½®alphaå€¼
-    //delaunay->AlphaTrisOff();// å…³é—­alphaä¸‰è§’å½¢
-    //delaunay->AlphaLinesOff();// å…³é—­alphaçº¿æ¡
-    //delaunay->AlphaVertsOff();// å…³é—­alphaé¡¶ç‚¹
+  // Ê¹ÓÃ vtkDelaunay2D ½øĞĞ¶şÎ¬Èı½Ç»¯
+  vtkSmartPointer<vtkDelaunay2D> delaunay = vtkSmartPointer<vtkDelaunay2D>::New();
+  delaunay->SetInputData(inputPolyData);
+  delaunay->SetAlpha(delaunayAlpha);
+  delaunay->Update();
+  // vtkSmartPointer< vtkDelaunay3D > delaunay = vtkSmartPointer< vtkDelaunay3D >::New();// ´´½¨Ò»¸öĞÂµÄDelaunay3D¶ÔÏó
+  // delaunay->SetAlpha(delaunayAlpha);// ÉèÖÃalphaÖµ
+  // delaunay->AlphaTrisOff();// ¹Ø±ÕalphaÈı½ÇĞÎ
+  // delaunay->AlphaLinesOff();// ¹Ø±ÕalphaÏßÌõ
+  // delaunay->AlphaVertsOff();// ¹Ø±Õalpha¶¥µã
 
-    vtkSmartPointer< vtkMatrix4x4 > boundingAxesToRasTransformMatrix = vtkSmartPointer< vtkMatrix4x4 >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„4x4çŸ©é˜µ
-    ComputeTransformMatrixFromBoundingAxes(inputPoints, boundingAxesToRasTransformMatrix); // è®¡ç®—ä»è¾¹ç•Œè½´åˆ°RASçš„å˜æ¢çŸ©é˜µ
+  vtkSmartPointer<vtkMatrix4x4> boundingAxesToRasTransformMatrix = vtkSmartPointer<vtkMatrix4x4>::New(); // ´´½¨Ò»¸öĞÂµÄ4x4¾ØÕó
+  ComputeTransformMatrixFromBoundingAxes(inputPoints, boundingAxesToRasTransformMatrix);                 // ¼ÆËã´Ó±ß½çÖáµ½RASµÄ±ä»»¾ØÕó
 
-    vtkSmartPointer< vtkMatrix4x4 > rasToBoundingAxesTransformMatrix = vtkSmartPointer< vtkMatrix4x4 >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„4x4çŸ©é˜µ
-    vtkMatrix4x4::Invert(boundingAxesToRasTransformMatrix, rasToBoundingAxesTransformMatrix);// è®¡ç®—å˜æ¢çŸ©é˜µçš„é€†çŸ©é˜µ
+  vtkSmartPointer<vtkMatrix4x4> rasToBoundingAxesTransformMatrix = vtkSmartPointer<vtkMatrix4x4>::New(); // ´´½¨Ò»¸öĞÂµÄ4x4¾ØÕó
+  vtkMatrix4x4::Invert(boundingAxesToRasTransformMatrix, rasToBoundingAxesTransformMatrix);              // ¼ÆËã±ä»»¾ØÕóµÄÄæ¾ØÕó
 
-    double smallestBoundingExtentRanges[3] = { 0.0, 0.0, 0.0 }; // temporary values // åˆå§‹åŒ–ä¸€ä¸ªåŒ…å«ä¸‰ä¸ªå…ƒç´ çš„æ•°ç»„ï¼Œç”¨äºå­˜å‚¨æœ€å°è¾¹ç•ŒèŒƒå›´
-    ComputeTransformedExtentRanges(inputPoints, rasToBoundingAxesTransformMatrix, smallestBoundingExtentRanges);// è®¡ç®—å˜æ¢åçš„èŒƒå›´
+  double smallestBoundingExtentRanges[3] = {0.0, 0.0, 0.0};                                                    // temporary values // ³õÊ¼»¯Ò»¸ö°üº¬Èı¸öÔªËØµÄÊı×é£¬ÓÃÓÚ´æ´¢×îĞ¡±ß½ç·¶Î§
+  ComputeTransformedExtentRanges(inputPoints, rasToBoundingAxesTransformMatrix, smallestBoundingExtentRanges); // ¼ÆËã±ä»»ºóµÄ·¶Î§
 
-    PointArrangement pointArrangement = ComputePointArrangement(smallestBoundingExtentRanges);// è®¡ç®—ç‚¹æ’åˆ—ç±»å‹
+  PointArrangement pointArrangement = ComputePointArrangement(smallestBoundingExtentRanges); // ¼ÆËãµãÅÅÁĞÀàĞÍ
 
-    switch (pointArrangement)// æ ¹æ®ç‚¹æ’åˆ—ç±»å‹é€‰æ‹©å¤„ç†æ–¹å¼
-    {
-    case POINT_ARRANGEMENT_NONPLANAR:// éå¹³é¢æ’åˆ—æƒ…å†µ--- å…¶ä»–çš„éƒ½æ˜¯æ— ç”¨çš„ä»£ç 
-    {
-        vtkGenericWarningMacro("POINT_ARRANGEMENT_NONPLANAR____");
-        delaunay->SetInputData(inputPolyData);// è®¾ç½®Delaunayçš„è¾“å…¥æ•°æ®
-        break;
-    }
-    default: // unsupported or invalid // ä¸æ”¯æŒæˆ–æ— æ•ˆçš„æ’åˆ—æƒ…å†µ
-    {
-        vtkGenericWarningMacro("unsupportedã€‚ã€‚ã€‚ã€‚");
-        vtkGenericWarningMacro("Unsupported pointArrangementType detected: " << pointArrangement << ". Aborting closed surface generation.");
-        return false; // è¿”å›falseè¡¨ç¤ºå¤±è´¥
-    }
-    }
+  switch (pointArrangement) // ¸ù¾İµãÅÅÁĞÀàĞÍÑ¡Ôñ´¦Àí·½Ê½
+  {
+  case POINT_ARRANGEMENT_NONPLANAR: // ·ÇÆ½ÃæÅÅÁĞÇé¿ö--- ÆäËûµÄ¶¼ÊÇÎŞÓÃµÄ´úÂë
+  {
+    delaunay->SetInputData(inputPolyData); // ÉèÖÃDelaunayµÄÊäÈëÊı¾İ
+    break;
+  }
+  default: // unsupported or invalid // ²»Ö§³Ö»òÎŞĞ§µÄÅÅÁĞÇé¿ö
+  {
+    vtkGenericWarningMacro("Unsupported pointArrangementType detected: " << pointArrangement << ". Aborting closed surface generation.");
+    return false; // ·µ»Øfalse±íÊ¾Ê§°Ü
+  }
+  }
 
-    vtkSmartPointer< vtkDataSetSurfaceFilter > surfaceFilter = vtkSmartPointer< vtkDataSetSurfaceFilter >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„DataSetSurfaceFilterå¯¹è±¡
-    surfaceFilter->SetInputConnection(delaunay->GetOutputPort());// è®¾ç½®è¾“å…¥è¿æ¥
-    surfaceFilter->Update();// æ›´æ–°æ•°æ®
+  vtkSmartPointer<vtkDataSetSurfaceFilter> surfaceFilter = vtkSmartPointer<vtkDataSetSurfaceFilter>::New(); // ´´½¨Ò»¸öĞÂµÄDataSetSurfaceFilter¶ÔÏó
+  surfaceFilter->SetInputConnection(delaunay->GetOutputPort());                                             // ÉèÖÃÊäÈëÁ¬½Ó
+  surfaceFilter->Update();                                                                                  // ¸üĞÂÊı¾İ
 
-    vtkSmartPointer<vtkPolyDataNormals> normals = vtkSmartPointer<vtkPolyDataNormals>::New(); // åˆ›å»ºä¸€ä¸ªæ–°çš„PolyDataNormalså¯¹è±¡
-    //normals->SetFeatureAngle(0); //  åŸæ¥æ˜¯100 TODO: This needs some justification, or set as an input parameter // è®¾ç½®ç‰¹å¾è§’
-    normals->SetFeatureAngle(180); // è®¾ç½®ç‰¹å¾è§’ä¸º180åº¦ä»¥ç¡®ä¿æ³•çº¿è®¡ç®—ä¸ä¼šé—­åˆæ›²é¢
+  vtkSmartPointer<vtkPolyDataNormals> normals = vtkSmartPointer<vtkPolyDataNormals>::New(); // ´´½¨Ò»¸öĞÂµÄPolyDataNormals¶ÔÏó
+  // normals->SetFeatureAngle(0); //  Ô­À´ÊÇ100 TODO: This needs some justification, or set as an input parameter // ÉèÖÃÌØÕ÷½Ç
+  normals->SetFeatureAngle(180); // ÉèÖÃÌØÕ÷½ÇÎª180¶ÈÒÔÈ·±£·¨Ïß¼ÆËã²»»á±ÕºÏÇúÃæ
 
-    if (smoothing && pointArrangement == POINT_ARRANGEMENT_NONPLANAR)// å¦‚æœéœ€è¦å¹³æ»‘å¤„ç†å¹¶ä¸”ç‚¹æ’åˆ—ç±»å‹ä¸ºéå¹³é¢
-    {// åˆ›å»ºä¸€ä¸ªæ–°çš„ButterflySubdivisionFilterå¯¹è±¡
-        vtkSmartPointer< vtkButterflySubdivisionFilter > subdivisionFilter = vtkSmartPointer< vtkButterflySubdivisionFilter >::New();
-        subdivisionFilter->SetInputConnection(surfaceFilter->GetOutputPort());// è®¾ç½®è¾“å…¥è¿æ¥
-        subdivisionFilter->SetNumberOfSubdivisions(3);// è®¾ç½®ç»†åˆ†æ¬¡æ•°
-        subdivisionFilter->Update();// æ›´æ–°æ•°æ®
-        if (forceConvex)// å¦‚æœéœ€è¦å¼ºåˆ¶å‡¸æ€§
-        {
-            vtkSmartPointer< vtkDelaunay3D > convexHull = vtkSmartPointer< vtkDelaunay3D >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„Delaunay3Då¯¹è±¡
-            convexHull->SetInputConnection(subdivisionFilter->GetOutputPort());// è®¾ç½®è¾“å…¥è¿æ¥
-            convexHull->Update();// æ›´æ–°æ•°æ®
-            vtkSmartPointer< vtkDataSetSurfaceFilter > surfaceFilter = vtkSmartPointer< vtkDataSetSurfaceFilter >::New();// åˆ›å»ºä¸€ä¸ªæ–°çš„DataSetSurfaceFilterå¯¹è±¡
-            surfaceFilter->SetInputData(convexHull->GetOutput()); // è®¾ç½®è¾“å…¥æ•°æ®
-            surfaceFilter->Update();// æ›´æ–°æ•°æ®
-            normals->SetInputConnection(surfaceFilter->GetOutputPort());// è®¾ç½®æ³•çº¿è®¡ç®—çš„è¾“å…¥è¿æ¥
-        }
-        else
-        {
-            normals->SetInputConnection(subdivisionFilter->GetOutputPort());// è®¾ç½®æ³•çº¿è®¡ç®—çš„è¾“å…¥è¿æ¥
-        }
-    }
-    else
-    {
-        //vtkNew<vtkLinearSubdivisionFilter> linearSubdivision;// åˆ›å»ºä¸€ä¸ªæ–°çš„LinearSubdivisionFilterå¯¹è±¡
-        //linearSubdivision->SetInputConnection(surfaceFilter->GetOutputPort());// è®¾ç½®è¾“å…¥è¿æ¥
-        //normals->SetInputConnection(linearSubdivision->GetOutputPort()); // è®¾ç½®æ³•çº¿è®¡ç®—çš„è¾“å…¥è¿æ¥
-    }
-    normals->SetInputConnection(surfaceFilter->GetOutputPort());
-    normals->Update();// æ›´æ–°æ•°æ®
+  vtkGenericWarningMacro("1.1smoothing:" << smoothing << ",  forceConvex:" << forceConvex);
 
-    outputPolyData->DeepCopy(normals->GetOutput());// æ·±æ‹·è´ç»“æœåˆ°è¾“å‡ºæ•°æ®
-    return true; // è¿”å›trueè¡¨ç¤ºæˆåŠŸ
+  if (smoothing) // Èç¹ûĞèÒªÆ½»¬´¦Àí²¢ÇÒµãÅÅÁĞÀàĞÍÎª·ÇÆ½Ãæ
+  {              // ´´½¨Ò»¸öĞÂµÄButterflySubdivisionFilter¶ÔÏó
+    vtkSmartPointer<vtkButterflySubdivisionFilter> subdivisionFilter = vtkSmartPointer<vtkButterflySubdivisionFilter>::New();
+    subdivisionFilter->SetInputConnection(surfaceFilter->GetOutputPort()); // ÉèÖÃÊäÈëÁ¬½Ó
+    subdivisionFilter->SetNumberOfSubdivisions(3);                         // ÉèÖÃÏ¸·Ö´ÎÊı
+    subdivisionFilter->Update();                                           // ¸üĞÂÊı¾İ£¬»á¸üĞÂsurfaceFilterµÄĞÅÏ¢
+                                                                           // if (forceConvex)                                                       // Èç¹ûĞèÒªÇ¿ÖÆÍ¹ĞÔ
+                                                                           // {
+    // vtkSmartPointer<vtkDelaunay3D> convexHull = vtkSmartPointer<vtkDelaunay3D>::New();                        // ´´½¨Ò»¸öĞÂµÄDelaunay3D¶ÔÏó
+    // convexHull->SetInputConnection(subdivisionFilter->GetOutputPort());                                       // ÉèÖÃÊäÈëÁ¬½Ó
+    // convexHull->Update();                                                                                     // ¸üĞÂÊı¾İ
+    // vtkSmartPointer<vtkDataSetSurfaceFilter> surfaceFilter = vtkSmartPointer<vtkDataSetSurfaceFilter>::New(); // ´´½¨Ò»¸öĞÂµÄDataSetSurfaceFilter¶ÔÏó
+    // surfaceFilter->SetInputData(convexHull->GetOutput());                                                     // ÉèÖÃÊäÈëÊı¾İ
+    // surfaceFilter->Update();
+    // ¸üĞÂÊı¾İ
+    // normals->SetInputConnection(surfaceFilter->GetOutputPort());
+    normals->SetInputConnection(subdivisionFilter->GetOutputPort());
+
+    // ÉèÖÃ·¨Ïß¼ÆËãµÄÊäÈëÁ¬½Ó
+    // }
+    // else
+    // {
+    //   normals->SetInputConnection(subdivisionFilter->GetOutputPort()); // ÉèÖÃ·¨Ïß¼ÆËãµÄÊäÈëÁ¬½Ó
+    // }
+  }
+  else
+  {
+    vtkNew<vtkLinearSubdivisionFilter> linearSubdivision;                  // ´´½¨Ò»¸öĞÂµÄLinearSubdivisionFilter¶ÔÏó
+    linearSubdivision->SetInputConnection(surfaceFilter->GetOutputPort()); // ÉèÖÃÊäÈëÁ¬½Ó
+    normals->SetInputConnection(linearSubdivision->GetOutputPort());       // ÉèÖÃ·¨Ïß¼ÆËãµÄÊäÈëÁ¬½Ó
+  }
+  normals->Update(); // ¸üĞÂÊı¾İ
+
+  outputPolyData->DeepCopy(normals->GetOutput()); // Éî¿½±´½á¹ûµ½Êä³öÊı¾İ
+  return true;                                    // ·µ»Øtrue±íÊ¾³É¹¦
 }
 
 //------------------------------------------------------------------------------
@@ -165,247 +168,247 @@ bool vtkSlicerMarkupsToModelClosedSurfaceGeneration::GenerateClosedSurfaceModel(
 // Neither of these limitations will prevent the overall logic from functioning
 // correctly, but it is worth keeping in mind, and worth changing should a need
 // arise
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformMatrixFromBoundingAxes(vtkPoints* points, vtkMatrix4x4* boundingAxesToRasTransformMatrix)
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformMatrixFromBoundingAxes(vtkPoints *points, vtkMatrix4x4 *boundingAxesToRasTransformMatrix)
 {
-    if (points == NULL)
-    {
-        vtkGenericWarningMacro("Points object is null. Cannot compute best fit planes.");
-        return;
-    }
+  if (points == NULL)
+  {
+    vtkGenericWarningMacro("Points object is null. Cannot compute best fit planes.");
+    return;
+  }
 
-    if (boundingAxesToRasTransformMatrix == NULL)
-    {
-        vtkGenericWarningMacro("Output matrix object is null. Cannot compute best fit planes.");
-        return;
-    }
+  if (boundingAxesToRasTransformMatrix == NULL)
+  {
+    vtkGenericWarningMacro("Output matrix object is null. Cannot compute best fit planes.");
+    return;
+  }
 
-    // the output matrix should start as identity, so no translation etc.
+  // the output matrix should start as identity, so no translation etc.
+  boundingAxesToRasTransformMatrix->Identity();
+
+  // Compute the plane using the smallest bounding box that can have arbitrary axes
+  vtkSmartPointer<vtkOBBTree> obbTree = vtkSmartPointer<vtkOBBTree>::New();
+  double cornerOBBOrigin[3] = {0.0, 0.0, 0.0}; // unused
+  double variationMaximumOBBAxis[3] = {0.0, 0.0, 0.0};
+  double variationMediumOBBAxis[3] = {0.0, 0.0, 0.0};
+  double variationMinimumOBBAxis[3] = {0.0, 0.0, 0.0};
+  double relativeAxisSizes[3] = {0.0, 0.0, 0.0}; // unused, the values represented herein are unclear
+  obbTree->ComputeOBB(points, cornerOBBOrigin, variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis, relativeAxisSizes);
+
+  // now to store the desired results in the appropriate axis of the output matrix.
+  // must check each axis to make sure it was actually computed (non-zero)
+  // do the maxmimum variation axis
+  if (vtkMath::Norm(variationMaximumOBBAxis) < COMPARE_TO_ZERO_TOLERANCE)
+  {
+    // there is no variation in the points whatsoever.
+    // i.e. all points are in a single position.
+    // return arbitrary orthonormal axes (the standard axes will do).
     boundingAxesToRasTransformMatrix->Identity();
+    return;
+  }
+  vtkMath::Normalize(variationMaximumOBBAxis);
+  SetNthColumnInMatrix(boundingAxesToRasTransformMatrix, 0, variationMaximumOBBAxis);
 
-    // Compute the plane using the smallest bounding box that can have arbitrary axes
-    vtkSmartPointer<vtkOBBTree> obbTree = vtkSmartPointer<vtkOBBTree>::New();
-    double cornerOBBOrigin[3] = { 0.0, 0.0, 0.0 }; // unused
-    double variationMaximumOBBAxis[3] = { 0.0, 0.0, 0.0 };
-    double variationMediumOBBAxis[3] = { 0.0, 0.0, 0.0 };
-    double variationMinimumOBBAxis[3] = { 0.0, 0.0, 0.0 };
-    double relativeAxisSizes[3] = { 0.0, 0.0, 0.0 }; // unused, the values represented herein are unclear
-    obbTree->ComputeOBB(points, cornerOBBOrigin, variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis, relativeAxisSizes);
+  // do the medium variation axis
+  if (vtkMath::Norm(variationMediumOBBAxis) < COMPARE_TO_ZERO_TOLERANCE)
+  {
+    // the points are colinear along only the maximum axis
+    // any two perpendicular orthonormal vectors will do for the remaining axes.
+    double thetaAngle = 0.0; // this can be arbitrary
+    vtkMath::Perpendiculars(variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis, thetaAngle);
+  }
+  vtkMath::Normalize(variationMediumOBBAxis);
+  SetNthColumnInMatrix(boundingAxesToRasTransformMatrix, 1, variationMediumOBBAxis);
 
-    // now to store the desired results in the appropriate axis of the output matrix.
-    // must check each axis to make sure it was actually computed (non-zero)
-    // do the maxmimum variation axis
-    if (vtkMath::Norm(variationMaximumOBBAxis) < COMPARE_TO_ZERO_TOLERANCE)
-    {
-        // there is no variation in the points whatsoever.
-        // i.e. all points are in a single position.
-        // return arbitrary orthonormal axes (the standard axes will do).
-        boundingAxesToRasTransformMatrix->Identity();
-        return;
-    }
-    vtkMath::Normalize(variationMaximumOBBAxis);
-    SetNthColumnInMatrix(boundingAxesToRasTransformMatrix, 0, variationMaximumOBBAxis);
-
-    // do the medium variation axis
-    if (vtkMath::Norm(variationMediumOBBAxis) < COMPARE_TO_ZERO_TOLERANCE)
-    {
-        // the points are colinear along only the maximum axis
-        // any two perpendicular orthonormal vectors will do for the remaining axes.
-        double thetaAngle = 0.0; // this can be arbitrary
-        vtkMath::Perpendiculars(variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis, thetaAngle);
-    }
-    vtkMath::Normalize(variationMediumOBBAxis);
-    SetNthColumnInMatrix(boundingAxesToRasTransformMatrix, 1, variationMediumOBBAxis);
-
-    // do the minimum variation axis
-    if (vtkMath::Norm(variationMinimumOBBAxis) < COMPARE_TO_ZERO_TOLERANCE)
-    {
-        // all points lie exactly on a plane.
-        // the remaining perpendicular vector found using cross product.
-        vtkMath::Cross(variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis);
-    }
-    vtkMath::Normalize(variationMinimumOBBAxis);
-    SetNthColumnInMatrix(boundingAxesToRasTransformMatrix, 2, variationMinimumOBBAxis);
+  // do the minimum variation axis
+  if (vtkMath::Norm(variationMinimumOBBAxis) < COMPARE_TO_ZERO_TOLERANCE)
+  {
+    // all points lie exactly on a plane.
+    // the remaining perpendicular vector found using cross product.
+    vtkMath::Cross(variationMaximumOBBAxis, variationMediumOBBAxis, variationMinimumOBBAxis);
+  }
+  vtkMath::Normalize(variationMinimumOBBAxis);
+  SetNthColumnInMatrix(boundingAxesToRasTransformMatrix, 2, variationMinimumOBBAxis);
 }
 
 //------------------------------------------------------------------------------
 // It is assumed that sortedExtentRanges is pre-sorted in descending order (largest to smallest)
 vtkSlicerMarkupsToModelClosedSurfaceGeneration::PointArrangement vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputePointArrangement(const double sortedExtentRanges[3])
 {
-    if (sortedExtentRanges == NULL)
-    {
-        vtkGenericWarningMacro("Input sortedExtentRanges is null. Returning singularity result.");
-        return POINT_ARRANGEMENT_SINGULAR;
-    }
+  if (sortedExtentRanges == NULL)
+  {
+    vtkGenericWarningMacro("Input sortedExtentRanges is null. Returning singularity result.");
+    return POINT_ARRANGEMENT_SINGULAR;
+  }
 
-    double longestExtentRange = sortedExtentRanges[0];
-    double mediumExtentRange = sortedExtentRanges[1];
-    double shortestExtentRange = sortedExtentRanges[2];
+  double longestExtentRange = sortedExtentRanges[0];
+  double mediumExtentRange = sortedExtentRanges[1];
+  double shortestExtentRange = sortedExtentRanges[2];
 
-    // sanity checking
-    bool longestExtentSmallerThanMedium = longestExtentRange >= COMPARE_TO_ZERO_TOLERANCE && longestExtentRange < mediumExtentRange;
-    bool longestExtentSmallerThanShortest = longestExtentRange >= COMPARE_TO_ZERO_TOLERANCE && longestExtentRange < shortestExtentRange;
-    bool mediumExtentSmallerThanShortest = mediumExtentRange >= COMPARE_TO_ZERO_TOLERANCE && mediumExtentRange < shortestExtentRange;
-    if (longestExtentSmallerThanMedium || longestExtentSmallerThanShortest || mediumExtentSmallerThanShortest)
-    {
-        // Don't correct the problem here. Code external to this function should pass
-        // extent ranges already sorted, so it indicates a problem elsewhere.
-        vtkGenericWarningMacro("Extent ranges not provided in order largest to smallest. Unexpected results may occur.");
-    }
+  // sanity checking
+  bool longestExtentSmallerThanMedium = longestExtentRange >= COMPARE_TO_ZERO_TOLERANCE && longestExtentRange < mediumExtentRange;
+  bool longestExtentSmallerThanShortest = longestExtentRange >= COMPARE_TO_ZERO_TOLERANCE && longestExtentRange < shortestExtentRange;
+  bool mediumExtentSmallerThanShortest = mediumExtentRange >= COMPARE_TO_ZERO_TOLERANCE && mediumExtentRange < shortestExtentRange;
+  if (longestExtentSmallerThanMedium || longestExtentSmallerThanShortest || mediumExtentSmallerThanShortest)
+  {
+    // Don't correct the problem here. Code external to this function should pass
+    // extent ranges already sorted, so it indicates a problem elsewhere.
+    vtkGenericWarningMacro("Extent ranges not provided in order largest to smallest. Unexpected results may occur.");
+  }
 
-    if (longestExtentRange < COMPARE_TO_ZERO_TOLERANCE)
-    {
-        return POINT_ARRANGEMENT_SINGULAR;
-    }
+  if (longestExtentRange < COMPARE_TO_ZERO_TOLERANCE)
+  {
+    return POINT_ARRANGEMENT_SINGULAR;
+  }
 
-    // We need to compare relative lengths of the short and medium axes against
-    // the longest axis.
-    double mediumToLongestRatio = mediumExtentRange / longestExtentRange;
+  // We need to compare relative lengths of the short and medium axes against
+  // the longest axis.
+  double mediumToLongestRatio = mediumExtentRange / longestExtentRange;
 
-    // The Delaunay3D class tends to fail with thin planes/lines, so it is important
-    // to capture these cases, even liberally. It was experimentally determined that
-    // extents less than 1/10th of the maximum extent tend to produce errors.
-    const double RATIO_THRESHOLD = 0.1;
+  // The Delaunay3D class tends to fail with thin planes/lines, so it is important
+  // to capture these cases, even liberally. It was experimentally determined that
+  // extents less than 1/10th of the maximum extent tend to produce errors.
+  const double RATIO_THRESHOLD = 0.1;
 
-    if (mediumToLongestRatio < RATIO_THRESHOLD)
-    {
-        return POINT_ARRANGEMENT_LINEAR;
-    }
+  if (mediumToLongestRatio < RATIO_THRESHOLD)
+  {
+    return POINT_ARRANGEMENT_LINEAR;
+  }
 
-    double shortestToLongestRatio = shortestExtentRange / longestExtentRange;
-    if (shortestToLongestRatio < RATIO_THRESHOLD)
-    {
-        return POINT_ARRANGEMENT_PLANAR;
-    }
+  double shortestToLongestRatio = shortestExtentRange / longestExtentRange;
+  if (shortestToLongestRatio < RATIO_THRESHOLD)
+  {
+    return POINT_ARRANGEMENT_PLANAR;
+  }
 
-    return POINT_ARRANGEMENT_NONPLANAR;
+  return POINT_ARRANGEMENT_NONPLANAR;
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformedExtentRanges(vtkPoints* points, vtkMatrix4x4* transformMatrix, double outputExtentRanges[3])
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeTransformedExtentRanges(vtkPoints *points, vtkMatrix4x4 *transformMatrix, double outputExtentRanges[3])
 {
-    if (points == NULL)
-    {
-        vtkGenericWarningMacro("points is null. Aborting output extent computation.");
-        return;
-    }
+  if (points == NULL)
+  {
+    vtkGenericWarningMacro("points is null. Aborting output extent computation.");
+    return;
+  }
 
-    if (transformMatrix == NULL)
-    {
-        vtkGenericWarningMacro("transformMatrix is null. Aborting output extent computation.");
-        return;
-    }
+  if (transformMatrix == NULL)
+  {
+    vtkGenericWarningMacro("transformMatrix is null. Aborting output extent computation.");
+    return;
+  }
 
-    if (outputExtentRanges == NULL)
-    {
-        vtkGenericWarningMacro("outputExtentRanges is null. Aborting output extent computation.");
-        return;
-    }
+  if (outputExtentRanges == NULL)
+  {
+    vtkGenericWarningMacro("outputExtentRanges is null. Aborting output extent computation.");
+    return;
+  }
 
-    vtkSmartPointer< vtkTransform > transform = vtkSmartPointer< vtkTransform >::New();
-    transform->SetMatrix(transformMatrix);
-    transform->Update();
+  vtkSmartPointer<vtkTransform> transform = vtkSmartPointer<vtkTransform>::New();
+  transform->SetMatrix(transformMatrix);
+  transform->Update();
 
-    // can't transform points directly, so need to store in a container
-    vtkSmartPointer< vtkPolyData > polyDataWithPoints = vtkSmartPointer< vtkPolyData >::New();
-    polyDataWithPoints->SetPoints(points);
+  // can't transform points directly, so need to store in a container
+  vtkSmartPointer<vtkPolyData> polyDataWithPoints = vtkSmartPointer<vtkPolyData>::New();
+  polyDataWithPoints->SetPoints(points);
 
-    vtkSmartPointer< vtkTransformFilter > transformFilter = vtkSmartPointer< vtkTransformFilter >::New();
-    transformFilter->SetTransform(transform);
-    transformFilter->SetInputData(polyDataWithPoints);
-    transformFilter->Update();
+  vtkSmartPointer<vtkTransformFilter> transformFilter = vtkSmartPointer<vtkTransformFilter>::New();
+  transformFilter->SetTransform(transform);
+  transformFilter->SetInputData(polyDataWithPoints);
+  transformFilter->Update();
 
-    // the extent can be extracted from the output points object (poly data bounds does not work)
-    vtkPoints* transformedPoints = transformFilter->GetPolyDataOutput()->GetPoints();
-    transformedPoints->ComputeBounds();
-    double* extents = transformedPoints->GetBounds(); // { xmin, xmax, ymin, ymax, zmin, zmax }
+  // the extent can be extracted from the output points object (poly data bounds does not work)
+  vtkPoints *transformedPoints = transformFilter->GetPolyDataOutput()->GetPoints();
+  transformedPoints->ComputeBounds();
+  double *extents = transformedPoints->GetBounds(); // { xmin, xmax, ymin, ymax, zmin, zmax }
 
-    for (int i = 0; i < 3; i++)
-    {
-        double axisIMin = extents[2 * i];
-        double axisIMax = extents[2 * i + 1];
-        double axisIRange = axisIMax - axisIMin;
-        outputExtentRanges[i] = axisIRange;
-    }
+  for (int i = 0; i < 3; i++)
+  {
+    double axisIMin = extents[2 * i];
+    double axisIMax = extents[2 * i + 1];
+    double axisIRange = axisIMax - axisIMin;
+    outputExtentRanges[i] = axisIRange;
+  }
 }
 
 //------------------------------------------------------------------------------
 double vtkSlicerMarkupsToModelClosedSurfaceGeneration::ComputeSurfaceExtrusionAmount(const double extents[3])
 {
-    // MINIMUM_SURFACE_EXTRUSION_AMOUNT is the value returned by default, and the final result cannot be less than this.
-    if (extents == NULL)
-    {
-        vtkGenericWarningMacro("extents is null. Returning MINIMUM_SURFACE_EXTRUSION_AMOUNT: " << MINIMUM_SURFACE_EXTRUSION_AMOUNT << ".");
-        return MINIMUM_SURFACE_EXTRUSION_AMOUNT;
-    }
+  // MINIMUM_SURFACE_EXTRUSION_AMOUNT is the value returned by default, and the final result cannot be less than this.
+  if (extents == NULL)
+  {
+    vtkGenericWarningMacro("extents is null. Returning MINIMUM_SURFACE_EXTRUSION_AMOUNT: " << MINIMUM_SURFACE_EXTRUSION_AMOUNT << ".");
+    return MINIMUM_SURFACE_EXTRUSION_AMOUNT;
+  }
 
-    double normOfExtents = vtkMath::Norm(extents);
-    const double SURFACE_EXTRUSION_NORM_MULTIPLIER = 0.01; // this value is observed to produce generally acceptable results
-    double surfaceExtrusionAmount = normOfExtents * SURFACE_EXTRUSION_NORM_MULTIPLIER;
+  double normOfExtents = vtkMath::Norm(extents);
+  const double SURFACE_EXTRUSION_NORM_MULTIPLIER = 0.01; // this value is observed to produce generally acceptable results
+  double surfaceExtrusionAmount = normOfExtents * SURFACE_EXTRUSION_NORM_MULTIPLIER;
 
-    if (surfaceExtrusionAmount < MINIMUM_SURFACE_EXTRUSION_AMOUNT)
-    {
-        vtkGenericWarningMacro("Surface extrusion amount smaller than " << MINIMUM_SURFACE_EXTRUSION_AMOUNT << " : " << surfaceExtrusionAmount << ". "
-            << "Consider checking the points for singularity. Setting surface extrusion amount to default "
-            << MINIMUM_SURFACE_EXTRUSION_AMOUNT << ".");
-        surfaceExtrusionAmount = MINIMUM_SURFACE_EXTRUSION_AMOUNT;
-    }
-    return surfaceExtrusionAmount;
+  if (surfaceExtrusionAmount < MINIMUM_SURFACE_EXTRUSION_AMOUNT)
+  {
+    vtkGenericWarningMacro("Surface extrusion amount smaller than " << MINIMUM_SURFACE_EXTRUSION_AMOUNT << " : " << surfaceExtrusionAmount << ". "
+                                                                    << "Consider checking the points for singularity. Setting surface extrusion amount to default "
+                                                                    << MINIMUM_SURFACE_EXTRUSION_AMOUNT << ".");
+    surfaceExtrusionAmount = MINIMUM_SURFACE_EXTRUSION_AMOUNT;
+  }
+  return surfaceExtrusionAmount;
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::SetNthColumnInMatrix(vtkMatrix4x4* matrix, int n, const double axis[3])
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::SetNthColumnInMatrix(vtkMatrix4x4 *matrix, int n, const double axis[3])
 {
-    if (matrix == NULL)
-    {
-        vtkGenericWarningMacro("No matrix provided as input. No operation performed.");
-        return;
-    }
+  if (matrix == NULL)
+  {
+    vtkGenericWarningMacro("No matrix provided as input. No operation performed.");
+    return;
+  }
 
-    if (n < 0 || n >= 3)
-    {
-        vtkGenericWarningMacro("Axis n " << n << " is out of bounds. Valid values are 0, 1, and 2. No operation performed.");
-        return;
-    }
+  if (n < 0 || n >= 3)
+  {
+    vtkGenericWarningMacro("Axis n " << n << " is out of bounds. Valid values are 0, 1, and 2. No operation performed.");
+    return;
+  }
 
-    if (axis == NULL)
-    {
-        vtkGenericWarningMacro("Axis is null. No operation performed.");
-        return;
-    }
+  if (axis == NULL)
+  {
+    vtkGenericWarningMacro("Axis is null. No operation performed.");
+    return;
+  }
 
-    matrix->SetElement(0, n, axis[0]);
-    matrix->SetElement(1, n, axis[1]);
-    matrix->SetElement(2, n, axis[2]);
+  matrix->SetElement(0, n, axis[0]);
+  matrix->SetElement(1, n, axis[1]);
+  matrix->SetElement(2, n, axis[2]);
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::GetNthColumnInMatrix(vtkMatrix4x4* matrix, int n, double outputAxis[3])
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::GetNthColumnInMatrix(vtkMatrix4x4 *matrix, int n, double outputAxis[3])
 {
-    if (matrix == NULL)
-    {
-        vtkGenericWarningMacro("No matrix provided as input. No operation performed.");
-        return;
-    }
+  if (matrix == NULL)
+  {
+    vtkGenericWarningMacro("No matrix provided as input. No operation performed.");
+    return;
+  }
 
-    if (n < 0 || n >= 3)
-    {
-        vtkGenericWarningMacro("Axis n " << n << " is out of bounds. Valid values are 0, 1, and 2. No operation performed.");
-        return;
-    }
+  if (n < 0 || n >= 3)
+  {
+    vtkGenericWarningMacro("Axis n " << n << " is out of bounds. Valid values are 0, 1, and 2. No operation performed.");
+    return;
+  }
 
-    if (outputAxis == NULL)
-    {
-        vtkGenericWarningMacro("Axis is null. No operation performed.");
-        return;
-    }
+  if (outputAxis == NULL)
+  {
+    vtkGenericWarningMacro("Axis is null. No operation performed.");
+    return;
+  }
 
-    outputAxis[0] = matrix->GetElement(0, n);
-    outputAxis[1] = matrix->GetElement(1, n);
-    outputAxis[2] = matrix->GetElement(2, n);
+  outputAxis[0] = matrix->GetElement(0, n);
+  outputAxis[1] = matrix->GetElement(1, n);
+  outputAxis[2] = matrix->GetElement(2, n);
 }
 
 //------------------------------------------------------------------------------
-void vtkSlicerMarkupsToModelClosedSurfaceGeneration::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSlicerMarkupsToModelClosedSurfaceGeneration::PrintSelf(ostream &os, vtkIndent indent)
 {
-    Superclass::PrintSelf(os, indent);
+  Superclass::PrintSelf(os, indent);
 }
