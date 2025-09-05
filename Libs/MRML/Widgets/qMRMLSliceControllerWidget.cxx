@@ -411,6 +411,8 @@ void qMRMLSliceControllerWidgetPrivate::init()
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
   this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: transparent;");
 
+  this->SliceOffsetSlider->setStyleSheet("color: black;background: #a4cb2fff");
+
   //this->SliceOffsetSlider->spinBox()->setParent(this->PopupWidget);
   ctkDoubleSpinBox* spinBox = this->SliceOffsetSlider->spinBox();
   spinBox->setFrame(false);
