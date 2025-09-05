@@ -472,7 +472,7 @@
         <item>
          <widget class="QToolButton" name="SliceVisibilityButton">
           <property name="toolTip">
-           <string>Toggle slice visibility in the 3D view.</string>
+           <string>Toggle slice visibility in the 3D view66666.</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
