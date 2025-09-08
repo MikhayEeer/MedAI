@@ -187,7 +187,7 @@ class CMakeScript:
     _reWhitespace = re.compile(r"\s")
     _reCommand = re.compile(r"([" + string.ascii_letters + r"]\w*)(\s*\()")
     _reComment = re.compile(r"#(\[=*\[)?")
-    _reQuote = re.compile("\"")
+    _reQuote = re.compile('"')
     _reBracketQuote = re.compile(r"\[=*\[")
     _reEscape = re.compile(r"\\[\\\"nrt$ ]")
 
@@ -266,10 +266,10 @@ class CMakeScript:
             if escapes and self._is(self._reEscape):
                 e = self._match.group(0)
                 result += e
-                self._content = self._content[len(e):]
+                self._content = self._content[len(e) :]
 
             elif self._content.startswith(end):
-                self._content = self._content[len(end):]
+                self._content = self._content[len(end) :]
                 return result
 
             else:
@@ -284,9 +284,9 @@ class CMakeScript:
         while len(self._content):
             if self._is(self._reQuote) or self._is(self._reBracketQuote):
                 prefix = self._match.group(0)
-                self._content = self._content[len(prefix):]
+                self._content = self._content[len(prefix) :]
 
-                if prefix == "\"":
+                if prefix == '"':
                     suffix = prefix
                     s = self._chompString(suffix, escapes=True)
 
@@ -305,7 +305,7 @@ class CMakeScript:
             elif self._is(self._reEscape):
                 e = self._match.group(0)
                 text += e
-                self._content = self._content[len(e):]
+                self._content = self._content[len(e) :]
 
             elif self._content[0] == ")":
                 break
@@ -328,7 +328,7 @@ class CMakeScript:
         token = Comment(prefix=self._content[:i], suffix=suffix,
                         text=self._content[i:n], indent=indent)
 
-        self._content = self._content[n + len(suffix):]
+        self._content = self._content[n + len(suffix) :]
 
         return token
 
@@ -338,7 +338,7 @@ class CMakeScript:
         prefix = match.group(2)
         arguments = []
 
-        self._content = self._content[match.end():]
+        self._content = self._content[match.end() :]
 
         while len(self._content):
             argIndent = self._chompSpace()

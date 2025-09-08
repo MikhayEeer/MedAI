@@ -168,6 +168,9 @@ public:
   /// CoreCommandOptions - It should exist only one instance of the CoreCommandOptions
   QSharedPointer<qSlicerCoreCommandOptions>   CoreCommandOptions;
 
+  /// Post-startup default handling of URI arguments
+  bool URIArgumentHandlingEnabled;
+
   /// ErrorLogModel - It should exist only one instance of the ErrorLogModel
   QSharedPointer<ctkErrorLogAbstractModel> ErrorLogModel;
 
@@ -207,4 +210,3 @@ public:
 };
 
 #endif
-

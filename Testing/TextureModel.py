@@ -3,12 +3,11 @@ import time
 
 
 def newPlane():
-
     # create a plane polydata
     plane = Slicer.slicer.vtkPlaneSource()
-    plane.SetOrigin(0., 0., 0.)
-    plane.SetPoint1(100., 0., 0.)
-    plane.SetPoint2(0., 0., 100.)
+    plane.SetOrigin(0.0, 0.0, 0.0)
+    plane.SetPoint1(100.0, 0.0, 0.0)
+    plane.SetPoint2(0.0, 0.0, 100.0)
     plane.GetOutput().Update()
 
     # create a simple texture image
@@ -18,18 +17,18 @@ def newPlane():
     # set up display node that includes the texture
     modelDisplayNode = Slicer.slicer.vtkMRMLModelDisplayNode()
     modelDisplayNode.SetBackfaceCulling(0)
-# VTK6 TODO
+    # VTK6 TODO
     modelDisplayNode.SetAndObserveTextureImageData(imageSource.GetOutput())
     Slicer.slicer.MRMLScene.AddNode(modelDisplayNode)
 
     # transform node
     transformNode = Slicer.slicer.vtkMRMLLinearTransformNode()
-    transformNode.SetName('PlaneToWorld')
+    transformNode.SetName("PlaneToWorld")
     Slicer.slicer.MRMLScene.AddNode(transformNode)
 
     # set up model node
     modelNode = Slicer.slicer.vtkMRMLModelNode()
-# VTK6 TODO
+    # VTK6 TODO
     modelNode.SetAndObservePolyData(plane.GetOutput())
     modelNode.SetAndObserveDisplayNodeID(modelDisplayNode.GetID())
     modelNode.SetAndObserveTransformNodeID(transformNode.GetID())
@@ -46,7 +45,6 @@ def newPlane():
 
 
 def texturedPlane():
-
     # create the plane and modify the texture and transform
     # every iteration.  Call Modified on the PolyData so the
     # viewer will know to update.  Call Tk's "update" to flush
@@ -74,4 +72,4 @@ def texturedPlane():
     endTime = time.time()
     elapsed = endTime - startTime
     hertz = int(steps / elapsed)
-    print('ran %d iterations in %g seconds (%g hertz)' % (steps, elapsed, hertz))
+    print("ran %d iterations in %g seconds (%g hertz)" % (steps, elapsed, hertz))

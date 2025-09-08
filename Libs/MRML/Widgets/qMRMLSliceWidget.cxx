@@ -66,7 +66,7 @@ void qMRMLSliceWidgetPrivate::init()
   vtkMRMLSliceLogic* sliceLogic = this->SliceController->sliceLogic();
 
   this->SliceVerticalController->setSliceLogic(sliceLogic);
-  this->SliceView->sliceViewInteractorStyle()->SetSliceLogic(sliceLogic);
+  this->SliceView->interactorObserver()->SetSliceLogic(sliceLogic);
 
   connect(this->SliceView, SIGNAL(resized(QSize)),
           this, SLOT(setSliceViewSize(QSize)));
@@ -170,10 +170,10 @@ void qMRMLSliceWidget::setMRMLAbstractViewNode(vtkMRMLAbstractViewNode* newViewN
   Q_D(qMRMLSliceWidget);
   vtkMRMLSliceNode* sliceViewNode = vtkMRMLSliceNode::SafeDownCast(newViewNode);
   if (newViewNode && !sliceViewNode)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: Invalid view node type " << newViewNode->GetClassName()
       << ". Expected node type: vtkMRMLSliceNode";
-    }
+  }
   this->setMRMLSliceNode(sliceViewNode);
 }
 
@@ -369,17 +369,17 @@ void qMRMLSliceWidget::showEvent(QShowEvent* event)
   // in the device pixel ratio.
   QWindow* window = nullptr;
   foreach(QWidget* widget, qApp->topLevelWidgets())
-    {
+  {
     QMainWindow* mainWindow = qobject_cast<QMainWindow*>(widget);
     if (mainWindow)
-      {
+    {
       window = mainWindow->windowHandle();
       break;
-      }
     }
+  }
   if (window)
-    {
+  {
     connect(window, SIGNAL(screenChanged(QScreen*)),
             d, SLOT(resetSliceViewSize()), Qt::UniqueConnection);
-    }
+  }
 }

@@ -8,7 +8,7 @@ class ModuleCleanup(ScriptedLoadableModule):
         ScriptedLoadableModule.__init__(self, parent)
         self.parent.title = "Module for cleanup test"
         self.parent.categories = ["ModuleCleanup"]  # Explicitly add a category to work around issue #4698
-        self.parent.contributors = ["Jean-Christophe Fillion-Robin (Kitware)", ]
+        self.parent.contributors = ["Jean-Christophe Fillion-Robin (Kitware)"]
         self.parent.helpText = """
     This module allows to test that exception raised during module cleanup
     sets exit code.
@@ -23,7 +23,7 @@ class ModuleCleanupWidget(ScriptedLoadableModuleWidget):
     def __init__(self, parent=None):
         ScriptedLoadableModuleWidget.__init__(self, parent)
 
-        self.testOutputFileName = os.environ['SLICER_MODULE_CLEANUP_TEST_OUTPUT']
+        self.testOutputFileName = os.environ["SLICER_MODULE_CLEANUP_TEST_OUTPUT"]
         if os.path.isfile(self.testOutputFileName):
             os.remove(self.testOutputFileName)
 
@@ -33,5 +33,5 @@ class ModuleCleanupWidget(ScriptedLoadableModuleWidget):
 
     def cleanup(self):
         with open(self.testOutputFileName, "w") as fd:
-            fd.write('ModuleCleanup generated this file when application exited')
+            fd.write("ModuleCleanup generated this file when application exited")
         raise RuntimeError("ModuleCleanupWidget error")

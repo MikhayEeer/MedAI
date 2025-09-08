@@ -20,6 +20,7 @@ def haveGit():
     # If Python is not built with SSL support then do not even try to import
     # GithubHelper (it would throw missing attribute error for HTTPSConnection)
     import http.client
+
     if hasattr(http.client, "HTTPSConnection"):
         # SSL is available
         try:
@@ -27,6 +28,7 @@ def haveGit():
             import git  # noqa: F401
             from . import GithubHelper
             from .GithubHelper import NotSet
+
             _haveGit = True
         except ImportError:
             _haveGit = False
@@ -39,7 +41,6 @@ def haveGit():
 
 from . import __version__, __version_info__
 
-from .ExtensionDescription import ExtensionDescription
 from .ExtensionProject import ExtensionProject
 from .TemplateManager import TemplateManager
 from .Utilities import *
@@ -62,7 +63,6 @@ class ExtensionWizard:
     Interaction with `GitHub <https://github.com>`_ uses
     :func:`.GithubHelper.logIn` to authenticate.
 
-    .. 'note' directive needs '\' to span multiple lines!
     .. note:: Most methods will signal the application to exit if \
               something goes wrong. This behavior is hidden by the \
               :meth:`~ExtensionWizard.execute` method when  passing \
@@ -232,6 +232,7 @@ class ExtensionWizard:
         if r is None:
             # Create new git repository
             import git
+
             r = git.Repo.init(args.destination)
             createdRepo = True
 
@@ -496,12 +497,12 @@ class ExtensionWizard:
             xiRemote.push(f"{xiBase}:refs/heads/{args.target}")
 
             # Determine if this is an addition or update to the index
-            xdf = name + ".s4ext"
+            xdf = name + ".json"
             if xdf in xiBase.commit.tree:
-                branch = f'update-{name}-{args.target}'
+                branch = f"update-{name}-{args.target}"
                 update = True
             else:
-                branch = f'add-{name}-{args.target}'
+                branch = f"add-{name}-{args.target}"
                 update = False
 
             logging.debug("create index branch %s", branch)
@@ -606,59 +607,82 @@ class ExtensionWizard:
     # ---------------------------------------------------------------------------
     def _execute(self, args):
         # Set up arguments
-        parser = argparse.ArgumentParser(description="Slicer Wizard",
-                                         formatter_class=WizardHelpFormatter)
+        parser = argparse.ArgumentParser(description="Slicer Wizard", formatter_class=WizardHelpFormatter)
 
-        parser.add_argument('--version', action='version',
-                            version=__version__)
+        parser.add_argument("--version", action="version", version=__version__)
 
         parser.add_argument("--debug", action="store_true", help=argparse.SUPPRESS)
         parser.add_argument("--test", action="store_true", help=argparse.SUPPRESS)
         parser.add_argument("--dryRun", action="store_true", help=argparse.SUPPRESS)
         parser.add_argument("--localExtensionsDir", help=argparse.SUPPRESS)
 
-        parser.add_argument("--create", metavar="<TYPE:>NAME",
-                            help="create TYPE extension NAME"
-                                 " under the destination directory;"
-                                 " any modules are added to the new extension"
-                                 " (default type: 'default')")
-        parser.add_argument("--addModule", metavar="TYPE:NAME", action="append",
-                            help="add new TYPE module NAME to an existing project"
-                                 " in the destination directory;"
-                                 " may use more than once")
+        parser.add_argument(
+            "--create",
+            metavar="<TYPE:>NAME",
+            help="create TYPE extension NAME"
+            " under the destination directory;"
+            " any modules are added to the new extension"
+            " (default type: 'default')",
+        )
+        parser.add_argument(
+            "--addModule",
+            metavar="TYPE:NAME",
+            action="append",
+            help="add new TYPE module NAME to an existing project"
+            " in the destination directory;"
+            " may use more than once",
+        )
         self._templateManager.addArguments(parser)
-        parser.add_argument("--listTemplates", action="store_true",
-                            help="show list of available templates"
-                                 " and associated substitution keys")
-        parser.add_argument("--describe", action="store_true",
-                            help="print the extension description (s4ext)"
-                                 " to standard output")
+        parser.add_argument(
+            "--listTemplates",
+            action="store_true",
+            help="show list of available templates and associated substitution keys",
+        )
+        parser.add_argument(
+            "--describe", action="store_true", help="print the extension description (json) to standard output",
+        )
 
-        parser.add_argument("--name", metavar="NAME",
-                            help="name of the extension"
-                                 " (default: value associated with 'project()' statement)")
+        parser.add_argument(
+            "--name",
+            metavar="NAME",
+            help="name of the extension (default: value associated with 'project()' statement)",
+        )
 
-        parser.add_argument("--publish", action="store_true",
-                            help="publish the extension in the destination"
-                                 " directory to github (account required)")
-        parser.add_argument("--contribute", action="store_true",
-                            help="register or update a compiled extension with"
-                                 " the extension index (github account required)")
-        parser.add_argument("--target", metavar="VERSION", default="main",
-                            help="version of Slicer for which the extension"
-                                 " is intended (default='main')")
-        parser.add_argument("--index", metavar="PATH",
-                            help="location for the extension index clone"
-                                 " (default: private directory"
-                                 " in the extension clone)")
+        parser.add_argument(
+            "--publish",
+            action="store_true",
+            help="publish the extension in the destination directory to github (account required)",
+        )
+        parser.add_argument(
+            "--contribute",
+            action="store_true",
+            help="register or update a compiled extension with the extension index (github account required)",
+        )
+        parser.add_argument(
+            "--target",
+            metavar="VERSION",
+            default="main",
+            help="version of Slicer for which the extension is intended (default='main')",
+        )
+        parser.add_argument(
+            "--index",
+            metavar="PATH",
+            help="location for the extension index clone (default: private directory in the extension clone)",
+        )
 
-        parser.add_argument("destination", default=os.getcwd(), nargs="?",
-                            help="location of output files / extension source"
-                                 " (default: '.')")
+        parser.add_argument(
+            "destination",
+            default=os.getcwd(),
+            nargs="?",
+            help="location of output files / extension source (default: '.')",
+        )
 
-        parser.add_argument("cmakefile", default="CMakeLists.txt", nargs="?",
-                            help="name of the CMake file where EXTENSION_* CMake variables are set"
-                                 " (default: 'CMakeLists.txt')")
+        parser.add_argument(
+            "cmakefile",
+            default="CMakeLists.txt",
+            nargs="?",
+            help="name of the CMake file where EXTENSION_* CMake variables are set (default: 'CMakeLists.txt')",
+        )
 
         args = parser.parse_args(args)
         initLogging(logging.getLogger(), args)
@@ -685,18 +709,11 @@ class ExtensionWizard:
             os.path.join(scriptPath, "..", "..", "..", "Utilities", "Templates"),  # Run from source directory
             os.path.join(scriptPath, "..", "..", "..", "share",  # Run from install
                          "Slicer-%s.%s" % tuple(__version_info__[:2]),
-                         "Wizard", "Templates")
+                         "Wizard", "Templates"),
         ]
-        descriptionFileTemplate = None
         for candidate in candidateBuiltInTemplatePaths:
             if os.path.exists(candidate):
                 self._templateManager.addPath(candidate)
-                descriptionFileTemplate = os.path.join(candidate, "Extensions", "extension_description.s4ext.in")
-        if descriptionFileTemplate is None or not os.path.exists(descriptionFileTemplate):
-            logging.warning("failed to locate template 'Extensions/extension_description.s4ext.in' "
-                            "in these directories: %s" % candidateBuiltInTemplatePaths)
-        else:
-            ExtensionDescription.DESCRIPTION_FILE_TEMPLATE = descriptionFileTemplate
 
         # Add user-specified template paths and keys
         self._templateManager.parseArguments(args)
@@ -772,7 +789,7 @@ class ExtensionWizard:
         """
 
         # Get values for non-CLI-argument named arguments
-        exit = kwargs.pop('exit', True)
+        exit = kwargs.pop("exit", True)
 
         # Convert other named arguments to CLI arguments
         args = buildProcessArgs(*args, **kwargs)

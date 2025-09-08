@@ -8,6 +8,7 @@ from slicer.ScriptedLoadableModule import *
 # TwoCLIsInARowTest
 #
 
+
 class TwoCLIsInARowTest(ScriptedLoadableModule):
     def __init__(self, parent):
         parent.title = "TwoCLIsInARowTest"  # TODO make this more human readable by adding spaces
@@ -27,7 +28,7 @@ class TwoCLIsInARowTest(ScriptedLoadableModule):
             slicer.selfTests
         except AttributeError:
             slicer.selfTests = {}
-        slicer.selfTests['TwoCLIsInARowTest'] = self.runTest
+        slicer.selfTests["TwoCLIsInARowTest"] = self.runTest
 
     def runTest(self):
         tester = TwoCLIsInARowTestTest()
@@ -38,8 +39,8 @@ class TwoCLIsInARowTest(ScriptedLoadableModule):
 # TwoCLIsInARowTestWidget
 #
 
-class TwoCLIsInARowTestWidget(ScriptedLoadableModuleWidget):
 
+class TwoCLIsInARowTestWidget(ScriptedLoadableModuleWidget):
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
 
@@ -47,6 +48,7 @@ class TwoCLIsInARowTestWidget(ScriptedLoadableModuleWidget):
 #
 # TwoCLIsInARowTestLogic
 #
+
 
 class TwoCLIsInARowTestLogic(ScriptedLoadableModuleLogic):
     def __init__(self):
@@ -70,7 +72,7 @@ class TwoCLIsInARowTestLogic(ScriptedLoadableModuleLogic):
         print("--", cliNode.GetStatusString(), ":", cliNode.GetName())
         if not cliNode.IsBusy():
             self.removeObservers(cliNode, self.StatusModifiedEvent, self.onModule1Modified)
-            if cliNode.GetStatusString() == 'Completed':
+            if cliNode.GetStatusString() == "Completed":
                 self.runModule2()
 
     def runModule2(self):
@@ -84,11 +86,11 @@ class TwoCLIsInARowTestLogic(ScriptedLoadableModuleLogic):
         print("--", cliNode.GetStatusString(), ":", cliNode.GetName())
         if not cliNode.IsBusy():
             self.removeObservers(cliNode, self.StatusModifiedEvent, self.onModule2Modified)
-            self.success = cliNode.GetStatusString() == 'Completed'
+            self.success = cliNode.GetStatusString() == "Completed"
 
-    def addObserver(self, object, event, method, group='none'):
+    def addObserver(self, object, event, method, group="none"):
         if self.hasObserver(object, event, method):
-            print(object.GetName(), 'already has observer')
+            print(object.GetName(), "already has observer")
             return
         tag = object.AddObserver(event, method)
         self.Observations.append([object, event, method, group, tag])
@@ -110,21 +112,19 @@ class TwoCLIsInARowTestLogic(ScriptedLoadableModuleLogic):
 # TwoCLIsInARowTestLogic
 #
 
-class TwoCLIsInARowTestTest(ScriptedLoadableModuleTest):
 
+class TwoCLIsInARowTestTest(ScriptedLoadableModuleTest):
     def setUp(self):
-        """ Reset the state for testing.
-        """
+        """Reset the state for testing."""
         pass
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_TwoCLIsInARowTest()
 
     def test_TwoCLIsInARowTest(self):
-        self.delayDisplay('Running two CLIs in a row Test')
+        self.delayDisplay("Running two CLIs in a row Test")
 
         tempFile = qt.QTemporaryFile("TwoCLIsInARowTest-outputFile-XXXXXX")
         self.assertTrue(tempFile.open())
@@ -133,12 +133,12 @@ class TwoCLIsInARowTestTest(ScriptedLoadableModuleTest):
         logic.parameters = {}
         logic.parameters["InputValue1"] = 1
         logic.parameters["InputValue2"] = 2
-        logic.parameters["OperationType"] = 'Addition'
+        logic.parameters["OperationType"] = "Addition"
         logic.parameters["OutputFile"] = tempFile.fileName()
 
         logic.runTest()
         while not logic.success:
-            self.delayDisplay('Waiting for module 2 to complete...')
+            self.delayDisplay("Waiting for module 2 to complete...")
         self.assertTrue(logic.success)
 
-        self.delayDisplay('Two CLIs in a row test passed !')
+        self.delayDisplay("Two CLIs in a row test passed !")

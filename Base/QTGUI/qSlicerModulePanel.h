@@ -54,7 +54,6 @@ public:
 
   /// Get the helpAndAcknowledgmentVisible property value.
   /// \sa helpAndAcknowledgmentVisible, isHelpAndAcknowledgmentVisible()
- 
   void setHelpAndAcknowledgmentVisible(bool value);
 
   /// Set the canShowHelpAndAcknowledgment property value.

@@ -49,7 +49,7 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="qSlicerModulePanel" name="ModulePanel"/>
+      <widget class="qSlicerModulePanel" name="ModulePanel" native="true"/>
      </item>
     </layout>
    </widget>
@@ -299,13 +299,15 @@
     </property>
     <addaction name="actionLogOut"/>
     <addaction name="actionViewUserInfo"/>
+    <addaction name="actionReviewPermission"/>
    </widget>
    <widget class="QMenu" name="AIMenu">
     <property name="title">
-     <string>AI</string>
+     <string>Feature</string>
     </property>
     <addaction name="actionAI_Airway"/>
-    <addaction name="actionAI_Vessel"/>
+    <addaction name="separator"/>
+    <addaction name="actionAnonymize"/>
    </widget>
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
@@ -1209,12 +1211,22 @@
   </action>
   <action name="actionAI_Airway">
    <property name="text">
-    <string>AI Airway</string>
+    <string>AI</string>
    </property>
   </action>
   <action name="actionAI_Vessel">
    <property name="text">
     <string>AI Vessel</string>
+   </property>
+  </action>
+  <action name="actionReviewPermission">
+   <property name="text">
+    <string>Review</string>
+   </property>
+  </action>
+  <action name="actionAnonymize">
+   <property name="text">
+    <string>Anonymize</string>
    </property>
   </action>
  </widget>

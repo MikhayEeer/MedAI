@@ -15,7 +15,6 @@ class vtkImageData;
 class vtkStringArray;
 class vtkMRMLStorageNode;
 
-/// \ingroup Slicer_QtModules_Annotation
 class  VTK_SLICER_ANNOTATIONS_MODULE_MRML_EXPORT vtkMRMLAnnotationSnapshotNode : public vtkMRMLAnnotationNode
 {
 public:
@@ -34,7 +33,7 @@ public:
   const char* GetIcon() override {return ":/Icons/ViewCamera.png";}
 
   void SetSnapshotDescription(const vtkStdString& newDescription);
-  vtkGetMacro(SnapshotDescription, vtkStdString)
+  vtkGetMacro(SnapshotDescription, vtkStdString);
 
   void WriteXML(ostream& of, int nIndent) override;
   void ReadXMLAttributes(const char** atts) override;

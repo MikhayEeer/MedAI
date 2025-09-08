@@ -42,7 +42,6 @@
 #include "qSlicerSubjectHierarchyModelsPlugin.h"
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_Models
 class qSlicerModelsModulePrivate
 {
 public:
@@ -71,7 +70,7 @@ qSlicerModelsModule::~qSlicerModelsModule() = default;
 //-----------------------------------------------------------------------------
 QString qSlicerModelsModule::helpText()const
 {
-  QString help =
+  QString help = tr(
     "The Models Module loads and adjusts display parameters of models such as Color, Transparency, and Clipping.<br>"
     "Save models via the File menu, Save button.<br>"
     "The Add 3D model or a model directory button will allow you to load any "
@@ -86,7 +85,7 @@ QString qSlicerModelsModule::helpText()const
     "Clipping is turned on for a model in the Display pane, and the slice "
     "planes that will clip the model are selected in the Clipping pane.<br>"
     "The Model Hierarchy pane allows you to group models together and set the "
-    "group's properties.";
+    "group's properties.");
   help += this->defaultDocumentationLink();
   return help;
 }
@@ -94,7 +93,7 @@ QString qSlicerModelsModule::helpText()const
 //-----------------------------------------------------------------------------
 QString qSlicerModelsModule::acknowledgementText()const
 {
-  return "This work was partially funded by NIH grants 3P41RR013218-12S1 and R01CA184354.";
+  return tr("This work was partially funded by NIH grants 3P41RR013218-12S1 and R01CA184354.");
 }
 
 //-----------------------------------------------------------------------------
@@ -136,7 +135,7 @@ void qSlicerModelsModule::setup()
   vtkSlicerModelsLogic* modelsLogic =
     vtkSlicerModelsLogic::SafeDownCast(this->logic());
   if (qSlicerApplication::application())
-    {
+  {
     // Register IOs
     qSlicerIOManager* ioManager = qSlicerApplication::application()->ioManager();
     ioManager->registerIO(new qSlicerModelsReader(modelsLogic, this));
@@ -144,7 +143,7 @@ void qSlicerModelsModule::setup()
     ioManager->registerIO(new qSlicerNodeWriter(
       "Models", QString("ModelFile"),
       QStringList() << "vtkMRMLModelNode", true, this));
-    }
+  }
 
   // Register Subject Hierarchy core plugins
   qSlicerSubjectHierarchyPluginHandler::instance()->registerPlugin(new qSlicerSubjectHierarchyModelsPlugin());

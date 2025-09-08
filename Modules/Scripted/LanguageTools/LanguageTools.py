@@ -2,10 +2,10 @@ import os
 import unittest
 import logging
 import vtk, qt, ctk, slicer
-from slicer.ScriptedLoadableModule import *
-from slicer.util import VTKObservationMixin
 from slicer.i18n import tr as _
 from slicer.i18n import translate
+from slicer.ScriptedLoadableModule import *
+from slicer.util import VTKObservationMixin
 
 #
 # LanguageTools
@@ -19,7 +19,7 @@ class LanguageTools(ScriptedLoadableModule):
   def __init__(self, parent):
     ScriptedLoadableModule.__init__(self, parent)
     self.parent.title = _("Language Tools")
-    self.parent.categories = [_("Utilities")]
+    self.parent.categories = [translate("qSlicerAbstractCoreModule", "Utilities")]
     self.parent.dependencies = []
     self.parent.contributors = ["Andras Lasso (PerkLab)"]
     self.parent.helpText = _("""
@@ -153,8 +153,10 @@ class TextFinder(qt.QWidget):
       links += "</ul>"
 
       result = slicer.util._messageDisplay(logging.INFO,
-        f"<html>Click on the text to find it on the translation website:\n\n{links}</html>", qt.QMessageBox.Close,
-        windowTitle=_("Translation lookup"), icon=qt.QMessageBox.Question,
+        "<html>" + _("Click on the text to find it on the translation website:\n\n{links}").format(links=links) + "</html>",
+        qt.QMessageBox.Close,
+        windowTitle="Translation lookup",
+        icon=qt.QMessageBox.Question,
         standardButtons=qt.QMessageBox.Close | qt.QMessageBox.Retry)
       if result == qt.QMessageBox.Close:
         # cancelled
@@ -169,7 +171,7 @@ class TextFinder(qt.QWidget):
       objectInfo = widget.className()
       if widget.objectName:
         objectInfo += f" ({widget.objectName})"
-      if not slicer.util.confirmRetryCloseDisplay("Failed to extract any text from: " + objectInfo):
+      if not slicer.util.confirmRetryCloseDisplay(_("Failed to extract any text from: {object}").format(object=objectInfo)):
         # cancelled
         self.hideOverlay()
         return
@@ -216,21 +218,8 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     self.logic.logCallback = self.log
     self.textFinder.logic = self.logic
 
-    #self.refreshWeblateLanguageList()
-
-    # Workaround for Slicer-5.0 (no Qt plugin was available for ctkLanguageComboBox)
-    if self.ui.languageSelector.__class__ != ctk.ctkLanguageComboBox:
-      layout = self.ui.languageSelectorLayout
-      layout.removeWidget(self.ui.languageSelector)
-      self.ui.languageSelector.hide()
-      languageSelector = ctk.ctkLanguageComboBox()
-      languageSelector.setSizePolicy(self.ui.languageSelector.sizePolicy)
-      languageSelector.toolTip = self.ui.languageSelector.toolTip
-      layout.addWidget(languageSelector)
-      self.ui.languageSelector = languageSelector
-
     self.ui.languageSelector.countryFlagsVisible = False
-    self.ui.languageSelector.defaultLanguage = "zh"#"en"
+    self.ui.languageSelector.defaultLanguage = "en"
     self.ui.languageSelector.directories = slicer.app.translationFolders()
 
     self.ui.translationFoldersTextBrowser.setPlainText(';'.join(slicer.app.translationFolders()))
@@ -292,7 +281,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       import traceback
       traceback.print_exc()
       if forceUpdateFromServer:
-        slicer.util.errorDisplay("Failed to retrieve language list from Weblate.")
+        slicer.util.errorDisplay(_("Failed to retrieve language list from Weblate."))
       self.ui.languagesComboBox.hide()
 
     self.ui.languagesComboBox.blockSignals(wasBlocked)
@@ -428,8 +417,6 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       #else:
       #  self.logic.downloadTsFilesFromGithub(self.ui.githubRepositoryUrlEdit.text)
 
-      self.logic.patchTsFiles()
-
       self.logic.convertTsFilesToQmFiles()
       self.logic.installQmFiles()
 
@@ -483,8 +470,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
     self.translationFilesFolder = None
     #self.weblateComponents = [("3d-slicer", "Slicer"), ("ctk", "CTK")]
     #self.weblateEditTranslationUrl = "https://hosted.weblate.org/translate/3d-slicer"
-    #self.preferredLanguage = "fr-FR"
-    self.preferredLanguage = "zh-CN"
+    self.preferredLanguage = "fr-FR"
     #self.gitRepositoryName = "SlicerLanguageTranslations"
     self.logCallback = None
 
@@ -500,8 +486,8 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
   def log(self, message):
     if self.logCallback:
       self.logCallback(message)
-  
-  '''def weblatelanguages
+
+  '''
   def weblateLanguages(self, component, forceUpdateFromServer=False):
     """Query list of languages 3d-slicer project has been translated to on Weblate.
     Only contacts the server if never contacted the server before or if update from server is specifically requested.
@@ -517,7 +503,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
       # Example URL: https://hosted.weblate.org/api/components/3d-slicer/3d-slicer/statistics/?format=json
       result = requests.get(f'https://hosted.weblate.org/api/components/3d-slicer/{component}/statistics/', {'format': 'json'})
       if not result.ok:
-        raise RuntimeError(f"Failed to query list of languages from Weblate ({result.status_code}:{result.reason})")
+        raise RuntimeError(_("Failed to query list of languages from Weblate ({status_code}:{reason})").format(status_code=result.status_code, reason=result.reason))
       translations = result.json()['results']
       languages = []
       for translation in translations:
@@ -539,7 +525,28 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
     return languages
   '''
-  
+  def getWeblateComponents(self):
+    """Query list of 3d-slicer components available on Weblate.
+    Each component is a tuple of the component slug and its name like
+    The returned list looks like this: [("3d-slicer", "Slicer"), ("ctk", "CTK")]
+    """
+    import requests
+    result = requests.get('https://hosted.weblate.org/api/projects/3d-slicer/components/', {'format': 'json'})
+    if not result.ok:
+      raise RuntimeError(_("Failed to query list of components from Weblate ({status_code}:{reason})").format(status_code=result.status_code, reason=result.reason))
+    components = result.json()['results']
+    weblateComponents = []
+    for component in components:
+      if component['name'] == 'Glossary':
+        # Glossary component is ignored, its text is not showed in Slicer GUI
+        continue
+      elif component['name'] == '3D Slicer':
+        # For Backward compatibility, in the generated filename
+        component['name'] = 'Slicer'
+      weblateComponents.append((component['slug'],  component['name'].replace(' ', '')))
+
+    return weblateComponents
+
   def temporaryFolder(self):
     if not self._temporaryFolder:
       self._temporaryFolder = slicer.util.tempDirectory()
@@ -571,7 +578,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
     if latestTsFileOnly:
       tsFiles = [tsFiles[-1]]
-      self.log(f"Use translation file: {tsFiles[0]}")
+      self.log(_("Use translation file: {file}").format(file={tsFiles[0]}))
 
     import shutil
     import xml.etree.cElementTree as ET
@@ -580,7 +587,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
       locale = tree.getroot().attrib['language']  # such as 'zh-CN'
       baseName = os.path.basename(file).split('_')[0]
       shutil.copy(file, f"{self.translationFilesFolder}/{baseName}_{locale}.ts")
-  
+
   '''def download ts files from weblate or github
   def downloadTsFilesFromWeblate(self, downloadUrl, languages):
     """Download .ts files from Weblate.
@@ -630,46 +637,6 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
     self.translationFilesFolder = f'{tempFolder}/{self.gitRepositoryName}-{self.slicerVersion}/translations'
   '''
 
-  def patchTsFiles(self):
-    """Patch known issues in .ts files.
-    """
-    import glob
-    import shutil
-    import xml.etree.cElementTree as ET
-
-    try:
-      slicerRevision = int(slicer.app.revision)
-    except ValueError:
-      # local build, set revision to invalid
-      slicerRevision = -1
-
-    # Modality codes (CT, MR, XA, ...) must not be localized in Slicer<5.3
-    # (that do not contain https://github.com/commontk/CTK/commit/cd194fff1360e2da114b6b55ce963f089c6f46f2)
-    # because it makes the DICOM module crash.
-    # CTK~vtkModalityWidget_LANG.ts contains translation for modality codes that are the same as the original non-translated text.
-    # CTK~vtkModalityWidget_LANG.ts will override strings defined in CTK_LANG.ts because it is loaded later
-    # (based on both temporal and alphabetical sorting).
-    if slicerRevision > 0 and slicerRevision <= 31714:  # Slicer-5.3.0-2023-04-11
-      # Get list of locales
-      locales = set()
-      tsFiles = glob.glob(f"{self.translationFilesFolder}/*.ts")
-      slicer.tsFiles = tsFiles
-      for tsFile in tsFiles:
-        for file in tsFiles:
-          tree = ET.ElementTree(file=file)
-          locale = tree.getroot().attrib['language'].replace('_', '-')  # such as 'zh-CN'
-          locales.add(locale)
-      # Read patch file template that contains translations that will overwrite modality codes
-      # in all languages.
-      moduleDir = os.path.dirname(slicer.util.modulePath('LanguageTools'))
-      modalityWidgetPatchedTsFile = os.path.join(moduleDir, 'Resources', 'CTK~vtkModalityWidget_LANG.ts')
-      with open(modalityWidgetPatchedTsFile, 'r') as file:
-        modalityWidgetPatchedTsFileStr = file.read()
-      # Write patch file for each locale
-      for locale in locales:
-        with open(f"{self.translationFilesFolder}/CTK~vtkModalityWidget_{locale}.ts", "w") as tsFile:
-          tsFile.write(modalityWidgetPatchedTsFileStr.replace('"LANG"', f'"{locale}"'))
-
   def convertTsFilesToQmFiles(self):
     if not self.translationFilesFolder:
       raise ValueError(_("Translation files folder is not specified."))
@@ -695,7 +662,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 
   def installQmFiles(self):
     if not self.translationFilesFolder:
-      raise ValueError("Translation files folder is not specified.")
+      raise ValueError(_("Translation files folder is not specified."))
 
     import shutil
     from pathlib import Path
@@ -713,14 +680,15 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
       numberOfInstalledFiles += 1
 
     if numberOfInstalledFiles == 0:
-      raise ValueError(f"No translation (qm) files were found at {self.translationFilesFolder}")
+      raise ValueError(_("No translation (qm) files were found at {location}").format(location=self.translationFilesFolder))
 
-    self.log(f"Update successfully completed.\nInstalled {numberOfInstalledFiles} translation files in {applicationTranslationFolder}.")
+    self.log(_("Update successfully completed.\nInstalled {count} translation files in {location}.").format(
+      count=numberOfInstalledFiles, location=applicationTranslationFolder))
 
   def installFontFiles(self):
 
     if not hasattr(slicer.app.applicationLogic(), 'GetFontsDirectory'):
-      self.log(f"This Slicer version does not support custom viewer fonts.")
+      self.log(_("This Slicer version does not support custom viewer fonts."))
       return
 
     applicationFontsFolder = slicer.app.applicationLogic().GetFontsDirectory()
@@ -743,7 +711,8 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
     slicer.app.userSettings().setValue('Views/FontFile/SansSerif', 'NotoSansTC-Regular.otf')
     slicer.app.userSettings().setValue('Views/FontFile/Serif', 'NotoSerifTC-Regular.otf')
 
-    self.log(f"Installed {numberOfInstalledFiles} font files in {applicationFontsFolder}.")
+    self.log(_("Installed {count} font files in {location}.").format(
+      count=numberOfInstalledFiles, location=applicationFontsFolder))
 
   def enableInternationalization(self, enabled=True):
     slicer.app.userSettings().setValue('Internationalization/Enabled', enabled)
@@ -768,6 +737,7 @@ class LanguageToolsLogic(ScriptedLoadableModuleLogic):
 #
 # LanguageToolsTest
 #
+
 class LanguageToolsTest(ScriptedLoadableModuleTest):
   """
   This is the test case for your scripted module.

@@ -1,9 +1,10 @@
-""" This module is a place holder for convenient functions allowing to interact with CLI."""
+"""This module is a place holder for convenient functions allowing to interact with CLI."""
 
 
 def createNode(cliModule, parameters=None):
     """Creates a new vtkMRMLCommandLineModuleNode for a specific module, with
-    optional parameters"""
+    optional parameters
+    """
     if not cliModule:
         return None
     cliLogic = cliModule.logic()
@@ -24,6 +25,7 @@ def setNodeParameters(node, parameters):
     For images, geometry, points and regions, provide a vtkMRMLNode
     """
     import slicer
+
     if not node:
         return None
     if not parameters:
@@ -41,7 +43,7 @@ def setNodeParameters(node, parameters):
             node.SetParameterAsNode(key, value)
         elif isinstance(value, list) or isinstance(value, tuple):
             commaSeparatedString = str(value)
-            commaSeparatedString = commaSeparatedString[1:len(commaSeparatedString) - 1]
+            commaSeparatedString = commaSeparatedString[1 : len(commaSeparatedString) - 1]
             node.SetParameterAsString(key, commaSeparatedString)
         # TODO: file support
         else:

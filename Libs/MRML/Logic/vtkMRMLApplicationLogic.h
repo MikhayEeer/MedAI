@@ -259,6 +259,7 @@ public:
     IntersectingSlicesInteractive,
     IntersectingSlicesTranslation,
     IntersectingSlicesRotation,
+    IntersectingSlicesThickSlabInteractive,
   };
 
   void SetIntersectingSlicesEnabled(IntersectingSlicesOperation operation, bool enabled);
@@ -320,4 +321,3 @@ private:
 
 
 #endif
-

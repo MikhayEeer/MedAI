@@ -42,7 +42,6 @@
 #include <vtkTextProperty.h>
 
 //------------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_Markupss
 class qMRMLMarkupsDisplayNodeWidgetPrivate: public QWidget, public Ui_qMRMLMarkupsDisplayNodeWidget
 {
   Q_DECLARE_PUBLIC(qMRMLMarkupsDisplayNodeWidget);
@@ -138,41 +137,41 @@ void qMRMLMarkupsDisplayNodeWidgetPrivate::init()
 
   // populate the glyph type combo box
   if (this->glyphTypeComboBox->count() == 0)
-    {
+  {
     vtkNew<vtkMRMLMarkupsDisplayNode> displayNode;
     int min = displayNode->GetMinimumGlyphType();
     int max = displayNode->GetMaximumGlyphType();
     this->glyphTypeComboBox->setEnabled(false);
     for (int i = min; i <= max; i++)
-      {
+    {
       this->glyphTypeComboBox->addItem(displayNode->GetGlyphTypeAsString(i), displayNode->GetGlyphTypeAsString(i));
-      }
-    this->glyphTypeComboBox->setEnabled(true);
     }
+    this->glyphTypeComboBox->setEnabled(true);
+  }
   // set the default value if not set
   if (this->glyphTypeComboBox->currentIndex() == 0)
-    {
+  {
     vtkNew<vtkMRMLMarkupsDisplayNode> displayNode;
     QString glyphType = QString(displayNode->GetGlyphTypeAsString());
     this->glyphTypeComboBox->setEnabled(false);
     int index =  this->glyphTypeComboBox->findData(glyphType);
     if (index != -1)
-      {
+    {
       this->glyphTypeComboBox->setCurrentIndex(index);
-      }
+    }
     else
-      {
+    {
       // glyph types start at 1, combo box is 0 indexed
       this->glyphTypeComboBox->setCurrentIndex(displayNode->GetGlyphType() - 1);
-      }
-    this->glyphTypeComboBox->setEnabled(true);
     }
+    this->glyphTypeComboBox->setEnabled(true);
+  }
 
   if (this->MarkupsDisplayNode.GetPointer())
-    {
+  {
     q->setEnabled(true);
     q->setMRMLMarkupsDisplayNode(this->MarkupsDisplayNode);
-    }
+  }
 
   this->glyphSizeSliderWidget->setVisible(this->glyphSizeIsAbsoluteButton->isChecked());
   this->glyphScaleSliderWidget->setHidden(this->glyphSizeIsAbsoluteButton->isChecked());
@@ -236,9 +235,9 @@ void qMRMLMarkupsDisplayNodeWidget::setMRMLMarkupsDisplayNode(vtkMRMLMarkupsDisp
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (d->MarkupsDisplayNode == markupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
 
   qvtkReconnect(d->MarkupsDisplayNode, markupsDisplayNode, vtkCommand::ModifiedEvent, this, SLOT(updateWidgetFromMRML()));
   d->MarkupsDisplayNode = markupsDisplayNode;
@@ -263,12 +262,12 @@ void qMRMLMarkupsDisplayNodeWidget::updateWidgetFromMRML()
   // update the display properties from the markups display node
   vtkSmartPointer<vtkMRMLMarkupsDisplayNode> markupsDisplayNode = d->MarkupsDisplayNode.GetPointer();
   if (!markupsDisplayNode)
-    {
+  {
     // Create a temporary markups display node that we can retrieve defaults from.
     // We do not need the exact default display node properties, these are just placeholder
     // values shown in the disabled widget.
     markupsDisplayNode = vtkSmartPointer<vtkMRMLMarkupsDisplayNode>::New();
-    }
+  }
 
   double* color = markupsDisplayNode->GetSelectedColor();
   d->selectedColorPickerButton->setColor(QColor::fromRgbF(color[0], color[1], color[2]));
@@ -282,9 +281,9 @@ void qMRMLMarkupsDisplayNodeWidget::updateWidgetFromMRML()
   QString glyphTypeStr = QString(markupsDisplayNode->GetGlyphTypeAsString());
   int glyphTypeIndex = d->glyphTypeComboBox->findData(glyphTypeStr);
   if (glyphTypeIndex>=0)
-    {
+  {
     d->glyphTypeComboBox->setCurrentIndex(glyphTypeIndex);
-    }
+  }
 
   d->glyphSizeIsAbsoluteButton->setChecked(!markupsDisplayNode->GetUseGlyphScale());
 
@@ -292,18 +291,18 @@ void qMRMLMarkupsDisplayNodeWidget::updateWidgetFromMRML()
   double glyphScale = markupsDisplayNode->GetGlyphScale();
   // make sure that the slider can accommodate this scale
   if (glyphScale > d->glyphScaleSliderWidget->maximum())
-    {
+  {
     d->glyphScaleSliderWidget->setMaximum(glyphScale);
-    }
+  }
   d->glyphScaleSliderWidget->setValue(glyphScale);
 
   // glyph size
   double glyphSize = markupsDisplayNode->GetGlyphSize();
   // make sure that the slider can accommodate this scale
   if (glyphSize > d->glyphSizeSliderWidget->maximum())
-    {
+  {
     d->glyphSizeSliderWidget->setMaximum(glyphSize);
-    }
+  }
   d->glyphSizeSliderWidget->setValue(glyphSize);
   d->glyphSizeSliderWidget->setMRMLScene(markupsDisplayNode->GetScene());
 
@@ -313,18 +312,18 @@ void qMRMLMarkupsDisplayNodeWidget::updateWidgetFromMRML()
   double lineThicknessPercentage = markupsDisplayNode->GetLineThickness() * 100.0;
   // make sure that the slider can accommodate this scale
   if (lineThicknessPercentage > d->curveLineThicknessSliderWidget->maximum())
-    {
+  {
     d->curveLineThicknessSliderWidget->setMaximum(lineThicknessPercentage);
-    }
+  }
   d->curveLineThicknessSliderWidget->setValue(lineThicknessPercentage);
 
   // line diameter
   double lineDiameter = markupsDisplayNode->GetLineDiameter();
   // make sure that the slider can accommodate this scale
   if (lineDiameter > d->curveLineDiameterSliderWidget->maximum())
-    {
+  {
     d->curveLineDiameterSliderWidget->setMaximum(lineDiameter);
-    }
+  }
   d->curveLineDiameterSliderWidget->setValue(lineDiameter);
 
   // Only enable line size editing if not fiducial node
@@ -342,9 +341,9 @@ void qMRMLMarkupsDisplayNodeWidget::updateWidgetFromMRML()
   double textScale = markupsDisplayNode->GetTextScale();
   // make sure that the slider can accommodate this scale
   if (textScale > d->textScaleSliderWidget->maximum())
-    {
+  {
     d->textScaleSliderWidget->setMaximum(textScale);
-    }
+  }
   d->textScaleSliderWidget->setValue(textScale);
 
   bool wasBlocking = false;
@@ -417,10 +416,10 @@ vtkMRMLSelectionNode* qMRMLMarkupsDisplayNodeWidget::getSelectionNode(vtkMRMLSce
 {
   vtkMRMLSelectionNode* selectionNode = nullptr;
   if (mrmlScene)
-    {
+  {
     selectionNode =
       vtkMRMLSelectionNode::SafeDownCast(mrmlScene->GetNodeByID("vtkMRMLSelectionNodeSingleton"));
-    }
+  }
   return selectionNode;
 }
 
@@ -429,9 +428,9 @@ void qMRMLMarkupsDisplayNodeWidget::setVisibility(bool visible)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode.GetPointer())
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetVisibility(visible);
 }
 
@@ -447,9 +446,9 @@ void qMRMLMarkupsDisplayNodeWidget::setPropertiesLabelVisibility(bool visible)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode.GetPointer())
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetPropertiesLabelVisibility(visible);
 }
 
@@ -458,9 +457,9 @@ void qMRMLMarkupsDisplayNodeWidget::setPointLabelsVisibility(bool visible)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode.GetPointer())
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetPointLabelsVisibility(visible);
 }
 
@@ -483,9 +482,9 @@ void qMRMLMarkupsDisplayNodeWidget::setGlyphSizeIsAbsolute(bool absolute)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode.GetPointer())
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetUseGlyphScale(!absolute);
 }
 
@@ -501,9 +500,9 @@ void qMRMLMarkupsDisplayNodeWidget::setCurveLineSizeIsAbsolute(bool absolute)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode.GetPointer())
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetCurveLineSizeMode(absolute ?
     vtkMRMLMarkupsDisplayNode::UseLineDiameter : vtkMRMLMarkupsDisplayNode::UseLineThickness);
 }
@@ -520,9 +519,9 @@ void qMRMLMarkupsDisplayNodeWidget::onSelectedColorPickerButtonChanged(QColor co
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetSelectedColor(color.redF(), color.greenF(), color.blueF());
 }
 
@@ -531,9 +530,9 @@ void qMRMLMarkupsDisplayNodeWidget::onUnselectedColorPickerButtonChanged(QColor 
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetColor(color.redF(), color.greenF(), color.blueF());
 }
 
@@ -542,9 +541,9 @@ void qMRMLMarkupsDisplayNodeWidget::onActiveColorPickerButtonChanged(QColor colo
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetActiveColor(color.redF(), color.greenF(), color.blueF());
 }
 
@@ -553,13 +552,13 @@ void qMRMLMarkupsDisplayNodeWidget::onGlyphTypeComboBoxChanged(QString value)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (value.isEmpty())
-    {
+  {
     return;
-    }
+  }
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetGlyphTypeFromString(value.toUtf8());
 }
 
@@ -568,9 +567,9 @@ void qMRMLMarkupsDisplayNodeWidget::onGlyphScaleSliderWidgetChanged(double value
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetGlyphScale(value);
 }
 
@@ -579,9 +578,9 @@ void qMRMLMarkupsDisplayNodeWidget::onGlyphSizeSliderWidgetChanged(double value)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetGlyphSize(value);
 }
 
@@ -590,9 +589,9 @@ void qMRMLMarkupsDisplayNodeWidget::onCurveLineThicknessSliderWidgetChanged(doub
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetLineThickness(percentValue * 0.01);
 }
 
@@ -601,9 +600,9 @@ void qMRMLMarkupsDisplayNodeWidget::onCurveLineDiameterSliderWidgetChanged(doubl
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetLineDiameter(value);
 }
 
@@ -612,9 +611,9 @@ void qMRMLMarkupsDisplayNodeWidget::onTextScaleSliderWidgetChanged(double value)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetTextScale(value);
 }
 
@@ -623,9 +622,9 @@ void qMRMLMarkupsDisplayNodeWidget::onOpacitySliderWidgetChanged(double value)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetOpacity(value);
 }
 
@@ -635,13 +634,13 @@ void qMRMLMarkupsDisplayNodeWidget::setMaximumMarkupsScale(double maxScale)
   Q_D(qMRMLMarkupsDisplayNodeWidget);
 
   if (maxScale > d->glyphScaleSliderWidget->maximum())
-    {
+  {
     d->glyphScaleSliderWidget->setMaximum(maxScale);
-    }
+  }
   if (maxScale > d->textScaleSliderWidget->maximum())
-    {
+  {
     d->textScaleSliderWidget->setMaximum(maxScale);
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -650,9 +649,9 @@ void qMRMLMarkupsDisplayNodeWidget::setMaximumMarkupsSize(double maxSize)
   Q_D(qMRMLMarkupsDisplayNodeWidget);
 
   if (maxSize > d->glyphSizeSliderWidget->maximum())
-    {
+  {
     d->glyphSizeSliderWidget->setMaximum(maxSize);
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -660,9 +659,9 @@ void qMRMLMarkupsDisplayNodeWidget::onInteractionCheckBoxChanged(int state)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetHandlesInteractive(state);
 }
 
@@ -671,9 +670,9 @@ void qMRMLMarkupsDisplayNodeWidget::setFillVisibility(bool visibility)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetFillVisibility(visibility);
 }
 
@@ -682,9 +681,9 @@ void qMRMLMarkupsDisplayNodeWidget::setOutlineVisibility(bool visibility)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetOutlineVisibility(visibility);
 }
 
@@ -693,9 +692,9 @@ void qMRMLMarkupsDisplayNodeWidget::onFillOpacitySliderWidgetChanged(double opac
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetFillOpacity(opacity);
 }
 
@@ -704,9 +703,9 @@ void qMRMLMarkupsDisplayNodeWidget::onOutlineOpacitySliderWidgetChanged(double o
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetOutlineOpacity(opacity);
 }
 
@@ -715,9 +714,9 @@ void qMRMLMarkupsDisplayNodeWidget::setOccludedVisibility(bool visibility)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetOccludedVisibility(visibility);
 }
 
@@ -726,9 +725,9 @@ void qMRMLMarkupsDisplayNodeWidget::setOccludedOpacity(double OccludedOpacity)
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->MarkupsDisplayNode->SetOccludedOpacity(OccludedOpacity);
 }
 
@@ -737,9 +736,9 @@ void qMRMLMarkupsDisplayNodeWidget::onTextPropertyWidgetsChanged()
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
 
   int fontFamily = d->TextFontFamilyComboBox->currentData().toInt();
   bool textBold = d->TextBoldCheckBox->isChecked();
@@ -764,9 +763,9 @@ void qMRMLMarkupsDisplayNodeWidget::onSnapModeWidgetChanged()
 {
   Q_D(qMRMLMarkupsDisplayNodeWidget);
   if (!d->MarkupsDisplayNode)
-    {
+  {
     return;
-    }
+  }
   int snapMode = d->SnapModeComboBox->currentData().toInt();
   d->MarkupsDisplayNode->SetSnapMode(snapMode);
 }

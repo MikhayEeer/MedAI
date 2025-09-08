@@ -5,7 +5,7 @@ import SlicerWizard.TemplateManager
 
 from .DirectoryListWidget import DirectoryListWidget
 from .TemplatePathUtilities import *
-
+from slicer.i18n import tr as _
 
 # =============================================================================
 #
@@ -19,22 +19,22 @@ class _ui_SettingsPanel:
 
         self.builtinPath = qt.QLineEdit()
         builtinPath = builtinTemplatePath()
-        if (builtinPath):
+        if builtinPath:
             self.builtinPath.text = builtinPath
         else:
-            self.builtinPath.text = "(Unavailable)"
+            self.builtinPath.text = _("(Unavailable)")
             self.builtinPath.enabled = False
         self.builtinPath.readOnly = True
-        self.addRow("Built-in template path:", self.builtinPath)
+        self.addRow(_("Built-in template path:"), self.builtinPath)
 
         self.genericPaths = DirectoryListWidget()
-        self.addRow("Additional template\npaths:", self.genericPaths)
+        self.addRow(_("Additional template paths:"), self.genericPaths)
 
         self.paths = {}
 
         for category in SlicerWizard.TemplateManager.categories():
             self.paths[category] = DirectoryListWidget()
-            self.addRow("Additional template\npaths for %s:" % category,
+            self.addRow(_("Additional template paths for {category}:").format(category=category),
                         self.paths[category])
 
     # ---------------------------------------------------------------------------

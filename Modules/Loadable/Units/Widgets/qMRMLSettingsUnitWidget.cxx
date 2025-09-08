@@ -43,7 +43,6 @@
 #include <vector>
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_ExtensionTemplate
 class qMRMLSettingsUnitWidgetPrivate: public Ui_qMRMLSettingsUnitWidget
 {
   Q_DECLARE_PUBLIC(qMRMLSettingsUnitWidget);
@@ -102,9 +101,9 @@ void qMRMLSettingsUnitWidget::setUnitsLogic(vtkSlicerUnitsLogic* logic)
 {
   Q_D(qMRMLSettingsUnitWidget);
   if (logic == d->Logic)
-    {
+  {
     return;
-    }
+  }
 
   d->Logic = logic;
   d->UnitInfoWidget->setMRMLScene(d->Logic ? d->Logic->GetUnitsScene() : nullptr);

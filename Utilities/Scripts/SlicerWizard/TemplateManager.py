@@ -51,7 +51,7 @@ def _listSources(directory):
         for f in files:
             if _isSourceFile(f):
                 f = os.path.join(root, f)
-                yield f[len(directory) + 1:]  # strip common dir
+                yield f[len(directory) + 1 :]  # strip common dir
 
 
 # =============================================================================
@@ -236,7 +236,6 @@ class TemplateManager:
 
         This sets the template key for ``name`` to ``key``.
 
-        .. 'note' directive needs '\' to span multiple lines!
         .. note:: Template keys depend only on the template name, and not the \
                   template category. As a result, two templates with the same name \
                   in different categories will use the same key.
@@ -322,7 +321,6 @@ class TemplateManager:
         This adds |CLI| arguments to the specified ``parser`` that may be used to
         interact with the template collection.
 
-        .. 'note' directive needs '\' to span multiple lines!
         .. note:: The arguments use ``'<'`` and ``'>'`` to annotate optional \
                   values. It is recommended to use :class:`.WizardHelpFormatter` \
                   with the parser so that these will be displayed using the \
@@ -331,15 +329,21 @@ class TemplateManager:
         .. seealso:: :meth:`.parseArguments`
         """
 
-        parser.add_argument("--templatePath", metavar="<CATEGORY=>PATH",
-                            action="append",
-                            help="add additional template path for specified"
-                                 " template category; if no category, expect that"
-                                 " PATH contains subdirectories for one or more"
-                                 " possible categories")
-        parser.add_argument("--templateKey", metavar="TYPE=KEY", action="append",
-                            help="set template substitution key for specified"
-                                 " template (default key: 'TemplateKey')")
+        parser.add_argument(
+            "--templatePath",
+            metavar="<CATEGORY=>PATH",
+            action="append",
+            help="add additional template path for specified"
+            " template category; if no category, expect that"
+            " PATH contains subdirectories for one or more"
+            " possible categories",
+        )
+        parser.add_argument(
+            "--templateKey",
+            metavar="TYPE=KEY",
+            action="append",
+            help="set template substitution key for specified template (default key: 'TemplateKey')",
+        )
 
     # ---------------------------------------------------------------------------
     def parseArguments(self, args):

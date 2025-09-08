@@ -68,7 +68,6 @@ int DoIt( int argc, char * argv[], T )
   // Setup the input and output files
   reader->SetFileName( inputVolume.c_str() );
   writer->SetFileName( outputVolume.c_str() );
-  writer->SetUseCompression(1);
 
   // Setup the grindpeak method
   grindpeak->SetInput(  reader->GetOutput() );
@@ -92,13 +91,13 @@ int main( int argc, char * argv[] )
   itk::ImageIOBase::IOComponentType componentType;
 
   try
-    {
+  {
     itk::GetImageType(inputVolume, pixelType, componentType);
 
     // This filter handles all types
 
     switch( componentType )
-      {
+    {
       case itk::ImageIOBase::UCHAR:
       case itk::ImageIOBase::CHAR:
         return DoIt( argc, argv, static_cast<unsigned char>(0) );
@@ -125,13 +124,13 @@ int main( int argc, char * argv[] )
       default:
         std::cout << "unknown component type" << std::endl;
         break;
-      }
     }
+  }
   catch( itk::ExceptionObject & excep )
-    {
+  {
     std::cerr << argv[0] << ": exception caught !" << std::endl;
     std::cerr << excep << std::endl;
     return EXIT_FAILURE;
-    }
+  }
   return EXIT_SUCCESS;
 }

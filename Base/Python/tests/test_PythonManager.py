@@ -4,7 +4,6 @@ import unittest
 
 
 class PythonManagerTests(unittest.TestCase):
-
     def setUp(self):
         pass
 
@@ -18,8 +17,8 @@ class PythonManagerTests(unittest.TestCase):
         test_strings = [
             "test with a ' single quote",
             'test with a " double quote',
-            'test with both single \' and double " quotes',
-            'test backslash \\ and \'single\' and "double" quotes'
+            "test with both single ' and double \" quotes",
+            "test backslash \\ and 'single' and \"double\" quotes"
             "'test string in single quotes'"
             '"test string in double quotes"']
 

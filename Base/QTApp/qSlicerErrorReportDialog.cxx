@@ -81,27 +81,31 @@ qSlicerErrorReportDialog::qSlicerErrorReportDialog(QWidget* parentWidget)
     QVariant fileString(path);
     QFileInfo fi(path);
     QString fileName = fi.fileName();
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+    QStringList stringList = fileName.split("_", Qt::SkipEmptyParts);
+#else
     QStringList stringList = fileName.split("_", QString::SkipEmptyParts);
+#endif
     itemApp->setText(stringList.at(0));
     itemApp->setData(Qt::UserRole, fileString);
     if (stringList.size() >= 6) // compatibility for log files with and without app version in filename
-      {
+    {
       QDateTime dt = QDateTime::fromString(QString(stringList.at(3)), "yyyyMMdd");
       QDateTime tm = QDateTime::fromString(QString(stringList.at(4)), "hhmmss");
       itemVersion->setText(stringList.at(1));
       itemRevision->setText(stringList.at(2));
       itemDate->setText(locale.toString(dt, "ddd yyyy-MM-dd"));
       itemTime->setText(locale.toString(tm, "hh:mm:ss"));
-      }
+    }
     else
-      {
+    {
       QDateTime dt = QDateTime::fromString(QString(stringList.at(2)), "yyyyMMdd");
       QDateTime tm = QDateTime::fromString(QString(stringList.at(3)), "hhmmss");
       itemVersion->setText(QString("unknown"));
       itemRevision->setText(stringList.at(1));
       itemDate->setText(locale.toString(dt, "ddd yyyy-MM-dd"));
       itemTime->setText(locale.toString(tm, "hh:mm:ss"));
-      }
+    }
     itemPath->setText(path);
     itemRevision->setToolTip(path);
     itemDate->setToolTip(path);
@@ -120,9 +124,9 @@ qSlicerErrorReportDialog::qSlicerErrorReportDialog(QWidget* parentWidget)
     d->RecentLogFilesComboBox->setItem(row, 5, itemPath);
   }
   if (d->RecentLogFilesComboBox->rowCount() > 0)
-    {
+  {
     d->RecentLogFilesComboBox->setCurrentIndex(d->RecentLogFilesComboBox->model()->index(0, 0));
-    }
+  }
 
 
   //QObject::connect(d->RecentLogFilesComboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(onLogFileSelectionChanged()));
@@ -156,15 +160,15 @@ void qSlicerErrorReportDialog::onLogFileSelectionChanged()
   QTableWidgetItem* eventItem = d->RecentLogFilesComboBox->item(row, 0);
   QFile f(eventItem->data(Qt::UserRole).toString());
   if (f.open(QFile::ReadOnly | QFile::Text))
-    {
+  {
     QTextStream in(&f);
     QString logText = in.readAll();
     d->LogText->setPlainText(logText);
-    }
+  }
   else
-    {
+  {
     d->LogText->clear();
-    }
+  }
 }
 
 // --------------------------------------------------------------------------

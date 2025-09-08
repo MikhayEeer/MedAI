@@ -12,7 +12,8 @@ class LabelmapSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
 
     def __init__(self):
         super().__init__()
-        self.name = "Labelmap"
+        self.name = "Label Map"
+        self.title = _("Label Map")
         self.obbKeys = ["obb_origin_ras", "obb_diameter_mm", "obb_direction_ras_x", "obb_direction_ras_y", "obb_direction_ras_z"]
         self.principalAxisKeys = ["principal_axis_x", "principal_axis_y", "principal_axis_z"]
         self.shapeKeys = [
@@ -45,6 +46,7 @@ class LabelmapSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
 
     def computeStatistics(self, segmentID):
         import vtkSegmentationCorePython as vtkSegmentationCore
+
         requestedKeys = self.getRequestedKeys()
 
         segmentationNode = slicer.mrmlScene.GetNodeByID(self.getParameterNode().GetParameter("Segmentation"))
@@ -112,11 +114,11 @@ class LabelmapSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
             requestedOptions = requestedKeys
             statFilterOptions = self.shapeKeys
             calculateOBB = (
-                "obb_diameter_mm" in requestedKeys or
-                "obb_origin_ras" in requestedKeys or
-                "obb_direction_ras_x" in requestedKeys or
-                "obb_direction_ras_y" in requestedKeys or
-                "obb_direction_ras_z" in requestedKeys
+                "obb_diameter_mm" in requestedKeys
+                or "obb_origin_ras" in requestedKeys
+                or "obb_direction_ras_x" in requestedKeys
+                or "obb_direction_ras_y" in requestedKeys
+                or "obb_direction_ras_z" in requestedKeys
             )
 
             if calculateOBB:
@@ -135,9 +137,9 @@ class LabelmapSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
                 requestedOptions.append("oriented_bounding_box")
 
             calculatePrincipalAxis = (
-                "principal_axis_x" in requestedKeys or
-                "principal_axis_y" in requestedKeys or
-                "principal_axis_z" in requestedKeys
+                "principal_axis_x" in requestedKeys
+                or "principal_axis_y" in requestedKeys
+                or "principal_axis_z" in requestedKeys
             )
             if calculatePrincipalAxis:
                 temp = statFilterOptions
@@ -392,94 +394,147 @@ class LabelmapSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
 
     def getMeasurementInfo(self, key):
         """Get information (name, description, units, ...) about the measurement for the given key"""
-        info = {}
 
         # @fedorov could not find any suitable DICOM quantity code for "number of voxels".
         # DCM has "Number of needles" etc., so probably "Number of voxels"
         # should be added too. Need to discuss with @dclunie. For now, a
         # QIICR private scheme placeholder.
-        info["voxel_count"] = \
-            self.createMeasurementInfo(name="Voxel count", description=_("Number of voxels"), units="voxels",
-                                       quantityDicomCode=self.createCodedEntry("nvoxels", "99QIICR", _("Number of voxels"), True),
-                                       unitsDicomCode=self.createCodedEntry("voxels", "UCUM", _("voxels"), True))
+        if key == "voxel_count":
+            return self.createMeasurementInfo(name="Voxel count",
+                                       title=_("Voxel count"),
+                                       description=_("Number of voxels in the binary labelmap representation of the segment."),
+                                       units="",
+                                       quantityDicomCode=self.createCodedEntry("nvoxels", "99QIICR", "Number of voxels", True),
+                                       unitsDicomCode=self.createCodedEntry("voxels", "UCUM", "voxels", True))
 
-        info["volume_mm3"] = \
-            self.createMeasurementInfo(name="Volume mm3", description=_("Volume in mm3"), units="mm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", _("cubic millimeter"), True))
+        elif key == "volume_mm3":
+            return self.createMeasurementInfo(name="Volume mm3",
+                                       title=_("Volume"),
+                                       description=_("Volume of the segment computed from binary labelmap representation."),
+                                       units=_("mm3"),
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", "Volume", True),
+                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", "cubic millimeter", True))
 
-        info["volume_cm3"] = \
-            self.createMeasurementInfo(name="Volume cm3", description=_("Volume in cm3"), units="cm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", _("cubic centimeter"), True),
-                                       measurementMethodDicomCode=self.createCodedEntry("126030", "DCM",
-                                                                                        _("Sum of segmented voxel volumes"), True))
+        elif key == "volume_cm3":
+            return self.createMeasurementInfo(name="Volume cm3",
+                                       title=_("Volume"),
+                                       description=_("Volume of the segment computed from binary labelmap representation."),
+                                       units=_("cm3"),
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", "Volume", True),
+                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", "cubic centimeter", True),
+                                       measurementMethodDicomCode=self.createCodedEntry("126030", "DCM", "Sum of segmented voxel volumes", True))
 
-        info["centroid_ras"] = \
-            self.createMeasurementInfo(name="Centroid", description=_("Location of the centroid in RAS"), units="", componentNames=["r", "a", "s"])
+        elif key == "centroid_ras":
+            return self.createMeasurementInfo(name="Centroid",
+                                       title=_("Centroid"),
+                                       description=_("Location of the centroid in RAS. Computed from binary labelmap representation."),
+                                       units="", componentNames=["r", "a", "s"])
 
-        info["feret_diameter_mm"] = \
-            self.createMeasurementInfo(name="Feret diameter mm", description=_("Feret diameter in mm"), units="mm")
+        elif key == "feret_diameter_mm":
+            return self.createMeasurementInfo(name="Feret diameter mm",
+                                       title=_("Feret diameter"),
+                                       description=_("Feret diameter of the segment computed from binary labelmap representation."), units=_("mm"))
 
-        info["surface_area_mm2"] = \
-            self.createMeasurementInfo(name="Surface mm2", description=_("Surface area in mm2"), units="mm2",
-                                       quantityDicomCode=self.createCodedEntry("000247", "99CHEMINF", _("Surface area"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm2", "UCUM", _("square millimeter"), True))
+        elif key == "surface_area_mm2":
+            return self.createMeasurementInfo(name="Surface mm2",
+                                       title=_("Surface area"),
+                                       description=_("Surface area of the segment computed from binary labelmap representation."), units=_("mm2"),
+                                       quantityDicomCode=self.createCodedEntry("000247", "99CHEMINF", "Surface area", True),
+                                       unitsDicomCode=self.createCodedEntry("mm2", "UCUM", "square millimeter", True))
 
-        info["roundness"] = \
-            self.createMeasurementInfo(name="Roundness",
-                                       description=_("Segment roundness. Calculated from ratio of the area of the hypersphere by the actual area. "
-                                                     "Value of 1 represents a spherical structure"), units="")
+        elif key == "roundness":
+            return self.createMeasurementInfo(name="Roundness",
+                                      title=_("Roundness"),
+                                      description=_("Segment roundness. Calculated from ratio of the area of the hypersphere by the actual area. "
+                                                    "Value of 1 represents a spherical structure. Computed from binary labelmap representation."),
+                                      units="")
 
-        info["flatness"] = \
-            self.createMeasurementInfo(name="Flatness",
+        elif key == "flatness":
+            return self.createMeasurementInfo(name="Flatness",
+                                       title=_("Flatness"),
                                        description=_("Segment flatness. Calculated from square root of the ratio of the second smallest principal moment by "
-                                                     "the smallest. Value of 0 represents a flat structure.") + " ( https://hdl.handle.net/1926/584 )",
+                                                     "the smallest. Value of 0 represents a flat structure. Computed from binary labelmap representation.")
+                                                     + " ( https://hdl.handle.net/1926/584 )",
                                        units="")
 
-        info["elongation"] = \
-            self.createMeasurementInfo(name="Elongation",
+        elif key == "elongation":
+            return self.createMeasurementInfo(name="Elongation",
+                                       title=_("Elongation"),
                                        description=_("Segment elongation. Calculated from square root of the ratio of the second largest principal moment "
-                                                     "by the second smallest.") + " ( https://hdl.handle.net/1926/584 )",
+                                                     "by the second smallest. Computed from binary labelmap representation.")
+                                                     + " ( https://hdl.handle.net/1926/584 )",
                                        units="")
 
-        info["oriented_bounding_box"] = \
-            self.createMeasurementInfo(name="Oriented bounding box", description=_("Oriented bounding box"), units="")
+        elif key == "oriented_bounding_box":
+            return self.createMeasurementInfo(name="Oriented bounding box",
+                                       title=_("Oriented bounding box"),
+                                       description=_("Oriented bounding box. Computed from binary labelmap representation of the segment."),
+                                       units="")
 
-        info["obb_origin_ras"] = \
-            self.createMeasurementInfo(name="OBB origin", description=_("Oriented bounding box origin in RAS coordinates"), units="",
+        elif key == "obb_origin_ras":
+            return self.createMeasurementInfo(name="OBB origin",
+                                       title=_("OBB origin"),
+                                       description=_("Oriented bounding box origin in RAS coordinates."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
                                        componentNames=["r", "a", "s"])
 
-        info["obb_diameter_mm"] = \
-            self.createMeasurementInfo(name="OBB diameter", description=_("Oriented bounding box diameter in mm"), units="mm",
+        elif key == "obb_diameter_mm":
+            return self.createMeasurementInfo(name="OBB diameter",
+                                       title=_("OBB diameter"),
+                                       description=_("Oriented bounding box diameter. Computed from binary labelmap representation of the segment."),
+                                       units=_("mm"),
                                        componentNames=["x", "y", "z"])
 
-        info["obb_direction_ras_x"] = \
-            self.createMeasurementInfo(name="OBB X direction", description=_("Oriented bounding box X direction in RAS coordinates"), units="",
+        elif key == "obb_direction_ras_x":
+            return self.createMeasurementInfo(name="OBB X direction",
+                title=_("OBB X direction"),
+                description=_("Oriented bounding box X direction in RAS coordinates. Computed from binary labelmap representation of the segment."),
+                units="", componentNames=["r", "a", "s"])
+
+        elif key == "obb_direction_ras_y":
+            return self.createMeasurementInfo(name="OBB Y direction",
+                                       title=_("OBB Y direction"),
+                                       description=_("Oriented bounding box Y direction in RAS coordinates."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
                                        componentNames=["r", "a", "s"])
 
-        info["obb_direction_ras_y"] = \
-            self.createMeasurementInfo(name="OBB Y direction", description=_("Oriented bounding box Y direction in RAS coordinates"), units="",
+        elif key == "obb_direction_ras_z":
+            return self.createMeasurementInfo(name="OBB Z direction",
+                                       title=_("OBB Z direction"),
+                                       description=_("Oriented bounding box Z direction in RAS coordinates."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
                                        componentNames=["r", "a", "s"])
 
-        info["obb_direction_ras_z"] = \
-            self.createMeasurementInfo(name="OBB Z direction", description=_("Oriented bounding box Z direction in RAS coordinates"), units="",
+        elif key == "principal_moments":
+            return self.createMeasurementInfo(name="Principal moments",
+                                       title=_("Principal moments"),
+                                       description=_("Principal moments of inertia for x, y and z axes."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
+                                       componentNames=["x", "y", "z"])
+
+        elif key == "principal_axis_x":
+            return self.createMeasurementInfo(name="Principal X axis", title=_("Principal X axis"),
+                                       description=_("Principal X axis of rotation in RAS coordinates."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
                                        componentNames=["r", "a", "s"])
 
-        info["principal_moments"] = \
-            self.createMeasurementInfo(name="Principal moments", description=_("Principal moments of inertia for x, y and z axes"),
-                                       units="", componentNames=["x", "y", "z"])
-
-        info["principal_axis_x"] = \
-            self.createMeasurementInfo(name="Principal X axis", description=_("Principal X axis of rotation in RAS coordinates"), units="",
+        elif key == "principal_axis_y":
+            return self.createMeasurementInfo(name="Principal Y axis", title=_("Principal Y axis"),
+                                       description=_("Principal Y axis of rotation in RAS coordinates."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
                                        componentNames=["r", "a", "s"])
 
-        info["principal_axis_y"] = \
-            self.createMeasurementInfo(name="Principal Y axis", description=_("Principal Y axis of rotation in RAS coordinates"), units="",
+        elif key == "principal_axis_z":
+            return self.createMeasurementInfo(name="Principal Z axis", title=_("Principal Z axis"),
+                                       description=_("Principal Z axis of rotation in RAS coordinates."
+                                                     " Computed from binary labelmap representation of the segment."),
+                                       units="",
                                        componentNames=["r", "a", "s"])
 
-        info["principal_axis_z"] = \
-            self.createMeasurementInfo(name="Principal Z axis", description=_("Principal Z axis of rotation in RAS coordinates"), units="",
-                                       componentNames=["r", "a", "s"])
-
-        return info[key] if key in info else None
+        return None

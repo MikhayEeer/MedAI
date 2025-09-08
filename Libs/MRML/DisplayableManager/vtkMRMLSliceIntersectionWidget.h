@@ -79,7 +79,7 @@ public:
 
   /// Widget states
   enum
-    {
+  {
     // Interactions without handles
     WidgetStateMoveCrosshair = WidgetStateUser, ///< Move crosshair position, can be used for moving the crosshair with click-and-drag.
     WidgetStateBlend, ///< Fade between foreground/background volumes
@@ -96,12 +96,16 @@ public:
     WidgetStateOnTranslateSingleIntersectingSliceHandle, ///< hovering over a single-slice translation interaction handle
     WidgetStateTranslateSingleIntersectingSliceHandle, ///< translating a single slice by drag-and-dropping handle
 
+    // Interactions with intersecting slice thick slab handles
+    WidgetStateOnTranslateIntersectingThickSlabHandle, ///< hovering over a slice thick slab translation handle
+    WidgetStateTranslateIntersectingThickSlabHandle, ///< adjusting a slice thick slab thickness by drag-and-dropping handle
+
     WidgetState_Last
-    };
+  };
 
   /// Widget events
   enum
-    {
+  {
     // Interactions without handles
     WidgetEventTouchGestureStart = WidgetEventUser,
     WidgetEventTouchGestureEnd,
@@ -145,11 +149,16 @@ public:
     // WidgetStateOnTranslateSingleIntersectingSliceHandle/WidgetStateOnTranslateSingleIntersectingSliceHandle
     WidgetEventTranslateSingleIntersectingSliceHandleStart,
     WidgetEventTranslateSingleIntersectingSliceHandleEnd,
-    };
+
+    // Interactions with slice thickslab handles
+    // WidgetStateOnTranslateIntersectingThickSlabHandle/WidgetStateTranslateIntersectingThickSlabHandle
+    WidgetEventTranslateIntersectingThickSlabHandleStart,
+    WidgetEventTranslateIntersectingThickSlabHandleEnd,
+  };
 
   /// Action State values and management
   enum
-    {
+  {
     ActionNone = 0,
     ActionTranslate = 1,
     ActionZoom = 2,
@@ -167,7 +176,7 @@ public:
     | ActionBrowseSlice | ActionShowSlice | ActionAdjustLightbox | ActionSelectVolume
     | ActionSetCursorPosition | ActionSetCrosshairPosition
     | ActionTranslateSliceIntersection | ActionRotateSliceIntersection
-    };
+  };
 
   /// Set exact list of actions to enable.
   void SetActionsEnabled(int actions);
@@ -221,6 +230,8 @@ protected:
   bool ProcessTranslateSingleIntersectingSliceHandle(vtkMRMLInteractionEventData* eventData);
   bool ProcessRotateIntersectingSlicesHandleStart(vtkMRMLInteractionEventData* eventData);
   bool ProcessRotateIntersectingSlicesHandle(vtkMRMLInteractionEventData* eventData);
+  bool ProcessTranslateIntersectingThickSlabHandleStart(vtkMRMLInteractionEventData* eventData);
+  bool ProcessTranslateIntersectingThickSlabHandle(vtkMRMLInteractionEventData* eventData);
 
   bool ProcessWidgetMenu(vtkMRMLInteractionEventData* eventData);
 
@@ -263,15 +274,19 @@ protected:
   double StartTranslationPoint_RAS[3];
   double CurrentTranslationPoint_RAS[3];
 
+  double StartThickSlabTranslationPoint[2];
+  double StartThickSlabTranslationPoint_RAS[3];
+  double CurrentThickSlabTranslationPoint_RAS[3];
+
   double StartActionFOV[3];
   double VolumeScalarRange[2];
 
   enum
-    {
+  {
     LayerBackground,
     LayerForeground,
     LayerLabelmap
-    };
+  };
 
   // Blend
   double LastForegroundOpacity;
@@ -296,6 +311,7 @@ protected:
   void CycleVolumeLayer(int layer, int direction);
 
   bool IsSliceIntersectionInteractive();
+  bool IsThickSlabInteractive();
 
   /// Indicates whether the shift key was used during the previous action.
   /// This is used to require shift-up after a click-and-drag before accepting shift+mousemove.

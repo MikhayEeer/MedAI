@@ -9,21 +9,23 @@ def findSource(dir):
     fileList = []
     for root, subFolders, files in os.walk(dir):
         for file in files:
-            if fnmatch.fnmatch(file, "*.h") or \
-                    fnmatch.fnmatch(file, "*.cxx") or \
-                    fnmatch.fnmatch(file, "*.cpp") or \
-                    fnmatch.fnmatch(file, "CMakeLists.txt") or \
-                    fnmatch.fnmatch(file, "*.cmake") or \
-                    fnmatch.fnmatch(file, "*.ui") or \
-                    fnmatch.fnmatch(file, "*.qrc") or \
-                    fnmatch.fnmatch(file, "*.py") or \
-                    fnmatch.fnmatch(file, "*.xml") or \
-                    fnmatch.fnmatch(file, "*.xml.in") or \
-                    fnmatch.fnmatch(file, "*.md5") or \
-                    fnmatch.fnmatch(file, "*.png") or \
-                    fnmatch.fnmatch(file, "*.dox"):
+            if (
+                fnmatch.fnmatch(file, "*.h")
+                or fnmatch.fnmatch(file, "*.cxx")
+                or fnmatch.fnmatch(file, "*.cpp")
+                or fnmatch.fnmatch(file, "CMakeLists.txt")
+                or fnmatch.fnmatch(file, "*.cmake")
+                or fnmatch.fnmatch(file, "*.ui")
+                or fnmatch.fnmatch(file, "*.qrc")
+                or fnmatch.fnmatch(file, "*.py")
+                or fnmatch.fnmatch(file, "*.xml")
+                or fnmatch.fnmatch(file, "*.xml.in")
+                or fnmatch.fnmatch(file, "*.md5")
+                or fnmatch.fnmatch(file, "*.png")
+                or fnmatch.fnmatch(file, "*.dox")
+            ):
                 file = os.path.join(root, file)
-                file = file[len(dir):]  # strip common dir
+                file = file[len(dir) :]  # strip common dir
                 fileList.append(file)
     return fileList
 
@@ -62,7 +64,6 @@ def usage():
 
 
 def main(argv):
-
     template = ""
     templateKey = ""
     target = ""
@@ -91,8 +92,8 @@ def main(argv):
 
     if template == "":
         template = "Extensions/Testing/LoadableExtensionTemplate/"
-    if template[-1] != '/':
-        template += '/'
+    if template[-1] != "/":
+        template += "/"
 
     if templateKey == "":
         templateKey = os.path.split(template[:-1])[-1]
@@ -109,14 +110,14 @@ def main(argv):
         usage()
         exit()
 
-    print(f"\nWill copy \n\t{template} \nto \n\t{target} \nreplacing \"{templateKey}\" with \"{moduleName}\"\n")
+    print(f'\nWill copy \n\t{template} \nto \n\t{target} \nreplacing "{templateKey}" with "{moduleName}"\n')
     sources = findSource(template)
     print(sources)
 
     for file in sources:
         copyAndReplace(file, template, target, templateKey, moduleName)
 
-    print('\nModule %s created!' % moduleName)
+    print("\nModule %s created!" % moduleName)
 
 
 if __name__ == "__main__":

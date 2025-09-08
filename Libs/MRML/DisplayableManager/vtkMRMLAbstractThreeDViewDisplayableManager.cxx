@@ -22,12 +22,12 @@
 #include "vtkMRMLAbstractThreeDViewDisplayableManager.h"
 
 // MRML includes
-#include "vtkMRMLThreeDViewInteractorStyle.h"
 #include <vtkMRMLViewNode.h>
 
 // VTK includes
 #include <vtkObjectFactory.h>
 #include <vtkRenderWindowInteractor.h>
+#include <vtkInteractorStyle3D.h>
 
 // STD includes
 #include <cassert>
@@ -70,14 +70,14 @@ vtkMRMLViewNode * vtkMRMLAbstractThreeDViewDisplayableManager::GetMRMLViewNode()
 //---------------------------------------------------------------------------
 void vtkMRMLAbstractThreeDViewDisplayableManager::PassThroughInteractorStyleEvent(int eventid)
 {
-  vtkMRMLThreeDViewInteractorStyle* interactorStyle = vtkMRMLThreeDViewInteractorStyle::SafeDownCast(
+  vtkInteractorStyle3D* interactorStyle = vtkInteractorStyle3D::SafeDownCast(
               this->GetInteractor()->GetInteractorStyle());
 
   if (interactorStyle)
   {
 
   switch(eventid)
-    {
+  {
     case vtkCommand::ExposeEvent:
       interactorStyle->OnExpose();
       break;
@@ -157,9 +157,8 @@ void vtkMRMLAbstractThreeDViewDisplayableManager::PassThroughInteractorStyleEven
     case vtkCommand::TDxButtonReleaseEvent:
       interactorStyle->DelegateTDxEvent(eventid,nullptr);
       break;
-    }
+  }
 
     return;
   }
 }
-

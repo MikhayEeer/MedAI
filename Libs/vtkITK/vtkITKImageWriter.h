@@ -33,13 +33,13 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   enum
-    {
+  {
     VoxelVectorTypeUndefined,
     VoxelVectorTypeSpatial,
     VoxelVectorTypeColorRGB,
     VoxelVectorTypeColorRGBA,
     VoxelVectorType_Last // must be last
-    };
+  };
 
   ///
   /// Specify file name for the image file. You should specify either
@@ -47,32 +47,35 @@ public:
   /// in multiple files.
   void SetFileName(const char *);
 
-  char *GetFileName() {
+  char* GetFileName()
+  {
     return FileName;
   }
 
   ///
-  /// use compression if possible
-  vtkGetMacro (UseCompression, int);
-  vtkSetMacro (UseCompression, int);
+  /// Use compression if possible
+  vtkGetMacro(UseCompression, int);
+  vtkSetMacro(UseCompression, int);
   vtkBooleanMacro(UseCompression, int);
 
   ///
   /// Set/Get the ImageIO class name.
-  vtkGetStringMacro (ImageIOClassName);
-  vtkSetStringMacro (ImageIOClassName);
+  vtkGetStringMacro(ImageIOClassName);
+  vtkSetStringMacro(ImageIOClassName);
 
   ///
   /// The main interface which triggers the writer to start.
   void Write();
 
   /// Set orientation matrix
-  void SetRasToIJKMatrix( vtkMatrix4x4* mat) {
+  void SetRasToIJKMatrix(vtkMatrix4x4* mat)
+  {
     RasToIJKMatrix = mat;
   }
 
   /// Set orientation matrix
-  void SetMeasurementFrameMatrix( vtkMatrix4x4* mat) {
+  void SetMeasurementFrameMatrix(vtkMatrix4x4* mat)
+  {
     MeasurementFrameMatrix = mat;
   }
 
@@ -96,6 +99,6 @@ private:
   void operator=(const vtkITKImageWriter&) = delete;
 };
 
-//vtkStandardNewMacro(vtkITKImageWriter)
+//vtkStandardNewMacro(vtkITKImageWriter);
 
 #endif

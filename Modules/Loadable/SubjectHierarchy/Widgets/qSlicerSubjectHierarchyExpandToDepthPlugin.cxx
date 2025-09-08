@@ -33,7 +33,6 @@
 #include <QMenu>
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_SubjectHierarchy_Widgets
 class qSlicerSubjectHierarchyExpandToDepthPluginPrivate: public QObject
 {
   Q_DECLARE_PUBLIC(qSlicerSubjectHierarchyExpandToDepthPlugin);
@@ -122,18 +121,18 @@ void qSlicerSubjectHierarchyExpandToDepthPlugin::showContextMenuActionsForItem(v
 {
   vtkMRMLSubjectHierarchyNode* shNode = qSlicerSubjectHierarchyPluginHandler::instance()->subjectHierarchyNode();
   if (!shNode)
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Failed to access subject hierarchy node";
     return;
-    }
+  }
 
   Q_D(qSlicerSubjectHierarchyExpandToDepthPlugin);
 
   // Scene
   if (itemID == shNode->GetSceneItemID())
-    {
+  {
     d->ExpandToDepthAction->setVisible(true);
-    }
+  }
 }
 
 //--------------------------------------------------------------------------
@@ -141,16 +140,16 @@ void qSlicerSubjectHierarchyExpandToDepthPlugin::expandToDepthFromContextMenu()
 {
   QAction* senderAction = qobject_cast<QAction*>(this->sender());
   if (!senderAction)
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Unable to get sender action";
     return;
-    }
+  }
 
   int depth = senderAction->text().toInt();
 
   qMRMLSubjectHierarchyTreeView* currentTreeView = qSlicerSubjectHierarchyPluginHandler::instance()->currentTreeView();
   if (currentTreeView)
-    {
+  {
     currentTreeView->expandToDepth(depth);
-    }
+  }
 }

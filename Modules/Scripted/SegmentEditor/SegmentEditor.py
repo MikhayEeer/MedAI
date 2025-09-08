@@ -1,7 +1,9 @@
 import slicer
+from slicer.i18n import tr as _
+from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
 from slicer.util import VTKObservationMixin
-from slicer.i18n import tr as _
+
 
 #
 # SegmentEditor
@@ -9,21 +11,25 @@ from slicer.i18n import tr as _
 class SegmentEditor(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = _("Segment Editor")#Segment Editor
-        self.parent.categories = ["", "Segmentation"]#Segmentation 修改这个会导致BUG，也不能加_()
+        self.parent.title = _("Segment Editor")
+        self.parent.categories = ["", translate("qSlicerAbstractCoreModule", "Segmentation")]
         self.parent.dependencies = ["Segmentations", "SubjectHierarchy"]
-        self.parent.contributors = [_("MikhayEeer")]
-        self.parent.helpText = """
-This module allows editing segmentation objects by directly drawing and using segmentaiton tools on the contained segments.
+        self.parent.contributors = ["Csaba Pinter (Queen's University), Andras Lasso (Queen's University)"]
+        self.parent.helpText = _("""
+This module allows editing segmentation objects by directly drawing and using segmentation tools on the contained segments.
 Representations other than the labelmap one (which is used for editing) are automatically updated real-time,
 so for example the closed surface can be visualized as edited in the 3D view.
-"""
+""")
         self.parent.helpText += parent.defaultDocumentationLink
-        self.parent.acknowledgementText = _("""Segment Editor""")
+        self.parent.acknowledgementText = _("""
+This work is part of SparKit project, funded by Cancer Care Ontario (CCO)'s ACRU program
+and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).
+""")
 
     def setup(self):
         # Register subject hierarchy plugin
         import SubjectHierarchyPlugins
+
         scriptedPlugin = slicer.qSlicerSubjectHierarchyScriptedPlugin(None)
         scriptedPlugin.setPythonSource(SubjectHierarchyPlugins.SegmentEditorSubjectHierarchyPlugin.filePath)
 
@@ -50,6 +56,7 @@ class SegmentEditorWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         # Segment editor widget
         #
         import qSlicerSegmentationsModuleWidgetsPythonQt
+
         self.editor = qSlicerSegmentationsModuleWidgetsPythonQt.qMRMLSegmentEditorWidget()
         self.editor.setMaximumNumberOfUndoStates(10)
         # Set parameter node first so that the automatic selections made when the scene is set are saved
@@ -61,7 +68,7 @@ class SegmentEditorWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         # later will show up in the segment editor widget. For example, if Segment Editor is set
         # as startup module, additional effects are registered after the segment editor widget is created.
         self.effectFactorySingleton = slicer.qSlicerSegmentEditorEffectFactory.instance()
-        self.effectFactorySingleton.connect('effectRegistered(QString)', self.editorEffectRegistered)
+        self.effectFactorySingleton.connect("effectRegistered(QString)", self.editorEffectRegistered)
 
         # Connect observers to scene events
         self.addObserver(slicer.mrmlScene, slicer.mrmlScene.StartCloseEvent, self.onSceneStartClose)
@@ -105,11 +112,10 @@ class SegmentEditorWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         return firstForegroundVolumeID
 
     def enter(self):
-        """Runs whenever the module is reopened
-        """
+        """Runs whenever the module is reopened"""
         if self.editor.turnOffLightboxes():
-            slicer.util.warningDisplay('Segment Editor is not compatible with slice viewers in light box mode.'
-                                       'Views are being reset.', windowTitle='Segment Editor')
+            slicer.util.warningDisplay(_("Segment Editor is not compatible with slice viewers in light box mode."
+                                         "Views are being reset."), windowTitle=_("Segment Editor"))
 
         # Allow switching between effects and selected segment using keyboard shortcuts
         self.editor.installKeyboardShortcuts()
@@ -122,7 +128,7 @@ class SegmentEditorWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         if not self.editor.segmentationNodeID():
             segmentationNode = slicer.mrmlScene.GetFirstNode(None, "vtkMRMLSegmentationNode")
             if not segmentationNode:
-                segmentationNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLSegmentationNode')
+                segmentationNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
             self.editor.setSegmentationNode(segmentationNode)
             if not self.editor.sourceVolumeNodeID():
                 sourceVolumeNodeID = self.getDefaultSourceVolumeNodeID()
@@ -150,27 +156,22 @@ class SegmentEditorWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     def cleanup(self):
         self.removeObservers()
-        self.effectFactorySingleton.disconnect('effectRegistered(QString)', self.editorEffectRegistered)
+        self.effectFactorySingleton.disconnect("effectRegistered(QString)", self.editorEffectRegistered)
 
 
 class SegmentEditorTest(ScriptedLoadableModuleTest):
-    """
-    This is the test case for your scripted module.
-    """
+    """This is the test case for your scripted module."""
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Currently no testing functionality.
-        """
+        """Currently no testing functionality."""
         self.setUp()
         self.test_SegmentEditor1()
 
     def test_SegmentEditor1(self):
-        """Add test here later.
-        """
+        """Add test here later."""
         self.delayDisplay("Starting the test")
-        self.delayDisplay('Test passed!')
+        self.delayDisplay("Test passed!")

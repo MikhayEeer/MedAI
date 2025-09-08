@@ -30,7 +30,6 @@
 #include <vtkMRMLMarkupsDisplayNode.h>
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_Markups
 class qMRMLMarkupsFiducialProjectionPropertyWidgetPrivate
   : public Ui_qMRMLMarkupsFiducialProjectionPropertyWidget
 {
@@ -106,10 +105,10 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
 {
   Q_D(qMRMLMarkupsFiducialProjectionPropertyWidget);
   if (markupsDisplayNode == d->FiducialDisplayNode)
-    {
+  {
     // no change
     return;
-    }
+  }
 
   qvtkReconnect(d->FiducialDisplayNode, markupsDisplayNode, vtkCommand::ModifiedEvent,
     this, SLOT(updateWidgetFromDisplayNode()));
@@ -124,17 +123,17 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
 {
   Q_D(qMRMLMarkupsFiducialProjectionPropertyWidget);
   if (!d->FiducialDisplayNode)
-    {
+  {
     return;
-    }
+  }
   if (showProjection)
-    {
+  {
     d->FiducialDisplayNode->SliceProjectionOn();
-    }
+  }
   else
-    {
+  {
     d->FiducialDisplayNode->SliceProjectionOff();
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -143,9 +142,9 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
 {
   Q_D(qMRMLMarkupsFiducialProjectionPropertyWidget);
   if (!d->FiducialDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->FiducialDisplayNode
     ->SetSliceProjectionColor(newColor.redF(), newColor.greenF(), newColor.blueF());
 }
@@ -156,21 +155,21 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
 {
   Q_D(qMRMLMarkupsFiducialProjectionPropertyWidget);
   if (!d->FiducialDisplayNode)
-    {
+  {
     return;
-    }
+  }
   if (useFiducialColor)
-    {
+  {
     d->FiducialDisplayNode->SliceProjectionUseFiducialColorOn();
     d->pointProjectionColorLabel->setEnabled(false);
     d->pointProjectionColorPickerButton->setEnabled(false);
-    }
+  }
   else
-    {
+  {
     d->FiducialDisplayNode->SliceProjectionUseFiducialColorOff();
     d->pointProjectionColorLabel->setEnabled(true);
     d->pointProjectionColorPickerButton->setEnabled(true);
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -179,17 +178,17 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
 {
   Q_D(qMRMLMarkupsFiducialProjectionPropertyWidget);
   if (!d->FiducialDisplayNode)
-    {
+  {
     return;
-    }
+  }
   if (outlinedBehind)
-    {
+  {
     d->FiducialDisplayNode->SliceProjectionOutlinedBehindSlicePlaneOn();
-    }
+  }
   else
-    {
+  {
     d->FiducialDisplayNode->SliceProjectionOutlinedBehindSlicePlaneOff();
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -198,9 +197,9 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
 {
   Q_D(qMRMLMarkupsFiducialProjectionPropertyWidget);
   if (!d->FiducialDisplayNode)
-    {
+  {
     return;
-    }
+  }
   d->FiducialDisplayNode->SetSliceProjectionOpacity(opacity);
 }
 
@@ -213,9 +212,9 @@ void qMRMLMarkupsFiducialProjectionPropertyWidget
   this->setEnabled(d->FiducialDisplayNode != nullptr);
 
   if (!d->FiducialDisplayNode)
-    {
+  {
     return;
-    }
+  }
 
   // Update widget if different from MRML node
   // -- 2D Projection Visibility

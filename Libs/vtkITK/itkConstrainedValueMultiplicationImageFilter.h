@@ -48,8 +48,6 @@ namespace itk
  *
  * \author Lino Ramirez. Dept. of Electrical and Computer
  * Engineering. University of Alberta. Canada
- *
- * \ingroup IntensityImageFilters Multithreaded
  */
 namespace Functor {
 
@@ -60,16 +58,16 @@ public:
   ConstrainedValueMultiplication()  = default;
   ~ConstrainedValueMultiplication()  = default;
   bool operator!=( const ConstrainedValueMultiplication & ) const
-    {
+  {
     return false;
-    }
+  }
   bool operator==( const ConstrainedValueMultiplication & other ) const
-    {
+  {
     return !(*this != other);
-    }
+  }
   inline TOutput operator()( const TInput1 & A,
                              const TInput2 & B)
-    {
+  {
     const double dA = static_cast<double>( A );
     const double dB = static_cast<double>( B );
     const double add = dA * dB;
@@ -78,7 +76,7 @@ public:
     const double cadd2 = ( cadd1 > NumericTraits<TOutput>::NonpositiveMin() ) ?
       cadd1 : NumericTraits<TOutput>::NonpositiveMin();
     return static_cast<TOutput>( cadd2 );
-    }
+  }
 };
 }
 

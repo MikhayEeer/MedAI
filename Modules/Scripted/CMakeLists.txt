@@ -1,5 +1,8 @@
 set(modules
+  aaamodule
   Airwaysegmentation
+  BafflePlanner
+  CombineModels
   CropVolumeSequence
   DataProbe
   ImportItkSnapLabel
@@ -19,7 +22,6 @@ set(modules
   )
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND modules
-    DMRIInstall
     ExtensionWizard
     )
 endif()

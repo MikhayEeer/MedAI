@@ -67,12 +67,12 @@ void qSlicerActionsDialogPrivate::init()
 #ifdef Slicer_BUILD_WEBENGINE_SUPPORT
   this->WebView = new QWebEngineView();
   this->WebView->setObjectName("WebView");
-  //this->gridLayout->addWidget(this->WebView, 0, 0);
+  this->gridLayout->addWidget(this->WebView, 0, 0);
   qSlicerCoreApplication* app = qSlicerCoreApplication::application();
   QString shortcutsUrl = QString(qSlicerActionsDialog::tr("%1/user_guide/user_interface.html#mouse-keyboard-shortcuts")).arg(app->documentationBaseUrl());
   this->WebView->setUrl( shortcutsUrl );
 #else
-  //this->tabWidget->setTabEnabled(this->tabWidget->indexOf(this->WikiTab), false);
+  this->tabWidget->setTabEnabled(this->tabWidget->indexOf(this->WikiTab), false);
 #endif
 }
 

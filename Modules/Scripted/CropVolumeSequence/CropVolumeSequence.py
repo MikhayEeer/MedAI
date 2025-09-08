@@ -5,12 +5,15 @@ import qt
 import vtk
 
 import slicer
-from slicer.ScriptedLoadableModule import *
 from slicer.i18n import tr as _
+from slicer.i18n import translate
+from slicer.ScriptedLoadableModule import *
+
 
 #
 # CropVolumeSequence
 #
+
 
 class CropVolumeSequence(ScriptedLoadableModule):
     """Uses ScriptedLoadableModule base class, available at:
@@ -20,19 +23,20 @@ class CropVolumeSequence(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
         self.parent.title = _("Crop volume sequence")
-        self.parent.categories = [_("Sequences")]
+        self.parent.categories = [translate("qSlicerAbstractCoreModule", "Sequences")]
         self.parent.dependencies = []
         self.parent.contributors = ["Andras Lasso (PerkLab, Queen's University)"]
-        self.parent.helpText = """This module can crop and resample a volume sequence to reduce its size for faster rendering and processing."""
+        self.parent.helpText = _("""This module can crop and resample a volume sequence to reduce its size for faster rendering and processing.""")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
-        self.parent.acknowledgementText = """
+        self.parent.acknowledgementText = _("""
 This file was originally developed by Andras Lasso
-"""
+""")
 
 
 #
 # CropVolumeSequenceWidget
 #
+
 
 class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
     """Uses ScriptedLoadableModuleWidget base class, available at:
@@ -48,7 +52,7 @@ class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
         # Parameters Area
         #
         parametersCollapsibleButton = ctk.ctkCollapsibleButton()
-        parametersCollapsibleButton.text = "Parameters"
+        parametersCollapsibleButton.text = _("Parameters")
         self.layout.addWidget(parametersCollapsibleButton)
 
         # Layout within the dummy collapsible button
@@ -65,8 +69,8 @@ class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
         self.inputSelector.showHidden = False
         self.inputSelector.showChildNodeTypes = False
         self.inputSelector.setMRMLScene(slicer.mrmlScene)
-        self.inputSelector.setToolTip("Pick a sequence node of volumes that will be cropped and resampled.")
-        parametersFormLayout.addRow("Input volume sequence: ", self.inputSelector)
+        self.inputSelector.setToolTip(_("Pick a sequence node of volumes that will be cropped and resampled."))
+        parametersFormLayout.addRow(_("Input volume sequence: "), self.inputSelector)
 
         #
         # output volume selector
@@ -77,12 +81,12 @@ class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
         self.outputSelector.addEnabled = True
         self.outputSelector.removeEnabled = True
         self.outputSelector.noneEnabled = True
-        self.outputSelector.noneDisplay = "(Overwrite input)"
+        self.outputSelector.noneDisplay = _("(Overwrite input)")
         self.outputSelector.showHidden = False
         self.outputSelector.showChildNodeTypes = False
         self.outputSelector.setMRMLScene(slicer.mrmlScene)
-        self.outputSelector.setToolTip("Pick a sequence node where the cropped and resampled volumes will be stored.")
-        parametersFormLayout.addRow("Output volume sequence: ", self.outputSelector)
+        self.outputSelector.setToolTip(_("Pick a sequence node where the cropped and resampled volumes will be stored."))
+        parametersFormLayout.addRow(_("Output volume sequence: "), self.outputSelector)
 
         #
         # Crop parameters selector
@@ -97,28 +101,28 @@ class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
         self.cropParametersSelector.showHidden = True
         self.cropParametersSelector.showChildNodeTypes = False
         self.cropParametersSelector.setMRMLScene(slicer.mrmlScene)
-        self.cropParametersSelector.setToolTip("Select a crop volumes parameters.")
+        self.cropParametersSelector.setToolTip(_("Select a crop volumes parameters."))
 
         self.editCropParametersButton = qt.QPushButton()
-        self.editCropParametersButton.setIcon(qt.QIcon(':Icons/Go.png'))
+        self.editCropParametersButton.setIcon(qt.QIcon(":Icons/Go.png"))
         # self.editCropParametersButton.setMaximumWidth(60)
         self.editCropParametersButton.enabled = True
-        self.editCropParametersButton.toolTip = "Go to Crop Volume module to edit cropping parameters."
+        self.editCropParametersButton.toolTip = _("Go to Crop Volume module to edit cropping parameters.")
         hbox = qt.QHBoxLayout()
         hbox.addWidget(self.cropParametersSelector)
         hbox.addWidget(self.editCropParametersButton)
-        parametersFormLayout.addRow("Crop volume settings: ", hbox)
+        parametersFormLayout.addRow(_("Crop volume settings: "), hbox)
 
         #
         # Apply Button
         #
-        self.applyButton = qt.QPushButton("Apply")
-        self.applyButton.toolTip = "Run the algorithm."
+        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton.toolTip = _("Run the algorithm.")
         self.applyButton.enabled = False
         parametersFormLayout.addRow(self.applyButton)
 
         # connections
-        self.applyButton.connect('clicked(bool)', self.onApplyButton)
+        self.applyButton.connect("clicked(bool)", self.onApplyButton)
         self.inputSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
         self.cropParametersSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
         self.editCropParametersButton.connect("clicked()", self.onEditCropParameters)
@@ -133,7 +137,7 @@ class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
         pass
 
     def onSelect(self):
-        self.applyButton.enabled = (self.inputSelector.currentNode() and self.cropParametersSelector.currentNode())
+        self.applyButton.enabled = self.inputSelector.currentNode() and self.cropParametersSelector.currentNode()
 
     def onEditCropParameters(self):
         if not self.cropParametersSelector.currentNode():
@@ -156,6 +160,7 @@ class CropVolumeSequenceWidget(ScriptedLoadableModuleWidget):
 # CropVolumeSequenceLogic
 #
 
+
 class CropVolumeSequenceLogic(ScriptedLoadableModuleLogic):
     """This class should implement all the actual
     computation done by your module.  The interface
@@ -176,11 +181,9 @@ class CropVolumeSequenceLogic(ScriptedLoadableModuleLogic):
         return proxyVolume.GetTransformNodeID()
 
     def run(self, inputVolSeq, outputVolSeq, cropParameters):
-        """
-        Run the actual algorithm
-        """
+        """Run the actual algorithm"""
 
-        logging.info('Processing started')
+        logging.info("Processing started")
 
         # Get original parent transform, if any (before creating the new sequence browser)
         inputVolTransformNodeID = self.transformForSequence(inputVolSeq)
@@ -254,7 +257,6 @@ class CropVolumeSequenceLogic(ScriptedLoadableModuleLogic):
             # Move output sequence node in the same browser node as the input volume sequence
             # if not in a sequence browser node already.
             if outputVolSeq:
-
                 if slicer.modules.sequences.logic().GetFirstBrowserNodeForSequenceNode(outputVolSeq) is None:
                     # Add output sequence to a sequence browser
                     seqBrowser = slicer.modules.sequences.logic().GetFirstBrowserNodeForSequenceNode(inputVolSeq)
@@ -282,7 +284,7 @@ class CropVolumeSequenceLogic(ScriptedLoadableModuleLogic):
                 seqBrowser = slicer.modules.sequences.logic().GetFirstBrowserNodeForSequenceNode(inputVolSeq)
                 slicer.modules.sequences.logic().UpdateProxyNodesFromSequences(seqBrowser)
 
-        logging.info('Processing completed')
+        logging.info("Processing completed")
 
 
 class CropVolumeSequenceTest(ScriptedLoadableModuleTest):
@@ -293,34 +295,32 @@ class CropVolumeSequenceTest(ScriptedLoadableModuleTest):
     """
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_CropVolumeSequence1()
 
     def test_CropVolumeSequence1(self):
-
         self.delayDisplay("Starting the test")
 
         # Load volume sequence
         import SampleData
-        sequenceNode = SampleData.downloadSample('CTCardioSeq')
+
+        sequenceNode = SampleData.downloadSample("CTCardioSeq")
         sequenceBrowserNode = slicer.modules.sequences.logic().GetFirstBrowserNodeForSequenceNode(sequenceNode)
 
         # Set cropping parameters
-        croppedSequenceNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLSequenceNode')
-        cropVolumeNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLCropVolumeParametersNode')
+        croppedSequenceNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSequenceNode")
+        cropVolumeNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLCropVolumeParametersNode")
         cropVolumeNode.SetIsotropicResampling(True)
         cropVolumeNode.SetSpacingScalingConst(3.0)
         volumeNode = sequenceBrowserNode.GetProxyNode(sequenceNode)
 
         # Set cropping region
-        roiNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLMarkupsROINode')
+        roiNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLMarkupsROINode")
         cropVolumeNode.SetROINodeID(roiNode.GetID())
         cropVolumeNode.SetInputVolumeNodeID(volumeNode.GetID())
         slicer.modules.cropvolume.logic().FitROIToInputVolume(cropVolumeNode)
@@ -341,4 +341,4 @@ class CropVolumeSequenceTest(ScriptedLoadableModuleTest):
         self.assertEqual(volumeNode.GetImageData().GetExtent(), (0, 127, 0, 103, 0, 71))
         self.assertEqual(cropVolumeNode.GetImageData().GetExtent(), (0, 41, 0, 33, 0, 40))
 
-        self.delayDisplay('Test passed!')
+        self.delayDisplay("Test passed!")

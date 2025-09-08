@@ -16,11 +16,12 @@ import DataProbeLib
 # DataProbe
 #
 
+
 class DataProbe(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
 
-        parent.title = "DataProbe"
+        parent.title = _("Data Probe")
         parent.categories = [translate("qSlicerAbstractCoreModule", "Quantification")]
         parent.contributors = ["Steve Pieper (Isomics)"]
         parent.helpText = _("""
@@ -33,7 +34,7 @@ indicated by the mouse position.
         # parent.icon = qt.QIcon(':Icons/XLarge/SlicerDownloadMRHead.png')
         self.infoWidget = None
 
-        if slicer.mrmlScene.GetTagByClassName("vtkMRMLScriptedModuleNode") != 'ScriptedModule':
+        if slicer.mrmlScene.GetTagByClassName("vtkMRMLScriptedModuleNode") != "ScriptedModule":
             slicer.mrmlScene.RegisterNodeClass(vtkMRMLScriptedModuleNode())
 
         # Trigger the menu to be added when application has started up
@@ -66,7 +67,6 @@ indicated by the mouse position.
 
 
 class DataProbeInfoWidget:
-
     def __init__(self, parent=None):
         self.nameSize = 24
 
@@ -85,7 +85,7 @@ class DataProbeInfoWidget:
         self.frame.setSizePolicy(qSize)
 
         modulePath = slicer.modules.dataprobe.path.replace("DataProbe.py", "")
-        self.iconsDIR = modulePath + '/Resources/Icons'
+        self.iconsDIR = modulePath + "/Resources/Icons"
 
         self.showImage = False
 
@@ -101,7 +101,7 @@ class DataProbeInfoWidget:
         self.calculateTensorScalars = CalculateTensorScalars()
 
         # Observe the crosshair node to get the current cursor position
-        self.CrosshairNode = slicer.mrmlScene.GetFirstNodeByClass('vtkMRMLCrosshairNode')
+        self.CrosshairNode = slicer.mrmlScene.GetFirstNodeByClass("vtkMRMLCrosshairNode")
         if self.CrosshairNode:
             self.CrosshairNodeObserverTag = self.CrosshairNode.AddObserver(slicer.vtkMRMLCrosshairNode.CursorPositionModifiedEvent, self.processEvent)
 
@@ -125,7 +125,8 @@ class DataProbeInfoWidget:
 
     def getPixelString(self, volumeNode, ijk):
         """Given a volume node, create a human readable
-        string describing the contents"""
+        string describing the contents
+        """
         # TODO: the volume nodes should have a way to generate
         # these strings in a generic way
         if not volumeNode:
@@ -170,14 +171,14 @@ class DataProbeInfoWidget:
 
             value = self.calculateTensorScalars(tensor, operation=operation)
             if value is not None:
-                valueString = ("%f" % value).rstrip('0').rstrip('.')
+                valueString = ("%f" % value).rstrip("0").rstrip(".")
                 return f"{scalarVolumeDisplayNode.GetScalarInvariantAsString()} {valueString}"
             else:
                 return scalarVolumeDisplayNode.GetScalarInvariantAsString()
 
         # default - non label scalar volume
         numberOfComponents = imageData.GetNumberOfScalarComponents()
-        if numberOfComponents > 3:
+        if numberOfComponents > 4:
             return _("{numberOfComponents} components").format(numberOfComponents=numberOfComponents)
         for c in range(numberOfComponents):
             component = imageData.GetScalarComponentAsDouble(ijk[0], ijk[1], ijk[2], c)
@@ -186,8 +187,8 @@ class DataProbeInfoWidget:
             # format string according to suggestion here:
             # https://stackoverflow.com/questions/2440692/formatting-floats-in-python-without-superfluous-zeros
             # also set the default field width for each coordinate
-            componentString = ("%4f" % component).rstrip('0').rstrip('.')
-            pixel += ("%s, " % componentString)
+            componentString = ("%4f" % component).rstrip("0").rstrip(".")
+            pixel += "%s, " % componentString
         return pixel[:-2]
 
     def processEvent(self, observee, event):
@@ -210,7 +211,7 @@ class DataProbeInfoWidget:
             # reset all the readouts
             self.viewerColor.text = ""
             self.viewInfo.text = ""
-            layers = ('L', 'F', 'B')
+            layers = ("L", "F", "B")
             for layer in layers:
                 self.layerNames[layer].setText("")
                 self.layerIJKs[layer].setText("")
@@ -231,8 +232,8 @@ class DataProbeInfoWidget:
         self.viewerColor.setText(" ")
         rgbColor = sliceNode.GetLayoutColor()
         color = qt.QColor.fromRgbF(rgbColor[0], rgbColor[1], rgbColor[2])
-        if hasattr(color, 'name'):
-            self.viewerColor.setStyleSheet('QLabel {background-color : %s}' % color.name())
+        if hasattr(color, "name"):
+            self.viewerColor.setStyleSheet("QLabel {background-color : %s}" % color.name())
 
         self.viewInfo.text = self.generateViewDescription(xyz, ras, sliceNode, sliceLogic)
 
@@ -243,9 +244,9 @@ class DataProbeInfoWidget:
                 return 0
 
         hasVolume = False
-        layerLogicCalls = (('L', sliceLogic.GetLabelLayer),
-                           ('F', sliceLogic.GetForegroundLayer),
-                           ('B', sliceLogic.GetBackgroundLayer))
+        layerLogicCalls = (("L", sliceLogic.GetLabelLayer),
+                           ("F", sliceLogic.GetForegroundLayer),
+                           ("B", sliceLogic.GetBackgroundLayer))
         for layer, logicCall in layerLogicCalls:
             layerLogic = logicCall()
             volumeNode = layerLogic.GetVolumeNode()
@@ -267,14 +268,14 @@ class DataProbeInfoWidget:
                 # sliceWidget is owned by the layout manager
                 sliceView = sliceWidget.sliceView()
                 sliceView.getDisplayableManagers(displayableManagerCollection)
-        aggregatedDisplayableManagerInfo = ''
+        aggregatedDisplayableManagerInfo = ""
         for index in range(displayableManagerCollection.GetNumberOfItems()):
             displayableManager = displayableManagerCollection.GetItemAsObject(index)
             infoString = displayableManager.GetDataProbeInfoStringForPosition(xyz)
             if infoString != "":
                 aggregatedDisplayableManagerInfo += infoString + "<br>"
-        if aggregatedDisplayableManagerInfo != '':
-            self.displayableManagerInfo.text = '<html>' + aggregatedDisplayableManagerInfo + '</html>'
+        if aggregatedDisplayableManagerInfo != "":
+            self.displayableManagerInfo.text = "<html>" + aggregatedDisplayableManagerInfo + "</html>"
             self.displayableManagerInfo.show()
         else:
             self.displayableManagerInfo.hide()
@@ -287,7 +288,7 @@ class DataProbeInfoWidget:
                 self.imageLabel.setPixmap(pixmap)
                 self.onShowImage(self.showImage)
 
-        if hasattr(self.frame.parent(), 'text'):
+        if hasattr(self.frame.parent(), "text"):
             sceneName = slicer.mrmlScene.GetURL()
             if sceneName != "":
                 self.frame.parent().text = _("Data Probe: {sceneName}").format(sceneName=self.fitName(sceneName, nameSize=2 * self.nameSize))
@@ -295,7 +296,6 @@ class DataProbeInfoWidget:
                 self.frame.parent().text = _("Data Probe")
 
     def generateViewDescription(self, xyz, ras, sliceNode, sliceLogic):
-
         # Note that 'xyz' is unused in the Slicer implementation but could
         # be used when customizing the behavior of this function in extension.
 
@@ -319,7 +319,7 @@ class DataProbeInfoWidget:
                     ras_y=abs(ras[1]),
                     ras_z=abs(ras[2]),
                     orient=sliceNode.GetOrientationString(),
-                    spacing=spacing
+                    spacing=spacing,
                     )
 
     def generateLayerName(self, slicerLayerLogic):
@@ -335,7 +335,6 @@ class DataProbeInfoWidget:
         return "<b>%s</b>" % self.getPixelString(volumeNode, ijk) if volumeNode else ""
 
     def _createMagnifiedPixmap(self, xyz, inputImageDataConnection, outputSize, crosshairColor, imageZoom=10):
-
         # Use existing instance of objects to avoid instantiating one at each event.
         imageCrop = self.imageCrop
         painter = self.painter
@@ -400,14 +399,15 @@ class DataProbeInfoWidget:
 
     def _createSmall(self):
         """Make the internals of the widget to display in the
-        Data Probe frame (lower left of slicer main window by default)"""
+        Data Probe frame (lower left of slicer main window by default)
+        """
 
         # this method makes SliceView Annotation
         self.sliceAnnotations = DataProbeLib.SliceAnnotations()
 
         # goto module button
-        self.goToModule = qt.QPushButton('->', self.frame)
-        self.goToModule.setToolTip(_('Go to the DataProbe module for more information and options'))
+        self.goToModule = qt.QPushButton("->", self.frame)
+        self.goToModule.setToolTip(_("Go to the DataProbe module for more information and options"))
         self.frame.layout().addWidget(self.goToModule)
         self.goToModule.connect("clicked()", self.onGoToModule)
         # hide this for now - there's not much to see in the module itself
@@ -421,7 +421,7 @@ class DataProbeInfoWidget:
         self.frame.layout().addWidget(self.showImageFrame)
         self.showImageFrame.setLayout(qt.QHBoxLayout())
         self.showImageFrame.layout().setContentsMargins(0, 3, 0, 3)
-        self.showImageBox = qt.QCheckBox(_('Show Zoomed Slice'), self.showImageFrame)
+        self.showImageBox = qt.QCheckBox(_("Show Zoomed Slice"), self.showImageFrame)
         self.showImageFrame.layout().addWidget(self.showImageBox)
         self.showImageBox.connect("toggled(bool)", self.onShowImage)
         self.showImageBox.setChecked(False)
@@ -455,6 +455,7 @@ class DataProbeInfoWidget:
             font.setFamily(family)
             widget.font = font
             widget.wordWrap = True
+
         _setFixedFontFamily(self.viewInfo)
 
         # the grid - things about the layers
@@ -463,11 +464,11 @@ class DataProbeInfoWidget:
         layout = qt.QGridLayout()
         self.layerGrid.setLayout(layout)
         self.frame.layout().addWidget(self.layerGrid)
-        layers = ('L', 'F', 'B')
+        layers = ("L", "F", "B")
         self.layerNames = {}
         self.layerIJKs = {}
         self.layerValues = {}
-        for (row, layer) in enumerate(layers):
+        for row, layer in enumerate(layers):
             col = 0
             layout.addWidget(qt.QLabel(layer), row, col)
             col += 1
@@ -495,8 +496,8 @@ class DataProbeInfoWidget:
         self.displayableManagerInfo.hide()
 
         # goto module button
-        self.goToModule = qt.QPushButton('->', self.frame)
-        self.goToModule.setToolTip(_('Go to the DataProbe module for more information and options'))
+        self.goToModule = qt.QPushButton("->", self.frame)
+        self.goToModule.setToolTip(_("Go to the DataProbe module for more information and options"))
         self.frame.layout().addWidget(self.goToModule)
         self.goToModule.connect("clicked()", self.onGoToModule)
         # hide this for now - there's not much to see in the module itself
@@ -504,7 +505,7 @@ class DataProbeInfoWidget:
 
     def onGoToModule(self):
         m = slicer.util.mainWindow()
-        m.moduleSelector().selectModule('DataProbe')
+        m.moduleSelector().selectModule("DataProbe")
 
     def onShowImage(self, value=False):
         self.showImage = value
@@ -520,8 +521,8 @@ class DataProbeInfoWidget:
 # DataProbe widget
 #
 
-class DataProbeWidget(ScriptedLoadableModuleWidget):
 
+class DataProbeWidget(ScriptedLoadableModuleWidget):
     def enter(self):
         pass
 
@@ -592,18 +593,16 @@ class DataProbeTest(ScriptedLoadableModuleTest):
     """
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         pass
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_DataProbe1()
 
     def test_DataProbe1(self):
-        """ Ideally you should have several levels of tests.  At the lowest level
+        """Ideally you should have several levels of tests.  At the lowest level
         tests should exercise the functionality of the logic with different inputs
         (both valid and invalid).  At higher levels your tests should emulate the
         way the user would interact with your code and confirm that it still works
@@ -620,14 +619,15 @@ class DataProbeTest(ScriptedLoadableModuleTest):
         # first, get some data
         #
         import SampleData
+
         SampleData.downloadFromURL(
-            nodeNames='FA',
-            fileNames='FA.nrrd',
-            uris=TESTING_DATA_URL + 'SHA256/12d17fba4f2e1f1a843f0757366f28c3f3e1a8bb38836f0de2a32bb1cd476560',
-            checksums='SHA256:12d17fba4f2e1f1a843f0757366f28c3f3e1a8bb38836f0de2a32bb1cd476560')
-        self.delayDisplay('Finished with download and loading')
+            nodeNames="FA",
+            fileNames="FA.nrrd",
+            uris=TESTING_DATA_URL + "SHA256/12d17fba4f2e1f1a843f0757366f28c3f3e1a8bb38836f0de2a32bb1cd476560",
+            checksums="SHA256:12d17fba4f2e1f1a843f0757366f28c3f3e1a8bb38836f0de2a32bb1cd476560")
+        self.delayDisplay("Finished with download and loading")
 
         self.widget = DataProbeInfoWidget()
         self.widget.frame.show()
 
-        self.delayDisplay('Test passed!')
+        self.delayDisplay("Test passed!")

@@ -38,7 +38,6 @@
 #include "ui_qSlicerSegmentationsIOOptionsWidget.h"
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_Volumes
 class qSlicerSegmentationsIOOptionsWidgetPrivate
   : public qSlicerIOOptionsPrivate
   , public Ui_qSlicerSegmentationsIOOptionsWidget
@@ -57,11 +56,11 @@ qSlicerSegmentationsIOOptionsWidget::qSlicerSegmentationsIOOptionsWidget(QWidget
 
   QSettings* settings = qSlicerApplication::application()->settingsDialog()->settings();
   if (settings->contains("Segmentations/AutoOpacities"))
-    {
+  {
     bool autoOpacities = settings->value("Segmentations/AutoOpacities").toBool();
     d->AutoOpacitiesCheckBox->setChecked(autoOpacities);
     d->Properties["autoOpacities"] = autoOpacities;
-    }
+  }
 
   connect(d->AutoOpacitiesCheckBox, SIGNAL(toggled(bool)),
           this, SLOT(updateProperties()));

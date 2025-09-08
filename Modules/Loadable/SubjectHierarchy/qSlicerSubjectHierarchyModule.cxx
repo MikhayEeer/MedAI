@@ -20,8 +20,13 @@
 
 ==============================================================================*/
 
+#include <vtkSlicerConfigure.h> // For Slicer_USE_PYTHONQT
+
 // QtGUI includes
 #include <qSlicerApplication.h>
+#ifdef Slicer_USE_PYTHONQT
+#include <qSlicerPythonManager.h>
+#endif
 
 // SubjectHierarchy includes
 #include "qSlicerSubjectHierarchyModule.h"
@@ -37,7 +42,6 @@
 #include <vtkMRMLScene.h>
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_SubjectHierarchy
 class qSlicerSubjectHierarchyModulePrivate
 {
 public:
@@ -57,10 +61,10 @@ qSlicerSubjectHierarchyModulePrivate::qSlicerSubjectHierarchyModulePrivate() = d
 qSlicerSubjectHierarchyModulePrivate::~qSlicerSubjectHierarchyModulePrivate()
 {
   if (this->PluginLogic)
-    {
+  {
     delete this->PluginLogic;
     this->PluginLogic = nullptr;
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -117,11 +121,21 @@ void qSlicerSubjectHierarchyModule::setup()
 {
   this->Superclass::setup();
 
-  if (qSlicerApplication::application())
-    {
+  qSlicerApplication * app = qSlicerApplication::application();
+  if (app)
+  {
+    // Register settings panel
     qSlicerSubjectHierarchySettingsPanel* panel = new qSlicerSubjectHierarchySettingsPanel();
-    qSlicerApplication::application()->settingsDialog()->addPanel("Subject hierarchy", panel);
+    app->settingsDialog()->addPanel("Subject hierarchy", panel);
+
+    // Explicitly import associated python library to trigger registration of plugins
+#ifdef Slicer_USE_PYTHONQT
+    if (!qSlicerCoreApplication::testAttribute(qSlicerCoreApplication::AA_DisablePython))
+    {
+      app->pythonManager()->executeString(QString("import SubjectHierarchyLib"));
     }
+#endif
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -149,9 +163,9 @@ qSlicerAbstractModuleRepresentation* qSlicerSubjectHierarchyModule::createWidget
 
   qSlicerSubjectHierarchyModuleWidget* moduleWidget = new qSlicerSubjectHierarchyModuleWidget();
   if (!d->PluginLogic)
-    {
+  {
     this->createLogic();
-    }
+  }
   moduleWidget->setPluginLogic(d->PluginLogic);
 
   return moduleWidget;
@@ -164,8 +178,8 @@ void qSlicerSubjectHierarchyModule::onLogicModified()
 
   vtkMRMLScene* scene = this->mrmlScene();
   if (d->PluginLogic && scene != d->PluginLogic->mrmlScene())
-    {
+  {
     // Set the new scene to the plugin logic
     d->PluginLogic->setMRMLScene(scene);
-    }
+  }
 }

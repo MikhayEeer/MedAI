@@ -10,7 +10,7 @@ There are two ways to declare which GUI widget elements connect to which paramet
 
 Qt Designer has the ability to set Dynamic Properties. These can be used to inform the parameter node wrapper infrastructure which parameters to connect to which widgets. This is the preferred way of connection from the `.ui` file of a scripted module to its parameter node wrapper.
 
-Simply set a dynamic string property named "SlicerParameterName" to the parameter name it should bind with.
+Simply set a dynamic string property named "SlicerParameterName" to the parameter name it should bind with. If the property does not exist yet then add it by clicking the `+` button above the property list.
 
 ![Qt Dynamic Property](https://github.com/Slicer/Slicer/releases/download/docs-resources/parameter_node_gui_connection_QtDynamicProperty.png)
 
@@ -163,19 +163,31 @@ When connecting an `int` to a `QSpinBox`, if the `Minimum` annotation is used, i
 | Widget | Data type(s) | Notes |
 |---     | ---       |---    |
 | QCheckBox | bool | |
+| ctkCheckBox | bool | |
 | QPushButton | bool | The push button must be checkable. The bool is whether the button is checked. |
 | QSlider | int | Supports `Minimum`, `Maximum`, and `WithinRange` validators. Supports `SingleStep` annotation. |
 | QSpinBox | int | Supports `Minimum`, `Maximum`, and `WithinRange` validators. Supports `SingleStep` annotation. |
 | QDoubleSpinBox | float | Supports `Minimum`, `Maximum`, and `WithinRange` validators. Supports `Decimals` and `SingleStep` annotations. |
 | ctkSliderWidget | float | Supports `Minimum`, `Maximum`, and `WithinRange` validators. Supports `Decimals` and `SingleStep` annotations. |
+| ctkDoubleSlider | float | Supports `Minimum`, `Maximum`, and `WithinRange` validators, and `SingleStep` annotation. |
+| ctkDoubleSpinBox | float | Supports `Minimum`, `Maximum`, and `WithinRange` validators. Supports `Decimals` and `SingleStep` annotations. |
+| qMRMLSpinBox | float | Supports `Minimum`, `Maximum`, and `WithinRange` validators. Supports `Decimals` and `SingleStep` annotations. |
+| ctkRangeWidget| FloatRange | Supports `WithinRange` validators. Requires `Default` annotation, supports `Decimals` and `SingleStep` annotations. |
+| ctkDoubleRangeSlider | FloatRange | Supports `WithinRange` validators. Requires `Default` annotation, supports `SingleStep` annotation. |
+| qMRMLRangeWidget | FloatRange | Supports `WithinRange` validators. Requires `Default` annotation, supports `SingleStep` annotation. |
 | QComboBox | int, float, str, bool | The `Choice` validator must be in use for the parameter. The choices will be used to fill the combo box automatically. |
+| ctkComboBox | int, float, str, bool | The `Choice` validator must be in use for the parameter. The choices will be used to fill the combo box automatically. |
 | QComboBox | enum.Enum | If a `def label(self):` function is present on the enum class, it will be used for generating the text in the combo box. |
+| ctkComboBox | enum.Enum | If a `def label(self):` function is present on the enum class, it will be used for generating the text in the combo box. |
 | QLineEdit | str | |
 | QTextEdit | str | The value of the parameter will be the plaintext version of what is in the text edit |
+| QLabel | str | This works only one way from the parameter to the Label |
 | ctkPathLineEdit | pathlib.\[Path, PosixPath, WindowsPath,<br/>&emsp;PurePath, PurePosixPath, PureWindowsPath] | |
 | ctkDirectoryButton | pathlib.\[Path, PosixPath, WindowsPath,<br/>&emsp;PurePath, PurePosixPath, PureWindowsPath] | Only directories can be represented |
 | qMRMLNodeComboBox | vtkMRMLNode<br/>&emsp;(including subclasses and a typing.Union of nodes) | To do a Union, need to do something like `typing.Union[vtkMRMLModelNode, vtkMRMLScalarVolumeNode, None]`.<br/>The `None` is necessary for the parameter node wrapper default node of None to work correctly. |
 | qMRMLSubjectHierarchyTreeView | vtkMRMLNode<br/>&emsp;(including subclasses and a typing.Union of nodes) | See notes for qMRMLNodeComboBox. |
+
+For widgets that are not listed here see [Slicer Issue 7308](https://github.com/Slicer/Slicer/issues/7308) for discussion and progress.
 
 ## Extra annotatations
 
@@ -189,4 +201,3 @@ For some GUIs, extra annotations can be used to set other widget properties. Thi
 ## Custom connectors and reusable widgets
 
 To create custom widgets for parameter packs, see [Custom Widgets for Parameter Packs](./advanced/custom_widgets_for_parameter_packs.md)
-

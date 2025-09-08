@@ -32,9 +32,22 @@ dicomBrowser.waitForImportFinished()
 
 ### Import DICOM files using DICOMweb
 
-Download and import DICOM data set using DICOMweb from [Kheops](https://kheops.online/), Google Health API, etc.
+Download and import DICOM data set using DICOMweb from a Picture Archiving and Communications System (PACS) such as [Kheops](https://kheops.online/), Google Health API, [Orthanc](https://www.orthanc-server.com/index.php), [DCM4CHE](https://www.dcm4che.org/), etc.
 
-How to obtain accessToken:
+```python
+slicer.util.selectModule("DICOM")  # ensure DICOM database is initialized
+slicer.app.processEvents()
+from DICOMLib import DICOMUtils
+DICOMUtils.importFromDICOMWeb(
+  dicomWebEndpoint="https://demo.kheops.online/api",
+  studyInstanceUID="1.3.6.1.4.1.14519.5.2.1.8421.4009.985792766370191766692237040819")
+```
+
+#### Authenticate with an Access Token
+
+Several PACS solutions support remote access authentication with an access token.
+
+How to obtain your access token:
 
 - Google Cloud: Execute `gcloud auth print-access-token` once you have logged in
 - Kheops: create an album, create a sharing link (something like `https://demo.kheops.online/view/TfYXwbKAW7JYbAgZ7MyISf`), the token is the string after the last slash (`TfYXwbKAW7JYbAgZ7MyISf`).
@@ -47,6 +60,41 @@ DICOMUtils.importFromDICOMWeb(
   dicomWebEndpoint="https://demo.kheops.online/api",
   studyInstanceUID="1.3.6.1.4.1.14519.5.2.1.8421.4009.985792766370191766692237040819",
   accessToken="TfYXwbKAW7JYbAgZ7MyISf")
+```
+
+#### Alternate Authentication Approaches
+
+You can provide expanded authentication information to use in the DICOMweb request.
+Authentication types extending the Python `requests.auth.AuthBase` are accepted.
+
+In the example below we provide a basic username and password as a `requests.HTTPBasicAuth`
+instance with the DICOMweb import request.
+
+```python
+DICOMUtils.importFromDICOMWeb(
+  dicomWebEndpoint="https://demo.kheops.online/api",
+  studyInstanceUID="1.3.6.1.4.1.14519.5.2.1.8421.4009.985792766370191766692237040819",
+  auth=requests.HTTPBasicAuth('<user>','<password>'))
+```
+
+See the [Python `requests` Authentication documentation](https://requests.readthedocs.io/en/latest/user/authentication/#authentication)
+for more information.
+
+#### Configure a Global DICOMweb Authentication
+
+You can set a global username and password combination in your local Slicer application
+to be remembered across application sessions. `DICOMUtils.getGlobalDICOMAuth` provides
+a convenient way to create a `HTTPBasicAuth` instance from the global configuration
+with each call.
+
+```python
+qt.QSettings().setValue(DICOMUtils.GLOBAL_DICOMWEB_USER_KEY, '<user>')
+qt.QSettings().setValue(DICOMUtils.GLOBAL_DICOMWEB_PASSWORD_KEY, '<pwd>')
+DICOMUtils.importFromDICOMWeb(
+  dicomWebEndpoint="https://remote-url/",
+  studyInstanceUID="1.3.6.1.4.1.14519.5.2.1.8421.4009.985792766370191766692237040819",
+  auth=DICOMUtils.getGlobalDICOMAuth()
+)
 ```
 
 ### Access top level tags of DICOM images imported into Slicer
@@ -280,36 +328,223 @@ dicomQuery.callingAETitle = "SLICER"
 dicomQuery.calledAETitle = "ANYAE"
 dicomQuery.host = "dicomserver.co.uk"
 dicomQuery.port = 11112
-dicomQuery.preferCGET = True
 # Change filter parameters in the next line if
 # query does not find any series (try to use a different letter for "Name", such as "E")
 # or there are too many hits (try to make "Name" more specific, such as "An").
-dicomQuery.filters = {"Name":"A", "Modalities":"MR"}
+dicomQuery.setFilters({"Name":"A", "Modalities":"MR"})
 # temporary in-memory database for storing query results
 tempDb = ctk.ctkDICOMDatabase()
 tempDb.openDatabase("")
 dicomQuery.query(tempDb)
 
 # Retrieve
+# Enable useCGET to retrieve using the query's connection (using C-GET).
+# C-GET is simple, as it does not require configuring a DICOM receiver
+# but C-GET is rarely allowed in clinical PACS.
+# If useCGET is disabled then retrieve requests the PACS to send the data (using C-STORE)
+# to Slicer. Slicer's AE title must be configured in the PACS settings. Slicer must have its
+# DICOM receiver (C-STORE SCP) running.
+useCGET = True
 dicomRetrieve = ctk.ctkDICOMRetrieve()
 dicomRetrieve.callingAETitle = dicomQuery.callingAETitle
 dicomRetrieve.calledAETitle = dicomQuery.calledAETitle
 dicomRetrieve.host = dicomQuery.host
 dicomRetrieve.port = dicomQuery.port
-dicomRetrieve.setMoveDestinationAETitle("SLICER")
 dicomRetrieve.setDatabase(slicer.dicomDatabase)
 for study, series in dicomQuery.studyAndSeriesInstanceUIDQueried:
   print(f"ctkDICOMRetrieveTest: Retrieving {study} - {series}")
   slicer.app.processEvents()
-  if dicomQuery.preferCGET:
+  if useCGET:
     success = dicomRetrieve.getSeries(study, series)
   else:
+    dicomRetrieve.moveDestinationAETitle = dicomQuery.callingAETitle
     success = dicomRetrieve.moveSeries(study, series)
   print(f"  - {'success' if success else 'failed'}")
 
 slicer.dicomDatabase.updateDisplayedFields()
 ```
 
+### Query and retrieve data from a PACS using classic DIMSE DICOM networking with the (experimental) ctkDICOMVisualBrowser
+
+```python
+
+# Get visual browser instance
+visualBrowser = slicer.modules.dicom.widgetRepresentation().self().browserWidget.dicomVisualBrowser
+dicomDatabase = visualBrowser.dicomDatabase()
+
+# Disable query/retrieve for all existing servers
+for index in range (0, visualBrowser.serversCount()):
+  server = visualBrowser.server(index)
+  server.queryRetrieveEnabled = False
+
+# Add a new DICOM server
+server = ctk.ctkDICOMServer()
+server.connectionName = "test"
+server.callingAETitle = "SLICER"
+server.calledAETitle = "ANYAE"
+server.host = "dicomserver.co.uk"
+server.port = 104
+server.retrieveProtocol = ctk.ctkDICOMServer.CGET
+
+if visualBrowser.addServer(server) == -1:
+  raise RuntimeError("Failed to add server")
+
+# Set the filters for the query
+visualBrowser.filteringPatientID = "PAT020"
+#visualBrowser.filteringPatientName = "Name"
+#visualBrowser.filteringStudyDescription = "Study description"
+visualBrowser.filteringDate = ctk.ctkDICOMPatientItemWidget.LastYear
+#Date options:
+#Any,
+#Today,
+#Yesterday,
+#LastWeek,
+#LastMonth,
+#LastYear
+#visualBrowser.filteringSeriesDescription = "Series description"
+#visualBrowser.filteringModalities = ["CT", "MR"]
+
+# Run patient query.
+# NOTE: this will automatically also start query/retrieve jobs at study and series levels
+visualBrowser.onQueryRetrieveOptionToggled(True)
+visualBrowser.onQueryPatients()
+```
+
+### Query and retrieve data from a PACS using classic DIMSE DICOM networking with the (experimental) ctkDICOMScheduler (no UI needed)
+
+```python
+
+class Receiver(qt.QObject):
+  def __init__(self, scheduler):
+    super().__init__()
+    self.scheduler = scheduler
+    self.scheduler.progressJobDetail.connect(self.onProgressDetails)
+    self.scheduler.jobFinished.connect(self.onJobFinished)
+    self.scheduler.jobFailed.connect(self.onJobFailed)
+
+  def startQueryRetrieve(self, parameters):
+    self.scheduler.setFilters(parameters)
+    self.scheduler.queryPatients()
+
+  def onJobFinished(self, details):
+    for detail in details:
+      if detail.jobType() == ctk.ctkDICOMJobResponseSet.QueryPatients:
+        print ("Query patients success. Connection : ", detail.connectionName())
+      elif detail.jobType() == ctk.ctkDICOMJobResponseSet.QueryStudies:
+        patientID = detail.patientID()
+        print ("Query studies success for patientID: ", patientID, ". Connection : ", detail.connectionName())
+      elif detail.jobType() == ctk.ctkDICOMJobResponseSet.RetrieveStudy:
+        patientID = detail.patientID()
+        studyInstanceUID = detail.studyInstanceUID()
+        print ("Retrieve studies success for studyInstanceUID: ", studyInstanceUID, " (patientID: ",patientID, "). Connection : ", detail.connectionName())
+
+  def onJobFailed(self, details):
+    for detail in details:
+      if detail.jobType() == ctk.ctkDICOMJobResponseSet.QueryPatients:
+        print ("Query patients failed. Connection : ", detail.connectionName())
+      elif detail.jobType() == ctk.ctkDICOMJobResponseSet.QueryStudies:
+        patientID = detail.patientID()
+        print ("Query studies failed for patientID: ", patientID, ". Connection : ", detail.connectionName())
+      elif detail.jobType() == ctk.ctkDICOMJobResponseSet.RetrieveStudy:
+        patientID = detail.patientID()
+        studyInstanceUID = detail.studyInstanceUID()
+        print ("Retrieve studies failed for studyInstanceUID: ", studyInstanceUID, " (patientID: ", patientID, "). Connection : ", detail.connectionName())
+
+  def onProgressDetails(self, details):
+    for detail in details:
+      if detail.jobType() == ctk.ctkDICOMJobResponseSet.QueryPatients:
+        patientIDs = detail.queriedPatientIDs()
+        for patientID in patientIDs:
+          print ("Starting studies query for patient: ", patientID, ". Connection : ", detail.connectionName())
+          scheduler.queryStudies(patientID)
+      elif detail.jobType() == ctk.ctkDICOMJobResponseSet.QueryStudies:
+        studyInstanceUIDs = detail.queriedStudyInstanceUIDs()
+        for studyInstanceUID in studyInstanceUIDs:
+          patientItem = slicer.dicomDatabase.patientForStudy(studyInstanceUID)
+          patientID = slicer.dicomDatabase.fieldForPatient("PatientID", patientItem)
+          print ("Starting studies retrieve for studyInstanceUID: ", studyInstanceUID, " (patientID: ",patientID, "). Connection : ", detail.connectionName())
+          scheduler.retrieveStudy(patientID, studyInstanceUID)
+
+
+# Add a new DICOM server
+server = ctk.ctkDICOMServer()
+server.connectionName = "test"
+server.callingAETitle = "SLICER"
+server.calledAETitle = "ANYAE"
+server.host = "dicomserver.co.uk"
+server.port = 104
+server.retrieveProtocol = ctk.ctkDICOMServer.CGET
+
+scheduler = ctk.ctkDICOMScheduler()
+scheduler.setDicomDatabase(slicer.dicomDatabase)
+scheduler.addServer(server)
+
+receiver = Receiver(scheduler)
+
+# Set the filters for the query
+nDays = 325
+endDate = qt.QDate().currentDate()
+startDate = endDate.addDays(-nDays)
+parameters = {
+  "ID": "PAT020",
+  #"Name": "Name",
+  #"Study": "Study description",
+  #"Series": "Series description",
+  #"Modalities": ["CT", "MR"],
+  "StartDate": startDate.toString("yyyyMMdd"),
+  "EndDate": endDate.toString("yyyyMMdd")
+}
+
+receiver.startQueryRetrieve(parameters)
+
+```
+
+### Send data to a PACS using classic DIMSE DICOM networking
+
+```python
+from DICOMLib import DICOMSender
+sender = DICOMSender(
+  files=['path/to/0.dcm','path/to/1.dcm'],
+  address='dicomserver.co.uk:9999'
+  protocol="DIMSE",
+  delayed=True
+)
+sender.send()
+```
+
+### Send data to a PACS using DICOMweb networking
+
+```python
+from DICOMLib import DICOMSender
+sender = DICOMSender(
+  files=['path/to/0.dcm','path/to/1.dcm'],
+  address='dicomserver.co.uk:9999'
+  protocol="DICOMweb",
+  auth=DICOMUtils.getGlobalDICOMAuth(),
+  delayed=True
+)
+sender.send()
+```
+
 ### Convert RT structure set to labelmap NRRD files
 
 [SlicerRT batch processing](https://github.com/SlicerRt/SlicerRT/tree/master/BatchProcessing) to batch convert RT structure sets to labelmap NRRD files.
+
+### Run a DCMTK Command Line Tool
+
+The example below runs the DCMTK `img2dcm` tool to convert a PNG input image to
+an output DICOM file on disk. `img2dcm` runs in a separate process and Slicer
+waits until it completes before continuing.
+
+See [DCMTK documentation](https://support.dcmtk.org/docs/pages.html) for descriptions of
+other DCMTK command line application tools.
+
+```python
+from DICOMLib import DICOMCommand
+command = DICOMCommand('img2dcm',['image.png','output.dcm'])
+stdout = command.start() # run synchronously, block until img2dcm returns
+```
+
+### Additional Notes
+
+See the DICOMLib scripted module for additional DICOM utilities.

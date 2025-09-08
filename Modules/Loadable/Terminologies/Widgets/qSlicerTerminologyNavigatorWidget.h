@@ -45,7 +45,6 @@ class vtkSlicerTerminologyType;
 
 /// \brief Qt widget for browsing a terminology dictionary.
 ///   DICOM properties of the selected entry can also be set if enabled.
-/// \ingroup SlicerRt_QtModules_Terminologies_Widgets
 class Q_SLICER_MODULE_TERMINOLOGIES_WIDGETS_EXPORT qSlicerTerminologyNavigatorWidget : public qMRMLWidget
 {
   Q_OBJECT
@@ -56,7 +55,7 @@ class Q_SLICER_MODULE_TERMINOLOGIES_WIDGETS_EXPORT qSlicerTerminologyNavigatorWi
 
   /// Roles set to the items in the terminology tables uniquely identifying the entries
   enum TerminologyItemDataRole
-    {
+  {
     CodingSchemeDesignatorRole = Qt::UserRole + 100,
     CodeValueRole,
     // Roles for type items referencing category
@@ -65,7 +64,7 @@ class Q_SLICER_MODULE_TERMINOLOGIES_WIDGETS_EXPORT qSlicerTerminologyNavigatorWi
     CategoryCodeMeaningRole,
     // Last role (always keep last)
     LastTerminologyRole
-    };
+  };
 
 public:
   /// Constructor
@@ -175,6 +174,7 @@ protected:
 protected slots:
   void onTerminologySelectionChanged(int);
   void onCategorySelectionChanged();
+  void onSelectAllCategoriesButtonClicked();
   void onTypeSelected(QTableWidgetItem*, QTableWidgetItem*);
   void onTypeCellDoubleClicked(int, int);
   void onTypeModifierSelectionChanged(int);

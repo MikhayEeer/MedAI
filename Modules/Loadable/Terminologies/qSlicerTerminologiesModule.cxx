@@ -36,7 +36,6 @@
 #include "qSlicerIOManager.h"
 
 //-----------------------------------------------------------------------------
-/// \ingroup SlicerRt_QtModules_Terminologies
 class qSlicerTerminologiesModulePrivate
 {
 public:
@@ -66,7 +65,7 @@ qSlicerTerminologiesModule::~qSlicerTerminologiesModule() = default;
 QString qSlicerTerminologiesModule::helpText()const
 {
   QString help =
-    "The Terminologies module enables viewing and editing terminology dictionaries used for segmentation.";
+    tr("The Terminologies module enables viewing and editing terminology dictionaries used for segmentation.");
   help += this->defaultDocumentationLink();
   return help;
 }
@@ -74,7 +73,8 @@ QString qSlicerTerminologiesModule::helpText()const
 //-----------------------------------------------------------------------------
 QString qSlicerTerminologiesModule::acknowledgementText()const
 {
-  return "This work is part of SparKit project, funded by Cancer Care Ontario (CCO)'s ACRU program and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).";
+  return tr("This work is part of SparKit project, funded by Cancer Care Ontario (CCO)'s ACRU program"
+    " and Ontario Consortium for Adaptive Interventions in Radiation Oncology (OCAIRO).");
 }
 
 //-----------------------------------------------------------------------------

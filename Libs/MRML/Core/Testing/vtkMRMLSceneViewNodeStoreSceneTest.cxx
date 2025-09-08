@@ -108,7 +108,7 @@ int storeAndRestore()
   sceneViewNode->RestoreScene();
 
   vtkMRMLNode* restoredVolumeNode = scene->GetNodeByID("vtkMRMLScalarVolumeNode1");
-  // Restoring the volume should re-use the same node.
+  // Restoring the volume should reuse the same node.
   CHECK_POINTER(restoredVolumeNode, volumeNode);
 
   return EXIT_SUCCESS;
@@ -283,9 +283,9 @@ int storePerformance()
   const int displayNodePairCount = 100;
 
   for (int i = 0; i < displayNodePairCount; ++i)
-    {
+  {
     populateScene(scene.GetPointer());
-    }
+  }
 
   vtkNew<vtkMRMLSceneViewNode> sceneViewNode;
   scene->AddNode(sceneViewNode.GetPointer());

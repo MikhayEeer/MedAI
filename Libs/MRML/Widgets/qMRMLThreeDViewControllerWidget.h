@@ -123,6 +123,12 @@ public slots:
   void setRulerType(int type);
   void setRulerColor(int color);
 
+  void setShadowsVisibility(bool visibility);
+  void setAmbientShadowsSizeScale(double value);
+  void setAmbientShadowsVolumeOpacityThresholdPercent(double opacityPercent);
+  void setAmbientShadowsIntensityScale(double value);
+  void setAmbientShadowsIntensityShift(double value);
+
 protected slots:
   void updateWidgetFromMRMLViewLogic();
   void updateWidgetFromMRMLView() override;

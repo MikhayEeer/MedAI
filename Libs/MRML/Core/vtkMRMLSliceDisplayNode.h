@@ -55,10 +55,24 @@ public:
   //@}
 
   //@{
+  /// Toggles visibility of thick slabs of other slices in the slice viewer
+  vtkGetMacro(IntersectingThickSlabVisibility, bool);
+  vtkSetMacro(IntersectingThickSlabVisibility, bool);
+  vtkBooleanMacro(IntersectingThickSlabVisibility, bool);
+  //@}
+
+  //@{
   /// Toggles interaction with slice intersections
   vtkGetMacro(IntersectingSlicesInteractive, bool);
   vtkSetMacro(IntersectingSlicesInteractive, bool);
   vtkBooleanMacro(IntersectingSlicesInteractive, bool);
+  //@}
+
+  //@{
+  /// Toggles interaction with thick slab intersections
+  vtkGetMacro(IntersectingThickSlabInteractive, bool);
+  vtkSetMacro(IntersectingThickSlabInteractive, bool);
+  vtkBooleanMacro(IntersectingThickSlabInteractive, bool);
   //@}
 
   //@{
@@ -158,6 +172,7 @@ public:
     ComponentRotateIntersectingSlicesHandle, ///< mouse is near the end of the slice intersection (rotation section)
     ComponentTranslateSingleIntersectingSliceHandle, ///< mouse is near the middle of the slice intersection (translation section)
     ComponentSliceIntersection, ///< slice intersection is active (not any handle), e.g., because user is interacting with the widget
+    ComponentTranslateIntersectingThickSlabHandle, ///< mouse is near the handle for adjusting a thick slab
     Component_Last
   };
 
@@ -193,19 +208,21 @@ protected:
   void operator=(const vtkMRMLSliceDisplayNode&);
 
   struct ComponentInfo
-    {
+  {
     ComponentInfo()
-      {
+    {
       this->Type = ComponentNone;
       this->Index = -1;
-      }
+    }
     int Type;
     int Index;
-    };
+  };
 
   bool IntersectingSlicesInteractive{ false };
   bool IntersectingSlicesTranslationEnabled{ true };
   bool IntersectingSlicesRotationEnabled{ true };
+  bool IntersectingThickSlabInteractive{ false };
+  bool IntersectingThickSlabVisibility{ false };
 
   int IntersectingSlicesInteractiveHandlesVisibilityMode{ NeverVisible };
 

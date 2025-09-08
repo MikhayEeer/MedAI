@@ -1,7 +1,7 @@
 // .NAME vtkMRMLAnnotationLinesNode - MRML node to represent a fiber bundle from tractography in DTI data.
 // .SECTION Description
 // Annotation nodes contains control points, internally represented as vtkPolyData.
-// A Annotation node contains many control points  and forms the smallest logical unit of tractography
+// An Annotation node contains many control points  and forms the smallest logical unit of tractography
 // that MRML will manage/read/write. Each control point has accompanying data.
 // Visualization parameters for these nodes are controlled by the vtkMRMLAnnotationLineDisplayNode class.
 //
@@ -13,7 +13,6 @@
 
 class vtkMRMLAnnotationLineDisplayNode;
 
-/// \ingroup Slicer_QtModules_Annotation
 class  VTK_SLICER_ANNOTATIONS_MODULE_MRML_EXPORT vtkMRMLAnnotationLinesNode
   : public vtkMRMLAnnotationControlPointsNode
 {
@@ -70,11 +69,11 @@ public:
   int SetControlPoint(int id, double newControl[3],int selectedFlag, int visibleFlag);
 
   int SetControlPointWorldCoordinates(int id, double newControl[3],int selectedFlag, int visibleFlag)
-    {
+  {
     double localPoint[4]={0,0,0,1};
     this->TransformPointFromWorld(newControl, localPoint);
     return this->SetControlPoint(id, localPoint, selectedFlag, visibleFlag);
-    }
+  }
 
   void DeleteLine(int id);
   int GetEndPointsId(vtkIdType lineID, vtkIdType ctrlPtID[2]);

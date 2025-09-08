@@ -20,7 +20,8 @@ note that from the 't' variable in the console you can access the readers and ot
 class vtkITKReaderAgainstNRRDReader(unittest.TestCase):
     def setUp(self):
         from SampleData import SampleDataLogic
-        dtiSource = SampleDataLogic().sourceForSampleName('DTIBrain')
+
+        dtiSource = SampleDataLogic().sourceForSampleName("DTIBrain")
         self.file_name = SampleDataLogic().downloadSourceIntoCache(dtiSource)[0]
 
         self.ritk = vtkITK.vtkITKArchetypeDiffusionTensorImageReaderFile()
@@ -39,21 +40,21 @@ class vtkITKReaderAgainstNRRDReader(unittest.TestCase):
         self.assertTrue(
             compare_vtk_matrix(
                 self.ritk.GetMeasurementFrameMatrix(),
-                self.rnrrd.GetMeasurementFrameMatrix()
-            )
+                self.rnrrd.GetMeasurementFrameMatrix(),
+            ),
         )
 
     def test_ras_to_ijk(self):
         print("ITK Matrix")
-        print(self.ritk.GetRasToIjkMatrix(), end=' ')
+        print(self.ritk.GetRasToIjkMatrix(), end=" ")
         print("NRRD Reader Matrix")
         print(self.rnrrd.GetRasToIjkMatrix())
 
         self.assertTrue(
             compare_vtk_matrix(
                 self.ritk.GetRasToIjkMatrix(),
-                self.rnrrd.GetRasToIjkMatrix()
-            )
+                self.rnrrd.GetRasToIjkMatrix(),
+            ),
         )
 
     def test_pointdata(self):

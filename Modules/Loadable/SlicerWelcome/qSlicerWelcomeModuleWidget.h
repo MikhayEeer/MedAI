@@ -30,7 +30,6 @@
 
 class qSlicerWelcomeModuleWidgetPrivate;
 
-/// \ingroup Slicer_QtModules_SlicerWelcome
 class Q_SLICER_QTMODULES_WELCOME_EXPORT qSlicerWelcomeModuleWidget :
   public qSlicerAbstractModuleWidget
 {
@@ -52,8 +51,6 @@ public slots:
   //bool exploreLoadedData();
   bool loadLanguageTools();
   void setExtensionUpdatesAvailable(bool updateAvailable);
-  void setApplicationUpdateAvailable(bool updateAvailable);
-  void checkForUpdates();
 
 protected:
   void setup() override;

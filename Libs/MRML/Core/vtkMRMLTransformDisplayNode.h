@@ -45,20 +45,20 @@ class VTK_MRML_EXPORT vtkMRMLTransformDisplayNode : public vtkMRMLDisplayNode
   void PrintSelf ( ostream& os, vtkIndent indent ) override;
 
   enum VisualizationModes
-    {
+  {
     VIS_MODE_GLYPH,
     VIS_MODE_GRID,
     VIS_MODE_CONTOUR,
     VIS_MODE_LAST // this should be the last mode
-    };
+  };
 
   enum GlyphTypes
-    {
+  {
     GLYPH_TYPE_ARROW,
     GLYPH_TYPE_CONE,
     GLYPH_TYPE_SPHERE,
     GLYPH_TYPE_LAST // this should be the last glyph type
-    };
+  };
 
   //--------------------------------------------------------------------------
   /// MRMLNode methods
@@ -170,26 +170,38 @@ class VTK_MRML_EXPORT vtkMRMLTransformDisplayNode : public vtkMRMLDisplayNode
   vtkGetMacro(EditorVisibility, bool);
   vtkSetMacro(EditorVisibility, bool);
   vtkBooleanMacro(EditorVisibility, bool);
+  vtkGetMacro(EditorVisibility3D, bool);
+  vtkSetMacro(EditorVisibility3D, bool);
+  vtkBooleanMacro(EditorVisibility3D, bool);
   vtkGetMacro(EditorSliceIntersectionVisibility, bool);
   vtkSetMacro(EditorSliceIntersectionVisibility, bool);
   vtkBooleanMacro(EditorSliceIntersectionVisibility, bool);
   vtkGetMacro(EditorTranslationEnabled, bool);
   vtkSetMacro(EditorTranslationEnabled, bool);
   vtkBooleanMacro(EditorTranslationEnabled, bool);
+  vtkGetMacro(EditorTranslationSliceEnabled, bool);
+  vtkSetMacro(EditorTranslationSliceEnabled, bool);
+  vtkBooleanMacro(EditorTranslationSliceEnabled, bool);
   vtkGetMacro(EditorRotationEnabled, bool);
   vtkSetMacro(EditorRotationEnabled, bool);
   vtkBooleanMacro(EditorRotationEnabled, bool);
+  vtkGetMacro(EditorRotationSliceEnabled, bool);
+  vtkSetMacro(EditorRotationSliceEnabled, bool);
+  vtkBooleanMacro(EditorRotationSliceEnabled, bool);
   vtkGetMacro(EditorScalingEnabled, bool);
   vtkSetMacro(EditorScalingEnabled, bool);
   vtkBooleanMacro(EditorScalingEnabled, bool);
+  vtkGetMacro(EditorScalingSliceEnabled, bool);
+  vtkSetMacro(EditorScalingSliceEnabled, bool);
+  vtkBooleanMacro(EditorScalingSliceEnabled, bool);
 
   /// Ask the editor to recompute its bounds by invoking the
   /// TransformUpdateEditorBoundsEvent event.
   void UpdateEditorBounds();
   enum
-    {
+  {
     TransformUpdateEditorBoundsEvent = 2750
-    };
+  };
 
   /// Set the default color table
   /// Create and a procedural color node with default colors and use it for visualization.
@@ -197,6 +209,46 @@ class VTK_MRML_EXPORT vtkMRMLTransformDisplayNode : public vtkMRMLDisplayNode
 
   vtkColorTransferFunction* GetColorMap();
   void SetColorMap(vtkColorTransferFunction* newColorMap);
+
+  /// Absolute size of the intreaction handle widget in mm.
+  vtkSetMacro(InteractionSizeMm, double);
+  vtkGetMacro(InteractionSizeMm, double);
+
+  /// Relative size of the interaction handle widget as a percent of the view size.
+  vtkSetMacro(InteractionScalePercent, double);
+  vtkGetMacro(InteractionScalePercent, double);
+
+  /// If true, uses the absolute size for the interaction handle, otherwise uses the relative size.
+  vtkSetMacro(InteractionSizeAbsolute, bool);
+  vtkGetMacro(InteractionSizeAbsolute, bool);
+  vtkBooleanMacro(InteractionSizeAbsolute, bool);
+
+  /// The type of the active interaction handle.
+  vtkSetMacro(ActiveInteractionType, int);
+  vtkGetMacro(ActiveInteractionType, int);
+
+  /// The index of the active interaction handle.
+  vtkSetMacro(ActiveInteractionIndex, int);
+  vtkGetMacro(ActiveInteractionIndex, int);
+
+  //@{
+  /// Get/Set the visibility of the individual handle axes
+  /// The order of the vector is: [X, Y, Z, ViewPlane]
+  /// "ViewPlane" scale/translation allows transformations to take place along the active view plane.
+  /// (ex. center translation point and ROI corner scale handles.
+  vtkSetVector4Macro(RotationHandleComponentVisibility3D, bool);
+  vtkGetVector4Macro(RotationHandleComponentVisibility3D, bool);
+  vtkSetVector4Macro(ScaleHandleComponentVisibility3D, bool);
+  vtkGetVector4Macro(ScaleHandleComponentVisibility3D, bool);
+  vtkSetVector4Macro(TranslationHandleComponentVisibility3D, bool);
+  vtkGetVector4Macro(TranslationHandleComponentVisibility3D, bool);
+  vtkSetVector4Macro(RotationHandleComponentVisibilitySlice, bool);
+  vtkGetVector4Macro(RotationHandleComponentVisibilitySlice, bool);
+  vtkSetVector4Macro(ScaleHandleComponentVisibilitySlice, bool);
+  vtkGetVector4Macro(ScaleHandleComponentVisibilitySlice, bool);
+  vtkSetVector4Macro(TranslationHandleComponentVisibilitySlice, bool);
+  vtkGetVector4Macro(TranslationHandleComponentVisibilitySlice, bool);
+  //@}
 
 protected:
 
@@ -236,10 +288,28 @@ protected:
 
   // Interaction Parameters
   bool EditorVisibility;
+  bool EditorVisibility3D;
   bool EditorSliceIntersectionVisibility;
   bool EditorTranslationEnabled;
+  bool EditorTranslationSliceEnabled;
   bool EditorRotationEnabled;
+  bool EditorRotationSliceEnabled;
   bool EditorScalingEnabled;
+  bool EditorScalingSliceEnabled;
+
+  int ActiveInteractionType{-1};
+  int ActiveInteractionIndex{-1};
+  bool InteractionSizeAbsolute{false};
+  double InteractionSizeMm{5.0};
+  double InteractionScalePercent{15.0};
+
+  bool RotationHandleComponentVisibility3D[4];
+  bool ScaleHandleComponentVisibility3D[4];
+  bool TranslationHandleComponentVisibility3D[4];
+
+  bool RotationHandleComponentVisibilitySlice[4];
+  bool ScaleHandleComponentVisibilitySlice[4];
+  bool TranslationHandleComponentVisibilitySlice[4];
 
  protected:
   vtkMRMLTransformDisplayNode ( );

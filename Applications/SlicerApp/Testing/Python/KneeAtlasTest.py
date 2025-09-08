@@ -4,8 +4,7 @@ import AtlasTests
 
 
 class testClass:
-    """ Run the knee atlas test by itself
-    """
+    """Run the knee atlas test by itself"""
 
     def setUp(self):
         print("Import the atlas tests...")
@@ -14,7 +13,6 @@ class testClass:
 
 
 class KneeAtlasTest(unittest.TestCase):
-
     def setUp(self):
         pass
 

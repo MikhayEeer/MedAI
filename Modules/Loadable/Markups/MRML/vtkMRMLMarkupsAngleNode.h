@@ -32,7 +32,6 @@
 ///
 /// Markups is intended to be used for manual marking/editing of point positions.
 ///
-/// \ingroup Slicer_QtModules_Markups
 class  VTK_SLICER_MARKUPS_MODULE_MRML_EXPORT vtkMRMLMarkupsAngleNode : public vtkMRMLMarkupsNode
 {
 public:
@@ -50,12 +49,12 @@ public:
   /// \sa SetAngleMeasurementModeToOrientedSigned()
   /// \sa SetAngleMeasurementModeToOrientedPositive()
   enum AngleMeasurementModes
-    {
+  {
     Minimal,
     OrientedSigned,
     OrientedPositive,
     AngleMeasurementMode_Last
-    };
+  };
 
   //--------------------------------------------------------------------------
   // MRMLNode methods
@@ -67,12 +66,6 @@ public:
 
   /// Get markup type internal name
   const char* GetMarkupType() override {return "Angle";};
-
-  // Get markup type GUI display name
-  const char* GetTypeDisplayName() override {return "Angle";};
-
-  /// Get markup short name
-  const char* GetDefaultNodeNamePrefix() override {return "A";};
 
   /// Read node attributes from XML file
   void ReadXMLAttributes( const char** atts) override;

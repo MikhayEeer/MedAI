@@ -34,7 +34,6 @@ class vtkVolume;
 
 #define VTKIS_VOLUME_PROPS 100
 
-/// \ingroup Slicer_QtModules_VolumeRendering
 class VTK_SLICER_VOLUMERENDERING_MODULE_MRMLDISPLAYABLEMANAGER_EXPORT vtkMRMLVolumeRenderingDisplayableManager
   : public vtkMRMLAbstractThreeDViewDisplayableManager
 {
@@ -82,8 +81,6 @@ protected:
   int ActiveInteractionModes() override;
 
   void ProcessMRMLNodesEvents(vtkObject * caller, unsigned long event, void * callData) override;
-
-  void OnInteractorStyleEvent(int eventID) override;
 
 protected:
   vtkSlicerVolumeRenderingLogic *VolumeRenderingLogic{nullptr};

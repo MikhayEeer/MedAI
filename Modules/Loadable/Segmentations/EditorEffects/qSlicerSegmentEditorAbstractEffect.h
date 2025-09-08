@@ -38,6 +38,7 @@ class qSlicerSegmentEditorAbstractEffectPrivate;
 
 class vtkActor2D;
 class vtkMRMLInteractionNode;
+class vtkMRMLNode;
 class vtkMRMLScene;
 class vtkMRMLSegmentEditorNode;
 class vtkMRMLAbstractViewNode;
@@ -56,7 +57,6 @@ class QFormLayout;
 class QFrame;
 class QLayout;
 
-/// \ingroup SlicerRt_QtModules_Segmentations
 /// \brief Abstract class for segment editor effects
 class Q_SLICER_SEGMENTATIONS_EFFECTS_EXPORT qSlicerSegmentEditorAbstractEffect : public QObject
 {
@@ -69,6 +69,10 @@ public:
   /// Cannot be empty.
   /// \sa name(), \sa setName()
   Q_PROPERTY(QString name READ name WRITE setName)
+
+  /// This property stores the title of the effect
+  /// \sa title(), \sa setTitle()
+  Q_PROPERTY(QString title READ title WRITE setTitle)
 
   /// This property stores the flag indicating whether effect operates on individual segments (true)
   /// or the whole segmentation (false).
@@ -99,19 +103,19 @@ public:
 public:
 
   enum ModificationMode
-    {
+  {
     ModificationModeSet,
     ModificationModeAdd,
     ModificationModeRemove,
     ModificationModeRemoveAll
-    };
+  };
 
   enum ConfirmationResult
-    {
+  {
     NotConfirmed,
     ConfirmedWithoutDialog,
     ConfirmedWithDialog,
-    };
+  };
 
   /// Get icon for effect to be displayed in segment editor
   virtual QIcon icon() { return QIcon(); };
@@ -237,11 +241,20 @@ public:
   Q_INVOKABLE QWidget* addLabeledOptionsWidget(QString label, QWidget* newOptionsWidget);
   Q_INVOKABLE QWidget* addLabeledOptionsWidget(QString label, QLayout* newOptionsWidget);
 
-  /// Get name of effect
+  /// Get name of effect.
+  /// This name is used by various modules for accessing an effect.
+  /// This string is not displayed on the user interface and must not be translated.
   virtual QString name()const;
-  /// Set the name of the effect
+  /// Set the name of the effect.
   /// NOTE: name must be defined in constructor in C++ effects, this can only be used in python scripted ones
   virtual void setName(QString name);
+
+  /// Get title of effect.
+  /// This string is displayed on the application GUI and it is translated.
+  /// Returns the effect's name when the title is empty.
+  virtual QString title()const;
+  /// Set the title of the effect
+  virtual void setTitle(QString title);
 
   /// Get flag indicating whether effect operates on segments (true) or the whole segmentation (false).
   virtual bool perSegment()const;
@@ -276,14 +289,17 @@ public:
 
 // Effect parameter functions
 public:
-  /// Get effect or common parameter from effect parameter set node
+  /// Get effect-specific or common string type parameter from effect parameter set node.
   Q_INVOKABLE QString parameter(QString name);
 
-  /// Convenience function to get integer parameter
+  /// Get effect-specific or common integer type parameter from effect parameter set node.
   Q_INVOKABLE int integerParameter(QString name);
 
-  /// Convenience function to get double parameter
+  /// Get effect-specific or common double type parameter from effect parameter set node.
   Q_INVOKABLE double doubleParameter(QString name);
+
+  /// Get effect-specific or common node reference type parameter from effect parameter set node.
+  Q_INVOKABLE vtkMRMLNode* nodeReference(QString name);
 
   /// Set effect parameter in effect parameter set node. This function is called by both convenience functions.
   /// \param name Parameter name string
@@ -328,6 +344,13 @@ public:
   /// Set parameter only if it is not defined already.
   /// \sa setCommonParameter
   Q_INVOKABLE void setCommonParameterDefault(QString name, double value);
+
+  /// Convenience function to set node reference parameter
+  /// \param name Parameter name string
+  /// \param value Parameter node reference
+  Q_INVOKABLE void setNodeReference(QString name, vtkMRMLNode* node);
+  /// Convenience function to set node reference common parameter \sa setCommonParameter
+  Q_INVOKABLE void setCommonNodeReference(QString name, vtkMRMLNode* node);
 
 // Utility functions
 public:
@@ -416,9 +439,9 @@ public:
   Q_INVOKABLE bool segmentationDisplayableInView(vtkMRMLAbstractViewNode* viewNode);
 
 protected:
-  /// Name of the effect
   QString m_Name;
   bool m_Active{false};
+  QString m_Title;
 
   /// Flag indicating whether effect operates on individual segments (true) or the whole segmentation (false).
   /// If the selected effect works on whole segmentation, selection of the segments does not trigger creation

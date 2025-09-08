@@ -16,6 +16,7 @@
 ==============================================================================*/
 
 // MRML includes
+#include "vtkMRMLI18N.h"
 #include "vtkMRMLMarkupsDisplayNode.h"
 #include "vtkMRMLMarkupsLineNode.h"
 #include "vtkMRMLMeasurementLength.h"
@@ -41,6 +42,12 @@ vtkMRMLMarkupsLineNode::vtkMRMLMarkupsLineNode()
 {
   this->MaximumNumberOfControlPoints = 2;
   this->RequiredNumberOfControlPoints = 2;
+
+  // Set markup type GUI display name
+  this->TypeDisplayName = vtkMRMLTr("vtkMRMLMarkupsLineNode", "Line");
+
+  // Set markup short name
+  this->DefaultNodeNamePrefix = vtkMRMLTr("vtkMRMLMarkupsLineNode", "L");
 
   // Setup measurements calculated for this markup type
   vtkNew<vtkMRMLMeasurementLength> lengthMeasurement;
@@ -86,9 +93,9 @@ void vtkMRMLMarkupsLineNode::UpdateInteractionHandleToWorldMatrix()
 {
   Superclass::UpdateInteractionHandleToWorldMatrix();
   if (this->GetNumberOfControlPoints() < 2)
-    {
+  {
     return;
-    }
+  }
 
   double handleX_World[4] = { 1.0, 0.0, 0.0, 0.0 };
   this->InteractionHandleToWorldMatrix->MultiplyPoint(handleX_World, handleX_World);
@@ -104,9 +111,9 @@ void vtkMRMLMarkupsLineNode::UpdateInteractionHandleToWorldMatrix()
   double angle = vtkMath::DegreesFromRadians(vtkMath::AngleBetweenVectors(vectorPoint0ToPoint1_World, handleX_World));
   double epsilon = 1e-5;
   if (angle < epsilon)
-    {
+  {
     return;
-    }
+  }
 
   double rotationVector_Local[3] = { 0.0 };
   vtkMath::Cross(handleX_World, vectorPoint0ToPoint1_World, rotationVector_Local);
@@ -184,66 +191,66 @@ bool vtkMRMLMarkupsLineNode::GetLineEndPositionWorld(double position[3])
 void vtkMRMLMarkupsLineNode::SetLineStartPosition(double position[3])
 {
   if (this->GetNumberOfControlPoints() < 1)
-    {
+  {
     this->AddControlPoint(position);
-    }
+  }
   else
-    {
+  {
     this->SetNthControlPointPosition(0, position);
-    }
+  }
 }
 
 //---------------------------------------------------------------------------
 void vtkMRMLMarkupsLineNode::SetLineEndPosition(double position[3])
 {
   if (this->GetNumberOfControlPoints() == 0)
-    {
+  {
     // First control point has not been added yet.
     // Add it now, with undefined position.
     ControlPoint* controlPoint = new ControlPoint;
     this->AddControlPoint(controlPoint);
-    }
+  }
   if (this->GetNumberOfControlPoints() < 2)
-    {
+  {
     this->AddControlPoint(position);
-    }
+  }
   else
-    {
+  {
     this->SetNthControlPointPosition(1, position);
-    }
+  }
 }
 
 //---------------------------------------------------------------------------
 void vtkMRMLMarkupsLineNode::SetLineStartPositionWorld(double position[3])
 {
   if (this->GetNumberOfControlPoints() < 1)
-    {
+  {
     this->AddControlPointWorld(position);
-    }
+  }
   else
-    {
+  {
     this->SetNthControlPointPositionWorld(0, position);
-    }
+  }
 }
 
 //---------------------------------------------------------------------------
 void vtkMRMLMarkupsLineNode::SetLineEndPositionWorld(double position[3])
 {
   if (this->GetNumberOfControlPoints() == 0)
-    {
+  {
     // First control point has not been added yet.
     // Add it now, with undefined position.
     ControlPoint* controlPoint = new ControlPoint;
     this->AddControlPoint(controlPoint);
-    }
+  }
   if (this->GetNumberOfControlPoints() < 2)
-    {
+  {
     this->AddControlPointWorld(position);
-    }
+  }
   else
-    {
+  {
     this->SetNthControlPointPositionWorld(1, position);
-    }
+  }
 }
 
 
@@ -268,9 +275,9 @@ double* vtkMRMLMarkupsLineNode::GetPosition1()
 {
   vtkWarningMacro("vtkMRMLMarkupsLineNode::GetPosition1 method is deprecated. Use GetLineStartPosition method instead.");
   if (this->GetNthControlPointPositionStatus(0) == PositionUndefined)
-    {
+  {
     return nullptr;
-    }
+  }
   return this->GetNthControlPointPosition(0);
 }
 
@@ -279,9 +286,9 @@ double* vtkMRMLMarkupsLineNode::GetPosition2()
 {
   vtkWarningMacro("vtkMRMLMarkupsLineNode::GetPosition2 method is deprecated. Use GetLineEndPosition method instead.");
   if (this->GetNthControlPointPositionStatus(1) == PositionUndefined)
-    {
+  {
     return nullptr;
-    }
+  }
   return this->GetNthControlPointPosition(1);
 }
 
@@ -324,9 +331,9 @@ bool vtkMRMLMarkupsLineNode::GetPositionWorldCoordinates1(double position[3])
 {
   vtkWarningMacro("vtkMRMLMarkupsLineNode::GetPositionWorldCoordinates1 method is deprecated. Use GetLineStartPositionWorld method instead.");
   if (this->GetNthControlPointPositionStatus(0) == PositionUndefined)
-    {
+  {
     return false;
-    }
+  }
   this->GetNthControlPointPosition(0, position);
   return true;
 }
@@ -336,9 +343,9 @@ bool vtkMRMLMarkupsLineNode::GetPositionWorldCoordinates2(double position[3])
 {
   vtkWarningMacro("vtkMRMLMarkupsLineNode::SetPositionWorldCoordinates2 method is deprecated. Use GetLineEndPositionWorld method instead.");
   if (this->GetNthControlPointPositionStatus(1) == PositionUndefined)
-    {
+  {
     return false;
-    }
+  }
   this->GetNthControlPointPosition(1, position);
   return true;
 }

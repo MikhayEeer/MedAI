@@ -41,7 +41,6 @@ class vtkMRMLScalarVolumeNode;
 class vtkPolyData;
 
 /// \brief MRML node containing segmentations
-/// \ingroup Segmentations
 ///
 /// Segmentation node stores a set of segments (also known as contours or segmented regions).
 /// Segments may overlap and may be stored in various representations (binary labelmap image,
@@ -157,7 +156,7 @@ public:
     vtkOrientedImageData* mergedLabelmapGeometry = nullptr, vtkStringArray* segmentIDs = nullptr, vtkIntArray* labelValues = nullptr);
 
   enum
-    {
+  {
     /// Modification is allowed everywhere.
     EditAllowedEverywhere = 0,
     /// Modification is allowed inside all segments.
@@ -172,7 +171,7 @@ public:
     EditAllowedInsideSingleSegment,
     /// Insert valid types above this line
     EditAllowed_Last
-    };
+  };
 
   //@{
   /// Convert between constants IDs to/from string
@@ -218,16 +217,16 @@ public:
 
   /// \deprecated Use SetSourceRepresentationToBinaryLabelmap instead.
   virtual bool SetMasterRepresentationToBinaryLabelmap()
-    {
+  {
     vtkWarningMacro("vtkSegmentation::SetMasterRepresentationToBinaryLabelmap() method is deprecated, please use SetSourceRepresentationToBinaryLabelmap method instead");
     return this->SetSourceRepresentationToClosedSurface();
-    };
+  };
   /// \deprecated Use SetSourceRepresentationToClosedSurface instead.
   virtual bool SetMasterRepresentationToClosedSurface()
-    {
+  {
     vtkWarningMacro("vtkSegmentation::SetMasterRepresentationToClosedSurface() method is deprecated, please use SetSourceRepresentationToClosedSurface method instead");
     return this->SetSourceRepresentationToClosedSurface();
-    };
+  };
 
   /// Generate binary labelmap representation for all segments.
   virtual bool CreateBinaryLabelmapRepresentation();

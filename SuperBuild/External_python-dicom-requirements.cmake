@@ -41,32 +41,34 @@ if(NOT Slicer_USE_SYSTEM_${proj})
   set(requirements_file ${CMAKE_BINARY_DIR}/${proj}-requirements.txt)
   file(WRITE ${requirements_file} [===[
   # [pydicom]
-  pydicom==2.4.1 --hash=sha256:301cbf8bf2cca95643ccf678f5b0cfecfd15974cd27e199f0856c44694852c0e
+  pydicom==2.4.4 --hash=sha256:f9f8e19b78525be57aa6384484298833e4d06ac1d6226c79459131ddb0bd7c42
   # [/pydicom]
   # [six]
   six==1.16.0 --hash=sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254
   # [/six]
-  # [Pillow]
+  # [pillow]
   # Hashes correspond to the following packages:
-  #  - Pillow-10.0.0-cp39-cp39-macosx_10_10_x86_64.whl
-  #  - Pillow-10.0.0-cp39-cp39-macosx_11_0_arm64.whl
-  #  - Pillow-10.0.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-  #  - Pillow-10.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-  #  - Pillow-10.0.0-cp39-cp39-manylinux_2_28_aarch64.whl
-  #  - Pillow-10.0.0-cp39-cp39-manylinux_2_28_x86_64.whl
-  #  - Pillow-10.0.0-cp39-cp39-musllinux_1_1_aarch64.whl
-  #  - Pillow-10.0.0-cp39-cp39-musllinux_1_1_x86_64.whl
-  #  - Pillow-10.0.0-cp39-cp39-win_amd64.whl
-  Pillow==10.0.0 --hash=sha256:9211e7ad69d7c9401cfc0e23d49b69ca65ddd898976d660a2fa5904e3d7a9baa \
-                 --hash=sha256:faaf07ea35355b01a35cb442dd950d8f1bb5b040a7787791a535de13db15ed90 \
-                 --hash=sha256:c9f72a021fbb792ce98306ffb0c348b3c9cb967dce0f12a49aa4c3d3fdefa967 \
-                 --hash=sha256:9f7c16705f44e0504a3a2a14197c1f0b32a95731d251777dcb060aa83022cb2d \
-                 --hash=sha256:76edb0a1fa2b4745fb0c99fb9fb98f8b180a1bbceb8be49b087e0b21867e77d3 \
-                 --hash=sha256:368ab3dfb5f49e312231b6f27b8820c823652b7cd29cfbd34090565a015e99ba \
-                 --hash=sha256:608bfdee0d57cf297d32bcbb3c728dc1da0907519d1784962c5f0c68bb93e5a3 \
-                 --hash=sha256:5c6e3df6bdd396749bafd45314871b3d0af81ff935b2d188385e970052091017 \
-                 --hash=sha256:7be600823e4c8631b74e4a0d38384c73f680e6105a7d3c6824fcf226c178c7e6
-  # [/Pillow]
+  #  - pillow-10.3.0-cp39-cp39-macosx_10_10_x86_64.whl
+  #  - pillow-10.3.0-cp39-cp39-macosx_11_0_arm64.whl
+  #  - pillow-10.3.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+  #  - pillow-10.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  #  - pillow-10.3.0-cp39-cp39-manylinux_2_28_aarch64.whl
+  #  - pillow-10.3.0-cp39-cp39-manylinux_2_28_x86_64.whl
+  #  - pillow-10.3.0-cp39-cp39-musllinux_1_1_aarch64.whl
+  #  - pillow-10.3.0-cp39-cp39-musllinux_1_1_x86_64.whl
+  #  - pillow-10.3.0-cp39-cp39-win_amd64.whl
+  #  - pillow-10.3.0-cp39-cp39-win_arm64.whl
+  pillow==10.3.0 --hash=sha256:2ed854e716a89b1afcedea551cd85f2eb2a807613752ab997b9974aaa0d56936 \
+                 --hash=sha256:dc1a390a82755a8c26c9964d457d4c9cbec5405896cba94cf51f36ea0d855002 \
+                 --hash=sha256:4203efca580f0dd6f882ca211f923168548f7ba334c189e9eab1178ab840bf60 \
+                 --hash=sha256:3102045a10945173d38336f6e71a8dc71bcaeed55c3123ad4af82c52807b9375 \
+                 --hash=sha256:6fb1b30043271ec92dc65f6d9f0b7a830c210b8a96423074b15c7bc999975f57 \
+                 --hash=sha256:1dfc94946bc60ea375cc39cff0b8da6c7e5f8fcdc1d946beb8da5c216156ddd8 \
+                 --hash=sha256:b09b86b27a064c9624d0a6c54da01c1beaf5b6cadfa609cf63789b1d08a797b9 \
+                 --hash=sha256:d3b2348a78bc939b4fed6552abfd2e7988e0f81443ef3911a4b8498ca084f6eb \
+                 --hash=sha256:0ba26351b137ca4e0db0342d5d00d2e355eb29372c05afd544ebf47c0956ffeb \
+                 --hash=sha256:50fd3f6b26e3441ae07b7c979309638b72abc1a25da31a81a7fbd9495713ef4f
+  # [/pillow]
   # [retrying]
   retrying==1.3.4 --hash=sha256:8cc4d43cb8e1125e0ff3344e9de678fefd85db3b750b81b2240dc0183af37b35
   # [/retrying]
@@ -88,11 +90,6 @@ if(NOT Slicer_USE_SYSTEM_${proj})
       ${${proj}_DEPENDENCIES}
     )
 
-  ExternalProject_GenerateProjectDescription_Step(${proj}
-    VERSION ${_version}
-    )
-
 else()
   ExternalProject_Add_Empty(${proj} DEPENDS ${${proj}_DEPENDENCIES})
 endif()
-

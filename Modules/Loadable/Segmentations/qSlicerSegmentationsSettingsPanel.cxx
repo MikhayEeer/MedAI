@@ -37,6 +37,8 @@
 #include <vtkSlicerSegmentationsModuleLogic.h>
 #include <vtkSlicerTerminologiesModuleLogic.h>
 
+#include <vtkMRMLSegmentEditorNode.h>
+
 // --------------------------------------------------------------------------
 // qSlicerSegmentationsSettingsPanelPrivate
 
@@ -77,9 +79,9 @@ void qSlicerSegmentationsSettingsPanelPrivate::init()
   this->TerminologiesLogic = vtkSlicerTerminologiesModuleLogic::SafeDownCast(
     qSlicerCoreApplication::application()->moduleLogic("Terminologies"));
   if (!this->TerminologiesLogic)
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Terminologies logic is not found";
-    }
+  }
 
   // Default values
   this->AutoOpacitiesCheckBox->setChecked(true);
@@ -103,6 +105,12 @@ void qSlicerSegmentationsSettingsPanelPrivate::init()
   q->registerProperty("Segmentations/ConfirmEditHiddenSegment", this->AllowEditingHiddenSegmentComboBox,
     "currentUserDataAsString", SIGNAL(currentIndexChanged(int)));
 
+  this->DefaultOverwriteModeComboBox->addItem(qSlicerSegmentationsSettingsPanel::tr("Overwrite all"), QString(/*no tr*/"OverwriteAllSegments"));
+  this->DefaultOverwriteModeComboBox->addItem(qSlicerSegmentationsSettingsPanel::tr("Overwrite visible"), QString(/*no tr*/"OverwriteVisibleSegments"));
+  this->DefaultOverwriteModeComboBox->addItem(qSlicerSegmentationsSettingsPanel::tr("Allow overlap"), QString(/*no tr*/"OverwriteNone"));
+  q->registerProperty("Segmentations/DefaultOverwriteMode", this->DefaultOverwriteModeComboBox,
+    "currentUserDataAsString", SIGNAL(currentIndexChanged(int)));
+
   // Actions to propagate to the application when settings are changed
   QObject::connect(this->AutoOpacitiesCheckBox, SIGNAL(toggled(bool)),
                    q, SLOT(setAutoOpacities(bool)));
@@ -110,10 +118,15 @@ void qSlicerSegmentationsSettingsPanelPrivate::init()
                    q, SLOT(setDefaultSurfaceSmoothing(bool)));
   QObject::connect(this->EditDefaultTerminologyEntryPushButton, SIGNAL(clicked()),
                    q, SLOT(onEditDefaultTerminologyEntry()));
+  QObject::connect(this->DefaultOverwriteModeComboBox, SIGNAL(currentIndexChanged(QString)),
+                   q, SLOT(setDefaultOverwriteMode(QString)));
 
   // Update default segmentation node from settings when startup completed.
   QObject::connect(qSlicerApplication::application(), SIGNAL(startupCompleted()),
     q, SLOT(updateDefaultSegmentationNodeFromWidget()));
+  // Update default overwrite mode from settings when startup completed.
+  QObject::connect(qSlicerApplication::application(), SIGNAL(startupCompleted()),
+    q, SLOT(updateDefaultOverwriteModeFromWidget()));
 }
 
 // --------------------------------------------------------------------------
@@ -156,9 +169,20 @@ void qSlicerSegmentationsSettingsPanel::setDefaultSurfaceSmoothing(bool on)
 {
   Q_UNUSED(on);
   if (this->segmentationsLogic())
-    {
+  {
     this->segmentationsLogic()->SetDefaultSurfaceSmoothingEnabled(on);
-    }
+  }
+}
+
+// --------------------------------------------------------------------------
+void qSlicerSegmentationsSettingsPanel::setDefaultOverwriteMode(QString mode)
+{
+  Q_UNUSED(mode);
+  if (this->segmentationsLogic())
+  {
+    this->segmentationsLogic()->SetDefaultOverwriteMode(
+      vtkMRMLSegmentEditorNode::ConvertOverwriteModeFromString(mode.toStdString().c_str()));
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -175,19 +199,19 @@ void qSlicerSegmentationsSettingsPanel::setDefaultTerminologyEntry(QString termi
   d->DefaultTerminologyString = terminologyStr;
   QString buttonText=tr("(set)");
   if (d->TerminologiesLogic && !terminologyStr.isEmpty())
-    {
+  {
     vtkNew<vtkSlicerTerminologyEntry> entry;
     std::string terminologyStdStr = d->DefaultTerminologyString.toUtf8().constData();
     if (d->TerminologiesLogic->DeserializeTerminologyEntry(terminologyStdStr, entry))
-      {
+    {
       buttonText.clear();
       buttonText += (entry->GetCategoryObject() && entry->GetCategoryObject()->GetCodeMeaning()
           ? entry->GetCategoryObject()->GetCodeMeaning() : "?");
       buttonText += "/";
       buttonText += (entry->GetTypeObject() && entry->GetTypeObject()->GetCodeMeaning()
           ? entry->GetTypeObject()->GetCodeMeaning() : "?");
-      }
     }
+  }
   d->EditDefaultTerminologyEntryPushButton->setText(buttonText);
 }
 
@@ -204,10 +228,10 @@ void qSlicerSegmentationsSettingsPanel::onEditDefaultTerminologyEntry()
   std::string terminologyStdStr = d->DefaultTerminologyString.toUtf8().constData();
   d->TerminologiesLogic->DeserializeTerminologyEntry(terminologyStdStr, entry);
   if (!qSlicerTerminologySelectorDialog::getTerminology(entry, this))
-    {
+  {
     // user cancelled
     return;
-    }
+  }
   this->setDefaultTerminologyEntry(vtkSlicerTerminologiesModuleLogic::SerializeTerminologyEntry(entry).c_str());
   emit defaultTerminologyEntryChanged(d->DefaultTerminologyString);
 }
@@ -217,4 +241,11 @@ void qSlicerSegmentationsSettingsPanel::updateDefaultSegmentationNodeFromWidget(
 {
   Q_D(qSlicerSegmentationsSettingsPanel);
   this->setDefaultSurfaceSmoothing(d->SurfaceSmoothingCheckBox->isChecked());
+}
+
+// --------------------------------------------------------------------------
+void qSlicerSegmentationsSettingsPanel::updateDefaultOverwriteModeFromWidget()
+{
+  Q_D(qSlicerSegmentationsSettingsPanel);
+  this->setDefaultOverwriteMode(d->DefaultOverwriteModeComboBox->currentData().toString());
 }

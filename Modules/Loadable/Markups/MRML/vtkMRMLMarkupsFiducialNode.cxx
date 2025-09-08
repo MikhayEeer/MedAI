@@ -16,6 +16,7 @@
 ==============================================================================*/
 
 // MRML includes
+#include "vtkMRMLI18N.h"
 #include "vtkMRMLMarkupsFiducialDisplayNode.h"
 #include "vtkMRMLMarkupsFiducialNode.h"
 #include "vtkMRMLMarkupsFiducialStorageNode.h"
@@ -34,7 +35,14 @@ vtkMRMLNodeNewMacro(vtkMRMLMarkupsFiducialNode);
 
 
 //----------------------------------------------------------------------------
-vtkMRMLMarkupsFiducialNode::vtkMRMLMarkupsFiducialNode() = default;
+vtkMRMLMarkupsFiducialNode::vtkMRMLMarkupsFiducialNode()
+{
+  // Set markup type GUI display name
+  this->TypeDisplayName = vtkMRMLTr("vtkMRMLMarkupsFiducialNode", "Point List");
+
+  // Set markup short name
+  this->DefaultNodeNamePrefix = vtkMRMLTr("vtkMRMLMarkupsFiducialNode", "F");
+}
 
 //----------------------------------------------------------------------------
 vtkMRMLMarkupsFiducialNode::~vtkMRMLMarkupsFiducialNode() = default;
@@ -65,9 +73,9 @@ void vtkMRMLMarkupsFiducialNode::ReadXMLAttributes(const char** atts)
   // In scenes created by Slicer version version 4.13.0 revision 30287 (built 2021-10-05).
   // The value used to represent unlimited control points has been changed to -1.
   if (this->MaximumNumberOfControlPoints == 0)
-    {
+  {
     this->MaximumNumberOfControlPoints = -1;
-    }
+  }
 }
 
 //----------------------------------------------------------------------------
@@ -87,21 +95,21 @@ void vtkMRMLMarkupsFiducialNode::CreateDefaultDisplayNodes()
 {
   if (this->GetDisplayNode() != nullptr &&
     vtkMRMLMarkupsDisplayNode::SafeDownCast(this->GetDisplayNode()) != nullptr)
-    {
+  {
     // display node already exists
     return;
-    }
+  }
   if (this->GetScene() == nullptr)
-    {
+  {
     vtkErrorMacro("vtkMRMLMarkupsFiducialNode::CreateDefaultDisplayNodes failed: scene is invalid");
     return;
-    }
+  }
   vtkMRMLMarkupsFiducialDisplayNode* dispNode = vtkMRMLMarkupsFiducialDisplayNode::SafeDownCast(
     this->GetScene()->AddNewNodeByClass("vtkMRMLMarkupsFiducialDisplayNode"));
   if (!dispNode)
-    {
+  {
     vtkErrorMacro("vtkMRMLMarkupsFiducialNode::CreateDefaultDisplayNodes failed: unable to create vtkMRMLMarkupsFiducialDisplayNode");
     return;
-    }
+  }
   this->SetAndObserveDisplayNodeID(dispNode->GetID());
 }

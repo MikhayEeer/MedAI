@@ -1,36 +1,31 @@
 """The guiConnection module is responsible for adapting different input widget types (widgets that represent a value
 of some kind) to a common interface. This is then used by the parameterNodeWrapper to bind parameters to widgets.
-This module is extensible such that users can add new widgets and datatypes from within other slicer modules."""
+This module is extensible such that users can add new widgets and datatypes from within other slicer modules.
+"""
 
 import abc
 import dataclasses
 import enum
-import pathlib
 import logging
+import pathlib
 from typing import Union
 
 import ctk
 import qt
-
 import slicer
-from . import parameterPack as pack
-from .types import FloatRange
-from . import validators
-from .util import (
-    findFirstAnnotation,
-    getNodeTypes,
-    isNodeOrUnionOfNodes,
-    splitAnnotations,
-    unannotatedType,
-)
 
+from . import parameterPack as pack
+from . import validators
+from . import Default
+from .types import FloatRange
+from .util import (findFirstAnnotation, getNodeTypes, isNodeOrUnionOfNodes,
+                   splitAnnotations, unannotatedType)
 
 __all__ = [
     "createGuiConnector",
     "parameterNodeGuiConnector",
     "GuiConnector",
     "SlicerPackParameterNamePropertyName",
-
     "Decimals",
     "SingleStep",
 ]
@@ -38,26 +33,23 @@ __all__ = [
 
 # Extra annotations for use
 
+
 @dataclasses.dataclass
 class Decimals:
-    """
-    Annotation for Qt's setDecimals methods for spinboxes and sliders.
-    """
+    """Annotation for Qt's setDecimals methods for spinboxes and sliders."""
+
     value: int
 
 
 @dataclasses.dataclass
 class SingleStep:
-    """
-    Annotation for Qt's setSingleStep methods for spinboxes and sliders.
-    """
+    """Annotation for Qt's setSingleStep methods for spinboxes and sliders."""
+
     value: Union[float, int]
 
 
 class GuiConnector(abc.ABC):
-    """
-    Base class for converting from widgets to a datatype.
-    """
+    """Base class for converting from widgets to a datatype."""
 
     @staticmethod
     @abc.abstractmethod
@@ -71,9 +63,7 @@ class GuiConnector(abc.ABC):
     @staticmethod
     @abc.abstractmethod
     def create(widget, datatype):
-        """
-        Creates a new connector adapting the given widget object to the given (possibly annotated) datatype.
-        """
+        """Creates a new connector adapting the given widget object to the given (possibly annotated) datatype."""
         raise NotImplementedError("Must implement create")
 
     def __init__(self):
@@ -95,37 +85,27 @@ class GuiConnector(abc.ABC):
 
     @abc.abstractmethod
     def _connect(self):
-        """
-        Make the necessary connection(s) to the widget.
-        """
+        """Make the necessary connection(s) to the widget."""
         raise NotImplementedError("Must implement _connect")
 
     @abc.abstractmethod
     def _disconnect(self):
-        """
-        Make the necessary disconnection(s) to the widget.
-        """
+        """Make the necessary disconnection(s) to the widget."""
         raise NotImplementedError("Must implement _disconnect")
 
     @abc.abstractmethod
     def widget(self):
-        """
-        Returns the underlying widget.
-        """
+        """Returns the underlying widget."""
         raise NotImplementedError("Must implement widget")
 
     @abc.abstractmethod
     def read(self):
-        """
-        Returns the value from the widget as the given datatype.
-        """
+        """Returns the value from the widget as the given datatype."""
         raise NotImplementedError("Must implement read")
 
     @abc.abstractmethod
     def write(self, value) -> None:
-        """
-        Writes the given value to the widget.
-        """
+        """Writes the given value to the widget."""
         raise NotImplementedError("Must implement write")
 
 
@@ -133,9 +113,7 @@ _registeredGuiConnectors = []
 
 
 def _processGuiConnector(classtype):
-    """
-    Registers a GuiConnector for use by createGuiConnector.
-    """
+    """Registers a GuiConnector for use by createGuiConnector."""
     if not issubclass(classtype, GuiConnector):
         raise TypeError("Must be a GuiConnector subclass")
     global _registeredGuiConnectors
@@ -151,13 +129,20 @@ def createGuiConnector(widget, datatype) -> GuiConnector:
     for possibleConnectorType in _registeredGuiConnectors:
         if possibleConnectorType.canRepresent(widget, datatype):
             return possibleConnectorType.create(widget, datatype)
-    raise RuntimeError(f"Unable to create GUI connector from datatype '{datatype}' to widget type '{type(widget)}'")
 
+    # Get a list of all source files where GUI connectors are defined
+    import inspect
+    guiConnectorFilePaths = set()
+    for guiConnector in _registeredGuiConnectors:
+        guiConnectorFilePaths.add(inspect.getfile(guiConnector))
+
+    raise RuntimeError(f"Unable to create GUI connector from datatype '{datatype}' to widget type '{type(widget)}'."
+                        " To determine which data types can be connected to which widget types, please check 'canRepresent' methods in 'GuiConnector' classes"
+                       f" in these files: {', '.join(guiConnectorFilePaths)}")
 
 def parameterNodeGuiConnector(classtype=None):
-    """
-    Class decorator to register a new parameter node gui connector.
-    """
+    """Class decorator to register a new parameter node gui connector."""
+
     def wrap(cls):
         return _processGuiConnector(cls)
 
@@ -171,7 +156,7 @@ def parameterNodeGuiConnector(classtype=None):
 class QCheckBoxToBoolConnector(GuiConnector):
     @staticmethod
     def canRepresent(widget, datatype) -> bool:
-        return unannotatedType(datatype) == bool and type(widget) == qt.QCheckBox
+        return unannotatedType(datatype) == bool and type(widget) in (qt.QCheckBox, ctk.ctkCheckBox)
 
     @staticmethod
     def create(widget, datatype):
@@ -180,7 +165,7 @@ class QCheckBoxToBoolConnector(GuiConnector):
             return QCheckBoxToBoolConnector(widget)
         return None
 
-    def __init__(self, widget: qt.QCheckBox):
+    def __init__(self, widget):
         super().__init__()
         self._widget: qt.QCheckBox = widget
 
@@ -190,7 +175,7 @@ class QCheckBoxToBoolConnector(GuiConnector):
     def _disconnect(self):
         self._widget.stateChanged.disconnect(self.changed)
 
-    def widget(self) -> qt.QCheckBox:
+    def widget(self) -> qt.QWidget:
         return self._widget
 
     def read(self) -> bool:
@@ -268,7 +253,7 @@ class QSliderOrSpinBoxToIntConnector(GuiConnector):
         isBounded = withinRange is not None or minimum is not None and maximum is not None
 
         if isinstance(widget, qt.QSlider) and not isBounded:
-            raise RuntimeError("Cannot have a connection to ctkSliderWidget where the float types is unbounded.")
+            raise RuntimeError("Cannot have a connection to QSlider where the int type is unbounded.")
 
         if withinRange is not None:
             self._widget.setRange(withinRange.minimum, withinRange.maximum)
@@ -277,7 +262,7 @@ class QSliderOrSpinBoxToIntConnector(GuiConnector):
                 self._widget.setMinimum(minimum.minimum)
             else:
                 # was unable to set lower than this
-                self._widget.setMinimum(-2**31)
+                self._widget.setMinimum(-(2**31))
             if maximum is not None:
                 self._widget.setMaximum(maximum.maximum)
             else:
@@ -305,7 +290,8 @@ class QDoubleSpinBoxCtkSliderWidgetToFloatConnector(GuiConnector):
     @staticmethod
     def canRepresent(widget, datatype) -> bool:
         return unannotatedType(datatype) == float and type(widget) in (
-            qt.QDoubleSpinBox, ctk.ctkSliderWidget
+            qt.QDoubleSpinBox, ctk.ctkSliderWidget, slicer.qMRMLSliderWidget,
+            ctk.ctkDoubleSlider, ctk.ctkDoubleSpinBox, slicer.qMRMLSpinBox,
         )
 
     @staticmethod
@@ -320,7 +306,7 @@ class QDoubleSpinBoxCtkSliderWidgetToFloatConnector(GuiConnector):
         self._widget = widget
 
         decimals = findFirstAnnotation(annotations, Decimals)
-        if decimals is not None:
+        if decimals is not None and not isinstance(widget, ctk.ctkDoubleSlider):
             self._widget.decimals = decimals.value
 
         singleStep = findFirstAnnotation(annotations, SingleStep)
@@ -333,7 +319,7 @@ class QDoubleSpinBoxCtkSliderWidgetToFloatConnector(GuiConnector):
 
         isBounded = withinRange is not None or minimum is not None and maximum is not None
 
-        if isinstance(widget, ctk.ctkSliderWidget) and not isBounded:
+        if type(widget) in (ctk.ctkSliderWidget, slicer.qMRMLSliderWidget) and not isBounded:
             raise RuntimeError("Cannot have a connection to ctkSliderWidget where the float types is unbounded.")
 
         if withinRange is not None:
@@ -369,8 +355,8 @@ class QDoubleSpinBoxCtkSliderWidgetToFloatConnector(GuiConnector):
 class QComboBoxToStringableConnector(GuiConnector):
     @staticmethod
     def canRepresent(widget, datatype) -> bool:
-        return type(widget) == qt.QComboBox and unannotatedType(datatype) in (
-            int, float, str, bool
+        return type(widget) in (qt.QComboBox, ctk.ctkComboBox) and unannotatedType(datatype) in (
+            int, float, str, bool,
         )
 
     @staticmethod
@@ -383,9 +369,9 @@ class QComboBoxToStringableConnector(GuiConnector):
             return QComboBoxToStringableConnector(widget, choice.choices)
         return None
 
-    def __init__(self, widget: qt.QComboBox, choices):
+    def __init__(self, widget, choices):
         super().__init__()
-        self._widget: qt.QComboBox = widget
+        self._widget = widget
         self._choices = choices
 
         self._widget.clear()
@@ -398,7 +384,7 @@ class QComboBoxToStringableConnector(GuiConnector):
     def _disconnect(self):
         self._widget.currentIndexChanged.disconnect(self.changed)
 
-    def widget(self) -> qt.QComboBox:
+    def widget(self):
         return self._widget
 
     def read(self):
@@ -417,7 +403,7 @@ class QComboBoxToStringableConnector(GuiConnector):
 class QComboBoxToEnumConnector(GuiConnector):
     @staticmethod
     def canRepresent(widget, datatype) -> bool:
-        return type(widget) == qt.QComboBox and issubclass(unannotatedType(datatype), enum.Enum)
+        return type(widget) in (qt.QComboBox, ctk.ctkComboBox) and issubclass(unannotatedType(datatype), enum.Enum)
 
     @staticmethod
     def create(widget, datatype):
@@ -425,9 +411,9 @@ class QComboBoxToEnumConnector(GuiConnector):
             return QComboBoxToEnumConnector(widget, datatype)
         return None
 
-    def __init__(self, widget: qt.QComboBox, datatype: enum.Enum):
+    def __init__(self, widget, datatype: enum.Enum):
         super().__init__()
-        self._widget: qt.QComboBox = widget
+        self._widget = widget
 
         underlyingType = unannotatedType(datatype)
         labelFunc = getattr(underlyingType, "label", lambda x: x.name)
@@ -444,7 +430,7 @@ class QComboBoxToEnumConnector(GuiConnector):
     def _disconnect(self):
         self._widget.currentIndexChanged.disconnect(self.changed)
 
-    def widget(self) -> qt.QComboBox:
+    def widget(self):
         return self._widget
 
     def read(self):
@@ -490,6 +476,38 @@ class QLineEditToStrConnector(GuiConnector):
     def write(self, value: str) -> None:
         self._widget.text = value
 
+@parameterNodeGuiConnector
+class QLabelToStrConnector(GuiConnector):
+    @staticmethod
+    def canRepresent(widget, datatype) -> bool:
+        return type(widget) == qt.QLabel and unannotatedType(datatype) == str
+
+    @staticmethod
+    def create(widget, datatype):
+        if QLabelToStrConnector.canRepresent(widget, datatype):
+            return QLabelToStrConnector(widget)
+        return None
+
+    def __init__(self, widget: qt.QLabel):
+        super().__init__()
+        self._widget: qt.QLabel = widget
+
+    def _connect(self):
+        # QLabel doesn't have a textChanged signal, so we can't connect to it
+        pass
+
+    def _disconnect(self):
+        # QLabel doesn't have a textChanged signal, so we can't disconnect from it
+        pass
+
+    def widget(self) -> qt.QLabel:
+        return self._widget
+
+    def read(self) -> str:
+        return self._widget.text
+
+    def write(self, value: str) -> None:
+        self._widget.text = value
 
 @parameterNodeGuiConnector
 class QTextEditPlainTextToStrConnector(GuiConnector):
@@ -527,7 +545,7 @@ class QTextEditPlainTextToStrConnector(GuiConnector):
 class ctkRangeWidgetToRangeConnector(GuiConnector):
     @staticmethod
     def canRepresent(widget, datatype) -> bool:
-        return type(widget) == ctk.ctkRangeWidget and unannotatedType(datatype) == FloatRange
+        return type(widget) in (ctk.ctkRangeWidget, ctk.ctkDoubleRangeSlider, slicer.qMRMLRangeWidget) and unannotatedType(datatype) == FloatRange
 
     @staticmethod
     def create(widget, datatype):
@@ -535,14 +553,14 @@ class ctkRangeWidgetToRangeConnector(GuiConnector):
             return ctkRangeWidgetToRangeConnector(widget, datatype)
         return None
 
-    def __init__(self, widget: ctk.ctkRangeWidget, type_) -> None:
+    def __init__(self, widget, type_) -> None:
         super().__init__()
-        self._widget: ctk.ctkRangeWidget = widget
+        self._widget = widget
         self._type = type_
         annotations = splitAnnotations(self._type)[1]
 
         decimals = findFirstAnnotation(annotations, Decimals)
-        if decimals is not None:
+        if decimals is not None and not isinstance(widget, ctk.ctkDoubleRangeSlider):
             self._widget.decimals = decimals.value
 
         singleStep = findFirstAnnotation(annotations, SingleStep)
@@ -552,7 +570,15 @@ class ctkRangeWidgetToRangeConnector(GuiConnector):
         rangeBounds = findFirstAnnotation(annotations, validators.RangeBounds)
 
         if rangeBounds is None:
-            raise RuntimeError("Cannot have a connection to ctkRangeWidget where the float is unbounded. Add a RangeBounds annotation.")
+            raise RuntimeError("Cannot have a connection to a range widget where the float is unbounded. Add a RangeBounds annotation.")
+
+        default = findFirstAnnotation(annotations, Default)
+        if default is None:
+            try:
+                rangeBounds.validate(0)
+            except ValueError:
+                raise RuntimeError("When providing RangeBounds that does not cover the value 0 " +
+                                    "you also need to provide a Default() value to initialize the GUI")
 
         self._widget.setRange(rangeBounds.minimum, rangeBounds.maximum)
 
@@ -562,7 +588,7 @@ class ctkRangeWidgetToRangeConnector(GuiConnector):
     def _disconnect(self):
         self._widget.valuesChanged.disconnect(self.changed)
 
-    def widget(self) -> ctk.ctkRangeWidget:
+    def widget(self):
         return self._widget
 
     def read(self):
@@ -708,9 +734,7 @@ def _getDottedParameterName(parentStack):
 
 
 def _getPackNameToWidgetMap(widget):
-    """
-    Returns the dotted parameter names as keys and the widgets that represents that name as values
-    """
+    """Returns the dotted parameter names as keys and the widgets that represents that name as values"""
     parentStacks = _extractCorrectWidgets(widget)
     return {_getDottedParameterName(p): p[-1] for p in parentStacks}
 
@@ -726,12 +750,13 @@ class WidgetChildrenToParameterPackConnector(GuiConnector):
     This is useful when generating widgets for the parameterPack though, as it supports a more
     nested structure where the interior widgets don't need to know anything about the their parents.
     """
+
     @staticmethod
     def canRepresent(widget, datatype) -> bool:
         if not pack.isParameterPack(datatype):
             return False
 
-        # This can support it if the widget children have appropriately nested 
+        # This can support it if the widget children have appropriately nested
         # SlicerParameterPackPropertyNames. Not disallowing extra parameter names in the widget
         # in case for some reason one widget is meant to support multiple packs. If that is the case
         # the user will need to ensure there are no name clashes between the two packs.

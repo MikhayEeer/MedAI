@@ -39,7 +39,7 @@ class ExtensionProject:
     _referencedVariables = re.compile(r"\$\{([\w_\/\.\+\-]+)\}")
 
     # ---------------------------------------------------------------------------
-    def __init__(self, path, encoding=None, filename="CMakeLists.txt", ):
+    def __init__(self, path, encoding=None, filename="CMakeLists.txt"):
         """
         :param path: Top level directory of the extension project.
         :type path: :class:`str`
@@ -129,7 +129,6 @@ class ExtensionProject:
         the project instance was created. If the encoding cannot be determined, the
         property will have the value ``None``.
 
-        .. 'note' directive needs '\' to span multiple lines!
         .. note:: If ``encoding`` is ``None``, the project information is stored \
                   as raw bytes using :class:`str`. In such case, passing a \
                   non-ASCII :class:`unicode` to  any method or property \
@@ -172,7 +171,6 @@ class ExtensionProject:
     # ---------------------------------------------------------------------------
     @project.setter
     def project(self, value):
-
         for t in self._scriptContents.tokens:
             if _isCommand(t, "project"):
                 if len(t.arguments):
@@ -261,8 +259,8 @@ class ExtensionProject:
         .. note::
 
           Variables set using a nested reference are not supported.
-          For example, if the underlying CMake code is ``set(foo \"world\")``
-          and ``set(hello_${foo} \"earth\")``. Occurrences of
+          For example, if the underlying CMake code is ``set(foo "world")``
+          and ``set(hello_${foo} "earth")``. Occurrences of
           '``${hello_${foo}}``' will be replaced by '``hello_world-NOTFOUND``'
 
         .. seealso:: :func:`.substituteVariableReferences`
@@ -308,13 +306,13 @@ class ExtensionProject:
                t.arguments[0].text == name:
                 if len(t.arguments) < 2:
                     t.arguments.append(CMakeParser.String(text=value, indent=" ",
-                                                          prefix="\"", suffix="\""))
+                                                          prefix='"', suffix='"'))
 
                 else:
                     varg = t.arguments[1]
                     varg.text = value
-                    varg.prefix = "\""
-                    varg.suffix = "\""
+                    varg.prefix = '"'
+                    varg.suffix = '"'
 
                 return
 

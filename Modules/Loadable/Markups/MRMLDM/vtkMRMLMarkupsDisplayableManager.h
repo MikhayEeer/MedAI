@@ -38,7 +38,6 @@ class vtkSlicerViewerWidget;
 class vtkMRMLMarkupsDisplayNode;
 class vtkAbstractWidget;
 
-/// \ingroup Slicer_QtModules_Markups
 class  VTK_SLICER_MARKUPS_MODULE_MRMLDISPLAYABLEMANAGER_EXPORT vtkMRMLMarkupsDisplayableManager :
     public vtkMRMLAbstractDisplayableManager
 {
@@ -91,7 +90,7 @@ protected:
   vtkMRMLMarkupsDisplayableManager();
   ~vtkMRMLMarkupsDisplayableManager() override;
 
-  vtkSlicerMarkupsWidget* FindClosestWidget(vtkMRMLInteractionEventData *callData, double &closestDistance2);
+  vtkMRMLAbstractWidget* FindClosestWidget(vtkMRMLInteractionEventData* callData, double& closestDistance2);
 
   void ProcessMRMLNodesEvents(vtkObject *caller, unsigned long event, void *callData) override;
 
@@ -112,14 +111,20 @@ protected:
   void OnMRMLSceneNodeAdded(vtkMRMLNode* node) override;
   void OnMRMLSceneNodeRemoved(vtkMRMLNode* node) override;
 
+  /// Initialize the displayable manager
+  void Create() override;
+
   /// Create a widget.
   vtkSlicerMarkupsWidget* CreateWidget(vtkMRMLMarkupsDisplayNode* node);
+
+  /// Create an interaction widget.
+  vtkSlicerMarkupsInteractionWidget* CreateInteractionWidget(vtkMRMLMarkupsDisplayNode* node);
 
   /// Called after the corresponding MRML View container was modified
   void OnMRMLDisplayableNodeModifiedEvent(vtkObject* caller) override;
 
-  /// Handler for specific SliceView actions, iterate over the widgets in the helper
-  virtual void OnMRMLSliceNodeModifiedEvent();
+  /// Update all widgets in response to view node modification
+  virtual void OnMRMLViewNodeModifiedEvent(vtkMRMLAbstractViewNode* viewNode);
 
   /// Observe the interaction node.
   void AddObserversToInteractionNode();
@@ -139,9 +144,6 @@ protected:
   /// \sa IsManageable(vtkMRMLNode*), IsCorrectDisplayableManager()
   virtual bool IsManageable(const char* nodeClassName);
 
-  /// Respond to interactor style events
-  void OnInteractorStyleEvent(int eventid) override;
-
   /// Accessor for internal flag that disables interactor style event processing
   vtkGetMacro(DisableInteractorStyleEventsProcessing, int);
 
@@ -149,7 +151,9 @@ protected:
 
   double LastClickWorldCoordinates[4];
 
-  vtkWeakPointer<vtkSlicerMarkupsWidget> LastActiveWidget;
+  vtkWeakPointer<vtkMRMLAbstractWidget> LastActiveWidget;
+
+  vtkSmartPointer<vtkRenderer> InteractionRenderer;
 
 private:
   vtkMRMLMarkupsDisplayableManager(const vtkMRMLMarkupsDisplayableManager&) = delete;

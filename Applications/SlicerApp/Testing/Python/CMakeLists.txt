@@ -296,6 +296,12 @@ slicer_add_python_unittest(
   )
 
 slicer_add_python_unittest(
+  SCRIPT ${Slicer_SOURCE_DIR}/Base/Python/slicer/tests/test_slicer_util_load_data.py
+  SLICER_ARGS --no-main-window --disable-cli-modules
+  TESTNAME_PREFIX nomainwindow_
+  )
+
+slicer_add_python_unittest(
   SCRIPT ${Slicer_SOURCE_DIR}/Base/Python/slicer/tests/test_slicer_util_save.py
   SLICER_ARGS --no-main-window --disable-cli-modules --disable-scripted-loadable-modules DATA{${INPUT}/MR-head.nrrd}
   TESTNAME_PREFIX nomainwindow_
@@ -462,7 +468,8 @@ if(Slicer_USE_QtTesting AND Slicer_USE_PYTHONQT)
   slicer_add_python_unittest(SCRIPT RSNAVisTutorial.py)
   slicer_add_python_unittest(SCRIPT RSNAQuantTutorial.py)
   slicer_add_python_unittest(SCRIPT SlicerOrientationSelectorTest.py)
-  slicer_add_python_unittest(SCRIPT SlicerTransformInteractionTest1.py)
+  # Currently needs to be updated for new widget. PR-7562: https://github.com/Slicer/Slicer/pull/7562
+  #slicer_add_python_unittest(SCRIPT SlicerTransformInteractionTest1.py)
   slicer_add_python_unittest(SCRIPT UtilTest.py)
   slicer_add_python_unittest(SCRIPT ViewControllersSliceInterpolationBug1926.py)
   slicer_add_python_unittest(SCRIPT RSNA2012ProstateDemo.py)
@@ -487,7 +494,8 @@ if(Slicer_USE_QtTesting AND Slicer_USE_PYTHONQT)
     RSNAVisTutorial.py
     RSNAQuantTutorial.py
     SlicerOrientationSelectorTest.py
-    SlicerTransformInteractionTest1.py
+    # Currently needs to be updated for new widget. PR-7562: https://github.com/Slicer/Slicer/pull/7562
+    #SlicerTransformInteractionTest1.py
     ViewControllersSliceInterpolationBug1926.py
     RSNA2012ProstateDemo.py
     JRC2013Vis.py

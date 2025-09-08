@@ -4,6 +4,8 @@ import ctk
 import qt
 
 import slicer
+from slicer.i18n import tr as _
+from slicer.i18n import translate
 from slicer.ScriptedLoadableModule import *
 from slicer.util import TESTING_DATA_URL
 
@@ -19,19 +21,20 @@ class ScriptedLoadableModuleTemplate(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "ScriptedLoadableModuleTemplate"  # TODO make this more human readable by adding spaces
-        self.parent.categories = ["Examples"]
+        self.parent.title = _("ScriptedLoadableModuleTemplate")  # TODO make this more human readable by adding spaces
+        self.parent.categories = [translate("qSlicerAbstractCoreModule", "Examples")]
         self.parent.dependencies = []
         self.parent.contributors = ["John Doe (AnyWare Corp.)"]  # replace with "Firstname Lastname (Organization)"
-        self.parent.helpText = """
+        # _() function marks text as translatable to other languages
+        self.parent.helpText = _("""
 This is an example of scripted loadable module bundled in an extension.
 It performs a simple thresholding on the input volume and optionally captures a screenshot.
-"""
+""")
         self.parent.helpText += self.getDefaultModuleDocumentationLink()
-        self.parent.acknowledgementText = """
+        self.parent.acknowledgementText = _("""
 This file was originally developed by Jean-Christophe Fillion-Robin, Kitware Inc.
 and Steve Pieper, Isomics, Inc. and was partially funded by NIH grant 3P41RR013218-12S1.
-"""  # replace with organization, grant and thanks.
+""")  # replace with organization, grant and thanks.
 
 #
 # ScriptedLoadableModuleTemplateWidget
@@ -70,8 +73,8 @@ class ScriptedLoadableModuleTemplateWidget(ScriptedLoadableModuleWidget):
         self.inputSelector.showHidden = False
         self.inputSelector.showChildNodeTypes = False
         self.inputSelector.setMRMLScene(slicer.mrmlScene)
-        self.inputSelector.setToolTip("Pick the input to the algorithm.")
-        parametersFormLayout.addRow("Input Volume: ", self.inputSelector)
+        self.inputSelector.setToolTip(_("Pick the input to the algorithm."))
+        parametersFormLayout.addRow(_("Input Volume: "), self.inputSelector)
 
         #
         # output volume selector
@@ -85,8 +88,8 @@ class ScriptedLoadableModuleTemplateWidget(ScriptedLoadableModuleWidget):
         self.outputSelector.showHidden = False
         self.outputSelector.showChildNodeTypes = False
         self.outputSelector.setMRMLScene(slicer.mrmlScene)
-        self.outputSelector.setToolTip("Pick the output to the algorithm.")
-        parametersFormLayout.addRow("Output Volume: ", self.outputSelector)
+        self.outputSelector.setToolTip(_("Pick the output to the algorithm."))
+        parametersFormLayout.addRow(_("Output Volume: "), self.outputSelector)
 
         #
         # threshold value
@@ -96,27 +99,28 @@ class ScriptedLoadableModuleTemplateWidget(ScriptedLoadableModuleWidget):
         self.imageThresholdSliderWidget.minimum = -100
         self.imageThresholdSliderWidget.maximum = 100
         self.imageThresholdSliderWidget.value = 0.5
-        self.imageThresholdSliderWidget.setToolTip("Set threshold value for computing the output image. Voxels that have intensities lower than this value will set to zero.")
-        parametersFormLayout.addRow("Image threshold", self.imageThresholdSliderWidget)
+        self.imageThresholdSliderWidget.setToolTip(
+            _("Set threshold value for computing the output image. Voxels that have intensities lower than this value will set to zero."))
+        parametersFormLayout.addRow(_("Image threshold"), self.imageThresholdSliderWidget)
 
         #
         # check box to trigger taking screen shots for later use in tutorials
         #
         self.enableScreenshotsFlagCheckBox = qt.QCheckBox()
         self.enableScreenshotsFlagCheckBox.checked = 0
-        self.enableScreenshotsFlagCheckBox.setToolTip("If checked, take screen shots for tutorials. Use Save Data to write them to disk.")
-        parametersFormLayout.addRow("Enable Screenshots", self.enableScreenshotsFlagCheckBox)
+        self.enableScreenshotsFlagCheckBox.setToolTip(_("If checked, take screen shots for tutorials. Use Save Data to write them to disk."))
+        parametersFormLayout.addRow(_("Enable Screenshots"), self.enableScreenshotsFlagCheckBox)
 
         #
         # Apply Button
         #
-        self.applyButton = qt.QPushButton("Apply")
-        self.applyButton.toolTip = "Run the algorithm."
+        self.applyButton = qt.QPushButton(_("Apply"))
+        self.applyButton.toolTip = _("Run the algorithm.")
         self.applyButton.enabled = False
         parametersFormLayout.addRow(self.applyButton)
 
         # connections
-        self.applyButton.connect('clicked(bool)', self.onApplyButton)
+        self.applyButton.connect("clicked(bool)", self.onApplyButton)
         self.inputSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
         self.outputSelector.connect("currentNodeChanged(vtkMRMLNode*)", self.onSelect)
 
@@ -137,6 +141,7 @@ class ScriptedLoadableModuleTemplateWidget(ScriptedLoadableModuleWidget):
         enableScreenshotsFlag = self.enableScreenshotsFlagCheckBox.checked
         imageThreshold = self.imageThresholdSliderWidget.value
         logic.run(self.inputSelector.currentNode(), self.outputSelector.currentNode(), imageThreshold, enableScreenshotsFlag)
+
 
 #
 # ScriptedLoadableModuleTemplateLogic
@@ -159,43 +164,40 @@ class ScriptedLoadableModuleTemplateLogic(ScriptedLoadableModuleLogic):
         node has valid image data
         """
         if not volumeNode:
-            logging.debug('hasImageData failed: no volume node')
+            logging.debug("hasImageData failed: no volume node")
             return False
         if volumeNode.GetImageData() is None:
-            logging.debug('hasImageData failed: no image data in volume node')
+            logging.debug("hasImageData failed: no image data in volume node")
             return False
         return True
 
     def isValidInputOutputData(self, inputVolumeNode, outputVolumeNode):
-        """Validates if the output is not the same as input
-        """
+        """Validates if the output is not the same as input"""
         if not inputVolumeNode:
-            logging.debug('isValidInputOutputData failed: no input volume node defined')
+            logging.debug("isValidInputOutputData failed: no input volume node defined")
             return False
         if not outputVolumeNode:
-            logging.debug('isValidInputOutputData failed: no output volume node defined')
+            logging.debug("isValidInputOutputData failed: no output volume node defined")
             return False
         if inputVolumeNode.GetID() == outputVolumeNode.GetID():
-            logging.debug('isValidInputOutputData failed: input and output volume is the same. Create a new volume for output to avoid this error.')
+            logging.debug("isValidInputOutputData failed: input and output volume is the same. Create a new volume for output to avoid this error.")
             return False
         return True
 
     def run(self, inputVolume, outputVolume, imageThreshold):
-        """
-        Run the actual algorithm
-        """
+        """Run the actual algorithm"""
 
         if not self.isValidInputOutputData(inputVolume, outputVolume):
-            slicer.util.errorDisplay('Input volume is the same as output volume. Choose a different output volume.')
+            slicer.util.errorDisplay(_("Input volume is the same as output volume. Choose a different output volume."))
             return False
 
-        logging.info('Processing started')
+        logging.info("Processing started")
 
         # Compute the thresholded output volume using the Threshold Scalar Volume CLI module
-        cliParams = {'InputVolume': inputVolume.GetID(), 'OutputVolume': outputVolume.GetID(), 'ThresholdValue': imageThreshold, 'ThresholdType': 'Above'}
+        cliParams = {"InputVolume": inputVolume.GetID(), "OutputVolume": outputVolume.GetID(), "ThresholdValue": imageThreshold, "ThresholdType": "Above"}
         cliNode = slicer.cli.run(slicer.modules.thresholdscalarvolume, None, cliParams, wait_for_completion=True)
 
-        logging.info('Processing completed')
+        logging.info("Processing completed")
 
         return True
 
@@ -208,18 +210,16 @@ class ScriptedLoadableModuleTemplateTest(ScriptedLoadableModuleTest):
     """
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_ScriptedLoadableModuleTemplate1()
 
     def test_ScriptedLoadableModuleTemplate1(self):
-        """ Ideally you should have several levels of tests.  At the lowest level
+        """Ideally you should have several levels of tests.  At the lowest level
         tests should exercise the functionality of the logic with different inputs
         (both valid and invalid).  At higher levels your tests should emulate the
         way the user would interact with your code and confirm that it still works
@@ -235,14 +235,15 @@ class ScriptedLoadableModuleTemplateTest(ScriptedLoadableModuleTest):
         # first, get some data
         #
         import SampleData
+
         volumeNode = SampleData.downloadFromURL(
-            nodeNames='MRHead',
-            fileNames='MR-head.nrrd',
-            uris=TESTING_DATA_URL + 'SHA256/cc211f0dfd9a05ca3841ce1141b292898b2dd2d3f08286affadf823a7e58df93',
-            checksums='SHA256:cc211f0dfd9a05ca3841ce1141b292898b2dd2d3f08286affadf823a7e58df93')
-        self.delayDisplay('Finished with download and loading')
+            nodeNames="MRHead",
+            fileNames="MR-head.nrrd",
+            uris=TESTING_DATA_URL + "SHA256/cc211f0dfd9a05ca3841ce1141b292898b2dd2d3f08286affadf823a7e58df93",
+            checksums="SHA256:cc211f0dfd9a05ca3841ce1141b292898b2dd2d3f08286affadf823a7e58df93")
+        self.delayDisplay("Finished with download and loading")
 
         logic = ScriptedLoadableModuleTemplateLogic()
         self.assertIsNotNone(logic.hasImageData(volumeNode))
-        self.takeScreenshot('ScriptedLoadableModuleTemplateTest-Start', 'MyScreenshot', -1)
-        self.delayDisplay('Test passed!')
+        self.takeScreenshot("ScriptedLoadableModuleTemplateTest-Start", "MyScreenshot", -1)
+        self.delayDisplay("Test passed!")

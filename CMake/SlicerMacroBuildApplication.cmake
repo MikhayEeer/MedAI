@@ -467,7 +467,7 @@ macro(slicerMacroBuildApplication)
       )
     if("${Slicer_RELEASE_TYPE}" STREQUAL "Stable")
       set_target_properties(${slicerapp_target} PROPERTIES
-        MACOSX_BUNDLE_SHORT_VERSION_STRING "${Slicer_VERSION_MAJOR}.${Slicer_VERSION_MINOR}.${Slicer_VERSION_PATCH}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${Slicer_MAIN_PROJECT_VERSION_MAJOR}.${Slicer_MAIN_PROJECT_VERSION_MINOR}.${Slicer_MAIN_PROJECT_VERSION_PATCH}"
         )
     endif()
   endif()
@@ -494,7 +494,7 @@ macro(slicerMacroBuildApplication)
         POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 ${PYTHON_LIBRARY_PATH}/${_python_library_name_we}.dll
-                ${_slicerapp_output_dir}/${CMAKE_CFG_INTDIR}
+                ${_slicerapp_output_dir}/$<CONFIG>
         COMMENT "Copy '${_python_library_name_we}.dll' along side '${slicerapp_target}' executable. See Slicer issue #1180"
         )
     endif()

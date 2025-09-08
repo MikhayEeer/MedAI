@@ -8,6 +8,7 @@ from slicer.ScriptedLoadableModule import *
 # MarkupsWidgetsSelfTest
 #
 
+
 class MarkupsWidgetsSelfTest(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
@@ -23,6 +24,7 @@ class MarkupsWidgetsSelfTest(ScriptedLoadableModule):
 # MarkupsWidgetsSelfTestWidget
 #
 
+
 class MarkupsWidgetsSelfTestWidget(ScriptedLoadableModuleWidget):
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
@@ -31,6 +33,7 @@ class MarkupsWidgetsSelfTestWidget(ScriptedLoadableModuleWidget):
 #
 # MarkupsWidgetsSelfTestLogic
 #
+
 
 class MarkupsWidgetsSelfTestLogic(ScriptedLoadableModuleLogic):
     """This class should implement all the actual
@@ -45,20 +48,16 @@ class MarkupsWidgetsSelfTestLogic(ScriptedLoadableModuleLogic):
 
 
 class MarkupsWidgetsSelfTestTest(ScriptedLoadableModuleTest):
-    """
-    This is the test case for your scripted module.
-    """
+    """This is the test case for your scripted module."""
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
         self.delayMs = 700
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_MarkupsWidgetsSelfTest_FullTest1()
 
@@ -76,8 +75,8 @@ class MarkupsWidgetsSelfTestTest(ScriptedLoadableModuleTest):
     # ------------------------------------------------------------------------------
     def section_SetupPathsAndNames(self):
         # Set constants
-        self.sampleMarkupsNodeName1 = 'SampleMarkups1'
-        self.sampleMarkupsNodeName2 = 'SampleMarkups2'
+        self.sampleMarkupsNodeName1 = "SampleMarkups1"
+        self.sampleMarkupsNodeName2 = "SampleMarkups2"
 
     # ------------------------------------------------------------------------------
     def section_CreateMarkups(self):

@@ -57,11 +57,11 @@ public:
 
   enum {
     SetupMethod = 0
-    };
+  };
 
   mutable qSlicerPythonCppAPI PythonCppAPI;
 
-  QString    PythonSource;
+  QString    PythonSourceFilePath;
 };
 
 //-----------------------------------------------------------------------------
@@ -99,26 +99,26 @@ qSlicerScriptedLoadableModule::~qSlicerScriptedLoadableModule() = default;
 QString qSlicerScriptedLoadableModule::pythonSource()const
 {
   Q_D(const qSlicerScriptedLoadableModule);
-  return d->PythonSource;
+  return d->PythonSourceFilePath;
 }
 
 //-----------------------------------------------------------------------------
-bool qSlicerScriptedLoadableModule::setPythonSource(const QString& newPythonSource)
+bool qSlicerScriptedLoadableModule::setPythonSource(const QString& filePath)
 {
   Q_D(qSlicerScriptedLoadableModule);
 
   if (!Py_IsInitialized())
-    {
+  {
     return false;
-    }
+  }
 
-  if (!newPythonSource.endsWith(".py") && !newPythonSource.endsWith(".pyc"))
-    {
+  if (!filePath.endsWith(".py") && !filePath.endsWith(".pyc"))
+  {
     return false;
-    }
+  }
 
   // Extract moduleName from the provided filename
-  QString moduleName = QFileInfo(newPythonSource).baseName();
+  QString moduleName = QFileInfo(filePath).baseName();
   this->setName(moduleName);
   QString className = moduleName;
 
@@ -132,56 +132,56 @@ bool qSlicerScriptedLoadableModule::setPythonSource(const QString& newPythonSour
   // Get a reference to the python module class to instantiate
   PythonQtObjectPtr classToInstantiate;
   if (module && PyObject_HasAttrString(module, className.toUtf8()))
-    {
+  {
     classToInstantiate.setNewRef(PyObject_GetAttrString(module, className.toUtf8()));
-    }
+  }
   if (!classToInstantiate)
-    {
+  {
     PythonQtObjectPtr local_dict;
     local_dict.setNewRef(PyDict_New());
-    if (!qSlicerScriptedUtils::loadSourceAsModule(moduleName, newPythonSource, global_dict, local_dict))
-      {
+    if (!qSlicerScriptedUtils::loadSourceAsModule(moduleName, filePath, global_dict, local_dict))
+    {
       return false;
-      }
-    if (PyObject_HasAttrString(module, className.toUtf8()))
-      {
-      classToInstantiate.setNewRef(PyObject_GetAttrString(module, className.toUtf8()));
-      }
     }
+    if (PyObject_HasAttrString(module, className.toUtf8()))
+    {
+      classToInstantiate.setNewRef(PyObject_GetAttrString(module, className.toUtf8()));
+    }
+  }
 
   if (!classToInstantiate)
-    {
+  {
     PythonQt::self()->handleError();
     PyErr_SetString(PyExc_RuntimeError,
                     QString("qSlicerScriptedLoadableModule::setPythonSource - "
                             "Failed to load scripted loadable module: "
-                            "class %1 was not found in file %2").arg(className).arg(newPythonSource).toLatin1());
+                            "class %1 was not found in file %2").arg(className).arg(filePath).toLatin1());
     PythonQt::self()->handleError();
     return false;
-    }
+  }
 
   d->PythonCppAPI.setObjectName(className);
 
   PyObject* self = d->PythonCppAPI.instantiateClass(this, className, classToInstantiate);
   if (!self)
-    {
+  {
     return false;
-    }
+  }
 
-  d->PythonSource = newPythonSource;
+  d->PythonSourceFilePath = filePath;
 
   if (!qSlicerScriptedUtils::setModuleAttribute(
         "slicer.modules", moduleName + "Instance", self))
-    {
+  {
     qCritical() << "Failed to set" << ("slicer.modules." + moduleName + "Instance");
-    }
+  }
 
   // Check if there is module widget class
   QString widgetClassName = className + "Widget";
   if (!PyObject_HasAttrString(module, widgetClassName.toLatin1()))
-    {
+  {
     this->setWidgetRepresentationCreationEnabled(false);
-    }
+  }
 
   return true;
 }
@@ -190,28 +190,6 @@ bool qSlicerScriptedLoadableModule::setPythonSource(const QString& newPythonSour
 void qSlicerScriptedLoadableModule::setup()
 {
   Q_D(qSlicerScriptedLoadableModule);
-
-  qSlicerCoreApplication * app = qSlicerCoreApplication::application();
-  if (app)
-    {
-    // Set to /path/to/lib/Slicer-X.Y/qt-scripted-modules
-    QString modulePath = QFileInfo(this->path()).absolutePath();
-    // Set to /path/to/lib/Slicer-X.Y
-    modulePath = QFileInfo(modulePath).absolutePath();
-    // Set to /path/to/lib/Slicer-X.Y/qt-loadable-modules
-    modulePath = modulePath + "/" Slicer_QTLOADABLEMODULES_SUBDIR;
-
-    bool isEmbedded = app->isEmbeddedModule(this->path());
-    if (!isEmbedded)
-      {
-      if (!qSlicerLoadableModule::importModulePythonExtensions(
-            app->corePythonManager(), app->intDir(), modulePath, isEmbedded))
-        {
-        qWarning() << "qSlicerLoadableModule::setup - Failed to import module" << this->name() << "python extensions";
-        }
-      }
-    }
-
   this->registerFileDialog();
   this->registerIO();
   d->PythonCppAPI.callMethod(Pimpl::SetupMethod);
@@ -222,11 +200,11 @@ void qSlicerScriptedLoadableModule::registerFileDialog()
 {
   Q_D(qSlicerScriptedLoadableModule);
   QScopedPointer<qSlicerScriptedFileDialog> fileDialog(new qSlicerScriptedFileDialog(this));
-  bool ret = fileDialog->setPythonSource(d->PythonSource);
+  bool ret = fileDialog->setPythonSource(d->PythonSourceFilePath);
   if (!ret)
-    {
+  {
     return;
-    }
+  }
   qSlicerApplication::application()->ioManager()
     ->registerDialog(fileDialog.take());
 }
@@ -236,17 +214,17 @@ void qSlicerScriptedLoadableModule::registerIO()
 {
   Q_D(qSlicerScriptedLoadableModule);
   QScopedPointer<qSlicerScriptedFileWriter> fileWriter(new qSlicerScriptedFileWriter(this));
-  bool ret = fileWriter->setPythonSource(d->PythonSource);
+  bool ret = fileWriter->setPythonSource(d->PythonSourceFilePath);
   if (ret)
-    {
+  {
     qSlicerApplication::application()->ioManager()->registerIO(fileWriter.take());
-    }
+  }
   QScopedPointer<qSlicerScriptedFileReader> fileReader(new qSlicerScriptedFileReader(this));
-  ret = fileReader->setPythonSource(d->PythonSource);
+  ret = fileReader->setPythonSource(d->PythonSourceFilePath);
   if (ret)
-    {
+  {
     qSlicerApplication::application()->ioManager()->registerIO(fileReader.take());
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -255,16 +233,16 @@ qSlicerAbstractModuleRepresentation* qSlicerScriptedLoadableModule::createWidget
   Q_D(qSlicerScriptedLoadableModule);
 
   if (!this->isWidgetRepresentationCreationEnabled())
-    {
+  {
     return nullptr;
-    }
+  }
 
   QScopedPointer<qSlicerScriptedLoadableModuleWidget> widget(new qSlicerScriptedLoadableModuleWidget);
-  bool ret = widget->setPythonSource(d->PythonSource);
+  bool ret = widget->setPythonSource(d->PythonSourceFilePath);
   if (!ret)
-    {
+  {
     return nullptr;
-    }
+  }
 
   return widget.take();
 }

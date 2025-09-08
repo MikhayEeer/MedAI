@@ -12,8 +12,9 @@ from slicer.i18n import tr as _
 # to import volumes from Enhanced US Volume Storage DICOM files.
 #
 
+
 class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
-    """ 3D ultrasound loader plugin.
+    """3D ultrasound loader plugin.
     Limitation: ultrasound calibrated regions are not supported (each calibrated region
     would need to be split out to its own volume sequence).
     """
@@ -22,17 +23,17 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
         super().__init__()
         self.loadType = _("Enhanced US volume")
 
-        self.tags['sopClassUID'] = "0008,0016"
-        self.tags['seriesNumber'] = "0020,0011"
-        self.tags['seriesDescription'] = "0008,103E"
-        self.tags['instanceNumber'] = "0020,0013"
-        self.tags['modality'] = "0008,0060"
-        self.tags['photometricInterpretation'] = "0028,0004"
+        self.tags["sopClassUID"] = "0008,0016"
+        self.tags["seriesNumber"] = "0020,0011"
+        self.tags["seriesDescription"] = "0008,103E"
+        self.tags["instanceNumber"] = "0020,0013"
+        self.tags["modality"] = "0008,0060"
+        self.tags["photometricInterpretation"] = "0028,0004"
 
         self.detailedLogging = False
 
     def examine(self, fileLists):
-        """ Returns a list of DICOMLoadable instances
+        """Returns a list of DICOMLoadable instances
         corresponding to ways of interpreting the
         fileLists parameter.
         """
@@ -43,15 +44,15 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
         return loadables
 
     def examineFiles(self, files):
-        """ Returns a list of DICOMLoadable instances
+        """Returns a list of DICOMLoadable instances
         corresponding to ways of interpreting the
         files parameter.
         """
 
-        self.detailedLogging = slicer.util.settingsValue('DICOM/detailedLogging', False, converter=slicer.util.toBool)
+        self.detailedLogging = slicer.util.settingsValue("DICOM/detailedLogging", False, converter=slicer.util.toBool)
 
         supportedSOPClassUIDs = [
-            '1.2.840.10008.5.1.4.1.1.6.2',  # Enhanced US Volume Storage
+            "1.2.840.10008.5.1.4.1.1.6.2",  # Enhanced US Volume Storage
         ]
 
         # The only sample data set that we received from GE LOGIQE10 (software version R1.5.1).
@@ -62,27 +63,27 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
 
         for filePath in files:
             # Quick check of SOP class UID without parsing the file...
-            sopClassUID = slicer.dicomDatabase.fileValue(filePath, self.tags['sopClassUID'])
+            sopClassUID = slicer.dicomDatabase.fileValue(filePath, self.tags["sopClassUID"])
             if not (sopClassUID in supportedSOPClassUIDs):
                 # Unsupported class
                 continue
 
-            instanceNumber = slicer.dicomDatabase.fileValue(filePath, self.tags['instanceNumber'])
-            modality = slicer.dicomDatabase.fileValue(filePath, self.tags['modality'])
-            seriesNumber = slicer.dicomDatabase.fileValue(filePath, self.tags['seriesNumber'])
-            seriesDescription = slicer.dicomDatabase.fileValue(filePath, self.tags['seriesDescription'])
-            photometricInterpretation = slicer.dicomDatabase.fileValue(filePath, self.tags['photometricInterpretation'])
-            name = ''
+            instanceNumber = slicer.dicomDatabase.fileValue(filePath, self.tags["instanceNumber"])
+            modality = slicer.dicomDatabase.fileValue(filePath, self.tags["modality"])
+            seriesNumber = slicer.dicomDatabase.fileValue(filePath, self.tags["seriesNumber"])
+            seriesDescription = slicer.dicomDatabase.fileValue(filePath, self.tags["seriesDescription"])
+            photometricInterpretation = slicer.dicomDatabase.fileValue(filePath, self.tags["photometricInterpretation"])
+            name = ""
             if seriesNumber:
-                name = f'{seriesNumber}:'
+                name = f"{seriesNumber}:"
             if modality:
-                name = f'{name} {modality}'
+                name = f"{name} {modality}"
             if seriesDescription:
-                name = f'{name} {seriesDescription}'
+                name = f"{name} {seriesDescription}"
             else:
-                name = f'{name} volume'
+                name = f"{name} volume"
             if instanceNumber:
-                name = f'{name} [{instanceNumber}]'
+                name = f"{name} [{instanceNumber}]"
 
             loadable = DICOMLoadable()
             loadable.singleSequence = False  # put each instance in a separate sequence
@@ -95,14 +96,13 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
             # and DICOMVolumeSequencePlugin (0.7)
             # but still leaving room for more specialized plugins.
             loadable.confidence = 0.8
-            loadable.grayscale = ('MONOCHROME' in photometricInterpretation)
+            loadable.grayscale = "MONOCHROME" in photometricInterpretation
             loadables.append(loadable)
 
         return loadables
 
     def load(self, loadable):
-        """Load the selection
-        """
+        """Load the selection"""
 
         if loadable.grayscale:
             volumeNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLScalarVolumeNode", loadable.name)
@@ -110,6 +110,7 @@ class DICOMEnhancedUSVolumePluginClass(DICOMPlugin):
             volumeNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLVectorVolumeNode", loadable.name)
 
         import vtkITK
+
         if loadable.grayscale:
             reader = vtkITK.vtkITKArchetypeImageSeriesScalarReader()
         else:
@@ -159,7 +160,6 @@ class DICOMEnhancedUSVolumePlugin:
     """
 
     def __init__(self, parent):
-
         # no tr (these strings are not translated because they are only visible for developers)
         parent.title = "DICOM Enhanced US volume Plugin"
         parent.categories = ["Developer Tools.DICOM Plugins"]
@@ -182,4 +182,4 @@ class DICOMEnhancedUSVolumePlugin:
             slicer.modules.dicomPlugins
         except AttributeError:
             slicer.modules.dicomPlugins = {}
-        slicer.modules.dicomPlugins['DICOMEnhancedUSVolumePlugin'] = DICOMEnhancedUSVolumePluginClass
+        slicer.modules.dicomPlugins["DICOMEnhancedUSVolumePlugin"] = DICOMEnhancedUSVolumePluginClass

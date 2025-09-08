@@ -26,7 +26,6 @@
 // Segmentation includes
 #include "vtkSegmentationCoreConfigure.h"
 
-/// \ingroup SegmentationCore
 /// \brief Store a list of conversion parameters.
 /// \details
 /// Stores properties, such as name, description (that may be displayed
@@ -88,11 +87,11 @@ public:
 protected:
 
   struct ConversionParameterType
-    {
+  {
     std::string Name;
     std::string Description;
     std::string Value;
-    };
+  };
 
   std::vector<ConversionParameterType> ParameterList;
 

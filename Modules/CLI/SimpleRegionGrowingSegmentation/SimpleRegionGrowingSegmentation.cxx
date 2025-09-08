@@ -74,7 +74,6 @@ int main( int argc, char *argv[] )
   confidenceConnected->SetInput( smoothing->GetOutput() );
   caster->SetInput( confidenceConnected->GetOutput() );
   writer->SetInput( caster->GetOutput() );
-  writer->SetUseCompression(true);
 
   smoothing->SetNumberOfIterations( smoothingIterations );
   smoothing->SetTimeStep( timestep );
@@ -85,11 +84,11 @@ int main( int argc, char *argv[] )
   confidenceConnected->SetInitialNeighborhoodRadius( neighborhood );
 
   if( seed.size() > 0 )
-    {
+  {
     InternalImageType::PointType lpsPoint;
     InternalImageType::IndexType index;
     for( ::size_t i = 0; i < seed.size(); ++i )
-      {
+    {
       // seeds come in ras, convert to lps
       lpsPoint[0] = -seed[i][0];
       lpsPoint[1] = -seed[i][1];
@@ -100,23 +99,23 @@ int main( int argc, char *argv[] )
 
 //       std::cout << "LPS: " << lpsPoint << std::endl;
 //       std::cout << "IJK: " << index << std::endl;
-      }
     }
+  }
   else
-    {
+  {
     std::cerr << "No seeds specified." << std::endl;
     return -1;
-    }
+  }
 
   try
-    {
+  {
     writer->Update();
-    }
+  }
   catch( itk::ExceptionObject & excep )
-    {
+  {
     std::cerr << "Exception caught !" << std::endl;
     std::cerr << excep << std::endl;
-    }
+  }
 
   return 0;
 }

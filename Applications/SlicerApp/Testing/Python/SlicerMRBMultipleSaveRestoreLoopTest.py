@@ -8,6 +8,7 @@ from slicer.ScriptedLoadableModule import *
 # SlicerMRBMultipleSaveRestoreLoopTest
 #
 
+
 class SlicerMRBMultipleSaveRestoreLoopTest(ScriptedLoadableModule):
     """Uses ScriptedLoadableModule base class, available at:
     https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
@@ -33,6 +34,7 @@ class SlicerMRBMultipleSaveRestoreLoopTest(ScriptedLoadableModule):
 # SlicerMRBMultipleSaveRestoreLoopTestWidget
 #
 
+
 class SlicerMRBMultipleSaveRestoreLoopTestWidget(ScriptedLoadableModuleWidget):
     """Uses ScriptedLoadableModuleWidget base class, available at:
     https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
@@ -49,7 +51,7 @@ class SlicerMRBMultipleSaveRestoreLoop(ScriptedLoadableModuleTest):
     https://github.com/Slicer/Slicer/blob/main/Base/Python/slicer/ScriptedLoadableModule.py
     """
 
-    def __init__(self, methodName='runTest', numberOfIterations=5, uniqueDirectory=True, strict=False):
+    def __init__(self, methodName="runTest", numberOfIterations=5, uniqueDirectory=True, strict=False):
         """
         Tests the use of mrml and mrb save formats with volumes and point lists.
         Checks that scene views are saved and restored as expected after multiple
@@ -90,7 +92,9 @@ class SlicerMRBMultipleSaveRestoreLoop(ScriptedLoadableModuleTest):
         # first, get the data
         #
         print("Getting MR Head Volume")
+
         import SampleData
+
         mrHeadVolume = SampleData.downloadSample("MRHead")
 
         # Place a control point
@@ -99,23 +103,22 @@ class SlicerMRBMultipleSaveRestoreLoop(ScriptedLoadableModuleTest):
         fid1 = [0.0, 0.0, 0.0]
         fidIndex1 = pointListNode.AddControlPoint(fid1)
 
-        self.delayDisplay('Finished with download and placing points')
+        self.delayDisplay("Finished with download and placing points")
 
         ioManager = slicer.app.ioManager()
         widget = slicer.app.layoutManager().viewport()
         self.pointPosition = fid1
         for i in range(self.numberOfIterations):
-
-            print('\n\nIteration %s' % i)
+            print("\n\nIteration %s" % i)
             #
             # save the mrml scene to an mrb
             #
-            sceneSaveDirectory = slicer.util.tempDirectory('__scene__')
-            mrbFilePath = slicer.util.tempDirectory('__mrb__') + '/SlicerMRBMultipleSaveRestoreLoop-' + str(i) + '.mrb'
+            sceneSaveDirectory = slicer.util.tempDirectory("__scene__")
+            mrbFilePath = slicer.util.tempDirectory("__mrb__") + "/SlicerMRBMultipleSaveRestoreLoop-" + str(i) + ".mrb"
             self.delayDisplay("Saving mrb to: %s" % mrbFilePath)
             screenShot = ctk.ctkWidgetsUtils.grabWidget(widget)
             self.assertTrue(
-                ioManager.saveScene(mrbFilePath, screenShot)
+                ioManager.saveScene(mrbFilePath, screenShot),
             )
             self.delayDisplay("Finished saving MRB %s" % i)
 
@@ -123,7 +126,7 @@ class SlicerMRBMultipleSaveRestoreLoop(ScriptedLoadableModuleTest):
             # reload the mrb
             #
             slicer.mrmlScene.Clear(0)
-            self.delayDisplay('Now, reload the saved MRB')
+            self.delayDisplay("Now, reload the saved MRB")
             mrbLoaded = ioManager.loadScene(mrbFilePath)
 
             # load can return false even though it succeeded - only fail if in strict mode
@@ -131,27 +134,27 @@ class SlicerMRBMultipleSaveRestoreLoop(ScriptedLoadableModuleTest):
             slicer.app.processEvents()
 
             # confirm that MRHead is in the background of the Red slice
-            redComposite = slicer.util.getNode('vtkMRMLSliceCompositeNodeRed')
-            mrHead = slicer.util.getNode('MRHead')
+            redComposite = slicer.util.getNode("vtkMRMLSliceCompositeNodeRed")
+            mrHead = slicer.util.getNode("MRHead")
             self.assertEqual(redComposite.GetBackgroundVolumeID(), mrHead.GetID())
-            self.delayDisplay('The MRHead volume is AGAIN in the background of the Red viewer')
+            self.delayDisplay("The MRHead volume is AGAIN in the background of the Red viewer")
 
             # confirm that the point list exists with 1 points
-            pointListNode = slicer.util.getNode('F')
+            pointListNode = slicer.util.getNode("F")
             self.assertEqual(pointListNode.GetNumberOfControlPoints(), 1)
-            self.delayDisplay('The point list has 1 point in it')
+            self.delayDisplay("The point list has 1 point in it")
 
             # adjust the fid list location
             self.pointPosition = [i, i, i]
-            print((i, ': reset point position array to ', self.pointPosition))
+            print((i, ": reset point position array to ", self.pointPosition))
             pointListNode.SetNthControlPointPosition(0, self.pointPosition)
         self.delayDisplay("Loop Finished")
 
-        print(('Point position from loop = ', self.pointPosition))
-        pointListNode = slicer.util.getNode('F')
+        print(("Point position from loop = ", self.pointPosition))
+        pointListNode = slicer.util.getNode("F")
         finalPointPosition = [0, 0, 0]
         pointListNode.GetNthControlPointPosition(0, finalPointPosition)
-        print(('Final point scene pos = ', finalPointPosition))
+        print(("Final point scene pos = ", finalPointPosition))
         self.assertEqual(self.pointPosition, finalPointPosition)
 
         self.delayDisplay("Test Finished")

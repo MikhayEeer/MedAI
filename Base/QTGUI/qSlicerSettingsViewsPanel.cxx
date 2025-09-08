@@ -146,7 +146,21 @@ void qSlicerSettingsViewsPanelPrivate::init()
   q->registerProperty("Default3DView/UseOrthographicProjection", this->ThreeDUseOrthographicProjectionCheckBox,
                       /*no tr*/"checked", SIGNAL(toggled(bool)),
                       qSlicerSettingsViewsPanel::tr("Orthographic projection"));
-
+  q->registerProperty("Default3DView/ShadowsVisibility", this->ThreeDShadowsVisibilityCheckBox,
+                      /*no tr*/"checked", SIGNAL(toggled(bool)),
+                      qSlicerSettingsViewsPanel::tr("Shadows visibility"));
+  q->registerProperty("Default3DView/AmbientShadowsSizeScale", this->ThreeDAmbientShadowsSizeScaleSlider,
+                      /*no tr*/"value", SIGNAL(valueChanged(double)),
+                      qSlicerSettingsViewsPanel::tr("Ambient shadows size scale"));
+  q->registerProperty("Default3DView/AmbientShadowsVolumeOpacityThreshold", this->ThreeDAmbientShadowsVolumeOpacityThresholdSlider,
+                      /*no tr*/"value", SIGNAL(valueChanged(double)),
+                      qSlicerSettingsViewsPanel::tr("Ambient shadows volume opacity threshold"));
+  q->registerProperty("Default3DView/AmbientShadowsIntensityScale", this->ThreeDAmbientShadowsIntensityScaleSlider,
+                      /*no tr*/"value", SIGNAL(valueChanged(double)),
+                      qSlicerSettingsViewsPanel::tr("Ambient shadows intensity scale"));
+  q->registerProperty("Default3DView/AmbientShadowsIntensityShift", this->ThreeDAmbientShadowsIntensityShiftSlider,
+                      /*no tr*/"value", SIGNAL(valueChanged(double)),
+                      qSlicerSettingsViewsPanel::tr("Ambient shadows intensity shift"));
 }
 
 // --------------------------------------------------------------------------
@@ -296,13 +310,13 @@ void qSlicerSettingsViewsPanel::sliceViewOrientationChangedByUser()
 {
   Q_D(qSlicerSettingsViewsPanel);
   if (d->SliceViewOrientationComboBox->currentUserDataAsString() == "PatientRightIsScreenRight")
-    {
+  {
     if (d->SliceOrientationMarkerTypeComboBox->currentData() == /*no tr*/"none")
-      {
+    {
       // Non-default orientation is chosen and no orientation marker is displayed.
       // To ensure that there is no accidental mixup of orientations, show the orientation marker.
       int index = d->SliceOrientationMarkerTypeComboBox->findData(/*no tr*/"axes");
       d->SliceOrientationMarkerTypeComboBox->setCurrentIndex(index);
-      }
     }
+  }
 }

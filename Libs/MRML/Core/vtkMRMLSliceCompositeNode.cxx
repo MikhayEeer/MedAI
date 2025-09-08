@@ -58,6 +58,7 @@ void vtkMRMLSliceCompositeNode::WriteXML(ostream& of, int nIndent)
 
   vtkMRMLWriteXMLBeginMacro(of);
   vtkMRMLWriteXMLIntMacro(compositing, Compositing);
+  vtkMRMLWriteXMLBooleanMacro(clipToBackgroundVolume, ClipToBackgroundVolume);
   vtkMRMLWriteXMLFloatMacro(foregroundOpacity, ForegroundOpacity);
   vtkMRMLWriteXMLFloatMacro(labelOpacity, LabelOpacity);
   vtkMRMLWriteXMLIntMacro(linkedControl, LinkedControl);
@@ -106,6 +107,7 @@ void vtkMRMLSliceCompositeNode::ReadXMLAttributes(const char** atts)
 
   vtkMRMLReadXMLBeginMacro(atts);
   vtkMRMLReadXMLIntMacro(compositing, Compositing);
+  vtkMRMLReadXMLBooleanMacro(clipToBackgroundVolume, ClipToBackgroundVolume);
   vtkMRMLReadXMLFloatMacro(foregroundOpacity, ForegroundOpacity);
   vtkMRMLReadXMLFloatMacro(labelOpacity, LabelOpacity);
   vtkMRMLReadXMLIntMacro(linkedControl, LinkedControl);
@@ -129,6 +131,7 @@ void vtkMRMLSliceCompositeNode::CopyContent(vtkMRMLNode* anode, bool deepCopy/*=
 
   vtkMRMLCopyBeginMacro(node);
   vtkMRMLCopyIntMacro(Compositing);
+  vtkMRMLCopyBooleanMacro(ClipToBackgroundVolume);
   vtkMRMLCopyFloatMacro(ForegroundOpacity);
   vtkMRMLCopyFloatMacro(LabelOpacity);
   vtkMRMLCopyIntMacro(LinkedControl);
@@ -152,6 +155,7 @@ void vtkMRMLSliceCompositeNode::PrintSelf(ostream& os, vtkIndent indent)
   vtkMRMLPrintStringMacro(ForegroundVolumeID);
   vtkMRMLPrintStringMacro(LabelVolumeID);
   vtkMRMLPrintIntMacro(Compositing);
+  vtkMRMLPrintBooleanMacro(ClipToBackgroundVolume);
   vtkMRMLPrintFloatMacro(ForegroundOpacity);
   vtkMRMLPrintFloatMacro(LabelOpacity);
   vtkMRMLPrintIntMacro(LinkedControl);
@@ -209,10 +213,10 @@ int vtkMRMLSliceCompositeNode::GetSliceIntersectionVisibility()
     " of vtkMRMLSliceDisplayNode object instead.");
   vtkMRMLSliceDisplayNode* sliceDisplayNode = this->GetSliceDisplayNode();
   if (!sliceDisplayNode)
-    {
+  {
     vtkWarningMacro("SetSliceIntersectionVisibility failed: no slice display node was found");
     return 0;
-    }
+  }
   return sliceDisplayNode->GetIntersectingSlicesVisibility() ? 1 : 0;
 }
 
@@ -223,10 +227,10 @@ void vtkMRMLSliceCompositeNode::SetSliceIntersectionVisibility(int visibility)
     " of vtkMRMLSliceDisplayNode object instead.");
   vtkMRMLSliceDisplayNode* sliceDisplayNode = this->GetSliceDisplayNode();
   if (!sliceDisplayNode)
-    {
+  {
     vtkWarningMacro("SetSliceIntersectionVisibility failed: no slice display node was found");
     return;
-    }
+  }
   sliceDisplayNode->SetIntersectingSlicesVisibility(visibility != 0);
 }
 
@@ -240,9 +244,9 @@ std::string vtkMRMLSliceCompositeNode::GetCompositeNodeIDFromSliceModelNode(vtkM
   // GetSliceIntersectionVisibility/SetSliceIntersectionVisibility.
 
   if (!sliceModelNode || !sliceModelNode->GetDescription())
-    {
+  {
     return "";
-    }
+  }
 
   // Iterate through the description split by spaces.
   // If "CompositeID" component is found then the next component
@@ -251,58 +255,58 @@ std::string vtkMRMLSliceCompositeNode::GetCompositeNodeIDFromSliceModelNode(vtkM
   std::string previous;
   std::string current;
   while (true)
-    {
+  {
     current.clear();
     while (current.empty())
-      {
+    {
       // Get the next string in a while loop to ignore multiple spaces
       if (!std::getline(description, current, ' '))
-        {
-        return "";
-        }
-      }
-    if (previous == "CompositeID")
       {
-      return current;
+        return "";
       }
-    previous = current;
     }
+    if (previous == "CompositeID")
+    {
+      return current;
+    }
+    previous = current;
+  }
 }
 
 //----------------------------------------------------------------------------
 vtkMRMLSliceDisplayNode* vtkMRMLSliceCompositeNode::GetSliceDisplayNode()
 {
   if (this->Scene == nullptr || this->GetLayoutName() == nullptr)
-    {
+  {
     return nullptr;
-    }
+  }
 
   // It is an expensive operation to determine the displayable node
   // (need to iterate through the scene), so the last found value
   // is cached. If it is still valid then we use it.
   if (this->LastFoundSliceDisplayNode != nullptr
     && this->LastFoundSliceDisplayNode->GetScene() == this->Scene)
-    {
+  {
     vtkMRMLModelNode* sliceModelNode = vtkMRMLModelNode::SafeDownCast(this->LastFoundSliceDisplayNode->GetDisplayableNode());
     if (this->GetCompositeNodeIDFromSliceModelNode(sliceModelNode) == this->GetID())
-      {
+    {
       return this->LastFoundSliceDisplayNode;
-      }
     }
+  }
 
   vtkMRMLNode* node = nullptr;
   vtkCollectionSimpleIterator it;
   vtkCollection* sceneNodes = this->Scene->GetNodes();
   for (sceneNodes->InitTraversal(it);
        (node = vtkMRMLNode::SafeDownCast(sceneNodes->GetNextItemAsObject(it))) ;)
-    {
+  {
     vtkMRMLModelNode* sliceModelNode = vtkMRMLModelNode::SafeDownCast(node);
     if (this->GetCompositeNodeIDFromSliceModelNode(sliceModelNode) == this->GetID())
-      {
+    {
       this->LastFoundSliceDisplayNode = vtkMRMLSliceDisplayNode::SafeDownCast(sliceModelNode->GetDisplayNode());
       return this->LastFoundSliceDisplayNode;
-      }
     }
+  }
   this->LastFoundSliceDisplayNode = nullptr;
   return nullptr;
 }

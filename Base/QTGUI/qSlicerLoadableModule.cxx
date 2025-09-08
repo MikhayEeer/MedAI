@@ -57,10 +57,10 @@ bool qSlicerLoadableModule::importModulePythonExtensions(
     const QString& intDir,const QString& modulePath,
     bool isEmbedded)
 {
-  Q_UNUSED(intDir);
 #ifdef Slicer_USE_PYTHONQT
   return qSlicerScriptedUtils::importModulePythonExtensions(pythonManager, intDir, modulePath, isEmbedded);
 #else
+  Q_UNUSED(intDir);
   Q_UNUSED(isEmbedded);
   Q_UNUSED(modulePath);
   Q_UNUSED(pythonManager);
@@ -76,9 +76,9 @@ bool qSlicerLoadableModule::addModuleToSlicerModules(
 {
 #ifdef Slicer_USE_PYTHONQT
   if(!pythonManager || !module || moduleName.isEmpty())
-    {
+  {
     return false;
-    }
+  }
   pythonManager->addObjectToPythonMain("_tmp_module_variable", module);
   pythonManager->executeString(
         QString("import __main__;"
@@ -101,9 +101,9 @@ bool qSlicerLoadableModule::addModuleNameToSlicerModuleNames(
 {
 #ifdef Slicer_USE_PYTHONQT
   if(!pythonManager || moduleName.isEmpty())
-    {
+  {
     return false;
-    }
+  }
   pythonManager->executeString(
         QString("import __main__;"
                 "setattr( slicer.moduleNames, %1, %2)")

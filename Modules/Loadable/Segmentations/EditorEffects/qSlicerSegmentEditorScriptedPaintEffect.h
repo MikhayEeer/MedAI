@@ -35,7 +35,6 @@ typedef _object PyObject;
 #endif
 class qSlicerSegmentEditorScriptedPaintEffectPrivate;
 
-/// \ingroup SlicerRt_QtModules_Segmentations
 /// \brief Scripted abstract effect for implementing paint effects in python
 ///
 /// This class provides an interface to paint effects implemented in python.
@@ -59,8 +58,8 @@ public:
   Q_INVOKABLE QString pythonSource()const;
 
   /// Set python source for the implemented effect
-  /// \param newPythonSource Python file path
-  Q_INVOKABLE bool setPythonSource(const QString newPythonSource);
+  /// \param filePath Python file path
+  Q_INVOKABLE bool setPythonSource(const QString filePath);
 
   /// Convenience method allowing to retrieve the associated scripted instance
   Q_INVOKABLE PyObject* self() const;

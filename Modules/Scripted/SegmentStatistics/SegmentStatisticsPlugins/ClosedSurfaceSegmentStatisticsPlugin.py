@@ -10,12 +10,14 @@ class ClosedSurfaceSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
     def __init__(self):
         super().__init__()
         self.name = "Closed Surface"
+        self.title = _("Closed Surface")
         self.keys = ["surface_mm2", "volume_mm3", "volume_cm3"]
         self.defaultKeys = self.keys  # calculate all measurements by default
         # ... developer may add extra options to configure other parameters
 
     def computeStatistics(self, segmentID):
         import vtkSegmentationCorePython as vtkSegmentationCore
+
         requestedKeys = self.getRequestedKeys()
 
         segmentationNode = slicer.mrmlScene.GetNodeByID(self.getParameterNode().GetParameter("Segmentation"))
@@ -48,25 +50,31 @@ class ClosedSurfaceSegmentStatisticsPlugin(SegmentStatisticsPluginBase):
 
     def getMeasurementInfo(self, key):
         """Get information (name, description, units, ...) about the measurement for the given key"""
-        info = dict()
 
         # I searched BioPortal, and found seemingly most suitable code.
         # Prefixed with "99" since CHEMINF is not a recognized DICOM coding scheme.
         # See https://bioportal.bioontology.org/ontologies/CHEMINF?p=classes&conceptid=http%3A%2F%2Fsemanticscience.org%2Fresource%2FCHEMINF_000247
         #
-        info["surface_mm2"] = \
-            self.createMeasurementInfo(name="Surface mm2", description=_("Surface area in mm2"), units="mm2",
-                                       quantityDicomCode=self.createCodedEntry("000247", "99CHEMINF", _("Surface area"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm2", "UCUM", _("square millimeter"), True))
+        if key == "surface_mm2":
+            return self.createMeasurementInfo(name="Surface mm2",
+                                       title=_("Surface area"),
+                                       description=_("Surface area computed from closed surface representation."),
+                                       units=_("mm2"),
+                                       quantityDicomCode=self.createCodedEntry("000247", "99CHEMINF", "Surface area", True),
+                                       unitsDicomCode=self.createCodedEntry("mm2", "UCUM", "square millimeter", True))
 
-        info["volume_mm3"] = \
-            self.createMeasurementInfo(name="Volume mm3", description=_("Volume in mm3"), units="mm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", _("cubic millimeter"), True))
+        elif key == "volume_mm3":
+            return self.createMeasurementInfo(name="Volume mm3",
+                                       title=_("Volume"), description=_("Volume computed from closed surface representation."),
+                                       units=_("mm3"),
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", "Volume", True),
+                                       unitsDicomCode=self.createCodedEntry("mm3", "UCUM", "cubic millimeter", True))
 
-        info["volume_cm3"] = \
-            self.createMeasurementInfo(name="Volume cm3", description=_("Volume in cm3"), units="cm3",
-                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", _("Volume"), True),
-                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", _("cubic centimeter"), True))
+        elif key == "volume_cm3":
+            return self.createMeasurementInfo(name="Volume cm3",
+                                       title=_("Volume"), description=_("Volume computed from closed surface representation."),
+                                       units=_("cm3"),
+                                       quantityDicomCode=self.createCodedEntry("118565006", "SCT", "Volume", True),
+                                       unitsDicomCode=self.createCodedEntry("cm3", "UCUM", "cubic centimeter", True))
 
-        return info[key] if key in info else None
+        return None

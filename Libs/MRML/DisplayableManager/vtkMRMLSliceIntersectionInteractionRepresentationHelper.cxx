@@ -17,56 +17,20 @@
 
 #include "vtkMRMLSliceIntersectionInteractionRepresentationHelper.h"
 
-
-#include <deque>
-#define _USE_MATH_DEFINES
-#include <math.h>
-
-#include "vtkMRMLApplicationLogic.h"
-#include "vtkMRMLDisplayableNode.h"
-#include "vtkMRMLInteractionNode.h"
-#include "vtkMRMLModelDisplayNode.h"
-#include "vtkMRMLScene.h"
-#include "vtkMRMLSliceLogic.h"
-#include "vtkMRMLSliceNode.h"
-#include "vtkMRMLSliceCompositeNode.h"
-
-#include "vtkActor2D.h"
-#include "vtkArcSource.h"
-#include "vtkAppendPolyData.h"
-#include "vtkAssemblyPath.h"
-#include "vtkCallbackCommand.h"
-#include "vtkCamera.h"
-#include "vtkCellArray.h"
-#include "vtkCommand.h"
-#include "vtkConeSource.h"
-#include "vtkCoordinate.h"
-#include "vtkCursor2D.h"
-#include "vtkCylinderSource.h"
-#include "vtkGlyph2D.h"
-#include "vtkInteractorObserver.h"
-#include "vtkLeaderActor2D.h"
-#include "vtkLine.h"
-#include "vtkLineSource.h"
-#include "vtkMath.h"
-#include "vtkMatrix3x3.h"
-#include "vtkMatrix4x4.h"
-#include "vtkObjectFactory.h"
-#include "vtkPoints.h"
-#include "vtkPolyDataAlgorithm.h"
-#include "vtkPolyDataMapper2D.h"
-#include "vtkProperty2D.h"
-#include "vtkPlane.h"
-#include "vtkRenderer.h"
-#include "vtkRenderWindow.h"
-#include "vtkSphereSource.h"
-#include "vtkTransform.h"
-#include "vtkTransformPolyDataFilter.h"
-#include "vtkTubeFilter.h"
-#include "vtkWindow.h"
+// VTK includes
+#include <vtkMath.h>
+#include <vtkMatrix3x3.h>
+#include <vtkMatrix4x4.h>
+#include <vtkObjectFactory.h>
+#include <vtkPlane.h>
+#include <vtkTransform.h>
 
 // MRML includes
 #include <vtkMRMLInteractionEventData.h>
+#include <vtkMRMLSliceNode.h>
+
+// STD includes
+#include <deque>
 
 // Handles
 static const double SLICEOFFSET_HANDLE_DEFAULT_POSITION[3] = { 0.0,0.0,0.0 };
@@ -87,7 +51,6 @@ vtkMRMLSliceIntersectionInteractionRepresentationHelper::~vtkMRMLSliceIntersecti
 //----------------------------------------------------------------------
 void vtkMRMLSliceIntersectionInteractionRepresentationHelper::PrintSelf(ostream & os, vtkIndent indent)
 {
-  //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
   this->Superclass::PrintSelf(os, indent);
 }
 
@@ -183,63 +146,63 @@ void vtkMRMLSliceIntersectionInteractionRepresentationHelper::GetIntersectionWit
     // Get intersection point using line equation
     double x0, y0;
     if ((xMin > lineBounds[0]) && (xMin < lineBounds[1]))
-      {
+    {
       y0 = slope * xMin + intercept;
       if ((y0 > yMin) && (y0 < yMax))
-        {
+      {
         intersectionPoint[0] = xMin;
         intersectionPoint[1] = y0;
         return;
-        }
       }
+    }
     if ((xMax > lineBounds[0]) && (xMax < lineBounds[1]))
-      {
+    {
       y0 = slope * xMax + intercept;
       if ((y0 > yMin) && (y0 < yMax))
-        {
+      {
         intersectionPoint[0] = xMax;
         intersectionPoint[1] = y0;
         return;
-        }
       }
+    }
     if ((yMin > lineBounds[2]) && (yMin < lineBounds[3]))
-      {
+    {
       if (std::isfinite(slope)) // check if slope is finite
-        {
+      {
         x0 = (yMin - intercept)/slope;
         if ((x0 > xMin) && (x0 < xMax))
-          {
-          intersectionPoint[0] = x0;
-          intersectionPoint[1] = yMin;
-          return;
-          }
-        }
-      else // infinite slope = vertical line
         {
-          intersectionPoint[0] = lineBounds[0]; // or lineBounds[1] (if the line is vertical, then both points A and B have the same value of X)
+          intersectionPoint[0] = x0;
           intersectionPoint[1] = yMin;
           return;
         }
       }
-    if ((yMax > lineBounds[2]) && (yMax < lineBounds[3]))
+      else // infinite slope = vertical line
       {
+          intersectionPoint[0] = lineBounds[0]; // or lineBounds[1] (if the line is vertical, then both points A and B have the same value of X)
+          intersectionPoint[1] = yMin;
+          return;
+      }
+    }
+    if ((yMax > lineBounds[2]) && (yMax < lineBounds[3]))
+    {
       if (std::isfinite(slope)) // check if slope is finite
-        {
+      {
         x0 = (yMax - intercept)/slope;
         if ((x0 > xMin) && (x0 < xMax))
-          {
-          intersectionPoint[0] = x0;
-          intersectionPoint[1] = yMax;
-          return;
-          }
-        }
-      else // infinite slope = vertical line
         {
-          intersectionPoint[0] = lineBounds[0]; // or lineBounds[1] (if the line is vertical, then both points A and B have the same value of X)
+          intersectionPoint[0] = x0;
           intersectionPoint[1] = yMax;
           return;
         }
       }
+      else // infinite slope = vertical line
+      {
+          intersectionPoint[0] = lineBounds[0]; // or lineBounds[1] (if the line is vertical, then both points A and B have the same value of X)
+          intersectionPoint[1] = yMax;
+          return;
+      }
+    }
     return;
 }
 
@@ -264,51 +227,51 @@ int vtkMRMLSliceIntersectionInteractionRepresentationHelper::IntersectWithFinite
   xr1[1] = px[1];
   xr1[2] = px[2];
   if (vtkPlane::IntersectWithLine(xr0, xr1, n, o, t, x))
-    {
+  {
     numInts++;
     x = x1;
-    }
+  }
 
   // Second line
   xr1[0] = py[0];
   xr1[1] = py[1];
   xr1[2] = py[2];
   if (vtkPlane::IntersectWithLine(xr0, xr1, n, o, t, x))
-    {
+  {
     numInts++;
     x = x1;
-    }
+  }
   if (numInts == 2)
-    {
+  {
     return 1;
-    }
+  }
 
   // Third line
   xr0[0] = -pOrigin[0] + px[0] + py[0];
   xr0[1] = -pOrigin[1] + px[1] + py[1];
   xr0[2] = -pOrigin[2] + px[2] + py[2];
   if (vtkPlane::IntersectWithLine(xr0, xr1, n, o, t, x))
-    {
+  {
     numInts++;
     x = x1;
-    }
+  }
   if (numInts == 2)
-    {
+  {
     return 1;
-    }
+  }
 
   // Fourth and last line
   xr1[0] = px[0];
   xr1[1] = px[1];
   xr1[2] = px[2];
   if (vtkPlane::IntersectWithLine(xr0, xr1, n, o, t, x))
-    {
+  {
     numInts++;
-    }
+  }
   if (numInts == 2)
-    {
+  {
     return 1;
-    }
+  }
 
   // No intersection has occurred, or a single degenerate point
   return 0;
@@ -376,13 +339,13 @@ void vtkMRMLSliceIntersectionInteractionRepresentationHelper::RotationMatrixFrom
 
   // Compute rotation matrix
   if (s == 0.0) // If vectors are aligned (i.e., cross product = 0)
-    {
+  {
     if (c > 0.0) // Same direction
-      {
+    {
       rotationMatrixHom->Identity();
-      }
+    }
     else // Opposite direction
-      {
+    {
       vtkNew<vtkTransform> transform;
       transform->RotateZ(180); // invert direction
       rotationMatrixHom->SetElement(0, 0, transform->GetMatrix()->GetElement(0, 0));
@@ -401,10 +364,10 @@ void vtkMRMLSliceIntersectionInteractionRepresentationHelper::RotationMatrixFrom
       rotationMatrixHom->SetElement(3, 1, 0.0);
       rotationMatrixHom->SetElement(3, 2, 0.0);
       rotationMatrixHom->SetElement(3, 3, 1.0);
-      }
     }
+  }
   else // If vectors are not aligned
-    {
+  {
     vtkNew<vtkMatrix3x3> rotationMatrix;
     vtkNew<vtkMatrix3x3> identityMatrix;
     vtkNew<vtkMatrix3x3> kmat;
@@ -447,5 +410,5 @@ void vtkMRMLSliceIntersectionInteractionRepresentationHelper::RotationMatrixFrom
     rotationMatrixHom->SetElement(3, 1, 0.0);
     rotationMatrixHom->SetElement(3, 2, 0.0);
     rotationMatrixHom->SetElement(3, 3, 1.0);
-    }
+  }
 }

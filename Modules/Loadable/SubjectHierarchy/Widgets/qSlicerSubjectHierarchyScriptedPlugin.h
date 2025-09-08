@@ -40,7 +40,6 @@ class QStandardItem;
 class QAction;
 class qSlicerAbstractModuleWidget;
 
-/// \ingroup Slicer_QtModules_SubjectHierarchy_Widgets
 ///    In Widgets, not Plugins because the paths and libs need to be exported to extensions
 /// \brief Scripted abstract plugin for handling subject hierarchy items or providing actions for items
 ///
@@ -72,8 +71,8 @@ public:
   Q_INVOKABLE QString pythonSource()const;
 
   /// Set python source for the implemented plugin
-  /// \param newPythonSource Python file path
-  Q_INVOKABLE bool setPythonSource(const QString newPythonSource);
+  /// \param filePath Python file path
+  Q_INVOKABLE bool setPythonSource(const QString filePath);
 
   /// Convenience method allowing to retrieve the associated scripted instance
   Q_INVOKABLE PyObject* self() const;

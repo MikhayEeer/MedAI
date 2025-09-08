@@ -40,7 +40,6 @@ class vtkMRMLScene;
 class vtkMRMLSubjectHierarchyNode;
 class vtkIdList;
 
-/// \ingroup Slicer_QtModules_SubjectHierarchy
 class Q_SLICER_MODULE_SUBJECTHIERARCHY_WIDGETS_EXPORT qMRMLSubjectHierarchyTreeView : public QTreeView
 {
   Q_OBJECT
@@ -92,13 +91,14 @@ class Q_SLICER_MODULE_SUBJECTHIERARCHY_WIDGETS_EXPORT qMRMLSubjectHierarchyTreeV
   /// Overrides \sa includeNodeAttributeNamesFilter
   Q_PROPERTY(QStringList excludeNodeAttributeNamesFilter READ excludeNodeAttributeNamesFilter WRITE setExcludeNodeAttributeNamesFilter)
 
-  /// Filter to show only items that contain an attribute with this name. Empty by default
-  /// Note: Deprecated, kept only for backwards compatibility. Sets and returns the first attribute in \sa includeNodeAttributeNamesFilter
+  /// Filter to show only items that contain an item attribute with this name. Empty by default.
+  /// Sets and returns the first attribute in \sa includeItemAttributeNamesFilter.
+  /// \deprecated Kept only for backwards compatibility. Use addItemAttributeFilter() or removeItemAttributeFilter() instead.
   Q_PROPERTY(QString attributeNameFilter READ attributeNameFilter WRITE setAttributeNameFilter)
-  /// Filter to show only items that contain any attribute given in \sa includeItemAttributeNamesFilter with the value.
+  /// Filter to show only items that contain any item attribute given in \sa includeItemAttributeNamesFilter with the value.
   /// If empty, then existence of the attributes is enough to show.
-  /// Exact match is required. Empty by default
-  /// Note: Deprecated, kept only for backwards compatibility. Works consistently with the previous operation.
+  /// Exact match is required. Empty by default.
+  /// \deprecated Kept only for backwards compatibility. Use addItemAttributeFilter() or removeItemAttributeFilter() instead.
   Q_PROPERTY(QString attributeValueFilter READ attributeValueFilter WRITE setAttributeValueFilter)
 
 public:
@@ -108,6 +108,9 @@ public:
 
 public:
   Q_INVOKABLE vtkMRMLScene* mrmlScene()const;
+
+  /// Return the subject hierarchy node found in the current MRML scene.
+  /// While the scene is closing, this method may return a null pointer.
   Q_INVOKABLE vtkMRMLSubjectHierarchyNode* subjectHierarchyNode()const;
 
   /// Get current (=selected) item. If there are multiple items selected, then the first one is returned
@@ -277,16 +280,16 @@ public slots:
 
   /// Deprecated. Use setPluginAllowlist instead.
   void setPluginWhitelist(QStringList allowlist)
-    {
+  {
     qWarning("qMRMLSubjectHierarchyTreeView::setPluginWhitelist is deprecated. Use setPluginAllowlist instead.");
     this->setPluginAllowlist(allowlist);
-    }
+  }
   /// Deprecated. Use setPluginBlocklist instead.
   void setPluginBlacklist(QStringList blocklist)
-    {
+  {
     qWarning("qMRMLSubjectHierarchyTreeView::setPluginBlacklist is deprecated. Use setPluginBlocklist instead.");
     this->setPluginBlocklist(blocklist);
-    }
+  }
 
   /// Show hint to user about context menus
   /// \param visibility True if visibility context menu hint is to be shown, false for general context menu. False by default

@@ -289,7 +289,7 @@ class TypedParameterNodeTest(unittest.TestCase):
         class ModelInfo:
             model: vtkMRMLModelNode
             treatSpecial: bool
-        
+
         @parameterNodeWrapper
         class ParameterNodeType:
             nodes: list[ModelInfo]
@@ -298,11 +298,11 @@ class TypedParameterNodeTest(unittest.TestCase):
 
         param.nodes.append(ModelInfo(
             slicer.mrmlScene.AddNewNodeByClass("vtkMRMLModelNode", "n1"),
-            True
+            True,
         ))
         param.nodes.append(ModelInfo(
             slicer.mrmlScene.AddNewNodeByClass("vtkMRMLModelNode", "n2"),
-            False
+            False,
         ))
 
         self.assertEqual(param.nodes[0].model.GetName(), "n1")
@@ -317,31 +317,41 @@ class TypedParameterNodeTest(unittest.TestCase):
 
         # reserved names
         with self.assertRaises(ValueError):
+
             @parameterPack
             class ParameterPack:
                 allParameters: int
+
         with self.assertRaises(ValueError):
+
             @parameterPack
             class ParameterPack:
                 _is_parameterPack: int
 
         # reserved names based off of other names in the pack
         with self.assertRaises(ValueError):
+
             @parameterPack
             class ParameterPack:
                 myName: int
                 _parameterPack_myName_impl: int
+
         with self.assertRaises(ValueError):
+
             @parameterPack
             class ParameterPack:
                 _parameterPack_myName_impl: int
                 myName: int
+
         with self.assertRaises(ValueError):
+
             @parameterPack
             class ParameterPack:
                 myName: int
                 _parameterPack_myName_serializer: int
+
         with self.assertRaises(ValueError):
+
             @parameterPack
             class ParameterPack:
                 _parameterPack_myName_serializer: int
@@ -352,6 +362,7 @@ class TypedParameterNodeTest(unittest.TestCase):
         class ParameterPack:
             cloud: list[Point]
             value: int
+
         serializer = ParameterPackSerializer(ParameterPack)
 
         pack = ParameterPack([Point(1, 2), Point(3, 4)], 5)
@@ -375,7 +386,7 @@ class TypedParameterNodeTest(unittest.TestCase):
         self.assertFalse(isParameterPack(int))  # class
         self.assertFalse(isParameterPack(int()))  # object
         self.assertFalse(isParameterPack(str))  # class
-        self.assertFalse(isParameterPack(''))  # object
+        self.assertFalse(isParameterPack(""))  # object
 
     def test_parameter_pack_getSetValue(self):
         @parameterPack

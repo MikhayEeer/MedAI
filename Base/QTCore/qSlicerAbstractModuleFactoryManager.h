@@ -208,6 +208,7 @@ signals:
   void moduleIgnored(const QString& moduleName);
 
   void modulesInstantiated(const QStringList& moduleNames);
+  void moduleAboutToBeInstantiated(const QString& moduleName);
   void moduleInstantiated(const QString& moduleName);
 
   void modulesAboutToBeUninstantiated(const QStringList& moduleNames);
@@ -254,9 +255,9 @@ void qSlicerAbstractModuleFactoryManager::addSearchPath(const QString& path)
 void qSlicerAbstractModuleFactoryManager::removeSearchPaths(const QStringList& paths)
 {
   foreach(const QString& path, paths)
-    {
+  {
     this->removeSearchPath(path);
-    }
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -272,9 +273,9 @@ void qSlicerAbstractModuleFactoryManager::addModuleToIgnore(const QString& modul
 {
   QStringList modules = this->modulesToIgnore();
   if (modules.contains(moduleName))
-    {
+  {
     return;
-    }
+  }
   modules << moduleName;
   this->setModulesToIgnore(modules);
 }

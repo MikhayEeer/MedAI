@@ -51,7 +51,6 @@
 ///   - Node: Coordinate system of the markup node. Coordinates of the control points are stored in this coordinate system.
 ///   - World: Patient coordinate system (RAS). Transform between Node and World.
 ///     coordinate systems are defined by the parent transform of the node.
-/// \ingroup Slicer_QtModules_Markups
 class  VTK_SLICER_MARKUPS_MODULE_MRML_EXPORT vtkMRMLMarkupsPlaneNode : public vtkMRMLMarkupsNode
 {
 public:
@@ -91,12 +90,6 @@ public:
   /// Get markup type internal name
   const char* GetMarkupType() override {return "Plane";};
 
-  // Get markup type GUI display name
-  const char* GetTypeDisplayName() override {return "Plane";};
-
-  /// Get markup short name
-  const char* GetDefaultNodeNamePrefix() override {return "P";};
-
   /// Read node attributes from XML file
   void ReadXMLAttributes( const char** atts) override;
 
@@ -108,7 +101,8 @@ public:
   vtkMRMLCopyContentMacro(vtkMRMLMarkupsPlaneNode);
 
   /// Apply the passed transformation to the ROI
-  void ApplyTransform(vtkAbstractTransform* transform) override;
+  using Superclass::ApplyTransform;
+  void ApplyTransform(vtkAbstractTransform* transform, bool applyToLockedControlPoints) override;
 
   //@{
   /// Method for calculating the size of the plane along the direction vectors.

@@ -13,20 +13,16 @@ import xml.dom.minidom
 
 
 def getTextValuesFromNode(nodelist):
-    r"""
-    Get this nodes text information.
-    """
+    """Get this nodes text information."""
     rc = []
     for node in nodelist:
         if node.nodeType == node.TEXT_NODE:
             rc.append(node.data)
-    return ''.join(rc)
+    return "".join(rc)
 
 
 def getThisNodesInfoAsText(currentNode, label):
-    r"""
-    Only get the text info for the matching label at this level of the tree
-    """
+    """Only get the text info for the matching label at this level of the tree"""
     labelNodeList = [node for node in
                      currentNode.childNodes if node.nodeName == label]
 
@@ -37,33 +33,27 @@ def getThisNodesInfoAsText(currentNode, label):
 
 
 def getLongFlagDefinition(currentNode):
-    r"""
-    Extract the long flag, and color the text string
-    """
+    """Extract the long flag, and color the text string"""
     labelNodeList = currentNode.getElementsByTagName("longflag")
     if labelNodeList.length > 0:
         labelNode = labelNodeList[0]  # Only get the first one
-        return "{}{}{}".format("[<span style=\"color:orange\">--",
+        return "{}{}{}".format('[<span style="color:orange">--',
                                getTextValuesFromNode(labelNode.childNodes), "</span>]")
     return ""
 
 
 def getFlagDefinition(currentNode):
-    r"""
-    Extract the (short) flag, and color the text string
-    """
+    """Extract the (short) flag, and color the text string"""
     labelNodeList = currentNode.getElementsByTagName("flag")
     if labelNodeList.length > 0:
         labelNode = labelNodeList[0]  # Only get the first one
-        return "{}{}{}".format("[<span style=\"color:pink\">-",
+        return "{}{}{}".format('[<span style="color:pink">-',
                                getTextValuesFromNode(labelNode.childNodes), "</span>]")
     return ""
 
 
 def getLabelDefinition(currentNode):
-    r"""
-    Extract the nodes label, and color the text string
-    """
+    """Extract the nodes label, and color the text string"""
     labelNodeList = currentNode.getElementsByTagName("label")
     if labelNodeList.length > 0:
         labelNode = labelNodeList[0]  # Only get the first one
@@ -73,9 +63,7 @@ def getLabelDefinition(currentNode):
 
 
 def getDefaultValueDefinition(currentNode):
-    r"""
-    Extract the default value
-    """
+    """Extract the default value"""
     labelNodeList = currentNode.getElementsByTagName("default")
     if labelNodeList.length > 0:
         labelNode = labelNodeList[0]  # Only get the first one
@@ -97,9 +85,7 @@ def GetSEMDoc(filename):
 
 
 def DumpSEMMediaWikiHeader(executableNode):
-    r"""
-    Just dump the header section of the MediaWikiPage
-    """
+    """Just dump the header section of the MediaWikiPage"""
 
     outputRegionTemplate = """
 __NOTOC__
@@ -162,20 +148,20 @@ Examples of the module in use:
 """
 
     stringDict = dict({})
-    stringDict['executableTitle'] = getThisNodesInfoAsText(
+    stringDict["executableTitle"] = getThisNodesInfoAsText(
         executableNode, "title")
-    stringDict['executableCategory'] = getThisNodesInfoAsText(
+    stringDict["executableCategory"] = getThisNodesInfoAsText(
         executableNode, "category")
-    stringDict['executableAuthor'] = getThisNodesInfoAsText(
+    stringDict["executableAuthor"] = getThisNodesInfoAsText(
         executableNode, "contributor")
-    stringDict['executableDescription'] = getThisNodesInfoAsText(
+    stringDict["executableDescription"] = getThisNodesInfoAsText(
         executableNode, "description")
-    stringDict['executableVersion'] = getThisNodesInfoAsText(
+    stringDict["executableVersion"] = getThisNodesInfoAsText(
         executableNode, "version")
-    stringDict['executableDocumentationURL'] = getThisNodesInfoAsText(
+    stringDict["executableDocumentationURL"] = getThisNodesInfoAsText(
         executableNode, "documentation-url")
-    stringDict['tblStart'] = "{|"  # To avoid subs the entire table as var
-    stringDict['tblStop'] = "|}"   # To avoid subs the entire table as var
+    stringDict["tblStart"] = "{|"  # To avoid subs the entire table as var
+    stringDict["tblStop"] = "|}"  # To avoid subs the entire table as var
 
     outRegion = outputRegionTemplate.format(**stringDict)
     return outRegion
@@ -276,33 +262,52 @@ Publications related to this module go here. Links to pdfs would be useful.
 """
 
     stringDict = dict({})
-    stringDict['executableAcknowledgment'] = getThisNodesInfoAsText(executableNode, "acknowledgements")
+    stringDict["executableAcknowledgment"] = getThisNodesInfoAsText(executableNode, "acknowledgements")
     outRegion = outRegionTemplate.format(**stringDict)
     return outRegion
 
 
 def SEMToMediaWikiProg():
     from optparse import OptionParser
+
     usage = "%prog -x XMLFILE -o MEDIWIKIFILE"
     version = "%prog v0.1"
     parser = OptionParser()
-    parser.add_option("-x", "--xmlfile", dest="xmlfilename",
-                      action="store", type="string",
-                      metavar="XMLFILE", help="The SEM formatted XMLFILE file")
-    parser.add_option("-o", "--outfile", dest="outfilename",
-                      action="store", type="string", default=None,
-                      metavar="MEDIAWIKIFILE",
-                      help="The MEDIAWIKIFILE ascii file with media-wiki formatted text.")
-    parser.add_option("-p", "--parts", dest="parts",
-                      action="store", type="string", default="hbf",
-                      help="The parts to print out, h=Header,b=body,f=footer")
+    parser.add_option(
+        "-x",
+        "--xmlfile",
+        dest="xmlfilename",
+        action="store",
+        type="string",
+        metavar="XMLFILE",
+        help="The SEM formatted XMLFILE file",
+    )
+    parser.add_option(
+        "-o",
+        "--outfile",
+        dest="outfilename",
+        action="store",
+        type="string",
+        default=None,
+        metavar="MEDIAWIKIFILE",
+        help="The MEDIAWIKIFILE ascii file with media-wiki formatted text.",
+    )
+    parser.add_option(
+        "-p",
+        "--parts",
+        dest="parts",
+        action="store",
+        type="string",
+        default="hbf",
+        help="The parts to print out, h=Header,b=body,f=footer",
+    )
     parser.epilog = program_description
-#    print program_description
+    #    print program_description
     (options, args) = parser.parse_args()
 
-#    It may be desirable in the future to automatically push information to the
-#    WIKI page without having to copy and paste.
-#    http://python-wikitools.googlecode.com/svn/trunk/README
+    #    It may be desirable in the future to automatically push information to the
+    #    WIKI page without having to copy and paste.
+    #    http://python-wikitools.googlecode.com/svn/trunk/README
 
     ExecutableNode = GetSEMDoc(options.xmlfilename)
 
@@ -320,12 +325,12 @@ def SEMToMediaWikiProg():
                     stage))
 
     if options.xmlfilename is not None:
-        outfile = open(options.outfilename, 'w')
+        outfile = open(options.outfilename, "w")
         outfile.write(docString)
         outfile.close()
     else:
         sys.stdout.write(docString)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     SEMToMediaWikiProg()

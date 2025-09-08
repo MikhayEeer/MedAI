@@ -19,7 +19,8 @@ note that from the 't' variable in the console you can access the readers and ot
 class vtkITKReaderAgainstNRRDReader(unittest.TestCase):
     def setUp(self):
         from SampleData import SampleDataLogic
-        brainSource = SampleDataLogic().sourceForSampleName('MRHead')
+
+        brainSource = SampleDataLogic().sourceForSampleName("MRHead")
         self.file_name = SampleDataLogic().downloadSourceIntoCache(brainSource)[0]
 
         self.ritk = vtkITK.vtkITKArchetypeImageSeriesScalarReader()
@@ -37,8 +38,8 @@ class vtkITKReaderAgainstNRRDReader(unittest.TestCase):
         self.assertTrue(
             compare_vtk_matrix(
                 self.ritk.GetRasToIjkMatrix(),
-                self.rnrrd.GetRasToIjkMatrix()
-            )
+                self.rnrrd.GetRasToIjkMatrix(),
+            ),
         )
 
     def test_pointdata(self):

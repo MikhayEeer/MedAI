@@ -51,6 +51,7 @@ fiducialregistration.md
 landmarkregistration.md
 performmetrictest.md
 reformat.md
+scriptedregistration.md
 ```
 
 ## Segmentation
@@ -81,7 +82,6 @@ multivolumeexplorer.md
 ## Diffusion
 ```{toctree}
 :maxdepth: 1
-dmriinstall.md
 dwiconvert.md
 brainsdwicleanup.md
 ```

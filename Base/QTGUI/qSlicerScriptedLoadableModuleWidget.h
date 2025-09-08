@@ -45,7 +45,9 @@ public:
   ~qSlicerScriptedLoadableModuleWidget() override;
 
   QString pythonSource()const;
-  bool setPythonSource(const QString& newPythonSource, const QString& className = QLatin1String(""));
+  bool setPythonSource(const QString& filePath, const QString& className = QLatin1String(""));
+
+  Q_INVOKABLE void reload();
 
   /// Convenience method allowing to retrieve the associated scripted instance
   Q_INVOKABLE PyObject* self() const;

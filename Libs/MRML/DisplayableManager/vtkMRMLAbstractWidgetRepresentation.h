@@ -63,7 +63,7 @@ public:
   //@{
   /**
   * Methods to make this class behave as a vtkProp. They are repeated here (from the
-  * vtkProp superclass) as a reminder to the widget implementor. Failure to implement
+  * vtkProp superclass) as a reminder to the widget implementer. Failure to implement
   * these methods properly may result in the representation not appearing in the scene
   * (i.e., not implementing the Render() methods properly) or leaking graphics resources
   * (i.e., not implementing ReleaseGraphicsResources() properly).
@@ -142,6 +142,9 @@ public:
   vtkBooleanMacro(NeedToRender, bool);
   //@}
 
+  /// Convenience method for getting screen scale factor from the associated view node.
+  double GetScreenScaleFactor();
+
  protected:
   vtkMRMLAbstractWidgetRepresentation();
   ~vtkMRMLAbstractWidgetRepresentation() override;
@@ -167,9 +170,6 @@ public:
   /// For display renderers it is defined in pixels. The specified value is scaled with ScreenScaleFactor.
   /// For VR renderer it is defined in millimeters. The specified value is scaled with WorldToPhysicalScale.
   double PickingTolerance;
-
-  /// Allows global rescaling of all widgets (to compensate for larger or smaller physical screen size)
-  double ScreenScaleFactor;
 
   vtkWeakPointer<vtkMRMLAbstractViewNode> ViewNode;
 

@@ -13,7 +13,7 @@ class SegmentEditorEffect(AbstractScriptedSegmentEditorEffect):
     """This effect uses Watershed algorithm to partition the input volume"""
 
     def __init__(self, scriptedEffect):
-        scriptedEffect.name = 'TemplateKey'
+        scriptedEffect.name = "TemplateKey"
         scriptedEffect.perSegment = False  # this effect operates on all segments at once (not on a single selected segment)
         scriptedEffect.requireSegments = True  # this effect requires segment(s) existing in the segmentation
         AbstractScriptedSegmentEditorEffect.__init__(self, scriptedEffect)
@@ -21,13 +21,14 @@ class SegmentEditorEffect(AbstractScriptedSegmentEditorEffect):
     def clone(self):
         # It should not be necessary to modify this method
         import qSlicerSegmentationsEditorEffectsPythonQt as effects
+
         clonedEffect = effects.qSlicerSegmentEditorScriptedEffect(None)
-        clonedEffect.setPythonSource(__file__.replace('\\', '/'))
+        clonedEffect.setPythonSource(__file__.replace("\\", "/"))
         return clonedEffect
 
     def icon(self):
         # It should not be necessary to modify this method
-        iconPath = os.path.join(os.path.dirname(__file__), 'SegmentEditorEffect.png')
+        iconPath = os.path.join(os.path.dirname(__file__), "SegmentEditorEffect.png")
         if os.path.exists(iconPath):
             return qt.QIcon(iconPath)
         return qt.QIcon()
@@ -39,7 +40,6 @@ To segment a single object, create a segment and paint inside and create another
 """
 
     def setupOptionsFrame(self):
-
         # Object scale slider
         self.objectScaleMmSlider = slicer.qMRMLSliderWidget()
         self.objectScaleMmSlider.setMRMLScene(slicer.mrmlScene)
@@ -47,16 +47,16 @@ To segment a single object, create a segment and paint inside and create another
         self.objectScaleMmSlider.minimum = 0
         self.objectScaleMmSlider.maximum = 10
         self.objectScaleMmSlider.value = 2.0
-        self.objectScaleMmSlider.setToolTip('Increasing this value smooths the segmentation and reduces leaks. This is the sigma used for edge detection.')
+        self.objectScaleMmSlider.setToolTip("Increasing this value smooths the segmentation and reduces leaks. This is the sigma used for edge detection.")
         self.scriptedEffect.addLabeledOptionsWidget("Object scale:", self.objectScaleMmSlider)
-        self.objectScaleMmSlider.connect('valueChanged(double)', self.updateMRMLFromGUI)
+        self.objectScaleMmSlider.connect("valueChanged(double)", self.updateMRMLFromGUI)
 
         # Apply button
         self.applyButton = qt.QPushButton("Apply")
-        self.applyButton.objectName = self.__class__.__name__ + 'Apply'
+        self.applyButton.objectName = self.__class__.__name__ + "Apply"
         self.applyButton.setToolTip("Accept previewed result")
         self.scriptedEffect.addOptionsWidget(self.applyButton)
-        self.applyButton.connect('clicked()', self.onApply)
+        self.applyButton.connect("clicked()", self.onApply)
 
     def createCursor(self, widget):
         # Turn off effect-specific cursor for this effect
@@ -75,7 +75,6 @@ To segment a single object, create a segment and paint inside and create another
         self.scriptedEffect.setParameter("ObjectScaleMm", self.objectScaleMmSlider.value)
 
     def onApply(self):
-
         # Make sure the user wants to do the operation, even if the segment is not visible
         if not self.scriptedEffect.confirmCurrentSegmentVisible():
             return
@@ -109,6 +108,7 @@ To segment a single object, create a segment and paint inside and create another
         # Run segmentation algorithm
         import SimpleITK as sitk
         import sitkUtils
+
         # Read input data from Slicer into SimpleITK
         labelImage = sitk.ReadImage(sitkUtils.GetSlicerITKReadWriteAddress(mergedLabelmapNode.GetName()))
         backgroundImage = sitk.ReadImage(sitkUtils.GetSlicerITKReadWriteAddress(sourceVolumeNode.GetName()))

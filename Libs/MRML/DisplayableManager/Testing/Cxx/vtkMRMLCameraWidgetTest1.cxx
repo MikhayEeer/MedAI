@@ -15,6 +15,7 @@
 // VTK includes
 #include <vtkErrorCode.h>
 #include <vtkInteractorEventRecorder.h>
+#include <vtkInteractorStyle3D.h>
 #include <vtkNew.h>
 #include <vtkPNGWriter.h>
 #include <vtkRegressionTestImage.h>
@@ -87,7 +88,7 @@ int vtkMRMLCameraWidgetTest1(int vtkNotUsed(argc), char* vtkNotUsed(argv)[])
   rw->SetInteractor(ri.GetPointer());
 
   // Set Interactor Style
-  vtkNew<vtkMRMLThreeDViewInteractorStyle> iStyle;
+  vtkNew<vtkInteractorStyle3D> iStyle;
   ri->SetInteractorStyle(iStyle.GetPointer());
 
   // MRML scene
@@ -116,6 +117,10 @@ int vtkMRMLCameraWidgetTest1(int vtkNotUsed(argc), char* vtkNotUsed(argv)[])
   vtkSmartPointer<vtkMRMLDisplayableManagerGroup> group = vtkSmartPointer<vtkMRMLDisplayableManagerGroup>::Take(
     factory->InstantiateDisplayableManagers(rr.GetPointer()));
   CHECK_NOT_NULL(group);
+
+  vtkNew<vtkMRMLThreeDViewInteractorStyle> iObserver;
+  iObserver->SetDisplayableManagers(group);
+  iObserver->SetInteractor(ri);
 
   vtkMRMLCameraDisplayableManager * cameraDisplayableManager =vtkMRMLCameraDisplayableManager::SafeDownCast(
     group->GetDisplayableManagerByClassName("vtkMRMLCameraDisplayableManager"));
@@ -155,9 +160,9 @@ int vtkMRMLCameraWidgetTest1(int vtkNotUsed(argc), char* vtkNotUsed(argv)[])
 
   // Check if camera shift is the same even if the camera is anisotropically scaled
   for (int i = 0; i < 3; i++)
-    {
+  {
     CHECK_DOUBLE_TOLERANCE(cameraShiftAnisotropic[i], cameraShift[i], 1.0e-5);
-    }
+  }
 
   return EXIT_SUCCESS;
 }

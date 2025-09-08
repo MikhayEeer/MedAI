@@ -59,9 +59,9 @@ int vtkSlicerModelsLogicAddFileTest( int argc, char * argv[] )
   // Test success cases
 
   if (argc > 1)
-    {
+  {
     CHECK_EXIT_SUCCESS(testAddFile(argv[1]));
-    }
+  }
   CHECK_EXIT_SUCCESS(testAddModelWithPolyData(false));
   CHECK_EXIT_SUCCESS(testAddModelWithPolyData(true));
 
@@ -134,4 +134,3 @@ int testAddModelWithPolyData(bool withPolyData)
 
   return EXIT_SUCCESS;
 }
-

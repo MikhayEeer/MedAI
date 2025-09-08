@@ -33,8 +33,14 @@
 //
 
 // CTK includes
+#include <ctkVTKRenderView_p.h>
 #include <ctkPimpl.h>
 #include <ctkVTKObject.h>
+
+// VTK includes
+#include <vtkNew.h>
+#include <vtkRenderStepsPass.h>
+#include <vtkSSAOPass.h>
 
 // qMRML includes
 #include "qMRMLThreeDView.h"
@@ -42,21 +48,20 @@
 class vtkMRMLDisplayableManagerGroup;
 class vtkMRMLViewNode;
 class vtkMRMLCameraNode;
+class vtkMRMLThreeDViewInteractorStyle;
 class vtkObject;
 
 //-----------------------------------------------------------------------------
-class qMRMLThreeDViewPrivate: public QObject
+class qMRMLThreeDViewPrivate: public ctkVTKRenderViewPrivate
 {
   Q_OBJECT
   QVTK_OBJECT
   Q_DECLARE_PUBLIC(qMRMLThreeDView);
-protected:
-  qMRMLThreeDView* const q_ptr;
 public:
   qMRMLThreeDViewPrivate(qMRMLThreeDView& object);
   ~qMRMLThreeDViewPrivate() override;
 
-  virtual void init();
+  void init() override;
 
   void setMRMLScene(vtkMRMLScene* scene);
 
@@ -71,8 +76,12 @@ protected:
   void initDisplayableManagers();
 
   vtkMRMLDisplayableManagerGroup*    DisplayableManagerGroup;
+  vtkMRMLThreeDViewInteractorStyle*  InteractorObserver;
   vtkMRMLScene*                      MRMLScene;
   vtkMRMLViewNode*                   MRMLViewNode;
+
+  vtkNew<vtkSSAOPass> ShadowsRenderPass;
+  vtkNew<vtkRenderStepsPass> BasicRenderPass;
 };
 
 #endif

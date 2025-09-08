@@ -54,11 +54,11 @@ namespace
 {
 //-----------------------------------------------------------------------------
 void checkFinalWidgetState(void* data)
-  {
+{
   qMRMLColorListView* widget = reinterpret_cast<qMRMLColorListView*>(data);
 
   CTKCOMPARE(widget->currentIndex().row(), 49);
-  }
+}
 }
 
 //-----------------------------------------------------------------------------
@@ -92,11 +92,10 @@ int qMRMLColorListViewEventTranslatorPlayerTest1(int argc, char * argv [] )
 
   // ------------------------
   if (!app.arguments().contains("-I"))
-    {
+  {
     QTimer::singleShot(0, &etpWidget, SLOT(play()));
-    }
+  }
 
   etpWidget.show();
   return app.exec();
 }
-

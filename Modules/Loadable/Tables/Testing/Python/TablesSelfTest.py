@@ -9,6 +9,7 @@ from slicer.ScriptedLoadableModule import *
 # TablesSelfTest
 #
 
+
 class TablesSelfTest(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
@@ -24,6 +25,7 @@ class TablesSelfTest(ScriptedLoadableModule):
 # TablesSelfTestWidget
 #
 
+
 class TablesSelfTestWidget(ScriptedLoadableModuleWidget):
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
@@ -32,6 +34,7 @@ class TablesSelfTestWidget(ScriptedLoadableModuleWidget):
 #
 # TablesSelfTestLogic
 #
+
 
 class TablesSelfTestLogic(ScriptedLoadableModuleLogic):
     """This class should implement all the actual
@@ -46,18 +49,14 @@ class TablesSelfTestLogic(ScriptedLoadableModuleLogic):
 
 
 class TablesSelfTestTest(ScriptedLoadableModuleTest):
-    """
-    This is the test case for your scripted module.
-    """
+    """This is the test case for your scripted module."""
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_TablesSelfTest_FullTest1()
 
@@ -76,7 +75,7 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
     # ------------------------------------------------------------------------------
     def section_SetupPathsAndNames(self):
         # Set constants
-        self.sampleTableName = 'SampleTable'
+        self.sampleTableName = "SampleTable"
 
     # ------------------------------------------------------------------------------
     def section_CreateTable(self):
@@ -108,7 +107,7 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
 
         tableNode = slicer.util.getNode(self.sampleTableName)
 
-        tableNode.SetColumnLongName("Column 1", "First column")
+        tableNode.SetColumnTitle("Column 1", "First column")
         tableNode.SetColumnUnitLabel("Column 1", "mm")
         tableNode.SetColumnDescription("Column 1", "This a long description of the first column")
 
@@ -119,7 +118,7 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
     def section_TableWidgetButtons(self):
         self.delayDisplay("Test widget buttons")
 
-        slicer.util.selectModule('Tables')
+        slicer.util.selectModule("Tables")
 
         # Make sure subject hierarchy auto-creation is on for this test
         tablesWidget = slicer.modules.tables.widgetRepresentation()
@@ -129,16 +128,16 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
 
         tablesWidget.setCurrentTableNode(tableNode)
 
-        lockTableButton = slicer.util.findChildren(widget=tablesWidget, name='LockTableButton')[0]
-        copyButton = slicer.util.findChildren(widget=tablesWidget, name='CopyButton')[0]
-        pasteButton = slicer.util.findChildren(widget=tablesWidget, name='PasteButton')[0]
-        addRowButton = slicer.util.findChildren(widget=tablesWidget, name='RowInsertButton')[0]
-        deleteRowButton = slicer.util.findChildren(widget=tablesWidget, name='RowDeleteButton')[0]
-        lockFirstRowButton = slicer.util.findChildren(widget=tablesWidget, name='LockFirstRowButton')[0]
-        addColumnButton = slicer.util.findChildren(widget=tablesWidget, name='ColumnInsertButton')[0]
-        deleteColumnButton = slicer.util.findChildren(widget=tablesWidget, name='ColumnDeleteButton')[0]
-        lockFirstColumnButton = slicer.util.findChildren(widget=tablesWidget, name='LockFirstColumnButton')[0]
-        tableView = slicer.util.findChildren(widget=tablesWidget, name='TableView')[0]
+        lockTableButton = slicer.util.findChildren(widget=tablesWidget, name="LockTableButton")[0]
+        copyButton = slicer.util.findChildren(widget=tablesWidget, name="CopyButton")[0]
+        pasteButton = slicer.util.findChildren(widget=tablesWidget, name="PasteButton")[0]
+        addRowButton = slicer.util.findChildren(widget=tablesWidget, name="RowInsertButton")[0]
+        deleteRowButton = slicer.util.findChildren(widget=tablesWidget, name="RowDeleteButton")[0]
+        lockFirstRowButton = slicer.util.findChildren(widget=tablesWidget, name="LockFirstRowButton")[0]
+        addColumnButton = slicer.util.findChildren(widget=tablesWidget, name="ColumnInsertButton")[0]
+        deleteColumnButton = slicer.util.findChildren(widget=tablesWidget, name="ColumnDeleteButton")[0]
+        lockFirstColumnButton = slicer.util.findChildren(widget=tablesWidget, name="LockFirstColumnButton")[0]
+        tableView = slicer.util.findChildren(widget=tablesWidget, name="TableView")[0]
 
         tableModel = tableView.model()
 
@@ -157,11 +156,11 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
         #############
         self.delayDisplay("Test lock first row/column")
 
-        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == 'Column 1')
+        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == "Column 1")
         lockFirstRowButton.click()
-        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == 'some')
+        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == "some")
         lockFirstColumnButton.click()
-        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == '')
+        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == "")
         lockFirstRowButton.click()
         lockFirstColumnButton.click()
 
@@ -196,10 +195,10 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
         self.assertTrue(tableNode.GetNumberOfRows() == initialNumberOfRows)
 
         lockFirstRowButton.click()
-        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == 'Column 1')
+        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == "Column 1")
 
         lockFirstColumnButton.click()
-        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == 'Column 1')
+        self.assertTrue(tableModel.data(tableModel.index(0, 0)) == "Column 1")
 
         lockTableButton.click()
 
@@ -283,5 +282,5 @@ class TablesSelfTestTest(ScriptedLoadableModuleTest):
         slicer.mrmlScene.AddNode(volumeNode)
         slicer.mrmlScene.AddNode(displayNode)
         volumeNode.SetAndObserveDisplayNodeID(displayNode.GetID())
-        displayNode.SetAndObserveColorNodeID('vtkMRMLColorTableNodeGrey')
+        displayNode.SetAndObserveColorNodeID("vtkMRMLColorTableNodeGrey")
         return volumeNode

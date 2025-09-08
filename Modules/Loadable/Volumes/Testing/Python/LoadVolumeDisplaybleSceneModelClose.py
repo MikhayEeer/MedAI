@@ -3,7 +3,6 @@ from slicer.ScriptedLoadableModule import *
 
 
 class VolumesLoadSceneCloseTesting(ScriptedLoadableModuleTest):
-
     def setUp(self):
         pass
 
@@ -18,17 +17,18 @@ class VolumesLoadSceneCloseTesting(ScriptedLoadableModuleTest):
         # first, get some sample data
         #
         import SampleData
+
         SampleData.downloadSample("MRHead")
 
         #
         # enter the models module
         #
         mainWindow = slicer.util.mainWindow()
-        mainWindow.moduleSelector().selectModule('Models')
+        mainWindow.moduleSelector().selectModule("Models")
 
         #
         # close the scene
         #
         slicer.mrmlScene.Clear(0)
 
-        self.delayDisplay('Test passed')
+        self.delayDisplay("Test passed")

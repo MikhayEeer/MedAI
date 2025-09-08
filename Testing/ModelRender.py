@@ -3,7 +3,7 @@ import time
 import random
 
 
-def newSphere(name=''):
+def newSphere(name=""):
     if name == "":
         name = "sphere-%g" % time.time()
 
@@ -15,7 +15,7 @@ def newSphere(name=''):
     modelDisplayNode.SetColor(random.random(), random.random(), random.random())
     Slicer.slicer.MRMLScene.AddNode(modelDisplayNode)
     modelNode = Slicer.slicer.vtkMRMLModelNode()
-# VTK6 TODO
+    # VTK6 TODO
     modelNode.SetAndObservePolyData(sphere.GetOutput())
     modelNode.SetAndObserveDisplayNodeID(modelDisplayNode.GetID())
     modelNode.SetName(name)
@@ -23,7 +23,6 @@ def newSphere(name=''):
 
 
 def sphereMovie(dir="."):
-
     for i in range(20):
         newSphere()
         Slicer.TkCall("update")

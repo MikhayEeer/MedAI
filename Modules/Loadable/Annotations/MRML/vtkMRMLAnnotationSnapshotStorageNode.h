@@ -22,7 +22,6 @@
 #include "vtkMRMLStorageNode.h"
 
 class vtkImageData;
-/// \ingroup Slicer_QtModules_Annotation
 class VTK_SLICER_ANNOTATIONS_MODULE_MRML_EXPORT vtkMRMLAnnotationSnapshotStorageNode
   : public vtkMRMLStorageNode
 {
@@ -58,6 +57,3 @@ protected:
 };
 
 #endif
-
-
-

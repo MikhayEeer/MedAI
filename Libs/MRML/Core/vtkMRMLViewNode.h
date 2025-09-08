@@ -191,15 +191,15 @@ public:
 
   /// Modes for automatically controlling camera
   enum
-    {
+  {
     RotateAround = 0,
     LookFrom,
     ViewAxisMode_Last
-    };
+  };
 
   /// Rotate camera directions
   enum
-    {
+  {
     PitchUp = 0,
     PitchDown,
     RollLeft,
@@ -207,11 +207,11 @@ public:
     YawLeft,
     YawRight,
     SpinDirection_Last
-    };
+  };
 
   /// Stereo modes
   enum
-    {
+  {
     NoStereo = 0,
     RedBlue,
     Anaglyph,
@@ -221,37 +221,37 @@ public:
     UserDefined_2,
     UserDefined_3,
     StereoType_Last
-    };
+  };
 
   /// Render modes
   enum
-    {
+  {
     Perspective = 0,
     Orthographic,
     RenderMode_Last
-    };
+  };
 
   /// Animation mode
   enum
-    {
+  {
     Off = 0,
     Spin,
     Rock,
     AnimationMode_Last
-    };
+  };
 
   /// Quality setting used for \sa VolumeRenderingQuality
   enum
-    {
+  {
     Adaptive = 0, ///< quality determined from desired update rate
     Normal,       ///< good image quality at reasonable speed
     Maximum,      ///< high image quality, rendering time is not considered
     VolumeRenderingQuality_Last
-    };
+  };
 
   /// Ray casting technique for volume rendering
   enum
-    {
+  {
     Composite = 0, // Composite with directional lighting (default)
     CompositeEdgeColoring, // Composite with fake lighting (edge coloring, faster) - Not used
     MaximumIntensityProjection,
@@ -259,14 +259,14 @@ public:
     GradiantMagnitudeOpacityModulation, // Not used
     IllustrativeContextPreservingExploration, // Not used
     RaycastTechnique_Last
-    };
+  };
 
   /// Events
   enum
-    {
+  {
     GraphicalResourcesCreatedEvent = 19001,
     ResetFocalPointRequestedEvent,
-    };
+  };
 
   /// Get/Set a flag indicating whether this node is actively being
   /// manipulated (usually) by a user interface. This flag is used by
@@ -299,6 +299,11 @@ public:
     RulerColorFlag,
     UseDepthPeelingFlag,
     FPSVisibleFlag,
+    ShadowsVisibilityFlag,
+    AmbientShadowsSizeScaleFlag,
+    AmbientShadowsVolumeOpacityThresholdFlag,
+    AmbientShadowsIntensityScaleFlag,
+    AmbientShadowsIntensityShiftFlag,
   };
 
   ///
@@ -314,6 +319,49 @@ public:
   /// flag. Does not cause a Modified().
   void SetInteractionFlags(unsigned int);
   vtkGetMacro(InteractionFlags, unsigned int);
+
+  //@{
+  /// Show shadows to improve depth perception.
+  /// Currently, only ambient shadows (screen-space ambient occlusion) method is supported and AmbientShadowsSizeScale, AmbientShadowsVolumeOpacityThreshold,
+  /// AmbientShadowsIntensityScale, and AmbientShadowsIntensityShift parameters control its appearance.
+  vtkGetMacro(ShadowsVisibility, bool);
+  vtkSetMacro(ShadowsVisibility, bool);
+  vtkBooleanMacro(ShadowsVisibility, bool);
+  //@}
+
+  //@{
+  /// Ambient shadows size scale.
+  /// Specifies size of features to be emphasized by shadows.The scale is logarithmic, default (0.0) corresponds
+  /// to object size of about 100 (in scene physical units).
+  vtkGetMacro(AmbientShadowsSizeScale, double);
+  vtkSetMacro(AmbientShadowsSizeScale, double);
+  vtkBooleanMacro(AmbientShadowsSizeScale, double);
+  //@}
+
+  //@{
+  /// Volume rendering opacity above this value will cast shadows.
+  vtkGetMacro(AmbientShadowsVolumeOpacityThreshold, double);
+  vtkSetMacro(AmbientShadowsVolumeOpacityThreshold, double);
+  vtkBooleanMacro(AmbientShadowsVolumeOpacityThreshold, double);
+  //@}
+
+  //@{
+  /// Ambient shadows intensity scale.
+  /// Specifies the strength of darkening by to shadows.
+  /// Higher value means stronger darkening.
+  /// Default is 1.0.
+  vtkGetMacro(AmbientShadowsIntensityScale, double);
+  vtkSetMacro(AmbientShadowsIntensityScale, double);
+  //@}
+
+  //@{
+  /// Ambient shadows intensity shift.
+  /// Specifies the minimum level of occlusion that results in visible darkening.
+  /// Higher value means darkening only appear at stronger occlusions.
+  /// Default is 0.0.
+  vtkGetMacro(AmbientShadowsIntensityShift, double);
+  vtkSetMacro(AmbientShadowsIntensityShift, double);
+  //@}
 
 protected:
   vtkMRMLViewNode();
@@ -394,6 +442,12 @@ protected:
   /// factor.
   /// If \sa VolumeRenderingQuality is set to maximum quality, then a fix oversampling factor of 10 is used.
   double VolumeRenderingOversamplingFactor;
+
+  bool ShadowsVisibility{false};
+  double AmbientShadowsSizeScale{0.3};
+  double AmbientShadowsVolumeOpacityThreshold{0.25};
+  double AmbientShadowsIntensityScale{ 1.0 };
+  double AmbientShadowsIntensityShift{ 0.0 };
 
   int LinkedControl;
   int Interacting;

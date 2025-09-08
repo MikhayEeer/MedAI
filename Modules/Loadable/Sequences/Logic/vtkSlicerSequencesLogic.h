@@ -39,7 +39,6 @@ class vtkMRMLNode;
 class vtkMRMLSequenceNode;
 class vtkMRMLSequenceBrowserNode;
 
-/// \ingroup Slicer_QtModules_ExtensionTemplate
 class VTK_SLICER_SEQUENCES_MODULE_LOGIC_EXPORT vtkSlicerSequencesLogic :
   public vtkSlicerModuleLogic
 {
@@ -68,16 +67,16 @@ public:
 
   /// Deprecated method!
   void UpdateVirtualOutputNodes(vtkMRMLSequenceBrowserNode* browserNode)
-    {
+  {
     static bool warningLogged = false;
     if (!warningLogged)
-      {
+    {
       vtkWarningMacro("vtkSlicerSequenceBrowserLogic::UpdateVirtualOutputNodes is deprecated,"
         << " use vtkSlicerSequenceBrowserLogic::UpdateProxyNodes method instead");
       warningLogged = true;
-      }
-    this->UpdateProxyNodesFromSequences(browserNode);
     }
+    this->UpdateProxyNodesFromSequences(browserNode);
+  }
 
   /// Add a synchronized sequence node and virtual output node pair to the browser node for playback/recording
   /// \param sequenceNode Sequence node to add. If nullptr, then a new node is created.

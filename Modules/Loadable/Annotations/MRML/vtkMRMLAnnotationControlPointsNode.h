@@ -1,7 +1,7 @@
 // .NAME vtkMRMLAnnotationControlPointsNode - MRML node to represent a fiber bundle from tractography in DTI data.
 // .SECTION Description
 // Annotation nodes contains control points, internally represented as vtkPolyData.
-// A Annotation node contains many control points  and forms the smallest logical unit of tractography
+// An Annotation node contains many control points  and forms the smallest logical unit of tractography
 // that MRML will manage/read/write. Each control point has accompanying data.
 // Visualization parameters for these nodes are controlled by the vtkMRMLAnnotationPointDisplayNode class.
 //
@@ -13,7 +13,6 @@
 
 class vtkMRMLAnnotationPointDisplayNode;
 
-/// \ingroup Slicer_QtModules_Annotation
 class  VTK_SLICER_ANNOTATIONS_MODULE_MRML_EXPORT vtkMRMLAnnotationControlPointsNode
   : public vtkMRMLAnnotationNode
 {
@@ -65,32 +64,32 @@ public:
 
 
   enum
-    {
+  {
       ControlPointModifiedEvent = 19010,
-    };
+  };
 
   void Modified() override
-    {
+  {
     Superclass::Modified();
 
     if (!this->GetDisableModifiedEvent())
-      {
+    {
       this->InvokeEvent(vtkMRMLAnnotationControlPointsNode::ControlPointModifiedEvent);
-      }
     }
+  }
 
   ///
   /// Invokes any modified events that are 'pending', meaning they were generated
   /// while the DisableModifiedEvent flag was nonzero.
   /// Returns the old flag state.
   int InvokePendingModifiedEvent () override
-    {
+  {
     if ( this->GetModifiedEventPending() )
-      {
+    {
       this->InvokeEvent(vtkMRMLAnnotationControlPointsNode::ControlPointModifiedEvent);
-      }
-    return Superclass::InvokePendingModifiedEvent();
     }
+    return Superclass::InvokePendingModifiedEvent();
+  }
 
   // Description:
   // get associated display node or nullptr if not set

@@ -31,7 +31,6 @@
 // VTK includes
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_Volumes
 class qSlicerLabelMapVolumeDisplayWidgetPrivate:
                                           public Ui_qSlicerLabelMapVolumeDisplayWidget
 {
@@ -124,11 +123,11 @@ void qSlicerLabelMapVolumeDisplayWidget::updateWidgetFromMRML()
   vtkMRMLLabelMapVolumeDisplayNode* displayNode =
     this->volumeDisplayNode();
   if (displayNode)
-    {
+  {
     d->ColorTableComboBox->setCurrentNode(displayNode->GetColorNode());
     d->SliceIntersectionThicknessSpinBox->setValue(
        displayNode->GetSliceIntersectionThickness());
-    }
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -137,9 +136,9 @@ void qSlicerLabelMapVolumeDisplayWidget::setColorNode(vtkMRMLNode* colorNode)
   vtkMRMLLabelMapVolumeDisplayNode* displayNode =
     this->volumeDisplayNode();
   if (!displayNode || !colorNode)
-    {
+  {
     return;
-    }
+  }
   Q_ASSERT(vtkMRMLColorNode::SafeDownCast(colorNode));
   displayNode->SetAndObserveColorNodeID(colorNode->GetID());
 }
@@ -150,9 +149,9 @@ void qSlicerLabelMapVolumeDisplayWidget::setSliceIntersectionThickness(int thick
   vtkMRMLLabelMapVolumeDisplayNode* displayNode =
     this->volumeDisplayNode();
   if (!displayNode)
-    {
+  {
     return;
-    }
+  }
   displayNode->SetSliceIntersectionThickness(thickness);
 }
 

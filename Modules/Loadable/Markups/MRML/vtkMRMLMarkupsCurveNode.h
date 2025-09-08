@@ -85,7 +85,6 @@ class vtkTriangleFilter;
 ///                          |        +-----------------+                                                  |
 ///                          +-----------------------------------------------------------------------------+
 ///
-/// \ingroup Slicer_QtModules_Markups
 class  VTK_SLICER_MARKUPS_MODULE_MRML_EXPORT vtkMRMLMarkupsCurveNode : public vtkMRMLMarkupsNode
 {
 public:
@@ -108,12 +107,6 @@ public:
 
   /// Get markup type internal name
   const char* GetMarkupType() override {return "Curve";};
-
-  // Get markup type GUI display name
-  const char* GetTypeDisplayName() override {return "Curve";};
-
-  /// Get markup short name
-  const char* GetDefaultNodeNamePrefix() override {return "OC";};
 
   /// Read node attributes from XML file
   void ReadXMLAttributes( const char** atts) override;

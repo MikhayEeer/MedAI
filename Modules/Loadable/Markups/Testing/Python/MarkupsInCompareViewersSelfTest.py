@@ -9,6 +9,7 @@ from slicer.ScriptedLoadableModule import *
 # MarkupsInCompareViewersSelfTest
 #
 
+
 class MarkupsInCompareViewersSelfTest(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
@@ -28,8 +29,8 @@ class MarkupsInCompareViewersSelfTest(ScriptedLoadableModule):
 # qMarkupsInCompareViewersSelfTestWidget
 #
 
-class MarkupsInCompareViewersSelfTestWidget(ScriptedLoadableModuleWidget):
 
+class MarkupsInCompareViewersSelfTestWidget(ScriptedLoadableModuleWidget):
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
 
@@ -53,7 +54,7 @@ class MarkupsInCompareViewersSelfTestWidget(ScriptedLoadableModuleWidget):
         parametersFormLayout.addRow(self.applyButton)
 
         # connections
-        self.applyButton.connect('clicked(bool)', self.onApplyButton)
+        self.applyButton.connect("clicked(bool)", self.onApplyButton)
 
         # Add vertical spacer
         self.layout.addStretch(1)
@@ -70,25 +71,25 @@ class MarkupsInCompareViewersSelfTestWidget(ScriptedLoadableModuleWidget):
 # MarkupsInCompareViewersSelfTestLogic
 #
 
-class MarkupsInCompareViewersSelfTestLogic(ScriptedLoadableModuleLogic):
 
+class MarkupsInCompareViewersSelfTestLogic(ScriptedLoadableModuleLogic):
     def run(self):
-        """
-        Run the actual algorithm
-        """
-        print('Running test of the markups in compare viewers')
+        """Run the actual algorithm"""
+        print("Running test of the markups in compare viewers")
 
         #
         # first load the data
         #
         print("Getting MR Head Volume")
+
         import SampleData
+
         mrHeadVolume = SampleData.downloadSample("MRHead")
 
         #
         # link the viewers
         #
-        sliceLogic = slicer.app.layoutManager().sliceWidget('Red').sliceLogic()
+        sliceLogic = slicer.app.layoutManager().sliceWidget("Red").sliceLogic()
         compositeNode = sliceLogic.GetSliceCompositeNode()
         compositeNode.SetLinkedControl(1)
 
@@ -114,7 +115,7 @@ class MarkupsInCompareViewersSelfTestLogic(ScriptedLoadableModuleLogic):
 
         # make it active
         selectionNode = slicer.mrmlScene.GetNodeByID("vtkMRMLSelectionNodeSingleton")
-        if (selectionNode is not None):
+        if selectionNode is not None:
             selectionNode.SetReferenceActivePlaceNodeID(fidNode.GetID())
 
         # add some known points to it
@@ -139,7 +140,7 @@ class MarkupsInCompareViewersSelfTestLogic(ScriptedLoadableModuleLogic):
         #
         # get compare slice composite node
         #
-        compareLogic1 = slicer.app.layoutManager().sliceWidget('Compare1').sliceLogic()
+        compareLogic1 = slicer.app.layoutManager().sliceWidget("Compare1").sliceLogic()
         compareCompositeNode1 = compareLogic1.GetSliceCompositeNode()
 
         # set MRHead in the background
@@ -183,30 +184,25 @@ class MarkupsInCompareViewersSelfTestLogic(ScriptedLoadableModuleLogic):
 
 
 class MarkupsInCompareViewersSelfTestTest(ScriptedLoadableModuleTest):
-    """
-    This is the test case for your scripted module.
-    """
+    """This is the test case for your scripted module."""
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_MarkupsInCompareViewersSelfTest1()
 
     def test_MarkupsInCompareViewersSelfTest1(self):
-
         self.delayDisplay("Starting the Markups in compare viewers test")
 
         # start in the welcome module
         m = slicer.util.mainWindow()
-        m.moduleSelector().selectModule('Welcome')
+        m.moduleSelector().selectModule("Welcome")
 
         logic = MarkupsInCompareViewersSelfTestLogic()
         logic.run()
 
-        self.delayDisplay('Test passed!')
+        self.delayDisplay("Test passed!")

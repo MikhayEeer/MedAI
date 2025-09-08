@@ -75,6 +75,22 @@ public:
   vtkSetMacro(UseOrientationFromFile, int);
   vtkGetMacro(UseOrientationFromFile, int);
 
+  //@{
+  /// Force right-handed IJK coordinate system when reading an image from file.
+  /// If enabled and the file stored on disk uses left-handed IJK coordinate system,
+  /// then the reader will flip the K axis direction and update the image origin
+  /// to make the IJK coordinate system of the loaded image right-handed.
+  /// Enabled by default, as certain processing algorithms assume this right-handed IJK.
+  vtkSetMacro(ForceRightHandedIJKCoordinateSystem, bool);
+  vtkGetMacro(ForceRightHandedIJKCoordinateSystem, bool);
+  vtkBooleanMacro(ForceRightHandedIJKCoordinateSystem, bool);
+  //@}
+
+  /// Convert voxel vector type enum from vtkITK type to MRML type
+  static int ConvertVoxelVectorTypeVTKITKToMRML(int vtkitkType);
+  /// Convert voxel vector type enum from MRML type to vtkITK type
+  static int ConvertVoxelVectorTypeMRMLToVTKITK(int mrmlType);
+
   /// Return true if the reference node is supported by the storage node
   bool CanReadInReferenceNode(vtkMRMLNode* refNode) override;
   bool CanWriteFromReferenceNode(vtkMRMLNode* refNode) override;
@@ -114,6 +130,7 @@ protected:
   int CenterImage;
   int SingleFile;
   int UseOrientationFromFile;
+  bool ForceRightHandedIJKCoordinateSystem;
 
 };
 

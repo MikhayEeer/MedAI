@@ -28,9 +28,6 @@ class SlicerDisplayNodeSequenceTest(ScriptedLoadableModule):
 # SlicerDisplayNodeSequenceTestWidget
 #
 class SlicerDisplayNodeSequenceTestWidget(ScriptedLoadableModuleWidget):
-    """
-    """
-
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
 
@@ -39,29 +36,24 @@ class SlicerDisplayNodeSequenceTestWidget(ScriptedLoadableModuleWidget):
 # SlicerDisplayNodeSequenceTestLogic
 #
 class SlicerDisplayNodeSequenceTestLogic(ScriptedLoadableModuleLogic):
-    """
-    """
+    pass
 
 
 class SlicerDisplayNodeSequenceTestTest(ScriptedLoadableModuleTest):
-    """
-    """
-
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_ScalarVolumeDisplayNodeSequence()
-        self.delayDisplay('Test completed.')
+        self.delayDisplay("Test completed.")
 
     def test_ScalarVolumeDisplayNodeSequence(self):
         # Load first volume and apply custom display
         import SampleData
+
         sampleDataLogic = SampleData.SampleDataLogic()
         mrHead = sampleDataLogic.downloadMRHead()
         mrHead.GetDisplayNode().ApplyThresholdOn()

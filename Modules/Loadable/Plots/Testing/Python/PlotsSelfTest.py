@@ -8,6 +8,7 @@ from slicer.ScriptedLoadableModule import *
 # PlotsSelfTest
 #
 
+
 class PlotsSelfTest(ScriptedLoadableModule):
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
@@ -24,6 +25,7 @@ and was supported through Canada CANARIE's Research Software Program."""
 # PlotsSelfTestWidget
 #
 
+
 class PlotsSelfTestWidget(ScriptedLoadableModuleWidget):
     def setup(self):
         ScriptedLoadableModuleWidget.setup(self)
@@ -32,6 +34,7 @@ class PlotsSelfTestWidget(ScriptedLoadableModuleWidget):
 #
 # PlotsSelfTestLogic
 #
+
 
 class PlotsSelfTestLogic(ScriptedLoadableModuleLogic):
     """This class should implement all the actual
@@ -46,18 +49,14 @@ class PlotsSelfTestLogic(ScriptedLoadableModuleLogic):
 
 
 class PlotsSelfTestTest(ScriptedLoadableModuleTest):
-    """
-    This is the test case for your scripted module.
-    """
+    """This is the test case for your scripted module."""
 
     def setUp(self):
-        """ Do whatever is needed to reset the state - typically a scene clear will be enough.
-        """
+        """Do whatever is needed to reset the state - typically a scene clear will be enough."""
         slicer.mrmlScene.Clear(0)
 
     def runTest(self):
-        """Run as few or as many tests as needed here.
-        """
+        """Run as few or as many tests as needed here."""
         self.setUp()
         self.test_PlotsSelfTest_FullTest1()
 
@@ -75,10 +74,10 @@ class PlotsSelfTestTest(ScriptedLoadableModuleTest):
     # ------------------------------------------------------------------------------
     def section_SetupPathsAndNames(self):
         # Set constants
-        self.tableName = 'SampleTable'
-        self.xColumnName = 'x'
-        self.y1ColumnName = 'cos'
-        self.y2ColumnName = 'sin'
+        self.tableName = "SampleTable"
+        self.xColumnName = "x"
+        self.y1ColumnName = "cos"
+        self.y2ColumnName = "sin"
 
         self.series1Name = "Cosine"
         self.series2Name = "Sine"
@@ -110,6 +109,7 @@ class PlotsSelfTestTest(ScriptedLoadableModuleTest):
 
         # Fill in the table with some example values
         import math
+
         numPoints = 69
         inc = 7.5 / (numPoints - 1)
         table.SetNumberOfRows(numPoints)
@@ -143,9 +143,9 @@ class PlotsSelfTestTest(ScriptedLoadableModuleTest):
         plotChartNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLPlotChartNode", self.chartName)
         plotChartNode.AddAndObservePlotSeriesNodeID(plotSeriesNode1.GetID())
         plotChartNode.AddAndObservePlotSeriesNodeID(plotSeriesNode2.GetID())
-        plotChartNode.SetTitle('A simple plot with 2 curves')
-        plotChartNode.SetXAxisTitle('A simple plot with 2 curves')
-        plotChartNode.SetYAxisTitle('This is the Y axis')
+        plotChartNode.SetTitle("A simple plot with 2 curves")
+        plotChartNode.SetXAxisTitle("A simple plot with 2 curves")
+        plotChartNode.SetYAxisTitle("This is the Y axis")
 
     # ------------------------------------------------------------------------------
     def section_TestPlotView(self):

@@ -35,9 +35,10 @@ class VolumeRenderingThreeDOnlyLayout(ScriptedLoadableModuleTest):
 
         # Load MRHead volume
         import SampleData
+
         SampleData.downloadSample("MRHead")
 
         # Enter the volume rendering module
-        slicer.util.mainWindow().moduleSelector().selectModule('VolumeRendering')
+        slicer.util.mainWindow().moduleSelector().selectModule("VolumeRendering")
 
-        self.delayDisplay('Test passed!')
+        self.delayDisplay("Test passed!")

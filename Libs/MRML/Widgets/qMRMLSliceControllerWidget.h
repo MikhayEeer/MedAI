@@ -235,12 +235,14 @@ public slots:
   void lockReformatWidgetToCamera(bool lock);
   /// Reconstruction widget
   void showSlabReconstructionWidget(bool show);
+  void toggleSlabReconstructionInteractive(bool interactive);
   /// Compositing
   void setCompositing(int mode);
   void setCompositingToAlphaBlend();
   void setCompositingToReverseAlphaBlend();
   void setCompositingToAdd();
   void setCompositingToSubtract();
+  void setClipToBackground(bool enabled);
   /// Slice spacing
   void setSliceSpacingMode(bool automatic);
   void setSliceSpacing(double spacing);

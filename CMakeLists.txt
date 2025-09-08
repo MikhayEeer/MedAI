@@ -66,6 +66,12 @@ if(APPLE)
     ALL_PROJECTS
     )
 
+  set(CMAKE_INSTALL_NAME_TOOL "" CACHE FILEPATH "" FORCE)
+  # Due to the possibility of external projects (e.g., LibFFI) enabling languages (e.g., ASM)
+  # that necessitate `install_name_tool` via the "CMakeFindBinUtils" module, we opt to clear
+  # CMAKE_INSTALL_NAME_TOOL on a per-project basis.
+  # mark_as_superbuild(VARS CMAKE_INSTALL_NAME_TOOL:FILEPATH ALL_PROJECTS)
+
   set(CMAKE_MACOSX_RPATH 0)
   mark_as_superbuild(VARS CMAKE_MACOSX_RPATH:BOOL ALL_PROJECTS)
 endif()
@@ -75,7 +81,7 @@ if(NOT DEFINED Slicer_VERSION_MAJOR)
   set(Slicer_VERSION_MAJOR "5")
 endif()
 if(NOT DEFINED Slicer_VERSION_MINOR)
-  set(Slicer_VERSION_MINOR "3")
+  set(Slicer_VERSION_MINOR "3") # For Check
 endif()
 if(NOT DEFINED Slicer_VERSION_PATCH)
   set(Slicer_VERSION_PATCH "0")
@@ -257,7 +263,7 @@ endif()
 #-----------------------------------------------------------------------------
 include(CMakeDependentOption)
 
-option(BUILD_TESTING "Test the project" OFF)#option(BUILD_TESTING "Test the project" ON)
+option(BUILD_TESTING "Test the project" ON)
 mark_as_superbuild(BUILD_TESTING)
 
 #option(WITH_MEMCHECK "Run tests through valgrind." OFF)
@@ -278,6 +284,9 @@ mark_as_superbuild(Slicer_BUILD_DIFFUSION_SUPPORT)
 
 option(Slicer_BUILD_I18N_SUPPORT "Build Slicer with Internationalization support" ON)
 mark_as_superbuild(Slicer_BUILD_I18N_SUPPORT)
+
+option(Slicer_BUILD_USAGE_LOGGING_SUPPORT "Build Slicer with support for software usage logging" ON)
+mark_as_superbuild(Slicer_BUILD_USAGE_LOGGING_SUPPORT)
 
 option(Slicer_BUILD_WEBENGINE_SUPPORT "Build Slicer with Qt WebEngine support" ON)
 mark_as_superbuild(Slicer_BUILD_WEBENGINE_SUPPORT)
@@ -353,6 +362,8 @@ set(_commit_count_offsets
   # Allocate revisions for patch releases between v5.2.0 and v5.3.0
   "100"
   # Allocate revisions for patch releases between v5.4.0 and v5.5.0
+  "200"
+  # Allocate revisions for patch releases between v5.6.0 and v5.7.0
   "200"
   )
 list(JOIN _commit_count_offsets "+" _commit_count_offsets_expr)
@@ -504,7 +515,7 @@ set(Slicer_QRCC_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/Utilities/Scripts/qrcc.py" C
 #-----------------------------------------------------------------------------
 if(Slicer_BUILD_I18N_SUPPORT)
   set(Slicer_LANGUAGES
-    "zh_CN"
+    "fr"
     CACHE STRING "Semicolon separated list of supported Slicer languages. Expected format : language[_country] (both en and en_US are supported)."
     )
   mark_as_advanced(Slicer_LANGUAGES)
@@ -562,12 +573,7 @@ mark_as_superbuild(Slicer_VTK_RENDERING_BACKEND)
 set(Slicer_VTK_RENDERING_USE_${Slicer_VTK_RENDERING_BACKEND}_BACKEND 1)
 
 # Slicer build is only tested with Sequential and TBB. OpenMP might work.
-# Use TBB by default only on Windows, as it has not been tested on other platforms.
-if(WIN32)
-  set(Slicer_DEFAULT_VTK_SMP_IMPLEMENTATION_TYPE "TBB")
-else()
-  set(Slicer_DEFAULT_VTK_SMP_IMPLEMENTATION_TYPE "Sequential")
-endif()
+set(Slicer_DEFAULT_VTK_SMP_IMPLEMENTATION_TYPE "TBB")
 set(Slicer_VTK_SMP_IMPLEMENTATION_TYPE ${Slicer_DEFAULT_VTK_SMP_IMPLEMENTATION_TYPE}
   CACHE STRING "Which multi-threaded parallelism implementation to use in VTK. Options are Sequential or TBB.")
 set_property(CACHE Slicer_VTK_SMP_IMPLEMENTATION_TYPE
@@ -646,7 +652,7 @@ endif()
     list(APPEND Slicer_REQUIRED_QT_MODULES X11Extras)
   endif()
 
-  find_package(Qt5 COMPONENTS Core LinguistTools QUIET)
+  find_package(Qt5 COMPONENTS Core QUIET)
   if(Slicer_BUILD_WEBENGINE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES
       WebEngine
@@ -659,9 +665,9 @@ endif()
   if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT OR Slicer_BUILD_APPLICATIONUPDATE_SUPPORT)
     list(APPEND Slicer_REQUIRED_QT_MODULES Qml)
   endif()
-  #if(Slicer_BUILD_I18N_SUPPORT)
-  #  list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
-  #endif()
+  if(Slicer_BUILD_I18N_SUPPORT)
+    list(APPEND Slicer_REQUIRED_QT_MODULES LinguistTools) # no dll
+  endif()
   if(BUILD_TESTING)
     list(APPEND Slicer_REQUIRED_QT_MODULES Test)
   endif()
@@ -740,7 +746,7 @@ include(CTest)
 set(__conf_types "")
 if(CMAKE_CONFIGURATION_TYPES)
   # We need to pass the configuration type on the test command line.
-  set(__conf_types -C "${CMAKE_CFG_INTDIR}")
+  set(__conf_types -C "$<CONFIG>")
 endif()
 add_custom_target(Experimental ${CMAKE_CTEST_COMMAND} ${__conf_types} -D Experimental)
 

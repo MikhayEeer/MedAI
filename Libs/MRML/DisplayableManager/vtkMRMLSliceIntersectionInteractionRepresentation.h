@@ -96,6 +96,9 @@ class VTK_MRML_DISPLAYABLEMANAGER_EXPORT vtkMRMLSliceIntersectionInteractionRepr
     /// Compute slice intersection point between red, green and yellow slice nodes
     void ComputeSliceIntersectionPoint();
 
+    /// Compute distance between a point and a slice intersection
+    bool DistanceFromSliceIntersectionToPoint(vtkMRMLSliceNode* intersectingSlice, double point_RAS[3], double& distance);
+
     /// Get slice intersection point between red, green and yellow slice nodes
     double* GetSliceIntersectionPoint() VTK_SIZEHINT(3);
 
@@ -116,30 +119,30 @@ class VTK_MRML_DISPLAYABLEMANAGER_EXPORT vtkMRMLSliceIntersectionInteractionRepr
     virtual double GetMaximumHandlePickingDistance2();
 
     class HandleInfo
-      {
+    {
       public:
         HandleInfo(int index, int componentType, const std::string& intersectingSliceNodeID, double positionWorld[3], double positionLocal[3])
           : Index(index)
           , ComponentType(componentType)
           , IntersectingSliceNodeID(intersectingSliceNodeID)
-          {
+        {
           for (int i = 0; i < 3; ++i)
-            {
+          {
             this->PositionWorld[i] = positionWorld[i];
-            }
+          }
           this->PositionWorld[3] = 1.0;
           for (int i = 0; i < 3; ++i)
-            {
+          {
             this->PositionLocal[i] = positionLocal[i];
-            }
-          this->PositionLocal[3] = 1.0;
           }
+          this->PositionLocal[3] = 1.0;
+        }
         int Index;
         int ComponentType;
         std::string IntersectingSliceNodeID;
         double PositionLocal[4];
         double PositionWorld[4];
-      };
+    };
 
     /// Get the list of info for all interaction handles
     typedef std::vector<HandleInfo> HandleInfoList;
@@ -189,7 +192,7 @@ class VTK_MRML_DISPLAYABLEMANAGER_EXPORT vtkMRMLSliceIntersectionInteractionRepr
     class vtkInternal;
     vtkInternal* Internal;
 
-    vtkMRMLSliceIntersectionInteractionRepresentationHelper* Helper;
+    vtkSmartPointer<vtkMRMLSliceIntersectionInteractionRepresentationHelper> Helper;
 
   private:
     vtkMRMLSliceIntersectionInteractionRepresentation(const vtkMRMLSliceIntersectionInteractionRepresentation&) = delete;

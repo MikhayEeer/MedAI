@@ -59,7 +59,6 @@
 #include "ctkVTKWidgetsUtils.h"
 
 //-----------------------------------------------------------------------------
-/// \ingroup Slicer_QtModules_SubjectHierarchy_Widgets
 class qSlicerSubjectHierarchyViewContextMenuPluginPrivate: public QObject
 {
   Q_DECLARE_PUBLIC(qSlicerSubjectHierarchyViewContextMenuPlugin);
@@ -87,6 +86,9 @@ public:
 
   QAction* IntersectingSlicesVisibilityAction = nullptr;
   QAction* IntersectingSlicesInteractiveAction = nullptr;
+
+  QAction* EnableSlabReconstructionAction = nullptr;
+  QAction* SlabReconstructionInteractiveAction = nullptr;
 
   vtkWeakPointer<vtkMRMLInteractionNode> InteractionNode;
   vtkWeakPointer<vtkMRMLAbstractViewNode> ViewNode;
@@ -208,14 +210,15 @@ void qSlicerSubjectHierarchyViewContextMenuPluginPrivate::init()
     qSlicerSubjectHierarchyAbstractPlugin::SectionDefault, 20); // set to 20 to make it the last item in the action group
   QObject::connect(this->CopyImageAction, SIGNAL(triggered()), q, SLOT(saveScreenshot()));
 
+  int sliceSection = qSlicerSubjectHierarchyAbstractPlugin::SectionDefault + 5; // set section to +5 to allow placing other sections above
+
   // Slice intersections
   this->IntersectingSlicesVisibilityAction = new QAction(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Slice intersections"), q);
   this->IntersectingSlicesVisibilityAction->setObjectName("IntersectingSlicesAction");
   this->IntersectingSlicesVisibilityAction->setToolTip(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Show how the "
                                                         "other slice planes intersect each slice plane."));
   this->IntersectingSlicesVisibilityAction->setCheckable(true);
-  qSlicerSubjectHierarchyAbstractPlugin::setActionPosition(this->IntersectingSlicesVisibilityAction,
-    qSlicerSubjectHierarchyAbstractPlugin::SectionDefault + 5); // set section to +5 to allow placing other sections above
+  qSlicerSubjectHierarchyAbstractPlugin::setActionPosition(this->IntersectingSlicesVisibilityAction, sliceSection);
   QObject::connect(this->IntersectingSlicesVisibilityAction, SIGNAL(triggered(bool)),
     q, SLOT(setIntersectingSlicesVisible(bool)));
 
@@ -225,10 +228,33 @@ void qSlicerSubjectHierarchyViewContextMenuPluginPrivate::init()
   this->IntersectingSlicesInteractiveAction->setToolTip(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Show handles for slice interaction."));
   this->IntersectingSlicesInteractiveAction->setCheckable(true);
   this->IntersectingSlicesInteractiveAction->setEnabled(false);
-  qSlicerSubjectHierarchyAbstractPlugin::setActionPosition(this->IntersectingSlicesInteractiveAction,
-    qSlicerSubjectHierarchyAbstractPlugin::SectionDefault+5); // set section to +5 to allow placing other sections above
+  qSlicerSubjectHierarchyAbstractPlugin::setActionPosition(this->IntersectingSlicesInteractiveAction, sliceSection, 1);
   QObject::connect(this->IntersectingSlicesInteractiveAction, SIGNAL(triggered(bool)),
     q, SLOT(setIntersectingSlicesHandlesVisible(bool)));
+
+  int thickSlabSection = sliceSection + 5; // set section to +5 to allow placing other sections above
+
+  // Thick slab reconstruction
+  this->EnableSlabReconstructionAction = new QAction(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Thick slab reconstruction"), q);
+  this->EnableSlabReconstructionAction->setObjectName("EnableSlabReconstructionAction");
+  this->EnableSlabReconstructionAction->setToolTip(qSlicerSubjectHierarchyViewContextMenuPlugin::tr(
+                                                     "Enable Thick Slab Reconstruction (TSR). "
+                                                     "TSR is used to merge contiguous slices within a certain range."));
+  this->EnableSlabReconstructionAction->setCheckable(true);
+  this->EnableSlabReconstructionAction->setEnabled(false);
+  qSlicerSubjectHierarchyAbstractPlugin::setActionPosition(this->EnableSlabReconstructionAction, thickSlabSection);
+  QObject::connect(this->EnableSlabReconstructionAction, SIGNAL(triggered(bool)),
+    q, SLOT(setSlabReconstructionEnabled(bool)));
+
+  this->SlabReconstructionInteractiveAction = new QAction(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Interactive"), q);
+  this->SlabReconstructionInteractiveAction->setObjectName("SlabReconstructionInteractiveAction");
+  this->SlabReconstructionInteractiveAction->setToolTip(qSlicerSubjectHierarchyViewContextMenuPlugin::tr(
+                                                          "Show handles for interactively adjusting slab reconstruction thickness."));
+  this->SlabReconstructionInteractiveAction->setCheckable(true);
+  this->SlabReconstructionInteractiveAction->setEnabled(false);
+  qSlicerSubjectHierarchyAbstractPlugin::setActionPosition(this->SlabReconstructionInteractiveAction, thickSlabSection, 1);
+  QObject::connect(this->SlabReconstructionInteractiveAction, SIGNAL(triggered(bool)),
+    q, SLOT(setSlabReconstructionInteractive(bool)));
 }
 
 //-----------------------------------------------------------------------------
@@ -268,7 +294,9 @@ QList<QAction*> qSlicerSubjectHierarchyViewContextMenuPlugin::viewContextMenuAct
     << d->ToggleTiltLockAction
     << d->ConfigureSliceViewAnnotationsAction
     << d->IntersectingSlicesVisibilityAction
-    << d->IntersectingSlicesInteractiveAction;
+    << d->IntersectingSlicesInteractiveAction
+    << d->EnableSlabReconstructionAction
+    << d->SlabReconstructionInteractiveAction;
   return actions;
 }
 
@@ -281,29 +309,29 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::showViewContextMenuActionsFor
 
   vtkMRMLSubjectHierarchyNode* shNode = qSlicerSubjectHierarchyPluginHandler::instance()->subjectHierarchyNode();
   if (!shNode || !shNode->GetScene())
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Failed to access subject hierarchy node";
     return;
-    }
+  }
   if (itemID != shNode->GetSceneItemID())
-    {
+  {
     return;
-    }
+  }
   if (!eventData.contains("ViewNodeID"))
-    {
+  {
     return;
-    }
+  }
   vtkMRMLAbstractViewNode* viewNode = vtkMRMLAbstractViewNode::SafeDownCast(
     shNode->GetScene()->GetNodeByID(eventData["ViewNodeID"].toString().toStdString()));
   if (!viewNode)
-    {
+  {
     return;
-    }
+  }
   vtkMRMLInteractionNode* interactionNode = viewNode->GetInteractionNode();
   if (!interactionNode)
-    {
+  {
     return;
-    }
+  }
 
   d->ViewContextMenuEventData = eventData;
 
@@ -331,17 +359,17 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::showViewContextMenuActionsFor
   d->LayoutNode = viewNode->GetMaximizedState(isMaximized, canBeMaximized);
   d->MaximizeViewAction->setVisible(canBeMaximized);
   if (canBeMaximized)
-    {
+  {
     d->MaximizeViewAction->setProperty("maximize", QVariant(!isMaximized));
     if (isMaximized)
-      {
+    {
       d->MaximizeViewAction->setText(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Restore view layout"));
-      }
-    else
-      {
-      d->MaximizeViewAction->setText(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Maximize view"));
-      }
     }
+    else
+    {
+      d->MaximizeViewAction->setText(qSlicerSubjectHierarchyViewContextMenuPlugin::tr("Maximize view"));
+    }
+  }
 
   d->CopyImageAction->setVisible(true);
 
@@ -350,7 +378,8 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::showViewContextMenuActionsFor
   d->ViewNode = viewNode;
 
   // Check tilt lock in camera widget and set menu item accordingly
-  bool isSliceViewNode = (vtkMRMLSliceNode::SafeDownCast(viewNode) != nullptr);
+  vtkMRMLSliceNode* sliceViewNode = vtkMRMLSliceNode::SafeDownCast(d->ViewNode);
+  bool isSliceViewNode = (sliceViewNode != nullptr);
   d->ConfigureSliceViewAnnotationsAction->setVisible(isSliceViewNode);
   d->FitSliceViewAction->setVisible(isSliceViewNode);
   d->RefocusAllCamerasAction->setVisible(isSliceViewNode);
@@ -359,7 +388,7 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::showViewContextMenuActionsFor
 
   vtkSlicerApplicationLogic* appLogic = qSlicerApplication::application()->applicationLogic();
   if (isSliceViewNode && appLogic)
-    {
+  {
     d->IntersectingSlicesVisibilityAction->setVisible(true);
     d->IntersectingSlicesVisibilityAction->setEnabled(true);
     d->IntersectingSlicesVisibilityAction->setChecked(appLogic->GetIntersectingSlicesEnabled(vtkMRMLApplicationLogic::IntersectingSlicesVisibility));
@@ -367,41 +396,57 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::showViewContextMenuActionsFor
     d->IntersectingSlicesInteractiveAction->setVisible(true);
     d->IntersectingSlicesInteractiveAction->setEnabled(d->IntersectingSlicesVisibilityAction->isChecked());
     d->IntersectingSlicesInteractiveAction->setChecked(appLogic->GetIntersectingSlicesEnabled(vtkMRMLApplicationLogic::IntersectingSlicesInteractive));
-    }
+  }
   else
-    {
+  {
     d->IntersectingSlicesVisibilityAction->setVisible(false);
     d->IntersectingSlicesInteractiveAction->setVisible(false);
-    }
+  }
+
+  if (sliceViewNode && appLogic)
+  {
+    d->EnableSlabReconstructionAction->setVisible(true);
+    d->EnableSlabReconstructionAction->setEnabled(true);
+    d->EnableSlabReconstructionAction->setChecked(sliceViewNode->GetSlabReconstructionEnabled());
+
+    d->SlabReconstructionInteractiveAction->setVisible(true);
+    d->SlabReconstructionInteractiveAction->setEnabled(d->EnableSlabReconstructionAction->isChecked());
+    d->SlabReconstructionInteractiveAction->setChecked(appLogic->GetIntersectingSlicesEnabled(vtkMRMLApplicationLogic::IntersectingSlicesThickSlabInteractive));
+  }
+  else
+  {
+    d->EnableSlabReconstructionAction->setVisible(false);
+    d->SlabReconstructionInteractiveAction->setVisible(false);
+  }
 
   d->ToggleTiltLockAction->setVisible(!isSliceViewNode);
   if (!qSlicerApplication::application()
     || !qSlicerApplication::application()->layoutManager())
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: cannot get layout manager";
     return;
-    }
+  }
   QWidget* widget = qSlicerApplication::application()->layoutManager()->viewWidget(d->ViewNode);
 
   qMRMLThreeDWidget* threeDWidget = qobject_cast<qMRMLThreeDWidget*>(widget);
   vtkMRMLCameraWidget* cameraWidget = nullptr;
   if (threeDWidget)
-    {
+  {
     vtkMRMLCameraDisplayableManager* cameraDisplayableManager = vtkMRMLCameraDisplayableManager::SafeDownCast(threeDWidget->
       threeDView()->displayableManagerByClassName("vtkMRMLCameraDisplayableManager"));
     if (!cameraDisplayableManager)
-      {
+    {
       qWarning() << Q_FUNC_INFO << " failed: cannot get cameraDisplayableManager";
       return;
-      }
+    }
     else
-      {
+    {
       cameraWidget = cameraDisplayableManager->GetCameraWidget();
       d->ToggleTiltLockAction->setChecked(cameraWidget->GetTiltLocked());
       // Cache camera widget pointer to have it available for the menu action execution.
       d->CameraWidget = cameraWidget;
-      }
     }
+  }
 }
 
 //---------------------------------------------------------------------------
@@ -409,10 +454,10 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::setInteractionMode(int mode)
 {
   Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   if (!d->InteractionNode)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: invalid interaction node";
     return;
-    }
+  }
   d->InteractionNode->SetCurrentInteractionMode(mode);
 }
 
@@ -432,18 +477,18 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::saveScreenshot()
   qMRMLSliceWidget* sliceWidget = qobject_cast<qMRMLSliceWidget*>(widget);
   qMRMLThreeDWidget* threeDWidget = qobject_cast<qMRMLThreeDWidget*>(widget);
   if (sliceWidget)
-    {
+  {
     widget = sliceWidget->sliceView();
-    }
+  }
   else if (threeDWidget)
-    {
+  {
     widget = threeDWidget->threeDView();
-    }
+  }
   if (!widget)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: cannot get view widget from layout manager";
     return;
-    }
+  }
 
   // Grab image
   QImage screenshot = ctk::grabVTKWidget(widget);
@@ -451,10 +496,10 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::saveScreenshot()
   // Copy to clipboard
   QClipboard* clipboard = QApplication::clipboard();
   if (!clipboard)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: cannot access the clipboard";
     return;
-    }
+  }
   clipboard->setImage(screenshot);
 }
 
@@ -464,9 +509,9 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::configureSliceViewAnnotations
   Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
   if (!layoutManager)
-    {
+  {
     return;
-    }
+  }
   layoutManager->setCurrentModule("DataProbe");
 }
 
@@ -475,18 +520,18 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::maximizeView()
 {
   Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   if (!d->LayoutNode)
-    {
+  {
     return;
-    }
+  }
   bool maximizeView = d->MaximizeViewAction->property("maximize").toBool();
   if (maximizeView)
-    {
+  {
     d->LayoutNode->AddMaximizedViewNode(d->ViewNode);
-    }
+  }
   else
-    {
+  {
     d->LayoutNode->RemoveMaximizedViewNode(d->ViewNode);
-    }
+  }
 }
 //---------------------------------------------------------------------------
 void qSlicerSubjectHierarchyViewContextMenuPlugin::fitSliceView()
@@ -495,22 +540,22 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::fitSliceView()
 
   if (!qSlicerApplication::application()
     || !qSlicerApplication::application()->layoutManager())
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: cannot get layout manager";
     return;
-    }
+  }
   QWidget* widget = qSlicerApplication::application()->layoutManager()->viewWidget(d->ViewNode);
 
   qMRMLSliceWidget* sliceWidget = qobject_cast<qMRMLSliceWidget*>(widget);
   if (sliceWidget)
-    {
+  {
     sliceWidget->fitSliceToBackground();
-    }
+  }
   else
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: sliceWidget not found";
     return;
-    }
+  }
 }
 
 //---------------------------------------------------------------------------
@@ -520,23 +565,23 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::centerThreeDView()
 
   if (!qSlicerApplication::application()
     || !qSlicerApplication::application()->layoutManager())
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: cannot get layout manager";
     return;
-    }
+  }
   QWidget* widget = qSlicerApplication::application()->layoutManager()->viewWidget(d->ViewNode);
 
   qMRMLThreeDWidget* threeDWidget = qobject_cast<qMRMLThreeDWidget*>(widget);
   if (threeDWidget)
-    {
+  {
     qMRMLThreeDViewControllerWidget* threeDWidgetController = threeDWidget->threeDController();
     threeDWidgetController->resetFocalPoint();
-    }
+  }
   else
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: threeDWidget not found";
     return;
-    }
+  }
 }
 
 //---------------------------------------------------------------------------
@@ -544,27 +589,27 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::refocusCamera()
 {
   Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   if (!d->CameraWidget)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: camera widget not found.";
     return;
-    }
+  }
   vtkMRMLCameraNode* cameraNode = d->CameraWidget->GetCameraNode();
   if (!cameraNode)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: camera not found.";
     return;
-    }
+  }
   if (d->ViewContextMenuEventData.find("WorldPosition") == d->ViewContextMenuEventData.end())
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Failed to get world position";
     return;
-    }
+  }
   QVariantList worldPosVector = d->ViewContextMenuEventData["WorldPosition"].toList();
   if (worldPosVector.size() != 3)
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Invalid world position";
     return;
-    }
+  }
   double worldPos[3] = { worldPosVector[0].toDouble(), worldPosVector[1].toDouble(), worldPosVector[2].toDouble() };
   cameraNode->SetFocalPoint(worldPos);
 }
@@ -575,34 +620,34 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::refocusAllCameras()
   Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   vtkMRMLSubjectHierarchyNode* shNode = qSlicerSubjectHierarchyPluginHandler::instance()->subjectHierarchyNode();
   if (!shNode || !shNode->GetScene())
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Failed to access subject hierarchy node";
     return;
-    }
+  }
   if (d->ViewContextMenuEventData.find("WorldPosition") == d->ViewContextMenuEventData.end())
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Failed to get world position";
     return;
-    }
+  }
   QVariantList worldPosVector = d->ViewContextMenuEventData["WorldPosition"].toList();
   if (worldPosVector.size() != 3)
-    {
+  {
     qCritical() << Q_FUNC_INFO << ": Invalid world position";
     return;
-    }
+  }
   double worldPos[3] = { worldPosVector[0].toDouble(), worldPosVector[1].toDouble(), worldPosVector[2].toDouble() };
 
   std::vector<vtkMRMLNode*> cameraNodes;
   shNode->GetScene()->GetNodesByClass("vtkMRMLCameraNode", cameraNodes);
   for (unsigned int i = 0; i < cameraNodes.size(); ++i)
-    {
+  {
     vtkMRMLCameraNode* cameraNode = vtkMRMLCameraNode::SafeDownCast(cameraNodes[i]);
     if (!cameraNode)
-      {
+    {
       continue;
-      }
-    cameraNode->SetFocalPoint(worldPos);
     }
+    cameraNode->SetFocalPoint(worldPos);
+  }
 }
 
 //---------------------------------------------------------------------------
@@ -610,35 +655,58 @@ void qSlicerSubjectHierarchyViewContextMenuPlugin::toggleTiltLock()
 {
   Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   if (!d->CameraWidget)
-    {
+  {
     qWarning() << Q_FUNC_INFO << " failed: camera widget not found.";
     return;
-    }
+  }
   d->CameraWidget->SetTiltLocked(!d->CameraWidget->GetTiltLocked());
 }
 
 //---------------------------------------------------------------------------
 void qSlicerSubjectHierarchyViewContextMenuPlugin::setIntersectingSlicesVisible(bool visible)
 {
-  Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   vtkSlicerApplicationLogic* appLogic = qSlicerApplication::application()->applicationLogic();
   if (!appLogic)
-    {
+  {
     qCritical() << Q_FUNC_INFO << " failed: cannot get application logic";
     return;
-    }
+  }
   appLogic->SetIntersectingSlicesEnabled(vtkMRMLApplicationLogic::IntersectingSlicesVisibility, visible);
 }
 
 //---------------------------------------------------------------------------
 void qSlicerSubjectHierarchyViewContextMenuPlugin::setIntersectingSlicesHandlesVisible(bool interaction)
 {
-  Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
   vtkSlicerApplicationLogic* appLogic = qSlicerApplication::application()->applicationLogic();
   if (!appLogic)
-    {
+  {
     qCritical() << Q_FUNC_INFO << " failed: cannot get application logic";
     return;
-    }
+  }
   appLogic->SetIntersectingSlicesEnabled(vtkMRMLApplicationLogic::IntersectingSlicesInteractive, interaction);
+}
+
+//---------------------------------------------------------------------------
+void qSlicerSubjectHierarchyViewContextMenuPlugin::setSlabReconstructionEnabled(bool enabled)
+{
+  Q_D(qSlicerSubjectHierarchyViewContextMenuPlugin);
+  vtkMRMLSliceNode* sliceViewNode = vtkMRMLSliceNode::SafeDownCast(d->ViewNode);
+  if (!sliceViewNode)
+  {
+    qCritical() << Q_FUNC_INFO << " failed: cannot get slide node";
+    return;
+  }
+  sliceViewNode->SetSlabReconstructionEnabled(enabled);
+}
+
+//---------------------------------------------------------------------------
+void qSlicerSubjectHierarchyViewContextMenuPlugin::setSlabReconstructionInteractive(bool interactive)
+{
+  vtkSlicerApplicationLogic* appLogic = qSlicerApplication::application()->applicationLogic();
+  if (!appLogic)
+  {
+    qCritical() << Q_FUNC_INFO << " failed: cannot get application logic";
+    return;
+  }
+  appLogic->SetIntersectingSlicesEnabled(vtkMRMLApplicationLogic::IntersectingSlicesThickSlabInteractive, interactive);
 }

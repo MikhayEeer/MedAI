@@ -113,10 +113,9 @@ log = logging.getLogger(__name__)
 
 
 class Wiki:
-
     def __init__(self, username="UpdateBot", password=None):
         log.info("connecting")
-        self.doc = mwdoc.Documentation('www.slicer.org', '/w/')
+        self.doc = mwdoc.Documentation("www.slicer.org", "/w/")
         if password is not None:
             log.info("signing in")
             self.doc.login(username, password)
@@ -143,15 +142,16 @@ class Wiki:
 
     def version_pages(self, release_version):
         """Copy ``Documentation/Nightly`` and ``Template:Documentation/Nightly``
-        pages into ``release_version`` namespace."""
+        pages into ``release_version`` namespace.
+        """
         self.doc.versionPages(
-            'Nightly', release_version,
-            ['Documentation', 'Template:Documentation'])
+            "Nightly", release_version,
+            ["Documentation", "Template:Documentation"])
 
     VERSION_INFO_PAGES = {
         "previous": "Template:Documentation/prevversion",
         "current": "Template:Documentation/currentversion",
-        "next": "Template:Documentation/nextversion"
+        "next": "Template:Documentation/nextversion",
     }
 
     def version_info(self, page_name):
@@ -174,7 +174,7 @@ class Wiki:
         return {
             "previous": self.current_version(),
             "current": target_release_version,
-            "next": "%d.%d" % (target_major, target_minor + 2)
+            "next": "%d.%d" % (target_major, target_minor + 2),
         }
 
     def update_version_info_pages(self, release_version):
@@ -248,7 +248,7 @@ class Wiki:
         "Documentation/Release/Report a problem",
         "Documentation/UserTraining",
         "Documentation/UserFeedback",
-        "Documentation/Release/SlicerApplication/HardwareConfiguration"
+        "Documentation/Release/SlicerApplication/HardwareConfiguration",
     ]
 
     def redirect_page_version(self, page_name):
@@ -303,7 +303,7 @@ class Wiki:
         # update page
         content = content.replace(
             marker,
-            marker + "\n" + template.format(version=release_version)
+            marker + "\n" + template.format(version=release_version),
         )
         summary = "Add %s" % release_version
         self.set_page_content(page_name, content, summary)
@@ -314,7 +314,6 @@ class Wiki:
 
 
 def handle_query(wiki, args):
-
     def display_version_info():
         print("Version info:")
         for page_short_name, page_name in Wiki.VERSION_INFO_PAGES.items():
@@ -352,16 +351,16 @@ def handle_query(wiki, args):
         query_args.append(getattr(args, arg_name))
         return query_args[-1]
 
-    if _check('version_info'):
+    if _check("version_info"):
         display_version_info()
 
-    if _check('next_version_info'):
+    if _check("next_version_info"):
         display_next_version_info()
 
-    if _check('version_list'):
+    if _check("version_list"):
         display_version_list()
 
-    if _check('redirect_pages_version'):
+    if _check("redirect_pages_version"):
         display_redirect_pages_version()
 
     if not any(query_args):
@@ -388,16 +387,16 @@ def handle_update(wiki, args):
         update_args.append(getattr(args, arg_name))
         return update_args[-1]
 
-    if _check('version_info_pages'):
+    if _check("version_info_pages"):
         wiki.update_version_info_pages(release_version)
 
-    if _check('redirect_pages'):
+    if _check("redirect_pages"):
         wiki.update_redirect_pages(release_version)
 
-    if _check('version_list'):
+    if _check("version_list"):
         wiki.update_version_list(release_version)
 
-    if _check('top_level_documentation_page'):
+    if _check("top_level_documentation_page"):
         wiki.update_top_level_documentation_page(release_version)
 
     if not any(update_args):
@@ -414,87 +413,95 @@ def main():
     """
     parser = argparse.ArgumentParser(description=main.__doc__)
     parser.add_argument(
-        '--log-level', dest='log_level',
-        default='INFO',
-        help='Level of debug verbosity. DEBUG, INFO, WARNING, ERROR, CRITICAL.',
+        "--log-level",
+        dest="log_level",
+        default="INFO",
+        help="Level of debug verbosity. DEBUG, INFO, WARNING, ERROR, CRITICAL.",
     )
     parser.add_argument(
-        "--password", type=str, default=os.environ.get('SLICER_WIKI_UPDATEBOT_PWD'),
+        "--password",
+        type=str,
+        default=os.environ.get("SLICER_WIKI_UPDATEBOT_PWD"),
         help="password for 'UpdateBot' user. By default, try to get password from "
-        "'SLICER_WIKI_UPDATEBOT_PWD' environment variable."
+        "'SLICER_WIKI_UPDATEBOT_PWD' environment variable.",
     )
 
-    subparsers = parser.add_subparsers(
-        help='available sub-commands', dest='command')
+    subparsers = parser.add_subparsers(help="available sub-commands", dest="command")
 
     # sub-command parser
-    parser_query = subparsers.add_parser(
-        'query', help='obtain version information')
+    parser_query = subparsers.add_parser("query", help="obtain version information")
 
     parser_query.add_argument(
-        "--version-info", action="store_true",
-        help="display the version associated with pages %s" % ", ".join(
-            ['%s' % page_name for page_name in Wiki.VERSION_INFO_PAGES.values()])
+        "--version-info",
+        action="store_true",
+        help="display the version associated with pages %s"
+        % ", ".join(["%s" % page_name for page_name in Wiki.VERSION_INFO_PAGES.values()]),
     )
     parser_query.add_argument(
-        "--next-version-info", action="store_true",
+        "--next-version-info",
+        action="store_true",
         help="display what would be the *next* version associated "
-        "with pages %s" % ", ".join(
-            ['%s' % page_name for page_name in Wiki.VERSION_INFO_PAGES.values()])
+        "with pages %s" % ", ".join(["%s" % page_name for page_name in Wiki.VERSION_INFO_PAGES.values()]),
     )
     parser_query.add_argument(
-        "--version-list", action="store_true",
-        help="display the versions associated with page "
-        "'Template::Documentation/versionlist'"
+        "--version-list",
+        action="store_true",
+        help="display the versions associated with page 'Template::Documentation/versionlist'",
     )
     parser_query.add_argument(
-        "--acknowledgments-main-version", action="store_true",
-        help="display the version associated with page "
-        "'Template:Documentation/acknowledgments-versionlist'"
+        "--acknowledgments-main-version",
+        action="store_true",
+        help="display the version associated with page 'Template:Documentation/acknowledgments-versionlist'",
     )
     parser_query.add_argument(
-        "--redirect-pages-version", action="store_true",
-        help="display the version associated with pages with redirect"
+        "--redirect-pages-version",
+        action="store_true",
+        help="display the version associated with pages with redirect",
     )
 
     # sub-command parser
-    parser_copy = subparsers.add_parser(
-        'copy', help='copy Nightly pages into RELEASE_VERSION namespace')
+    parser_copy = subparsers.add_parser("copy", help="copy Nightly pages into RELEASE_VERSION namespace")
     parser_copy.add_argument(
-        "release_version", type=str, metavar="RELEASE_VERSION",
-        help="the release version where Nightly pages will be copied into"
+        "release_version",
+        type=str,
+        metavar="RELEASE_VERSION",
+        help="the release version where Nightly pages will be copied into",
     )
 
     # sub-command parser
-    parser_update = subparsers.add_parser(
-        'update', help='create and/or update wiki pages with RELEASE_VERSION')
+    parser_update = subparsers.add_parser("update", help="create and/or update wiki pages with RELEASE_VERSION")
 
     parser_update.add_argument(
-        "release_version", type=str, metavar="RELEASE_VERSION",
-        help="the release version used to update permanent pages"
+        "release_version",
+        type=str,
+        metavar="RELEASE_VERSION",
+        help="the release version used to update permanent pages",
     )
     parser_update.add_argument(
-        "--version-info-pages", action="store_true",
-        help="update the version associated with pages %s" % ", ".join(
-            ['%s' % page_name for page_name in Wiki.VERSION_INFO_PAGES.values()])
+        "--version-info-pages",
+        action="store_true",
+        help="update the version associated with pages %s"
+        % ", ".join(["%s" % page_name for page_name in Wiki.VERSION_INFO_PAGES.values()]),
     )
     parser_update.add_argument(
-        "--redirect-pages", action="store_true",
-        help="update the version associated with redirect pages"
+        "--redirect-pages",
+        action="store_true",
+        help="update the version associated with redirect pages",
     )
     parser_update.add_argument(
-        "--version-list", action="store_true",
-        help="add RELEASE_VERSION to page "
-        "'Template::Documentation/versionlist'"
+        "--version-list",
+        action="store_true",
+        help="add RELEASE_VERSION to page 'Template::Documentation/versionlist'",
     )
     parser_update.add_argument(
-        "--acknowledgments-main-version", action="store_true",
-        help="add RELEASE_VERSION to page "
-        "'Template:Documentation/acknowledgments-versionlist'"
+        "--acknowledgments-main-version",
+        action="store_true",
+        help="add RELEASE_VERSION to page 'Template:Documentation/acknowledgments-versionlist'",
     )
     parser_update.add_argument(
-        "--top-level-documentation-page", action="store_true",
-        help="add RELEASE_VERSION to page 'Documentation'"
+        "--top-level-documentation-page",
+        action="store_true",
+        help="add RELEASE_VERSION to page 'Documentation'",
     )
 
     args = parser.parse_args()

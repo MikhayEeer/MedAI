@@ -71,7 +71,7 @@ write operations.
 To learn more, see the [Coordinate systems](../user_guide/coordinate_systems.md)
 documentation, and the [Coordinate system convention in Slicer](../user_guide/coordinate_systems.md#coordinate-system-convention-in-slicer).
 
-::: 
+:::
 
 ### Images
 
@@ -80,7 +80,7 @@ Readers may support 2D, 3D, and 4D images of various types, such as scalar, vect
 - [**DICOM**](https://www.dicomstandard.org/) (.dcm, or any other): Slicer core supports reading and writing of some data types, while extensions add support for additional ones. Coordinate system: LPS (as defined by DICOM standard).
   - Supported DICOM information objects:
     - Slicer core: CT, MRI, PET, X-ray, some ultrasound images; secondary capture with Slicer scene (MRB) in private tag
-    - [Quantitative Reporting extension](https://qiicr.gitbooks.io/quantitativereporting-guide): DICOM Segmentation objects, Structured reports
+    - [Quantitative Reporting extension](https://qiicr.gitbooks.io/quantitativereporting-guide): DICOM Segmentation objects (SEG modality), Parametric Maps, Encapsulated STL (M3D modality), certain flavors of Structured Reports that follow [TID 1500 Measurement report](https://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_A.html#sect_TID_1500) template
     - [SlicerRT extension](https://www.slicerrt.org/): DICOM RT Structure Set, RT Dose, RT Plan, RT Image
     - [SlicerHeart extension](https://github.com/SlicerHeart/SlicerHeart): 2D/3D/4D ultrasound (GE, Philips, Eigen Artemis, and other)
     - [SlicerDMRI](https://dmri.slicer.org) tractography storage
@@ -163,7 +163,10 @@ Surface or volumetric meshes.
 - [**ITK HDF transform**](https://www.itk.org/ItkSoftwareGuide.pdf) (.h5): For linear, b-spline, grid (displacement field), thin-plate spline, and composite transforms. Coordinate system: LPS.
 - [**ITK TXT transform**](https://www.itk.org/ItkSoftwareGuide.pdf) (.tfm, .txt): For linear, b-spline, and thin-plate spline, and composite transforms. Coordinate system: LPS.
 - [**Matlab MAT file**](https://www.itk.org/ItkSoftwareGuide.pdf) (.mat): For linear and b-spline transforms. Coordinate system: LPS.
-- **Displacement field** (.nrrd, .nhdr, .mha, .mhd, .nii, .nii.gz): For storing grid transform as a vector image, each voxel containing displacement vector. Coordinate system: LPS.
+- **Displacement field**: For storing grid transform as a vector image, each voxel containing displacement vector. Voxel values are in physical space (not in voxels).
+  - NRRD (.nrrd, .nhdr): Coordinate system: LPS. Metadata: `dimension: 4`, `sizes: 3 I J K`, `space directions: none (ix, iy, iz) (jx, jy, jz) (kx, ky, kz)`, `kinds: vector domain domain domain`
+  - MetaImage (.mha, .mhd): Coordinate system: LPS. Metadata: `NDims = 3`, `DimSize = I J K`, `ElementNumberOfChannels = 3`
+  - NIFTI (.nii, .nii.gz). Coordinate system: RAS. Metadata: Number of dimensions: 5. Dimensions: `[I, J, K, 1, 3]`. Intent code: `NIFTI_INTENT_DISPVECT (1006)`.
 - [SlicerRT extension](https://www.slicerrt.org/)
   - **Pinnacle DVF** (.dvf)
 

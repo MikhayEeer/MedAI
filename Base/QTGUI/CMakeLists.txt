@@ -17,6 +17,8 @@ set(KIT_include_directories
 # Source files
 set(KIT_SRCS
 
+  Auth.h
+  Auth.cpp
   UserInfo.h
   UserInfo.cxx
   LoginForm.h
@@ -34,6 +36,11 @@ set(KIT_SRCS
 
   backendAiManager.h
   backendAiManager.cpp
+
+  userlist.h
+  userlist.cpp
+  passworddialog.h
+  passworddialog.cpp
 
   qSlicerAbstractModule.cxx
   qSlicerAbstractModule.h
@@ -248,6 +255,7 @@ set(KIT_MOC_SRCS
 
   qSlicerSingletonViewFactory.h
 
+  Auth.h
   UserInfo.h
   LoginForm.h
   RechargeForm.h
@@ -257,6 +265,8 @@ set(KIT_MOC_SRCS
   deduction_dialog.h
 
   backendAiManager.h
+  userlist.h
+  passworddialog.h
   )
 
 if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)

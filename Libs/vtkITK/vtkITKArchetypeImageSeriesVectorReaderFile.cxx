@@ -61,11 +61,11 @@ void vtkITKExecuteDataFromFileVector(
   typename ReaderType::Pointer reader2 = ReaderType::New();
   reader2->SetFileName(self->GetFileName(0));
   if (self->GetUseNativeCoordinateOrientation())
-    {
+  {
     filter = reader2;
-    }
+  }
   else
-    {
+  {
     typename itk::OrientImageFilter<image2,image2>::Pointer orient2 =
       itk::OrientImageFilter<image2,image2>::New();
     orient2->SetDebug(self->GetDebug());
@@ -74,7 +74,7 @@ void vtkITKExecuteDataFromFileVector(
     orient2->SetDesiredCoordinateOrientation(
       self->GetDesiredCoordinateOrientation());
     filter = orient2;
-    }
+  }
   filter->UpdateLargestPossibleRegion();
   typename itk::ImportImageContainer<itk::SizeValueType, T>::Pointer PixelContainer2;
   PixelContainer2 = filter->GetOutput()->GetPixelContainer();
@@ -90,21 +90,21 @@ void vtkITKExecuteDataFromFileVector(
 // are assumed to be the same as the file extent/order.
 void vtkITKArchetypeImageSeriesVectorReaderFile::ExecuteDataWithInformation(vtkDataObject *output, vtkInformation* outInfo)
 {
-    if (!this->Superclass::Archetype)
-      {
-        vtkErrorMacro("An Archetype must be specified.");
-        this->SetErrorCode(vtkErrorCode::NoFileNameError);
-        return;
-      }
-    vtkImageData *data = this->AllocateOutputData(output, outInfo);
+  if (!this->Superclass::Archetype)
+  {
+    vtkErrorMacro("An Archetype must be specified.");
+    this->SetErrorCode(vtkErrorCode::NoFileNameError);
+    return;
+  }
+  vtkImageData *data = this->AllocateOutputData(output, outInfo);
 
-    // If there is only one file in the series, just use an image file reader
+  // If there is only one file in the series, just use an image file reader
   if (this->FileNames.size() == 1)
-    {
+  {
     vtkDebugMacro("ImageSeriesVectorReaderFile: only one file: " << this->FileNames[0].c_str());
     vtkDebugMacro("DiffusionTensorImageReaderFile: only one file: " << this->FileNames[0].c_str());
     switch (this->OutputScalarType)
-      {
+    {
       vtkTemplateMacroCase(VTK_DOUBLE, double, vtkITKExecuteDataFromFileVector<VTK_TT>(this, data));
       vtkTemplateMacroCase(VTK_FLOAT, float, vtkITKExecuteDataFromFileVector<VTK_TT>(this, data));
       vtkTemplateMacroCase(VTK_LONG, long, vtkITKExecuteDataFromFileVector<VTK_TT>(this, data));
@@ -117,21 +117,21 @@ void vtkITKArchetypeImageSeriesVectorReaderFile::ExecuteDataWithInformation(vtkD
       vtkTemplateMacroCase(VTK_SIGNED_CHAR, signed char, vtkITKExecuteDataFromFileVector<VTK_TT>(this, data));
       vtkTemplateMacroCase(VTK_UNSIGNED_CHAR, unsigned char, vtkITKExecuteDataFromFileVector<VTK_TT>(this, data));
     default:
-        vtkErrorMacro(<< "UpdateFromFile: Unknown data type " << this->OutputScalarType);
-        this->SetErrorCode(vtkErrorCode::UnrecognizedFileTypeError);
-      }
+      vtkErrorMacro(<< "UpdateFromFile: Unknown data type " << this->OutputScalarType);
+      this->SetErrorCode(vtkErrorCode::UnrecognizedFileTypeError);
+    }
 
     this->SetMetaDataScalarRangeToPointDataInfo(data);
-    }
+  }
   else
-    {
+  {
     // ERROR - should have used the series reader
     vtkErrorMacro("There is more than one file, use the VectorReaderSeries instead");
     this->SetErrorCode(vtkErrorCode::FileFormatError);
-    }
+  }
 }
 
-
+//----------------------------------------------------------------------------
 void vtkITKArchetypeImageSeriesVectorReaderFile::ReadProgressCallback(itk::Object* obj, const itk::EventObject&, void* data)
 {
   itk::ProcessObject::Pointer p(dynamic_cast<itk::ProcessObject *>(obj));

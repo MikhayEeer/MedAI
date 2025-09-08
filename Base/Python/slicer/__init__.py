@@ -1,4 +1,4 @@
-""" This module sets up root logging and loads the Slicer library modules into its namespace.
+"""This module sets up root logging and loads the Slicer library modules into its namespace.
 
 
 .. warning::
@@ -130,7 +130,8 @@
 def _createModule(name, globals, docstring):
     import imp
     import sys
-    moduleName = name.split('.')[-1]
+
+    moduleName = name.split(".")[-1]
     module = imp.new_module(moduleName)
     module.__file__ = __file__
     module.__doc__ = docstring
@@ -141,17 +142,37 @@ def _createModule(name, globals, docstring):
 # -----------------------------------------------------------------------------
 # Create slicer.modules and slicer.moduleNames
 
-_createModule('slicer.modules', globals(),
+_createModule("slicer.modules", globals(),
               """This object provides an access to all instantiated Slicer modules.
 
 For more details, see the generated Slicer API documentation.
 """)
 
-_createModule('slicer.moduleNames', globals(),
+_createModule("slicer.moduleNames", globals(),
               """This object provides an access to all instantiated Slicer module names.
 
 For more details, see the generated Slicer API documentation.
 """)
+
+# -----------------------------------------------------------------------------
+# Importing VTK is required for loading its Python modules and ensuring seamless instantiation
+# of VTK-based MRML or Slicer Python modules from code executed in both "PythonSlicer executable"
+# and the "Slicer Python Console" environments.
+#
+# For example, regardless of the order of the imports, the following is now supported in
+# both environments:
+#
+#   import slicer
+#   import vtk
+#   object = slicer.vtkMRMLScene()
+#   assert isinstance(object, vtk.vtkObject)
+#
+# This is needed because the wrapping of the MRML or Slicer VTK-based C++ classes is done
+# through the vtkMacroKitPythonWrap (from vtkAddon) and the generated "vtk*PythonInitImpl.cxx"
+# files do not include the names of the dependent VTK modules in the list used with
+# "vtkPythonUtil::ImportModule".
+
+import vtk  # noqa: F401
 
 # -----------------------------------------------------------------------------
 # Load modules: Add VTK and PythonQt python module attributes into slicer namespace
@@ -163,6 +184,7 @@ except ImportError as detail:
 
 import os
 import sys
+
 standalone_python = "python" in str.lower(os.path.split(sys.executable)[-1])
 
 for kit in available_kits:
@@ -190,6 +212,7 @@ if not standalone_python:
     try:
         import numpy  # noqa: F401
         import scipy  # noqa: F401
+        import scipy.linalg  # noqa: F401
     except ImportError as detail:
         print(detail)
 
@@ -199,3 +222,4 @@ if not standalone_python:
 del _createModule
 del available_kits
 del standalone_python
+del vtk

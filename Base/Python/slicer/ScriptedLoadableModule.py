@@ -8,9 +8,10 @@ import qt
 import vtk
 
 import slicer
+from slicer.i18n import tr as _
 
 
-__all__ = ['ScriptedLoadableModule', 'ScriptedLoadableModuleWidget', 'ScriptedLoadableModuleLogic', 'ScriptedLoadableModuleTest']
+__all__ = ["ScriptedLoadableModule", "ScriptedLoadableModuleWidget", "ScriptedLoadableModuleLogic", "ScriptedLoadableModuleTest"]
 
 
 class ScriptedLoadableModule:
@@ -23,19 +24,19 @@ class ScriptedLoadableModule:
         parent.categories = []
         parent.dependencies = []
         parent.contributors = ["Andras Lasso (PerkLab, Queen's University), Steve Pieper (Isomics)"]
-        parent.helpText = """
+        parent.helpText = _("""
 This module was created from a template and the help section has not yet been updated.
-"""
+""")
 
-        parent.acknowledgementText = """
-This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See <a>https://www.slicer.org</a> for details.
-This work is partially supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colonoscopy (See <a href=https://www.slicer.org>https://www.na-mic.org/Wiki/index.php/NA-MIC_NCBC_Collaboration:NA-MIC_virtual_colonoscopy</a>).
-"""
+        parent.acknowledgementText = _("""
+This work is supported by NA-MIC, NAC, BIRN, NCIGT, and the Slicer Community. See {link} for details.
+This work is partially supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colonoscopy.
+""").format(link="<a href=\"https://www.slicer.org\">https://www.slicer.org</a>")
 
         # Set module icon from Resources/Icons/<ModuleName>.png
         moduleDir = os.path.dirname(self.parent.path)
-        for iconExtension in ['.svg', '.png']:
-            iconPath = os.path.join(moduleDir, 'Resources/Icons', self.moduleName + iconExtension)
+        for iconExtension in [".svg", ".png"]:
+            iconPath = os.path.join(moduleDir, "Resources/Icons", self.moduleName + iconExtension)
             if os.path.isfile(iconPath):
                 parent.icon = qt.QIcon(iconPath)
                 break
@@ -50,10 +51,9 @@ This work is partially supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colon
         slicer.selfTests[self.moduleName] = self.runTest
 
     def resourcePath(self, filename):
-        """Return the absolute path of the module ``Resources`` directory.
-        """
+        """Return the absolute path of the module ``Resources`` directory."""
         scriptedModulesPath = os.path.dirname(self.parent.path)
-        return os.path.join(scriptedModulesPath, 'Resources', filename)
+        return os.path.join(scriptedModulesPath, "Resources", filename)
 
     def getDefaultModuleDocumentationLink(self, docPage=None):
         """Return string that can be inserted into the application help text that contains
@@ -65,21 +65,20 @@ This work is partially supported by PAR-07-249: R01CA131718 NA-MIC Virtual Colon
             url = slicer.app.documentationBaseUrl + docPage
         else:
             url = slicer.app.moduleDocumentationUrl(self.moduleName)
-        linkText = f'<p>For more information see the <a href="{url}">online documentation</a>.</p>'
+        linkText = ("<p>" + _("For more information, see the {url_start}online documentation{url_end}.")
+                    .format(url_start=f'<a href="{url}">', url_end="</a>") + "</p>")
         return linkText
 
     def runTest(self, msec=100, **kwargs):
-        """
-        :param msec: delay to associate with :func:`ScriptedLoadableModuleTest.delayDisplay()`.
-        """
+        """:param msec: delay to associate with :func:`ScriptedLoadableModuleTest.delayDisplay()`."""
         # Name of the test case class is expected to be <ModuleName>Test
         module = importlib.import_module(self.__module__)
-        className = self.moduleName + 'Test'
+        className = self.moduleName + "Test"
         try:
             TestCaseClass = getattr(module, className)
         except AttributeError:
             # Treat missing test case class as a failure; provide useful error message
-            raise AssertionError(f'Test case class not found: {self.__module__}.{className} ')
+            raise AssertionError(f"Test case class not found: {self.__module__}.{className} ")
 
         testCase = TestCaseClass()
         testCase.messageDelay = msec
@@ -94,9 +93,9 @@ class ScriptedLoadableModuleWidget:
         super().__init__()
         # Get module name by stripping 'Widget' from the class name
         self.moduleName = self.__class__.__name__
-        if self.moduleName.endswith('Widget'):
+        if self.moduleName.endswith("Widget"):
             self.moduleName = self.moduleName[:-6]
-        self.developerMode = slicer.util.settingsValue('Developer/DeveloperMode', False, converter=slicer.util.toBool)
+        self.developerMode = slicer.util.settingsValue("Developer/DeveloperMode", False, converter=slicer.util.toBool)
         if not parent:
             self.parent = slicer.qMRMLWidget()
             self.parent.setLayout(qt.QVBoxLayout())
@@ -108,13 +107,12 @@ class ScriptedLoadableModuleWidget:
             self.setup()
             self.parent.show()
         slicer.app.moduleManager().connect(
-            'moduleAboutToBeUnloaded(QString)', self._onModuleAboutToBeUnloaded)
+            "moduleAboutToBeUnloaded(QString)", self._onModuleAboutToBeUnloaded)
 
     def resourcePath(self, filename):
-        """Return the absolute path of the module ``Resources`` directory.
-        """
+        """Return the absolute path of the module ``Resources`` directory."""
         scriptedModulesPath = os.path.dirname(slicer.util.modulePath(self.moduleName))
-        return os.path.join(scriptedModulesPath, 'Resources', filename)
+        return os.path.join(scriptedModulesPath, "Resources", filename)
 
     def cleanup(self):
         """Override this function to implement module widget specific cleanup.
@@ -139,7 +137,7 @@ class ScriptedLoadableModuleWidget:
                     self.reloadTestMenuButton.defaultAction().objectName)
 
             slicer.app.moduleManager().disconnect(
-                'moduleAboutToBeUnloaded(QString)', self._onModuleAboutToBeUnloaded)
+                "moduleAboutToBeUnloaded(QString)", self._onModuleAboutToBeUnloaded)
 
     def setupDeveloperSection(self):
         if not self.developerMode:
@@ -165,7 +163,7 @@ class ScriptedLoadableModuleWidget:
         self.reloadButton = qt.QPushButton("Reload")
         self.reloadButton.toolTip = "Reload this module."
         self.reloadButton.name = "ScriptedLoadableModuleTemplate Reload"
-        self.reloadButton.connect('clicked()', self.onReload)
+        self.reloadButton.connect("clicked()", self.onReload)
 
         # Toolbutton with either Test or Reload and Test
         self.reloadTestMenu = qt.QMenu(self)
@@ -203,16 +201,18 @@ class ScriptedLoadableModuleWidget:
         self.editSourceButton = qt.QPushButton("Edit")
         self.editSourceButton.toolTip = ("Edit the module's source code. Shift+Click to copy the source code path to the clipboard."
                                          " The default editor can be changed in the Python section of the Application Settings.")
-        self.editSourceButton.connect('clicked()', self.onEditSource)
+        self.editSourceButton.connect("clicked()", self.onEditSource)
 
         self.editModuleUiButton = None
-        moduleUiFileName = self.resourcePath('UI/%s.ui' % self.moduleName)
+        moduleUiFileName = self.resourcePath("UI/%s.ui" % self.moduleName)
+
         import os.path
+
         if os.path.isfile(moduleUiFileName):
             # Module UI file exists
             self.editModuleUiButton = qt.QPushButton("Edit UI")
             self.editModuleUiButton.toolTip = "Edit the module's .ui file."
-            self.editModuleUiButton.connect('clicked()', lambda filename=moduleUiFileName: slicer.util.startQtDesigner(moduleUiFileName))
+            self.editModuleUiButton.connect("clicked()", lambda filename=moduleUiFileName: slicer.util.startQtDesigner(moduleUiFileName))
 
         # restart Slicer button
         # (use this during development, but remove it when delivering
@@ -220,7 +220,7 @@ class ScriptedLoadableModuleWidget:
         self.restartButton = qt.QPushButton("Restart Slicer")
         self.restartButton.toolTip = "Restart Slicer"
         self.restartButton.name = "ScriptedLoadableModuleTemplate Restart"
-        self.restartButton.connect('clicked()', slicer.app.restart)
+        self.restartButton.connect("clicked()", slicer.app.restart)
 
         if self.editModuleUiButton:
             # There are many buttons, distribute them in two rows
@@ -234,18 +234,16 @@ class ScriptedLoadableModuleWidget:
         self.setupDeveloperSection()
 
     def onReload(self):
-        """
-        Reload scripted module widget representation.
-        """
+        """Reload scripted module widget representation."""
 
         # Print a clearly visible separator to make it easier
         # to distinguish new error messages (during/after reload)
         # from old ones.
-        print('\n' * 2)
-        print('-' * 30)
-        print('Reloading module: ' + self.moduleName)
-        print('-' * 30)
-        print('\n' * 2)
+        print("\n" * 2)
+        print("-" * 30)
+        print("Reloading module: " + self.moduleName)
+        print("-" * 30)
+        print("\n" * 2)
 
         slicer.util.reloadScriptedModule(self.moduleName)
 
@@ -282,6 +280,7 @@ class ScriptedLoadableModuleWidget:
         if editor:
             # User specified a custom editor for .py files
             import subprocess
+
             try:
                 # Use the startup environment to avoid Python environment issues with text editors implemented in Python
                 subprocess.Popen([editor, filePath], env=slicer.util.startupEnvironment())
@@ -297,7 +296,7 @@ class ScriptedLoadableModuleLogic:
         super().__init__()
         # Get module name by stripping 'Logic' from the class name
         self.moduleName = self.__class__.__name__
-        if self.moduleName.endswith('Logic'):
+        if self.moduleName.endswith("Logic"):
             self.moduleName = self.moduleName[:-5]
 
         # If parameter node is singleton then only one parameter node
@@ -371,6 +370,7 @@ class ScriptedLoadableModuleTest(unittest.TestCase):
     """
 
     def __init__(self, *args, **kwargs):
+        self.moduleTestNames = []
         super().__init__(*args, **kwargs)
 
         # See https://github.com/Slicer/Slicer/pull/6243#issuecomment-1061800718 for more information.
@@ -381,6 +381,8 @@ class ScriptedLoadableModuleTest(unittest.TestCase):
         # takeScreenshot default parameters
         self.enableScreenshots = False
         self.screenshotScaleFactor = 1.0
+        if not self.moduleTestNames:
+            self.moduleTestNames = [method for method in dir(self) if "test" in method and callable(getattr(self, method))]
 
     def delayDisplay(self, message, requestedDelay=None, msec=None):
         """
@@ -419,7 +421,7 @@ class ScriptedLoadableModuleTest(unittest.TestCase):
         slicer.util.delayDisplay(message, msec)
 
     def takeScreenshot(self, name, description, type=-1):
-        """ Take a screenshot of the selected viewport and store as and
+        """Take a screenshot of the selected viewport and store as and
         annotation snapshot node. Convenience method for automated testing.
 
         If self.enableScreenshots is False then only a message is displayed but screenshot
@@ -471,8 +473,34 @@ class ScriptedLoadableModuleTest(unittest.TestCase):
         annotationLogic = slicer.modules.annotations.logic()
         annotationLogic.CreateSnapShot(name, description, type, self.screenshotScaleFactor, imageData)
 
+    def setUp(self):
+        """
+        Method called to prepare the test fixture. This is called immediately before calling the test method; other
+        than AssertionError or SkipTest, any exception raised by this method will be considered an error rather than
+        a test failure. The default implementation does nothing.
+        """
+        return
+
+    def tearDown(self):
+        """
+        Method called immediately after the test method has been called and the result recorded. This is called
+        even if the test method raised an exception, so the implementation in subclasses may need to be
+        particularly careful about checking internal state. Any exception, other than AssertionError or
+        SkipTest, raised by this method will be considered an additional error rather than a test failure
+        (thus increasing the total number of reported errors). This method will only be called if the setUp()
+        succeeds, regardless of the outcome of the test method. The default implementation does nothing.
+        """
+        return
+
     def runTest(self):
-        """
-        Run a default selection of tests here.
-        """
-        logging.warning('No test is defined in ' + self.__class__.__name__)
+        """Run a default selection of tests here."""
+        if len(self.moduleTestNames) == 0:
+            logging.warning("No test is defined in " + self.__class__.__name__)
+            return
+        self.setUpClass()
+        for test_name in self.moduleTestNames:
+            self.setUp()
+            logging.info(f"Running {test_name}")
+            getattr(self, test_name)()
+            self.tearDown()
+        self.tearDownClass()

@@ -85,9 +85,9 @@ QString qSlicerModulePanel::currentModuleName()const
 void qSlicerModulePanel::setModule(const QString& moduleName)
 {
   if (!this->moduleManager())
-    {
+  {
     return;
-    }
+  }
 
   // Log when the user switches between modules so that if the application crashed
   // we knew which module was active.
@@ -95,10 +95,10 @@ void qSlicerModulePanel::setModule(const QString& moduleName)
 
   qSlicerAbstractCoreModule * module = nullptr;
   if (!moduleName.isEmpty())
-    {
+  {
     module = this->moduleManager()->module(moduleName);
     Q_ASSERT(module);
-    }
+  }
   this->setModule(module);
 }
 
@@ -108,25 +108,25 @@ void qSlicerModulePanel::setModule(qSlicerAbstractCoreModule* module)
   // Retrieve current module associated with the module panel
   qSlicerAbstractCoreModule* oldModule = this->currentModule();
   if (module == oldModule)
-    {
+  {
     return;
-    }
+  }
 
   if (oldModule)
-    {
+  {
     // Remove the current module
     this->removeModule(oldModule);
-    }
+  }
 
   if (module)
-    {
+  {
     // Add the new module
     this->addModule(module);
-    }
+  }
   else
-    {
-   // d->HelpLabel->setHtml("");
-    }
+  {
+    //d->HelpLabel->setHtml("");
+  }
 }
 
 //---------------------------------------------------------------------------
@@ -137,11 +137,11 @@ void qSlicerModulePanel::addModule(qSlicerAbstractCoreModule* module)
   qSlicerAbstractModuleWidget* moduleWidget =
     dynamic_cast<qSlicerAbstractModuleWidget*>(module->widgetRepresentation());
   if (moduleWidget == nullptr)
-    {
+  {
     qDebug() << "Warning, there is no UI for the module"<< module->name();
     emit moduleAdded(module->name());
     return;
-    }
+  }
 
   Q_ASSERT(!moduleWidget->moduleName().isEmpty());
 
@@ -149,13 +149,13 @@ void qSlicerModulePanel::addModule(qSlicerAbstractCoreModule* module)
 
   // Update module layout
   if (moduleWidget->layout())
-    {
+  {
     moduleWidget->layout()->setContentsMargins(0, 0, 0, 0);
-    }
+  }
   else
-    {
+  {
     qWarning() << moduleWidget->moduleName() << "widget doesn't have a top-level layout.";
-    }
+  }
 
   QWidget* scrollAreaContents = d->ScrollArea->widget();
   // Insert module in the panel
@@ -171,10 +171,10 @@ void qSlicerModulePanel::addModule(qSlicerAbstractCoreModule* module)
 
   qSlicerCoreApplication* app = qSlicerCoreApplication::application();
   if (app)
-    {
+  {
     help = qSlicerUtils::replaceDocumentationUrlVersion(module->helpText(),
       QUrl(app->documentationBaseUrl()).host(), app->documentationVersion());
-    }
+  }
   help.replace("\\n", "<br>");
 
   //d->HelpCollapsibleButton->setVisible(this->isHelpAndAcknowledgmentVisible() && !help.isEmpty());
@@ -191,7 +191,7 @@ void qSlicerModulePanel::addModule(qSlicerAbstractCoreModule* module)
   QString acknowledgement = module->acknowledgementText();
   //d->AcknowledgementLabel->insertHtml(acknowledgement);
   if (!module->contributors().isEmpty())
-    {
+  {
     QString contributors = module->contributors().join(", ");
     QString contributorsText = QString("<br/><u>%1</u> <i>").arg(tr("Contributors:"));
     contributorsText += contributors + "</i><br/>";
@@ -222,9 +222,9 @@ void qSlicerModulePanel::removeModule(qSlicerAbstractCoreModule* module)
   Q_ASSERT(scrollAreaLayout);
   int index = scrollAreaLayout->indexOf(moduleWidget);
   if (index == -1)
-    {
+  {
     return;
-    }
+  }
 
   moduleWidget->exit();
   moduleWidget->removeEventFilter(this);
@@ -270,6 +270,11 @@ void qSlicerModulePanel::setHelpAndAcknowledgmentVisible(bool value)
     {
     //d->HelpCollapsibleButton->setVisible(false);
     }
+  }
+  else
+  {
+    d->HelpCollapsibleButton->setVisible(false);
+  }
 }
 
 //---------------------------------------------------------------------------
@@ -284,11 +289,11 @@ bool qSlicerModulePanel::eventFilter(QObject* watchedModule, QEvent* event)
 {
   Q_UNUSED(watchedModule);
   if (event->type() == QEvent::Resize)
-    {
+  {
     // The module has a new size, that means the module panel should probably
     // be resized as well.
     this->updateGeometry();
-    }
+  }
   return false;
 }
 
