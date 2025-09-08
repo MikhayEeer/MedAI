@@ -348,7 +348,7 @@
    <item row="2" column="0">
     <widget class="ctkCollapsibleGroupBox" name="SliceDisplayCollapsibleGroupBox">
      <property name="title">
-      <string>66666666666Slice Display22</string>
+      <string>Slice Display</string>
      </property>
      <layout class="QFormLayout" name="formLayout_6">
       <property name="fieldGrowthPolicy">
@@ -377,27 +377,6 @@
       </item>
       <item row="1" column="1">
        <widget class="ctkSliderWidget" name="SliceIntersectionOpacitySlider">
-       <property name="styleSheet">
-        <string notr="true">
-        QSlider::groove:horizontal {
-            background: #444;
-            height: 6px;
-            border-radius: 3px;
-        }
-        QSlider::handle:horizontal {
-            background: #4285f4;
-            width: 14px;
-            margin: -4px 0;
-            border-radius: 7px;
-        }
-        ctkDoubleSpinBox {
-            color: white;
-            background: #222;
-            border: 1px solid #666;
-            border-radius: 4px;
-        }
-        </string>
-        </property>
         <property name="singleStep">
          <double>0.050000000000000</double>
         </property>
