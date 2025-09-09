@@ -18,7 +18,6 @@
 
 ==============================================================================*/
 
-#include "Auth.h"
 #include "LoginForm.h"
 // Slicer includes
 #include "qSlicerApplication.h"

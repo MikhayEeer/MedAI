@@ -16,9 +16,6 @@ set(KIT_include_directories
 
 # Source files
 set(KIT_SRCS
-
-  Auth.h
-  Auth.cpp
   UserInfo.h
   UserInfo.cxx
   LoginForm.h
@@ -255,7 +252,6 @@ set(KIT_MOC_SRCS
 
   qSlicerSingletonViewFactory.h
 
-  Auth.h
   UserInfo.h
   LoginForm.h
   RechargeForm.h
