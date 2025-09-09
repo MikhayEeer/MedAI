@@ -2,6 +2,7 @@ set(modules
   aaamodule
   Airwaysegmentation
   BafflePlanner
+  BoneReconstructionPlanner
   CombineModels
   CropVolumeSequence
   DataProbe
