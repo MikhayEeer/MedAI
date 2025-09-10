@@ -30,3 +30,4 @@ def iconWithGreyOut(iconPath, size = qt.QSize(24, 24)):
     grayed = iconWithGreyOut.pixmap(size, qt.QIcon.Disabled, qt.QIcon.On)
     iconWithGreyOut.addPixmap(grayed, qt.QIcon.Normal, qt.QIcon.Off)
     return iconWithGreyOut
+

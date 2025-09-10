@@ -15,11 +15,12 @@
     <widget class="QLabel" name="versionLabel">
      <property name="font">
       <font>
+       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
      <property name="text">
-      <string>版本标签</string>
+      <string>versionLabel</string>
      </property>
     </widget>
    </item>
@@ -34,20 +35,20 @@
      <item>
       <widget class="QPushButton" name="emailBugReportButton">
        <property name="toolTip">
-        <string>如果有任何不符合预期的地方，请告诉我们</string>
+        <string>Tell us if something does not work as expected</string>
        </property>
        <property name="text">
-        <string>漏洞反馈</string>
+        <string>Bug report</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="emailFeatureRequestButton">
        <property name="toolTip">
-        <string>告诉我们如何改进软件</string>
+        <string>Tell us how we can improve the software</string>
        </property>
        <property name="text">
-        <string>功能需求</string>
+        <string>Feature request</string>
        </property>
       </widget>
      </item>
@@ -56,14 +57,14 @@
    <item>
     <widget class="QPushButton" name="openDocumentationButton">
      <property name="text">
-      <string>打开文档</string>
+      <string>Open documentation</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="CollapsibleButton" native="true">
-     <property name="text" stdset="0">
-      <string>下颌骨重建规划</string>
+    <widget class="ctkCollapsibleButton" name="CollapsibleButton">
+     <property name="text">
+      <string>Mandible Reconstruction Planning</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -92,14 +93,14 @@
            <item row="1" column="0">
             <widget class="QLabel" name="label_10">
              <property name="text">
-              <string>右腿</string>
+              <string>Right side leg</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
             <widget class="QCheckBox" name="rightSideLegFibulaCheckBox">
              <property name="text">
-              <string>（若腓骨取自右腿，请勾选）</string>
+              <string>(tick if fibula is the one from the right leg)</string>
              </property>
              <property name="checked">
               <bool>false</bool>
@@ -109,24 +110,24 @@
            <item row="2" column="0">
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>选择下颌骨分割结果</string>
+              <string>Select mandibular segmentation</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="qMRMLNodeComboBox" name="mandibularSegmentationSelector" native="true">
+            <widget class="qMRMLNodeComboBox" name="mandibularSegmentationSelector">
              <property name="enabled">
               <bool>true</bool>
              </property>
-             <property name="nodeTypes" stdset="0">
+             <property name="nodeTypes">
               <stringlist>
                <string>vtkMRMLSegmentationNode</string>
               </stringlist>
              </property>
-             <property name="addEnabled" stdset="0">
+             <property name="addEnabled">
               <bool>false</bool>
              </property>
-             <property name="removeEnabled" stdset="0">
+             <property name="removeEnabled">
               <bool>false</bool>
              </property>
             </widget>
@@ -134,24 +135,24 @@
            <item row="3" column="0">
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>选择腓骨分割结果</string>
+              <string>Select fibula segmentation</string>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="qMRMLNodeComboBox" name="fibulaSegmentationSelector" native="true">
+            <widget class="qMRMLNodeComboBox" name="fibulaSegmentationSelector">
              <property name="enabled">
               <bool>true</bool>
              </property>
-             <property name="nodeTypes" stdset="0">
+             <property name="nodeTypes">
               <stringlist>
                <string>vtkMRMLSegmentationNode</string>
               </stringlist>
              </property>
-             <property name="addEnabled" stdset="0">
+             <property name="addEnabled">
               <bool>false</bool>
              </property>
-             <property name="removeEnabled" stdset="0">
+             <property name="removeEnabled">
               <bool>false</bool>
              </property>
             </widget>
@@ -159,7 +160,7 @@
            <item row="4" column="0">
             <widget class="QLabel" name="label_6">
              <property name="text">
-              <string>放置下颌骨曲线</string>
+              <string>Place mandibular curve</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -169,14 +170,14 @@
            <item row="4" column="1">
             <widget class="QPushButton" name="addMandibularCurveButton">
              <property name="text">
-              <string>添加下颌骨曲线</string>
+              <string>Add mandibular curve</string>
              </property>
             </widget>
            </item>
            <item row="5" column="0">
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>选择腓骨分割结果</string>
+              <string>Place fibula line</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -186,34 +187,34 @@
            <item row="5" column="1">
             <widget class="QPushButton" name="addFibulaLineButton">
              <property name="text">
-              <string>添加腓骨直线</string>
+              <string>Add fibula line</string>
              </property>
             </widget>
            </item>
            <item row="6" column="0">
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>放置下颌骨曲线</string>
+              <string>Place mandibular planes</string>
              </property>
             </widget>
            </item>
            <item row="6" column="1">
             <widget class="QPushButton" name="addCutPlaneButton">
              <property name="text">
-              <string>添加切割平面</string>
+              <string>Add cut plane</string>
              </property>
             </widget>
            </item>
            <item row="7" column="0">
             <widget class="QLabel" name="label_4">
              <property name="text">
-              <string>初始间距（mm）</string>
+              <string>Initial space (mm)</string>
              </property>
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="ctkDoubleSpinBox" name="initialSpinBox" native="true">
-             <property name="decimals" stdset="0">
+            <widget class="ctkDoubleSpinBox" name="initialSpinBox">
+             <property name="decimals">
               <number>1</number>
              </property>
             </widget>
@@ -221,16 +222,16 @@
            <item row="8" column="0">
             <widget class="QLabel" name="label_18">
              <property name="text">
-              <string>中间间距（mm）</string>
+              <string>Between space (mm)</string>
              </property>
             </widget>
            </item>
            <item row="8" column="1">
-            <widget class="ctkDoubleSpinBox" name="betweenSpinBox" native="true">
-             <property name="decimals" stdset="0">
+            <widget class="ctkDoubleSpinBox" name="betweenSpinBox">
+             <property name="decimals">
               <number>1</number>
              </property>
-             <property name="value" stdset="0">
+             <property name="value">
               <double>1.500000000000000</double>
              </property>
             </widget>
@@ -238,24 +239,24 @@
            <item row="10" column="0">
             <widget class="QLabel" name="label_9">
              <property name="text">
-              <string>选择下颌骨曲线</string>
+              <string>Select mandible curve</string>
              </property>
             </widget>
            </item>
            <item row="10" column="1">
-            <widget class="qMRMLNodeComboBox" name="mandibleCurveSelector" native="true">
+            <widget class="qMRMLNodeComboBox" name="mandibleCurveSelector">
              <property name="enabled">
               <bool>true</bool>
              </property>
-             <property name="nodeTypes" stdset="0">
+             <property name="nodeTypes">
               <stringlist>
                <string>vtkMRMLMarkupsCurveNode</string>
               </stringlist>
              </property>
-             <property name="addEnabled" stdset="0">
+             <property name="addEnabled">
               <bool>false</bool>
              </property>
-             <property name="removeEnabled" stdset="0">
+             <property name="removeEnabled">
               <bool>false</bool>
              </property>
             </widget>
@@ -263,24 +264,24 @@
            <item row="11" column="0">
             <widget class="QLabel" name="label_11">
              <property name="text">
-              <string>选择腓骨直线</string>
+              <string>Select fibula line</string>
              </property>
             </widget>
            </item>
            <item row="11" column="1">
-            <widget class="qMRMLNodeComboBox" name="fibulaLineSelector" native="true">
+            <widget class="qMRMLNodeComboBox" name="fibulaLineSelector">
              <property name="enabled">
               <bool>true</bool>
              </property>
-             <property name="nodeTypes" stdset="0">
+             <property name="nodeTypes">
               <stringlist>
                <string>vtkMRMLMarkupsLineNode</string>
               </stringlist>
              </property>
-             <property name="addEnabled" stdset="0">
+             <property name="addEnabled">
               <bool>false</bool>
              </property>
-             <property name="removeEnabled" stdset="0">
+             <property name="removeEnabled">
               <bool>false</bool>
              </property>
             </widget>
@@ -290,14 +291,14 @@
          <item>
           <widget class="QPushButton" name="makeModelsButton">
            <property name="text">
-            <string>从分割结果创建骨骼模型</string>
+            <string>Create bone models from segmentations</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="centerFibulaLineButton">
            <property name="text">
-            <string>利用腓骨模型将腓骨直线居中</string>
+            <string>Center fibula line using fibula model</string>
            </property>
           </widget>
          </item>
@@ -312,7 +313,7 @@
            <item>
             <widget class="QLabel" name="label_46">
              <property name="text">
-              <string>腓骨节段长度测量</string>
+              <string>Fibula segment lengths measurements</string>
              </property>
             </widget>
            </item>
@@ -325,21 +326,24 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>腓骨段测量模式。需要更新</string>
+              <string>Fibula segment measurement mode. Needs update</string>
+             </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QComboBox::AdjustToMinimumContentsLength</enum>
              </property>
              <item>
               <property name="text">
-               <string>中心到中心</string>
+               <string>center2center</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>近端到近端</string>
+               <string>proximal2proximal</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>远端到远端</string>
+               <string>distal2distal</string>
               </property>
              </item>
             </widget>
@@ -358,12 +362,12 @@
             <widget class="QComboBox" name="kindOfMandibleResectionComboBox">
              <item>
               <property name="text">
-               <string>节段性下颌骨切除术</string>
+               <string>Segmental Mandibulectomy</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>半下颌骨切除术</string>
+               <string>Hemimandibulectomy</string>
               </property>
              </item>
             </widget>
@@ -372,12 +376,12 @@
             <widget class="QComboBox" name="mandibleSideToRemoveComboBox">
              <item>
               <property name="text">
-               <string>切除右侧</string>
+               <string>Removing right side</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>切除左侧</string>
+               <string>Removing left side</string>
               </property>
              </item>
              <item>
@@ -392,38 +396,38 @@
          <item>
           <widget class="QCheckBox" name="mandiblePlanesPositioningForMaximumBoneContactCheckBox">
            <property name="text">
-            <string>自动定位下颌骨平面以实现最大骨接触面积</string>
+            <string>Automatic mandibular planes positioning for maximum bones contact area</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="makeAllMandiblePlanesRotateTogetherCheckBox">
            <property name="text">
-            <string>使所有下颌骨平面同步旋转</string>
+            <string>Make all mandible planes rotate together</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="useMoreExactVersionOfPositioningAlgorithmCheckBox">
            <property name="toolTip">
-            <string>编辑完成后使用</string>
+            <string>Use when you have finished editing</string>
            </property>
            <property name="text">
-            <string>使用更精确的定位算法（耗时更长）</string>
+            <string>Use more exact version of the positioning algorithm (takes more time)</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="useNonDecimatedBoneModelsForPreviewCheckBox">
            <property name="text">
-            <string>使用未降采样的骨骼模型预览（耗时更长）</string>
+            <string>Use non-decimated bone models for preview (takes more time)</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="fixCutGoesThroughTheMandibleTwiceCheckBox">
            <property name="text">
-            <string>修复切割线两次穿过下颌骨的问题</string>
+            <string>Fix cut goes through the mandible twice</string>
            </property>
           </widget>
          </item>
@@ -465,7 +469,7 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>强制更新（当正常更新无法正常工作时使用）</string>
+              <string>Hard-update (use when normal update does not work correctly)</string>
              </property>
              <property name="autoFillBackground">
               <bool>true</bool>
@@ -496,7 +500,7 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>锁定对 VSP 的更新</string>
+              <string>Lock updates to VSP</string>
              </property>
              <property name="text">
               <string/>
@@ -523,34 +527,35 @@
          <item>
           <widget class="QPushButton" name="create3DModelOfTheReconstructionButton">
            <property name="text">
-            <string>创建重建手术 3D 模型（用于 3D 打印）</string>
+            <string>Create 3D model of the reconstruction for
+3D printing</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="qMRMLNodeComboBox" name="condylarBeamModelSelector" native="true">
-           <property name="nodeTypes" stdset="0">
+          <widget class="qMRMLNodeComboBox" name="condylarBeamModelSelector">
+           <property name="nodeTypes">
             <stringlist notr="true">
              <string>vtkMRMLModelNode</string>
             </stringlist>
            </property>
-           <property name="hideChildNodeTypes" stdset="0">
+           <property name="hideChildNodeTypes">
             <stringlist notr="true"/>
            </property>
-           <property name="noneEnabled" stdset="0">
+           <property name="noneEnabled">
             <bool>true</bool>
            </property>
-           <property name="addEnabled" stdset="0">
+           <property name="addEnabled">
             <bool>false</bool>
            </property>
-           <property name="removeEnabled" stdset="0">
+           <property name="removeEnabled">
             <bool>false</bool>
            </property>
-           <property name="interactionNodeSingletonTag" stdset="0">
+           <property name="interactionNodeSingletonTag">
             <string notr="true">Singleton</string>
            </property>
-           <property name="noneDisplay" stdset="0">
-            <string>没有髁间梁</string>
+           <property name="noneDisplay">
+            <string>No inter-condylar beam</string>
            </property>
           </widget>
          </item>
@@ -589,24 +594,24 @@
            <item row="0" column="0">
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>当前标量体积</string>
+              <string>Current Scalar Volume</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="qMRMLNodeComboBox" name="scalarVolumeSelector" native="true">
+            <widget class="qMRMLNodeComboBox" name="scalarVolumeSelector">
              <property name="enabled">
               <bool>true</bool>
              </property>
-             <property name="nodeTypes" stdset="0">
+             <property name="nodeTypes">
               <stringlist>
                <string>vtkMRMLScalarVolumeNode</string>
               </stringlist>
              </property>
-             <property name="addEnabled" stdset="0">
+             <property name="addEnabled">
               <bool>false</bool>
              </property>
-             <property name="removeEnabled" stdset="0">
+             <property name="removeEnabled">
               <bool>false</bool>
              </property>
             </widget>
@@ -633,7 +638,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>下颌平面</string>
+              <string>Mandible planes</string>
              </property>
             </widget>
            </item>
@@ -675,14 +680,14 @@
          <item>
           <widget class="QCheckBox" name="showOriginalMandibleCheckBox">
            <property name="text">
-            <string>显示原始下颌骨模型</string>
+            <string>Show original mandible model</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="showFibulaSegmentsLengthsCheckBox">
            <property name="text">
-            <string>显示腓骨节段长度</string>
+            <string>Show fibula segments lengths</string>
            </property>
           </widget>
          </item>
@@ -694,7 +699,7 @@
            <item row="0" column="0">
             <widget class="QLabel" name="label_45">
              <property name="text">
-              <string>光照渲染：</string>
+              <string>Lights rendering:</string>
              </property>
             </widget>
            </item>
@@ -702,22 +707,22 @@
             <widget class="QComboBox" name="lightsRenderingComboBox">
              <item>
               <property name="text">
-               <string>单光源</string>
+               <string>Lamp</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>单光源 + 阴影</string>
+               <string>Lamp and Shadows</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>多光源</string>
+               <string>MultiLamp</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>多光源 + 阴影</string>
+               <string>MultiLamp and Shadows</string>
               </property>
              </item>
             </widget>
@@ -735,16 +740,16 @@
           <height>400</height>
          </size>
         </property>
-        <property name="nodeTypes" stdset="0">
+        <property name="nodeTypes">
          <stringlist>
           <string>vtkMRMLMarkupsNode</string>
           <string>vtkMRMLModelNode</string>
          </stringlist>
         </property>
-        <property name="idColumnVisible" stdset="0">
+        <property name="idColumnVisible">
          <bool>false</bool>
         </property>
-        <property name="transformColumnVisible" stdset="0">
+        <property name="transformColumnVisible">
          <bool>false</bool>
         </property>
        </widget>
@@ -753,11 +758,11 @@
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="dentalImplantsPlanningCollapsibleButton" native="true">
-     <property name="text" stdset="0">
-      <string>牙齿种植计划</string>
+    <widget class="ctkCollapsibleButton" name="dentalImplantsPlanningCollapsibleButton">
+     <property name="text">
+      <string>Dental Implants Planning</string>
      </property>
-     <property name="collapsed" stdset="0">
+     <property name="collapsed">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -772,19 +777,19 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_36">
           <property name="text">
-           <string>圆柱体半径（mm）</string>
+           <string>Cylinder radius (mm)</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="ctkDoubleSpinBox" name="dentalImplantCylinderRadiusSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="dentalImplantCylinderRadiusSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>2.000000000000000</double>
           </property>
          </widget>
@@ -792,19 +797,19 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_37">
           <property name="text">
-           <string>圆柱体高度（mm）</string>
+           <string>Cylinder height (mm)</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="ctkDoubleSpinBox" name="dentalImplantCylinderHeightSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="dentalImplantCylinderHeightSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>14.000000000000000</double>
           </property>
          </widget>
@@ -812,19 +817,19 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_38">
           <property name="text">
-           <string>钻孔导板壁厚（mm）</string>
+           <string>Drill guide wall (mm)</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="ctkDoubleSpinBox" name="dentalImplantDrillGuideWallSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="dentalImplantDrillGuideWallSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>3.000000000000000</double>
           </property>
          </widget>
@@ -834,7 +839,7 @@
       <item>
        <widget class="QPushButton" name="createDentalImplantCylindersFiducialListButton">
         <property name="text">
-         <string>创建种植体圆柱体基准点列表</string>
+         <string>Create fiducial list for implants cylinders</string>
         </property>
        </widget>
       </item>
@@ -849,21 +854,21 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_34">
           <property name="text">
-           <string>选择用于创建圆柱体的基准点列表</string>
+           <string>Select fiducial list to create cylinders</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="qMRMLNodeComboBox" name="dentalImplantFiducialListSelector" native="true">
-          <property name="nodeTypes" stdset="0">
+         <widget class="qMRMLNodeComboBox" name="dentalImplantFiducialListSelector">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLMarkupsFiducialNode</string>
            </stringlist>
           </property>
-          <property name="addEnabled" stdset="0">
+          <property name="addEnabled">
            <bool>false</bool>
           </property>
-          <property name="removeEnabled" stdset="0">
+          <property name="removeEnabled">
            <bool>false</bool>
           </property>
          </widget>
@@ -873,7 +878,7 @@
       <item>
        <widget class="QPushButton" name="createCylindersFromFiducialListAndNeomandiblePiecesButton">
         <property name="text">
-         <string>从基准点列表和下颌骨重建模型创建圆柱体</string>
+         <string>Create cylinders from fiducial list and mandible reconstruction</string>
         </property>
        </widget>
       </item>
@@ -885,14 +890,14 @@
         <item>
          <widget class="QCheckBox" name="makeAllDentalImplanCylindersParallelCheckBox">
           <property name="text">
-           <string>使所有牙种植体圆柱体保持平行</string>
+           <string>Make all dental implant cylinders parallel</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="ctkCheckablePushButton" name="updateFibulaDentalImplantCylindersButton">
           <property name="text">
-           <string>更新腓骨牙种植体圆柱体</string>
+           <string>Update fibula dental implant cylinders</string>
           </property>
          </widget>
         </item>
@@ -902,18 +907,18 @@
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="customTitaniumPlateGenerationCollapsibleButton" native="true">
-     <property name="text" stdset="0">
+    <widget class="ctkCollapsibleButton" name="customTitaniumPlateGenerationCollapsibleButton">
+     <property name="text">
       <string>Custom Titanium Plate Generation</string>
      </property>
-     <property name="collapsed" stdset="0">
+     <property name="collapsed">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_8">
       <item>
        <widget class="QPushButton" name="createPlateCurveButton">
         <property name="text">
-         <string>创建钢板曲线</string>
+         <string>Create plateCurve</string>
         </property>
        </widget>
       </item>
@@ -928,81 +933,81 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>钢板横截面宽度（mm）</string>
+           <string>Plate cross-sectional width (mm)</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_39">
           <property name="text">
-           <string>钢板横截面长度（mm）</string>
+           <string>Plate cross-sectional length (mm)</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_40">
           <property name="text">
-           <string>钢板横截面倒角半径（%）</string>
+           <string>Plate cross-sectional bevel radius (%)</string>
           </property>
          </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_41">
           <property name="text">
-           <string>板材尖角半径 (%) </string>
+           <string>Plate tips bevel radius (%) </string>
           </property>
          </widget>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_42">
           <property name="text">
-           <string>选择板曲线</string>
+           <string>Select plate curve</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="qMRMLNodeComboBox" name="plateCurveSelector" native="true">
-          <property name="nodeTypes" stdset="0">
+         <widget class="qMRMLNodeComboBox" name="plateCurveSelector">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLMarkupsCurveNode</string>
            </stringlist>
           </property>
-          <property name="addEnabled" stdset="0">
+          <property name="addEnabled">
            <bool>false</bool>
           </property>
-          <property name="removeEnabled" stdset="0">
+          <property name="removeEnabled">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="ctkDoubleSpinBox" name="plateCrossSectionalWidthSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="plateCrossSectionalWidthSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="minimum" stdset="0">
+          <property name="minimum">
            <double>0.100000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>2.500000000000000</double>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="ctkDoubleSpinBox" name="plateCrossSectionalLengthSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="plateCrossSectionalLengthSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="minimum" stdset="0">
+          <property name="minimum">
            <double>0.100000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>7.000000000000000</double>
           </property>
          </widget>
@@ -1024,17 +1029,17 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="ctkDoubleSpinBox" name="plateTipsBevelRadiusSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="plateTipsBevelRadiusSpinBox">
+          <property name="decimals">
            <number>0</number>
           </property>
-          <property name="minimum" stdset="0">
+          <property name="minimum">
            <double>1.000000000000000</double>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>49.000000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>49.000000000000000</double>
           </property>
          </widget>
@@ -1044,7 +1049,7 @@
       <item>
        <widget class="QPushButton" name="createCustomPlateButton">
         <property name="text">
-         <string>创建定制钢板</string>
+         <string>Create custom plate</string>
         </property>
        </widget>
       </item>
@@ -1052,18 +1057,18 @@
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="CollapsibleButton_2" native="true">
-     <property name="text" stdset="0">
-      <string>腓骨外科导向生成</string>
+    <widget class="ctkCollapsibleButton" name="CollapsibleButton_2">
+     <property name="text">
+      <string>Fibula Surgical Guide Generation</string>
      </property>
-     <property name="collapsed" stdset="0">
+     <property name="collapsed">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <widget class="QCheckBox" name="checkSecurityMarginOnMiterBoxCreationCheckBox">
         <property name="text">
-         <string>在斜接盒创建时检查安全余量</string>
+         <string>Check security margin on miter box creation</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -1097,22 +1102,22 @@
          <item>
           <widget class="QLabel" name="label_33">
            <property name="text">
-            <string>安全余量（mm）</string>
+            <string>Security margin (mm)</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="ctkDoubleSpinBox" name="securityMarginOfFibulaPiecesSpinBox" native="true">
-           <property name="decimals" stdset="0">
+          <widget class="ctkDoubleSpinBox" name="securityMarginOfFibulaPiecesSpinBox">
+           <property name="decimals">
             <number>1</number>
            </property>
-           <property name="maximum" stdset="0">
+           <property name="maximum">
             <double>30.000000000000000</double>
            </property>
-           <property name="singleStep" stdset="0">
+           <property name="singleStep">
             <double>0.100000000000000</double>
            </property>
-           <property name="value" stdset="0">
+           <property name="value">
             <double>1.000000000000000</double>
            </property>
           </widget>
@@ -1128,22 +1133,22 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_16">
           <property name="text">
-           <string>槽宽度（mm）</string>
+           <string>Slot width (mm)</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="ctkDoubleSpinBox" name="miterBoxSlotWidthSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="miterBoxSlotWidthSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>60.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>1.000000000000000</double>
           </property>
          </widget>
@@ -1151,19 +1156,19 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>槽长度（mm）</string>
+           <string>Slot length (mm)</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="ctkDoubleSpinBox" name="miterBoxSlotLengthSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="miterBoxSlotLengthSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>20.000000000000000</double>
           </property>
          </widget>
@@ -1171,22 +1176,22 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_19">
           <property name="text">
-           <string>槽壁厚（mm）</string>
+           <string>Slot wall (mm)</string>
           </property>
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="ctkDoubleSpinBox" name="miterBoxSlotWallSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="miterBoxSlotWallSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>20.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>3.000000000000000</double>
           </property>
          </widget>
@@ -1194,19 +1199,19 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_20">
           <property name="text">
-           <string>槽高度（mm）</string>
+           <string>Slot height (mm)</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="ctkDoubleSpinBox" name="miterBoxSlotHeightSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="miterBoxSlotHeightSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>15.000000000000000</double>
           </property>
          </widget>
@@ -1214,22 +1219,22 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_21">
           <property name="text">
-           <string>大型斜接盒到腓骨的距离（mm）</string>
+           <string>Bigger miter box distance to fibula (mm)</string>
           </property>
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="ctkDoubleSpinBox" name="biggerMiterBoxDistanceToFibulaSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="biggerMiterBoxDistanceToFibulaSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>50.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>3.000000000000000</double>
           </property>
          </widget>
@@ -1237,24 +1242,24 @@
         <item row="7" column="0">
          <widget class="QLabel" name="label_22">
           <property name="text">
-           <string>斜接盒方向线</string>
+           <string>Miter box direction line</string>
           </property>
          </widget>
         </item>
         <item row="7" column="1">
-         <widget class="qMRMLNodeComboBox" name="miterBoxDirectionLineSelector" native="true">
+         <widget class="qMRMLNodeComboBox" name="miterBoxDirectionLineSelector">
           <property name="enabled">
            <bool>false</bool>
           </property>
-          <property name="nodeTypes" stdset="0">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLMarkupsLineNode</string>
            </stringlist>
           </property>
-          <property name="addEnabled" stdset="0">
+          <property name="addEnabled">
            <bool>false</bool>
           </property>
-          <property name="removeEnabled" stdset="0">
+          <property name="removeEnabled">
            <bool>false</bool>
           </property>
          </widget>
@@ -1264,14 +1269,14 @@
       <item>
        <widget class="QPushButton" name="createMiterBoxesFromFibulaPlanesButton">
         <property name="text">
-         <string>从腓骨平面创建斜接盒</string>
+         <string>Create miter boxes from fibula planes</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="createFibulaCylindersFiducialListButton">
         <property name="text">
-         <string>创建基准点列表</string>
+         <string>Create fiducial list</string>
         </property>
        </widget>
       </item>
@@ -1283,43 +1288,43 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_12">
           <property name="text">
-           <string>选择基准列表以创建圆柱体</string>
+           <string>Select fiducial list to create cylinders</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>选择腓骨手术导板基底</string>
+           <string>Select fibula surgical guide base</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="qMRMLNodeComboBox" name="fibulaSurgicalGuideBaseSelector" native="true">
-          <property name="nodeTypes" stdset="0">
+         <widget class="qMRMLNodeComboBox" name="fibulaSurgicalGuideBaseSelector">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLModelNode</string>
            </stringlist>
           </property>
-          <property name="addEnabled" stdset="0">
+          <property name="addEnabled">
            <bool>false</bool>
           </property>
-          <property name="removeEnabled" stdset="0">
+          <property name="removeEnabled">
            <bool>false</bool>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="qMRMLNodeComboBox" name="fibulaFiducialListSelector" native="true">
-          <property name="nodeTypes" stdset="0">
+         <widget class="qMRMLNodeComboBox" name="fibulaFiducialListSelector">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLMarkupsFiducialNode</string>
            </stringlist>
           </property>
-          <property name="addEnabled" stdset="0">
+          <property name="addEnabled">
            <bool>false</bool>
           </property>
-          <property name="removeEnabled" stdset="0">
+          <property name="removeEnabled">
            <bool>false</bool>
           </property>
          </widget>
@@ -1327,22 +1332,22 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_14">
           <property name="text">
-           <string>螺孔圆柱体半径（mm）</string>
+           <string>Screw holes cylinders radius (mm)</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="ctkDoubleSpinBox" name="fibulaScrewHoleCylinderRadiusSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="fibulaScrewHoleCylinderRadiusSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>5.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>1.500000000000000</double>
           </property>
          </widget>
@@ -1355,14 +1360,16 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>从基准点列表和腓骨手术导板基底创建圆柱体</string>
+         <string>Create cylinders from fiducial list and fibula surgical guide base</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="makeBooleanOperationsToFibulaSurgicalGuideBaseButton">
         <property name="text">
-         <string>对手术导板基底与螺孔圆柱体、腓骨牙种植体圆柱体及斜接盒执行布尔运算</string>
+         <string>Make boolean operations to surgical
+ guide base with screwHolesCylinders,
+ fibulaDentalImplantCylinders and miterBoxes</string>
         </property>
        </widget>
       </item>
@@ -1370,15 +1377,15 @@
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="CollapsibleButton_4" native="true">
-     <property name="text" stdset="0">
+    <widget class="ctkCollapsibleButton" name="CollapsibleButton_4">
+     <property name="text">
       <string>Mandible Surgical Guide Generation</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
        <widget class="QCheckBox" name="showBiggerSawBoxesInteractionHandlesCheckBox">
         <property name="text">
-         <string>显示大型切割盒交互手柄</string>
+         <string>Show biggerSawBoxes interaction handles</string>
         </property>
        </widget>
       </item>
@@ -1390,22 +1397,22 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_28">
           <property name="text">
-           <string>槽宽度（mm）</string>
+           <string>Slot width (mm)</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="ctkDoubleSpinBox" name="sawBoxSlotWidthSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="sawBoxSlotWidthSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>60.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>1.000000000000000</double>
           </property>
          </widget>
@@ -1413,19 +1420,19 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_27">
           <property name="text">
-           <string>槽长度（mm）</string>
+           <string>Slot length (mm)</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="ctkDoubleSpinBox" name="sawBoxSlotLengthSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="sawBoxSlotLengthSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>20.000000000000000</double>
           </property>
          </widget>
@@ -1433,19 +1440,19 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_26">
           <property name="text">
-           <string>槽高度（mm）</string>
+           <string>Slot height (mm)</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="ctkDoubleSpinBox" name="sawBoxSlotHeightSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="sawBoxSlotHeightSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>15.000000000000000</double>
           </property>
          </widget>
@@ -1453,22 +1460,22 @@
         <item row="4" column="0">
          <widget class="QLabel" name="label_25">
           <property name="text">
-           <string>槽壁厚（mm）</string>
+           <string>Slot wall (mm)</string>
           </property>
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="ctkDoubleSpinBox" name="sawBoxSlotWallSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="sawBoxSlotWallSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>20.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>3.000000000000000</double>
           </property>
          </widget>
@@ -1476,22 +1483,22 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_24">
           <property name="text">
-           <string>大型切割盒到下颌骨的距离（mm）</string>
+           <string>Bigger saw box distance to mandible (mm)</string>
           </property>
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="ctkDoubleSpinBox" name="biggerSawBoxDistanceToMandibleSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="biggerSawBoxDistanceToMandibleSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>50.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>3.000000000000000</double>
           </property>
          </widget>
@@ -1499,21 +1506,21 @@
         <item row="6" column="0">
          <widget class="QLabel" name="label_29">
           <property name="text">
-           <string>选择下颌骨桥接模型</string>
+           <string>Select mandible bridge model</string>
           </property>
          </widget>
         </item>
         <item row="6" column="1">
-         <widget class="qMRMLNodeComboBox" name="mandibleBridgeModelSelector" native="true">
+         <widget class="qMRMLNodeComboBox" name="mandibleBridgeModelSelector">
           <property name="enabled">
            <bool>false</bool>
           </property>
-          <property name="nodeTypes" stdset="0">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLModelNode</string>
            </stringlist>
           </property>
-          <property name="noneEnabled" stdset="0">
+          <property name="noneEnabled">
            <bool>true</bool>
           </property>
          </widget>
@@ -1521,13 +1528,13 @@
         <item row="7" column="0">
          <widget class="QLabel" name="label_30">
           <property name="text">
-           <string>选择下颌骨手术导板基底</string>
+           <string>Select mandible surgical guide bases</string>
           </property>
          </widget>
         </item>
         <item row="7" column="1">
-         <widget class="qMRMLNodeComboBox" name="mandibleSurgicalGuideBaseSelector" native="true">
-          <property name="nodeTypes" stdset="0">
+         <widget class="qMRMLNodeComboBox" name="mandibleSurgicalGuideBaseSelector">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLModelNode</string>
            </stringlist>
@@ -1537,13 +1544,13 @@
         <item row="8" column="0">
          <widget class="QLabel" name="label_31">
           <property name="text">
-           <string>选择基准列表以创建圆柱体</string>
+           <string>Select fiducial list to create cylinders</string>
           </property>
          </widget>
         </item>
         <item row="8" column="1">
-         <widget class="qMRMLNodeComboBox" name="mandibleFiducialListSelector" native="true">
-          <property name="nodeTypes" stdset="0">
+         <widget class="qMRMLNodeComboBox" name="mandibleFiducialListSelector">
+          <property name="nodeTypes">
            <stringlist>
             <string>vtkMRMLMarkupsFiducialNode</string>
            </stringlist>
@@ -1553,22 +1560,22 @@
         <item row="9" column="0">
          <widget class="QLabel" name="label_32">
           <property name="text">
-           <string>螺孔圆柱半径（毫米）</string>
+           <string>Screw holes cylinders radius (mm)</string>
           </property>
          </widget>
         </item>
         <item row="9" column="1">
-         <widget class="ctkDoubleSpinBox" name="mandibleScrewHoleCylinderRadiusSpinBox" native="true">
-          <property name="decimals" stdset="0">
+         <widget class="ctkDoubleSpinBox" name="mandibleScrewHoleCylinderRadiusSpinBox">
+          <property name="decimals">
            <number>1</number>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>5.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.100000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>1.500000000000000</double>
           </property>
          </widget>
@@ -1578,7 +1585,7 @@
       <item>
        <widget class="QPushButton" name="createMandibleCylindersFiducialListButton">
         <property name="text">
-         <string>创建基准列表</string>
+         <string>Create fiducial list</string>
         </property>
        </widget>
       </item>
@@ -1588,21 +1595,22 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>从基准点列表和下颌骨手术导板基底创建圆柱体</string>
+         <string>Create cylinders from fiducial list and mandible surgical guide base</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="createSawBoxesFromFirstAndLastMandiblePlanesButton">
         <property name="text">
-         <string>从下颌骨平面创建下颌骨切除盒</string>
+         <string>Create mandible resection boxes from mandible planes</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="makeBooleanOperationsToMandibleSurgicalGuideBaseButton">
         <property name="text">
-         <string>对手术导板基底与下颌骨桥接模型及切割盒执行布尔运算</string>
+         <string>Make boolean operations to surgical guide bases with
+ mandibleBridgeModel and sawBoxes</string>
         </property>
        </widget>
       </item>
@@ -1610,11 +1618,11 @@
     </widget>
    </item>
    <item>
-    <widget class="ctkCollapsibleButton" name="CollapsibleButton_3" native="true">
-     <property name="text" stdset="0">
+    <widget class="ctkCollapsibleButton" name="CollapsibleButton_3">
+     <property name="text">
       <string>Settings</string>
      </property>
-     <property name="collapsed" stdset="0">
+     <property name="collapsed">
       <bool>false</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1626,7 +1634,7 @@
         <item row="0" column="0">
          <widget class="QLabel" name="label_35">
           <property name="text">
-           <string>3D 方向立方体</string>
+           <string>Orientation 3D Cube</string>
           </property>
          </widget>
         </item>
@@ -1647,12 +1655,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This value sets an additional amount that will increase hole and slit sizes to avoid misfitting of the tools (e.g. saws, drills)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>间隙（mm）</string>
+           <string>Clearance (mm)</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="ctkDoubleSpinBox" name="clearanceFitPrintingToleranceSpinBox" native="true">
+         <widget class="ctkDoubleSpinBox" name="clearanceFitPrintingToleranceSpinBox">
           <property name="toolTip">
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1660,13 +1668,13 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This value sets an additional amount that will increase hole and slit sizes to avoid misfitting of the tools (e.g. saws, drills)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="maximum" stdset="0">
+          <property name="maximum">
            <double>1.000000000000000</double>
           </property>
-          <property name="singleStep" stdset="0">
+          <property name="singleStep">
            <double>0.010000000000000</double>
           </property>
-          <property name="value" stdset="0">
+          <property name="value">
            <double>0.250000000000000</double>
           </property>
          </widget>
@@ -1674,28 +1682,30 @@ p, li { white-space: pre-wrap; }
         <item row="4" column="0">
          <widget class="QLabel" name="label_43">
           <property name="text">
-           <string>实验性功能：</string>
+           <string>Experimental Feature:</string>
           </property>
          </widget>
         </item>
         <item row="4" column="1">
          <widget class="QCheckBox" name="dentalImplantsPlanningAndFibulaDrillGuidesCheckBox">
           <property name="text">
-           <string>牙种植体规划与腓骨钻孔导板</string>
+           <string>Dental Implants Planning
+and Fibula Drill Guides</string>
           </property>
          </widget>
         </item>
         <item row="5" column="0">
          <widget class="QLabel" name="label_44">
           <property name="text">
-           <string>实验特性：</string>
+           <string>Experimental Feature:</string>
           </property>
          </widget>
         </item>
         <item row="5" column="1">
          <widget class="QCheckBox" name="customTitaniumPlateDesingCheckBox">
           <property name="text">
-           <string>定制钛板设计</string>
+           <string>Custom Titanium Plate
+Desing</string>
           </property>
          </widget>
         </item>
@@ -1707,6 +1717,11 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>ctkCheckablePushButton</class>
+   <extends>ctkPushButton</extends>
+   <header>ctkCheckablePushButton.h</header>
+  </customwidget>
   <customwidget>
    <class>ctkCollapsibleButton</class>
    <extends>QWidget</extends>
@@ -1738,11 +1753,6 @@ p, li { white-space: pre-wrap; }
    <class>qMRMLSubjectHierarchyTreeView</class>
    <extends>QTreeView</extends>
    <header>qMRMLSubjectHierarchyTreeView.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ctkCheckablePushButton</class>
-   <extends>ctkPushButton</extends>
-   <header>ctkCheckablePushButton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -1988,7 +1998,4 @@ p, li { white-space: pre-wrap; }
    </hints>
   </connection>
  </connections>
- <slots>
-  <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
- </slots>
 </ui>

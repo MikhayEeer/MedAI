@@ -248,7 +248,7 @@ class BoneReconstructionPlannerWidget(ScriptedLoadableModuleWidget, VTKObservati
     updatePlanningIconPath = os.path.join(os.path.dirname(__file__), 'Resources/Icons/update_48.svg')
 
     generateFibulaPlanesFibulaBonePiecesAndTransformThemToMandibleButton = checkablePushButtonWithIcon(
-      "Update fibula planes over fibula line; update fibula bone pieces \nand transform them to mandible",
+      "更新腓骨平面与腓骨线；更新腓骨骨片并将其转化为下颌骨",
       qt.QIcon(updatePlanningIconPath)
     )
     
@@ -700,12 +700,12 @@ class BoneReconstructionPlannerWidget(ScriptedLoadableModuleWidget, VTKObservati
     if dentalImplantsPlanningAndFibulaDrillGuidesChecked:
       self.ui.dentalImplantsPlanningCollapsibleButton.show()
       self.ui.makeBooleanOperationsToFibulaSurgicalGuideBaseButton.text = (
-        "Make boolean operations to surgical\n guide base with screwHolesCylinders,\n fibulaDentalImplantCylinders and miterBoxes"
+        "对带有螺丝孔圆柱体、腓骨牙科植入物圆柱体和斜角盒的手术导向基座进行布尔运算"
       )
     else:
       self.ui.dentalImplantsPlanningCollapsibleButton.hide()
       self.ui.makeBooleanOperationsToFibulaSurgicalGuideBaseButton.text = (
-        "Make boolean operations to surgical\n guide base with screwHolesCylinders\n and miterBoxes"
+        "对带有螺丝孔圆柱体、腓骨牙科植入物圆柱体和斜角盒的手术导向基座进行布尔运算"
       )
     
     if customTitaniumPlateDesingChecked:
