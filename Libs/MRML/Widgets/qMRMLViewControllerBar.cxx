@@ -79,6 +79,7 @@ void qMRMLViewControllerBarPrivate::init()
   this->BarWidget = new QWidget(q);
   this->BarWidget->setObjectName("BarWidget");
   this->BarWidget->setAutoFillBackground(true); // color the bar
+  this->BarWidget->setStyleSheet("background-color: #eeeeee;");
 
   this->ControllerLayout = new QVBoxLayout(q);
   this->ControllerLayout->setSpacing(2);
