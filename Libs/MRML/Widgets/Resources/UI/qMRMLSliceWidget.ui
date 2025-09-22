@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>qMRMLSliceWidget</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QHBoxLayout" name="verticalLayout_2">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -31,14 +31,26 @@
    </property>
    <item>
     <widget class="qMRMLSliceControllerWidget" name="SliceController">
+      <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+      </sizepolicy>
+      </property>
+      <property name="minimumWidth">
+      <number>40</number>
+      </property>
+      <property name="maximumWidth">
+      <number>40</number>
+      </property>
      <property name="showSliceOffsetSlider">
       <bool>true</bool>
      </property>
-     <property name="styleSheet">
+     <!-- <property name="styleSheet">
       <string notr="true">
         background-color: #eeeeee;
       </string>
-     </property>
+     </property> -->
     </widget>
    </item>
    <item>

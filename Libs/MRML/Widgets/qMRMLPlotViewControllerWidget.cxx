@@ -80,7 +80,8 @@ void qMRMLPlotViewControllerWidgetPrivate::setupPopupUi()
   Q_Q(qMRMLPlotViewControllerWidget);
 
   this->Superclass::setupPopupUi();
-  this->PopupWidget->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  // this->PopupWidget->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  this->PopupWidget->setAlignment(Qt::AlignTop | Qt::AlignRight);
   this->Ui_qMRMLPlotViewControllerWidget::setupUi(this->PopupWidget);
 
   this->connect(this->plotChartComboBox, SIGNAL(currentNodeChanged(vtkMRMLNode*)), SLOT(onPlotChartNodeSelected(vtkMRMLNode*)));

@@ -314,6 +314,7 @@ protected:
   /// instantiated in case virtual method are called within init() itself.
   qMRMLSliceControllerWidget(qMRMLSliceControllerWidgetPrivate* obj,
                              QWidget* parent);
+  bool event(QEvent* e) override;
 
 private:
   Q_DECLARE_PRIVATE(qMRMLSliceControllerWidget);

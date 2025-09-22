@@ -64,6 +64,7 @@
 #include <vtkNew.h>
 #include <vtkStringArray.h>
 #include <vtkImageReslice.h>
+#include <QEvent>
 
 //--------------------------------------------------------------------------
 // qMRMLSliceViewPrivate methods
@@ -109,6 +110,9 @@ qMRMLSliceControllerWidgetPrivate::qMRMLSliceControllerWidgetPrivate(qMRMLSliceC
   this->SliceModelDimensionXSpinBox = nullptr;
   this->SliceModelDimensionYSpinBox = nullptr;
 
+  this->ValuePopup = nullptr;
+  this->valueLabel = nullptr;
+
 }
 
 //---------------------------------------------------------------------------
@@ -128,6 +132,8 @@ void qMRMLSliceControllerWidgetPrivate::setupPopupUi()
   this->Superclass::setupPopupUi();
   this->Ui_qMRMLSliceControllerWidget::setupUi(this->PopupWidget);
 
+  this->PopupWidget->setAlignment(Qt::AlignTop | Qt::AlignRight);
+
   this->SegmentationOpacitySlider->spinBox()->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
   this->LabelMapOpacitySlider->spinBox()->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
   this->ForegroundOpacitySlider->spinBox()->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
@@ -138,7 +144,8 @@ void qMRMLSliceControllerWidgetPrivate::setupPopupUi()
 
   this->BackgroundOpacitySlider->popup()->setHideDelay(400);
 
-  this->BackgroundOpacitySlider->popup()->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  // this->BackgroundOpacitySlider->popup()->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  this->BackgroundOpacitySlider->popup()->setAlignment(Qt::AlignTop | Qt::AlignRight);
 
   int popupHeight = this->PopupWidget->sizeHint().height() / 2;
   this->BackgroundOpacitySlider->popup()->setFixedHeight(popupHeight);
@@ -388,6 +395,9 @@ void qMRMLSliceControllerWidgetPrivate::init()
   // </item>
   this->FitToWindowToolButton = new QToolButton(q);
   this->FitToWindowToolButton->setObjectName("FitToWindowToolButton");
+
+  this->FitToWindowToolButton->setStyleSheet("background-color: blue;");
+
   //this->FitToWindowToolButton->setToolTip(tr("Adjust the Slice Viewer's field of view to match the extent of lowest non-None volume layer (bg, then fg, then label)."));
   //QIcon fitToWindowIcon(":/Icons/SlicesFitToWindow.png");
   //this->FitToWindowToolButton->setIcon(fitToWindowIcon);
@@ -396,13 +406,16 @@ void qMRMLSliceControllerWidgetPrivate::init()
   this->BarLayout->insertWidget(2, this->FitToWindowToolButton);
 
   this->SliderSpacer = new ctkDynamicSpacer(q);
-  this->SliderSpacer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Ignored);
+  // this->SliderSpacer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Ignored);
+  this->SliderSpacer->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::MinimumExpanding);
   this->BarLayout->addWidget(this->SliderSpacer);
 
   this->SliceOffsetSlider = new qMRMLSliderWidget(q);
-  this->SliceOffsetSlider->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+  // this->SliceOffsetSlider->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+  this->SliceOffsetSlider->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
+  this->SliceOffsetSlider->setOrientation(Qt::Vertical);
 
-  this->SliceOffsetSlider->setObjectName("SliceOffsetSlider");
+  this->SliceOffsetSlider->setObjectName("SliceOffsetSlider");  
   this->SliceOffsetSlider->setTracking(false);
   this->SliceOffsetSlider->setToolTip(qMRMLSliceControllerWidget::tr("Slice distance from RAS origin"));
   this->SliceOffsetSlider->setQuantity("length");
@@ -413,13 +426,16 @@ void qMRMLSliceControllerWidgetPrivate::init()
     ctkDoubleSpinBox::DecimalsByKey |
     ctkDoubleSpinBox::DecimalsAsMin );
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
-  this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: transparent;");
+  this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: green;");
+
+  this->SliceOffsetSlider->setStyleSheet("background-color: gray;");
 
   //this->SliceOffsetSlider->spinBox()->setParent(this->PopupWidget);
   ctkDoubleSpinBox* spinBox = this->SliceOffsetSlider->spinBox();
   spinBox->setFrame(false);
   spinBox->spinBox()->setButtonSymbols(QAbstractSpinBox::NoButtons);
-  spinBox->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Ignored);
+  // spinBox->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Ignored);
+  spinBox->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Maximum);
 
   int targetHeight = spinBox->parentWidget()->layout()->sizeHint().height();//setSizeConstraint(QLayout::SetMinimumSize);
   int fontHeight = spinBox->fontMetrics().height();
@@ -431,6 +447,80 @@ void qMRMLSliceControllerWidgetPrivate::init()
     spinBox->setFont(stretchedFont);
   }
 
+  spinBox->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+  spinBox->hide();
+
+  // 2. 从原父布局移除
+  if (spinBox->parentWidget() && spinBox->parentWidget()->layout())
+  {
+    spinBox->parentWidget()->layout()->removeWidget(spinBox);
+  }
+
+
+  this->BarLayout->addWidget(this->SliceOffsetSlider);
+
+  this->SliderSpacer2 = new ctkDynamicSpacer(q);
+  // this->SliderSpacer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Ignored);
+  this->SliderSpacer2->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
+  this->SliderSpacer2->setFixedHeight(20);  // 比如只留 10px 间隔
+  this->BarLayout->addWidget(this->SliderSpacer2);
+
+  // 尝试新建一个弹出框
+  this->ValuePopup = new ctkPopupWidget(this->SliderSpacer2);  
+  // 绑定到 SliceView 的 widget 上（这样会浮在视图上）
+  this->ValuePopup->setAutoShow(false);
+  this->ValuePopup->setAutoHide(false);
+  this->ValuePopup->showPopup();
+  // 仅影响 popup 内部子控件的对齐方式
+  // this->ValuePopup->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter); // 显示在中间居中
+  // this->ValuePopup->setAlignment(Qt::AlignRight  | Qt::AlignTop); // 显示在上方居中
+  // this->ValuePopup->setAlignment(Qt::AlignTop); // 显示在上方居中
+  // this->ValuePopup->setAlignment(Qt::AlignTop | Qt::AlignRight);
+  this->ValuePopup->setAlignment(Qt::AlignTop | Qt::AlignRight); // 成功在右上角
+  // this->ValuePopup->setAlignment(Qt::AlignBottom | Qt::AlignRight); 
+
+  // 允许透明背景
+  this->ValuePopup->setAttribute(Qt::WA_TranslucentBackground, true);
+  this->ValuePopup->setWindowFlags(Qt::FramelessWindowHint | Qt::ToolTip);
+  // // 样式设置为完全透明（仅显示子控件）
+  this->ValuePopup->setStyleSheet("background: transparent; border: none;");
+
+  // this->ValuePopup->setStyleSheet("background: red;");
+
+
+  // 向右偏移 20 像素
+  // this->ValuePopup->move(300, 400); // 看起来不生效，很奇怪
+
+  this->valueLabel = new QLabel(this->ValuePopup);
+  this->valueLabel->setStyleSheet("color: yellow; padding: 2px; border-radius: 3px;");
+  // this->valueLabel->setAlignment(Qt::AlignCenter);
+  this->valueLabel->setText(QString::number(0.00, 'f', 4)+ "mm");
+
+  QHBoxLayout* mainLayout = new QHBoxLayout(this->ValuePopup); // 管理弹出窗口的子控件布局
+  // mainLayout->setContentsMargins(0, this->SliceOffsetSlider->width()+this->FitToWindowToolButton->width(), 0, 0);  // 左上右下
+  mainLayout->setContentsMargins(0, 0, 0, 100);  // 左上右下
+
+  // mainLayout->addWidget(this->valueLabel, 0, Qt::AlignTop | Qt::AlignRight);
+  mainLayout->addWidget(this->valueLabel, 0, Qt::AlignBottom | Qt::AlignRight);
+
+  mainLayout->addStretch(); // 保证内容顶在上边
+
+
+  qDebug() << "===================:"
+          << 4;
+
+
+
+  // QVBoxLayout* popupLayout = new QVBoxLayout(this->ValuePopup);
+  // popupLayout->setContentsMargins(0,0,0,0);
+  // popupLayout->addWidget(valueLabel);
+
+  // 还是会被挡住
+  // spinBox->setParent(q);   // 直接挂在 SliceControllerWidget 上
+  // spinBox->raise();        // 把它放到最上层
+  // spinBox->move(10, 10);   // 设置在左上角位置（相对 q 的坐标）
+  // spinBox->show();
+
   this->updateSliceOffsetSliderVisibility();
 
   // Connect Slice offset slider
@@ -440,8 +530,6 @@ void qMRMLSliceControllerWidgetPrivate::init()
                 q, SLOT(trackSliceOffsetValue(double)), Qt::QueuedConnection);
   this->connect(q, SIGNAL(mrmlSceneChanged(vtkMRMLScene*)),
                 this->SliceOffsetSlider, SLOT(setMRMLScene(vtkMRMLScene*)));
-
-  this->BarLayout->addWidget(this->SliceOffsetSlider);
 
   // Move the spinbox in the popup instead of having it in the slider bar
   //dynamic_cast<QGridLayout*>(this->PopupWidget->layout())->addWidget(
@@ -454,6 +542,29 @@ void qMRMLSliceControllerWidgetPrivate::init()
   defaultLogic->SetMRMLApplicationLogic(vtkMRMLSliceViewDisplayableManagerFactory::GetInstance()->GetMRMLApplicationLogic());
 
   q->setSliceLogic(defaultLogic.GetPointer());
+}
+
+bool qMRMLSliceControllerWidget::event(QEvent* e)
+{
+  Q_D(qMRMLSliceControllerWidget);
+  if (e->type() == QEvent::WindowDeactivate) // 窗口切到后台
+  {
+    // qDebug() << "qMRMLSliceControllerWidget=" << 11;
+    if (d->ValuePopup)
+    {
+      d->ValuePopup->hidePopup();   // 或者 d->ValuePopup->hide();
+    }
+  }
+  if (e->type() == QEvent::WindowActivate) // 窗口切到后台
+  {
+    // qDebug() << "qMRMLSliceControllerWidget=" << 22;
+    if (d->ValuePopup)
+    {
+      d->ValuePopup->showPopup();   // 或者 d->ValuePopup->hide();
+    }
+  }
+
+  return QWidget::event(e);  // 交给基类继续处理
 }
 
 // --------------------------------------------------------------------------
@@ -890,6 +1001,7 @@ void qMRMLSliceControllerWidgetPrivate::updateWidgetFromMRMLSliceNode()
 
   // Update abbreviated slice view name
   this->ViewLabel->setText(sliceNode->GetLayoutLabel());
+  this->valueLabel->setText(QString::number(sliceNode->GetSliceOffset(), 'f', 4)+"mm");
 
   Self::updateSliceOrientationSelector(sliceNode, this->SliceOrientationSelector);
 
