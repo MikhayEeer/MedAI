@@ -63,7 +63,7 @@
    <item>
     <widget class="ctkCollapsibleButton" name="CollapsibleButton" native="true">
      <property name="text" stdset="0">
-      <string>下颌骨重建规划</string>
+      <string>目标体重建规划</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -99,7 +99,7 @@
            <item row="1" column="1">
             <widget class="QCheckBox" name="rightSideLegFibulaCheckBox">
              <property name="text">
-              <string>（若腓骨取自右腿，请勾选）</string>
+              <string>（若分割体取自右腿，请勾选）</string>
              </property>
              <property name="checked">
               <bool>false</bool>
@@ -109,7 +109,7 @@
            <item row="2" column="0">
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>选择下颌骨分割结果</string>
+              <string>选择目标体分割结果</string>
              </property>
             </widget>
            </item>
@@ -134,7 +134,7 @@
            <item row="3" column="0">
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>选择腓骨分割结果</string>
+              <string>选择分割体分割结果</string>
              </property>
             </widget>
            </item>
@@ -159,7 +159,7 @@
            <item row="4" column="0">
             <widget class="QLabel" name="label_6">
              <property name="text">
-              <string>放置下颌骨曲线</string>
+              <string>放置目标体曲线</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -169,14 +169,14 @@
            <item row="4" column="1">
             <widget class="QPushButton" name="addMandibularCurveButton">
              <property name="text">
-              <string>添加下颌骨曲线</string>
+              <string>添加目标体曲线</string>
              </property>
             </widget>
            </item>
            <item row="5" column="0">
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>选择腓骨分割结果</string>
+              <string>选择分割体分割结果</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -186,14 +186,14 @@
            <item row="5" column="1">
             <widget class="QPushButton" name="addFibulaLineButton">
              <property name="text">
-              <string>添加腓骨直线</string>
+              <string>添加分割体直线</string>
              </property>
             </widget>
            </item>
            <item row="6" column="0">
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>放置下颌骨曲线</string>
+              <string>放置目标体曲线</string>
              </property>
             </widget>
            </item>
@@ -238,7 +238,7 @@
            <item row="10" column="0">
             <widget class="QLabel" name="label_9">
              <property name="text">
-              <string>选择下颌骨曲线</string>
+              <string>选择目标体曲线</string>
              </property>
             </widget>
            </item>
@@ -263,7 +263,7 @@
            <item row="11" column="0">
             <widget class="QLabel" name="label_11">
              <property name="text">
-              <string>选择腓骨直线</string>
+              <string>选择分割体直线</string>
              </property>
             </widget>
            </item>
@@ -297,7 +297,7 @@
          <item>
           <widget class="QPushButton" name="centerFibulaLineButton">
            <property name="text">
-            <string>利用腓骨模型将腓骨直线居中</string>
+            <string>利用分割体模型将分割体直线居中</string>
            </property>
           </widget>
          </item>
@@ -312,7 +312,7 @@
            <item>
             <widget class="QLabel" name="label_46">
              <property name="text">
-              <string>腓骨节段长度测量</string>
+              <string>分割体节段长度测量</string>
              </property>
             </widget>
            </item>
@@ -325,7 +325,7 @@
               </sizepolicy>
              </property>
              <property name="toolTip">
-              <string>腓骨段测量模式。需要更新</string>
+              <string>分割体段测量模式。需要更新</string>
              </property>
              <item>
               <property name="text">
@@ -358,12 +358,12 @@
             <widget class="QComboBox" name="kindOfMandibleResectionComboBox">
              <item>
               <property name="text">
-               <string>节段性下颌骨切除术</string>
+               <string>节段性目标体切除术</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>半下颌骨切除术</string>
+               <string>半目标体切除术</string>
               </property>
              </item>
             </widget>
@@ -392,14 +392,14 @@
          <item>
           <widget class="QCheckBox" name="mandiblePlanesPositioningForMaximumBoneContactCheckBox">
            <property name="text">
-            <string>自动定位下颌骨平面以实现最大骨接触面积</string>
+            <string>自动定位目标体平面以实现最大骨接触面积</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="makeAllMandiblePlanesRotateTogetherCheckBox">
            <property name="text">
-            <string>使所有下颌骨平面同步旋转</string>
+            <string>使所有目标体平面同步旋转</string>
            </property>
           </widget>
          </item>
@@ -423,7 +423,7 @@
          <item>
           <widget class="QCheckBox" name="fixCutGoesThroughTheMandibleTwiceCheckBox">
            <property name="text">
-            <string>修复切割线两次穿过下颌骨的问题</string>
+            <string>修复切割线两次穿过目标体的问题</string>
            </property>
           </widget>
          </item>
@@ -675,14 +675,14 @@
          <item>
           <widget class="QCheckBox" name="showOriginalMandibleCheckBox">
            <property name="text">
-            <string>显示原始下颌骨模型</string>
+            <string>显示原始目标体模型</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="showFibulaSegmentsLengthsCheckBox">
            <property name="text">
-            <string>显示腓骨节段长度</string>
+            <string>显示分割体节段长度</string>
            </property>
           </widget>
          </item>
@@ -873,7 +873,7 @@
       <item>
        <widget class="QPushButton" name="createCylindersFromFiducialListAndNeomandiblePiecesButton">
         <property name="text">
-         <string>从基准点列表和下颌骨重建模型创建圆柱体</string>
+         <string>从基准点列表和目标体重建模型创建圆柱体</string>
         </property>
        </widget>
       </item>
@@ -892,7 +892,7 @@
         <item>
          <widget class="ctkCheckablePushButton" name="updateFibulaDentalImplantCylindersButton">
           <property name="text">
-           <string>更新腓骨牙种植体圆柱体</string>
+           <string>更新分割体牙种植体圆柱体</string>
           </property>
          </widget>
         </item>
@@ -1054,7 +1054,7 @@
    <item>
     <widget class="ctkCollapsibleButton" name="CollapsibleButton_2" native="true">
      <property name="text" stdset="0">
-      <string>腓骨外科导向生成</string>
+      <string>分割体外科导向生成</string>
      </property>
      <property name="collapsed" stdset="0">
       <bool>false</bool>
@@ -1214,7 +1214,7 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_21">
           <property name="text">
-           <string>大型斜接盒到腓骨的距离（mm）</string>
+           <string>大型斜接盒到分割体的距离（mm）</string>
           </property>
          </widget>
         </item>
@@ -1264,7 +1264,7 @@
       <item>
        <widget class="QPushButton" name="createMiterBoxesFromFibulaPlanesButton">
         <property name="text">
-         <string>从腓骨平面创建斜接盒</string>
+         <string>从分割体平面创建斜接盒</string>
         </property>
        </widget>
       </item>
@@ -1290,7 +1290,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>选择腓骨手术导板基底</string>
+           <string>选择分割体手术导板基底</string>
           </property>
          </widget>
         </item>
@@ -1355,14 +1355,14 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>从基准点列表和腓骨手术导板基底创建圆柱体</string>
+         <string>从基准点列表和分割体手术导板基底创建圆柱体</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="makeBooleanOperationsToFibulaSurgicalGuideBaseButton">
         <property name="text">
-         <string>对手术导板基底与螺孔圆柱体、腓骨牙种植体圆柱体及斜接盒执行布尔运算</string>
+         <string>对手术导板基底与螺孔圆柱体、分割体牙种植体圆柱体及斜接盒执行布尔运算</string>
         </property>
        </widget>
       </item>
@@ -1476,7 +1476,7 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_24">
           <property name="text">
-           <string>大型切割盒到下颌骨的距离（mm）</string>
+           <string>大型切割盒到目标体的距离（mm）</string>
           </property>
          </widget>
         </item>
@@ -1499,7 +1499,7 @@
         <item row="6" column="0">
          <widget class="QLabel" name="label_29">
           <property name="text">
-           <string>选择下颌骨桥接模型</string>
+           <string>选择目标体桥接模型</string>
           </property>
          </widget>
         </item>
@@ -1521,7 +1521,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="label_30">
           <property name="text">
-           <string>选择下颌骨手术导板基底</string>
+           <string>选择目标体手术导板基底</string>
           </property>
          </widget>
         </item>
@@ -1588,21 +1588,21 @@
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>从基准点列表和下颌骨手术导板基底创建圆柱体</string>
+         <string>从基准点列表和目标体手术导板基底创建圆柱体</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="createSawBoxesFromFirstAndLastMandiblePlanesButton">
         <property name="text">
-         <string>从下颌骨平面创建下颌骨切除盒</string>
+         <string>从目标体平面创建目标体切除盒</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="makeBooleanOperationsToMandibleSurgicalGuideBaseButton">
         <property name="text">
-         <string>对手术导板基底与下颌骨桥接模型及切割盒执行布尔运算</string>
+         <string>对手术导板基底与目标体桥接模型及切割盒执行布尔运算</string>
         </property>
        </widget>
       </item>
@@ -1681,7 +1681,7 @@ p, li { white-space: pre-wrap; }
         <item row="4" column="1">
          <widget class="QCheckBox" name="dentalImplantsPlanningAndFibulaDrillGuidesCheckBox">
           <property name="text">
-           <string>牙种植体规划与腓骨钻孔导板</string>
+           <string>牙种植体规划与分割体钻孔导板</string>
           </property>
          </widget>
         </item>
