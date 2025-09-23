@@ -14,16 +14,18 @@
   <widget class="QStatusBar" name="StatusBar"/>
   <widget class="QDockWidget" name="PanelDockWidget">
    <property name="features">
-    <set>QDockWidget::AllDockWidgetFeatures</set>
+    <set>QDockWidget::NoDockWidgetFeatures</set>
+    <!-- <set>QDockWidget::AllDockWidgetFeatures</set> -->
    </property>
    <property name="allowedAreas">
-    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+    <!-- <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set> -->
+    <set>Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
     <string>Module Panel</string>
    </property>
    <attribute name="dockWidgetArea">
-    <number>1</number>
+    <number>2</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
     <property name="sizePolicy">
