@@ -38,10 +38,10 @@
       </sizepolicy>
       </property>
       <property name="minimumWidth">
-      <number>40</number>
+      <number>33</number>
       </property>
       <property name="maximumWidth">
-      <number>40</number>
+      <number>33</number>
       </property>
      <property name="showSliceOffsetSlider">
       <bool>true</bool>

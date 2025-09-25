@@ -117,9 +117,9 @@ void qMRMLViewControllerBarPrivate::init()
   this->ViewLabel->setObjectName("ViewLabel");
   this->ViewLabel->setAlignment(Qt::AlignHCenter | Qt::AlignHCenter);
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
-  this->ViewLabel->setStyleSheet("color: black; background-color: yellow;");
-  // this->ViewLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-  this->ViewLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+  // this->ViewLabel->setStyleSheet("color: black; background-color: yellow;");
+  this->ViewLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+  // this->ViewLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
 // #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
 //   this->ViewLabel->setMinimumWidth(this->ViewLabel->fontMetrics().horizontalAdvance("XX"));

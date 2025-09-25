@@ -396,7 +396,7 @@ void qMRMLSliceControllerWidgetPrivate::init()
   this->FitToWindowToolButton = new QToolButton(q);
   this->FitToWindowToolButton->setObjectName("FitToWindowToolButton");
 
-  this->FitToWindowToolButton->setStyleSheet("background-color: blue;");
+  // this->FitToWindowToolButton->setStyleSheet("background-color: blue;");
 
   //this->FitToWindowToolButton->setToolTip(tr("Adjust the Slice Viewer's field of view to match the extent of lowest non-None volume layer (bg, then fg, then label)."));
   //QIcon fitToWindowIcon(":/Icons/SlicesFitToWindow.png");
@@ -428,7 +428,7 @@ void qMRMLSliceControllerWidgetPrivate::init()
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
   this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: green;");
 
-  this->SliceOffsetSlider->setStyleSheet("background-color: gray;");
+  // this->SliceOffsetSlider->setStyleSheet("background-color: gray;");
 
   //this->SliceOffsetSlider->spinBox()->setParent(this->PopupWidget);
   ctkDoubleSpinBox* spinBox = this->SliceOffsetSlider->spinBox();
