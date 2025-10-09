@@ -40,6 +40,19 @@
                     </property>
                 </widget>
             </item>
+            <item>
+                <widget class="QPushButton" name="applyButtonLuoYan">
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="toolTip">
+                        <string>Run the algorithm.</string>
+                    </property>
+                    <property name="text">
+                        <string>开启裸眼模式</string>
+                    </property>
+                </widget>
+            </item>
         </layout>
     </widget>
     <customwidgets>

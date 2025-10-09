@@ -123,6 +123,7 @@ class aaamoduleWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
         # Buttons
         self.ui.applyButton.connect('clicked(bool)', self.onApplyButton)
+        self.ui.applyButtonLuoYan.connect('clicked(bool)', self.onApplyButtonLuoYan)
 
         file_cache = FileCache('output_cache.json')
         last_dest=file_cache.get('dest')
@@ -209,6 +210,14 @@ class aaamoduleWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         with slicer.util.tryWithErrorDisplay("Failed to compute results.", waitCursor=True):
             self.logic.process(self.ui.directoryButton.directory)
 
+    def onApplyButtonLuoYan(self) -> None:
+        """
+        Run processing when user clicks "Apply" button.
+        """
+        with slicer.util.tryWithErrorDisplay("Failed to compute results.", waitCursor=True):
+            logging.error('开始裸眼1111')
+            self.logic.processLuoYan()
+
     def onDirectoryChanged(self, directory):
         file_cache = FileCache('output_cache.json')
         file_cache.set('dest', directory)
@@ -255,3 +264,118 @@ class aaamoduleLogic(ScriptedLoadableModuleLogic):
         logging.error('成功导出所有模型到'+directory)
 
 
+    def processLuoYan(self) -> None:
+        logging.error('开始裸眼')
+        import slicer
+        import vtk
+        from screeninfo import get_monitors
+        import numpy as np
+
+        # === 获取裸眼屏信息（第二块显示器） ===
+        monitors = get_monitors()
+        if len(monitors) < 2:
+            raise RuntimeError("没有检测到第二块显示器")
+        screen = monitors[1]
+        screen_x, screen_y = screen.x, screen.y
+        screen_w, screen_h = screen.width, screen.height
+
+        # === 获取主屏 Renderer 和 Camera ===
+        main_renderer = slicer.app.layoutManager().threeDWidget(0).threeDView().renderWindow().GetRenderers().GetFirstRenderer()
+        main_camera = main_renderer.GetActiveCamera()
+
+        # === 创建副屏 RenderWindow ===
+        render_window = vtk.vtkRenderWindow()
+        render_window.SetSize(screen_w, screen_h)
+        render_window.SetPosition(screen_x, screen_y)
+        render_window.SetBorders(False)                 # 去掉边框，看起来就是全屏
+
+        # === 创建左右 Renderer ===
+        left_renderer = vtk.vtkRenderer()
+        right_renderer = vtk.vtkRenderer()
+        left_renderer.SetViewport(0.0, 0.0, 0.5, 1.0)
+        right_renderer.SetViewport(0.5, 0.0, 1.0, 1.0)
+        render_window.AddRenderer(left_renderer)
+        render_window.AddRenderer(right_renderer)
+
+        # === 同步背景颜色 ===
+        bg = main_renderer.GetBackground()  # 返回 (R,G,B)
+        left_renderer.SetBackground(bg)
+        right_renderer.SetBackground(bg)
+
+        # 如果有渐变背景（上色不同），也要同步
+        bg2 = main_renderer.GetBackground2()
+        left_renderer.SetBackground2(bg2)
+        right_renderer.SetBackground2(bg2)
+        left_renderer.GradientBackgroundOn()
+        right_renderer.GradientBackgroundOn()
+
+
+        # === 安全克隆 Actor（深拷贝 PolyData + 新 Mapper） ===
+        def clone_actor_safe(actor):
+            new_actor = vtk.vtkActor()
+            mapper = vtk.vtkPolyDataMapper()
+            mapper.SetInputData(actor.GetMapper().GetInput())
+            new_actor.SetMapper(mapper)
+            new_actor.SetProperty(actor.GetProperty())
+            return new_actor
+
+        # === 同步主屏 Actor 到副屏 Renderer ===
+        actors = main_renderer.GetActors()
+        actors.InitTraversal()
+        for _ in range(actors.GetNumberOfItems()):
+            actor = actors.GetNextActor()
+            polydata = actor.GetMapper().GetInput()
+            num_points = polydata.GetNumberOfPoints()
+            num_cells = polydata.GetNumberOfCells()
+            # 过滤：只保留大模型（排除小几何体）
+            if num_points > 100 and num_cells > 100:
+                left_renderer.AddActor(clone_actor_safe(actor))
+                right_renderer.AddActor(clone_actor_safe(actor))
+                print(f"✅ 保留 Actor: {num_points} points, {num_cells} cells")
+            else:
+                print(f"❌ 忽略 Actor: {num_points} points, {num_cells} cells")
+
+        # === 计算视差（5% 主相机到焦点距离） ===
+        cam_pos = np.array(main_camera.GetPosition())
+        cam_fp = np.array(main_camera.GetFocalPoint())
+        cam_up = np.array(main_camera.GetViewUp())
+        view_dir = cam_fp - cam_pos
+        view_dir /= np.linalg.norm(view_dir)
+        right_vec = np.cross(view_dir, cam_up)
+        right_vec /= np.linalg.norm(right_vec)
+        eye_offset_val = np.linalg.norm(cam_fp - cam_pos) * 0.005
+
+        def clone_camera_with_offset(camera, offset):
+            cam = vtk.vtkCamera()
+            cam.DeepCopy(camera)
+            cam.SetPosition(*(np.array(camera.GetPosition()) + right_vec * offset))
+            cam.SetFocalPoint(*(np.array(camera.GetFocalPoint()) + right_vec * offset))
+            return cam
+
+        # === 设置初始左右相机 ===
+        left_renderer.SetActiveCamera(clone_camera_with_offset(main_camera, -eye_offset_val/2))
+        right_renderer.SetActiveCamera(clone_camera_with_offset(main_camera, eye_offset_val/2))
+
+        # === 主屏相机同步回调 ===
+        def sync_camera(caller=None, event=None):
+            left_renderer.SetActiveCamera(clone_camera_with_offset(main_camera, -eye_offset_val/2))
+            right_renderer.SetActiveCamera(clone_camera_with_offset(main_camera, eye_offset_val/2))
+            render_window.Render()
+
+
+        observer_tag = main_camera.AddObserver(vtk.vtkCommand.ModifiedEvent, sync_camera)
+
+        # === 初次渲染 ===
+        render_window.Render()
+
+        print("✅ 稳定 SBS Half 副屏显示已启动（只读模式），主屏 Actor 不受影响。")
+
+        def close_secondary_window():
+            global render_window, observer_tag
+            if observer_tag is not None:
+                main_camera.RemoveObserver(observer_tag)
+                observer_tag = None
+            if render_window is not None:
+                render_window.Finalize()
+                render_window = None
+            print("✅ 副屏已安全关闭")
