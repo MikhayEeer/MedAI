@@ -426,7 +426,7 @@ void qMRMLSliceControllerWidgetPrivate::init()
     ctkDoubleSpinBox::DecimalsByKey |
     ctkDoubleSpinBox::DecimalsAsMin );
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
-  this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: green;");
+  // this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: green;");
 
   // this->SliceOffsetSlider->setStyleSheet("background-color: gray;");
 
@@ -466,11 +466,20 @@ void qMRMLSliceControllerWidgetPrivate::init()
   this->BarLayout->addWidget(this->SliderSpacer2);
 
   // 尝试新建一个弹出框
+  // this->ValuePopup = new ctkPopupWidget(this->SliderSpacer2);  
   this->ValuePopup = new ctkPopupWidget(this->SliderSpacer2);  
   // 绑定到 SliceView 的 widget 上（这样会浮在视图上）
   this->ValuePopup->setAutoShow(false);
   this->ValuePopup->setAutoHide(false);
+  // this->ValuePopup->setActive(false);
   this->ValuePopup->showPopup();
+  this->ValuePopup->pinPopup(true);
+  // this->ValuePopup->setWindowFlags(this->PopupWidget->windowFlags() & ~Qt::ToolTip);
+
+  // qDebug() << "AutoShow:" << this->ValuePopup->autoShow()
+  //        << "AutoHide:" << this->ValuePopup->autoHide()
+  //        << "Visible:" << this->ValuePopup->isVisible();
+
   // 仅影响 popup 内部子控件的对齐方式
   // this->ValuePopup->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter); // 显示在中间居中
   // this->ValuePopup->setAlignment(Qt::AlignRight  | Qt::AlignTop); // 显示在上方居中
@@ -480,8 +489,8 @@ void qMRMLSliceControllerWidgetPrivate::init()
   // this->ValuePopup->setAlignment(Qt::AlignBottom | Qt::AlignRight); 
 
   // 允许透明背景
-  this->ValuePopup->setAttribute(Qt::WA_TranslucentBackground, true);
-  this->ValuePopup->setWindowFlags(Qt::FramelessWindowHint | Qt::ToolTip);
+  // this->ValuePopup->setAttribute(Qt::WA_TranslucentBackground, true);
+  // this->ValuePopup->setWindowFlags(Qt::FramelessWindowHint | Qt::ToolTip);
   // // 样式设置为完全透明（仅显示子控件）
   this->ValuePopup->setStyleSheet("background: transparent; border: none;");
 
@@ -507,7 +516,7 @@ void qMRMLSliceControllerWidgetPrivate::init()
 
 
   qDebug() << "===================:"
-          << 4;
+          << 5;
 
 
 
@@ -547,14 +556,15 @@ void qMRMLSliceControllerWidgetPrivate::init()
 bool qMRMLSliceControllerWidget::event(QEvent* e)
 {
   Q_D(qMRMLSliceControllerWidget);
-  if (e->type() == QEvent::WindowDeactivate) // 窗口切到后台
-  {
-    // qDebug() << "qMRMLSliceControllerWidget=" << 11;
-    if (d->ValuePopup)
-    {
-      d->ValuePopup->hidePopup();   // 或者 d->ValuePopup->hide();
-    }
-  }
+  // d->ValuePopup->showPopup();
+  // if (e->type() == QEvent::WindowDeactivate) // 窗口切到后台
+  // {
+  //   // qDebug() << "qMRMLSliceControllerWidget=" << 11;
+  //   if (d->ValuePopup)
+  //   {
+  //     d->ValuePopup->hidePopup();   // 或者 d->ValuePopup->hide();
+  //   }
+  // }
   if (e->type() == QEvent::WindowActivate) // 窗口切到后台
   {
     // qDebug() << "qMRMLSliceControllerWidget=" << 22;

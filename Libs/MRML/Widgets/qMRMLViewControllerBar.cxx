@@ -80,6 +80,7 @@ void qMRMLViewControllerBarPrivate::init()
   this->BarWidget->setObjectName("BarWidget");
   this->BarWidget->setAutoFillBackground(true); // color the bar
   this->BarWidget->setStyleSheet("background-color: #eeeeee;");
+  // this->BarWidget->setStyleSheet("background-color: blue;");
 
   this->ControllerLayout = new QVBoxLayout(q);
   this->ControllerLayout->setSpacing(2);
@@ -143,8 +144,6 @@ void qMRMLViewControllerBarPrivate::init()
 
   this->BarWidget->setLayout(this->BarLayout);
 
-  this->BarWidget->setStyleSheet("background-color: pink;");
-
   this->ControllerLayout->addWidget(this->BarWidget);
 
   q->setLayout(this->ControllerLayout);
@@ -153,6 +152,8 @@ void qMRMLViewControllerBarPrivate::init()
 //---------------------------------------------------------------------------
 void qMRMLViewControllerBarPrivate::setupPopupUi()
 {
+  // qDebug() << "==qMRMLViewControllerBar.cxx========setupPopupUi=========:"
+  //       << 1;
   this->PopupWidget->setAutoShow(false);
   this->PopupWidget->setAutoHide(true);
   this->PopupWidget->setOrientation(Qt::Vertical);
@@ -243,6 +244,10 @@ void qMRMLViewControllerBar::setLayoutBehavior(LayoutBehavior behavior)
   Q_D(qMRMLViewControllerBar);
 
   d->LayoutBehavior = behavior;
+
+  
+  // qDebug() << "=========setLayoutBehavior==========:"
+  //         << behavior;
 
   if (d->PopupWidget)
   {
