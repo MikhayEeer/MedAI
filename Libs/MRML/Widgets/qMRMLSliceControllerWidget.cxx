@@ -428,6 +428,24 @@ void qMRMLSliceControllerWidgetPrivate::init()
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
   // this->SliceOffsetSlider->spinBox()->setStyleSheet("color: black; background-color: green;");
 
+
+  this->SliceOffsetSlider->setStyleSheet(
+    "QSlider::groove:vertical {"
+    "  border: 1px solid #999999;"
+    "  background: #f0f0f0;"
+    "  width: 20px;"  // 滑条宽度
+    "  margin: 0px 0px;"
+    "}"
+    "QSlider::handle:vertical {"
+    "  background: #4CAF50;"
+    "  border: 2px solid #2e7d32;"
+    "  width: 30px;"   // 滑块宽度
+    "  height: 40px;"  // 滑块高度
+    "  border-radius: 10px;"
+    "}"
+  );
+
+
   // this->SliceOffsetSlider->setStyleSheet("background-color: gray;");
 
   //this->SliceOffsetSlider->spinBox()->setParent(this->PopupWidget);
