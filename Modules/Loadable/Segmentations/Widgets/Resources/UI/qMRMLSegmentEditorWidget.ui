@@ -14,7 +14,23 @@
    <string>qMRMLSegmentEditorWidget</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
+    <item row="0" column="0">
+      <widget class="qMRMLSubjectHierarchyTreeView" name="SubjectHierarchyTreeView">
+        <property name="dragDropMode">
+        <enum>QAbstractItemView::InternalMove</enum>
+        </property>
+        <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+        <property name="indentation">
+        <number>12</number>
+        </property>
+        <property name="showRootItem">
+        <bool>true</bool>
+        </property>
+      </widget>
+    </item>
+   <item row="1" column="0">
     <layout class="QGridLayout" name="NodeSelectorLayout">
      <item row="1" column="0">
       <widget class="QLabel" name="SourceVolumeNodeLabel">
@@ -102,7 +118,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="SegmentActionsLayout">
      <property name="spacing">
       <number>4</number>
@@ -449,6 +465,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>qMRMLSubjectHierarchyTreeView</class>
+   <extends>QTreeView</extends>
+   <header>qMRMLSubjectHierarchyTreeView.h</header>
+  </customwidget>
+  <customwidget>
    <class>qMRMLNodeComboBox</class>
    <extends>QWidget</extends>
    <header>qMRMLNodeComboBox.h</header>
@@ -539,6 +560,22 @@
     <hint type="destinationlabel">
      <x>275</x>
      <y>46</y>
+    </hint>
+   </hints>
+  </connection>
+    <connection>
+   <sender>qMRMLSegmentEditorWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>SubjectHierarchyTreeView</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>2</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>176</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
