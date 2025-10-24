@@ -29,6 +29,10 @@
 #include "vtkMRMLSegmentationDisplayNode.h"
 #include "vtkMRMLSegmentEditorNode.h"
 #include "qMRMLSegmentationGeometryDialog.h"
+#include <vtkMRMLModelNode.h>
+#include <vtkMRMLStorageNode.h>
+#include <QDir>
+#include <QDebug>
 
 // vtkSegmentationCore Includes
 #include "vtkSegmentation.h"
@@ -62,6 +66,7 @@
 #include <vtkRenderWindowInteractor.h>
 #include <vtkSmartPointer.h>
 #include <vtkWeakPointer.h>
+#include <vtkType.h>            // 直接定义 vtkIdType
 
 // Slicer includes
 #include <vtkMRMLSliceLogic.h>
@@ -110,10 +115,9 @@
 #include <QTableView>
 #include <QToolButton>
 #include <QVBoxLayout>
-
 // CTK includes
 #include <ctkCollapsibleButton.h>
-
+#include "vtkMRMLSubjectHierarchyNode.h"
 #pragma execution_character_set("utf-8")
 
 static const int BINARY_LABELMAP_SCALAR_TYPE = VTK_UNSIGNED_CHAR;
@@ -3132,6 +3136,55 @@ void qMRMLSegmentEditorWidget::toggleSourceVolumeIntensityMaskEnabled()
 void qMRMLSegmentEditorWidget::undo()
 {
   Q_D(qMRMLSegmentEditorWidget);
+
+  // 尝试一下一键导出的代码
+  // 获取 segmentation 节点
+  vtkMRMLSegmentationNode* segmentationNode = vtkMRMLSegmentationNode::SafeDownCast(
+        this->mrmlScene()->GetFirstNodeByClass("vtkMRMLSegmentationNode"));
+  vtkMRMLSubjectHierarchyNode* shNode = vtkMRMLSubjectHierarchyNode::GetSubjectHierarchyNode(this->mrmlScene());
+  vtkIdType folderItemId = shNode->GetSceneItemID();
+  vtkSlicerSegmentationsModuleLogic::ExportAllSegmentsToModels(segmentationNode, folderItemId);
+  // Get all model nodes
+  std::vector<vtkMRMLNode*> modelNodes;
+  this->mrmlScene()->GetNodesByClass("vtkMRMLModelNode", modelNodes);
+
+  // Export models to OBJ files
+  for (vtkMRMLNode* node : modelNodes)
+  {
+      vtkMRMLModelNode* modelNode = vtkMRMLModelNode::SafeDownCast(node);
+      if (!modelNode)
+      {
+          continue;
+      }
+
+      QString name = modelNode->GetName();
+      if (!name.contains("Model") && !name.contains("Volume"))
+      {
+          // Create storage node
+          vtkMRMLStorageNode* storageNode = modelNode->CreateDefaultStorageNode();
+          if (!storageNode)
+          {
+              qWarning() << "Failed to create storage node for" << name;
+              continue;
+          }
+
+          // Set file path and write data
+          QString filePath = QDir("H://66").filePath(name + ".obj");
+          storageNode->SetFileName(filePath.toStdString().c_str());
+          if (!storageNode->WriteData(modelNode))
+          {
+              qWarning() << "Failed to write model to" << filePath;
+          }
+
+          // Clean up
+          this->mrmlScene()->RemoveNode(modelNode);
+          storageNode->Delete();
+      }
+  }
+
+  qDebug() << "Successfully exported all models to" ;
+
+
   if (!d->SegmentationNode)
   {
     return;
