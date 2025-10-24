@@ -470,6 +470,7 @@ void qMRMLSegmentEditorWidgetPrivate::init()
 
   QObject::connect( this->UndoButton, SIGNAL(clicked()), q, SLOT(undo()) );
   QObject::connect( this->RedoButton, SIGNAL(clicked()), q, SLOT(redo()) );
+  QObject::connect( this->ExportAllButton, SIGNAL(clicked()), q, SLOT(exPortAllSeg()) );
 
   q->qvtkConnect(this->SegmentationHistory, vtkCommand::ModifiedEvent,
     q, SLOT(onSegmentationHistoryChanged()));
@@ -3136,6 +3137,38 @@ void qMRMLSegmentEditorWidget::toggleSourceVolumeIntensityMaskEnabled()
 void qMRMLSegmentEditorWidget::undo()
 {
   Q_D(qMRMLSegmentEditorWidget);
+  if (!d->SegmentationNode)
+  {
+    return;
+  }
+
+  MRMLNodeModifyBlocker blocker(d->SegmentationNode);
+  d->SegmentationHistory->RestorePreviousState();
+  d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
+}
+
+//-----------------------------------------------------------------------------
+void qMRMLSegmentEditorWidget::redo()
+{
+  Q_D(qMRMLSegmentEditorWidget);
+  if (!d->SegmentationNode)
+  {
+    return;
+  }
+
+  MRMLNodeModifyBlocker blocker(d->SegmentationNode);
+  d->SegmentationHistory->RestoreNextState();
+  d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
+}
+
+//-----------------------------------------------------------------------------
+void qMRMLSegmentEditorWidget::exPortAllSeg()
+{
+  Q_D(qMRMLSegmentEditorWidget);
+  if (!d->SegmentationNode)
+  {
+    return;
+  }
 
   // 尝试一下一键导出的代码
   // 获取 segmentation 节点
@@ -3169,7 +3202,7 @@ void qMRMLSegmentEditorWidget::undo()
           }
 
           // Set file path and write data
-          QString filePath = QDir("H://66").filePath(name + ".obj");
+          QString filePath = QDir(d->directoryButton->directory()).filePath(name + ".obj");
           storageNode->SetFileName(filePath.toStdString().c_str());
           if (!storageNode->WriteData(modelNode))
           {
@@ -3181,32 +3214,7 @@ void qMRMLSegmentEditorWidget::undo()
           storageNode->Delete();
       }
   }
-
   qDebug() << "Successfully exported all models to" ;
-
-
-  if (!d->SegmentationNode)
-  {
-    return;
-  }
-
-  MRMLNodeModifyBlocker blocker(d->SegmentationNode);
-  d->SegmentationHistory->RestorePreviousState();
-  d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
-}
-
-//-----------------------------------------------------------------------------
-void qMRMLSegmentEditorWidget::redo()
-{
-  Q_D(qMRMLSegmentEditorWidget);
-  if (!d->SegmentationNode)
-  {
-    return;
-  }
-
-  MRMLNodeModifyBlocker blocker(d->SegmentationNode);
-  d->SegmentationHistory->RestoreNextState();
-  d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
 }
 
 //-----------------------------------------------------------------------------
