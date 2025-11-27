@@ -77,15 +77,16 @@ void qMRMLThreeDWidgetPrivate::init()
 {
   Q_Q(qMRMLThreeDWidget);
 
-  QVBoxLayout* layout = new QVBoxLayout(q);
+  QHBoxLayout* layout = new QHBoxLayout(q);
   layout->setSpacing(0);
   layout->setContentsMargins(0, 0, 0, 0);
 
   this->ThreeDController = new qMRMLThreeDViewControllerWidget;
-  layout->addWidget(this->ThreeDController);
 
   this->ThreeDView = new qMRMLThreeDView;
-  this->ThreeDView->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+  // this->ThreeDView->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+  this->ThreeDView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+  layout->addWidget(this->ThreeDController);
   layout->addWidget(this->ThreeDView);
 
   this->ThreeDController->setThreeDView(this->ThreeDView);

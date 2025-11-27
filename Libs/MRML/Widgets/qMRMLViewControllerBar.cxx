@@ -79,6 +79,8 @@ void qMRMLViewControllerBarPrivate::init()
   this->BarWidget = new QWidget(q);
   this->BarWidget->setObjectName("BarWidget");
   this->BarWidget->setAutoFillBackground(true); // color the bar
+  this->BarWidget->setStyleSheet("background-color: #eeeeee;");
+  // this->BarWidget->setStyleSheet("background-color: blue;");
 
   this->ControllerLayout = new QVBoxLayout(q);
   this->ControllerLayout->setSpacing(2);
@@ -89,7 +91,7 @@ void qMRMLViewControllerBarPrivate::init()
   cmargins.setRight(0);
   this->ControllerLayout->setContentsMargins(cmargins);
 
-  this->BarLayout = new QHBoxLayout();
+  this->BarLayout = new QVBoxLayout();
   this->BarLayout->setSpacing(2);
   QMargins margins = this->BarLayout->contentsMargins();
   margins.setTop(0);
@@ -108,20 +110,23 @@ void qMRMLViewControllerBarPrivate::init()
   pushPinIcon.addFile(":/Icons/PushPinOut.png", QSize(), QIcon::Normal, QIcon::Off);
   this->PinButton->setIcon(pushPinIcon);
   QObject::connect(this->PinButton, SIGNAL(toggled(bool)),
-                   this->PopupWidget, SLOT(pinPopup(bool)));
+                   this->PopupWidget, SLOT(pinPopup(bool))); // 点击按下按钮，触发弹窗
   this->PinButton->installEventFilter(this);
   this->BarLayout->addWidget(this->PinButton);
 
   this->ViewLabel = new QLabel(q);
   this->ViewLabel->setObjectName("ViewLabel");
-  this->ViewLabel->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+  this->ViewLabel->setAlignment(Qt::AlignHCenter | Qt::AlignHCenter);
   // Slice controller background color is independent from the color palette, therefore the color of text and controls are hardcoded to black
-  this->ViewLabel->setStyleSheet("color: black; background-color: transparent;");
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-  this->ViewLabel->setMinimumWidth(this->ViewLabel->fontMetrics().horizontalAdvance("XX"));
-#else
-  this->ViewLabel->setMinimumWidth(this->ViewLabel->fontMetrics().width("XX"));
-#endif
+  // this->ViewLabel->setStyleSheet("color: black; background-color: yellow;");
+  this->ViewLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+  // this->ViewLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+// #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+//   this->ViewLabel->setMinimumWidth(this->ViewLabel->fontMetrics().horizontalAdvance("XX"));
+// #else
+//   this->ViewLabel->setMinimumWidth(this->ViewLabel->fontMetrics().width("XX"));
+// #endif
   this->BarLayout->addWidget(this->ViewLabel);
 
   this->ViewMaximizeIcon = QIcon(":Icons/ViewMaximize.png");
@@ -138,13 +143,17 @@ void qMRMLViewControllerBarPrivate::init()
   this->BarLayout->addSpacing(5);
 
   this->BarWidget->setLayout(this->BarLayout);
+
   this->ControllerLayout->addWidget(this->BarWidget);
+
   q->setLayout(this->ControllerLayout);
 }
 
 //---------------------------------------------------------------------------
 void qMRMLViewControllerBarPrivate::setupPopupUi()
 {
+  // qDebug() << "==qMRMLViewControllerBar.cxx========setupPopupUi=========:"
+  //       << 1;
   this->PopupWidget->setAutoShow(false);
   this->PopupWidget->setAutoHide(true);
   this->PopupWidget->setOrientation(Qt::Vertical);
@@ -235,6 +244,10 @@ void qMRMLViewControllerBar::setLayoutBehavior(LayoutBehavior behavior)
   Q_D(qMRMLViewControllerBar);
 
   d->LayoutBehavior = behavior;
+
+  
+  // qDebug() << "=========setLayoutBehavior==========:"
+  //         << behavior;
 
   if (d->PopupWidget)
   {

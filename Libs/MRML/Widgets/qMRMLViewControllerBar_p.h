@@ -80,7 +80,7 @@ public:
   QToolButton*                     MaximizeViewButton{nullptr};
   ctkPopupWidget*                  PopupWidget{nullptr};
   QWidget*                         BarWidget{nullptr};
-  QHBoxLayout*                     BarLayout{nullptr};
+  QVBoxLayout*                     BarLayout{nullptr};
   QVBoxLayout*                     ControllerLayout{nullptr};
   qMRMLViewControllerBar::LayoutBehavior  LayoutBehavior{qMRMLViewControllerBar::Popup};
   QColor                           BarColor;

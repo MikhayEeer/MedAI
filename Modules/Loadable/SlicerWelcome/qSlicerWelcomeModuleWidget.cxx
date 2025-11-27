@@ -112,7 +112,7 @@ void qSlicerWelcomeModuleWidgetPrivate::setupUi(qSlicerWidget* widget)
   foreach(QWidget* widget, QWidgetList()
           << this->FeedbackCollapsibleWidget
           << this->TranslateDocWidget
-          << this->OtherUsefulHintsCollapsibleWidget
+          // << this->OtherUsefulHintsCollapsibleWidget
           )
   {
     QTextBrowser* textBrowser = widget->findChild<QTextBrowser*>();
