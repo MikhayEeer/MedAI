@@ -1135,6 +1135,14 @@ void qSlicerMainWindow::on_actionLogOut_triggered() {
     }
 }
 
+void qSlicerMainWindow::on_actionAIAirwayAuto_triggered() {
+    QMessageBox::information(this, "提示", "on_actionAIAirwayAuto_triggered");
+}
+
+void qSlicerMainWindow::on_actionAIVesselAuto_triggered() {
+    QMessageBox::information(this, "提示", "on_actionAIVesselAuto_triggered");
+}
+
 void qSlicerMainWindow::on_actionReviewPermission_triggered() {
   PasswordDialog * tmpForm = new PasswordDialog();
   tmpForm->setWindowModality(Qt::ApplicationModal);

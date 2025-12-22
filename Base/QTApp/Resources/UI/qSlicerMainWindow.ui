@@ -310,6 +310,8 @@
     <addaction name="actionAI_Airway"/>
     <addaction name="separator"/>
     <addaction name="actionAnonymize"/>
+    <addaction name="actionAIAirwayAuto"/>
+    <addaction name="actionAIVesselAuto"/>
    </widget>
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
@@ -1229,6 +1231,16 @@
   <action name="actionAnonymize">
    <property name="text">
     <string>Anonymize</string>
+   </property>
+  </action>
+  <action name="actionAIAirwayAuto">
+   <property name="text">
+    <string>一键AI血管</string>
+   </property>
+  </action>
+  <action name="actionAIVesselAuto">
+   <property name="text">
+    <string>一键AI肺段</string>
    </property>
   </action>
  </widget>
