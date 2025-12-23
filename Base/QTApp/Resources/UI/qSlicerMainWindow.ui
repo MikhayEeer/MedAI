@@ -312,6 +312,7 @@
     <addaction name="actionAnonymize"/>
     <addaction name="actionAIAirwayAuto"/>
     <addaction name="actionAIVesselAuto"/>
+    <addaction name="actionAIFeiDuanAuto"/>
    </widget>
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
@@ -1235,10 +1236,15 @@
   </action>
   <action name="actionAIAirwayAuto">
    <property name="text">
-    <string>一键AI血管</string>
+    <string>一键AI气道重建</string>
    </property>
   </action>
   <action name="actionAIVesselAuto">
+   <property name="text">
+    <string>一键AI肺血管</string>
+   </property>
+  </action>
+  <action name="actionAIFeiDuanAuto">
    <property name="text">
     <string>一键AI肺段</string>
    </property>

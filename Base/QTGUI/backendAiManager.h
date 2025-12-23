@@ -50,6 +50,8 @@ public:
     void choose_file_for_airway();
     void choose_file_for_vessel();
     void choose_file_for_vesselV2();
+    void uploadFileAuto(int model, const QString& filePath);
+    QString saveCurrentVolumeAsTemporaryFile();
 
 signals:
     void signal_add_finish();
@@ -59,6 +61,7 @@ public slots:
 
 private:
     void uploadFile();
+    
 
     QStringList _choosed_files;
     AI_MODEL _choosed_model;

@@ -1097,6 +1097,93 @@ void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
     _from->show();
 }
 
+QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
+    vtkMRMLScene* scene = qSlicerApplication::application()->mrmlScene();
+    // 得到当前ct的绝对路径
+    if (!scene) {
+        qDebug("No scene");
+        return QString();  // 失败时返回空字符串
+    }
+    
+    // 1. 获取第一个标量体积节点
+    vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
+    if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
+        qDebug("No volume nodes");
+        if (volumeNodes) {
+            volumeNodes->Delete();
+        }
+        return QString();  // 失败时返回空字符串
+    }
+    
+    vtkMRMLScalarVolumeNode* ctNode = vtkMRMLScalarVolumeNode::SafeDownCast(
+        volumeNodes->GetItemAsObject(0)
+    );
+    volumeNodes->Delete();
+    
+    if (!ctNode) {
+        qDebug("No ct node");
+        return QString();  // 失败时返回空字符串
+    }
+    
+    // 2. 创建默认存储节点
+    vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
+    if (!storageNode) {
+        qDebug("No storage node");
+        return QString();  // 失败时返回空字符串
+    }
+    
+    // 设置场景
+    storageNode->SetScene(scene);
+    
+    QString outputPath =
+      qSlicerCoreApplication::application()->temporaryPath();
+    // 选择文件夹
+    QString dirPath = QFileDialog::getExistingDirectory(
+        nullptr,
+        "选择保存文件夹",
+        outputPath,  // 初始目录
+        QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
+    );
+    
+    if (!dirPath.isEmpty()) {
+        qDebug() << "chosed dir:" << dirPath;
+        // 在这里处理文件夹路径
+    }
+
+    QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+                                          "提示", 
+                                          "后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                          QMessageBox::NoButton, 
+                                          this);
+    msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+    
+    msgBox2->setModal(false);  // 关键：设置为非模态
+    msgBox2->show();
+
+    // 立即处理UI事件，确保消息框显示出来
+    QApplication::processEvents();
+
+    QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
+
+    qDebug("start save file");
+
+    // 3. 设置输出文件名
+    QUuid uuid = QUuid::createUuid();
+    QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
+    std::string fileName = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
+    storageNode->SetFileName(fileName.c_str());
+    
+    // 4. 写入数据
+    bool success = storageNode->WriteData(ctNode);
+    
+    if (success) {
+        qDebug() << "temp save success:" << fileName.c_str();
+    } else {
+        qDebug() << "temp save failed:" << fileName.c_str();
+    }
+    return QString(fileName.c_str());
+}
+
 void qSlicerMainWindow::on_actionAI_Airway_triggered() {
 
     Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
@@ -1110,6 +1197,42 @@ void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
     tmpForm->setWindowModality(Qt::ApplicationModal);
     //tmpForm->choose_file_for_vessel();
     tmpForm->show();
+}
+
+void qSlicerMainWindow::on_actionAIAirwayAuto_triggered() {
+    QString fileName = saveCurrentVolumeAsTemporaryFile();
+    if(fileName.isEmpty()){
+        QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+        return;
+    }
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+    // 调用ai功能
+    // tmpForm->uploadFileAuto(0,"H:/deskCopy/bai_ping_case/fei_an_li_plus/A53_joVmESdG0FzEVm24T02999400.nii.gz");
+    tmpForm->uploadFileAuto(0,fileName);
+}
+
+void qSlicerMainWindow::on_actionAIVesselAuto_triggered() {
+    QString fileName = saveCurrentVolumeAsTemporaryFile();
+    if(fileName.isEmpty()){
+        QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+        return;
+    }
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+    // 调用ai功能
+    // tmpForm->uploadFileAuto(0,"H:/deskCopy/bai_ping_case/fei_an_li_plus/A53_joVmESdG0FzEVm24T02999400.nii.gz");
+    tmpForm->uploadFileAuto(1,fileName);
+}
+
+void qSlicerMainWindow::on_actionAIFeiDuanAuto_triggered() {
+    QString fileName = saveCurrentVolumeAsTemporaryFile();
+    if(fileName.isEmpty()){
+        QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+        return;
+    }
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+    // 调用ai功能
+    // tmpForm->uploadFileAuto(0,"H:/deskCopy/bai_ping_case/fei_an_li_plus/A53_joVmESdG0FzEVm24T02999400.nii.gz");
+    tmpForm->uploadFileAuto(2,fileName);
 }
 
 void qSlicerMainWindow::on_actionAnonymize_triggered() {
@@ -1135,13 +1258,6 @@ void qSlicerMainWindow::on_actionLogOut_triggered() {
     }
 }
 
-void qSlicerMainWindow::on_actionAIAirwayAuto_triggered() {
-    QMessageBox::information(this, "提示", "on_actionAIAirwayAuto_triggered");
-}
-
-void qSlicerMainWindow::on_actionAIVesselAuto_triggered() {
-    QMessageBox::information(this, "提示", "on_actionAIVesselAuto_triggered");
-}
 
 void qSlicerMainWindow::on_actionReviewPermission_triggered() {
   PasswordDialog * tmpForm = new PasswordDialog();
