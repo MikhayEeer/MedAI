@@ -1099,20 +1099,18 @@ void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
 
 QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
     vtkMRMLScene* scene = qSlicerApplication::application()->mrmlScene();
-    // 得到当前ct的绝对路径
     if (!scene) {
         qDebug("No scene");
-        return QString();  // 失败时返回空字符串
+        return QString();
     }
     
-    // 1. 获取第一个标量体积节点
     vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
     if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
         qDebug("No volume nodes");
         if (volumeNodes) {
             volumeNodes->Delete();
         }
-        return QString();  // 失败时返回空字符串
+        return QString();
     }
     
     vtkMRMLScalarVolumeNode* ctNode = vtkMRMLScalarVolumeNode::SafeDownCast(
@@ -1122,26 +1120,34 @@ QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
     
     if (!ctNode) {
         qDebug("No ct node");
-        return QString();  // 失败时返回空字符串
+        return QString();
     }
     
-    // 2. 创建默认存储节点
     vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
     if (!storageNode) {
         qDebug("No storage node");
-        return QString();  // 失败时返回空字符串
+        return QString();
     }
     
-    // 设置场景
     storageNode->SetScene(scene);
     
-    QString outputPath =
-      qSlicerCoreApplication::application()->temporaryPath();
+    // QString outputPath =
+    //   qSlicerCoreApplication::application()->temporaryPath();
+    QString outputPath = ctNode->GetStorageNode()->GetFileName();
+    qDebug() << "outputPath:" << outputPath;
+    int lastSlashIndex = outputPath.lastIndexOf("/");
+    // ct文件所在的目录路径
+    QString file_dir_path = outputPath.left(lastSlashIndex);
+    lastSlashIndex = file_dir_path.lastIndexOf("/");
+    if(lastSlashIndex!=-1){
+        file_dir_path = file_dir_path.left(lastSlashIndex);
+    }
+    
     // 选择文件夹
     QString dirPath = QFileDialog::getExistingDirectory(
         nullptr,
         "选择保存文件夹",
-        outputPath,  // 初始目录
+        file_dir_path,  // 初始目录
         QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
     );
     
@@ -1206,9 +1212,18 @@ void qSlicerMainWindow::on_actionAIAirwayAuto_triggered() {
         return;
     }
     Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
-    // 调用ai功能
-    // tmpForm->uploadFileAuto(0,"H:/deskCopy/bai_ping_case/fei_an_li_plus/A53_joVmESdG0FzEVm24T02999400.nii.gz");
     tmpForm->uploadFileAuto(0,fileName);
+    QFile file(fileName);
+    
+    if (!file.exists()) {
+        qDebug() << "file not exist:" << fileName;
+    }
+    qDebug("start remove file");
+    if (file.remove()) {
+        qDebug() << "file remove ok:" << fileName;
+    } else {
+        qDebug() << "file remove error:" << fileName << "错误:" << file.errorString();
+    }
 }
 
 void qSlicerMainWindow::on_actionAIVesselAuto_triggered() {
@@ -1218,9 +1233,18 @@ void qSlicerMainWindow::on_actionAIVesselAuto_triggered() {
         return;
     }
     Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
-    // 调用ai功能
-    // tmpForm->uploadFileAuto(0,"H:/deskCopy/bai_ping_case/fei_an_li_plus/A53_joVmESdG0FzEVm24T02999400.nii.gz");
     tmpForm->uploadFileAuto(1,fileName);
+        QFile file(fileName);
+    qDebug("start remove file");
+    if (!file.exists()) {
+        qDebug() << "file not exist:" << fileName;
+    }
+    
+    if (file.remove()) {
+        qDebug() << "file remove ok:" << fileName;
+    } else {
+        qDebug() << "file remove error:" << fileName << "错误:" << file.errorString();
+    }
 }
 
 void qSlicerMainWindow::on_actionAIFeiDuanAuto_triggered() {
@@ -1230,9 +1254,19 @@ void qSlicerMainWindow::on_actionAIFeiDuanAuto_triggered() {
         return;
     }
     Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
-    // 调用ai功能
-    // tmpForm->uploadFileAuto(0,"H:/deskCopy/bai_ping_case/fei_an_li_plus/A53_joVmESdG0FzEVm24T02999400.nii.gz");
     tmpForm->uploadFileAuto(2,fileName);
+    qDebug("start remove file");
+    QFile file(fileName);
+    
+    if (!file.exists()) {
+        qDebug() << "file not exist:" << fileName;
+    }
+    
+    if (file.remove()) {
+        qDebug() << "file remove ok:" << fileName;
+    } else {
+        qDebug() << "file remove error:" << fileName << "错误:" << file.errorString();
+    }
 }
 
 void qSlicerMainWindow::on_actionAnonymize_triggered() {
