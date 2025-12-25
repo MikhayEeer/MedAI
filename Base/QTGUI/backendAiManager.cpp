@@ -59,6 +59,7 @@ void Backend_AI_Processing_manager::choose_file_for_airway(){
 //        } else {
 //            // 用户关闭了对话框
 //        }
+
     }
     else{
         if(manager) delete manager;
@@ -102,6 +103,17 @@ void Backend_AI_Processing_manager::finishedAdd(QJsonObject m_res)
 
 void Backend_AI_Processing_manager::add_ai_ops()
 {
+    QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+                                        "提示", 
+                                        "后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                        QMessageBox::NoButton, 
+                                        this);
+    msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+    
+    msgBox2->setModal(false);  // 关键：设置为非模态
+    msgBox2->show();
+
+    QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
     QJsonObject json;
     json.insert("email", userInfoEmail);
     qDebug() << userInfoEmail;
@@ -111,124 +123,17 @@ void Backend_AI_Processing_manager::add_ai_ops()
 
 // 修改函数签名，接收文件路径作为参数
 void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& filePath) {
-    int lastSlashIndex = filePath.lastIndexOf("/");
-    // ct文件所在的目录路径
-    QString file_dir_path = filePath.left(lastSlashIndex);
-    // 文件名
-    QString complete_fileName = filePath.mid(lastSlashIndex + 1);
-    int suffix_index = complete_fileName.lastIndexOf(".nii.gz");
-    if(suffix_index == -1 || (suffix_index + 7 < complete_fileName.length()) ){
-        finishedDialog = new QMessageBox(QMessageBox::Question,"提示","请选择.nii.gz为后缀的CT文件");
-
-        // 当模型处理完成后，进行提示
-        finishedDialog->setWindowFlags(Qt::Dialog);
-        QPushButton* agreeBut = finishedDialog->addButton("确认", QMessageBox::AcceptRole);
-        QObject::connect(agreeBut, &QPushButton::clicked, this,&Backend_AI_Processing_manager::close);
-
-        finishedDialog->exec();
-        qDebug() << complete_fileName;
-        qDebug() << suffix_index;
-        qDebug() << complete_fileName.length();
-        qDebug() << "请选择.nii.gz为后缀的CT文件";
-        return;
-    }
-    QString baseName = complete_fileName.left(suffix_index);
-    m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz";
-    if(model != AI_MODEL::AIRWAY) {
-        m_result_path = file_dir_path + "/肺部血管分割" + baseName + ".nii.gz";
-    }
-    if (model == AI_MODEL::VESSELV2) {
-        m_result_path = file_dir_path + "/肺段分割" + baseName + ".nii.gz";
-    }
-    qDebug() << filePath;
-//    qDebug() << file_dir_path;
-//    qDebug() << complete_fileName;
-//    qDebug() << baseName;
-//    qDebug() << m_result_path;
-
-    QNetworkRequest request(QUrl(AI_URL_AIRWAY + "/upload")); //13910
-    if (model == AI_MODEL::VESSEL) {
-        request.setUrl(QUrl(AI_URL_VESSEL + "/vessel_ai"));
-    }
-    else if (model == AI_MODEL::VESSELV2) {
-        request.setUrl(QUrl(AI_URL_VESSEL + "/vessel_v2"));
+    _choosed_files= QStringList() << filePath;
+    // _choosed_files[0]= filePath;
+    if(model == 0){
+        _choosed_model = AI_MODEL::AIRWAY;
+    }else if(model == 1){
+        _choosed_model = AI_MODEL::VESSEL;
+    }else if(model == 2){
+        _choosed_model = AI_MODEL::VESSELV2;
     }
 
-    multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-
-    // 打开要上传的文件
-    QFile *file = new QFile(filePath);
-    file->open(QIODevice::ReadOnly);
-    // 读取所有内容到字节数组
-    QByteArray fileData = file->readAll();
-    file->close();
-
-    file->deleteLater();
-    // 添加文件部分
-    QHttpPart filePart;
-    filePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/octet-stream"));
-    QString file_name = QString("form-data; name=\"file\"; filename=\"%1\"").arg(file->fileName());
-    filePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant(file_name));
-    filePart.setBody(fileData);
-    multiPart->append(filePart);
-
-    // 添加JSON部分
-//    QHttpPart jsonPart;
-//    jsonPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
-//    QJsonObject json;
-//    json.insert("name", userInfoEmail);
-//    jsonPart.setBody(QJsonDocument(json).toJson());
-//    multiPart->append(jsonPart);
-
-    reply = manager->post(request, multiPart);
-
-    QEventLoop eventLoop;
-    connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
-    eventLoop.exec();
-
-    if(reply->error() != QNetworkReply::NoError) {
-        QMessageBox msgBox;
-        // 读取并解析错误信息
-        QByteArray data = reply->readAll();
-        QString errorString = QString::fromUtf8(data);
-        qDebug() << "Server Error: " << data;
-        qDebug() << reply->errorString();
-        if(reply->errorString() == "Connection refused"){
-            msgBox.setText(QString("错误：连接服务器失败"));
-        }
-        else if(reply->errorString() == "Unable to write"){
-            msgBox.setText(QString("AI服务器已经满负荷，请5分钟后重试"));
-        }
-        else{
-            msgBox.setText(QString("错误：%1").arg(reply->errorString()));
-        }
-
-        msgBox.exec();
-        this->close();
-        return;
-    }
-
-    QFile responseFile(m_result_path);
-    if(!responseFile.open(QIODevice::WriteOnly)) {
-        QMessageBox msgBox;
-        msgBox.setText(QString("服务器传来的文件本地没有读取权限").arg(reply->errorString()));
-        msgBox.exec();
-        this->close();
-        responseFile.close();
-        return;
-    }
-
-    responseFile.write(reply->readAll());
-
-    finishedDialog = new QMessageBox(QMessageBox::Question,"提示","处理完成，新文件位于源文件同级目录");
-
-    // 当模型处理完成后，进行提示
-    finishedDialog->setWindowFlags(Qt::Dialog);
-    QPushButton* agreeBut = finishedDialog->addButton("确认", QMessageBox::AcceptRole);
-    QObject::connect(agreeBut, &QPushButton::clicked, this,&Backend_AI_Processing_manager::close);
-
-    finishedDialog->exec();
-    responseFile.close();
+    add_ai_ops();
 }
 
 void Backend_AI_Processing_manager::uploadFile() {
@@ -278,16 +183,16 @@ void Backend_AI_Processing_manager::uploadFile() {
 
     multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
     // 网络请求进度窗
-    m_progress = new QProgressDialog(this);
-    m_progress->setWindowTitle(tr("提示"));
-    m_progress->setLabelText(tr("服务器处理中..."));
-    m_progress->setCancelButton(nullptr);
-    // 不显示右上角的关闭
-    m_progress->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    m_progress->setRange(0, 100); //设置范围
-    m_progress->setModal(true);   //设置为模态对话框
-    m_progress->setValue(20); // 假值....
-    m_progress->show();
+    // m_progress = new QProgressDialog(this);
+    // m_progress->setWindowTitle(tr("提示"));
+    // m_progress->setLabelText(tr("服务器处理中..."));
+    // m_progress->setCancelButton(nullptr);
+    // // 不显示右上角的关闭
+    // m_progress->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    // m_progress->setRange(0, 100); //设置范围
+    // m_progress->setModal(true);   //设置为模态对话框
+    // m_progress->setValue(20); // 假值....
+    // m_progress->show();
 
     // 打开要上传的文件
     QFile *file = new QFile(filePath);
@@ -314,14 +219,14 @@ void Backend_AI_Processing_manager::uploadFile() {
 //    multiPart->append(jsonPart);
 
     reply = manager->post(request, multiPart);
-    m_progress->setValue(40); // 假值....
+    // m_progress->setValue(40); // 假值....
 
     QEventLoop eventLoop;
     connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
     eventLoop.exec();
 
-    m_progress->setHidden(true);
-    m_progress->setValue(100);
+    // m_progress->setHidden(true);
+    // m_progress->setValue(100);
 
     if(reply->error() != QNetworkReply::NoError) {
         QMessageBox msgBox;
