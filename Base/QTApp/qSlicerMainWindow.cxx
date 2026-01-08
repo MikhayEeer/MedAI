@@ -96,7 +96,8 @@
 #include "UserInfoForm.h"
 #include "backendAiManager.h"
 #include "passworddialog.h"
-
+#include <QStandardPaths>
+#include <QString>
 namespace
 {
 
@@ -1130,31 +1131,44 @@ QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
     }
     
     storageNode->SetScene(scene);
+
+    qDebug("111");
+
+    // QString dirPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    // qDebug() << dirPath;
     
-    // QString outputPath =
-    //   qSlicerCoreApplication::application()->temporaryPath();
-    QString outputPath = ctNode->GetStorageNode()->GetFileName();
-    qDebug() << "outputPath:" << outputPath;
-    int lastSlashIndex = outputPath.lastIndexOf("/");
+    QString dirPath =
+      qSlicerCoreApplication::application()->temporaryPath();
+    // QString outputPath = ctNode->GetStorageNode()->GetFileName();
+    // QString outputPath = storageNode->GetFileName();
+    // qDebug() << "outputPath:" << outputPath;
+    
+    // int lastSlashIndex = outputPath.lastIndexOf("/");
+    qDebug() << dirPath;
+    
+    
+    
     // ct文件所在的目录路径
-    QString file_dir_path = outputPath.left(lastSlashIndex);
-    lastSlashIndex = file_dir_path.lastIndexOf("/");
-    if(lastSlashIndex!=-1){
-        file_dir_path = file_dir_path.left(lastSlashIndex);
-    }
+    // QString file_dir_path = outputPath.left(lastSlashIndex);
+    // lastSlashIndex = file_dir_path.lastIndexOf("/");
+    // if(lastSlashIndex!=-1){
+    //     file_dir_path = file_dir_path.left(lastSlashIndex);
+    // }
     
     // 选择文件夹
-    QString dirPath = QFileDialog::getExistingDirectory(
-        nullptr,
-        "选择保存文件夹",
-        file_dir_path,  // 初始目录
-        QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
-    );
+    // QString dirPath = QFileDialog::getExistingDirectory(
+    //     nullptr,
+    //     "选择保存文件夹",
+    //     // file_dir_path,  // 初始目录
+    //     homePath,  // 初始目录
+    //     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
+    // );
     
-    if (!dirPath.isEmpty()) {
-        qDebug() << "chosed dir:" << dirPath;
-        // 在这里处理文件夹路径
-    }
+    // if (!dirPath.isEmpty()) {
+    //     qDebug() << "chosed dir:" << dirPath;
+    //     // 在这里处理文件夹路径
+    // }
+
 
     QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
                                           "提示", 
