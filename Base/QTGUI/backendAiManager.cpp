@@ -13,6 +13,7 @@
 #include "UserInfo.h"
 #include "backendAiManager.h"
 
+
 #pragma execution_character_set("utf-8")
 
 Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, QWidget *parent)
@@ -22,6 +23,11 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     this->setAttribute(Qt::WA_DeleteOnClose);
 
     m_progress = nullptr;
+    m_progress1 = nullptr;
+    m_progress2 = nullptr;
+    m_progress3 = nullptr;
+    m_progress4 = nullptr;
+    m_progress5 = nullptr;
     multiPart = nullptr;
     reply = nullptr;
     manager = new QNetworkAccessManager(this);
@@ -33,6 +39,26 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
 
     _postManager = new PostManager();
     connect(_postManager, SIGNAL(postEnded(QJsonObject)), this, SLOT(finishedAdd(QJsonObject)));
+
+    // 定时器功能
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, [this]() {
+        /* 你的代码 */
+        qDebug() << "scheduler running...";
+        // 假设4分钟  240s 24次
+        if(m_progress1){
+            int currentValue = m_progress1->value();
+            qDebug() << "m_progress1 current value:" << currentValue;
+            if(currentValue<23){
+                m_progress1->setValue(currentValue+1); // 假值....
+                // m_progress1->show();
+            }
+        }
+    });
+    timer->start(10000);  // ✅ 正确
+
+    
+
 }
 
 Backend_AI_Processing_manager::~Backend_AI_Processing_manager(){
@@ -133,7 +159,31 @@ void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& fil
         _choosed_model = AI_MODEL::VESSELV2;
     }
 
-    add_ai_ops();
+    m_progress1 = new QProgressDialog(this);
+    m_progress1->setWindowTitle(tr("提示"));
+    m_progress1->setLabelText(tr("服务器处理中. 111.ffff."));
+    m_progress1->setCancelButton(nullptr);
+    // 不显示右上角的关闭
+    // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    m_progress1->setRange(0, 100); //设置范围
+    // m_progress1->setModal(true);   //设置为模态对话框
+    m_progress1->setValue(20); // 假值....
+    m_progress1->show();
+
+    int currentValue = m_progress1->value();
+    qDebug() << "m_progress1 cur value:" << currentValue;
+
+    m_progress2 = new QProgressDialog(this);
+    m_progress2->setWindowTitle(tr("提示"));
+    m_progress2->setLabelText(tr("服务器处理中. 222.ffff."));
+    m_progress2->setCancelButton(nullptr);
+    // 不显示右上角的关闭
+    // m_progress2->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    m_progress2->setRange(0, 100); //设置范围
+    // m_progress2->setModal(true);   //设置为模态对话框
+    m_progress2->setValue(20); // 假值....
+    m_progress2->show();
+    // add_ai_ops();
 }
 
 void Backend_AI_Processing_manager::uploadFile() {

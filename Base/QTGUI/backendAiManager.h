@@ -78,6 +78,11 @@ private:
     QPushButton *vessel_v2_button;
 	//    QPushButton *exitBtn;        //退出按钮
 	QProgressDialog *m_progress;
+	QProgressDialog *m_progress1;
+	QProgressDialog *m_progress2;
+	QProgressDialog *m_progress3;
+	QProgressDialog *m_progress4;
+	QProgressDialog *m_progress5;
 	QString m_result_path;
 
 	QHttpMultiPart* multiPart;
