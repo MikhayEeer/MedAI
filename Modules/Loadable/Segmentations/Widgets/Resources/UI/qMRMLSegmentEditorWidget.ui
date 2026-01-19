@@ -49,7 +49,7 @@
         <item>
           <widget class="QToolButton" name="ExportAllButton">
             <property name="text">
-            <string>一键导出</string>
+            <string>一键导出2</string>
             </property>
           </widget>
         </item>
@@ -486,6 +486,18 @@
      </item>
     </layout>
    </item>
+  <item row="5" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayoutExport">
+      <item>
+        <widget class="QToolButton" name="AIAutoButton">
+          <property name="text">
+          <string>一键AI血管</string>
+          </property>
+        </widget>
+      </item>
+    </layout>
+  </item>
+   
   </layout>
  </widget>
  <customwidgets>

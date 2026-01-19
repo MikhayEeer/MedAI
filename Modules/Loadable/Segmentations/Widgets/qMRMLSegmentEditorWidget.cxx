@@ -471,6 +471,7 @@ void qMRMLSegmentEditorWidgetPrivate::init()
   QObject::connect( this->UndoButton, SIGNAL(clicked()), q, SLOT(undo()) );
   QObject::connect( this->RedoButton, SIGNAL(clicked()), q, SLOT(redo()) );
   QObject::connect( this->ExportAllButton, SIGNAL(clicked()), q, SLOT(exPortAllSeg()) );
+  QObject::connect( this->AIAutoButton, SIGNAL(clicked()), q, SLOT(AIAutoDoFunc()) );
 
   q->qvtkConnect(this->SegmentationHistory, vtkCommand::ModifiedEvent,
     q, SLOT(onSegmentationHistoryChanged()));
@@ -3159,6 +3160,91 @@ void qMRMLSegmentEditorWidget::redo()
   MRMLNodeModifyBlocker blocker(d->SegmentationNode);
   d->SegmentationHistory->RestoreNextState();
   d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
+}
+
+
+void qMRMLSegmentEditorWidget::AIAutoDoFunc()
+{
+  Q_D(qMRMLSegmentEditorWidget);
+  // if (!d->SegmentationNode)
+  // {
+  //   return;
+  // }
+
+  qDebug() << "AIAutoDoFunc44" ;
+
+
+  // 方法1：使用智能指针
+  // vtkSmartPointer<vtkSlicerSegmentationsModuleLogic> segLogic = 
+  //     vtkSmartPointer<vtkSlicerSegmentationsModuleLogic>::New();
+      
+  // vtkMRMLScene* scene = qSlicerCoreApplication::application()->mrmlScene();
+  // vtkMRMLSegmentationNode* segNode = segLogic->LoadSegmentationFromFile("H:/q.nii.gz");
+  // vtkMRMLSegmentationNode* segNode = vtkSlicerSegmentationsModuleLogic::LoadSegmentationFromFile("H://q.nii.gz");
+      
+    // 获取Segmentations模块
+  qSlicerAbstractCoreModule* segmentationsModule = 
+      qSlicerCoreApplication::application()->moduleManager()->module("Segmentations");
+
+  vtkSlicerSegmentationsModuleLogic* segLogic = 
+      vtkSlicerSegmentationsModuleLogic::SafeDownCast(segmentationsModule->logic());
+
+  vtkMRMLSegmentationNode* segNode = segLogic->LoadSegmentationFromFile("H:/q.nii.gz");    
+
+  if (!segNode)
+  {
+      qDebug() << "Failed to load segmentation from segmentationPath";
+      return;
+  }
+
+
+
+    // 获取Segment Editor逻辑
+  // vtkSlicerSegmentationsModuleLogic* segmentEditorLogic = vtkSlicerSegmentationsModuleLogic::SafeDownCast(
+  //     qSlicerCoreApplication::application()->applicationLogic()->GetModuleLogic("SegmentEditor")
+  // );
+  this->setSegmentationNode(segNode);
+  
+
+   // 创建闭合表面表示
+  if (segNode->CreateClosedSurfaceRepresentation())
+  {
+      vtkMRMLSegmentationDisplayNode* displayNode = vtkMRMLSegmentationDisplayNode::SafeDownCast(
+          segNode->GetDisplayNode()
+      );
+      
+      if (displayNode)
+      {
+          // 设置3D显示偏好为闭合表面
+          displayNode->SetPreferredDisplayRepresentationName3D(
+              vtkSegmentationConverter::GetSegmentationClosedSurfaceRepresentationName()
+          );
+          
+          // 检查是否包含二值标签图表示
+          bool binaryLabelmapPresent = segNode->GetSegmentation()->ContainsRepresentation(
+              vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
+          );
+          
+          if (binaryLabelmapPresent)
+          {
+              // 设置2D显示偏好为二值标签图
+              displayNode->SetPreferredDisplayRepresentationName2D(
+                  vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
+              );
+          }
+          
+          // 可选：设置其他显示属性
+          displayNode->SetOpacity2DFill(0.7);
+          displayNode->SetOpacity2DOutline(1.0);
+          displayNode->SetOpacity3D(0.5);
+      }
+  }
+  else
+  {
+      qWarning() << "Failed to create closed surface representation";
+  }
+
+  qDebug() << "AIAutoDoFunc222" ;
 }
 
 //-----------------------------------------------------------------------------
