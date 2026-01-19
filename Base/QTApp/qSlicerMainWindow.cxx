@@ -87,6 +87,7 @@
 #include <vtkMRMLScene.h>
 #include <vtkMRMLSliceCompositeNode.h>
 
+
 // VTK includes
 #include <vtkCollection.h>
 
@@ -1191,25 +1192,28 @@ QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
     QUuid uuid = QUuid::createUuid();
     QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
     std::string fileName = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
-    storageNode->SetFileName(fileName.c_str());
+    // storageNode->SetFileName(fileName.c_str());
     
     // 4. 写入数据
-    bool success = storageNode->WriteData(ctNode);
+    // bool success = storageNode->WriteData(ctNode);
     
-    if (success) {
-        qDebug() << "temp save success:" << fileName.c_str();
-    } else {
-        qDebug() << "temp save failed:" << fileName.c_str();
-    }
+    // if (success) {
+    //     qDebug() << "temp save success:" << fileName.c_str();
+    // } else {
+    //     qDebug() << "temp save failed:" << fileName.c_str();
+    // }
     return QString(fileName.c_str());
 }
 
 void qSlicerMainWindow::on_actionAI_Airway_triggered() {
+  qDebug("on_actionAI_Airway_triggered 11111");
 
-    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
-    tmpForm->setWindowModality(Qt::ApplicationModal);
-    //tmpForm->choose_file_for_airway();
-    tmpForm->show();
+  qDebug("on_actionAI_Airway_triggered 2222");
+
+  Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+  tmpForm->setWindowModality(Qt::ApplicationModal);
+  //tmpForm->choose_file_for_airway();
+  tmpForm->show();
 }
 
 void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
