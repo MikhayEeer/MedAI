@@ -3167,25 +3167,48 @@ void qMRMLSegmentEditorWidget::redo()
 }
 
 QString qMRMLSegmentEditorWidget::saveCurrentVolumeAsTemporaryFile(){
-    vtkMRMLScene* scene = qSlicerApplication::application()->mrmlScene();
+    // 获取布局管理器
+    qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
+    if (!layoutManager) {
+        qWarning() << "Layout manager not found";
+        return QString();
+    }
+
+    // 获取红色切片小部件
+    qMRMLSliceWidget* redWidget = layoutManager->sliceWidget("Red");
+    if (!redWidget) {
+        qWarning() << "Red slice widget not found";
+        return QString();
+    }
+
+    // 获取切片逻辑
+    vtkMRMLSliceLogic* sliceLogic = redWidget->sliceLogic();
+    if (!sliceLogic) {
+        qWarning() << "Slice logic not found";
+        return QString();
+    }
+
+    // 获取切片复合节点
+    vtkMRMLSliceCompositeNode* compositeNode = sliceLogic->GetSliceCompositeNode();
+    if (!compositeNode) {
+        qWarning() << "Slice composite node not found";
+        return QString();
+    }
+
+    // 获取背景体积ID
+    std::string bgVolumeID = compositeNode->GetBackgroundVolumeID();
+    qDebug() << "Background volume ID:" << bgVolumeID.c_str();
+
+    // 通过ID获取节点
+    vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
     if (!scene) {
-        qDebug("No scene");
+        qWarning() << "MRML scene not found";
         return QString();
     }
-    
-    vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
-    if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
-        qDebug("No volume nodes");
-        if (volumeNodes) {
-            volumeNodes->Delete();
-        }
-        return QString();
-    }
-    
-    vtkMRMLScalarVolumeNode* ctNode = vtkMRMLScalarVolumeNode::SafeDownCast(
-        volumeNodes->GetItemAsObject(0)
+
+    vtkMRMLVolumeNode* ctNode = vtkMRMLVolumeNode::SafeDownCast(
+      scene->GetNodeByID(bgVolumeID.c_str())
     );
-    volumeNodes->Delete();
     
     if (!ctNode) {
         qDebug("No ct node");
@@ -3213,7 +3236,6 @@ QString qMRMLSegmentEditorWidget::saveCurrentVolumeAsTemporaryFile(){
     
     // int lastSlashIndex = outputPath.lastIndexOf("/");
     qDebug() << dirPath;
-    
     
     
     // ct文件所在的目录路径
