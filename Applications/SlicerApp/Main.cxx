@@ -47,10 +47,10 @@ int SlicerAppMain(int argc, char* argv[])
     return app.returnCode();
   }
 
-  // LoginForm* _loginForm = new LoginForm;
+  LoginForm* _loginForm = new LoginForm;
 
-  // _loginForm->setWindowModality(Qt::ApplicationModal);
-  // _loginForm->exec();
+  _loginForm->setWindowModality(Qt::ApplicationModal);
+  _loginForm->exec();
 
   QScopedPointer<SlicerMainWindowType> window;
   QScopedPointer<QSplashScreen> splashScreen;

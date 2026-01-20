@@ -55,6 +55,8 @@ public:
 
 signals:
     void signal_add_finish();
+    void processingFinished(const QString& resultPath);
+    void processingFailed(const QString& errorMessage);
 
 public slots:
     void finishedAdd(QJsonObject m_res);
