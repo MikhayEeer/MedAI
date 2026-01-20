@@ -98,6 +98,8 @@
 #include <qMRMLThreeDWidget.h>
 #include <qMRMLThreeDView.h>
 
+#include "backendAiManager.h"
+
 // Qt includes
 #include <QAbstractItemView>
 #include <QAction>
@@ -115,6 +117,8 @@
 #include <QTableView>
 #include <QToolButton>
 #include <QVBoxLayout>
+#include <QTimer>
+#include <QUuid>
 // CTK includes
 #include <ctkCollapsibleButton.h>
 #include "vtkMRMLSubjectHierarchyNode.h"
@@ -3162,6 +3166,111 @@ void qMRMLSegmentEditorWidget::redo()
   d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
 }
 
+QString qMRMLSegmentEditorWidget::saveCurrentVolumeAsTemporaryFile(){
+    vtkMRMLScene* scene = qSlicerApplication::application()->mrmlScene();
+    if (!scene) {
+        qDebug("No scene");
+        return QString();
+    }
+    
+    vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
+    if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
+        qDebug("No volume nodes");
+        if (volumeNodes) {
+            volumeNodes->Delete();
+        }
+        return QString();
+    }
+    
+    vtkMRMLScalarVolumeNode* ctNode = vtkMRMLScalarVolumeNode::SafeDownCast(
+        volumeNodes->GetItemAsObject(0)
+    );
+    volumeNodes->Delete();
+    
+    if (!ctNode) {
+        qDebug("No ct node");
+        return QString();
+    }
+    
+    vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
+    if (!storageNode) {
+        qDebug("No storage node");
+        return QString();
+    }
+    
+    storageNode->SetScene(scene);
+
+    qDebug("111");
+
+    // QString dirPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    // qDebug() << dirPath;
+    
+    QString dirPath =
+      qSlicerCoreApplication::application()->temporaryPath();
+    // QString outputPath = ctNode->GetStorageNode()->GetFileName();
+    // QString outputPath = storageNode->GetFileName();
+    // qDebug() << "outputPath:" << outputPath;
+    
+    // int lastSlashIndex = outputPath.lastIndexOf("/");
+    qDebug() << dirPath;
+    
+    
+    
+    // ct文件所在的目录路径
+    // QString file_dir_path = outputPath.left(lastSlashIndex);
+    // lastSlashIndex = file_dir_path.lastIndexOf("/");
+    // if(lastSlashIndex!=-1){
+    //     file_dir_path = file_dir_path.left(lastSlashIndex);
+    // }
+    
+    // 选择文件夹
+    // QString dirPath = QFileDialog::getExistingDirectory(
+    //     nullptr,
+    //     "选择保存文件夹",
+    //     // file_dir_path,  // 初始目录
+    //     homePath,  // 初始目录
+    //     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
+    // );
+    
+    // if (!dirPath.isEmpty()) {
+    //     qDebug() << "chosed dir:" << dirPath;
+    //     // 在这里处理文件夹路径
+    // }
+
+
+    QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+                                          "提示", 
+                                          "seg saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                          QMessageBox::NoButton, 
+                                          this);
+    msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+    
+    msgBox2->setModal(false);  // 关键：设置为非模态
+    msgBox2->show();
+
+    // 立即处理UI事件，确保消息框显示出来
+    QApplication::processEvents();
+
+    QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
+
+    qDebug("start save file");
+
+    // 3. 设置输出文件名
+    QUuid uuid = QUuid::createUuid();
+    QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
+    std::string fileName = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
+    storageNode->SetFileName(fileName.c_str());
+    
+    // 4. 写入数据
+    bool success = storageNode->WriteData(ctNode);
+    
+    if (success) {
+        qDebug() << "temp save success:" << fileName.c_str();
+    } else {
+        qDebug() << "temp save failed:" << fileName.c_str();
+    }
+    return QString(fileName.c_str());
+}
 
 void qMRMLSegmentEditorWidget::AIAutoDoFunc()
 {
@@ -3171,80 +3280,112 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc()
   //   return;
   // }
 
-  qDebug() << "AIAutoDoFunc44" ;
+  qDebug() << "AIAutoDoFunc77" ;
 
 
-  // 方法1：使用智能指针
-  // vtkSmartPointer<vtkSlicerSegmentationsModuleLogic> segLogic = 
-  //     vtkSmartPointer<vtkSlicerSegmentationsModuleLogic>::New();
-      
-  // vtkMRMLScene* scene = qSlicerCoreApplication::application()->mrmlScene();
-  // vtkMRMLSegmentationNode* segNode = segLogic->LoadSegmentationFromFile("H:/q.nii.gz");
-  // vtkMRMLSegmentationNode* segNode = vtkSlicerSegmentationsModuleLogic::LoadSegmentationFromFile("H://q.nii.gz");
-      
-    // 获取Segmentations模块
-  qSlicerAbstractCoreModule* segmentationsModule = 
-      qSlicerCoreApplication::application()->moduleManager()->module("Segmentations");
-
-  vtkSlicerSegmentationsModuleLogic* segLogic = 
-      vtkSlicerSegmentationsModuleLogic::SafeDownCast(segmentationsModule->logic());
-
-  vtkMRMLSegmentationNode* segNode = segLogic->LoadSegmentationFromFile("H:/q.nii.gz");    
-
-  if (!segNode)
-  {
-      qDebug() << "Failed to load segmentation from segmentationPath";
+  // 1、请求
+  QString fileName = saveCurrentVolumeAsTemporaryFile();
+  if(fileName.isEmpty()){
+      QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
       return;
   }
+  Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager("", this);
+  int type=0;
 
+  // 等待AI处理完成后再加载结果
+  QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFinished,
+    this, [this, fileName, tmpForm](const QString& resultPath){
+      QFile file(fileName);
+      if (file.exists()) {
+          if (file.remove()) {
+              qDebug() << "AIAutoDoFunc temp file removed:" << fileName;
+          } else {
+              qDebug() << "AIAutoDoFunc temp file remove failed:" << file.errorString();
+          }
+      }else{
+        qDebug() << "AIAutoDoFunc temp file not exists:" << fileName;
+      }
 
-
-    // 获取Segment Editor逻辑
-  // vtkSlicerSegmentationsModuleLogic* segmentEditorLogic = vtkSlicerSegmentationsModuleLogic::SafeDownCast(
-  //     qSlicerCoreApplication::application()->applicationLogic()->GetModuleLogic("SegmentEditor")
-  // );
-  this->setSegmentationNode(segNode);
-  
-
-   // 创建闭合表面表示
-  if (segNode->CreateClosedSurfaceRepresentation())
-  {
-      vtkMRMLSegmentationDisplayNode* displayNode = vtkMRMLSegmentationDisplayNode::SafeDownCast(
-          segNode->GetDisplayNode()
-      );
-      
-      if (displayNode)
+      // 自动加载并显示数据
+      qSlicerAbstractCoreModule* segmentationsModule =
+          qSlicerCoreApplication::application()->moduleManager()->module("Segmentations");
+      if (!segmentationsModule)
       {
-          // 设置3D显示偏好为闭合表面
-          displayNode->SetPreferredDisplayRepresentationName3D(
-              vtkSegmentationConverter::GetSegmentationClosedSurfaceRepresentationName()
+          qWarning() << "AIAutoDoFunc Segmentations module not found";
+          tmpForm->deleteLater();
+          return;
+      }
+
+      vtkSlicerSegmentationsModuleLogic* segLogic =
+          vtkSlicerSegmentationsModuleLogic::SafeDownCast(segmentationsModule->logic());
+      if (!segLogic)
+      {
+          qWarning() << "AIAutoDoFunc Segmentations logic not available";
+          tmpForm->deleteLater();
+          return;
+      }
+
+      vtkMRMLSegmentationNode* segNode = segLogic->LoadSegmentationFromFile(resultPath.toStdString().c_str());
+      if (!segNode)
+      {
+          qDebug() << "AIAutoDoFunc Failed to load segmentation from" << resultPath;
+          tmpForm->deleteLater();
+          return;
+      }
+
+      this->setSegmentationNode(segNode);
+
+      // 创建闭合表面表示
+      if (segNode->CreateClosedSurfaceRepresentation())
+      {
+          vtkMRMLSegmentationDisplayNode* displayNode = vtkMRMLSegmentationDisplayNode::SafeDownCast(
+              segNode->GetDisplayNode()
           );
           
-          // 检查是否包含二值标签图表示
-          bool binaryLabelmapPresent = segNode->GetSegmentation()->ContainsRepresentation(
-              vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
-          );
-          
-          if (binaryLabelmapPresent)
+          if (displayNode)
           {
-              // 设置2D显示偏好为二值标签图
-              displayNode->SetPreferredDisplayRepresentationName2D(
+              displayNode->SetPreferredDisplayRepresentationName3D(
+                  vtkSegmentationConverter::GetSegmentationClosedSurfaceRepresentationName()
+              );
+
+              bool binaryLabelmapPresent = segNode->GetSegmentation()->ContainsRepresentation(
                   vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
               );
-          }
-          
-          // 可选：设置其他显示属性
-          displayNode->SetOpacity2DFill(0.7);
-          displayNode->SetOpacity2DOutline(1.0);
-          displayNode->SetOpacity3D(0.5);
-      }
-  }
-  else
-  {
-      qWarning() << "Failed to create closed surface representation";
-  }
+              
+              if (binaryLabelmapPresent)
+              {
+                  displayNode->SetPreferredDisplayRepresentationName2D(
+                      vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
+                  );
+              }
 
-  qDebug() << "AIAutoDoFunc222" ;
+              displayNode->SetOpacity2DFill(0.7);
+              displayNode->SetOpacity2DOutline(1.0);
+              displayNode->SetOpacity3D(0.5);
+          }
+      }
+      else
+      {
+          qWarning() << "AIAutoDoFunc Failed to create closed surface representation";
+      }
+
+      tmpForm->deleteLater();
+  });
+
+  QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFailed,
+    this, [this, fileName, tmpForm](const QString& error){
+      QFile file(fileName);
+      if (file.exists()) {
+          file.remove();
+      }
+      QMessageBox::warning(this, tr("AI处理失败"),
+                           error.isEmpty() ? tr("AI服务器处理失败") : error);
+      tmpForm->deleteLater();
+  });
+
+  tmpForm->uploadFileAuto(type,fileName);
+
+  qDebug() << "AIAutoDoFunc end" ;
 }
 
 //-----------------------------------------------------------------------------

@@ -44,11 +44,11 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, [this]() {
         /* 你的代码 */
-        qDebug() << "scheduler running...";
+        // qDebug() << "scheduler running...";
         // 假设4分钟  240s 24次
         if(m_progress1){
             int currentValue = m_progress1->value();
-            qDebug() << "m_progress1 current value:" << currentValue;
+            // qDebug() << "m_progress1 current value:" << currentValue;
             if(currentValue<23){
                 m_progress1->setValue(currentValue+1); // 假值....
                 // m_progress1->show();
@@ -56,9 +56,6 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
         }
     });
     timer->start(10000);  // ✅ 正确
-
-    
-
 }
 
 Backend_AI_Processing_manager::~Backend_AI_Processing_manager(){
@@ -119,7 +116,9 @@ void Backend_AI_Processing_manager::choose_file_for_vesselV2(){
 
 void Backend_AI_Processing_manager::finishedAdd(QJsonObject m_res)
 {
+    qDebug() << "finishedAdd";
     if( m_res.value("state") != "ok"){
+        qDebug() << "finishedAdd state not ok";
         return;
     }
     else{
@@ -131,7 +130,7 @@ void Backend_AI_Processing_manager::add_ai_ops()
 {
     QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
                                         "提示", 
-                                        "后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                        "add_ai_ops 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
                                         QMessageBox::NoButton, 
                                         this);
     msgBox2->setAttribute(Qt::WA_DeleteOnClose);
@@ -139,7 +138,7 @@ void Backend_AI_Processing_manager::add_ai_ops()
     msgBox2->setModal(false);  // 关键：设置为非模态
     msgBox2->show();
 
-    QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
+    // QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
     QJsonObject json;
     json.insert("email", userInfoEmail);
     qDebug() << userInfoEmail;
@@ -161,7 +160,7 @@ void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& fil
 
     m_progress1 = new QProgressDialog(this);
     m_progress1->setWindowTitle(tr("提示"));
-    m_progress1->setLabelText(tr("服务器处理中. 111.ffff."));
+    m_progress1->setLabelText(tr("uploadFileAuto..11."));
     m_progress1->setCancelButton(nullptr);
     // 不显示右上角的关闭
     // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
@@ -175,7 +174,7 @@ void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& fil
 
     m_progress2 = new QProgressDialog(this);
     m_progress2->setWindowTitle(tr("提示"));
-    m_progress2->setLabelText(tr("服务器处理中. 222.ffff."));
+    m_progress2->setLabelText(tr("uploadFileAuto..22."));
     m_progress2->setCancelButton(nullptr);
     // 不显示右上角的关闭
     // m_progress2->setWindowFlag(Qt::WindowCloseButtonHint, false);
@@ -183,17 +182,18 @@ void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& fil
     // m_progress2->setModal(true);   //设置为模态对话框
     m_progress2->setValue(20); // 假值....
     m_progress2->show();
-    // add_ai_ops();
+    add_ai_ops();
 }
 
 void Backend_AI_Processing_manager::uploadFile() {
-    QString filePath = _choosed_files[0];
-    int lastSlashIndex = filePath.lastIndexOf("/");
+    qDebug() << "uploadFile()";
+    QString filePath = _choosed_files[0]; // H:/b/aa.nii.gz
+    int lastSlashIndex = filePath.lastIndexOf("/"); // 4 
     // ct文件所在的目录路径
-    QString file_dir_path = filePath.left(lastSlashIndex);
+    QString file_dir_path = filePath.left(lastSlashIndex); // H:/b/
     // 文件名
-    QString complete_fileName = filePath.mid(lastSlashIndex + 1);
-    int suffix_index = complete_fileName.lastIndexOf(".nii.gz");
+    QString complete_fileName = filePath.mid(lastSlashIndex + 1); // aa.nii.gz
+    int suffix_index = complete_fileName.lastIndexOf(".nii.gz"); // 7
     if(suffix_index == -1 || (suffix_index + 7 < complete_fileName.length()) ){
         finishedDialog = new QMessageBox(QMessageBox::Question,"提示","请选择.nii.gz为后缀的CT文件");
 
@@ -207,10 +207,11 @@ void Backend_AI_Processing_manager::uploadFile() {
         qDebug() << suffix_index;
         qDebug() << complete_fileName.length();
         qDebug() << "请选择.nii.gz为后缀的CT文件";
+        emit processingFailed("请选择.nii.gz为后缀的CT文件");
         return;
     }
-    QString baseName = complete_fileName.left(suffix_index);
-    m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz";
+    QString baseName = complete_fileName.left(suffix_index); // aa
+    m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz"; // H:/b/气道分割aa.nii.gz
     if(_choosed_model != AI_MODEL::AIRWAY) {
         m_result_path = file_dir_path + "/肺部血管分割" + baseName + ".nii.gz";
     }
@@ -297,6 +298,7 @@ void Backend_AI_Processing_manager::uploadFile() {
 
         msgBox.exec();
         this->close();
+        emit processingFailed(reply->errorString());
         return;
     }
 
@@ -319,6 +321,7 @@ void Backend_AI_Processing_manager::uploadFile() {
                             .arg(responseFile.errorString()));
         
         this->close();
+        emit processingFailed(responseFile.errorString());
         return;
     }
 
@@ -333,6 +336,7 @@ void Backend_AI_Processing_manager::uploadFile() {
 
     finishedDialog->exec();
     responseFile.close();
+    emit processingFinished(m_result_path);
 }
 
 

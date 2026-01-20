@@ -1173,7 +1173,7 @@ QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
 
     QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
                                           "提示", 
-                                          "后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                          "saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
                                           QMessageBox::NoButton, 
                                           this);
     msgBox2->setAttribute(Qt::WA_DeleteOnClose);
@@ -1192,16 +1192,16 @@ QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
     QUuid uuid = QUuid::createUuid();
     QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
     std::string fileName = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
-    // storageNode->SetFileName(fileName.c_str());
+    storageNode->SetFileName(fileName.c_str());
     
     // 4. 写入数据
-    // bool success = storageNode->WriteData(ctNode);
+    bool success = storageNode->WriteData(ctNode);
     
-    // if (success) {
-    //     qDebug() << "temp save success:" << fileName.c_str();
-    // } else {
-    //     qDebug() << "temp save failed:" << fileName.c_str();
-    // }
+    if (success) {
+        qDebug() << "temp save success:" << fileName.c_str();
+    } else {
+        qDebug() << "temp save failed:" << fileName.c_str();
+    }
     return QString(fileName.c_str());
 }
 
