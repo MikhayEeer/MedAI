@@ -475,7 +475,15 @@ void qMRMLSegmentEditorWidgetPrivate::init()
   QObject::connect( this->UndoButton, SIGNAL(clicked()), q, SLOT(undo()) );
   QObject::connect( this->RedoButton, SIGNAL(clicked()), q, SLOT(redo()) );
   QObject::connect( this->ExportAllButton, SIGNAL(clicked()), q, SLOT(exPortAllSeg()) );
-  QObject::connect( this->AIAutoButton, SIGNAL(clicked()), q, SLOT(AIAutoDoFunc()) );
+  QObject::connect(this->AIAutoButtonAirway, &QPushButton::clicked, [=]() {
+      q->AIAutoDoFunc(0);
+  });
+  QObject::connect(this->AIAutoButtonVessel, &QPushButton::clicked, [=]() {
+      q->AIAutoDoFunc(1);
+  });
+  QObject::connect(this->AIAutoButtonVeveeselV2, &QPushButton::clicked, [=]() {
+      q->AIAutoDoFunc(2);
+  });
 
   q->qvtkConnect(this->SegmentationHistory, vtkCommand::ModifiedEvent,
     q, SLOT(onSegmentationHistoryChanged()));
@@ -3294,7 +3302,7 @@ QString qMRMLSegmentEditorWidget::saveCurrentVolumeAsTemporaryFile(){
     return QString(fileName.c_str());
 }
 
-void qMRMLSegmentEditorWidget::AIAutoDoFunc()
+void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
 {
   Q_D(qMRMLSegmentEditorWidget);
   // if (!d->SegmentationNode)
@@ -3302,7 +3310,7 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc()
   //   return;
   // }
 
-  qDebug() << "AIAutoDoFunc88" ;
+  qDebug() << "AIAutoDoFunc88,type:" << type;
 
   // 得到待上传ct的绝对路径-开始
   
@@ -3411,7 +3419,6 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc()
       return;
   }
   Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager("", this);
-  int type=0;
 
   // 等待AI处理完成后再加载结果
   QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFinished,
