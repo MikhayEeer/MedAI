@@ -489,9 +489,23 @@
   <item row="5" column="0">
     <layout class="QHBoxLayout" name="horizontalLayoutExport">
       <item>
-        <widget class="QToolButton" name="AIAutoButton">
+        <widget class="QToolButton" name="AIAutoButtonAirway">
+          <property name="text">
+          <string>一键AI气管</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QToolButton" name="AIAutoButtonVessel">
           <property name="text">
           <string>一键AI血管</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QToolButton" name="AIAutoButtonVeveeselV2">
+          <property name="text">
+          <string>一键AI肺段</string>
           </property>
         </widget>
       </item>

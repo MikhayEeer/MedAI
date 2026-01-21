@@ -54,6 +54,38 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
                 // m_progress1->show();
             }
         }
+        if(m_progress2){
+            int currentValue = m_progress2->value();
+            // qDebug() << "m_progress1 current value:" << currentValue;
+            if(currentValue<23){
+                m_progress2->setValue(currentValue+1); // 假值....
+                // m_progress1->show();
+            }
+        }
+        if(m_progress3){
+            int currentValue = m_progress3->value();
+            // qDebug() << "m_progress1 current value:" << currentValue;
+            if(currentValue<23){
+                m_progress3->setValue(currentValue+1); // 假值....
+                // m_progress1->show();
+            }
+        }
+        if(m_progress4){
+            int currentValue = m_progress4->value();
+            // qDebug() << "m_progress1 current value:" << currentValue;
+            if(currentValue<23){
+                m_progress4->setValue(currentValue+1); // 假值....
+                // m_progress1->show();
+            }
+        }
+        if(m_progress5){
+            int currentValue = m_progress5->value();
+            // qDebug() << "m_progress1 current value:" << currentValue;
+            if(currentValue<23){
+                m_progress5->setValue(currentValue+1); // 假值....
+                // m_progress1->show();
+            }
+        }
     });
     timer->start(10000);  // ✅ 正确
 }
@@ -150,38 +182,101 @@ void Backend_AI_Processing_manager::add_ai_ops()
 void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& filePath) {
     _choosed_files= QStringList() << filePath;
     // _choosed_files[0]= filePath;
+    QString promtText = "";
     if(model == 0){
         _choosed_model = AI_MODEL::AIRWAY;
+        promtText = "AI气管火速处理中...请稍候...";
     }else if(model == 1){
         _choosed_model = AI_MODEL::VESSEL;
+        promtText = "AI血管火速处理中...请稍候...";
     }else if(model == 2){
         _choosed_model = AI_MODEL::VESSELV2;
+        promtText = "AI肺段火速处理中...请稍候...";
     }
 
-    m_progress1 = new QProgressDialog(this);
-    m_progress1->setWindowTitle(tr("提示"));
-    m_progress1->setLabelText(tr("uploadFileAuto..11."));
-    m_progress1->setCancelButton(nullptr);
-    // 不显示右上角的关闭
-    // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    m_progress1->setRange(0, 100); //设置范围
-    // m_progress1->setModal(true);   //设置为模态对话框
-    m_progress1->setValue(20); // 假值....
-    m_progress1->show();
+    // m_progress1 = new QProgressDialog(this);
+    // m_progress1->setWindowTitle(tr("提示"));
+    // m_progress1->setLabelText(tr("uploadFileAuto..11."));
+    // m_progress1->setCancelButton(nullptr);
+    // // 不显示右上角的关闭
+    // // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    // m_progress1->setRange(0, 100); //设置范围
+    // // m_progress1->setModal(true);   //设置为模态对话框
+    // m_progress1->setValue(20); // 假值....
+    // m_progress1->show();
 
-    int currentValue = m_progress1->value();
-    qDebug() << "m_progress1 cur value:" << currentValue;
+    // int currentValue = m_progress1->value();
+    // qDebug() << "m_progress1 cur value:" << currentValue;
 
-    m_progress2 = new QProgressDialog(this);
-    m_progress2->setWindowTitle(tr("提示"));
-    m_progress2->setLabelText(tr("uploadFileAuto..22."));
-    m_progress2->setCancelButton(nullptr);
-    // 不显示右上角的关闭
-    // m_progress2->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    m_progress2->setRange(0, 100); //设置范围
-    // m_progress2->setModal(true);   //设置为模态对话框
-    m_progress2->setValue(20); // 假值....
-    m_progress2->show();
+    // m_progress2 = new QProgressDialog(this);
+    // m_progress2->setWindowTitle(tr("提示"));
+    // m_progress2->setLabelText(tr("uploadFileAuto..22."));
+    // m_progress2->setCancelButton(nullptr);
+    // // 不显示右上角的关闭
+    // // m_progress2->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    // m_progress2->setRange(0, 100); //设置范围
+    // // m_progress2->setModal(true);   //设置为模态对话框
+    // m_progress2->setValue(20); // 假值....
+    // m_progress2->show();
+
+
+    if(!m_progress1){
+        m_progress1 = new QProgressDialog(this);
+        m_progress1->setWindowTitle(tr("提示1"));
+        m_progress1->setLabelText(tr(promtText.toStdString().c_str()));
+        m_progress1->setCancelButton(nullptr);
+        // 不显示右上角的关闭
+        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+        m_progress1->setRange(0, 100); //设置范围
+        // m_progress1->setModal(true);   //设置为模态对话框
+        m_progress1->setValue(10); // 假值....
+        m_progress1->show();
+    }else if(!m_progress2){
+        m_progress2 = new QProgressDialog(this);
+        m_progress2->setWindowTitle(tr("提示2"));
+        m_progress2->setLabelText(tr(promtText.toStdString().c_str()));
+        m_progress2->setCancelButton(nullptr);
+        // 不显示右上角的关闭
+        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+        m_progress2->setRange(0, 100); //设置范围
+        // m_progress1->setModal(true);   //设置为模态对话框
+        m_progress2->setValue(10); // 假值....
+        m_progress2->show();
+    }else if(!m_progress3){
+        m_progress3 = new QProgressDialog(this);
+        m_progress3->setWindowTitle(tr("提示3"));
+        m_progress3->setLabelText(tr(promtText.toStdString().c_str()));
+        m_progress3->setCancelButton(nullptr);
+        // 不显示右上角的关闭
+        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+        m_progress3->setRange(0, 100); //设置范围
+        // m_progress1->setModal(true);   //设置为模态对话框
+        m_progress3->setValue(10); // 假值....
+        m_progress3->show();
+    }else if(!m_progress4){
+        m_progress4 = new QProgressDialog(this);
+        m_progress4->setWindowTitle(tr("提示4"));
+        m_progress4->setLabelText(tr(promtText.toStdString().c_str()));
+        m_progress4->setCancelButton(nullptr);
+        // 不显示右上角的关闭
+        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+        m_progress4->setRange(0, 100); //设置范围
+        // m_progress1->setModal(true);   //设置为模态对话框
+        m_progress4->setValue(10); // 假值....
+        m_progress4->show();
+    }else if(!m_progress5){
+        m_progress5 = new QProgressDialog(this);
+        m_progress5->setWindowTitle(tr("提示5"));
+        m_progress5->setLabelText(tr(promtText.toStdString().c_str()));
+        m_progress5->setCancelButton(nullptr);
+        // 不显示右上角的关闭
+        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+        m_progress5->setRange(0, 100); //设置范围
+        // m_progress1->setModal(true);   //设置为模态对话框
+        m_progress5->setValue(10); // 假值....
+        m_progress5->show();
+    }
+
     add_ai_ops();
 }
 
