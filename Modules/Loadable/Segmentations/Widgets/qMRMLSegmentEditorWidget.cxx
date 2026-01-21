@@ -3302,11 +3302,110 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc()
   //   return;
   // }
 
-  qDebug() << "AIAutoDoFunc77" ;
+  qDebug() << "AIAutoDoFunc88" ;
 
+  // 得到待上传ct的绝对路径-开始
+  
+  // 获取布局管理器
+  qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
+  if (!layoutManager) {
+      qWarning() << "Layout manager not found";
+      return;
+  }
+
+  // 获取红色切片小部件
+  qMRMLSliceWidget* redWidget = layoutManager->sliceWidget("Red");
+  if (!redWidget) {
+      qWarning() << "Red slice widget not found";
+      return;
+  }
+
+  // 获取切片逻辑
+  vtkMRMLSliceLogic* sliceLogic = redWidget->sliceLogic();
+  if (!sliceLogic) {
+      qWarning() << "Slice logic not found";
+      return;
+  }
+
+  // 获取切片复合节点
+  vtkMRMLSliceCompositeNode* compositeNode = sliceLogic->GetSliceCompositeNode();
+  if (!compositeNode) {
+      qWarning() << "Slice composite node not found";
+      return;
+  }
+
+  // 获取背景体积ID
+  std::string bgVolumeID = compositeNode->GetBackgroundVolumeID();
+  qDebug() << "Background volume ID:" << bgVolumeID.c_str();
+
+  // 通过ID获取节点
+  vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
+  if (!scene) {
+      qWarning() << "MRML scene not found";
+      return;
+  }
+
+  vtkMRMLVolumeNode* ctNode = vtkMRMLVolumeNode::SafeDownCast(
+    scene->GetNodeByID(bgVolumeID.c_str())
+  );
+  
+  if (!ctNode) {
+      qDebug("No ct node");
+      return;
+  }
+  
+  vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
+  if (!storageNode) {
+      qDebug("No storage node");
+      return;
+  }
+  
+  storageNode->SetScene(scene);
+
+  qDebug("111");
+  
+  QString dirPath =
+    qSlicerCoreApplication::application()->temporaryPath();
+
+  qDebug() << dirPath;
+
+  QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+                                        "提示", 
+                                        "seg saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                        QMessageBox::NoButton, 
+                                        this);
+  msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+  
+  msgBox2->setModal(false);  // 关键：设置为非模态
+  msgBox2->show();
+
+  // 立即处理UI事件，确保消息框显示出来
+  QApplication::processEvents();
+
+  QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
+
+  qDebug("start save file");
+
+  // 3. 设置输出文件名
+  QUuid uuid = QUuid::createUuid();
+  QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
+  std::string fileNamec = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
+  storageNode->SetFileName(fileNamec.c_str());
+  
+  // 4. 写入数据
+  bool success = storageNode->WriteData(ctNode);
+  
+  if (success) {
+      qDebug() << "temp save success:" << fileNamec.c_str();
+  } else {
+      qDebug() << "temp save failed:" << fileNamec.c_str();
+  }
+  QString fileName= QString(fileNamec.c_str());
+
+
+  // 得到待上传ct的绝对路径-结束
 
   // 1、请求
-  QString fileName = saveCurrentVolumeAsTemporaryFile();
   if(fileName.isEmpty()){
       QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
       return;
@@ -3316,7 +3415,7 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc()
 
   // 等待AI处理完成后再加载结果
   QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFinished,
-    this, [this, fileName, tmpForm](const QString& resultPath){
+    this, [this, fileName, tmpForm,scene,ctNode](const QString& resultPath){
       QFile file(fileName);
       if (file.exists()) {
           if (file.remove()) {
@@ -3392,7 +3491,12 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc()
       }
 
       tmpForm->deleteLater();
-  });
+
+      // 自动显示
+      vtkMRMLSubjectHierarchyNode* shNode = vtkMRMLSubjectHierarchyNode::GetSubjectHierarchyNode(scene);
+      shNode->SetItemParent(shNode->GetItemByDataNode(segNode), shNode->GetItemByDataNode(ctNode));
+      qWarning() << "AIAutoDoFunc SetItemParent end";
+    });
 
   QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFailed,
     this, [this, fileName, tmpForm](const QString& error){
