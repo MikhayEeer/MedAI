@@ -22,13 +22,6 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     initUI();
     this->setAttribute(Qt::WA_DeleteOnClose);
 
-    m_progress = nullptr;
-    m_progress1 = nullptr;
-    m_progress2 = nullptr;
-    m_progress3 = nullptr;
-    m_progress4 = nullptr;
-    m_progress5 = nullptr;
-
     multiPart = nullptr;
     reply = nullptr;
     manager = new QNetworkAccessManager(this);
@@ -44,24 +37,12 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     // 定时器功能
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, [this]() {
-        /* 你的代码 */
-        // qDebug() << "scheduler running...";
-        // 假设4分钟=240s 10秒一次 24次
-        // if(m_progress1){
-        //     int currentValue = m_progress1->value();
-        //     // qDebug() << "m_progress1 current value:" << currentValue;
-        //     if(currentValue<23){
-        //         m_progress1->setValue(currentValue+1); // 假值....
-        //         // m_progress1->show();
-        //     }
-        // }
         for (auto it = progressMap.begin(); it != progressMap.end(); ++it) {
             QString key = it.key();
             QProgressDialog* dlg = it.value();
             // 使用 key 和 
             int currentValue = dlg->value();
-            qDebug() << "m_progress1 current value:" << currentValue;
-            if(currentValue<23){
+            if(currentValue<60){
                 dlg->setValue(currentValue+1); // 假值....
                 // m_progress1->show();
             }
@@ -166,58 +147,17 @@ void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& fil
     QString promtText = "";
     if(model == 0){
         _choosed_model = AI_MODEL::AIRWAY;
-        promtText = "AI气管火速处理中...请稍候...";
     }else if(model == 1){
         _choosed_model = AI_MODEL::VESSEL;
-        promtText = "AI血管火速处理中...请稍候...";
     }else if(model == 2){
         _choosed_model = AI_MODEL::VESSELV2;
-        promtText = "AI肺段火速处理中...请稍候...";
     }
-
-    // m_progress1 = new QProgressDialog(this);
-    // m_progress1->setWindowTitle(tr("提示"));
-    // m_progress1->setLabelText(tr("uploadFileAuto..11."));
-    // m_progress1->setCancelButton(nullptr);
-    // // 不显示右上角的关闭
-    // // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    // m_progress1->setRange(0, 100); //设置范围
-    // // m_progress1->setModal(true);   //设置为模态对话框
-    // m_progress1->setValue(20); // 假值....
-    // m_progress1->show();
-
-    // int currentValue = m_progress1->value();
-    // qDebug() << "m_progress1 cur value:" << currentValue;
-
-    // m_progress2 = new QProgressDialog(this);
-    // m_progress2->setWindowTitle(tr("提示"));
-    // m_progress2->setLabelText(tr("uploadFileAuto..22."));
-    // m_progress2->setCancelButton(nullptr);
-    // // 不显示右上角的关闭
-    // // m_progress2->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    // m_progress2->setRange(0, 100); //设置范围
-    // // m_progress2->setModal(true);   //设置为模态对话框
-    // m_progress2->setValue(20); // 假值....
-    // m_progress2->show();
-
-
-
-    // m_progress1 = new QProgressDialog(this);
-    // m_progress1->setWindowTitle(tr("提示1"));
-    // m_progress1->setLabelText(tr(promtText.toStdString().c_str()));
-    // m_progress1->setCancelButton(nullptr);
-    // // 不显示右上角的关闭
-    // // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    // m_progress1->setRange(0, 100); //设置范围
-    // // m_progress1->setModal(true);   //设置为模态对话框
-    // m_progress1->setValue(10); // 假值....
-    // m_progress1->show();
 
     add_ai_ops();
 }
 
 void Backend_AI_Processing_manager::uploadFile() {
-    qDebug() << "uploadFile()";
+    qDebug() << "uploadFile...";
     QString filePath = _choosed_files[0]; // H:/b/aa.nii.gz
     int lastSlashIndex = filePath.lastIndexOf("/"); // 4 
     // ct文件所在的目录路径
@@ -263,9 +203,9 @@ void Backend_AI_Processing_manager::uploadFile() {
     QProgressDialog* progress = new QProgressDialog(this);
     progress = new QProgressDialog(this);
     progress->setWindowTitle(tr(promtText.toStdString().c_str()));
-    progress->setLabelText(tr("服务器处理中..."));
+    progress->setLabelText(tr("火速处理中..."));
     progress->setCancelButton(nullptr);
-    progress->setRange(0, 24); //设置范围
+    progress->setRange(0, 63); //设置范围
     progress->setValue(1); // 假值....
     progress->setWindowFlags(progress->windowFlags() & ~Qt::WindowCloseButtonHint);
     progress->show();
@@ -281,17 +221,6 @@ void Backend_AI_Processing_manager::uploadFile() {
     }
 
     multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-    // 网络请求进度窗
-    // m_progress = new QProgressDialog(this);
-    // m_progress->setWindowTitle(tr("提示"));
-    // m_progress->setLabelText(tr("服务器处理中..."));
-    // m_progress->setCancelButton(nullptr);
-    // // 不显示右上角的关闭
-    // m_progress->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    // m_progress->setRange(0, 100); //设置范围
-    // m_progress->setModal(true);   //设置为模态对话框
-    // m_progress->setValue(20); // 假值....
-    // m_progress->show();
 
     // 打开要上传的文件
     QFile *file = new QFile(filePath);
@@ -318,18 +247,14 @@ void Backend_AI_Processing_manager::uploadFile() {
 //    multiPart->append(jsonPart);
 
     reply = manager->post(request, multiPart);
-    // m_progress->setValue(40); // 假值....
 
     QEventLoop eventLoop;
     connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
     eventLoop.exec();
 
-    // m_progress->setHidden(true);
-    // m_progress->setValue(100);
-
     if(reply->error() != QNetworkReply::NoError) {
         if (progressMap.contains(filePath)) {
-            progressMap[filePath]->setValue(24);
+            progressMap[filePath]->setValue(63);
             qDebug() << "progressMap contains " << filePath;
         }else{
             qDebug() << "progressMap not contains " << filePath;
@@ -393,7 +318,7 @@ void Backend_AI_Processing_manager::uploadFile() {
 
     responseFile.write(reply->readAll());
 
-    finishedDialog = new QMessageBox(QMessageBox::Question,"提示","AI处理完成");
+    finishedDialog = new QMessageBox(QMessageBox::Question,"提示",promtText.toStdString().c_str());
 
     // 当模型处理完成后，进行提示
     finishedDialog->setWindowFlags(Qt::Dialog);
