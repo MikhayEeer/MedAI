@@ -3174,134 +3174,6 @@ void qMRMLSegmentEditorWidget::redo()
   d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
 }
 
-QString qMRMLSegmentEditorWidget::saveCurrentVolumeAsTemporaryFile(){
-    // 获取布局管理器
-    qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
-    if (!layoutManager) {
-        qWarning() << "Layout manager not found";
-        return QString();
-    }
-
-    // 获取红色切片小部件
-    qMRMLSliceWidget* redWidget = layoutManager->sliceWidget("Red");
-    if (!redWidget) {
-        qWarning() << "Red slice widget not found";
-        return QString();
-    }
-
-    // 获取切片逻辑
-    vtkMRMLSliceLogic* sliceLogic = redWidget->sliceLogic();
-    if (!sliceLogic) {
-        qWarning() << "Slice logic not found";
-        return QString();
-    }
-
-    // 获取切片复合节点
-    vtkMRMLSliceCompositeNode* compositeNode = sliceLogic->GetSliceCompositeNode();
-    if (!compositeNode) {
-        qWarning() << "Slice composite node not found";
-        return QString();
-    }
-
-    // 获取背景体积ID
-    std::string bgVolumeID = compositeNode->GetBackgroundVolumeID();
-    qDebug() << "Background volume ID:" << bgVolumeID.c_str();
-
-    // 通过ID获取节点
-    vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
-    if (!scene) {
-        qWarning() << "MRML scene not found";
-        return QString();
-    }
-
-    vtkMRMLVolumeNode* ctNode = vtkMRMLVolumeNode::SafeDownCast(
-      scene->GetNodeByID(bgVolumeID.c_str())
-    );
-    
-    if (!ctNode) {
-        qDebug("No ct node");
-        return QString();
-    }
-    
-    vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
-    if (!storageNode) {
-        qDebug("No storage node");
-        return QString();
-    }
-    
-    storageNode->SetScene(scene);
-
-    qDebug("111");
-
-    // QString dirPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    // qDebug() << dirPath;
-    
-    QString dirPath =
-      qSlicerCoreApplication::application()->temporaryPath();
-    // QString outputPath = ctNode->GetStorageNode()->GetFileName();
-    // QString outputPath = storageNode->GetFileName();
-    // qDebug() << "outputPath:" << outputPath;
-    
-    // int lastSlashIndex = outputPath.lastIndexOf("/");
-    qDebug() << dirPath;
-    
-    
-    // ct文件所在的目录路径
-    // QString file_dir_path = outputPath.left(lastSlashIndex);
-    // lastSlashIndex = file_dir_path.lastIndexOf("/");
-    // if(lastSlashIndex!=-1){
-    //     file_dir_path = file_dir_path.left(lastSlashIndex);
-    // }
-    
-    // 选择文件夹
-    // QString dirPath = QFileDialog::getExistingDirectory(
-    //     nullptr,
-    //     "选择保存文件夹",
-    //     // file_dir_path,  // 初始目录
-    //     homePath,  // 初始目录
-    //     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
-    // );
-    
-    // if (!dirPath.isEmpty()) {
-    //     qDebug() << "chosed dir:" << dirPath;
-    //     // 在这里处理文件夹路径
-    // }
-
-
-    QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
-                                          "提示", 
-                                          "seg saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
-                                          QMessageBox::NoButton, 
-                                          this);
-    msgBox2->setAttribute(Qt::WA_DeleteOnClose);
-    
-    msgBox2->setModal(false);  // 关键：设置为非模态
-    msgBox2->show();
-
-    // 立即处理UI事件，确保消息框显示出来
-    QApplication::processEvents();
-
-    QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
-
-    qDebug("start save file");
-
-    // 3. 设置输出文件名
-    QUuid uuid = QUuid::createUuid();
-    QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
-    std::string fileName = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
-    storageNode->SetFileName(fileName.c_str());
-    
-    // 4. 写入数据
-    bool success = storageNode->WriteData(ctNode);
-    
-    if (success) {
-        qDebug() << "temp save success:" << fileName.c_str();
-    } else {
-        qDebug() << "temp save failed:" << fileName.c_str();
-    }
-    return QString(fileName.c_str());
-}
-
 void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
 {
   Q_D(qMRMLSegmentEditorWidget);
@@ -3377,20 +3249,20 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
 
   qDebug() << dirPath;
 
-  QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
-                                        "提示", 
-                                        "seg saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
-                                        QMessageBox::NoButton, 
-                                        this);
-  msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+  // QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+  //                                       "提示", 
+  //                                       "seg saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+  //                                       QMessageBox::NoButton, 
+  //                                       this);
+  // msgBox2->setAttribute(Qt::WA_DeleteOnClose);
   
-  msgBox2->setModal(false);  // 关键：设置为非模态
-  msgBox2->show();
+  // msgBox2->setModal(false);  // 关键：设置为非模态
+  // msgBox2->show();
 
   // 立即处理UI事件，确保消息框显示出来
-  QApplication::processEvents();
+  // QApplication::processEvents();
 
-  QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
+  // QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
 
   qDebug("start save file");
 
