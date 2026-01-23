@@ -86,6 +86,8 @@ private:
 	QProgressDialog *m_progress4;
 	QProgressDialog *m_progress5;
 	QString m_result_path;
+    QMap<QString, QProgressDialog*> progressMap;
+
 
 	QHttpMultiPart* multiPart;
 	QNetworkReply* reply;

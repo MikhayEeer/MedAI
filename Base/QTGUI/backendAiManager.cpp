@@ -28,6 +28,7 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     m_progress3 = nullptr;
     m_progress4 = nullptr;
     m_progress5 = nullptr;
+
     multiPart = nullptr;
     reply = nullptr;
     manager = new QNetworkAccessManager(this);
@@ -45,44 +46,23 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     connect(timer, &QTimer::timeout, [this]() {
         /* 你的代码 */
         // qDebug() << "scheduler running...";
-        // 假设4分钟  240s 24次
-        if(m_progress1){
-            int currentValue = m_progress1->value();
-            // qDebug() << "m_progress1 current value:" << currentValue;
+        // 假设4分钟=240s 10秒一次 24次
+        // if(m_progress1){
+        //     int currentValue = m_progress1->value();
+        //     // qDebug() << "m_progress1 current value:" << currentValue;
+        //     if(currentValue<23){
+        //         m_progress1->setValue(currentValue+1); // 假值....
+        //         // m_progress1->show();
+        //     }
+        // }
+        for (auto it = progressMap.begin(); it != progressMap.end(); ++it) {
+            QString key = it.key();
+            QProgressDialog* dlg = it.value();
+            // 使用 key 和 
+            int currentValue = dlg->value();
+            qDebug() << "m_progress1 current value:" << currentValue;
             if(currentValue<23){
-                m_progress1->setValue(currentValue+1); // 假值....
-                // m_progress1->show();
-            }
-        }
-        if(m_progress2){
-            int currentValue = m_progress2->value();
-            // qDebug() << "m_progress1 current value:" << currentValue;
-            if(currentValue<23){
-                m_progress2->setValue(currentValue+1); // 假值....
-                // m_progress1->show();
-            }
-        }
-        if(m_progress3){
-            int currentValue = m_progress3->value();
-            // qDebug() << "m_progress1 current value:" << currentValue;
-            if(currentValue<23){
-                m_progress3->setValue(currentValue+1); // 假值....
-                // m_progress1->show();
-            }
-        }
-        if(m_progress4){
-            int currentValue = m_progress4->value();
-            // qDebug() << "m_progress1 current value:" << currentValue;
-            if(currentValue<23){
-                m_progress4->setValue(currentValue+1); // 假值....
-                // m_progress1->show();
-            }
-        }
-        if(m_progress5){
-            int currentValue = m_progress5->value();
-            // qDebug() << "m_progress1 current value:" << currentValue;
-            if(currentValue<23){
-                m_progress5->setValue(currentValue+1); // 假值....
+                dlg->setValue(currentValue+1); // 假值....
                 // m_progress1->show();
             }
         }
@@ -151,6 +131,7 @@ void Backend_AI_Processing_manager::finishedAdd(QJsonObject m_res)
     qDebug() << "finishedAdd";
     if( m_res.value("state") != "ok"){
         qDebug() << "finishedAdd state not ok";
+        qDebug() << "Error response:" << m_res;
         return;
     }
     else{
@@ -160,21 +141,21 @@ void Backend_AI_Processing_manager::finishedAdd(QJsonObject m_res)
 
 void Backend_AI_Processing_manager::add_ai_ops()
 {
-    QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
-                                        "提示", 
-                                        "add_ai_ops 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
-                                        QMessageBox::NoButton, 
-                                        this);
-    msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+    // QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+    //                                     "提示", 
+    //                                     "add_ai_ops 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+    //                                     QMessageBox::NoButton, 
+    //                                     this);
+    // msgBox2->setAttribute(Qt::WA_DeleteOnClose);
     
-    msgBox2->setModal(false);  // 关键：设置为非模态
-    msgBox2->show();
+    // msgBox2->setModal(false);  // 关键：设置为非模态
+    // msgBox2->show();
 
     // QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
     QJsonObject json;
     json.insert("email", userInfoEmail);
     qDebug() << userInfoEmail;
-
+    qDebug() << "add_ai_ops userInfoEmail:" << userInfoEmail;
     _postManager->doPost(json, "/update_user_ai_ops");
 }
 
@@ -220,62 +201,17 @@ void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& fil
     // m_progress2->show();
 
 
-    if(!m_progress1){
-        m_progress1 = new QProgressDialog(this);
-        m_progress1->setWindowTitle(tr("提示1"));
-        m_progress1->setLabelText(tr(promtText.toStdString().c_str()));
-        m_progress1->setCancelButton(nullptr);
-        // 不显示右上角的关闭
-        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-        m_progress1->setRange(0, 100); //设置范围
-        // m_progress1->setModal(true);   //设置为模态对话框
-        m_progress1->setValue(10); // 假值....
-        m_progress1->show();
-    }else if(!m_progress2){
-        m_progress2 = new QProgressDialog(this);
-        m_progress2->setWindowTitle(tr("提示2"));
-        m_progress2->setLabelText(tr(promtText.toStdString().c_str()));
-        m_progress2->setCancelButton(nullptr);
-        // 不显示右上角的关闭
-        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-        m_progress2->setRange(0, 100); //设置范围
-        // m_progress1->setModal(true);   //设置为模态对话框
-        m_progress2->setValue(10); // 假值....
-        m_progress2->show();
-    }else if(!m_progress3){
-        m_progress3 = new QProgressDialog(this);
-        m_progress3->setWindowTitle(tr("提示3"));
-        m_progress3->setLabelText(tr(promtText.toStdString().c_str()));
-        m_progress3->setCancelButton(nullptr);
-        // 不显示右上角的关闭
-        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-        m_progress3->setRange(0, 100); //设置范围
-        // m_progress1->setModal(true);   //设置为模态对话框
-        m_progress3->setValue(10); // 假值....
-        m_progress3->show();
-    }else if(!m_progress4){
-        m_progress4 = new QProgressDialog(this);
-        m_progress4->setWindowTitle(tr("提示4"));
-        m_progress4->setLabelText(tr(promtText.toStdString().c_str()));
-        m_progress4->setCancelButton(nullptr);
-        // 不显示右上角的关闭
-        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-        m_progress4->setRange(0, 100); //设置范围
-        // m_progress1->setModal(true);   //设置为模态对话框
-        m_progress4->setValue(10); // 假值....
-        m_progress4->show();
-    }else if(!m_progress5){
-        m_progress5 = new QProgressDialog(this);
-        m_progress5->setWindowTitle(tr("提示5"));
-        m_progress5->setLabelText(tr(promtText.toStdString().c_str()));
-        m_progress5->setCancelButton(nullptr);
-        // 不显示右上角的关闭
-        // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
-        m_progress5->setRange(0, 100); //设置范围
-        // m_progress1->setModal(true);   //设置为模态对话框
-        m_progress5->setValue(10); // 假值....
-        m_progress5->show();
-    }
+
+    // m_progress1 = new QProgressDialog(this);
+    // m_progress1->setWindowTitle(tr("提示1"));
+    // m_progress1->setLabelText(tr(promtText.toStdString().c_str()));
+    // m_progress1->setCancelButton(nullptr);
+    // // 不显示右上角的关闭
+    // // m_progress1->setWindowFlag(Qt::WindowCloseButtonHint, false);
+    // m_progress1->setRange(0, 100); //设置范围
+    // // m_progress1->setModal(true);   //设置为模态对话框
+    // m_progress1->setValue(10); // 假值....
+    // m_progress1->show();
 
     add_ai_ops();
 }
@@ -305,19 +241,36 @@ void Backend_AI_Processing_manager::uploadFile() {
         emit processingFailed("请选择.nii.gz为后缀的CT文件");
         return;
     }
+
+    QString promtText = "AI气道分割";
+
     QString baseName = complete_fileName.left(suffix_index); // aa
     m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz"; // H:/b/气道分割aa.nii.gz
     if(_choosed_model != AI_MODEL::AIRWAY) {
         m_result_path = file_dir_path + "/肺部血管分割" + baseName + ".nii.gz";
+        promtText="AI肺部血管分割";
     }
     if (_choosed_model == AI_MODEL::VESSELV2) {
         m_result_path = file_dir_path + "/肺段分割" + baseName + ".nii.gz";
+        promtText="AI肺部肺段分割";
     }
     qDebug() << filePath;
 //    qDebug() << file_dir_path;
 //    qDebug() << complete_fileName;
 //    qDebug() << baseName;
 //    qDebug() << m_result_path;
+
+    QProgressDialog* progress = new QProgressDialog(this);
+    progress = new QProgressDialog(this);
+    progress->setWindowTitle(tr(promtText.toStdString().c_str()));
+    progress->setLabelText(tr("服务器处理中..."));
+    progress->setCancelButton(nullptr);
+    progress->setRange(0, 24); //设置范围
+    progress->setValue(1); // 假值....
+    progress->setWindowFlags(progress->windowFlags() & ~Qt::WindowCloseButtonHint);
+    progress->show();
+    progressMap[filePath] = progress;
+
 
     QNetworkRequest request(QUrl(AI_URL_AIRWAY + "/upload")); //13910
     if (_choosed_model == AI_MODEL::VESSEL) {
@@ -375,6 +328,14 @@ void Backend_AI_Processing_manager::uploadFile() {
     // m_progress->setValue(100);
 
     if(reply->error() != QNetworkReply::NoError) {
+        if (progressMap.contains(filePath)) {
+            progressMap[filePath]->setValue(24);
+            qDebug() << "progressMap contains " << filePath;
+        }else{
+            qDebug() << "progressMap not contains " << filePath;
+        }
+
+
         QMessageBox msgBox;
         // 读取并解析错误信息
         QByteArray data = reply->readAll();
@@ -394,6 +355,16 @@ void Backend_AI_Processing_manager::uploadFile() {
         msgBox.exec();
         this->close();
         emit processingFailed(reply->errorString());
+
+        if (progressMap.contains(filePath)) {
+            progressMap[filePath]->close();
+            progressMap[filePath]->deleteLater();
+            progressMap.remove(filePath);
+            qDebug() << "progressMap contains " << filePath;
+        }else{
+            qDebug() << "progressMap not contains " << filePath;
+        }
+
         return;
     }
 
@@ -422,7 +393,7 @@ void Backend_AI_Processing_manager::uploadFile() {
 
     responseFile.write(reply->readAll());
 
-    finishedDialog = new QMessageBox(QMessageBox::Question,"提示","处理完成，新文件位于源文件同级目录");
+    finishedDialog = new QMessageBox(QMessageBox::Question,"提示","AI处理完成");
 
     // 当模型处理完成后，进行提示
     finishedDialog->setWindowFlags(Qt::Dialog);
@@ -432,6 +403,15 @@ void Backend_AI_Processing_manager::uploadFile() {
     finishedDialog->exec();
     responseFile.close();
     emit processingFinished(m_result_path);
+
+    if (progressMap.contains(filePath)) {
+        progressMap[filePath]->close();
+        progressMap[filePath]->deleteLater();
+        progressMap.remove(filePath);
+        qDebug() << "progressMap contains " << filePath;
+    }else{
+        qDebug() << "progressMap not contains " << filePath;
+    }
 }
 
 

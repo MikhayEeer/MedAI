@@ -537,8 +537,6 @@ protected:
   /// Switches to Segmentations module and returns the module widget
   qSlicerAbstractModuleWidget* switchToSegmentationsModule();
 
-  QString saveCurrentVolumeAsTemporaryFile();
-
 protected:
   QScopedPointer<qMRMLSegmentEditorWidgetPrivate> d_ptr;
 
