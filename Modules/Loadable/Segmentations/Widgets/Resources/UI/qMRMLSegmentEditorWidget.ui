@@ -487,27 +487,41 @@
     </layout>
    </item>
   <item row="5" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayoutExport">
+    <layout class="QVBoxLayout" name="verticalLayoutAIAuto">
       <item>
-        <widget class="QToolButton" name="AIAutoButtonAirway">
+        <widget class="QLabel" name="AIAutoTitleLabel">
           <property name="text">
-          <string>一键AI气管</string>
+            <string>AI胸外</string>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft</set>
           </property>
         </widget>
       </item>
       <item>
-        <widget class="QToolButton" name="AIAutoButtonVessel">
-          <property name="text">
-          <string>一键AI血管</string>
-          </property>
-        </widget>
-      </item>
-      <item>
-        <widget class="QToolButton" name="AIAutoButtonVeveeselV2">
-          <property name="text">
-          <string>一键AI肺段</string>
-          </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayoutExport">
+          <item>
+            <widget class="QToolButton" name="AIAutoButtonAirway">
+              <property name="text">
+              <string>一键AI气管</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QToolButton" name="AIAutoButtonVessel">
+              <property name="text">
+              <string>一键AI血管</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QToolButton" name="AIAutoButtonVeveeselV2">
+              <property name="text">
+              <string>一键AI肺段</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
       </item>
     </layout>
   </item>
