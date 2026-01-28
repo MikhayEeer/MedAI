@@ -303,7 +303,7 @@
     <addaction name="actionViewUserInfo"/>
     <addaction name="actionReviewPermission"/>
    </widget>
-   <widget class="QMenu" name="AIMenu">
+   <!-- <widget class="QMenu" name="AIMenu">
     <property name="title">
      <string>Feature</string>
     </property>
@@ -313,7 +313,7 @@
     <addaction name="actionAIAirwayAuto"/>
     <addaction name="actionAIVesselAuto"/>
     <addaction name="actionAIFeiDuanAuto"/>
-   </widget>
+   </widget> -->
    <addaction name="FileMenu"/>
    <addaction name="EditMenu"/>
    <addaction name="ViewMenu"/>
