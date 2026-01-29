@@ -3185,7 +3185,6 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
   qDebug() << "AIAutoDoFunc88,type:" << type;
 
   // 得到待上传ct的绝对路径-开始
-  
   // 获取布局管理器
   qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
   if (!layoutManager) {
@@ -3207,6 +3206,17 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
       return;
   }
 
+  vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
+
+  vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
+  if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
+      qDebug("No volume nodes");
+      if (volumeNodes) {
+          volumeNodes->Delete();
+      }
+      return;  // 失败时返回空字符串
+  }
+
   // 获取切片复合节点
   vtkMRMLSliceCompositeNode* compositeNode = sliceLogic->GetSliceCompositeNode();
   if (!compositeNode) {
@@ -3214,12 +3224,12 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
       return;
   }
 
+
   // 获取背景体积ID
   std::string bgVolumeID = compositeNode->GetBackgroundVolumeID();
   qDebug() << "Background volume ID:" << bgVolumeID.c_str();
 
   // 通过ID获取节点
-  vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
   if (!scene) {
       qWarning() << "MRML scene not found";
       return;
@@ -3248,21 +3258,6 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
     qSlicerCoreApplication::application()->temporaryPath();
 
   qDebug() << dirPath;
-
-  // QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
-  //                                       "提示", 
-  //                                       "seg saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
-  //                                       QMessageBox::NoButton, 
-  //                                       this);
-  // msgBox2->setAttribute(Qt::WA_DeleteOnClose);
-  
-  // msgBox2->setModal(false);  // 关键：设置为非模态
-  // msgBox2->show();
-
-  // 立即处理UI事件，确保消息框显示出来
-  // QApplication::processEvents();
-
-  // QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
 
   qDebug("start save file");
 
@@ -3359,9 +3354,10 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
                   );
               }
 
-              displayNode->SetOpacity2DFill(0.7);
+              displayNode->SetOpacity2DFill(1);
               displayNode->SetOpacity2DOutline(1.0);
-              displayNode->SetOpacity3D(0.5);
+              displayNode->SetOpacity3D(1);
+              displayNode->SetOpacity3D(1);
           }
       }
       else
@@ -3374,6 +3370,20 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
       // 自动显示
       vtkMRMLSubjectHierarchyNode* shNode = vtkMRMLSubjectHierarchyNode::GetSubjectHierarchyNode(scene);
       shNode->SetItemParent(shNode->GetItemByDataNode(segNode), shNode->GetItemByDataNode(ctNode));
+
+      // 设置名词
+      if(resultPath.contains("血管")){
+        segNode->SetName("肺部血管分割");
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(255,0,0);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("动脉");
+        segNode->GetSegmentation()->GetSegment("Segment_2")->SetColor(0,0,255);
+        segNode->GetSegmentation()->GetSegment("Segment_2")->SetName("静脉");
+      }else if(resultPath.contains("气道")){
+        segNode->SetName("气道分割");
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(255,255,255);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("气道");
+      }
+
       qWarning() << "AIAutoDoFunc SetItemParent end";
     });
 
@@ -3381,7 +3391,13 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
     this, [this, fileName, tmpForm](const QString& error){
       QFile file(fileName);
       if (file.exists()) {
-          file.remove();
+          if (file.remove()) {
+              qDebug() << "AIAutoDoFunc temp file removed:" << fileName;
+          } else {
+              qDebug() << "AIAutoDoFunc temp file remove failed:" << file.errorString();
+          }
+      }else{
+        qDebug() << "AIAutoDoFunc temp file not exists:" << fileName;
       }
       QMessageBox::warning(this, tr("AI处理失败"),
                            error.isEmpty() ? tr("AI服务器处理失败") : error);

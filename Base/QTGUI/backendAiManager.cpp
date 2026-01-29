@@ -183,16 +183,22 @@ void Backend_AI_Processing_manager::uploadFile() {
     }
 
     QString promtText = "AI气道分割处理完成";
+    QString promtTitle = "AI气道";
+    QString promtTitleValue = "AI气道火速处理中";
 
     QString baseName = complete_fileName.left(suffix_index); // aa
     m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz"; // H:/b/气道分割aa.nii.gz
     if(_choosed_model != AI_MODEL::AIRWAY) {
         m_result_path = file_dir_path + "/肺部血管分割" + baseName + ".nii.gz";
         promtText="AI肺部血管分割处理完成";
+        promtTitle="AI血管";
+        promtTitleValue="AI血管火速处理中";
     }
     if (_choosed_model == AI_MODEL::VESSELV2) {
         m_result_path = file_dir_path + "/肺段分割" + baseName + ".nii.gz";
         promtText="AI肺部肺段分割处理完成";
+        promtTitle="AI肺段";
+        promtTitleValue="AI肺段火速处理中";
     }
     qDebug() << filePath;
 //    qDebug() << file_dir_path;
@@ -201,11 +207,11 @@ void Backend_AI_Processing_manager::uploadFile() {
 //    qDebug() << m_result_path;
 
     QProgressDialog* progress = new QProgressDialog(this);
-    progress->setWindowTitle(tr(promtText.toStdString().c_str()));
-    progress->setLabelText(tr("火速处理中..."));
+    progress->setWindowTitle(tr(promtTitle.toStdString().c_str()));
+    progress->setLabelText(tr(promtTitleValue.toStdString().c_str()));
     progress->setCancelButton(nullptr);
     progress->setRange(0, 63); //设置范围
-    progress->setValue(15); // 假值....
+    progress->setValue(27); // 假值....
     progress->setWindowFlags(progress->windowFlags() & ~Qt::WindowCloseButtonHint);
     progress->show();
     progressMap[filePath] = progress;
