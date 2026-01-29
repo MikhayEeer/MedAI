@@ -49,7 +49,7 @@
         <item>
           <widget class="QToolButton" name="ExportAllButton">
             <property name="text">
-            <string>一键导出2</string>
+            <string>一键导出</string>
             </property>
           </widget>
         </item>
@@ -499,28 +499,52 @@
         </widget>
       </item>
       <item>
-        <layout class="QHBoxLayout" name="horizontalLayoutExport">
-          <item>
-            <widget class="QToolButton" name="AIAutoButtonAirway">
-              <property name="text">
-              <string>一键AI气管</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QToolButton" name="AIAutoButtonVessel">
-              <property name="text">
-              <string>一键AI血管</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QToolButton" name="AIAutoButtonVeveeselV2">
-              <property name="text">
-              <string>一键AI肺段</string>
-              </property>
-            </widget>
-          </item>
+        <layout class="QHBoxLayout" name="QHBoxLayoutAI">
+        <property name="spacing">
+          <number>4</number>
+        </property>
+        <item>
+          <widget class="QPushButton" name="AIAutoButtonAirway">
+          <property name="toolTip">
+            <string>自动化ai气管分割</string>
+          </property>
+          <property name="text">
+            <string>一键AI气管</string>
+          </property>
+          <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+            <normaloff>:/Icons/airwayAI.png</normaloff>:/Icons/airwayAI.png</iconset>
+          </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QPushButton" name="AIAutoButtonVessel">
+          <property name="toolTip">
+            <string>自动化ai血管分割</string>
+          </property>
+          <property name="text">
+            <string>一键AI血管</string>
+          </property>
+          <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+            <normaloff>:/Icons/vesselAI.png</normaloff>:/Icons/vesselAI.png</iconset>
+          </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QPushButton" name="AIAutoButtonVeveeselV2">
+          <property name="toolTip">
+            <string>自动化ai肺段分割</string>
+          </property>
+          <property name="text">
+            <string>一键AI肺段</string>
+          </property>
+          <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+            <normaloff>:/Icons/feiduanAI.png</normaloff>:/Icons/feiduanAI.png</iconset>
+          </property>
+          </widget>
+        </item>
         </layout>
       </item>
     </layout>
