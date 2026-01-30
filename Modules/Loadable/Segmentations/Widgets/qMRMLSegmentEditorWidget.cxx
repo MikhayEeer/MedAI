@@ -3357,7 +3357,6 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
               displayNode->SetOpacity2DFill(1);
               displayNode->SetOpacity2DOutline(1.0);
               displayNode->SetOpacity3D(1);
-              displayNode->SetOpacity3D(1);
           }
       }
       else
@@ -3380,7 +3379,7 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
         segNode->GetSegmentation()->GetSegment("Segment_2")->SetName("静脉");
       }else if(resultPath.contains("气道")){
         segNode->SetName("气道分割");
-        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(255,255,255);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(1,1,1);
         segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("气道");
       }
 
