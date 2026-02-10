@@ -26,14 +26,21 @@ void PostManager::doPost(QJsonObject json, QString postUrl) {
     //if (m_isCancel) return; // *new QJsonObject
 
     QByteArray responseData = reply->readAll();
-
     QJsonParseError json_error;
     QJsonDocument doucment = QJsonDocument::fromJson(responseData, &json_error);
+
+    QJsonObject obj;
+    if (reply->error() != QNetworkReply::NoError) {
+        obj.insert("state", reply->errorString());
+    } else if (json_error.error != QJsonParseError::NoError || !doucment.isObject()) {
+        obj.insert("state", "Network error: invalid server response");
+    } else {
+        obj = doucment.object();
+    }
 //    emit progressDialogClosed();
 //    m_progress->setHidden(true);
 //    m_progress->setValue(100);
-    const QJsonObject obj = doucment.object();
-    emit postEnded( obj );
+    emit postEnded(obj);
 }
 
 
