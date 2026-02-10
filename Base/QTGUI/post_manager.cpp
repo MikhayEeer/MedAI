@@ -11,9 +11,9 @@ PostManager::PostManager(QWidget *parent)
 
 void PostManager::doPost(QJsonObject json, QString postUrl) {
 
-    QJsonDocument document;
-    document.setObject(json);
-    QByteArray dataArray = document.toJson(QJsonDocument::Compact);
+    QJsonDocument requestDocument;
+    requestDocument.setObject(json);
+    QByteArray dataArray = requestDocument.toJson(QJsonDocument::Compact);
     QNetworkRequest request;
     request.setUrl(QUrl(SERVER_URL + postUrl));
     request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
@@ -27,15 +27,15 @@ void PostManager::doPost(QJsonObject json, QString postUrl) {
 
     QByteArray responseData = reply->readAll();
     QJsonParseError json_error;
-    QJsonDocument document = QJsonDocument::fromJson(responseData, &json_error);
+    QJsonDocument responseDocument = QJsonDocument::fromJson(responseData, &json_error);
 
     QJsonObject obj;
     if (reply->error() != QNetworkReply::NoError) {
         obj.insert("state", reply->errorString());
-    } else if (json_error.error != QJsonParseError::NoError || !document.isObject()) {
+    } else if (json_error.error != QJsonParseError::NoError || !responseDocument.isObject()) {
         obj.insert("state", "Network error: invalid server response");
     } else {
-        obj = document.object();
+        obj = responseDocument.object();
     }
 //    emit progressDialogClosed();
 //    m_progress->setHidden(true);

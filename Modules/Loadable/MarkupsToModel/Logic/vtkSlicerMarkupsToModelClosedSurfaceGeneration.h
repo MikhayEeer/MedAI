@@ -44,7 +44,7 @@ class VTK_SLICER_MARKUPSTOMODEL_MODULE_LOGIC_EXPORT vtkSlicerMarkupsToModelClose
     // Compute the amount to extrude surfaces when closed surface is linear or planar.
     static double ComputeSurfaceExtrusionAmount( const double extents[ 3 ] );
 
-    // Find out what kind of arrangment the points are in (see PointArrangementEnum above).
+    // Find out what kind of arrangement the points are in (see PointArrangementEnum above).
     // If the arrangement is planar, stores the normal of the best fit plane in planeNormal.
     // If the arrangement is linear, stores the axis of the best fit line in lineAxis.
     static PointArrangement ComputePointArrangement( const double smallestBoundingExtentRanges[ 3 ] );
