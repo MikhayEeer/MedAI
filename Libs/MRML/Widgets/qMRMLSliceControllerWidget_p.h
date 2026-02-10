@@ -51,7 +51,11 @@
 #include <vtkSmartPointer.h>
 #include <vtkWeakPointer.h>
 
+#include <ctkPopupWidget.h>
+#include <QEvent>
+
 class ctkDynamicSpacer;
+class ctkPopupWidget;
 class ctkSignalMapper;
 class ctkDoubleSpinBox;
 class ctkVTKSliceView;
@@ -174,7 +178,13 @@ public:
 
   QToolButton*                        FitToWindowToolButton;
   qMRMLSliderWidget*                  SliceOffsetSlider;
+  // ctkPopupWidget*                  ValuePopup;
+  ctkPopupWidget* ValuePopup{nullptr};
+  QLabel* valueLabel{nullptr};
+
+
   ctkDynamicSpacer*                   SliderSpacer;
+  ctkDynamicSpacer*                   SliderSpacer2;
   /// Slicer offset resolution without applying display scaling.
   double                              SliceOffsetResolution{1.0};
   double                              LastLabelMapOpacity;

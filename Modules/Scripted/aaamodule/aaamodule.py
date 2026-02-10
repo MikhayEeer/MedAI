@@ -123,6 +123,7 @@ class aaamoduleWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
         # Buttons
         self.ui.applyButton.connect('clicked(bool)', self.onApplyButton)
+        self.ui.applyButtonLuoYan.connect('clicked(bool)', self.onApplyButtonLuoYan)
 
         file_cache = FileCache('output_cache.json')
         last_dest=file_cache.get('dest')
@@ -209,6 +210,14 @@ class aaamoduleWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         with slicer.util.tryWithErrorDisplay("Failed to compute results.", waitCursor=True):
             self.logic.process(self.ui.directoryButton.directory)
 
+    def onApplyButtonLuoYan(self) -> None:
+        """
+        Run processing when user clicks "Apply" button.
+        """
+        with slicer.util.tryWithErrorDisplay("Failed to compute results.", waitCursor=True):
+            logging.error('开始裸眼1111')
+            self.logic.processLuoYan()
+
     def onDirectoryChanged(self, directory):
         file_cache = FileCache('output_cache.json')
         file_cache.set('dest', directory)
@@ -255,3 +264,102 @@ class aaamoduleLogic(ScriptedLoadableModuleLogic):
         logging.error('成功导出所有模型到'+directory)
 
 
+    def processLuoYan(self) -> None:
+        logging.error('开始裸眼2222')
+        import vtk
+        import slicer
+        import numpy as np
+        from PIL import Image
+        import cv2
+        from screeninfo import get_monitors
+
+        # 安装必要库（首次运行需取消注释）
+        # slicer.util.pip_install("screeninfo")
+        # slicer.util.pip_install("opencv-python")
+        # slicer.util.pip_install("Pillow")
+
+        def get_lenticular_screen():
+            """获取裸眼屏分辨率（第二块显示器）"""
+            monitors = get_monitors()
+            if len(monitors) < 2:
+                raise RuntimeError("未检测到第二块显示器，请确保裸眼屏已连接")
+            return monitors[1].width, monitors[1].height, monitors[1].x, monitors[1].y
+
+        def capture_eye_view(camera, eye_offset_px, render_width, render_height):
+            """离屏渲染单眼视图（返回NumPy数组）"""
+            # 获取Slicer主渲染器和场景
+            main_renderer = slicer.app.layoutManager().threeDWidget(0).threeDView().renderWindow().GetRenderers().GetFirstRenderer()
+            scene_actors = main_renderer.GetActors()
+
+            # 创建离屏渲染窗口
+            offscreen_window = vtk.vtkRenderWindow()
+            offscreen_window.SetOffScreenRendering(1)
+            offscreen_window.SetSize(render_width, render_height)
+            
+            # 新建渲染器并复制场景
+            new_renderer = vtk.vtkRenderer()
+            offscreen_window.AddRenderer(new_renderer)
+            scene_actors.InitTraversal()
+            for _ in range(scene_actors.GetNumberOfItems()):
+                new_renderer.AddActor(scene_actors.GetNextActor())
+
+            # 设置摄像机（平行偏移模拟视差）
+            cam = vtk.vtkCamera()
+            cam.DeepCopy(camera)
+            cam.SetPosition(cam.GetPosition()[0] + eye_offset_px, cam.GetPosition()[1], cam.GetPosition()[2])
+            new_renderer.SetActiveCamera(cam)
+
+            # 渲染并捕获图像
+            offscreen_window.Render()
+            w2i = vtk.vtkWindowToImageFilter()
+            w2i.SetInput(offscreen_window)
+            w2i.Update()
+            vtk_image = w2i.GetOutput()
+
+            # 转换为NumPy数组并调整坐标系
+            np_image = vtk.util.numpy_support.vtk_to_numpy(vtk_image.GetPointData().GetScalars())
+            np_image = np_image.reshape(render_height, render_width, -1)[:, :, :3]
+            return np.flip(np_image, axis=0)  # 垂直翻转以匹配OpenCV
+
+        def generate_sbs_half(left_img, right_img):
+            """生成SBS半宽图像（PIL高质量缩放）"""
+            # 缩放至50%宽度
+            left_half = np.array(Image.fromarray(left_img).resize((left_img.shape[1] // 2, left_img.shape[0]), Image.LANCZOS))
+            right_half = np.array(Image.fromarray(right_img).resize((right_img.shape[1] // 2, right_img.shape[0]), Image.LANCZOS))
+            # 水平拼接
+            return np.concatenate([left_half, right_half], axis=1)
+
+        def realtime_sbs_rendering():
+            """主循环：实时渲染SBS图像到裸眼屏"""
+            # 获取裸眼屏参数
+            screen_w, screen_h, screen_x, screen_y = get_lenticular_screen()
+            print(f"裸眼屏分辨率: {screen_w}x{screen_h} 位置({screen_x}, {screen_y})")
+
+            # 初始化OpenCV全屏窗口
+            cv2.namedWindow("Stereoscopic SBS", cv2.WND_PROP_FULLSCREEN)
+            cv2.moveWindow("Stereoscopic SBS", screen_x, screen_y)
+            cv2.setWindowProperty("Stereoscopic SBS", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
+            # 获取Slicer主摄像机
+            main_camera = slicer.app.layoutManager().threeDWidget(0).threeDView().renderWindow().GetRenderers().GetFirstRenderer().GetActiveCamera()
+
+            # 动态渲染循环
+            while True:
+                # 渲染左右眼视图（10像素平行偏移）
+                left_img = capture_eye_view(main_camera, eye_offset_px=-10, render_width=screen_w, render_height=screen_h)
+                right_img = capture_eye_view(main_camera, eye_offset_px=10, render_width=screen_w, render_height=screen_h)
+
+                # 生成SBS半宽图像
+                sbs_image = generate_sbs_half(left_img, right_img)
+
+                # 显示到裸眼屏（需BGR格式）
+                cv2.imshow("Stereoscopic SBS", cv2.cvtColor(sbs_image, cv2.COLOR_RGB2BGR))
+                
+                # ESC键退出
+                if cv2.waitKey(1) & 0xFF == 27:
+                    break
+
+            cv2.destroyAllWindows()
+
+        # 执行主函数
+        realtime_sbs_rendering()

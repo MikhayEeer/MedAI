@@ -73,7 +73,8 @@ void qMRMLTableViewControllerWidgetPrivate::setupPopupUi()
   Q_Q(qMRMLTableViewControllerWidget);
 
   this->Superclass::setupPopupUi();
-  this->PopupWidget->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  // this->PopupWidget->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  this->PopupWidget->setAlignment(Qt::AlignTop | Qt::AlignRight);
   this->Ui_qMRMLTableViewControllerWidget::setupUi(this->PopupWidget);
 
   // Create shortcuts for copy/paste

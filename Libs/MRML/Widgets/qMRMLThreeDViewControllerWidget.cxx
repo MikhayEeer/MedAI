@@ -79,7 +79,8 @@ void qMRMLThreeDViewControllerWidgetPrivate::setupPopupUi()
   Q_Q(qMRMLThreeDViewControllerWidget);
 
   this->Superclass::setupPopupUi();
-  this->PopupWidget->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  // this->PopupWidget->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
+  this->PopupWidget->setAlignment(Qt::AlignTop | Qt::AlignRight);
   this->Ui_qMRMLThreeDViewControllerWidget::setupUi(this->PopupWidget);
 
   // Look from axes

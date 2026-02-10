@@ -358,6 +358,8 @@ public slots:
   /// Restores next saved state of the segmentation
   void redo();
 
+  void exPortAllSeg();
+
   /// Install keyboard shortcuts to allow quick selection of effects and segments.
   /// If parent is not specified then the main window will be used as parent.
   /// Previous keyboard shortcuts will be uninstalled.

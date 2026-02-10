@@ -44,7 +44,7 @@ public:
   qSlicerWelcomeModule(QObject *parent=nullptr);
   ~qSlicerWelcomeModule() override;
 
-  qSlicerGetTitleMacro(tr("Welcome to Slicer"));
+  qSlicerGetTitleMacro(tr("Welcome to MedAI-3D"));
 
   QStringList categories()const override;
   QIcon icon()const override;
