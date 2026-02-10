@@ -341,6 +341,11 @@ mark_as_superbuild(Slicer_FORCED_WC_LAST_CHANGED_DATE)
 set(Slicer_FORCED_REVISION "33918")
 mark_as_advanced(Slicer_FORCED_REVISION)
 mark_as_superbuild(Slicer_FORCED_REVISION)
+if(NOT "${Slicer_FORCED_REVISION}" STREQUAL "")
+  message(WARNING
+    "Slicer_FORCED_REVISION is set to '${Slicer_FORCED_REVISION}'. "
+    "Extension manager will use a fixed revision; ensure it matches the extension server.")
+endif()
 
 set(Slicer_REVISION_TYPE "CommitCount" CACHE STRING "How to set Slicer_REVISION - from commit count or git hash." FORCE)
 set_property(CACHE Slicer_REVISION_TYPE PROPERTY STRINGS

@@ -2331,7 +2331,7 @@ Installed {count} translation files in {location}.</source>
     </message>
     <message>
         <location filename="Base/QTGUI/LoginForm.cxx" line="35"/>
-        <source>The length of the password cannot be less than 6 charcters</source>
+        <source>The length of the password cannot be less than 6 characters</source>
         <translation>密码长度不能少于6个字符</translation>
     </message>
     <message>
@@ -2875,7 +2875,7 @@ and&lt;br&gt;
     </message>
     <message>
         <location filename="Modules/Scripted/LungCTSegmenter/Resources/UI/LungCTSegmenter.ui" line="568"/>
-        <source>CT.nrdd, each in a seperate subfolder, is the normal input format expected by batch processing. In case this is checked, batch processing expects ct.nii.gz in seperate subfolders as input files. Output will be generated in NIFTI format. </source>
+        <source>CT.nrdd, each in a separate subfolder, is the normal input format expected by batch processing. In case this is checked, batch processing expects ct.nii.gz in separate subfolders as input files. Output will be generated in NIFTI format. </source>
         <translation>CT.nrdd，每个都位于单独的子文件夹中，是批处理所需的正常输入格式。如果选中此选项，则批处理需要单独子文件夹中的 ct.nii.gz 作为输入文件。输出将以 NIFTI 格式生成。 </translation>
     </message>
     <message>
@@ -14468,7 +14468,7 @@ Graphics capabilities of this computer:
     <message>
         <location filename="Modules/Loadable/CropVolume/qSlicerCropVolumeModuleWidget.cxx" line="124"/>
         <source>Input ROI is under a non-linear transform.</source>
-        <oldsource>Input ROI is under a non-linear tansform.</oldsource>
+        <oldsource>Input ROI is under a non-linear transform.</oldsource>
         <translation>输入ROI处于非线性变换形式下。</translation>
     </message>
     <message>
@@ -14479,13 +14479,13 @@ Graphics capabilities of this computer:
     <message>
         <location filename="Modules/Loadable/CropVolume/qSlicerCropVolumeModuleWidget.cxx" line="137"/>
         <source>Output volume is under a non-linear transform.</source>
-        <oldsource>Output volume is under a non-linear tansform.</oldsource>
+        <oldsource>Output volume is under a non-linear transform.</oldsource>
         <translation>输出数据处于非线性变换形式下。</translation>
     </message>
     <message>
         <location filename="Modules/Loadable/CropVolume/qSlicerCropVolumeModuleWidget.cxx" line="148"/>
         <source>Interpolation is disabled and input volume is under a non-linear transform</source>
-        <oldsource>Interpolation is disabled and input volume is under a non-linear tansform</oldsource>
+        <oldsource>Interpolation is disabled and input volume is under a non-linear transform</oldsource>
         <translation>插值被禁用，输入数据处于非线性变换形式下</translation>
     </message>
     <message>
@@ -25277,7 +25277,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="Libs/MRML/Core/vtkMRMLVolumeArchetypeStorageNode.cxx" line="1065"/>
-        <source>The archetype file &apos;%1&apos; wasn&apos;t written out when writing &apos;%2&apos; in &apos;%3&apos;. Only these %4 file(s) have been written: %5. Old name is &apos;%6&apos;.</source>
+        <source>The archetype file &apos;%1&apos; was not written out when writing &apos;%2&apos; in &apos;%3&apos;. Only these %4 file(s) have been written: %5. Old name is &apos;%6&apos;.</source>
         <translation>在“%3”中写入“%2”时，原型文件“%1”未被写入。只有这些%4文件被写入：%5。旧名称是“%6”。</translation>
     </message>
     <message>

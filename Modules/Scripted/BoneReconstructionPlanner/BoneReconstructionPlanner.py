@@ -1339,7 +1339,7 @@ class BoneReconstructionPlannerLogic(ScriptedLoadableModuleLogic):
     mandibleViewNode = slicer.mrmlScene.GetSingletonNode(slicer.MANDIBLE_VIEW_SINGLETON_TAG, "vtkMRMLViewNode")
     displayNode.AddViewNodeID(mandibleViewNode.GetID())
 
-    #conections
+    #connections
     self.planeNodeObserver = planeNode.AddObserver(slicer.vtkMRMLMarkupsNode.PointPositionDefinedEvent,self.onPlanePointAdded)
 
     #setup placement

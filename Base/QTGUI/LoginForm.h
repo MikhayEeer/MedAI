@@ -58,11 +58,14 @@ private:
     QPushButton *signUpBtn;      //
     QPushButton *exitBtn;        // */
     void initUI();
+    bool isDeveloperLogin() const;
 
 //    QStringList m_userNameList;
     bool m_isNewUserName;
 
     PostManager* _postManager;
+    QString m_devUserName;
+    QString m_devPassword;
 };
 
 #endif // LOGINFORM_H

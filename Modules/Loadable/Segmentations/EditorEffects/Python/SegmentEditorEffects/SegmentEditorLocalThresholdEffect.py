@@ -47,7 +47,7 @@ class SegmentEditorLocalThresholdEffect(SegmentEditorThresholdEffect):
     <li><b>最小直径：</b> Prevent leaks through features that are smaller than the specified size.</li>
     <li><b>特征尺寸：</b> Spatial smoothness constraint used for WaterShed. Larger values result in smoother extracted surface.</li>
     <li><b>分割算法：</b> Algorithm used to perform the selection on the specified region.</li>
-    <li><b>ROI区域：</b> Region of interest that the threshold segmentation will be perfomed within. Selecting a smaller region will reduce leaks and improve speed.</li>
+    <li><b>ROI区域：</b> Region of interest that the threshold segmentation will be performed within. Selecting a smaller region will reduce leaks and improve speed.</li>
   </ul>
 </p>
 </html>"""
