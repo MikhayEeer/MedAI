@@ -5,8 +5,8 @@
 #include <QString>
 #include <QDialog>
 #include <QNetworkInterface>
-#include <QtWidgets>
-#include <QtGUI>
+//#include <QtWidgets>
+//#include <QtGUI>
 
 
 #include "qSlicerBaseQTGUIExport.h"
