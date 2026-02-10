@@ -27,6 +27,17 @@ LoginForm::~LoginForm() { }
 
 
 void LoginForm::login(){
+    if (isDeveloperLogin()) {
+        userInfoPhone.clear();
+        userInfoEmail.clear();
+        userInfoName = userNameLEd->text().trimmed();
+        userInfoBalance = 0;
+        WriteIniFile("AppUserName", userNameLEd->text());
+        QMessageBox::information(this, tr("Hint"), tr("Developer mode login"), QMessageBox::Yes);
+        this->close();
+        return;
+    }
+
     if( userNameLEd->text().length() == 0 || pwdLEd->text().length() == 0 ){
         QMessageBox::information(this, tr("Hint"), tr("Some content is empty, please fill in all the content"), QMessageBox::Yes);
         return;
@@ -118,6 +129,17 @@ void LoginForm::ReadIniFile() {
     userNameLEd->setText(_config->value("AppUserName").toString());
     if (userNameLEd->text().length() > 1) pwdLEd->setFocus();
 
+    m_devUserName = _config->value("DEV_LOGIN_USER").toString();
+    m_devPassword = _config->value("DEV_LOGIN_PASS").toString();
+    if (m_devUserName.isEmpty()) {
+        m_devUserName = "dev";
+        WriteIniFile("DEV_LOGIN_USER", m_devUserName);
+    }
+    if (m_devPassword.isEmpty()) {
+        m_devPassword = "dev12345";
+        WriteIniFile("DEV_LOGIN_PASS", m_devPassword);
+    }
+
     // get url
     SERVER_URL = _config->value("SERVER_URL").toString();
     AI_URL_AIRWAY = _config->value("AI_URL_AIRWAY").toString();
@@ -155,4 +177,12 @@ void LoginForm::initUI()
     setWindowFlag(Qt::WindowContextHelpButtonHint, false);
 
     this->setupUi(this);
+}
+
+bool LoginForm::isDeveloperLogin() const
+{
+    const QString user = userNameLEd->text().trimmed();
+    const QString pass = pwdLEd->text();
+    return (!m_devUserName.isEmpty() && !m_devPassword.isEmpty() &&
+            user == m_devUserName && pass == m_devPassword);
 }
