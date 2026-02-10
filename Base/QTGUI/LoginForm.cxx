@@ -43,7 +43,7 @@ void LoginForm::login(){
         return;
     }
     if( pwdLEd->text().length() < 6){
-        QMessageBox::information(this, tr("Hint"), tr("The length of the password cannot be less than 6 charcters"), QMessageBox::Yes);
+        QMessageBox::information(this, tr("Hint"), tr("The length of the password cannot be less than 6 characters"), QMessageBox::Yes);
         return;
     }
 

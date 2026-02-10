@@ -288,6 +288,12 @@ void qSlicerCoreApplicationPrivate::init()
 
   this->parseArguments();
 
+  if (QString(Slicer_FORCED_REVISION).length() > 0)
+  {
+    qWarning() << "Slicer_FORCED_REVISION is set to" << Slicer_FORCED_REVISION
+               << "- extensions will use a fixed revision.";
+  }
+
   this->SlicerHome = this->discoverSlicerHomeDirectory();
 
   // Save the environment if no launcher is used (this is for example the case

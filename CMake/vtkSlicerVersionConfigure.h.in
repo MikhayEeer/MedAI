@@ -46,6 +46,10 @@
 /// \sa Slicer_WC_REVISION_TYPE
 #define Slicer_REVISION "@Slicer_REVISION@"
 
+/// \def Slicer_FORCED_REVISION
+/// \brief Explicitly forced revision string. Empty when not forced.
+#define Slicer_FORCED_REVISION "@Slicer_FORCED_REVISION@"
+
 /// \def Slicer_REVISION_TYPE
 /// \brief Specifies what is stored in Slicer_REVISION (hash or commit count).
 /// \sa Slicer_REVISION
