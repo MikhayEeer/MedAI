@@ -288,7 +288,7 @@ class AirwaySegmentationLogic(ScriptedLoadableModuleLogic):
     Run the processing algorithm.
     Can be used without GUI widget.
     :param inputVolume: input CT volume to segment the airways from
-    :param inputSeed: markup point node containint a single point in the trachea
+    :param inputSeed: markup point node containing a single point in the trachea
     :param outputSegmentation: segmentation result
     """
 

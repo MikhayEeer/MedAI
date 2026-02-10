@@ -1200,7 +1200,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
     if os.path.exists(directory): 
         fiducialsLoadSuccess = self.loadFiducials(directory)
         if fiducialsLoadSuccess: 
-            logging.info("Succesfully loaded markups from temp directory.")
+            logging.info("Successfully loaded markups from temp directory.")
         else:
             logging.info("Failed to load markups from temp directory.")
 
@@ -1226,7 +1226,7 @@ class LungCTSegmenterWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
             else: 
                 fiducialsLoadSuccess = self.loadFiducials(directory)
                 if fiducialsLoadSuccess: 
-                    logging.info("Succesfully loaded markups from data directory.")
+                    logging.info("Successfully loaded markups from data directory.")
                 else:
                     logging.info("Failed to load markups from data directory.")
         else:

@@ -434,7 +434,7 @@ class WrapSolidifyLogic(object):
       # Representation is already closed surface
       self.segmentationNode.CreateClosedSurfaceRepresentation()
       self.segmentationNode.GetClosedSurfaceRepresentation(self.segmentId, self._inputPd)
-      # set spacing to have an approxmately 250^3 volume
+      # set spacing to have an approximately 250^3 volume
       # this size is not too large for average computing hardware yet
       # it is sufficiently detailed for many applications
       preferredVolumeSizeInVoxels = 250 * 250 * 250

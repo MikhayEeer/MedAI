@@ -94,8 +94,8 @@ SignUpForm::SignUpForm(QDialog *parent): QDialog(parent)
         QByteArray responseData = reply->readAll();
 
         QJsonParseError json_error;
-        QJsonDocument doucment = QJsonDocument::fromJson(responseData, &json_error);
-        const QJsonObject obj = doucment.object();
+        QJsonDocument document = QJsonDocument::fromJson(responseData, &json_error);
+        const QJsonObject obj = document.object();
         if( obj.value("state") == "Success"){
 
             QMessageBox::information(this, tr("Hint"), tr("Registration success!"), QMessageBox::Yes);
@@ -135,8 +135,8 @@ SignUpForm::SignUpForm(QDialog *parent): QDialog(parent)
         QByteArray responseData = reply->readAll();
 
         QJsonParseError json_error;
-        QJsonDocument doucment = QJsonDocument::fromJson(responseData, &json_error);
-        const QJsonObject obj = doucment.object();
+        QJsonDocument document = QJsonDocument::fromJson(responseData, &json_error);
+        const QJsonObject obj = document.object();
 
         if( obj.value("state") == "Success"){
 

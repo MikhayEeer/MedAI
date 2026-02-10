@@ -593,7 +593,7 @@ class SegmentEditorSurfaceCutEffect(AbstractScriptedSegmentEditorEffect):
       # towards the camera as the point is moved.
       displayNode.SetSnapMode(displayNode.SnapModeUnconstrained)
       # Prevent "Edit properties..." from being displayed
-      # (Edit properties would switch module, which would deactive the effect, thus remove the markups node
+      # (Edit properties would switch module, which would deactivate the effect, thus remove the markups node
       # while the markups node's event is being processed, causing a crash)
       self.segmentMarkupNode.SetHideFromEditors(True)
 

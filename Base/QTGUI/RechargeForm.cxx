@@ -41,8 +41,8 @@ RechargeForm::RechargeForm(QDialog *parent):
     void RechargeForm::finishedRecharge(){
         QByteArray responseData = reply->readAll();
         QJsonParseError json_error;
-        QJsonDocument doucment = QJsonDocument::fromJson(responseData, &json_error);
-        const QJsonObject obj = doucment.object();
+        QJsonDocument document = QJsonDocument::fromJson(responseData, &json_error);
+        const QJsonObject obj = document.object();
 
         if( obj.value("state") == "Success"){
             userInfoBalance += amountLEd->text().toInt();
