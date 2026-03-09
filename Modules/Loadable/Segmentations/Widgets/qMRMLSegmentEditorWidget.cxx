@@ -3373,13 +3373,13 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
       // 设置名词
       if(resultPath.contains("血管")){
         segNode->SetName("肺部血管分割");
-        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(255,0,0);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(255.0/255.0,76.0/255.0,101.0/255.0);
         segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("动脉");
-        segNode->GetSegmentation()->GetSegment("Segment_2")->SetColor(0,0,255);
+        segNode->GetSegmentation()->GetSegment("Segment_2")->SetColor(1.0/255.0,184.0/255.0,244.0/255.0);
         segNode->GetSegmentation()->GetSegment("Segment_2")->SetName("静脉");
       }else if(resultPath.contains("气道")){
         segNode->SetName("气道分割");
-        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(1,1,1);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(1.0,1.0,1.0);
         segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("气道");
       }
 
