@@ -5,6 +5,7 @@
 #include "signUpForm.h"
 #include "RechargeForm.h"
 #include "post_manager.h"
+#include "unlockdialog.h"
 #include "qSlicerBaseQTGUIExport.h"
 
 #include "ui_qSlicerLoginForm.h"

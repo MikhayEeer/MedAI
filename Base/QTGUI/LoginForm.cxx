@@ -7,6 +7,13 @@
 
 LoginForm::LoginForm(QWidget* parent): QDialog(parent)
 {
+    // 先进行软件加密验证
+    UnlockDialog unlockDlg;
+    int result = unlockDlg.exec();
+    if (result != QDialog::Accepted) {
+        exit(-1);  // 验证失败，退出程序
+    }
+
     initUI();
 
     // load the user name in local cache

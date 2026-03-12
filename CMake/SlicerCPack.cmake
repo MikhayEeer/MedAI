@@ -276,7 +276,7 @@ endfunction()
 # whereas Slicer_MAIN_PROJECT is the application project name (e.g SlicerApp, AwesomeApp, ...)
 #set(app_name ${${Slicer_MAIN_PROJECT}_APPLICATION_NAME})
 set(app_name "MedAI-3D")
-set(old_app_name "Slicer")
+set(old_app_name "MedAI")
 
 macro(slicer_cpack_set varname)
   if(DEFINED ${app_name}_${varname})

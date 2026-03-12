@@ -23,6 +23,8 @@ set(KIT_SRCS
   UserInfo.cxx
   LoginForm.h
   LoginForm.cxx
+  unlockdialog.h
+  unlockdialog.cpp
   RechargeForm.h
   RechargeForm.cxx
   signUpForm.h
