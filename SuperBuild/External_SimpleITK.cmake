@@ -154,7 +154,7 @@ set(ENV{LibraryPaths} \"${_paths}${_path_sep}\$ENV{${_varname}}\")
   file(WRITE ${_install_script}
 "include(\"${_env_script}\")
 set(${proj}_WORKING_DIR \"${EP_BINARY_DIR}/SimpleITK-build/Wrapping/Python\")
-ExternalProject_Execute(${proj} \"install\" \"${PYTHON_EXECUTABLE}\" \"-m\" \"pip\" \"install\" \".\")
+ExternalProject_Execute(${proj} \"install\" \"${PYTHON_EXECUTABLE}\" \"-m\" \"pip\" \"install\" \"--trusted-host\" \"pypi.tuna.tsinghua.edu.cn\" \"--index-url\" \"https://pypi.tuna.tsinghua.edu.cn/simple\" \".\")
 ")
 
   ExternalProject_SetIfNotDefined(

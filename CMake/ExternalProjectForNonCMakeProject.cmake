@@ -258,5 +258,8 @@ include(\"${_this_list_file}\")
 set(CMAKE_BINARY_DIR \"${CMAKE_BINARY_DIR}\")
 
 set(ENV{VS_UNICODE_OUTPUT} \"\")
+set(ENV{NO_PROXY} \"*\")
+set(ENV{PIP_TRUSTED_HOST} \"pypi.tuna.tsinghua.edu.cn\")
+set(ENV{PIP_INDEX_URL} \"https://pypi.tuna.tsinghua.edu.cn/simple\")
 ")
 endfunction()
