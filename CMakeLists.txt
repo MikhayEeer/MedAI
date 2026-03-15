@@ -943,7 +943,7 @@ if(Slicer_USE_PYTHONQT)
   ctkMacroSetPaths("${PYTHON_LIBRARY_PATH}")
   function(_python_sys_attribute attribute varname)
     execute_process(
-      COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(sys.${attribute})"
+      COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(getattr(sys, '${attribute}', ''))"
       OUTPUT_VARIABLE value
       OUTPUT_STRIP_TRAILING_WHITESPACE)
     set(${varname} ${value} PARENT_SCOPE)
