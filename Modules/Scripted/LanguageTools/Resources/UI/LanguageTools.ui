@@ -11,6 +11,16 @@
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="1" column="0">
+    <widget class="QPushButton" name="updateButtonYiJianHanHua">
+     <property name="toolTip">
+      <string>一键汉化</string>
+     </property>
+     <property name="text">
+      <string>一键汉化</string>
+     </property>
+    </widget>
+   </item>
    <item row="12" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
