@@ -220,6 +220,8 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     self.ui.languageSelector.countryFlagsVisible = False
     self.ui.languageSelector.defaultLanguage = "en"
+    # self.ui.languageSelector.defaultLanguage = "zh-CN"
+    print('1111 langu')
     self.ui.languageSelector.directories = slicer.app.translationFolders()
 
     self.ui.translationFoldersTextBrowser.setPlainText(';'.join(slicer.app.translationFolders()))
@@ -240,6 +242,7 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
     # Buttons
     self.ui.updateButton.connect('clicked(bool)', self.onUpdateButton)
+    self.ui.updateButtonYiJianHanHua.connect('clicked(bool)', self.onUpdateButtonYiJianHanHua)
     self.ui.restartButton.connect('clicked(bool)', self.onRestartButton)
 
     # Make sure parameter node is initialized (needed for module reload)
@@ -429,6 +432,19 @@ class LanguageToolsWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
       self.log(_("Update completed! Select application language and restart the application to see the results."))
 
     self.refreshLanguageList()
+
+  def onUpdateButtonYiJianHanHua(self):
+    """
+    Run processing when user clicks "Apply" button.
+    """
+    with slicer.util.tryWithErrorDisplay(_("一键汉化 failed."), waitCursor=True):
+      slicer.modules.languagetools.widgetRepresentation().self().ui.languageSelector.currentLanguage='zh_CN'
+      slicer.modules.LanguageToolsWidget.onUpdateButton()
+      slicer.util.restart()
+      self.log(_("一键汉化 completed!"))
+
+    self.refreshLanguageList()
+
 
   def onRestartButton(self):
     slicer.util.restart()
