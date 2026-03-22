@@ -96,6 +96,9 @@ public slots:
   virtual void on_actionAI_Airway_triggered();
   virtual void on_actionAI_Vessel_triggered();
   virtual void on_actionAnonymize_triggered();
+  virtual void on_actionAIAirwayAuto_triggered();
+  virtual void on_actionAIVesselAuto_triggered();
+  virtual void on_actionAIFeiDuanAuto_triggered();
   virtual void on_actionReviewPermission_triggered();
 
   virtual void onLayoutActionTriggered(QAction* action);
@@ -207,6 +210,7 @@ protected:
   void showEvent(QShowEvent *event) override;
 
   void changeEvent(QEvent* event) override;
+  QString saveCurrentVolumeAsTemporaryFile();
 
 protected:
   QScopedPointer<qSlicerMainWindowPrivate> d_ptr;

@@ -655,6 +655,13 @@ endif()
   # This component is needed for building VTK
   if(UNIX AND NOT APPLE)
     list(APPEND Slicer_REQUIRED_QT_MODULES X11Extras)
+    # Linux 打包时需要额外捆绑的 Qt 模块，避免用户手动安装
+    list(APPEND Slicer_REQUIRED_QT_MODULES
+      WebEngine
+      WebEngineWidgets
+      WebChannel
+      Positioning
+      )
   endif()
 
   find_package(Qt5 COMPONENTS Core QUIET)
@@ -936,7 +943,7 @@ if(Slicer_USE_PYTHONQT)
   ctkMacroSetPaths("${PYTHON_LIBRARY_PATH}")
   function(_python_sys_attribute attribute varname)
     execute_process(
-      COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(sys.${attribute})"
+      COMMAND ${PYTHON_EXECUTABLE} -c "import sys; print(getattr(sys, '${attribute}', ''))"
       OUTPUT_VARIABLE value
       OUTPUT_STRIP_TRAILING_WHITESPACE)
     set(${varname} ${value} PARENT_SCOPE)

@@ -50,15 +50,20 @@ public:
     void choose_file_for_airway();
     void choose_file_for_vessel();
     void choose_file_for_vesselV2();
+    void uploadFileAuto(int model, const QString& filePath);
+    QString saveCurrentVolumeAsTemporaryFile();
 
 signals:
     void signal_add_finish();
+    void processingFinished(const QString& resultPath);
+    void processingFailed(const QString& errorMessage);
 
 public slots:
     void finishedAdd(QJsonObject m_res);
 
 private:
     void uploadFile();
+    
 
     QStringList _choosed_files;
     AI_MODEL _choosed_model;
@@ -74,8 +79,9 @@ private:
     QPushButton *vessel_button;
     QPushButton *vessel_v2_button;
 	//    QPushButton *exitBtn;        //退出按钮
-	QProgressDialog *m_progress;
 	QString m_result_path;
+    QMap<QString, QProgressDialog*> progressMap;
+
 
 	QHttpMultiPart* multiPart;
 	QNetworkReply* reply;

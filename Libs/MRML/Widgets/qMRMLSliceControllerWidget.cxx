@@ -448,6 +448,8 @@ void qMRMLSliceControllerWidgetPrivate::init()
 
   // this->SliceOffsetSlider->setStyleSheet("background-color: gray;");
 
+  // this->SliceOffsetSlider->setStyleSheet("color: black;background: #a4cb2fff");
+
   //this->SliceOffsetSlider->spinBox()->setParent(this->PopupWidget);
   ctkDoubleSpinBox* spinBox = this->SliceOffsetSlider->spinBox();
   spinBox->setFrame(false);
@@ -2060,7 +2062,7 @@ void qMRMLSliceControllerWidget::setSliceViewColor(const QColor& newSliceViewCol
     return;
   }
   // this will update the widget color
-  this->mrmlSliceNode()->SetLayoutColor(newSliceViewColor.redF(), newSliceViewColor.greenF(), newSliceViewColor.blueF());
+  this->mrmlSliceNode()->SetLayoutColor(0.9333, 0.9333, 0.9333);
 }
 
 //---------------------------------------------------------------------------

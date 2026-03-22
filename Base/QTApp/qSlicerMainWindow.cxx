@@ -87,6 +87,7 @@
 #include <vtkMRMLScene.h>
 #include <vtkMRMLSliceCompositeNode.h>
 
+
 // VTK includes
 #include <vtkCollection.h>
 
@@ -96,7 +97,8 @@
 #include "UserInfoForm.h"
 #include "backendAiManager.h"
 #include "passworddialog.h"
-
+#include <QStandardPaths>
+#include <QString>
 namespace
 {
 
@@ -1097,12 +1099,121 @@ void qSlicerMainWindow::on_actionViewUserInfo_triggered() {
     _from->show();
 }
 
-void qSlicerMainWindow::on_actionAI_Airway_triggered() {
+QString qSlicerMainWindow::saveCurrentVolumeAsTemporaryFile(){
+    vtkMRMLScene* scene = qSlicerApplication::application()->mrmlScene();
+    if (!scene) {
+        qDebug("No scene");
+        return QString();
+    }
+    
+    vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
+    if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
+        qDebug("No volume nodes");
+        if (volumeNodes) {
+            volumeNodes->Delete();
+        }
+        return QString();
+    }
+    
+    vtkMRMLScalarVolumeNode* ctNode = vtkMRMLScalarVolumeNode::SafeDownCast(
+        volumeNodes->GetItemAsObject(0)
+    );
+    volumeNodes->Delete();
+    
+    if (!ctNode) {
+        qDebug("No ct node");
+        return QString();
+    }
+    
+    vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
+    if (!storageNode) {
+        qDebug("No storage node");
+        return QString();
+    }
+    
+    storageNode->SetScene(scene);
 
-    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
-    tmpForm->setWindowModality(Qt::ApplicationModal);
-    //tmpForm->choose_file_for_airway();
-    tmpForm->show();
+    qDebug("111");
+
+    // QString dirPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    // qDebug() << dirPath;
+    
+    QString dirPath =
+      qSlicerCoreApplication::application()->temporaryPath();
+    // QString outputPath = ctNode->GetStorageNode()->GetFileName();
+    // QString outputPath = storageNode->GetFileName();
+    // qDebug() << "outputPath:" << outputPath;
+    
+    // int lastSlashIndex = outputPath.lastIndexOf("/");
+    qDebug() << dirPath;
+    
+    
+    
+    // ct文件所在的目录路径
+    // QString file_dir_path = outputPath.left(lastSlashIndex);
+    // lastSlashIndex = file_dir_path.lastIndexOf("/");
+    // if(lastSlashIndex!=-1){
+    //     file_dir_path = file_dir_path.left(lastSlashIndex);
+    // }
+    
+    // 选择文件夹
+    // QString dirPath = QFileDialog::getExistingDirectory(
+    //     nullptr,
+    //     "选择保存文件夹",
+    //     // file_dir_path,  // 初始目录
+    //     homePath,  // 初始目录
+    //     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks
+    // );
+    
+    // if (!dirPath.isEmpty()) {
+    //     qDebug() << "chosed dir:" << dirPath;
+    //     // 在这里处理文件夹路径
+    // }
+
+
+    QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+                                          "提示", 
+                                          "saveCurrentVolumeAsTemporaryFile 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+                                          QMessageBox::NoButton, 
+                                          this);
+    msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+    
+    msgBox2->setModal(false);  // 关键：设置为非模态
+    msgBox2->show();
+
+    // 立即处理UI事件，确保消息框显示出来
+    QApplication::processEvents();
+
+    QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
+
+    qDebug("start save file");
+
+    // 3. 设置输出文件名
+    QUuid uuid = QUuid::createUuid();
+    QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
+    std::string fileName = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
+    storageNode->SetFileName(fileName.c_str());
+    
+    // 4. 写入数据
+    bool success = storageNode->WriteData(ctNode);
+    
+    if (success) {
+        qDebug() << "temp save success:" << fileName.c_str();
+    } else {
+        qDebug() << "temp save failed:" << fileName.c_str();
+    }
+    return QString(fileName.c_str());
+}
+
+void qSlicerMainWindow::on_actionAI_Airway_triggered() {
+  qDebug("on_actionAI_Airway_triggered 11111");
+
+  qDebug("on_actionAI_Airway_triggered 2222");
+
+  Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+  tmpForm->setWindowModality(Qt::ApplicationModal);
+  //tmpForm->choose_file_for_airway();
+  tmpForm->show();
 }
 
 void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
@@ -1110,6 +1221,70 @@ void qSlicerMainWindow::on_actionAI_Vessel_triggered() {
     tmpForm->setWindowModality(Qt::ApplicationModal);
     //tmpForm->choose_file_for_vessel();
     tmpForm->show();
+}
+
+void qSlicerMainWindow::on_actionAIAirwayAuto_triggered() {
+    QString fileName = saveCurrentVolumeAsTemporaryFile();
+    if(fileName.isEmpty()){
+        QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+        return;
+    }
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+    tmpForm->uploadFileAuto(0,fileName);
+    QFile file(fileName);
+    
+    if (!file.exists()) {
+        qDebug() << "file not exist:" << fileName;
+    }
+    qDebug("start remove file");
+    if (file.remove()) {
+        qDebug() << "file remove ok:" << fileName;
+    } else {
+        qDebug() << "file remove error:" << fileName << "错误:" << file.errorString();
+    }
+}
+
+void qSlicerMainWindow::on_actionAIVesselAuto_triggered() {
+    QString fileName = saveCurrentVolumeAsTemporaryFile();
+    if(fileName.isEmpty()){
+        QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+        return;
+    }
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+    tmpForm->uploadFileAuto(1,fileName);
+        QFile file(fileName);
+    qDebug("start remove file");
+    if (!file.exists()) {
+        qDebug() << "file not exist:" << fileName;
+    }
+    
+    if (file.remove()) {
+        qDebug() << "file remove ok:" << fileName;
+    } else {
+        qDebug() << "file remove error:" << fileName << "错误:" << file.errorString();
+    }
+}
+
+void qSlicerMainWindow::on_actionAIFeiDuanAuto_triggered() {
+    QString fileName = saveCurrentVolumeAsTemporaryFile();
+    if(fileName.isEmpty()){
+        QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+        return;
+    }
+    Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager;
+    tmpForm->uploadFileAuto(2,fileName);
+    qDebug("start remove file");
+    QFile file(fileName);
+    
+    if (!file.exists()) {
+        qDebug() << "file not exist:" << fileName;
+    }
+    
+    if (file.remove()) {
+        qDebug() << "file remove ok:" << fileName;
+    } else {
+        qDebug() << "file remove error:" << fileName << "错误:" << file.errorString();
+    }
 }
 
 void qSlicerMainWindow::on_actionAnonymize_triggered() {
@@ -1134,6 +1309,7 @@ void qSlicerMainWindow::on_actionLogOut_triggered() {
         m_LoginForm->show();
     }
 }
+
 
 void qSlicerMainWindow::on_actionReviewPermission_triggered() {
   PasswordDialog * tmpForm = new PasswordDialog();

@@ -28,6 +28,9 @@
         <property name="showRootItem">
         <bool>true</bool>
         </property>
+        <property name="minimumHeight">
+        <number>150</number>
+        </property>
       </widget>
     </item>
     <item row="1" column="0">
@@ -486,6 +489,70 @@
      </item>
     </layout>
    </item>
+  <item row="5" column="0">
+    <layout class="QVBoxLayout" name="verticalLayoutAIAuto">
+      <item>
+        <widget class="QLabel" name="AIAutoTitleLabel">
+          <property name="text">
+            <string>AI胸外</string>
+          </property>
+          <property name="alignment">
+            <set>Qt::AlignLeft</set>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" name="QHBoxLayoutAI">
+        <property name="spacing">
+          <number>4</number>
+        </property>
+        <item>
+          <widget class="QPushButton" name="AIAutoButtonAirway">
+          <property name="toolTip">
+            <string>自动化ai气管分割</string>
+          </property>
+          <property name="text">
+            <string>一键AI气管</string>
+          </property>
+          <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+            <normaloff>:/Icons/airwayAI.png</normaloff>:/Icons/airwayAI.png</iconset>
+          </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QPushButton" name="AIAutoButtonVessel">
+          <property name="toolTip">
+            <string>自动化ai血管分割</string>
+          </property>
+          <property name="text">
+            <string>一键AI血管</string>
+          </property>
+          <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+            <normaloff>:/Icons/vesselAI.png</normaloff>:/Icons/vesselAI.png</iconset>
+          </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QPushButton" name="AIAutoButtonVeveeselV2">
+          <property name="toolTip">
+            <string>自动化ai肺段分割</string>
+          </property>
+          <property name="text">
+            <string>一键AI肺段</string>
+          </property>
+          <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+            <normaloff>:/Icons/feiduanAI.png</normaloff>:/Icons/feiduanAI.png</iconset>
+          </property>
+          </widget>
+        </item>
+        </layout>
+      </item>
+    </layout>
+  </item>
+   
   </layout>
  </widget>
  <customwidgets>
@@ -523,9 +590,36 @@
    <header>ctkCheckBox.h</header>
   </customwidget>
   <customwidget>
-   <class>ctkDirectoryButton</class>
+   <class>ctkCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>ctkCheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkCollapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>ctkCollapsibleGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkExpandableWidget</class>
+   <extends>QFrame</extends>
+   <header>ctkExpandableWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkFittedTextBrowser</class>
+   <extends>QTextBrowser</extends>
+   <header>ctkFittedTextBrowser.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkMenuButton</class>
+   <extends>QPushButton</extends>
+   <header>ctkMenuButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkRangeWidget</class>
    <extends>QWidget</extends>
-   <header>ctkDirectoryButton.h</header>
+   <header>ctkRangeWidget.h</header>
   </customwidget>
   <customwidget>
    <class>ctkCollapsibleGroupBox</class>

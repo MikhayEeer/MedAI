@@ -32,7 +32,7 @@
 vtkColor3d vtkMRMLColors::sliceRed()
 {
   // 243, 74, 51 -> #F34A33
-  vtkColor3d flamingo = vtkColor3d(0.952941176471, 0.290196078431, 0.2);
+  vtkColor3d flamingo = vtkColor3d(0.933333333333, 0.933333333333, 0.933333333333);
   return flamingo;
 }
 
@@ -40,7 +40,7 @@ vtkColor3d vtkMRMLColors::sliceRed()
 vtkColor3d vtkMRMLColors::sliceGreen()
 {
   // 110, 176, 75 -> #6EB04B
-  vtkColor3d chelseaCucumber = vtkColor3d(0.43137254902, 0.690196078431, 0.294117647059);
+  vtkColor3d chelseaCucumber = vtkColor3d(0.933333333333, 0.933333333333, 0.933333333333);
   return chelseaCucumber;
 }
 
@@ -48,7 +48,7 @@ vtkColor3d vtkMRMLColors::sliceGreen()
 vtkColor3d vtkMRMLColors::sliceYellow()
 {
   // 237, 213, 76 -> #EDD54C
-  vtkColor3d ronchy = vtkColor3d(0.929411764706, 0.835294117647, 0.298039215686);
+  vtkColor3d ronchy = vtkColor3d(0.933333333333, 0.933333333333, 0.933333333333);
   return ronchy;
 }
 
@@ -56,7 +56,7 @@ vtkColor3d vtkMRMLColors::sliceYellow()
 vtkColor3d vtkMRMLColors::sliceOrange()
 {
   // 225, 112, 18 -> #E17012
-  vtkColor3d tango = vtkColor3d(0.882352941176, 0.439215686275, 0.0705882352941);
+  vtkColor3d tango = vtkColor3d(0.933333333333, 0.933333333333, 0.933333333333);
   return tango;
 }
 
@@ -64,7 +64,7 @@ vtkColor3d vtkMRMLColors::sliceOrange()
 vtkColor3d vtkMRMLColors::threeDViewBlue()
 {
   // 116, 131, 233 -> #7483E9
-  vtkColor3d blue = vtkColor3d(116, 131, 233);
+  vtkColor3d blue = vtkColor3d(0.933333333333, 0.933333333333, 0.933333333333);
   return blue;
 }
 

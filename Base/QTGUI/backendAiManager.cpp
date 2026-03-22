@@ -13,6 +13,7 @@
 #include "UserInfo.h"
 #include "backendAiManager.h"
 
+
 #pragma execution_character_set("utf-8")
 
 Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, QWidget *parent)
@@ -21,7 +22,6 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
     initUI();
     this->setAttribute(Qt::WA_DeleteOnClose);
 
-    m_progress = nullptr;
     multiPart = nullptr;
     reply = nullptr;
     manager = new QNetworkAccessManager(this);
@@ -33,6 +33,22 @@ Backend_AI_Processing_manager::Backend_AI_Processing_manager(QString filePath, Q
 
     _postManager = new PostManager();
     connect(_postManager, SIGNAL(postEnded(QJsonObject)), this, SLOT(finishedAdd(QJsonObject)));
+
+    // 定时器功能
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, [this]() {
+        for (auto it = progressMap.begin(); it != progressMap.end(); ++it) {
+            QString key = it.key();
+            QProgressDialog* dlg = it.value();
+            // 使用 key 和 
+            int currentValue = dlg->value();
+            if(currentValue<60){
+                dlg->setValue(currentValue+1); // 假值....
+                // m_progress1->show();
+            }
+        }
+    });
+    timer->start(10000);  // ✅ 正确
 }
 
 Backend_AI_Processing_manager::~Backend_AI_Processing_manager(){
@@ -43,7 +59,6 @@ Backend_AI_Processing_manager::~Backend_AI_Processing_manager(){
 //    // 删除对话框
 //    if(finishedDialog) delete finishedDialog;
 }
-
 
 
 void Backend_AI_Processing_manager::choose_file_for_airway(){
@@ -60,6 +75,7 @@ void Backend_AI_Processing_manager::choose_file_for_airway(){
 //        } else {
 //            // 用户关闭了对话框
 //        }
+
     }
     else{
         if(manager) delete manager;
@@ -93,7 +109,10 @@ void Backend_AI_Processing_manager::choose_file_for_vesselV2(){
 
 void Backend_AI_Processing_manager::finishedAdd(QJsonObject m_res)
 {
+    qDebug() << "finishedAdd";
     if( m_res.value("state") != "ok"){
+        qDebug() << "finishedAdd state not ok";
+        qDebug() << "Error response:" << m_res;
         return;
     }
     else{
@@ -103,21 +122,49 @@ void Backend_AI_Processing_manager::finishedAdd(QJsonObject m_res)
 
 void Backend_AI_Processing_manager::add_ai_ops()
 {
+    // QMessageBox* msgBox2 = new QMessageBox(QMessageBox::Information, 
+    //                                     "提示", 
+    //                                     "add_ai_ops 后台ai处理中，预计3-5分钟内会弹窗显示已完成", 
+    //                                     QMessageBox::NoButton, 
+    //                                     this);
+    // msgBox2->setAttribute(Qt::WA_DeleteOnClose);
+    
+    // msgBox2->setModal(false);  // 关键：设置为非模态
+    // msgBox2->show();
+
+    // QTimer::singleShot(3000, msgBox2, &QMessageBox::close);
     QJsonObject json;
     json.insert("email", userInfoEmail);
     qDebug() << userInfoEmail;
-
+    qDebug() << "add_ai_ops userInfoEmail:" << userInfoEmail;
     _postManager->doPost(json, "/update_user_ai_ops");
 }
 
+// 修改函数签名，接收文件路径作为参数
+void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& filePath) {
+    _choosed_files= QStringList() << filePath;
+    // _choosed_files[0]= filePath;
+    QString promtText = "";
+    if(model == 0){
+        _choosed_model = AI_MODEL::AIRWAY;
+    }else if(model == 1){
+        _choosed_model = AI_MODEL::VESSEL;
+    }else if(model == 2){
+        _choosed_model = AI_MODEL::VESSELV2;
+    }
+
+    add_ai_ops();
+}
+
 void Backend_AI_Processing_manager::uploadFile() {
-    QString filePath = _choosed_files[0];
-    int lastSlashIndex = filePath.lastIndexOf("/");
+    qDebug() << "uploadFile...";
+    QString filePath = _choosed_files[0]; // H:/b/aa.nii.gz
+    int lastSlashIndex = filePath.lastIndexOf("/"); // 4 
     // ct文件所在的目录路径
-    QString file_dir_path = filePath.left(lastSlashIndex);
+    QString file_dir_path = filePath.left(lastSlashIndex); // H:/b/
     // 文件名
-    QString complete_fileName = filePath.mid(lastSlashIndex + 1);
-    int suffix_index = complete_fileName.lastIndexOf(".nii.gz");
+    QString complete_fileName = filePath.mid(lastSlashIndex + 1); // aa.nii.gz
+    int suffix_index = complete_fileName.lastIndexOf(".nii.gz"); // 7
     if(suffix_index == -1 || (suffix_index + 7 < complete_fileName.length()) ){
         finishedDialog = new QMessageBox(QMessageBox::Question,"提示","请选择.nii.gz为后缀的CT文件");
 
@@ -131,21 +178,44 @@ void Backend_AI_Processing_manager::uploadFile() {
         qDebug() << suffix_index;
         qDebug() << complete_fileName.length();
         qDebug() << "请选择.nii.gz为后缀的CT文件";
+        emit processingFailed("请选择.nii.gz为后缀的CT文件");
         return;
     }
-    QString baseName = complete_fileName.left(suffix_index);
-    m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz";
+
+    QString promtText = "AI气道分割处理完成";
+    QString promtTitle = "AI气道";
+    QString promtTitleValue = "AI气道火速处理中";
+
+    QString baseName = complete_fileName.left(suffix_index); // aa
+    m_result_path = file_dir_path + "/气道分割" + baseName + ".nii.gz"; // H:/b/气道分割aa.nii.gz
     if(_choosed_model != AI_MODEL::AIRWAY) {
         m_result_path = file_dir_path + "/肺部血管分割" + baseName + ".nii.gz";
+        promtText="AI肺部血管分割处理完成";
+        promtTitle="AI血管";
+        promtTitleValue="AI血管火速处理中";
     }
     if (_choosed_model == AI_MODEL::VESSELV2) {
         m_result_path = file_dir_path + "/肺段分割" + baseName + ".nii.gz";
+        promtText="AI肺部肺段分割处理完成";
+        promtTitle="AI肺段";
+        promtTitleValue="AI肺段火速处理中";
     }
     qDebug() << filePath;
 //    qDebug() << file_dir_path;
 //    qDebug() << complete_fileName;
 //    qDebug() << baseName;
 //    qDebug() << m_result_path;
+
+    QProgressDialog* progress = new QProgressDialog(this);
+    progress->setWindowTitle(tr(promtTitle.toStdString().c_str()));
+    progress->setLabelText(tr(promtTitleValue.toStdString().c_str()));
+    progress->setCancelButton(nullptr);
+    progress->setRange(0, 63); //设置范围
+    progress->setValue(27); // 假值....
+    progress->setWindowFlags(progress->windowFlags() & ~Qt::WindowCloseButtonHint);
+    progress->show();
+    progressMap[filePath] = progress;
+
 
     QNetworkRequest request(QUrl(AI_URL_AIRWAY + "/upload")); //13910
     if (_choosed_model == AI_MODEL::VESSEL) {
@@ -156,17 +226,6 @@ void Backend_AI_Processing_manager::uploadFile() {
     }
 
     multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-    // 网络请求进度窗
-    m_progress = new QProgressDialog(this);
-    m_progress->setWindowTitle(tr("提示"));
-    m_progress->setLabelText(tr("服务器处理中..."));
-    m_progress->setCancelButton(nullptr);
-    // 不显示右上角的关闭
-    m_progress->setWindowFlag(Qt::WindowCloseButtonHint, false);
-    m_progress->setRange(0, 100); //设置范围
-    m_progress->setModal(true);   //设置为模态对话框
-    m_progress->setValue(20); // 假值....
-    m_progress->show();
 
     // 打开要上传的文件
     QFile *file = new QFile(filePath);
@@ -193,16 +252,20 @@ void Backend_AI_Processing_manager::uploadFile() {
 //    multiPart->append(jsonPart);
 
     reply = manager->post(request, multiPart);
-    m_progress->setValue(40); // 假值....
 
     QEventLoop eventLoop;
     connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
     eventLoop.exec();
 
-    m_progress->setHidden(true);
-    m_progress->setValue(100);
-
     if(reply->error() != QNetworkReply::NoError) {
+        if (progressMap.contains(filePath)) {
+            progressMap[filePath]->setValue(63);
+            qDebug() << "progressMap contains " << filePath;
+        }else{
+            qDebug() << "progressMap not contains " << filePath;
+        }
+
+
         QMessageBox msgBox;
         // 读取并解析错误信息
         QByteArray data = reply->readAll();
@@ -221,22 +284,46 @@ void Backend_AI_Processing_manager::uploadFile() {
 
         msgBox.exec();
         this->close();
+        emit processingFailed(reply->errorString());
+
+        if (progressMap.contains(filePath)) {
+            progressMap[filePath]->close();
+            progressMap[filePath]->deleteLater();
+            progressMap.remove(filePath);
+            qDebug() << "progressMap contains " << filePath;
+        }else{
+            qDebug() << "progressMap not contains " << filePath;
+        }
+
         return;
     }
 
     QFile responseFile(m_result_path);
+    // if(!responseFile.open(QIODevice::WriteOnly)) {
+    //     QMessageBox msgBox;
+    //     msgBox.setText(QString("服务器传来的文件本地没有读取权限%s").arg(reply->errorString()));
+    //     msgBox.exec();
+    //     this->close();
+    //     responseFile.close();
+    //     return;
+    // }
+
     if(!responseFile.open(QIODevice::WriteOnly)) {
-        QMessageBox msgBox;
-        msgBox.setText(QString("服务器传来的文件本地没有读取权限").arg(reply->errorString()));
-        msgBox.exec();
+        QMessageBox::critical(this, 
+                            "保存失败", 
+                            QString("path:%1\n"
+                                    "error info: %2")
+                            .arg(m_result_path)
+                            .arg(responseFile.errorString()));
+        
         this->close();
-        responseFile.close();
+        emit processingFailed(responseFile.errorString());
         return;
     }
 
     responseFile.write(reply->readAll());
 
-    finishedDialog = new QMessageBox(QMessageBox::Question,"提示","处理完成，新文件位于源文件同级目录");
+    finishedDialog = new QMessageBox(QMessageBox::Question,"提示",promtText.toStdString().c_str());
 
     // 当模型处理完成后，进行提示
     finishedDialog->setWindowFlags(Qt::Dialog);
@@ -245,6 +332,16 @@ void Backend_AI_Processing_manager::uploadFile() {
 
     finishedDialog->exec();
     responseFile.close();
+    emit processingFinished(m_result_path);
+
+    if (progressMap.contains(filePath)) {
+        progressMap[filePath]->close();
+        progressMap[filePath]->deleteLater();
+        progressMap.remove(filePath);
+        qDebug() << "progressMap contains " << filePath;
+    }else{
+        qDebug() << "progressMap not contains " << filePath;
+    }
 }
 
 

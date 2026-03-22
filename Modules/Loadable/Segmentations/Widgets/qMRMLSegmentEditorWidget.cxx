@@ -98,6 +98,8 @@
 #include <qMRMLThreeDWidget.h>
 #include <qMRMLThreeDView.h>
 
+#include "backendAiManager.h"
+
 // Qt includes
 #include <QAbstractItemView>
 #include <QAction>
@@ -115,6 +117,8 @@
 #include <QTableView>
 #include <QToolButton>
 #include <QVBoxLayout>
+#include <QTimer>
+#include <QUuid>
 // CTK includes
 #include <ctkCollapsibleButton.h>
 #include "vtkMRMLSubjectHierarchyNode.h"
@@ -471,6 +475,15 @@ void qMRMLSegmentEditorWidgetPrivate::init()
   QObject::connect( this->UndoButton, SIGNAL(clicked()), q, SLOT(undo()) );
   QObject::connect( this->RedoButton, SIGNAL(clicked()), q, SLOT(redo()) );
   QObject::connect( this->ExportAllButton, SIGNAL(clicked()), q, SLOT(exPortAllSeg()) );
+  QObject::connect(this->AIAutoButtonAirway, &QPushButton::clicked, [=]() {
+      q->AIAutoDoFunc(0);
+  });
+  QObject::connect(this->AIAutoButtonVessel, &QPushButton::clicked, [=]() {
+      q->AIAutoDoFunc(1);
+  });
+  QObject::connect(this->AIAutoButtonVeveeselV2, &QPushButton::clicked, [=]() {
+      q->AIAutoDoFunc(2);
+  });
 
   q->qvtkConnect(this->SegmentationHistory, vtkCommand::ModifiedEvent,
     q, SLOT(onSegmentationHistoryChanged()));
@@ -3159,6 +3172,240 @@ void qMRMLSegmentEditorWidget::redo()
   MRMLNodeModifyBlocker blocker(d->SegmentationNode);
   d->SegmentationHistory->RestoreNextState();
   d->SegmentationNode->InvokeCustomModifiedEvent(vtkMRMLDisplayableNode::DisplayModifiedEvent, d->SegmentationNode->GetDisplayNode());
+}
+
+void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
+{
+  Q_D(qMRMLSegmentEditorWidget);
+  // if (!d->SegmentationNode)
+  // {
+  //   return;
+  // }
+
+  qDebug() << "AIAutoDoFunc88,type:" << type;
+
+  // 得到待上传ct的绝对路径-开始
+  // 获取布局管理器
+  qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
+  if (!layoutManager) {
+      qWarning() << "Layout manager not found";
+      return;
+  }
+
+  // 获取红色切片小部件
+  qMRMLSliceWidget* redWidget = layoutManager->sliceWidget("Red");
+  if (!redWidget) {
+      qWarning() << "Red slice widget not found";
+      return;
+  }
+
+  // 获取切片逻辑
+  vtkMRMLSliceLogic* sliceLogic = redWidget->sliceLogic();
+  if (!sliceLogic) {
+      qWarning() << "Slice logic not found";
+      return;
+  }
+
+  vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
+
+  vtkCollection* volumeNodes = scene->GetNodesByClass("vtkMRMLScalarVolumeNode");
+  if (!volumeNodes || volumeNodes->GetNumberOfItems() == 0) {
+      qDebug("No volume nodes");
+      if (volumeNodes) {
+          volumeNodes->Delete();
+      }
+      return;  // 失败时返回空字符串
+  }
+
+  // 获取切片复合节点
+  vtkMRMLSliceCompositeNode* compositeNode = sliceLogic->GetSliceCompositeNode();
+  if (!compositeNode) {
+      qWarning() << "Slice composite node not found";
+      return;
+  }
+
+
+  // 获取背景体积ID
+  std::string bgVolumeID = compositeNode->GetBackgroundVolumeID();
+  qDebug() << "Background volume ID:" << bgVolumeID.c_str();
+
+  // 通过ID获取节点
+  if (!scene) {
+      qWarning() << "MRML scene not found";
+      return;
+  }
+
+  vtkMRMLVolumeNode* ctNode = vtkMRMLVolumeNode::SafeDownCast(
+    scene->GetNodeByID(bgVolumeID.c_str())
+  );
+  
+  if (!ctNode) {
+      qDebug("No ct node");
+      return;
+  }
+  
+  vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
+  if (!storageNode) {
+      qDebug("No storage node");
+      return;
+  }
+  
+  storageNode->SetScene(scene);
+
+  qDebug("111");
+  
+  QString dirPath =
+    qSlicerCoreApplication::application()->temporaryPath();
+
+  qDebug() << dirPath;
+
+  qDebug("start save file");
+
+  // 3. 设置输出文件名
+  QUuid uuid = QUuid::createUuid();
+  QString withoutBraces = uuid.toString(QUuid::WithoutBraces);
+  std::string fileNamec = dirPath.toStdString() + "/" + withoutBraces.toStdString() + ".nii.gz";
+  storageNode->SetFileName(fileNamec.c_str());
+  
+  // 4. 写入数据
+  bool success = storageNode->WriteData(ctNode);
+  
+  if (success) {
+      qDebug() << "temp save success:" << fileNamec.c_str();
+  } else {
+      qDebug() << "temp save failed:" << fileNamec.c_str();
+  }
+  QString fileName= QString(fileNamec.c_str());
+
+
+  // 得到待上传ct的绝对路径-结束
+
+  // 1、请求
+  if(fileName.isEmpty()){
+      QMessageBox::warning(this, "错误", "未找到可用的体数据，请加载体数据后重试");
+      return;
+  }
+  Backend_AI_Processing_manager* tmpForm = new Backend_AI_Processing_manager("", this);
+
+  // 等待AI处理完成后再加载结果
+  QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFinished,
+    this, [this, fileName, tmpForm,scene,ctNode](const QString& resultPath){
+      QFile file(fileName);
+      if (file.exists()) {
+          if (file.remove()) {
+              qDebug() << "AIAutoDoFunc temp file removed:" << fileName;
+          } else {
+              qDebug() << "AIAutoDoFunc temp file remove failed:" << file.errorString();
+          }
+      }else{
+        qDebug() << "AIAutoDoFunc temp file not exists:" << fileName;
+      }
+
+      // 自动加载并显示数据
+      qSlicerAbstractCoreModule* segmentationsModule =
+          qSlicerCoreApplication::application()->moduleManager()->module("Segmentations");
+      if (!segmentationsModule)
+      {
+          qWarning() << "AIAutoDoFunc Segmentations module not found";
+          tmpForm->deleteLater();
+          return;
+      }
+
+      vtkSlicerSegmentationsModuleLogic* segLogic =
+          vtkSlicerSegmentationsModuleLogic::SafeDownCast(segmentationsModule->logic());
+      if (!segLogic)
+      {
+          qWarning() << "AIAutoDoFunc Segmentations logic not available";
+          tmpForm->deleteLater();
+          return;
+      }
+
+      vtkMRMLSegmentationNode* segNode = segLogic->LoadSegmentationFromFile(resultPath.toStdString().c_str());
+      if (!segNode)
+      {
+          qDebug() << "AIAutoDoFunc Failed to load segmentation from" << resultPath;
+          tmpForm->deleteLater();
+          return;
+      }
+
+      this->setSegmentationNode(segNode);
+
+      // 创建闭合表面表示
+      if (segNode->CreateClosedSurfaceRepresentation())
+      {
+          vtkMRMLSegmentationDisplayNode* displayNode = vtkMRMLSegmentationDisplayNode::SafeDownCast(
+              segNode->GetDisplayNode()
+          );
+          
+          if (displayNode)
+          {
+              displayNode->SetPreferredDisplayRepresentationName3D(
+                  vtkSegmentationConverter::GetSegmentationClosedSurfaceRepresentationName()
+              );
+
+              bool binaryLabelmapPresent = segNode->GetSegmentation()->ContainsRepresentation(
+                  vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
+              );
+              
+              if (binaryLabelmapPresent)
+              {
+                  displayNode->SetPreferredDisplayRepresentationName2D(
+                      vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()
+                  );
+              }
+
+              displayNode->SetOpacity2DFill(1);
+              displayNode->SetOpacity2DOutline(1.0);
+              displayNode->SetOpacity3D(1);
+          }
+      }
+      else
+      {
+          qWarning() << "AIAutoDoFunc Failed to create closed surface representation";
+      }
+
+      tmpForm->deleteLater();
+
+      // 自动显示
+      vtkMRMLSubjectHierarchyNode* shNode = vtkMRMLSubjectHierarchyNode::GetSubjectHierarchyNode(scene);
+      shNode->SetItemParent(shNode->GetItemByDataNode(segNode), shNode->GetItemByDataNode(ctNode));
+
+      // 设置名词
+      if(resultPath.contains("血管")){
+        segNode->SetName("肺部血管分割");
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(255.0/255.0,76.0/255.0,101.0/255.0);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("动脉");
+        segNode->GetSegmentation()->GetSegment("Segment_2")->SetColor(1.0/255.0,184.0/255.0,244.0/255.0);
+        segNode->GetSegmentation()->GetSegment("Segment_2")->SetName("静脉");
+      }else if(resultPath.contains("气道")){
+        segNode->SetName("气道分割");
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetColor(1.0,1.0,1.0);
+        segNode->GetSegmentation()->GetSegment("Segment_1")->SetName("气道");
+      }
+
+      qWarning() << "AIAutoDoFunc SetItemParent end";
+    });
+
+  QObject::connect(tmpForm, &Backend_AI_Processing_manager::processingFailed,
+    this, [this, fileName, tmpForm](const QString& error){
+      QFile file(fileName);
+      if (file.exists()) {
+          if (file.remove()) {
+              qDebug() << "AIAutoDoFunc temp file removed:" << fileName;
+          } else {
+              qDebug() << "AIAutoDoFunc temp file remove failed:" << file.errorString();
+          }
+      }else{
+        qDebug() << "AIAutoDoFunc temp file not exists:" << fileName;
+      }
+      QMessageBox::warning(this, tr("AI处理失败"),
+                           error.isEmpty() ? tr("AI服务器处理失败") : error);
+      tmpForm->deleteLater();
+  });
+
+  tmpForm->uploadFileAuto(type,fileName);
+
+  qDebug() << "AIAutoDoFunc end" ;
 }
 
 //-----------------------------------------------------------------------------

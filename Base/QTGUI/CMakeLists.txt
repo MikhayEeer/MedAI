@@ -23,6 +23,8 @@ set(KIT_SRCS
   UserInfo.cxx
   LoginForm.h
   LoginForm.cxx
+  unlockdialog.h
+  unlockdialog.cpp
   RechargeForm.h
   RechargeForm.cxx
   signUpForm.h
@@ -203,6 +205,25 @@ set_source_files_properties(
   WRAP_EXCLUDE
   )
 
+# MSVC requires /utf-8 flag for source files with UTF-8 encoded Chinese characters
+if(MSVC)
+  set_source_files_properties(
+    unlockdialog.cpp
+    Auth.cxx
+    UserInfo.cxx
+    LoginForm.cxx
+    RechargeForm.cxx
+    signUpForm.cxx
+    UserInfoForm.cxx
+    post_manager.cpp
+    deduction_dialog.cpp
+    backendAiManager.cpp
+    userlist.cpp
+    passworddialog.cpp
+    PROPERTIES COMPILE_FLAGS "/utf-8"
+  )
+endif()
+
 # Headers that should run through moc
 set(KIT_MOC_SRCS
   qSlicerAbstractModule.h
@@ -259,6 +280,7 @@ set(KIT_MOC_SRCS
   Auth.cxx
   UserInfo.h
   LoginForm.h
+  unlockdialog.h
   RechargeForm.h
   signUpForm.h
   UserInfoForm.h

@@ -934,7 +934,7 @@ viewLogic = slicer.vtkMRMLSliceLogic()
 viewLogic.SetMRMLScene(slicer.mrmlScene)
 viewNode = viewLogic.AddSliceNode(layoutName)
 viewNode.SetLayoutLabel(layoutLabel)
-viewNode.SetLayoutColor(layoutColor)
+viewNode.SetLayoutColor(0.9333, 0.9333, 0.9333)
 viewNode.SetAndObserveParentLayoutNodeID(viewOwnerNode.GetID())
 
 # Create widget
@@ -962,7 +962,7 @@ viewLogic = slicer.vtkMRMLViewLogic()
 viewLogic.SetMRMLScene(slicer.mrmlScene)
 viewNode = viewLogic.AddViewNode(layoutName)
 viewNode.SetLayoutLabel(layoutLabel)
-viewNode.SetLayoutColor(layoutColor)
+viewNode.SetLayoutColor(0.9333, 0.9333, 0.9333)
 viewNode.SetAndObserveParentLayoutNodeID(viewOwnerNode.GetID())
 
 # Create widget

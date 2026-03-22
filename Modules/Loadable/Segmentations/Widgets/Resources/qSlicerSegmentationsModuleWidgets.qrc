@@ -14,5 +14,8 @@
     <file>Icons/Remove.png</file>
     <file>Icons/SegmentGeometry.png</file>
     <file>Icons/SlicerRotateWarning.png</file>
+    <file>Icons/airwayAI.png</file>
+    <file>Icons/vesselAI.png</file>
+    <file>Icons/feiduanAI.png</file>
   </qresource>
 </RCC>

@@ -72,7 +72,7 @@ void qMRMLMarkupsPlaneWidgetPrivate::setupUi(qMRMLMarkupsPlaneWidget* widget)
     this->planeSizeModeComboBox->addItem(vtkMRMLMarkupsPlaneNode::GetSizeModeAsString(sizeMode), sizeMode);
   }
 
-  QObject::connect(this->planeTypeComboBox, SIGNAL(currentIndexChanged(int)),
+  QObject::connect(this->planeTypeComboBox, SIGNAL(currentIndexChanged(int)), // 平面类型
                    q, SLOT(onPlaneTypeIndexChanged()));
   QObject::connect(this->planeSizeModeComboBox, SIGNAL(currentIndexChanged(int)),
     q, SLOT(onPlaneSizeModeIndexChanged()));

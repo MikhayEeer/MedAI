@@ -8,6 +8,9 @@ include(SlicerMacroBuildApplication)
 # --------------------------------------------------------------------------
 SlicerReadApplicationProperties()
 
+# SlicerApp_APPLICATION_NAME is set by SlicerReadApplicationProperties()
+# based on APPLICATION_NAME from slicer-application-properties.cmake
+
 # --------------------------------------------------------------------------
 # Folder
 # --------------------------------------------------------------------------

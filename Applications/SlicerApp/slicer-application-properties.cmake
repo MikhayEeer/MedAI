@@ -1,6 +1,6 @@
 
 set(APPLICATION_NAME
-  Slicer
+  MedAI-3D
   )
 
 set(VERSION_MAJOR
@@ -21,13 +21,13 @@ set(DESCRIPTION_FILE
   )
 
 set(LAUNCHER_SPLASHSCREEN_FILE
-  "${CMAKE_CURRENT_LIST_DIR}/Resources/Images/${APPLICATION_NAME}-SplashScreen.png"
+  "${CMAKE_CURRENT_LIST_DIR}/Resources/Images/Slicer-SplashScreen.png"
   )
 set(APPLE_ICON_FILE
-  "${CMAKE_CURRENT_LIST_DIR}/Resources/${APPLICATION_NAME}.icns"
+  "${CMAKE_CURRENT_LIST_DIR}/Resources/Slicer.icns"
   )
 set(WIN_ICON_FILE
-  "${CMAKE_CURRENT_LIST_DIR}/Resources/${APPLICATION_NAME}.ico"
+  "${CMAKE_CURRENT_LIST_DIR}/Resources/Slicer.ico"
   )
 
 set(LICENSE_FILE
