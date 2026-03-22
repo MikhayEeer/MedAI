@@ -1,6 +1,6 @@
 
 set(APPLICATION_NAME
-  MedAI
+  MedAI-3D
   )
 
 set(VERSION_MAJOR

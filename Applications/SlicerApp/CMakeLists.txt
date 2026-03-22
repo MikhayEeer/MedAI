@@ -8,7 +8,8 @@ include(SlicerMacroBuildApplication)
 # --------------------------------------------------------------------------
 SlicerReadApplicationProperties()
 
-set(SlicerApp_APPLICATION_NAME "MedAI" CACHE STRING "Name of the application" FORCE)
+# SlicerApp_APPLICATION_NAME is set by SlicerReadApplicationProperties()
+# based on APPLICATION_NAME from slicer-application-properties.cmake
 
 # --------------------------------------------------------------------------
 # Folder
