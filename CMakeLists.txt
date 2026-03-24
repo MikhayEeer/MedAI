@@ -109,7 +109,7 @@ include(SlicerCheckSourceTree)
 #-----------------------------------------------------------------------------
 option(Slicer_SUPERBUILD "Build ${PROJECT_NAME} and the projects it depends on." ON)
 mark_as_advanced(Slicer_SUPERBUILD)
-set(Slicer_BINARY_INNER_SUBDIR Slicer-build)
+set(Slicer_BINARY_INNER_SUBDIR MedAI-3D-build)
 
 #-----------------------------------------------------------------------------
 include(CTestUseLaunchers OPTIONAL)

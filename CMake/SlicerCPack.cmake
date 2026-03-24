@@ -64,7 +64,7 @@ endif()
 
 # Install Qt designer launcher
 if(Slicer_BUILD_QT_DESIGNER_PLUGINS)
-  set(executablename "SlicerDesigner")
+  set(executablename "MedAI-3D-Designer")
   set(build_designer_executable "${QT_BINARY_DIR}/designer${CMAKE_EXECUTABLE_SUFFIX}")
   if(APPLE)
     set(build_designer_executable "${QT_BINARY_DIR}/Designer.app/Contents/MacOS/designer")

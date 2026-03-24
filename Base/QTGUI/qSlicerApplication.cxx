@@ -1378,7 +1378,7 @@ ctkDICOMBrowser* qSlicerApplication::createDICOMBrowserForMainDatabase()
 //------------------------------------------------------------------------------
 bool qSlicerApplication::launchDesigner(const QStringList& args/*=QStringList()*/)
 {
-  QString designerExecutable = this->slicerHome() + "/bin/SlicerDesigner";
+  QString designerExecutable = this->slicerHome() + "/bin/MedAI-3D-Designer";
 #ifdef Q_OS_WIN32
   designerExecutable += ".exe";
 #endif
