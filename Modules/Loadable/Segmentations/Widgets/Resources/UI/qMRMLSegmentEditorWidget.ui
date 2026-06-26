@@ -562,9 +562,9 @@
         </layout>
       </item>
       <item row="6" column="0">
-        <layout class="QVBoxLayout" name="verticalLayoutAIAuto">
+        <layout class="QVBoxLayout" name="verticalLayoutUploadTool">
           <item>
-            <widget class="QLabel" name="AIAutoTitleLabel">
+            <widget class="QLabel" name="UploadToolTitleLabel">
               <property name="text">
                 <string>上传工具</string>
               </property>
@@ -574,12 +574,12 @@
             </widget>
           </item>
           <item>
-            <layout class="QHBoxLayout" name="QHBoxLayoutAI">
+            <layout class="QHBoxLayout" name="QHBoxLayoutUploadTool">
               <property name="spacing">
                 <number>4</number>
               </property>
               <item>
-                <widget class="QPushButton" name="AIAutoButtonAirway">
+                <widget class="QPushButton" name="UploadModelButton">
                   <property name="toolTip">
                     <string>自动上传模型文件</string>
                   </property>
@@ -594,7 +594,7 @@
                 </widget>
               </item>
               <item>
-                <widget class="QPushButton" name="AIAutoButtonVessel">
+                <widget class="QPushButton" name="UploadReportButton">
                   <property name="toolTip">
                     <string>自动上传报告文件</string>
                   </property>
@@ -609,7 +609,7 @@
                 </widget>
               </item>
               <item>
-                <widget class="QPushButton" name="AIAutoButtonVeveeselV2">
+                <widget class="QPushButton" name="UploadCTButton">
                   <property name="toolTip">
                     <string>自动上传ct文件</string>
                   </property>

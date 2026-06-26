@@ -484,6 +484,15 @@ void qMRMLSegmentEditorWidgetPrivate::init()
   QObject::connect(this->AIAutoButtonVeveeselV2, &QPushButton::clicked, [=]() {
       q->AIAutoDoFunc(2);
   });
+  QObject::connect(this->UploadModelButton, &QPushButton::clicked, [=]() {
+      q->UploadDoFunc(0);
+  });
+  QObject::connect(this->UploadReportButton, &QPushButton::clicked, [=]() {
+      q->UploadDoFunc(1);
+  });
+  QObject::connect(this->UploadCTButton, &QPushButton::clicked, [=]() {
+      q->UploadDoFunc(2);
+  });
 
   q->qvtkConnect(this->SegmentationHistory, vtkCommand::ModifiedEvent,
     q, SLOT(onSegmentationHistoryChanged()));
@@ -3406,6 +3415,11 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
   tmpForm->uploadFileAuto(type,fileName);
 
   qDebug() << "AIAutoDoFunc end" ;
+}
+
+void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
+{
+  Q_UNUSED(type);
 }
 
 //-----------------------------------------------------------------------------
