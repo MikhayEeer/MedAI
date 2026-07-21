@@ -11,3 +11,4 @@ int userInfoBalance = 0;
 QString SERVER_URL = "http://js2.blockelite.cn:102";
 QString AI_URL_AIRWAY = "";
 QString AI_URL_VESSEL = "";
+QString PATIENT_ORDER_UPLOAD_URL = "http://43.139.17.180:5658/patientOrderUploadAll";

@@ -75,6 +75,7 @@ set(${KIT}_TARGET_LIBRARIES
   vtkSlicerSegmentationsModuleMRML
   vtkSlicerSegmentationsModuleLogic
   qSlicerSubjectHierarchyModuleWidgets
+  qSlicerBaseQTGUI
   )
 
 #-----------------------------------------------------------------------------

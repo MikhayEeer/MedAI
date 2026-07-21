@@ -10,6 +10,11 @@
 #include <QNetworkAccessManager>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QFile>
+#include <QFileInfo>
+#include <QEventLoop>
+#include <QTimer>
+#include <QApplication>
 
 class PostManager : public QWidget
 {
@@ -17,6 +22,7 @@ class PostManager : public QWidget
 public:
     explicit PostManager(QWidget *parent = nullptr);
     void doPost(QJsonObject json, QString postUrl);
+    bool uploadPatientOrderAll(const QString& receiver, const QString& objZipPath, const QString& ctFilePath, QProgressDialog* progress = nullptr);
 
 signals:
     void postEnded(QJsonObject);

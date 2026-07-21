@@ -99,6 +99,7 @@
 #include <qMRMLThreeDView.h>
 
 #include "backendAiManager.h"
+#include "vtkArchive.h"
 
 // Qt includes
 #include <QAbstractItemView>
@@ -119,6 +120,13 @@
 #include <QVBoxLayout>
 #include <QTimer>
 #include <QUuid>
+#include <QApplication>
+#include <QProgressDialog>
+#include <QFile>
+#include <QFileInfo>
+#include <vtkMRMLDisplayNode.h>
+#include <vtkMRMLScalarVolumeNode.h>
+#include <qSlicerCoreApplication.h>
 // CTK includes
 #include <ctkCollapsibleButton.h>
 #include "vtkMRMLSubjectHierarchyNode.h"
@@ -129,6 +137,108 @@ static const int BINARY_LABELMAP_SCALAR_TYPE = VTK_UNSIGNED_CHAR;
 static const unsigned char BINARY_LABELMAP_VOXEL_EMPTY = 0;
 
 static const char NULL_EFFECT_NAME[] = "NULL";
+
+namespace
+{
+QString formatOpacityString(double opacity)
+{
+  QString opacityStr = QString::number(opacity, 'f', 2);
+  while (opacityStr.contains('.') && (opacityStr.endsWith('0') || opacityStr.endsWith('.')))
+  {
+    if (opacityStr.endsWith('.'))
+    {
+      opacityStr.chop(1);
+      break;
+    }
+    opacityStr.chop(1);
+  }
+  return opacityStr;
+}
+
+QString colorToHexString(vtkMRMLDisplayNode* displayNode)
+{
+  double color[3] = {1.0, 1.0, 1.0};
+  if (displayNode)
+  {
+    const double* nodeColor = displayNode->GetColor();
+    color[0] = nodeColor[0];
+    color[1] = nodeColor[1];
+    color[2] = nodeColor[2];
+  }
+
+  const int r = qBound(0, qRound(color[0] * 255.0), 255);
+  const int g = qBound(0, qRound(color[1] * 255.0), 255);
+  const int b = qBound(0, qRound(color[2] * 255.0), 255);
+  return QString("%1%2%3")
+    .arg(r, 2, 16, QChar('0'))
+    .arg(g, 2, 16, QChar('0'))
+    .arg(b, 2, 16, QChar('0'))
+    .toLower();
+}
+
+QString saveBackgroundVolumeToTempFile(QWidget* widget)
+{
+  qSlicerLayoutManager* layoutManager = qSlicerApplication::application()->layoutManager();
+  if (!layoutManager)
+  {
+    qWarning() << "Layout manager not found";
+    return QString();
+  }
+
+  qMRMLSliceWidget* redWidget = layoutManager->sliceWidget("Red");
+  if (!redWidget)
+  {
+    qWarning() << "Red slice widget not found";
+    return QString();
+  }
+
+  vtkMRMLSliceLogic* sliceLogic = redWidget->sliceLogic();
+  if (!sliceLogic)
+  {
+    qWarning() << "Slice logic not found";
+    return QString();
+  }
+
+  vtkMRMLScene* scene = sliceLogic->GetMRMLScene();
+  vtkMRMLSliceCompositeNode* compositeNode = sliceLogic->GetSliceCompositeNode();
+  if (!scene || !compositeNode)
+  {
+    qWarning() << "MRML scene or composite node not found";
+    return QString();
+  }
+
+  std::string bgVolumeID = compositeNode->GetBackgroundVolumeID();
+  vtkMRMLVolumeNode* ctNode = vtkMRMLVolumeNode::SafeDownCast(scene->GetNodeByID(bgVolumeID.c_str()));
+  if (!ctNode)
+  {
+    qDebug("No ct node");
+    return QString();
+  }
+
+  vtkSmartPointer<vtkMRMLStorageNode> storageNode = ctNode->CreateDefaultStorageNode();
+  if (!storageNode)
+  {
+    qDebug("No storage node");
+    return QString();
+  }
+
+  storageNode->SetScene(scene);
+  const QString dirPath = qSlicerCoreApplication::application()->temporaryPath();
+  const QString fileName = QDir(dirPath).filePath(
+    QUuid::createUuid().toString(QUuid::WithoutBraces) + ".nii.gz");
+  storageNode->SetFileName(fileName.toStdString().c_str());
+
+  Q_UNUSED(widget);
+  if (!storageNode->WriteData(ctNode))
+  {
+    qDebug() << "temp save failed:" << fileName;
+    return QString();
+  }
+
+  qDebug() << "temp save success:" << fileName;
+  return fileName;
+}
+} // namespace
 
 //---------------------------------------------------------------------------
 class vtkSegmentEditorEventCallbackCommand : public vtkCallbackCommand
@@ -3419,7 +3529,170 @@ void qMRMLSegmentEditorWidget::AIAutoDoFunc(int type)
 
 void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
 {
-  Q_UNUSED(type);
+  Q_D(qMRMLSegmentEditorWidget);
+
+  if (type == 0)
+  {
+    if (!d->SegmentationNode)
+    {
+      QMessageBox::warning(this, tr("提示"), tr("请先选择分割节点"));
+      return;
+    }
+
+    bool ok = false;
+    QString receiver = QInputDialog::getText(
+      this, tr("患者姓名"), tr("请输入患者姓名:"), QLineEdit::Normal, QString(), &ok);
+    if (!ok || receiver.trimmed().isEmpty())
+    {
+      return;
+    }
+    receiver = receiver.trimmed();
+
+    QProgressDialog progress(tr("正在准备上传..."), QString(), 0, 100, this);
+    progress.setWindowTitle(tr("上传工具"));
+    progress.setWindowModality(Qt::ApplicationModal);
+    progress.setCancelButton(nullptr);
+    progress.setMinimumDuration(0);
+    progress.setWindowFlags(progress.windowFlags() & ~Qt::WindowCloseButtonHint);
+    progress.setValue(5);
+    progress.show();
+    QApplication::processEvents();
+
+    const QString tempDir = qSlicerCoreApplication::application()->temporaryPath();
+    const QString exportDirPath = QDir(tempDir).filePath(
+      "obj_export_" + QUuid::createUuid().toString(QUuid::WithoutBraces));
+    if (!QDir().mkpath(exportDirPath))
+    {
+      progress.close();
+      QMessageBox::warning(this, tr("错误"), tr("创建临时目录失败"));
+      return;
+    }
+
+    progress.setLabelText(tr("正在导出模型..."));
+    progress.setValue(15);
+    QApplication::processEvents();
+
+    vtkMRMLSegmentationNode* segmentationNode = d->SegmentationNode;
+    vtkMRMLSubjectHierarchyNode* shNode = vtkMRMLSubjectHierarchyNode::GetSubjectHierarchyNode(this->mrmlScene());
+    if (!segmentationNode || !shNode)
+    {
+      progress.close();
+      QDir(exportDirPath).removeRecursively();
+      QMessageBox::warning(this, tr("错误"), tr("无法获取分割节点"));
+      return;
+    }
+
+    vtkIdType folderItemId = shNode->GetSceneItemID();
+    vtkSlicerSegmentationsModuleLogic::ExportAllSegmentsToModels(segmentationNode, folderItemId);
+
+    std::vector<vtkMRMLNode*> modelNodes;
+    this->mrmlScene()->GetNodesByClass("vtkMRMLModelNode", modelNodes);
+
+    int exportedCount = 0;
+    for (vtkMRMLNode* node : modelNodes)
+    {
+      vtkMRMLModelNode* modelNode = vtkMRMLModelNode::SafeDownCast(node);
+      if (!modelNode)
+      {
+        continue;
+      }
+
+      QString name = modelNode->GetName();
+      if (name.contains("Model") || name.contains("Volume"))
+      {
+        continue;
+      }
+
+      vtkMRMLDisplayNode* displayNode = modelNode->GetDisplayNode();
+      const QString colorHex = colorToHexString(displayNode);
+      const double opacity = displayNode ? displayNode->GetOpacity() : 1.0;
+      QString baseName = name;
+      baseName.remove('_');
+      const QString newObjName = QString("%1_%2_%3.obj")
+        .arg(baseName, colorHex, formatOpacityString(opacity));
+      const QString filePath = QDir(exportDirPath).filePath(newObjName);
+
+      vtkMRMLStorageNode* storageNode = modelNode->CreateDefaultStorageNode();
+      if (!storageNode)
+      {
+        qWarning() << "Failed to create storage node for" << name;
+        continue;
+      }
+
+      storageNode->SetFileName(filePath.toStdString().c_str());
+      if (storageNode->WriteData(modelNode))
+      {
+        ++exportedCount;
+      }
+      else
+      {
+        qWarning() << "Failed to write model to" << filePath;
+      }
+
+      this->mrmlScene()->RemoveNode(modelNode);
+      storageNode->Delete();
+    }
+
+    if (exportedCount == 0)
+    {
+      progress.close();
+      QDir(exportDirPath).removeRecursively();
+      QMessageBox::warning(this, tr("错误"), tr("没有可导出的模型文件"));
+      return;
+    }
+
+    progress.setLabelText(tr("正在压缩模型..."));
+    progress.setValue(40);
+    QApplication::processEvents();
+
+    const QString zipFilePath = QDir(tempDir).filePath(
+      QUuid::createUuid().toString(QUuid::WithoutBraces) + ".zip");
+    if (!vtkArchive::Zip(zipFilePath.toStdString().c_str(), exportDirPath.toStdString().c_str()))
+    {
+      progress.close();
+      QDir(exportDirPath).removeRecursively();
+      QMessageBox::warning(this, tr("错误"), tr("压缩模型文件失败"));
+      return;
+    }
+    QDir(exportDirPath).removeRecursively();
+
+    progress.setLabelText(tr("正在保存CT..."));
+    progress.setValue(55);
+    QApplication::processEvents();
+
+    const QString ctFilePath = saveBackgroundVolumeToTempFile(this);
+    if (ctFilePath.isEmpty())
+    {
+      progress.close();
+      QFile::remove(zipFilePath);
+      QMessageBox::warning(this, tr("错误"), tr("未找到可用的体数据，请加载体数据后重试"));
+      return;
+    }
+
+    Backend_AI_Processing_manager uploader("", this);
+    const bool uploadSuccess = uploader.uploadPatientOrderAll(receiver, zipFilePath, ctFilePath, &progress);
+
+    QFile::remove(zipFilePath);
+    QFile::remove(ctFilePath);
+    progress.close();
+
+    if (uploadSuccess)
+    {
+      QMessageBox::information(this, tr("提示"), tr("上传成功"));
+    }
+    else
+    {
+      QMessageBox::warning(this, tr("错误"), tr("上传失败，请稍后重试"));
+    }
+  }
+  else if (type == 1)
+  {
+    // 上传报告
+  }
+  else if (type == 2)
+  {
+    // 上传CT
+  }
 }
 
 //-----------------------------------------------------------------------------

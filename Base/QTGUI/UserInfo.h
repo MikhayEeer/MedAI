@@ -12,6 +12,7 @@ extern QString SERVER_URL;
 
 extern QString AI_URL_AIRWAY;
 extern QString AI_URL_VESSEL;
+extern QString PATIENT_ORDER_UPLOAD_URL;
 
 class UserInfo
 {

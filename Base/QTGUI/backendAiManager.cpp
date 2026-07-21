@@ -9,6 +9,10 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFileDialog>
+#include <QFileInfo>
+#include <QApplication>
+#include <QEventLoop>
+#include <QTimer>
 
 #include "UserInfo.h"
 #include "backendAiManager.h"
@@ -141,6 +145,19 @@ void Backend_AI_Processing_manager::add_ai_ops()
 }
 
 // 修改函数签名，接收文件路径作为参数
+bool Backend_AI_Processing_manager::uploadPatientOrderAll(
+    const QString& receiver,
+    const QString& objZipPath,
+    const QString& ctFilePath,
+    QProgressDialog* progress)
+{
+    if (!_postManager)
+    {
+        _postManager = new PostManager(this);
+    }
+    return _postManager->uploadPatientOrderAll(receiver, objZipPath, ctFilePath, progress);
+}
+
 void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& filePath) {
     _choosed_files= QStringList() << filePath;
     // _choosed_files[0]= filePath;

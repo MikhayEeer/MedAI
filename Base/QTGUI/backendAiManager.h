@@ -51,6 +51,7 @@ public:
     void choose_file_for_vessel();
     void choose_file_for_vesselV2();
     void uploadFileAuto(int model, const QString& filePath);
+    bool uploadPatientOrderAll(const QString& receiver, const QString& objZipPath, const QString& ctFilePath, QProgressDialog* progress = nullptr);
     QString saveCurrentVolumeAsTemporaryFile();
 
 signals:
