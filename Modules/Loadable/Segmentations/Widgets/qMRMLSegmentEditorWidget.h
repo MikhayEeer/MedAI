@@ -361,6 +361,7 @@ public slots:
   void exPortAllSeg();
   void AIAutoDoFunc(int type);
   void UploadDoFunc(int type);
+  void testPatientOrderUploadAll();
 
   /// Install keyboard shortcuts to allow quick selection of effects and segments.
   /// If parent is not specified then the main window will be used as parent.

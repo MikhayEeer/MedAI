@@ -149,13 +149,15 @@ bool Backend_AI_Processing_manager::uploadPatientOrderAll(
     const QString& receiver,
     const QString& objZipPath,
     const QString& ctFilePath,
-    QProgressDialog* progress)
+    QProgressDialog* progress,
+    QString* errorMessage)
 {
     if (!_postManager)
     {
         _postManager = new PostManager(this);
     }
-    return _postManager->uploadPatientOrderAll(receiver, objZipPath, ctFilePath, progress);
+    return _postManager->uploadPatientOrderAll(
+      receiver, objZipPath, ctFilePath, progress, errorMessage);
 }
 
 void Backend_AI_Processing_manager::uploadFileAuto(int model, const QString& filePath) {

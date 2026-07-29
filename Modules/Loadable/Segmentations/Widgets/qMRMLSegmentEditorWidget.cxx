@@ -603,6 +603,9 @@ void qMRMLSegmentEditorWidgetPrivate::init()
   QObject::connect(this->UploadCTButton, &QPushButton::clicked, [=]() {
       q->UploadDoFunc(2);
   });
+  QObject::connect(this->UploadOrderApiTestButton, &QPushButton::clicked, [=]() {
+      q->testPatientOrderUploadAll();
+  });
 
   q->qvtkConnect(this->SegmentationHistory, vtkCommand::ModifiedEvent,
     q, SLOT(onSegmentationHistoryChanged()));
@@ -3670,7 +3673,9 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     }
 
     Backend_AI_Processing_manager uploader("", this);
-    const bool uploadSuccess = uploader.uploadPatientOrderAll(receiver, zipFilePath, ctFilePath, &progress);
+    QString uploadError;
+    const bool uploadSuccess = uploader.uploadPatientOrderAll(
+      receiver, zipFilePath, ctFilePath, &progress, &uploadError);
 
     QFile::remove(zipFilePath);
     QFile::remove(ctFilePath);
@@ -3682,7 +3687,10 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     }
     else
     {
-      QMessageBox::warning(this, tr("错误"), tr("上传失败，请稍后重试"));
+      QMessageBox::warning(
+        this,
+        tr("错误"),
+        uploadError.isEmpty() ? tr("上传失败，请稍后重试") : uploadError);
     }
   }
   else if (type == 1)
@@ -3692,6 +3700,87 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
   else if (type == 2)
   {
     // 上传CT
+  }
+}
+
+//-----------------------------------------------------------------------------
+void qMRMLSegmentEditorWidget::testPatientOrderUploadAll()
+{
+  const QString tempDir = qSlicerCoreApplication::application()->temporaryPath();
+  const QString testId = QUuid::createUuid().toString(QUuid::WithoutBraces);
+
+  const QString exportDirPath = QDir(tempDir).filePath(QString("api_test_obj_%1").arg(testId));
+  if (!QDir().mkpath(exportDirPath))
+  {
+    QMessageBox::warning(this, tr("接口测试"), tr("创建临时目录失败"));
+    return;
+  }
+
+  const QString objPath = QDir(exportDirPath).filePath("test_triangle.obj");
+  QFile objFile(objPath);
+  if (!objFile.open(QIODevice::WriteOnly | QIODevice::Text))
+  {
+    QDir(exportDirPath).removeRecursively();
+    QMessageBox::warning(this, tr("接口测试"), tr("创建测试 OBJ 失败"));
+    return;
+  }
+  objFile.write("v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n");
+  objFile.close();
+
+  const QString zipFilePath = QDir(tempDir).filePath(testId + "_model.zip");
+  if (!vtkArchive::Zip(zipFilePath.toStdString().c_str(), exportDirPath.toStdString().c_str()))
+  {
+    QDir(exportDirPath).removeRecursively();
+    QMessageBox::warning(this, tr("接口测试"), tr("创建测试 ZIP 失败"));
+    return;
+  }
+  QDir(exportDirPath).removeRecursively();
+
+  const QString ctFilePath = QDir(tempDir).filePath(testId + "_compress.nii.gz");
+  QFile ctFile(ctFilePath);
+  if (!ctFile.open(QIODevice::WriteOnly))
+  {
+    QFile::remove(zipFilePath);
+    QMessageBox::warning(this, tr("接口测试"), tr("创建测试 CT 失败"));
+    return;
+  }
+  ctFile.write(QByteArray::fromHex("1f8b080000000000000003030000000000000000"));
+  ctFile.close();
+
+  const QString receiver = QString("api_test_%1").arg(testId.left(8));
+
+  QProgressDialog progress(tr("正在测试 patientOrderUploadAll ..."), QString(), 0, 100, this);
+  progress.setWindowTitle(tr("接口测试"));
+  progress.setWindowModality(Qt::ApplicationModal);
+  progress.setCancelButton(nullptr);
+  progress.setMinimumDuration(0);
+  progress.setWindowFlags(progress.windowFlags() & ~Qt::WindowCloseButtonHint);
+  progress.setValue(10);
+  progress.show();
+  QApplication::processEvents();
+
+  Backend_AI_Processing_manager uploader("", this);
+  QString uploadError;
+  const bool uploadSuccess = uploader.uploadPatientOrderAll(
+    receiver, zipFilePath, ctFilePath, &progress, &uploadError);
+
+  QFile::remove(zipFilePath);
+  QFile::remove(ctFilePath);
+  progress.close();
+
+  if (uploadSuccess)
+  {
+    QMessageBox::information(
+      this,
+      tr("接口测试"),
+      tr("请求发送成功（patientOrderUploadAll）\n患者姓名: %1").arg(receiver));
+  }
+  else
+  {
+    QMessageBox::warning(
+      this,
+      tr("接口测试"),
+      uploadError.isEmpty() ? tr("请求失败，请查看日志") : uploadError);
   }
 }
 

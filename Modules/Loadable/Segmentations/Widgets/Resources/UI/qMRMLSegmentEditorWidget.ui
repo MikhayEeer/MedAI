@@ -623,6 +623,16 @@
                   </property>
                 </widget>
               </item>
+              <item>
+                <widget class="QPushButton" name="UploadOrderApiTestButton">
+                  <property name="toolTip">
+                    <string>使用临时 zip 与 nii.gz 测试 patientOrderUploadAll 接口</string>
+                  </property>
+                  <property name="text">
+                    <string>接口测试</string>
+                  </property>
+                </widget>
+              </item>
             </layout>
           </item>
         </layout>

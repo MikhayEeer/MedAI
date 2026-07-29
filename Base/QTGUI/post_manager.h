@@ -22,7 +22,12 @@ class PostManager : public QWidget
 public:
     explicit PostManager(QWidget *parent = nullptr);
     void doPost(QJsonObject json, QString postUrl);
-    bool uploadPatientOrderAll(const QString& receiver, const QString& objZipPath, const QString& ctFilePath, QProgressDialog* progress = nullptr);
+    bool uploadPatientOrderAll(
+      const QString& receiver,
+      const QString& objZipPath,
+      const QString& ctFilePath,
+      QProgressDialog* progress = nullptr,
+      QString* errorMessage = nullptr);
 
 signals:
     void postEnded(QJsonObject);
