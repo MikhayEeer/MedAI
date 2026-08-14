@@ -4,18 +4,17 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
-#include <QNetworkProxy>
-#include <QHttpMultiPart>
-#include <QHttpPart>
 #include <QUrl>
 #include <QDebug>
 #include <QJsonArray>
+#include <QEventLoop>
+#include <QUuid>
 
 namespace
 {
-bool isZipArchive(const QByteArray& data)
+bool isZipArchiveHeader(const QByteArray& header)
 {
-  return data.size() >= 4 && data.startsWith("PK\x03\x04");
+  return header.size() >= 4 && header.startsWith("PK\x03\x04");
 }
 
 QString ctUploadFileName(const QString& ctFilePath)
@@ -84,18 +83,180 @@ void setErrorMessage(QString* errorMessage, const QString& message)
   }
 }
 
-QByteArray readFileData(const QString& filePath, QString* errorMessage, const QString& errorText)
+bool validateZipFile(const QString& objZipPath, QString* errorMessage)
+{
+  QFile zipFile(objZipPath);
+  if (!zipFile.open(QIODevice::ReadOnly))
+  {
+    qWarning() << "validateZipFile: cannot open" << objZipPath;
+    setErrorMessage(errorMessage, QObject::tr("无法读取模型压缩包"));
+    return false;
+  }
+
+  const QByteArray header = zipFile.read(4);
+  const qint64 zipSize = zipFile.size();
+  zipFile.close();
+
+  if (zipSize <= 0 || !isZipArchiveHeader(header))
+  {
+    qWarning() << "validateZipFile: invalid zip" << objZipPath << "size:" << zipSize;
+    setErrorMessage(errorMessage, QObject::tr("模型压缩包无效，请重新导出后再试"));
+    return false;
+  }
+  return true;
+}
+
+bool validateCtFile(const QString& ctFilePath, qint64* ctSize, QString* errorMessage)
+{
+  QFileInfo ctInfo(ctFilePath);
+  if (!ctInfo.exists() || !ctInfo.isFile())
+  {
+    setErrorMessage(errorMessage, QObject::tr("无法读取CT文件"));
+    return false;
+  }
+
+  const qint64 size = ctInfo.size();
+  if (size <= 0)
+  {
+    setErrorMessage(errorMessage, QObject::tr("CT文件为空"));
+    return false;
+  }
+
+  if (ctSize)
+  {
+    *ctSize = size;
+  }
+  return true;
+}
+
+QString extractOrderIdFromResponse(const QByteArray& responseData)
+{
+  const QJsonDocument document = QJsonDocument::fromJson(responseData);
+  if (!document.isObject())
+  {
+    return QString();
+  }
+  const QJsonObject root = document.object();
+  const QJsonValue dataValue = root.value("data");
+  if (dataValue.isObject())
+  {
+    const QJsonValue orderIdValue = dataValue.toObject().value("order_id");
+    if (orderIdValue.isString())
+    {
+      return orderIdValue.toString();
+    }
+    if (orderIdValue.isDouble())
+    {
+      return QString::number(static_cast<qint64>(orderIdValue.toDouble()));
+    }
+  }
+  return QString();
+}
+
+QByteArray readFileBytes(const QString& filePath, QString* errorMessage, const QString& errorText)
 {
   QFile file(filePath);
   if (!file.open(QIODevice::ReadOnly))
   {
-    qWarning() << "readFileData: cannot open" << filePath;
     setErrorMessage(errorMessage, errorText);
     return QByteArray();
   }
   const QByteArray data = file.readAll();
   file.close();
+  if (data.isEmpty())
+  {
+    setErrorMessage(errorMessage, errorText);
+  }
   return data;
+}
+
+void appendTextField(QByteArray& body, const QByteArray& boundary, const QString& name, const QByteArray& value)
+{
+  body += "--" + boundary + "\r\n";
+  body += "Content-Disposition: form-data; name=\"" + name.toUtf8() + "\"\r\n\r\n";
+  body += value;
+  body += "\r\n";
+}
+
+void appendFileField(
+  QByteArray& body,
+  const QByteArray& boundary,
+  const QString& fieldName,
+  const QString& uploadFileName,
+  const QByteArray& fileData)
+{
+  body += "--" + boundary + "\r\n";
+  body += "Content-Disposition: form-data; name=\"" + fieldName.toUtf8()
+        + "\"; filename=\"" + uploadFileName.toUtf8() + "\"\r\n";
+  body += "Content-Type: application/octet-stream\r\n\r\n";
+  body += fileData;
+  body += "\r\n";
+}
+
+bool postByteArray(
+  QNetworkAccessManager* manager,
+  QNetworkReply*& reply,
+  const QString& uploadUrl,
+  const QByteArray& boundary,
+  const QByteArray& body,
+  QProgressDialog* progress,
+  const QString& progressLabel,
+  QString* errorMessage,
+  QByteArray* responseOut)
+{
+  if (progress)
+  {
+    progress->setLabelText(progressLabel);
+    progress->setValue(70);
+    QApplication::processEvents();
+  }
+
+  QNetworkRequest request;
+  request.setUrl(QUrl(uploadUrl));
+  request.setHeader(
+    QNetworkRequest::ContentTypeHeader,
+    QVariant(QString("multipart/form-data; boundary=%1").arg(QString::fromLatin1(boundary))));
+
+  qDebug() << "postByteArray url:" << uploadUrl << "body size:" << body.size();
+
+  // 与 doPost / AI 上传相同：整包 QByteArray + manager->post + finished 事件循环
+  reply = manager->post(request, body);
+
+  QEventLoop eventLoop;
+  QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+  eventLoop.exec();
+
+  const QByteArray responseData = reply->readAll();
+  const int httpStatus = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+  const bool networkOk = reply->error() == QNetworkReply::NoError;
+  const bool success = networkOk && httpStatus >= 200 && httpStatus < 300;
+
+  if (responseOut)
+  {
+    *responseOut = responseData;
+  }
+
+  qDebug() << "postByteArray done"
+           << "qtError:" << reply->error()
+           << reply->errorString()
+           << "HTTP:" << httpStatus
+           << "response:" << responseData;
+
+  if (!success)
+  {
+    const QString responseError = networkOk
+      ? parseUploadErrorMessage(responseData, httpStatus)
+      : reply->errorString();
+    setErrorMessage(errorMessage, responseError);
+  }
+
+  if (progress)
+  {
+    progress->setValue(success ? 100 : progress->value());
+    QApplication::processEvents();
+  }
+
+  return success;
 }
 } // namespace
 
@@ -135,139 +296,137 @@ bool PostManager::uploadPatientOrderAll(
     QString* errorMessage)
 {
     const QString uploadUrl = PATIENT_ORDER_UPLOAD_URL;
-    qDebug() << "uploadPatientOrderAll start, url:" << uploadUrl;
 
     if (receiver.trimmed().isEmpty())
     {
         setErrorMessage(errorMessage, QObject::tr("患者姓名不能为空"));
         return false;
     }
+    if (!validateZipFile(objZipPath, errorMessage))
+    {
+        return false;
+    }
+    qint64 ctSize = 0;
+    if (!validateCtFile(ctFilePath, &ctSize, errorMessage))
+    {
+        return false;
+    }
 
-    const QByteArray zipData = readFileData(
+    const QByteArray zipData = readFileBytes(
+      objZipPath, errorMessage, QObject::tr("无法读取模型压缩包"));
+    const QByteArray ctData = readFileBytes(
+      ctFilePath, errorMessage, QObject::tr("无法读取CT文件"));
+    if (zipData.isEmpty() || ctData.isEmpty())
+    {
+        return false;
+    }
+
+    qDebug() << "uploadPatientOrderAll start"
+             << "url:" << uploadUrl
+             << "zip:" << zipData.size() << "bytes"
+             << "ct:" << ctData.size() << "bytes";
+
+    const QByteArray boundary =
+      "MedAIFormBoundary" + QUuid::createUuid().toString(QUuid::WithoutBraces).toLatin1();
+    QByteArray body;
+    appendTextField(body, boundary, "receiver", receiver.trimmed().toUtf8());
+    appendFileField(body, boundary, "obj_zip", "model.zip", zipData);
+    appendFileField(body, boundary, "ct_file", ctUploadFileName(ctFilePath), ctData);
+    body += "--" + boundary + "--\r\n";
+
+    return postByteArray(
+      manager, reply, uploadUrl, boundary, body, progress,
+      QObject::tr("正在上传模型和CT..."), errorMessage, nullptr);
+}
+
+bool PostManager::uploadPatientOrderModel(
+    const QString& receiver,
+    const QString& objZipPath,
+    QProgressDialog* progress,
+    QString* errorMessage,
+    QString* orderIdOut)
+{
+    const QString uploadUrl = PATIENT_ORDER_UPLOAD_MODEL_URL;
+
+    if (receiver.trimmed().isEmpty())
+    {
+        setErrorMessage(errorMessage, QObject::tr("患者姓名不能为空"));
+        return false;
+    }
+    if (!validateZipFile(objZipPath, errorMessage))
+    {
+        return false;
+    }
+
+    const QByteArray zipData = readFileBytes(
       objZipPath, errorMessage, QObject::tr("无法读取模型压缩包"));
     if (zipData.isEmpty())
     {
         return false;
     }
-    if (!isZipArchive(zipData))
+
+    qDebug() << "uploadPatientOrderModel start"
+             << "url:" << uploadUrl
+             << "zip:" << zipData.size() << "bytes";
+
+    const QByteArray boundary =
+      "MedAIFormBoundary" + QUuid::createUuid().toString(QUuid::WithoutBraces).toLatin1();
+    QByteArray body;
+    appendTextField(body, boundary, "receiver", receiver.trimmed().toUtf8());
+    appendFileField(body, boundary, "obj_zip", "model.zip", zipData);
+    body += "--" + boundary + "--\r\n";
+
+    QByteArray responseData;
+    const bool success = postByteArray(
+      manager, reply, uploadUrl, boundary, body, progress,
+      QObject::tr("正在上传模型..."), errorMessage, &responseData);
+
+    if (success && orderIdOut)
     {
-        qWarning() << "uploadPatientOrderAll: invalid zip file" << objZipPath << "size:" << zipData.size();
-        setErrorMessage(errorMessage, QObject::tr("模型压缩包无效，请重新导出后再试"));
+        *orderIdOut = extractOrderIdFromResponse(responseData);
+    }
+    return success;
+}
+
+bool PostManager::uploadOrderCT(
+    const QString& orderId,
+    const QString& ctFilePath,
+    QProgressDialog* progress,
+    QString* errorMessage)
+{
+    const QString uploadUrl = ORDER_UPLOAD_CT_URL;
+
+    if (orderId.trimmed().isEmpty())
+    {
+        setErrorMessage(errorMessage, QObject::tr("订单号不能为空"));
+        return false;
+    }
+    qint64 ctSize = 0;
+    if (!validateCtFile(ctFilePath, &ctSize, errorMessage))
+    {
         return false;
     }
 
-    const QByteArray ctData = readFileData(
+    const QByteArray ctData = readFileBytes(
       ctFilePath, errorMessage, QObject::tr("无法读取CT文件"));
     if (ctData.isEmpty())
     {
         return false;
     }
 
-    if (progress)
-    {
-        progress->setLabelText(QObject::tr("正在上传模型和CT..."));
-        progress->setValue(70);
-        QApplication::processEvents();
-    }
+    qDebug() << "uploadOrderCT start"
+             << "url:" << uploadUrl
+             << "order:" << orderId
+             << "ct:" << ctData.size() << "bytes";
 
-    QHttpMultiPart* multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+    const QByteArray boundary =
+      "MedAIFormBoundary" + QUuid::createUuid().toString(QUuid::WithoutBraces).toLatin1();
+    QByteArray body;
+    appendTextField(body, boundary, "order_id", orderId.trimmed().toUtf8());
+    appendFileField(body, boundary, "ct_file", ctUploadFileName(ctFilePath), ctData);
+    body += "--" + boundary + "--\r\n";
 
-    QHttpPart receiverPart;
-    receiverPart.setHeader(
-      QNetworkRequest::ContentDispositionHeader,
-      QVariant("form-data; name=\"receiver\""));
-    receiverPart.setBody(receiver.trimmed().toUtf8());
-    multiPart->append(receiverPart);
-
-    QHttpPart zipPart;
-    zipPart.setHeader(
-      QNetworkRequest::ContentDispositionHeader,
-      QVariant("form-data; name=\"obj_zip\"; filename=\"model.zip\""));
-    zipPart.setHeader(
-      QNetworkRequest::ContentTypeHeader,
-      QVariant("application/x-zip-compressed"));
-    zipPart.setBody(zipData);
-    multiPart->append(zipPart);
-
-    const QString ctFileName = ctUploadFileName(ctFilePath);
-    QHttpPart ctPart;
-    ctPart.setHeader(
-      QNetworkRequest::ContentDispositionHeader,
-      QVariant(QString("form-data; name=\"ct_file\"; filename=\"%1\"").arg(ctFileName)));
-    ctPart.setHeader(
-      QNetworkRequest::ContentTypeHeader,
-      QVariant("application/x-gzip"));
-    ctPart.setBody(ctData);
-    multiPart->append(ctPart);
-
-    QNetworkRequest networkRequest;
-    networkRequest.setUrl(QUrl(uploadUrl));
-
-    // Bypass system proxy (Slicer enables it globally); curl typically connects directly.
-    QNetworkAccessManager uploadManager;
-    uploadManager.setProxy(QNetworkProxy::NoProxy);
-
-    QNetworkReply* uploadReply = uploadManager.post(networkRequest, multiPart);
-    multiPart->setParent(uploadReply);
-
-    if (progress)
-    {
-        QObject::connect(uploadReply, &QNetworkReply::uploadProgress, progress,
-          [progress](qint64 sent, qint64 total) {
-              if (total <= 0)
-              {
-                  return;
-              }
-              const int uploadProgress = 70 + static_cast<int>((sent * 25) / total);
-              progress->setValue(qMin(uploadProgress, 95));
-          });
-    }
-
-    QEventLoop eventLoop;
-    QTimer timeoutTimer;
-    timeoutTimer.setSingleShot(true);
-    timeoutTimer.setInterval(600000);
-    QObject::connect(&timeoutTimer, &QTimer::timeout, &eventLoop, &QEventLoop::quit);
-    QObject::connect(uploadReply, &QNetworkReply::finished, &eventLoop, &QEventLoop::quit);
-    QObject::connect(uploadReply, &QNetworkReply::errorOccurred, &eventLoop, &QEventLoop::quit);
-    timeoutTimer.start();
-    eventLoop.exec();
-
-    const bool timedOut = !uploadReply->isFinished();
-    if (timedOut)
-    {
-        qWarning() << "uploadPatientOrderAll: request timed out";
-        uploadReply->abort();
-        setErrorMessage(errorMessage, QObject::tr("上传超时，请稍后重试"));
-        uploadReply->deleteLater();
-        return false;
-    }
-
-    const QByteArray responseData = uploadReply->readAll();
-    const int httpStatus = uploadReply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-    const bool networkOk = uploadReply->error() == QNetworkReply::NoError;
-
-    bool success = networkOk && httpStatus >= 200 && httpStatus < 300;
-    if (success)
-    {
-        qDebug() << "uploadPatientOrderAll success:" << responseData;
-    }
-    else
-    {
-        const QString responseError = networkOk
-          ? parseUploadErrorMessage(responseData, httpStatus)
-          : uploadReply->errorString();
-        qWarning() << "uploadPatientOrderAll failed:" << responseError;
-        qWarning() << "HTTP status:" << httpStatus << "response:" << responseData;
-        setErrorMessage(errorMessage, responseError);
-    }
-
-    if (progress)
-    {
-        progress->setValue(success ? 100 : progress->value());
-        QApplication::processEvents();
-    }
-
-    uploadReply->deleteLater();
-    return success;
+    return postByteArray(
+      manager, reply, uploadUrl, boundary, body, progress,
+      QObject::tr("正在上传CT..."), errorMessage, nullptr);
 }

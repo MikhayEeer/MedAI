@@ -99,6 +99,7 @@
 #include <qMRMLThreeDView.h>
 
 #include "backendAiManager.h"
+#include "post_manager.h"
 #include "vtkArchive.h"
 
 // Qt includes
@@ -237,6 +238,105 @@ QString saveBackgroundVolumeToTempFile(QWidget* widget)
 
   qDebug() << "temp save success:" << fileName;
   return fileName;
+}
+
+bool performPatientOrderUpload(
+  QWidget* parent,
+  const QString& receiver,
+  const QString& zipFilePath,
+  const QString& ctFilePath,
+  QProgressDialog* progress,
+  const QString& dialogTitle,
+  const QString& successMessage)
+{
+  PostManager postManager(parent);
+  QString uploadError;
+  const bool uploadSuccess = postManager.uploadPatientOrderAll(
+    receiver, zipFilePath, ctFilePath, progress, &uploadError);
+
+  if (uploadSuccess)
+  {
+    QMessageBox::information(parent, dialogTitle, successMessage);
+  }
+  else
+  {
+    QMessageBox::warning(
+      parent,
+      dialogTitle,
+      uploadError.isEmpty() ? QObject::tr("上传失败，请稍后重试") : uploadError);
+  }
+  return uploadSuccess;
+}
+
+QString& lastUploadedOrderId()
+{
+  static QString orderId;
+  return orderId;
+}
+
+bool performPatientOrderModelUpload(
+  QWidget* parent,
+  const QString& receiver,
+  const QString& zipFilePath,
+  QProgressDialog* progress,
+  const QString& dialogTitle)
+{
+  PostManager postManager(parent);
+  QString uploadError;
+  QString orderId;
+  const bool uploadSuccess = postManager.uploadPatientOrderModel(
+    receiver, zipFilePath, progress, &uploadError, &orderId);
+
+  if (uploadSuccess)
+  {
+    if (!orderId.isEmpty())
+    {
+      lastUploadedOrderId() = orderId;
+    }
+    QMessageBox::information(
+      parent,
+      dialogTitle,
+      orderId.isEmpty()
+        ? QObject::tr("模型上传成功")
+        : QObject::tr("模型上传成功\n订单号: %1\n请使用「上传ct」按钮继续上传CT").arg(orderId));
+  }
+  else
+  {
+    QMessageBox::warning(
+      parent,
+      dialogTitle,
+      uploadError.isEmpty() ? QObject::tr("模型上传失败，请稍后重试") : uploadError);
+  }
+  return uploadSuccess;
+}
+
+bool performOrderCTUpload(
+  QWidget* parent,
+  const QString& orderId,
+  const QString& ctFilePath,
+  QProgressDialog* progress,
+  const QString& dialogTitle)
+{
+  PostManager postManager(parent);
+  QString uploadError;
+  const bool uploadSuccess = postManager.uploadOrderCT(
+    orderId, ctFilePath, progress, &uploadError);
+
+  if (uploadSuccess)
+  {
+    QMessageBox::information(
+      parent,
+      dialogTitle,
+      QObject::tr("CT上传成功\n订单号: %1").arg(orderId));
+  }
+  else
+  {
+    QMessageBox::warning(
+      parent,
+      dialogTitle,
+      uploadError.isEmpty() ? QObject::tr("CT上传失败，请稍后重试") : uploadError);
+  }
+  return uploadSuccess;
 }
 } // namespace
 
@@ -3536,6 +3636,7 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
 
   if (type == 0)
   {
+    // 仅上传模型：创建患者+订单+模型 zip
     if (!d->SegmentationNode)
     {
       QMessageBox::warning(this, tr("提示"), tr("请先选择分割节点"));
@@ -3552,8 +3653,7 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     receiver = receiver.trimmed();
 
     QProgressDialog progress(tr("正在准备上传..."), QString(), 0, 100, this);
-    progress.setWindowTitle(tr("上传工具"));
-    progress.setWindowModality(Qt::ApplicationModal);
+    progress.setWindowTitle(tr("上传模型"));
     progress.setCancelButton(nullptr);
     progress.setMinimumDuration(0);
     progress.setWindowFlags(progress.windowFlags() & ~Qt::WindowCloseButtonHint);
@@ -3562,8 +3662,8 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     QApplication::processEvents();
 
     const QString tempDir = qSlicerCoreApplication::application()->temporaryPath();
-    const QString exportDirPath = QDir(tempDir).filePath(
-      "obj_export_" + QUuid::createUuid().toString(QUuid::WithoutBraces));
+    const QString batchId = QUuid::createUuid().toString(QUuid::WithoutBraces);
+    const QString exportDirPath = QDir(tempDir).filePath(QString("obj_export_%1").arg(batchId));
     if (!QDir().mkpath(exportDirPath))
     {
       progress.close();
@@ -3648,8 +3748,7 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     progress.setValue(40);
     QApplication::processEvents();
 
-    const QString zipFilePath = QDir(tempDir).filePath(
-      QUuid::createUuid().toString(QUuid::WithoutBraces) + ".zip");
+    const QString zipFilePath = QDir(tempDir).filePath(batchId + "_model.zip");
     if (!vtkArchive::Zip(zipFilePath.toStdString().c_str(), exportDirPath.toStdString().c_str()))
     {
       progress.close();
@@ -3659,39 +3758,22 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     }
     QDir(exportDirPath).removeRecursively();
 
-    progress.setLabelText(tr("正在保存CT..."));
-    progress.setValue(55);
+    progress.setLabelText(tr("正在上传模型..."));
+    progress.setValue(65);
     QApplication::processEvents();
 
-    const QString ctFilePath = saveBackgroundVolumeToTempFile(this);
-    if (ctFilePath.isEmpty())
-    {
-      progress.close();
-      QFile::remove(zipFilePath);
-      QMessageBox::warning(this, tr("错误"), tr("未找到可用的体数据，请加载体数据后重试"));
-      return;
-    }
+    qDebug() << "UploadDoFunc model only:"
+             << "zip" << zipFilePath << QFileInfo(zipFilePath).size() << "bytes";
 
-    Backend_AI_Processing_manager uploader("", this);
-    QString uploadError;
-    const bool uploadSuccess = uploader.uploadPatientOrderAll(
-      receiver, zipFilePath, ctFilePath, &progress, &uploadError);
+    performPatientOrderModelUpload(
+      this,
+      receiver,
+      zipFilePath,
+      &progress,
+      tr("上传模型"));
 
     QFile::remove(zipFilePath);
-    QFile::remove(ctFilePath);
     progress.close();
-
-    if (uploadSuccess)
-    {
-      QMessageBox::information(this, tr("提示"), tr("上传成功"));
-    }
-    else
-    {
-      QMessageBox::warning(
-        this,
-        tr("错误"),
-        uploadError.isEmpty() ? tr("上传失败，请稍后重试") : uploadError);
-    }
   }
   else if (type == 1)
   {
@@ -3699,7 +3781,50 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
   }
   else if (type == 2)
   {
-    // 上传CT
+    // 仅上传 CT：依赖已有订单号（可由「上传模型」返回）
+    bool ok = false;
+    QString orderId = QInputDialog::getText(
+      this,
+      tr("上传CT"),
+      tr("请输入订单号:"),
+      QLineEdit::Normal,
+      lastUploadedOrderId(),
+      &ok);
+    if (!ok || orderId.trimmed().isEmpty())
+    {
+      return;
+    }
+    orderId = orderId.trimmed();
+
+    QProgressDialog progress(tr("正在保存CT..."), QString(), 0, 100, this);
+    progress.setWindowTitle(tr("上传CT"));
+    progress.setCancelButton(nullptr);
+    progress.setMinimumDuration(0);
+    progress.setWindowFlags(progress.windowFlags() & ~Qt::WindowCloseButtonHint);
+    progress.setValue(20);
+    progress.show();
+    QApplication::processEvents();
+
+    const QString ctFilePath = saveBackgroundVolumeToTempFile(this);
+    if (ctFilePath.isEmpty())
+    {
+      progress.close();
+      QMessageBox::warning(this, tr("错误"), tr("未找到可用的体数据，请加载体数据后重试"));
+      return;
+    }
+
+    progress.setLabelText(tr("正在上传CT..."));
+    progress.setValue(50);
+    QApplication::processEvents();
+
+    qDebug() << "UploadDoFunc CT only:"
+             << "order" << orderId
+             << "ct" << ctFilePath << QFileInfo(ctFilePath).size() << "bytes";
+
+    performOrderCTUpload(this, orderId, ctFilePath, &progress, tr("上传CT"));
+
+    QFile::remove(ctFilePath);
+    progress.close();
   }
 }
 
@@ -3716,7 +3841,8 @@ void qMRMLSegmentEditorWidget::testPatientOrderUploadAll()
     return;
   }
 
-  const QString objPath = QDir(exportDirPath).filePath("test_triangle.obj");
+  // 使用与正式导出一致的 小类_颜色_透明度.obj 命名
+  const QString objPath = QDir(exportDirPath).filePath("气管_ffffff_1.obj");
   QFile objFile(objPath);
   if (!objFile.open(QIODevice::WriteOnly | QIODevice::Text))
   {
@@ -3736,22 +3862,10 @@ void qMRMLSegmentEditorWidget::testPatientOrderUploadAll()
   }
   QDir(exportDirPath).removeRecursively();
 
-  const QString ctFilePath = QDir(tempDir).filePath(testId + "_compress.nii.gz");
-  QFile ctFile(ctFilePath);
-  if (!ctFile.open(QIODevice::WriteOnly))
-  {
-    QFile::remove(zipFilePath);
-    QMessageBox::warning(this, tr("接口测试"), tr("创建测试 CT 失败"));
-    return;
-  }
-  ctFile.write(QByteArray::fromHex("1f8b080000000000000003030000000000000000"));
-  ctFile.close();
-
   const QString receiver = QString("api_test_%1").arg(testId.left(8));
 
-  QProgressDialog progress(tr("正在测试 patientOrderUploadAll ..."), QString(), 0, 100, this);
+  QProgressDialog progress(tr("正在测试 patientOrderUploadModel ..."), QString(), 0, 100, this);
   progress.setWindowTitle(tr("接口测试"));
-  progress.setWindowModality(Qt::ApplicationModal);
   progress.setCancelButton(nullptr);
   progress.setMinimumDuration(0);
   progress.setWindowFlags(progress.windowFlags() & ~Qt::WindowCloseButtonHint);
@@ -3759,29 +3873,15 @@ void qMRMLSegmentEditorWidget::testPatientOrderUploadAll()
   progress.show();
   QApplication::processEvents();
 
-  Backend_AI_Processing_manager uploader("", this);
-  QString uploadError;
-  const bool uploadSuccess = uploader.uploadPatientOrderAll(
-    receiver, zipFilePath, ctFilePath, &progress, &uploadError);
+  performPatientOrderModelUpload(
+    this,
+    receiver,
+    zipFilePath,
+    &progress,
+    tr("接口测试"));
 
   QFile::remove(zipFilePath);
-  QFile::remove(ctFilePath);
   progress.close();
-
-  if (uploadSuccess)
-  {
-    QMessageBox::information(
-      this,
-      tr("接口测试"),
-      tr("请求发送成功（patientOrderUploadAll）\n患者姓名: %1").arg(receiver));
-  }
-  else
-  {
-    QMessageBox::warning(
-      this,
-      tr("接口测试"),
-      uploadError.isEmpty() ? tr("请求失败，请查看日志") : uploadError);
-  }
 }
 
 //-----------------------------------------------------------------------------

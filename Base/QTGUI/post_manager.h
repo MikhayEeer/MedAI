@@ -16,7 +16,9 @@
 #include <QTimer>
 #include <QApplication>
 
-class PostManager : public QWidget
+#include "qSlicerBaseQTGUIExport.h"
+
+class Q_SLICER_BASE_QTGUI_EXPORT PostManager : public QWidget
 {
     Q_OBJECT
 public:
@@ -25,6 +27,19 @@ public:
     bool uploadPatientOrderAll(
       const QString& receiver,
       const QString& objZipPath,
+      const QString& ctFilePath,
+      QProgressDialog* progress = nullptr,
+      QString* errorMessage = nullptr);
+    /// 仅创建患者+订单并上传模型 zip，成功时 orderIdOut 返回订单号
+    bool uploadPatientOrderModel(
+      const QString& receiver,
+      const QString& objZipPath,
+      QProgressDialog* progress = nullptr,
+      QString* errorMessage = nullptr,
+      QString* orderIdOut = nullptr);
+    /// 按订单号上传 CT (.nii.gz)
+    bool uploadOrderCT(
+      const QString& orderId,
       const QString& ctFilePath,
       QProgressDialog* progress = nullptr,
       QString* errorMessage = nullptr);
