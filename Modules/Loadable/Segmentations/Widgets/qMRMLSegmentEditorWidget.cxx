@@ -3748,6 +3748,12 @@ void qMRMLSegmentEditorWidget::UploadDoFunc(int type)
     progress.setValue(40);
     QApplication::processEvents();
 
+    const QStringList mtlFiles = QDir(exportDirPath).entryList(QStringList() << "*.mtl", QDir::Files);
+    for (const QString& mtlFile : mtlFiles)
+    {
+      QFile::remove(QDir(exportDirPath).filePath(mtlFile));
+    }
+
     const QString zipFilePath = QDir(tempDir).filePath(batchId + "_model.zip");
     if (!vtkArchive::Zip(zipFilePath.toStdString().c_str(), exportDirPath.toStdString().c_str()))
     {
