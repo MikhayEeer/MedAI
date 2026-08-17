@@ -37,7 +37,7 @@ public:
       QProgressDialog* progress = nullptr,
       QString* errorMessage = nullptr,
       QString* orderIdOut = nullptr);
-    /// 按订单号上传 CT (.nii.gz)
+    /// 按订单号上传 CT (.nrrd)
     bool uploadOrderCT(
       const QString& orderId,
       const QString& ctFilePath,

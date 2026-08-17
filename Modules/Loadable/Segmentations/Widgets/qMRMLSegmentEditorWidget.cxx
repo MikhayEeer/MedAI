@@ -226,7 +226,7 @@ QString saveBackgroundVolumeToTempFile(QWidget* widget)
   storageNode->SetScene(scene);
   const QString dirPath = qSlicerCoreApplication::application()->temporaryPath();
   const QString fileName = QDir(dirPath).filePath(
-    QUuid::createUuid().toString(QUuid::WithoutBraces) + ".nii.gz");
+    QUuid::createUuid().toString(QUuid::WithoutBraces) + ".nrrd");
   storageNode->SetFileName(fileName.toStdString().c_str());
 
   Q_UNUSED(widget);

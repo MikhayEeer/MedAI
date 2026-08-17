@@ -20,9 +20,9 @@ bool isZipArchiveHeader(const QByteArray& header)
 QString ctUploadFileName(const QString& ctFilePath)
 {
   QString fileName = QFileInfo(ctFilePath).fileName();
-  if (!fileName.endsWith(".nii.gz", Qt::CaseInsensitive))
+  if (!fileName.endsWith(".nrrd", Qt::CaseInsensitive))
   {
-    fileName += ".nii.gz";
+    fileName += ".nrrd";
   }
   return fileName;
 }
